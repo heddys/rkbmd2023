@@ -55,7 +55,15 @@
              $query = $this->db->get();
              return $query->row();
  
-     }	
+     }
+     
+     function get_data_komponen($table,$where){
+		return $this->db->get_where($table,$where);
+	}
+
+    function get_opd($table,$where){
+		return $this->db->get_where($table,$where);
+	}
  
  }
  ?>

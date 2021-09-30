@@ -23,7 +23,7 @@ class Auth extends CI_Controller {
 					$data_session = array(	
 						'id' => $row->id,
 						'skpd' => $row->skpd,
-						'kode_opd' =>$row->kode_binprog		
+						'kode_opd' =>$row->kode_binprog
 					);
 				}
 			$skpdget = $data_session['kode_opd'];

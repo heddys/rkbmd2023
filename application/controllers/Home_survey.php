@@ -80,11 +80,48 @@ class Home_survey extends CI_Controller {
 		$this->cek_sess();
 
 		$data['page']="Input RKBMD";
+		$bmsaja= array(
+			'kode_rek_lvl1' => '5.2.3'
+		);
+		$where=array(
+			'nama_pb !=' => ''
+		);
+
+		$data['get_komponen']=$this->survey_model->get_data_komponen("tabel_kode_komponen",$bmsaja);
+		$data['get_opd']=$this->survey_model->get_opd("skpd",$where);
+
+
 		$this->load->view('survey/h_tablerkb_survey',$data);
 		$this->load->view('survey/halaman_input',$data);
 		$this->load->view('survey/h_footerrkb_survey');
 
 
-	}	
+	}
+	
+	public function tbl_usulan_rkb(){
+
+		$this->cek_sess();
+		$data['page']="List Usulan RKBMD";
+
+		$id_opd = $_POST['selectopd'];
+		$id_komp = $_POST['selectkomp'];
+		$ideal=$_POST['ideal'];
+		$eksis=$_POST['eksis'];
+		$real=$_POST['gethasil'];
+		$keterangan=$_POST['keterangan'];
+		
+		echo "ID OPD".$id_opd;
+		echo "<p>";
+		echo "ID KOMP".$id_komp;
+		echo "<p>";
+		echo "IDEAL".$ideal;
+		echo "<p>";
+		echo "ID EKSISTING".$eksis;
+		echo "<p>";
+		echo "ID REAL".$real;
+		echo "<p>";
+		echo "ID KETERANGAN".$keterangan;
+
+	}
 }
 ?>

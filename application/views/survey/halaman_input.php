@@ -5,121 +5,88 @@
         <!-- Small boxes (Stat box) -->
         <!-- Untuk Pemberitahuan -->
         <!-- general form elements disabled -->
-        <div class="card card-warning">
-              <div class="card-header">
-                <center>
-                    <h3 class="card-title">Entry Data RKBMD</h3>
-                </center>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <form role="form">
-                  <!-- text input -->
-                  <div class="form-group">
-                   <label>Text</label>
-                    <input type="text" class="form-control" placeholder="Enter ...">
-                  </div>
-                  <!-- textarea -->
-                  <div class="form-group">
-                    <label>Textarea</label>
-                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label>Textarea Disabled</label>
-                    <textarea class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
-                  </div>
-
-                  <!-- checkbox -->
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="option1">
-                      <label class="form-check-label">Checkbox</label>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="option1" disabled>
-                      <label class="form-check-label">Checkbox disabled</label>
-                    </div>
-                  </div>
-
-                  <!-- radio -->
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" value="option1">
-                      <label class="form-check-label">Radio</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" value="option1" disabled>
-                      <label class="form-check-label">Radio disabled</label>
-                    </div>
-                  </div>
-
-                  <!-- select -->
-                  <div class="form-group">
-                    <label>Select</label>
-                    <select class="form-control">
-                      <option>option 1</option>
-                      <option>option 2</option>
-                      <option>option 3</option>
-                      <option>option 4</option>
-                      <option>option 5</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Select Disabled</label>
-                    <select class="form-control" disabled>
-                      <option>option 1</option>
-                      <option>option 2</option>
-                      <option>option 3</option>
-                      <option>option 4</option>
-                      <option>option 5</option>
-                    </select>
-                  </div>
-
-                  <!-- Select multiple-->
-                  <div class="form-group">
-                    <label>Select Multiple</label>
-                    <select multiple class="form-control">
-                      <option>option 1</option>
-                      <option>option 2</option>
-                      <option>option 3</option>
-                      <option>option 4</option>
-                      <option>option 5</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Select Multiple Disabled</label>
-                    <select multiple class="form-control" disabled>
-                      <option>option 1</option>
-                      <option>option 2</option>
-                      <option>option 3</option>
-                      <option>option 4</option>
-                      <option>option 5</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <div class="custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                      <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                      <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                      <label class="custom-control-label" for="customSwitch3">Toggle this switch element with Custom Colors danger/success</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
-                      <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <!-- /.card-body -->
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-success">
+        <form role="form" action="tbl_usulan_rkb" method="post">
+          <div class="card-header">
+            <h3 class="card-title">Form Usulan Kebutuhan Barang</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fas fa-minus"></i></button>
+              <button type="button" class="btn btn-tool" data-widget="remove"><i class="fas fa-remove"></i></button>
             </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                  <label>Pilih Perangkat Daerah : </label>
+                  <select class="form-control select3" style="width: 100%;" id="selectopd" name="selectopd" required>
+                    <option disabled="disabled">Pilih Komponen Barang</option>
+                    <?php foreach ($get_opd->result() as $opd) { ?>
+                      <option value="<?php echo $opd->id?>"><font size="10 "><?php echo $opd->skpd?></font>
+                      </option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Pilih Komponen : </label>
+                  <select class="form-control select2" style="width: 100%;" id="selectkomp" name="selectkomp" required>
+                    <option disabled="disabled">Pilih Komponen Barang</option>
+                    <?php foreach ($get_komponen->result() as $kompdata) { ?>
+                      <option value="<?php echo $kompdata->id?>"><font size="10 "><?php echo $kompdata->kode_komponen?> - <?php echo $kompdata->nama_komponen?> - <?php echo $kompdata->spek1?> - <?php echo $kompdata->spek2?> - <?php echo $kompdata->merek?> -<?php echo "Rp.".number_format($kompdata->nilai,2,',','.');?></font>
+                      </option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+              <!-- /.col -->
+                <!-- /.form-group -->
+                <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Kebutuhan Ideal : </label>
+                      <input type="number" class="form-control" min="0" id="ideal" name="ideal" onInput="hitung()" placeholder="Banyaknya..." required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Eksisting : </label>
+                      <input type="number" class="form-control" min="0" id="eksis" name="eksis" onInput="hitung()" placeholder="Banyaknya..." required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Kebutuhan Real : </label>
+                      <input type="number" class="form-control" id="hasil" placeholder="0" disabled>
+                      <input type="hidden" id="gethasil" name="gethasil">
+                  </div>
+                </div>
+                <!-- /.form-group -->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Keterangan : </label>
+                    <div class="card-body pad">
+                      <div class="mb-4">
+                        <textarea class="textarea" placeholder="Place some text here"
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #fffff; padding: 10px;" name="keterangan">
+                        </textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-block btn-info">Simpan Data</button>
+          </div>
+        </form>
+        </div>
+        <!-- /.card -->
             <!-- /.card -->
         <!-- /.row -->
         <!-- Main row -->
