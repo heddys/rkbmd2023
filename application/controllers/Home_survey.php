@@ -98,10 +98,9 @@ class Home_survey extends CI_Controller {
 
 	}
 	
-	public function tbl_usulan_rkb(){
+	public function save_usulan_rkb(){
 
 		$this->cek_sess();
-		$data['page']="List Usulan RKBMD";
 
 		$id_opd = $_POST['selectopd'];
 		$id_komp = $_POST['selectkomp'];
@@ -110,18 +109,35 @@ class Home_survey extends CI_Controller {
 		$real=$_POST['gethasil'];
 		$keterangan=$_POST['keterangan'];
 		
-		echo "ID OPD".$id_opd;
-		echo "<p>";
-		echo "ID KOMP".$id_komp;
-		echo "<p>";
-		echo "IDEAL".$ideal;
-		echo "<p>";
-		echo "ID EKSISTING".$eksis;
-		echo "<p>";
-		echo "ID REAL".$real;
-		echo "<p>";
-		echo "ID KETERANGAN".$keterangan;
 
+		$data = array(
+
+			'id' => '',
+			'kode_opd' => $id_opd,
+			'id_komponen' => $id_komp,
+			'keb_ideal' => $ideal,
+			'eksisting' => $eksis,
+			'keb_real' => $real,
+			'keterangan' => $keterangan
+		);
+
+		$this->survey_model->insert_data_usulan($data);
+
+        redirect('/home_survey/list_usulan_rk');
 	}
+
+	public function list_usulan_rk() {
+		
+		$data['page']="List Usulan RKBMD";
+
+		$this->load->view('survey/h_tablerkb_survey',$data);
+		$this->load->view('survey/halaman_list_rk',$data);
+		$this->load->view('survey/h_footerrkb_survey');
+	
+	
+	}
+
+
+
 }
 ?>

@@ -30,6 +30,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
 <script src="<?php echo base_url();?>ini_assets/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <!-- Page script -->
 <script>
 
@@ -37,6 +39,7 @@
       $('.select2').select2()
       $('.select3').select2()
       $('.textarea').summernote()
+      $("#example1").DataTable();
     })
 
 

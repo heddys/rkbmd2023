@@ -7,7 +7,7 @@
         <!-- general form elements disabled -->
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-success">
-        <form role="form" action="tbl_usulan_rkb" method="post">
+        <form role="form" action="save_usulan_rkb" method="post">
           <div class="card-header">
             <h3 class="card-title">Form Usulan Kebutuhan Barang</h3>
             <div class="card-tools">
@@ -24,7 +24,7 @@
                   <select class="form-control select3" style="width: 100%;" id="selectopd" name="selectopd" required>
                     <option disabled="disabled">Pilih Komponen Barang</option>
                     <?php foreach ($get_opd->result() as $opd) { ?>
-                      <option value="<?php echo $opd->id?>"><font size="10 "><?php echo $opd->skpd?></font>
+                      <option value="<?php echo $opd->kode_binprog?>"><font size="10 "><?php echo $opd->skpd?></font>
                       </option>
                     <?php } ?>
                   </select>

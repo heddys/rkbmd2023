@@ -64,6 +64,10 @@
     function get_opd($table,$where){
 		return $this->db->get_where($table,$where);
 	}
+
+    function insert_data_usulan($data){
+        return $this->db->insert('tabel_usulan_rk',$data);
+    }
  
  }
  ?>
