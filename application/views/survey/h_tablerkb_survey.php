@@ -134,10 +134,18 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
+            <a href="<?php echo site_url('home_survey/list_usulan_rk');?>" class="nav-link">
+            <i class="nav-icon far fa-solid fa-folder"></i>
+              <p>
+               Tabel Usulan RKBMD
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
             <a href="<?php echo site_url('home_survey/tabel_rkb');?>" class="nav-link">
               <i class="nav-icon fab fa-buffer"></i>
               <p>
-                List Usulan BM Aset
+                List Belanja Modal Aset
               </p>
             </a>
           </li>
@@ -145,7 +153,7 @@
             <a href="<?php echo site_url('home_survey/tabel_rkp');?>" class="nav-link">
               <i class="nav-icon fab fa-buffer"></i>
               <p>
-                List Usulan BM Persediaan
+                List Belanja Modal Persediaan
               </p>
             </a>
           </li>

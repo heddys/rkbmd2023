@@ -137,7 +137,5 @@ class Home_survey extends CI_Controller {
 	
 	}
 
-
-
 }
 ?>

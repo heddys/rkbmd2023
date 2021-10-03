@@ -139,6 +139,14 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
+            <a href="<?php echo site_url('home_survey/list_usulan_rk');?>" class="nav-link">
+            <i class="nav-icon far fa-solid fa-folder"></i>
+              <p>
+               Tabel Usulan RKBMD
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
             <a href="<?php echo site_url('home_survey/tabel_rkb');?>" class="nav-link">
               <i class="nav-icon fab fa-buffer"></i>
               <p>
