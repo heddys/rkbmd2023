@@ -109,8 +109,7 @@ class Home_survey extends CI_Controller {
 		$eksis=$_POST['eksis'];
 		$real=$_POST['gethasil'];
 		$keterangan=$_POST['keterangan'];
-		
-
+	
 	}
 }
 ?>
