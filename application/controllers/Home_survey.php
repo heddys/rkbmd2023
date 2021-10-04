@@ -109,6 +109,18 @@ class Home_survey extends CI_Controller {
 		$eksis=$_POST['eksis'];
 		$real=$_POST['gethasil'];
 		$keterangan=$_POST['keterangan'];
+
+		$data=array (
+			'id' => '',
+			'id_opd' => $id_opd,
+			'id_komponen' => $id_komp,
+			'keb_ideal' => $ideal,
+			'eksisting' => $eksis,
+			'keb_real' => $real,
+			'keterangan' => $keterangan
+		);
+
+		
 		
 	}
 }
