@@ -110,17 +110,6 @@ class Home_survey extends CI_Controller {
 		$real=$_POST['gethasil'];
 		$keterangan=$_POST['keterangan'];
 		
-		echo "ID OPD".$id_opd;
-		echo "<p>";
-		echo "ID KOMP".$id_komp;
-		echo "<p>";
-		echo "IDEAL".$ideal;
-		echo "<p>";
-		echo "ID EKSISTING".$eksis;
-		echo "<p>";
-		echo "ID REAL".$real;
-		echo "<p>";
-		echo "ID KETERANGAN".$keterangan;
 
 	}
 }
