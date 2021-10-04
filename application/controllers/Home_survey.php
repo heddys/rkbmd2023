@@ -120,7 +120,9 @@ class Home_survey extends CI_Controller {
 			'keterangan' => $keterangan
 		);
 
-		
+		$this->survey_model->save_rk($data);
+
+
 		
 	}
 }

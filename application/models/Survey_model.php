@@ -68,6 +68,7 @@
     function save_rk($data) {
         return $this->db->insert('tabel_usulan_rk',$data);
     }
- 
+    
+    
  }
  ?>
