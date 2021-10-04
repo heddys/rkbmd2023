@@ -98,7 +98,7 @@ class Home_survey extends CI_Controller {
 
 	}
 	
-	public function tbl_usulan_rkb(){
+	public function save_usulan_rk(){
 
 		$this->cek_sess();
 		$data['page']="List Usulan RKBMD";
@@ -109,7 +109,7 @@ class Home_survey extends CI_Controller {
 		$eksis=$_POST['eksis'];
 		$real=$_POST['gethasil'];
 		$keterangan=$_POST['keterangan'];
-	
+		
 	}
 }
 ?>
