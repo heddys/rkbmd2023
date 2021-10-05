@@ -138,9 +138,7 @@ class Home_survey extends CI_Controller {
         redirect('/home_survey/list_usulan_rk');
 =======
 		$this->survey_model->save_rk($data);
-
-
-		
+	
 >>>>>>> b7e042a9717925667ee89c247644e1a2ccb24441
 	}
 
