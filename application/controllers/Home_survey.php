@@ -98,7 +98,11 @@ class Home_survey extends CI_Controller {
 
 	}
 	
+<<<<<<< HEAD
 	public function save_usulan_rkb(){
+=======
+	public function save_usulan_rk(){
+>>>>>>> b7e042a9717925667ee89c247644e1a2ccb24441
 
 		$this->cek_sess();
 
@@ -108,12 +112,19 @@ class Home_survey extends CI_Controller {
 		$eksis=$_POST['eksis'];
 		$real=$_POST['gethasil'];
 		$keterangan=$_POST['keterangan'];
+<<<<<<< HEAD
 		
 
 		$data = array(
 
 			'id' => '',
 			'kode_opd' => $id_opd,
+=======
+
+		$data=array (
+			'id' => '',
+			'id_opd' => $id_opd,
+>>>>>>> b7e042a9717925667ee89c247644e1a2ccb24441
 			'id_komponen' => $id_komp,
 			'keb_ideal' => $ideal,
 			'eksisting' => $eksis,
@@ -121,9 +132,16 @@ class Home_survey extends CI_Controller {
 			'keterangan' => $keterangan
 		);
 
+<<<<<<< HEAD
 		$this->survey_model->insert_data_usulan($data);
 
         redirect('/home_survey/list_usulan_rk');
+=======
+		$this->survey_model->save_rk($data);
+
+
+		
+>>>>>>> b7e042a9717925667ee89c247644e1a2ccb24441
 	}
 
 	public function list_usulan_rk() {
