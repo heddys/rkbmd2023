@@ -7,7 +7,7 @@
         <!-- general form elements disabled -->
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-success">
-        <form role="form" action="save_usulan_rkb" method="post">
+        <form role="form" action="save_usulan_rk" method="post">
           <div class="card-header">
             <h3 class="card-title">Form Usulan Kebutuhan Barang</h3>
             <div class="card-tools">

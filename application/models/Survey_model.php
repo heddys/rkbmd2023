@@ -65,17 +65,10 @@
 		return $this->db->get_where($table,$where);
 	}
 
-<<<<<<< HEAD
-    function insert_data_usulan($data){
-        return $this->db->insert('tabel_usulan_rk',$data);
-    }
- 
-=======
     function save_rk($data) {
         return $this->db->insert('tabel_usulan_rk',$data);
     }
     
     
->>>>>>> b7e042a9717925667ee89c247644e1a2ccb24441
  }
  ?>
