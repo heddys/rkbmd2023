@@ -126,7 +126,10 @@ class Home_survey extends CI_Controller {
 
 	public function list_usulan_rk() {
 		
+		$this->cek_sess();
 		$data['page']="List Usulan RKBMD";
+
+		$data['data_usulan'] = $this->survey_model->ambil_list_rk();
 
 		$this->load->view('survey/h_tablerkb_survey',$data);
 		$this->load->view('survey/halaman_list_rk',$data);

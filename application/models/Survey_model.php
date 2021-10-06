@@ -68,7 +68,10 @@
     function save_rk($data) {
         return $this->db->insert('tabel_usulan_rk',$data);
     }
-    
+
+    function ambil_list_rk(){
+        return $this->db->get('tabel_usulan_rk');
+    }
     
  }
  ?>
