@@ -111,7 +111,7 @@ class Home_survey extends CI_Controller {
 
 		$data=array (
 			'id' => '',
-			'id_opd' => $id_opd,
+			'kode_opd' => $id_opd,
 			'id_komponen' => $id_komp,
 			'keb_ideal' => $ideal,
 			'eksisting' => $eksis,
@@ -120,12 +120,16 @@ class Home_survey extends CI_Controller {
 		);
 
 		$this->survey_model->save_rk($data);
+		redirect('home_survey/list_usulan_rk');
 	
 	}
 
 	public function list_usulan_rk() {
 		
+		$this->cek_sess();
 		$data['page']="List Usulan RKBMD";
+
+		$data['data_usulan'] = $this->survey_model->ambil_list_rk();
 
 		$this->load->view('survey/h_tablerkb_survey',$data);
 		$this->load->view('survey/halaman_list_rk',$data);
