@@ -25,7 +25,7 @@
                   <td style="text-align: center; vertical-align: middle;">
                     <?php echo $no?>
                   </td>
-                  <td style="text-align: center; vertical-align: middle;">
+                  <td style="text-align: left; vertical-align: middle;">
                     <?php echo $usulan->opd?>
                   </td>
                   <td style="text-align: left; vertical-align: middle;">
