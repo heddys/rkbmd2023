@@ -22,25 +22,25 @@
                 <tbody>
                 <?php $no=1; foreach ($data_usulan->result() as $usulan) { ?>
                 <tr>
-                  <td>
+                  <td style="text-align: center; vertical-align: middle;">
                     <?php echo $no?>
                   </td>
-                  <td>
+                  <td style="text-align: center; vertical-align: middle;">
                     <?php echo $usulan->opd?>
                   </td>
-                  <td>
+                  <td style="text-align: left; vertical-align: middle;">
                     <?php echo $usulan->nama_barang?>
                   </td>
-                  <td>
+                  <td style="text-align: center; vertical-align: middle;">
                     <?php echo $usulan->ideal?>
                   </td>
-                  <td>
+                  <td style="text-align: center; vertical-align: middle;">
                     <?php echo $usulan->eksis?>
                   </td>
-                  <td>
+                  <td style="text-align: center; vertical-align: middle;">
                     <?php echo $usulan->real?>
                   </td>
-                  <td>
+                  <td style="text-align: left; vertical-align: middle;">
                     <?php echo $usulan->ket?>
                   </td>
                 </tr>
