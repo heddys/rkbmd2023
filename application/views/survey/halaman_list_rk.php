@@ -26,37 +26,26 @@
                     <?php echo $no?>
                   </td>
                   <td>
-                    <?php echo $usulan->kode_opd?>
+                    <?php echo $usulan->opd?>
                   </td>
                   <td>
-                    <?php echo $usulan->id_komponen?>
+                    <?php echo $usulan->nama_barang?>
                   </td>
                   <td>
-                    <?php echo $usulan->keb_ideal?>
+                    <?php echo $usulan->ideal?>
                   </td>
                   <td>
-                    <?php echo $usulan->eksisting?>
+                    <?php echo $usulan->eksis?>
                   </td>
                   <td>
-                    <?php echo $usulan->keb_real?>
+                    <?php echo $usulan->real?>
                   </td>
                   <td>
-                    <?php echo $usulan->keterangan?>
+                    <?php echo $usulan->ket?>
                   </td>
                 </tr>
                 <?php $no++;} ?>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>No.</th>
-                  <th>OPD</th>
-                  <th>Komponen</th>
-                  <th>Ideal</th>
-                  <th>Eksisting</th>
-                  <th>Real</th>
-                  <th>Keterangan</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.card-body -->
