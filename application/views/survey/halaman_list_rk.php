@@ -10,13 +10,14 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>No.</th>
-                  <th>OPD</th>
-                  <th>Komponen</th>
-                  <th>Ideal</th>
-                  <th>Eksisting</th>
-                  <th>Real</th>
-                  <th>Keterangan</th>
+                  <th style="text-align: center; ">No.</th>
+                  <th style="text-align: center; ">OPD</th>
+                  <th style="text-align: center; ">Komponen</th>
+                  <th style="text-align: center; ">Ideal</th>
+                  <th style="text-align: center; ">Eksisting</th>
+                  <th style="text-align: center; ">Real</th>
+                  <th style="text-align: center; ">Keterangan</th>
+                  <th style="text-align: center; ">Edit</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,6 +43,12 @@
                   </td>
                   <td style="text-align: left; vertical-align: middle;">
                     <?php echo $usulan->ket?>
+                  </td>
+                  <td style="text-align: center; vertical-align: middle;">
+                    <a href="" class="btn btn-success">
+                      <i class="fa fa-edit">
+                      </i>
+                    </a>
                   </td>
                 </tr>
                 <?php $no++;} ?>
