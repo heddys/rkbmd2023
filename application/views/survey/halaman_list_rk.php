@@ -61,8 +61,8 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-    <div class="modal fade" id="modal-xl">
-        <div class="modal-dialog modal-xl">
+    <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Extra Large Modal</h4>
@@ -71,7 +71,24 @@
               </button>
             </div>
             <div class="modal-body">
-              <p>One fine body&hellip;</p>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Pilih Komponen : </label>
+                 <select class="form-control select2" style="width: 100%;" id="selectkomp" name="selectkomp" required>
+                   <option disabled="disabled">Pilih Komponen Barang</option>
+                    <?php foreach ($get_komponen->result() as $kompdata) { ?>
+                      <option value="<?php echo $kompdata->id?>"><font size="10 "><?php echo $kompdata->kode_komponen?> - <?php echo $kompdata->nama_komponen?> - <?php echo $kompdata->spek1?> - <?php echo $kompdata->spek2?> - <?php echo $kompdata->merek?> -<?php echo "Rp.".number_format($kompdata->nilai,2,',','.');?></font>
+                      </option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Kebutuhan Ideal : </label>
+                      <input type="number" class="form-control" min="0" id="ideal" name="ideal" onInput="hitung()" placeholder="Banyaknya..." required>
+                  </div>
+              </div>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

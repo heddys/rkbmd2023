@@ -42,7 +42,7 @@
                     <?php } ?>
                   </select>
                 </div>
-              </div>
+              </div>  
               <!-- /.col -->
                 <!-- /.form-group -->
                 <div class="col-md-4">

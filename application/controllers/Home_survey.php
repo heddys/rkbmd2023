@@ -131,6 +131,11 @@ class Home_survey extends CI_Controller {
 
 		$data['data_usulan'] = $this->survey_model->ambil_list_rk();
 
+		$bmsaja= array(
+			'kode_rek_lvl1' => '5.2.3'
+		);
+		$data['get_komponen']=$this->survey_model->get_data_komponen("tabel_kode_komponen",$bmsaja);
+
 		$this->load->view('survey/h_tablerkb_survey',$data);
 		$this->load->view('survey/halaman_list_rk',$data);
 		$this->load->view('survey/h_footerrkb_survey');
