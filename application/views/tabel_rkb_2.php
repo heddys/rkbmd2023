@@ -59,7 +59,6 @@
                      <center><h4 class="modal-title"><i class="fas fa-network-wired"></i> List Komponen</h4></center>
                  </div>
                  <div class="modal-body" style="overflow-x:auto;">
-                    <style type="text/css"> #modal-body</style>
                       <div class="card-header">
 				         <center><h3 class="card-title capitalize" id="idku"></h3></center><hr>
 				      </div>
@@ -99,7 +98,6 @@
                      <center><h4 class="modal-title"><i class="fas fa-network-wired"></i>Notice!!!</h4></center>
                  </div>
                  <div class="modal-body">
-                    <style type="text/css"> #modal-body</style>
 	                    <input type="hidden" id="id">
 	                <center><strong>Apakah Anda Yakin Ingin Menghapus Data ? </strong></center>
 	             </div>
@@ -120,7 +118,6 @@
                      <center><h4 class="modal-title"><i class="fas fa-network-wired"></i></h4></center>
                  </div>
                  <div class="modal-body">
-                    <style type="text/css"> #modal-body</style>
                     <div class="card-header">
 				         <center><h3 class="card-title capitalize" id="idku"></h3></center>
 				    </div>

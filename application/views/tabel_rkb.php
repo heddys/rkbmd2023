@@ -100,7 +100,7 @@
                      <center><h4 class="modal-title"><i class="fas fa-network-wired"></i>Notice!!!</h4></center>
                  </div>
                  <div class="modal-body">
-                    <style type="text/css"> #modal-body</style>
+                    <style type="text/css"> #modal-body </style>
 	                    <input type="hidden" id="id">
 	                <center><strong>Apakah Anda Yakin Ingin Menghapus Data ? </strong></center>
 	             </div>

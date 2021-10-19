@@ -92,8 +92,32 @@
     }
 
     $('#tabel_usulan').on('click','.edit_usulan',function(){
-      // var id = $(this).attr('data');
       $('#modal-lg').modal('show');
+      var isi= '';
+
+      isi+= '<div class="col-md-10">'+
+                '<div class="form-group">'+
+                  '<label>Kebutuhan Ideal : </label>'+
+                  '<input type="number" class="form-control" min="0" id="ideal" name="ideal" onInput="hitung()" value="10" placeholder="Banyaknya..." required>'+
+                '</div>'+
+              '</div>'+
+              '<div class="col-md-10">'+
+                '<div class="form-group">'+
+                  '<label>Eksisting : </label>'+
+                  '<input type="number" class="form-control" min="0" id="eksis" name="eksis" onInput="hitung()" value="4" placeholder="Banyaknya..." required>'+
+                '</div>'+
+              '</div>'+
+              '<div class="col-md-10">'+
+                '<div class="form-group">'+
+                    '<label>Kebutuhan Real : </label>'+
+                    '<input type="number" class="form-control" id="hasil" placeholder="0" disabled>'+
+                    '<input type="hidden" id="gethasil" name="gethasil">'+
+                '</div>'+
+              '</div>';
+
+      
+             $('#isi_modal').html(isi);
+      
     })
 
 
