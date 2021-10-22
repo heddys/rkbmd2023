@@ -65,7 +65,7 @@
                      <center><span class="oi oi-heart"></span><h3 class="modal-title" id="idku"></h3></center>
                  </div>
                  <div class="modal-body" style="overflow-x:auto;">
-                    <style type="text/css"> #modal-body</style>
+                    <style type="text/css"> #modal-body </style>
                       
                           <table id="example1" class="table table-bordered table-hover">
                             <thead>
@@ -121,7 +121,7 @@
                      <center><h4 class="modal-title"><i class="fas fa-network-wired"></i></h4></center>
                  </div>
                  <div class="modal-body">
-                    <style type="text/css"> #modal-body</style>
+                    <style type="text/css"> #modal-body </style>
                     <div class="card-header">
 				         <center><h3 class="card-title capitalize" id="idku"></h3></center>
 				    </div>

@@ -129,7 +129,7 @@ class Home_survey extends CI_Controller {
 		$this->cek_sess();
 		$data['page']="List Usulan RKBMD";
 
-		$data['data_usulan'] = $this->survey_model->ambil_list_rk();
+		$data['data_usulan'] = $this->survey_model->ambil_list_rk($y=1,$x=0);
 
 		$bmsaja= array(
 			'kode_rek_lvl1' => '5.2.3'
@@ -141,6 +141,17 @@ class Home_survey extends CI_Controller {
 		$this->load->view('survey/h_footerrkb_survey');
 	
 	
+	}
+
+	public function get_usulan(){
+		$this->cek_sess();
+		// $id = $this->input->post('id');
+		$id=1;
+		$whereis = array (
+				'id' => $id
+ 		);
+		$result = $this->survey_model->ambil_rk($id);
+		echo json_encode($result); 
 	}
 
 }

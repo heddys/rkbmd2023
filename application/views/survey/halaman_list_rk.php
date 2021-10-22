@@ -46,6 +46,7 @@
                   </td>
                   <td style="text-align: center; vertical-align: middle;">
                     <a href="javascript:;" class="btn btn-sm btn-success edit_usulan"><i class="fas fa-search"></i></a>
+                    <a href="javascript:;" class="btn btn-sm btn-danger delete_usulan" data="<?php echo $usulan->id?>"><i class="fas fa-trash"></i></a>
                   </td>
                 </tr>
                 <?php $no++;} ?>
@@ -65,40 +66,20 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">NAMA OPD</h4>
+              <h4 class="modal-title" id="title"></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label>Pilih Komponen : </label>
-                  <select class="form-control select2" style="width: 100%;" id="selectkomp" name="selectkomp" required>
-                    <option disabled="disabled">Pilih Komponen Barang</option>
-                      <?php foreach ($get_komponen->result() as $kompdata) { ?>
-                        <option value="<?php echo $kompdata->id?>"><font size="10 "><?php echo $kompdata->kode_komponen?> - <?php echo $kompdata->nama_komponen?> - <?php echo $kompdata->spek1?> - <?php echo $kompdata->spek2?> - <?php echo $kompdata->merek?> -<?php echo "Rp.".number_format($kompdata->nilai,2,',','.');?></font>
-                        </option>
-                      <?php } ?>
-                    </select>
-                </div>
-              </div>
-              <div id="isi_modal"></div>        
-              <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Keterangan : </label>
-                    <div class="card-body pad">
-                      <div class="mb-4">
-                        <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #fffff; padding: 10px;" name="keterangan">
-                        </textarea>
-                     </div>
-                    </div>
-                  </div>
-                </div>     
+            <div class="modal-body" id="isi_modal"> 
+                Nama OPD
+                Nama Komponen : xxxxxxx
+                Jumlah Ideal : 
             </div>
+            Anda Yakin Ingin Menghapus Data Ini ?
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Update Data</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+              <button type="button" class="btn btn-danger">Delete Data</button>
             </div>
           </div>
           <!-- /.modal-content -->
