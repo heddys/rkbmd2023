@@ -62,21 +62,18 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-    <div class="modal fade" id="modal-lg">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="modal-default" style="display: none;">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="title"></h4>
+              <h4 class="modal-title" id="title"></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body" id="isi_modal"> 
-                Nama OPD
-                Nama Komponen : xxxxxxx
-                Jumlah Ideal : 
+                
             </div>
-            Anda Yakin Ingin Menghapus Data Ini ?
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               <button type="button" class="btn btn-danger">Delete Data</button>

@@ -91,15 +91,19 @@
       document.getElementById("demo").innerHTML = "You wrote: " + x;
     }
 
+    // $('#tabel_usulan').on('click','.delete_usulan',function(){
+    //   var id = $(this).attr('data');
+    //   $('#modal-default').modal('show');
+    // })
     
     $('#tabel_usulan').on('click','.delete_usulan',function(){
       var id = $(this).attr('data');
-      $('#modal-lg').modal('show');
+      $('#modal-default').modal('show');
       $.ajax({
         type: 'ajax',
         method: 'post',
         url: '<?php echo site_url();?>/home_survey/get_usulan',
-        data:{id:id},
+        data:2,
         async: false,
         dataType: 'json',
         success: function(data){
@@ -110,8 +114,43 @@
           var x=data.opd;
           
           
-          title+=data.opd+' - '+data.nama_komp
-          $('#isi_modal').html(html+html2);
+          title+=data.opd
+          html+='<div class="row">'+
+                  '<div class="col-md-12">'+
+                    '<div class="form-group">'+
+                      '<label>Nama Komponen</label>'+
+                      '<input type="text" class="form-control" placeholder="'+data.nama_komp+'" disabled>'+
+                    '</div>'+
+                  '</div>'+
+                  '<div class="col-md-4">'+
+                    '<div class="form-group">'+
+                        '<label>Ideal : </label>'+
+                        '<input type="text" class="form-control" placeholder="'+data.ideal+'" disabled>'+
+                    '</div>'+
+                  '</div>'+
+                  '<div class="col-md-4">'+
+                    '<div class="form-group">'+
+                        '<label>Eksisting: </label>'+
+                        '<input type="text" class="form-control" placeholder="'+data.exist+'" disabled>'+
+                    '</div>'+
+                  '</div>'+
+                  '<div class="col-md-4">'+
+                    '<div class="form-group">'+
+                        '<label>Real : </label>'+
+                        '<input type="text" class="form-control" placeholder="'+data.keb_real+'" disabled>'+
+                    '</div>'+
+                  '</div>'+
+                  '<div class="col-md-12">'+
+                    '<div class="form-group">'+
+                        '<label>Keterangan : </label>'+
+                        '<textarea class="form-control" rows="3">'+data.ket+'</textarea>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>'+
+
+                '<center><b>Anda Yakin Ingin Menghapus Data Ini ?</b></center>';
+          $('#modal-default').find('#title').html(title);
+          $('#modal-default').find('#isi_modal').html(html);
           
         }, 
          error: function() {
