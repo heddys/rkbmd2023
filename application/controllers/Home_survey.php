@@ -145,13 +145,13 @@ class Home_survey extends CI_Controller {
 
 	public function get_usulan(){
 		$this->cek_sess();
-		// $id = $this->input->post('id');
-		$id=1;
+		$id = $this->input->post('id');
 		$whereis = array (
 				'id' => $id
  		);
 		$result = $this->survey_model->ambil_rk($id);
-		echo json_encode($result); 
+		echo json_encode($result);
+		
 	}
 
 }

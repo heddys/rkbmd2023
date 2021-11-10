@@ -103,7 +103,7 @@
         type: 'ajax',
         method: 'post',
         url: '<?php echo site_url();?>/home_survey/get_usulan',
-        data:2,
+        data:{id:id},
         async: false,
         dataType: 'json',
         success: function(data){
