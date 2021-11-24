@@ -62,21 +62,21 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-    <div class="modal fade" id="modal-default" style="display: none;">
+    <div class="modal fade" id="modal-sm" style="display: none;">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="title"></h5>
+              <h4 class="modal-title" id="title">Confirmation</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body" id="isi_modal"> 
-                
+            <div class="modal-body"> 
+                Apa anda yakin ingin menghapus ?
             </div>
-            <div class="modal-footer justify-content-between">
+            <div class="modal-footer justify-content-between" id="tombol2">
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-              <button type="button" class="btn btn-danger">Delete Data</button>
+              <button type="button" class="btn btn-danger" id="delbtn">Delete Data</button>
             </div>
           </div>
           <!-- /.modal-content -->
