@@ -27,22 +27,35 @@
 <script src="<?php echo base_url();?>ini_assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url();?>ini_assets/dist/js/adminlte.min.js"></script>
+<!-- Sweet Alert -->
+<script src="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/toastr/toastr.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
 <script src="<?php echo base_url();?>ini_assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script src="<?php echo base_url();?>ini_assets/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <!-- Page script -->
-<script>
+
+<script type="text/javascript">
 
     $(function(){
-      $('.select2').select2()
-      $('.select3').select2()
-      $('.textarea').summernote()
+      $('.select2').select2();
+      $('.select3').select2();
+      $('.textarea').summernote();
       $("#example1").DataTable();
       $("#tabel_usulan").DataTable();
-    })
 
+      
+
+    });
+      
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+      });
 
    function showTime() {
       var today = new Date();
@@ -93,78 +106,110 @@
 
     $('#tabel_usulan').on('click','.delete_usulan',function(){
       $('#modal-sm').modal('show');
+      var idhapus=$(this).attr('data');
+      document.getElementById("idhapus").value=idhapus;
     })
     
     $('#modal-sm').on('click','.delbtn',function(){
-      alert('yapss');
+      var id=document.getElementById("idhapus").value;
+        $.ajax({
+          type: 'ajax',
+          method: 'post',
+          url: '<?php echo site_url();?>/home_survey/delete_usul_rk',
+          data:{id:id},
+          async: false,
+          dataType: 'json',
+            success: function(data){
+              Toast.fire({
+                type: 'success',
+                title: 'Data Berhasil Dihapus'
+              })
+              function refresh() {
+                location.reload();
+              }
+              setInterval(refresh,1500);
+            },
+            error: function() {
+              Toast.fire({
+                type: 'error',
+                title: 'Oops! Data Gagal Dihapus. Mohon Ulangi Kembali'
+              })
+              function refresh() {
+                location.reload();
+              }
+              setInterval(refresh,1500)
+
+            }
+        })
     })
     
-    $('#tabel_usulan').on('click','.delete_usulan',function(){
-      var id = $(this).attr('data');
-      $('#modal-default').modal('show');
-      $.ajax({
-        type: 'ajax',
-        method: 'post',
-        url: '<?php echo site_url();?>/home_survey/get_usulan',
-        data:{id:id},
-        async: false,
-        dataType: 'json',
-        success: function(data){
-          var html= '';
-          var title='';
-          var i=data.length;
+    
+    // $('#tabel_usulan').on('click','.delete_usulan',function(){
+    //   var id = $(this).attr('data');
+    //   $('#modal-default').modal('show');
+    //   $.ajax({
+    //     type: 'ajax',
+    //     method: 'post',
+    //     url: '<?php echo site_url();?>/home_survey/get_usulan',
+    //     data:{id:id},
+    //     async: false,
+    //     dataType: 'json',
+    //     success: function(data){
+    //       var html= '';
+    //       var title='';
+    //       var i=data.length;
           
-          var x=data.opd;
+    //       var x=data.opd;
           
           
-          title+=data.opd
-          html+='<div class="row">'+
-                  '<div class="col-md-12">'+
-                    '<div class="form-group">'+
-                      '<label>Nama Komponen</label>'+
-                      '<input type="text" class="form-control" placeholder="'+data.nama_komp+'" disabled>'+
-                    '</div>'+
-                  '</div>'+
-                  '<div class="col-md-4">'+
-                    '<div class="form-group">'+
-                        '<label>Ideal : </label>'+
-                        '<input type="text" class="form-control" placeholder="'+data.ideal+'" disabled>'+
-                    '</div>'+
-                  '</div>'+
-                  '<div class="col-md-4">'+
-                    '<div class="form-group">'+
-                        '<label>Eksisting: </label>'+
-                        '<input type="text" class="form-control" placeholder="'+data.exist+'" disabled>'+
-                    '</div>'+
-                  '</div>'+
-                  '<div class="col-md-4">'+
-                    '<div class="form-group">'+
-                        '<label>Real : </label>'+
-                        '<input type="text" class="form-control" placeholder="'+data.keb_real+'" disabled>'+
-                    '</div>'+
-                  '</div>'+
-                  '<div class="col-md-12">'+
-                    '<div class="form-group">'+
-                        '<label>Keterangan : </label>'+
-                        '<textarea class="form-control" rows="3">'+data.ket+'</textarea>'+
-                    '</div>'+
-                  '</div>'+
-                '</div>'+
+    //       title+=data.opd
+    //       html+='<div class="row">'+
+    //               '<div class="col-md-12">'+
+    //                 '<div class="form-group">'+
+    //                   '<label>Nama Komponen</label>'+
+    //                   '<input type="text" class="form-control" placeholder="'+data.nama_komp+'" disabled>'+
+    //                 '</div>'+
+    //               '</div>'+
+    //               '<div class="col-md-4">'+
+    //                 '<div class="form-group">'+
+    //                     '<label>Ideal : </label>'+
+    //                     '<input type="text" class="form-control" placeholder="'+data.ideal+'" disabled>'+
+    //                 '</div>'+
+    //               '</div>'+
+    //               '<div class="col-md-4">'+
+    //                 '<div class="form-group">'+
+    //                     '<label>Eksisting: </label>'+
+    //                     '<input type="text" class="form-control" placeholder="'+data.exist+'" disabled>'+
+    //                 '</div>'+
+    //               '</div>'+
+    //               '<div class="col-md-4">'+
+    //                 '<div class="form-group">'+
+    //                     '<label>Real : </label>'+
+    //                     '<input type="text" class="form-control" placeholder="'+data.keb_real+'" disabled>'+
+    //                 '</div>'+
+    //               '</div>'+
+    //               '<div class="col-md-12">'+
+    //                 '<div class="form-group">'+
+    //                     '<label>Keterangan : </label>'+
+    //                     '<textarea class="form-control" rows="3">'+data.ket+'</textarea>'+
+    //                 '</div>'+
+    //               '</div>'+
+    //             '</div>'+
 
-                '<center><b>Anda Yakin Ingin Menghapus Data Ini ?</b></center>';
-          $('#modal-default').find('#title').html(title);
-          $('#modal-default').find('#isi_modal').html(html);
+    //             '<center><b>Anda Yakin Ingin Menghapus Data Ini ?</b></center>';
+    //       $('#modal-default').find('#title').html(title);
+    //       $('#modal-default').find('#isi_modal').html(html);
           
-        }, 
-         error: function() {
-          alert('Koneksi Gagal');
-        }
+    //     }, 
+    //      error: function() {
+    //       alert('Koneksi Gagal');
+    //     }
         
         
-        })  
-    })
+    //     })  
+    // })
 
-
+    
     function rupiah (angka){
        var reverse = angka.toString().split('').reverse().join(''),
        ribuan = reverse.match(/\d{1,3}/g);

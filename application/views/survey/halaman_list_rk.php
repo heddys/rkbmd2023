@@ -75,8 +75,9 @@
                 Apa anda yakin ingin menghapus ?
             </div>
             <div class="modal-footer justify-content-between" id="tombol2">
+              <input type="hidden" id="idhapus" value="text">
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-              <button type="button" class="btn btn-danger" id="delbtn">Delete Data</button>
+              <button type="button" class="btn btn-danger delbtn" data-dismiss="modal">Delete Data</button>
             </div>
           </div>
           <!-- /.modal-content -->

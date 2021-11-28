@@ -116,7 +116,8 @@ class Home_survey extends CI_Controller {
 			'keb_ideal' => $ideal,
 			'eksisting' => $eksis,
 			'keb_real' => $real,
-			'keterangan' => $keterangan
+			'keterangan' => $keterangan,
+			'hapus' => 0
 		);
 
 		$this->survey_model->save_rk($data);
