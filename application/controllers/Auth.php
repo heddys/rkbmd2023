@@ -5,7 +5,18 @@ class Auth extends CI_Controller {
 	public function index($error=NULL)
 	{	
 		$data['error']=$error;
-		$this->load->view('login',$data);
+		if($this->session->userdata('kode_opd') !=NULL)
+		{
+			$skpdget = $this->session->userdata('kode_opd');
+			if ($skpdget!='SUR01'){
+				echo $skpdget;
+				redirect('home');				
+			} else {redirect('home_survey');}
+		} else 
+			{
+				$this->load->view('login',$data);
+			}
+		
 	}
 	public function do_login()
 	{

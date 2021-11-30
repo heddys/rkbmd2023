@@ -155,5 +155,22 @@ class Home_survey extends CI_Controller {
 		
 	}
 
+	public function delete_usul_rk(){
+		$this->cek_sess();
+		$id = $this->input->post('id');
+		$hapus = array (
+				'hapus' => 1
+ 		);
+		$result = $this->survey_model->delete_rk($id,$hapus);
+		echo json_encode($result);
+		
+	}
+
+	public function edit_rk()
+	{
+		$data_id = $this->uri->segment(3);
+		echo $data_id;
+	}
+
 }
 ?>

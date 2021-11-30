@@ -45,7 +45,7 @@
                     <?php echo $usulan->ket?>
                   </td>
                   <td style="text-align: center; vertical-align: middle;">
-                    <a href="javascript:;" class="btn btn-sm btn-success edit_usulan"><i class="fas fa-search"></i></a>
+                    <a href="<?php echo site_url();?>/home_survey/edit_rk/<?php echo $usulan->id?>" class="btn btn-sm btn-success edit_usulan"><i class="fas fa-search"></i></a>
                     <a href="javascript:;" class="btn btn-sm btn-danger delete_usulan" data="<?php echo $usulan->id?>"><i class="fas fa-trash"></i></a>
                   </td>
                 </tr>
