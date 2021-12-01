@@ -169,7 +169,11 @@ class Home_survey extends CI_Controller {
 	public function edit_rk()
 	{
 		$data_id = $this->uri->segment(3);
-		echo $data_id;
+		
+
+		$this->load->view('survey/h_tablerkb_survey',$data);
+		$this->load->view('survey/halaman_list_rk',$data);
+		$this->load->view('survey/h_footerrkb_survey');
 	}
 
 }
