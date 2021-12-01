@@ -168,11 +168,23 @@ class Home_survey extends CI_Controller {
 
 	public function edit_rk()
 	{
+		$this->cek_sess();
+		$data['page']="Halaman Edit Usulan RKBMD";
 		$data_id = $this->uri->segment(3);
+
+		$bmsaja= array(
+			'kode_rek_lvl1' => '5.2.3'
+		);
+		$where=array(
+			'nama_pb !=' => ''
+		);
+
+		$data['get_komponen']=$this->survey_model->get_data_komponen("tabel_kode_komponen",$bmsaja);
+		$data['get_opd']=$this->survey_model->get_opd("skpd",$where);
 		
 
 		$this->load->view('survey/h_tablerkb_survey',$data);
-		$this->load->view('survey/halaman_list_rk',$data);
+		$this->load->view('survey/halaman_edit',$data);
 		$this->load->view('survey/h_footerrkb_survey');
 	}
 
