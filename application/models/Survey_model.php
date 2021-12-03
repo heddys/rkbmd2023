@@ -91,7 +91,7 @@
     // }
 
     function ambil_rk($id){
-        $query = $this->db->query("SELECT a.id as id,b.skpd as opd, c.nama_komponen as nama_komp,a.keb_ideal as ideal,a.eksisting as exist,a.keb_real as keb_real,a.keterangan as ket FROM `tabel_usulan_rk`a inner join skpd b on a.kode_opd=b.kode_binprog inner join tabel_kode_komponen c on a.id_komponen=c.id where a.id=$id" and a.hapus <> 1);
+        $query = $this->db->query("SELECT a.id as id,b.skpd as opd, c.nama_komponen as nama_komp,a.keb_ideal as ideal,a.eksisting as exist,a.keb_real as keb_real,a.keterangan as ket FROM `tabel_usulan_rk`a inner join skpd b on a.kode_opd=b.kode_binprog inner join tabel_kode_komponen c on a.id_komponen=c.id where a.id=$id and a.hapus <> 1");
         return $query->row();
     }
 
