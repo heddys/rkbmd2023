@@ -87,16 +87,29 @@
 
    
     function hitung() {
+      
+      
       var x = document.getElementById("ideal").value;
       var y = document.getElementById("eksis").value;
+      
+      if (document.getElementById("ideal").value.length == 0) {
+        var idealplc=document.getELementById("ideal").placeholder;
+      } else if (document.getElementById("eksis").value.length == 0) {
+        var idealplc=document.getELementById("ideal").placeholder;
+        }
+      
       var z = x-y;
       if (z < 0) {
         z=0;
       } else {
           z;
-        } 
+        }
+      var xx = document.getElementById("getideal").value=x;
+      var yy = document.getElementById("geteksis").value=y; 
       document.getElementById("hasil").placeholder=z;
       document.getElementById("gethasil").value=z;
+
+      
     }
 
     function myFunction() {

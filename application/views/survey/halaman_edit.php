@@ -7,7 +7,7 @@
         <!-- general form elements disabled -->
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-info">
-        <form role="form" action="save_usulan_rk" method="post">
+        <form role="form" action="#" method="post">
           <div class="card-header">
             <h3 class="card-title">Form Edit Usulan RK</h3>
             <div class="card-tools">
@@ -48,19 +48,21 @@
                 <div class="col-md-4">
                   <div class="form-group">
                       <label>Kebutuhan Ideal : </label>
-                      <input type="number" class="form-control" min="0" id="ideal" name="ideal" onInput="hitung()" value="<?php echo $ambil_rk->ideal ?>" placeholder="Banyaknya..." required>
-                  </div>
+                      <input type="number" class="form-control" min="0" id="ideal" onInput="hitung()" placeholder="<?php echo $ambil_rk->ideal?>" required>
+                      <input type="hidden" id="getideal" name="ideal">
+                    </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                       <label>Eksisting : </label>
-                      <input type="number" class="form-control" min="0" id="eksis" name="eksis" onInput="hitung()" value="<?php echo $ambil_rk->exist?>" placeholder="Banyaknya..." required>
-                  </div>
+                      <input type="number" class="form-control" min="0" id="eksis" onInput="hitung()" placeholder="<?php echo $ambil_rk->exist?>" required>
+                      <input type="hidden" id="geteksis" name="eksis">
+                    </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                       <label>Kebutuhan Real : </label>
-                      <input type="number" class="form-control" id="hasil" value="<?php echo $ambil_rk->keb_real?>" placeholder="0" disabled>
+                      <input type="number" class="form-control" id="hasil" placeholder="<?php echo $ambil_rk->keb_real?>" disabled>
                       <input type="hidden" id="gethasil" name="gethasil">
                   </div>
                 </div>
@@ -82,7 +84,7 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            <button type="submit" class="btn btn-block btn-info">Simpan Data</button>
+            <button type="submit" class="btn btn-block btn-info" id="coba_button">Simpan Data</button>
           </div>
         </form>
         </div>
