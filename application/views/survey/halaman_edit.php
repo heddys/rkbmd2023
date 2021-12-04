@@ -22,7 +22,7 @@
                 <div class="form-group">
                   <label>Pilih Perangkat Daerah : </label>
                   <select class="form-control select3" style="width: 100%;" id="selectopd" name="selectopd" required>
-                    <option disabled="disabled">Pilih Komponen Barang</option>
+                    <option value="<?php echo $ambil_rk->id?>"><?php echo $ambil_rk->opd?></option>
                     <?php foreach ($get_opd->result() as $opd) { ?>
                       <option value="<?php echo $opd->kode_binprog?>"><font size="10 "><?php echo $opd->skpd?></font>
                       </option>
@@ -35,7 +35,7 @@
                 <div class="form-group">
                   <label>Pilih Komponen : </label>
                   <select class="form-control select2" style="width: 100%;" id="selectkomp" name="selectkomp" required>
-                    <option disabled="disabled">Pilih Komponen Barang</option>
+                  <option value="<?php echo $ambil_rk->id?>"><?php echo $ambil_rk->nama_komp?></option>
                     <?php foreach ($get_komponen->result() as $kompdata) { ?>
                       <option value="<?php echo $kompdata->id?>"><font size="10 "><?php echo $kompdata->kode_komponen?> - <?php echo $kompdata->nama_komponen?> - <?php echo $kompdata->spek1?> - <?php echo $kompdata->spek2?> - <?php echo $kompdata->merek?> -<?php echo "Rp.".number_format($kompdata->nilai,2,',','.');?></font>
                       </option>
@@ -48,19 +48,19 @@
                 <div class="col-md-4">
                   <div class="form-group">
                       <label>Kebutuhan Ideal : </label>
-                      <input type="number" class="form-control" min="0" id="ideal" name="ideal" onInput="hitung()" placeholder="Banyaknya..." required>
+                      <input type="number" class="form-control" min="0" id="ideal" name="ideal" onInput="hitung()" value="<?php echo $ambil_rk->ideal ?>" placeholder="Banyaknya..." required>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                       <label>Eksisting : </label>
-                      <input type="number" class="form-control" min="0" id="eksis" name="eksis" onInput="hitung()" placeholder="Banyaknya..." required>
+                      <input type="number" class="form-control" min="0" id="eksis" name="eksis" onInput="hitung()" value="<?php echo $ambil_rk->exist?>" placeholder="Banyaknya..." required>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                       <label>Kebutuhan Real : </label>
-                      <input type="number" class="form-control" id="hasil" placeholder="0" disabled>
+                      <input type="number" class="form-control" id="hasil" value="<?php echo $ambil_rk->keb_real?>" placeholder="0" disabled>
                       <input type="hidden" id="gethasil" name="gethasil">
                   </div>
                 </div>
@@ -71,7 +71,7 @@
                     <div class="card-body pad">
                       <div class="mb-4">
                         <textarea class="textarea" placeholder="Place some text here"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #fffff; padding: 10px;" name="keterangan">
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #fffff; padding: 10px;" name="keterangan"><?php echo $ambil_rk->ket?>
                         </textarea>
                       </div>
                     </div>

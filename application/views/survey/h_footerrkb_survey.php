@@ -127,8 +127,12 @@
               })
               function refresh() {
                 location.reload();
+
+                
               }
               setInterval(refresh,1500);
+
+              
             },
             error: function() {
               Toast.fire({

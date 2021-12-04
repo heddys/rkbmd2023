@@ -181,6 +181,7 @@ class Home_survey extends CI_Controller {
 
 		$data['get_komponen']=$this->survey_model->get_data_komponen("tabel_kode_komponen",$bmsaja);
 		$data['get_opd']=$this->survey_model->get_opd("skpd",$where);
+		$data['ambil_rk']=$this->survey_model->ambil_rk($data_id);
 		
 
 		$this->load->view('survey/h_tablerkb_survey',$data);
