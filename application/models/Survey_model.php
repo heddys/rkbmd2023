@@ -104,6 +104,17 @@
 			return false;
 		}
 	}
+
+    public function update_proses($data,$where)
+    {
+        $this->db->where($where);
+		$this->db->update('barang_eksisting',$data);
+		if($this->db->affected_rows() > 0){
+			return true;
+		}else{
+			return false;
+		}
+    }
     
  }
  ?>

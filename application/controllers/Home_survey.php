@@ -189,5 +189,32 @@ class Home_survey extends CI_Controller {
 		$this->load->view('survey/h_footerrkb_survey');
 	}
 
+	public function update_rk()
+	{
+		$id = $_POST['id'];
+		$id_opd = $_POST['selectopd'];
+		$id_komp = $_POST['selectkomp'];
+		$ideal=$_POST['ideal'];
+		$eksis=$_POST['eksis'];
+		$real=$_POST['gethasil'];
+		$keterangan=$_POST['keterangan'];
+
+		$data=array (
+			
+			'kode_opd' => $id_opd,
+			'id_komponen' => $id_komp,
+			'keb_ideal' => $ideal,
+			'eksisting' => $eksis,
+			'keb_real' => $real,
+			'keterangan' => $keterangan
+		);
+		
+		$this->survey_model->update_proses($data,$id);
+
+		redirect('home_survey/list_usulan_rk');
+
+		
+	}
+
 }
 ?>
