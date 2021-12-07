@@ -22,7 +22,7 @@
                 <div class="form-group">
                   <label>Pilih Perangkat Daerah : </label>
                   <select class="form-control select3" style="width: 100%;" id="selectopd" name="selectopd" required>
-                    <option value="<?php echo $ambil_rk->id?>"><?php echo $ambil_rk->opd?></option>
+                    <option value="<?php echo $ambil_rk->nama_opd?>"><?php echo $ambil_rk->opd?></option>
                     <?php foreach ($get_opd->result() as $opd) { ?>
                       <option value="<?php echo $opd->kode_binprog?>"><font size="10 "><?php echo $opd->skpd?></font>
                       </option>

@@ -91,7 +91,7 @@
     // }
 
     function ambil_rk($id){
-        $query = $this->db->query("SELECT a.id as id,b.skpd as opd, c.nama_komponen as nama_komp,a.keb_ideal as ideal,a.eksisting as exist,a.keb_real as keb_real,a.keterangan as ket FROM `tabel_usulan_rk`a inner join skpd b on a.kode_opd=b.kode_binprog inner join tabel_kode_komponen c on a.id_komponen=c.id where a.id=$id and a.hapus <> 1");
+        $query = $this->db->query("SELECT a.id as id,a.kode_opd as nama_opd,b.skpd as opd, c.nama_komponen as nama_komp,a.keb_ideal as ideal,a.eksisting as exist,a.keb_real as keb_real,a.keterangan as ket FROM `tabel_usulan_rk`a inner join skpd b on a.kode_opd=b.kode_binprog inner join tabel_kode_komponen c on a.id_komponen=c.id where a.id=$id and a.hapus <> 1");
         return $query->row();
     }
 
@@ -105,10 +105,10 @@
 		}
 	}
 
-    public function update_proses($data,$where)
+    function update_proses($data,$where)
     {
         $this->db->where($where);
-		$this->db->update('barang_eksisting',$data);
+		$this->db->update('tabel_usulan_rk',$data);
 		if($this->db->affected_rows() > 0){
 			return true;
 		}else{

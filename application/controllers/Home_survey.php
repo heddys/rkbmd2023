@@ -206,10 +206,16 @@ class Home_survey extends CI_Controller {
 			'keb_ideal' => $ideal,
 			'eksisting' => $eksis,
 			'keb_real' => $real,
-			'keterangan' => $keterangan
+			'keterangan' => $keterangan,
+			'update_at' => date("Y-m-d h:i:s")
+		);
+
+		$where = array (
+			'id' => $id
 		);
 		
-		$this->survey_model->update_proses($data,$id);
+		
+		$this->survey_model->update_proses($data,$where);
 
 		redirect('home_survey/list_usulan_rk');
 
