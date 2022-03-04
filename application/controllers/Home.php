@@ -1588,20 +1588,19 @@ class Home extends CI_Controller {
 		$kode_opd=$this->session->userdata('kode_opd');
         
         $objPHPExcel    = new PHPExcel();
-        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(5);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(60);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(35);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(7);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(100);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(15);
         $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(11);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(11);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(11);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(50);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(18);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
 
         $objPHPExcel->getActiveSheet()->getStyle(1)->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->getStyle(2)->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->getStyle(3)->getFont()->setBold(true);
-        
-        $header1 = array(
+
+		$header1 = array(
             'alignment' => array(
                 'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
                 'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER,
@@ -1635,6 +1634,18 @@ class Home extends CI_Controller {
             )
         );
 
+        $stylekepala = array (
+        	'alignment' => array(
+                'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+                'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+            ),
+        	'font' => array(
+                'bold' => true,
+                'underline' => true
+            )
+
+        );
+
         $namecolborderall = array(
         	'borders' => array (
             	'allborders' => array (
@@ -1643,7 +1654,10 @@ class Home extends CI_Controller {
             ),
             'font' => array(
                 'bold' => true,
-            )
+            ),
+            'alignment' => array(
+	            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+	        )
         );
 
         $databorderout = array(
@@ -1668,90 +1682,48 @@ class Home extends CI_Controller {
                 'bold' => true,
             )
         );
-        $objPHPExcel->getActiveSheet()->getStyle("A1:H1")
-                ->applyFromArray($header1)
-                ->getFont()->setSize(16);
-                $objPHPExcel->getActiveSheet()->getStyle("A2:H2")
-                ->applyFromArray($header2)
-                ->getFont()->setSize(13);
-        $objPHPExcel->getActiveSheet()->mergeCells('A1:H1');
-        $objPHPExcel->getActiveSheet()->mergeCells('A2:H2');
-        $objPHPExcel->getActiveSheet()->getStyle("A3:H3")
-                ->applyFromArray($namecolborderall);
 
-        $where=array('kode_binprog' => $kode_opd);        
-        $skpd=$this->auth_model->ambil_skpd($where);        
+        $tengah = array(
+	        'alignment' => array(
+	            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+	        )
+	    );
 
-        $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A1', 'Rencana Kebutuhan Barang Milik Daerah (Belanja Modal - Aset Tetap)')
-            ->setCellValue('A2', $skpd->skpd)
-            ->setCellValue('A3', 'No.')
-            ->setCellValue('B3', 'Nama Barang')
-            ->setCellValue('C3', 'Tipe')
-            ->setCellValue('D3', 'Merek')
-            ->setCellValue('E3', 'Kebutuhan Ideal')
-            ->setCellValue('F3', 'Eksisting')
-            ->setCellValue('G3', 'Kekurangan Kebutuhan')
-            ->setCellValue('H3', 'Keterangan');
-        
-        $ex = $objPHPExcel->setActiveSheetIndex(0);
-        $no = 1;
-        $counter = 4;
-        $num=5;
-        $bmsaja1= array(
-				'tabel_list_rkb.kode_binprog' => $kode_opd,
-				'tabel_list_rkb.hapus !=' => 1
-			);
-        $selectkomp = $this->auth_model->get_komponen($bmsaja1,"excel");
-        foreach ($selectkomp as $row):
-        	$objPHPExcel->getActiveSheet()->getStyle("A".$counter.":H".$counter)
-                ->applyFromArray($databorderall);
-            $ex->setCellValue('A'.$counter, $no);
-            $ex->setCellValue('B'.$counter, $row->nama_komponen);
-            $ex->setCellValue('C'.$counter, $row->merek);
-            $ex->setCellValue('D'.$counter, $row->spek1.' '.$row->spek2);
-            $ex->setCellValue('E'.$counter, $row->saldo_ideal_komponen);
-            $ex->setCellValue('F'.$counter, $row->saldo_existing_komponen);
-            $ex->setCellValue('G'.$counter, $row->saldo_komponen);
-            $bmsaja= array(
-				'tabel_list_rkb.kode_binprog' => $kode_opd,
-				'tabel_list_rkb.id_komponen' => $row->id_komponen,
-				'tabel_list_rkb.hapus !=' => 1
-			);
-            $selectkeg=$this->auth_model->get_komponen($bmsaja,1);
-            foreach ($selectkeg as $rowkeg):
-            	$ex->setCellValue('A'.$num, " > ");
-            	$ex->setCellValue('B'.$num, $rowkeg->nama_kegiatan);
-            	$ex->setCellValue('E'.$num, $rowkeg->saldo_kegiatan);
-            	$ex->setCellValue('F'.$num, $rowkeg->satuan);
-            	$ex->setCellValue('H'.$num, $rowkeg->keterangan);
-            	$num++;
-            endforeach;
-            $objPHPExcel->getActiveSheet()->getStyle("A".$counter.":H".($num-1))
-                ->applyFromArray($databorderout);	
-            $counter = $num;
-            $num++;
-            $no++;
-       	endforeach;
-        
-        $objPHPExcel->getProperties()->setCreator("RKBMD LP2A")
-            ->setLastModifiedBy("RKBMD LP2A")
-            ->setTitle("Export PHPExcel Test Document")
-            ->setSubject("Export PHPExcel Test Document")
-            ->setDescription("Test doc for Office 2007 XLSX, generated by PHPExcel.")
-            ->setKeywords("office 2007 openxml php")
-            ->setCategory("PHPExcel");
-        $objPHPExcel->getActiveSheet()->setTitle('RKBMD');
-        
-        $objWriter  = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        header('Last-Modified:'. gmdate("D, d M Y H:i:s").'GMT');
-        header('Chace-Control: no-store, no-cache, must-revalation');
-        header('Chace-Control: post-check=0, pre-check=0', FALSE);
-        header('Pragma: no-cache');
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="Data RKMBD RKB'. date('Ymd') .'.xlsx"');
-        
-        $objWriter->save('php://output');
+        $kanan = array(
+	        'alignment' => array(
+	            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_RIGHT,
+	        )
+	    );
+
+		$objPHPExcel->getActiveSheet()->getStyle("A1:G1")
+		->applyFromArray($header1)
+		->getFont()->setSize(16);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:G2")
+				->applyFromArray($header2)
+				->getFont()->setSize(13);
+		$objPHPExcel->getActiveSheet()->mergeCells('A1:G1');
+		$objPHPExcel->getActiveSheet()->mergeCells('A2:G2');
+		$objPHPExcel->getActiveSheet()->getStyle("A3:G3")
+				->applyFromArray($namecolborderall);
+
+		$objPHPExcel->getProperties()->setCreator("RKBMD LP2A")
+			->setLastModifiedBy("RKBMD LP2A")
+			->setTitle("Export PHPExcel Test Document")
+			->setSubject("Export PHPExcel Test Document")
+			->setDescription("Test doc for Office 2007 XLSX, generated by PHPExcel.")
+			->setKeywords("office 2007 openxml php")
+			->setCategory("PHPExcel");
+		$objPHPExcel->getActiveSheet()->setTitle('RKBMD');
+			
+		$objWriter  = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+			header('Last-Modified:'. gmdate("D, d M Y H:i:s").'GMT');
+			header('Chace-Control: no-store, no-cache, must-revalation');
+			header('Chace-Control: post-check=0, pre-check=0', FALSE);
+			header('Pragma: no-cache');
+			header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+			header('Content-Disposition: attachment;filename="Data Usulan RKMBD Tahun 2022 - '. date('d-m-Y') .'.xlsx"');
+			
+		$objWriter->save('php://output');
     }
 
 
@@ -2129,6 +2101,7 @@ class Home extends CI_Controller {
             $num++;
             $no++;
        	endforeach;
+		
         
         $objPHPExcel->getProperties()->setCreator("RKBMD LP2A")
             ->setLastModifiedBy("RKBMD LP2A")
