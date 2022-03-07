@@ -166,9 +166,10 @@ class Home extends CI_Controller {
 		$kode_opd=$this->session->userdata('kode_opd');
 		$ambildinas = array (
 				'kode_binprog' => $kode_opd,
+				'tahun'	=> '2020'
 			);
 		$data['get_kegiatan']=$this->auth_model->get_kegiatan('tabel_kegiatan',$ambildinas);
-		$data['get_komponen']=$this->auth_model->get_data_komponen("tabel_kode_komponen",$bmsaja);
+		$data['get_komponen']=$this->auth_model->get_data_komponen("tabel_kode_komponen",$bmsaja); 
 		$data['notice']=$var;
 
 		$wherehps=array(

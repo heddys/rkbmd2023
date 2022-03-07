@@ -56,8 +56,11 @@
 
                 $(function () {
                   //Initialize Select2 Elements
-                  $('.select2').select2()
+                  $('.select').select2({ width: '50%'})
+                  $('.selectkeg').select2({ width: '50%'})
                 })
+                
+                
                 
 
   });
@@ -76,7 +79,7 @@
                   var parse= n;
                   var isi = '<div class="form-group custom_form'+total_form+'">'
                       isi +='<p><label>Pilih Kegiatan '+n+': </label><br>'
-                      isi +='<select class="form-control col-sm-6 selopt" name="selectkegiatan'+n+'" required>'
+                      isi +='<select class="form-control col-sm-6 selectkeg" name="selectkegiatan'+n+'" required>'
                       isi +='<option></option><option disabled="disabled">Pilih Jenis Kegiatan</option>'
                       isi +='<?php foreach ($get_kegiatan->result() as $kegdata ) {?><option value="<?php echo $kegdata->id?>"><?php echo $kegdata->kode_kegiatan?> - <?php echo $kegdata->nama_kegiatan?></option><?php } ?>'
                       isi +='</select>'
@@ -125,9 +128,15 @@
                 function get_satuan() {
 
                   var elems = document.getElementsByClassName("input-group-text");
+                  if(document.getElementById("satuan")==undifined){
+                    for(var i = 0; i < elems.length; i++) {
+                        elems[i].innerHTML = "";
+                    }
+                  } else {
                       for(var i = 0; i < elems.length; i++) {
-                    elems[i].innerHTML = document.getElementById("satuan").value;
-                  }
+                        elems[i].innerHTML = document.getElementById("satuan").value;
+                      }
+                    }
                 }
 
                 function hapusform(){
@@ -175,7 +184,7 @@
                             '<h5><strong> Alokasi Kebutuhan Barang Pada Kegiatan </strong></h5>'+
                             '<div class="form-group custom_form">'+
                               '<p><label>Pilih Kegiatan : </label><br>'+
-                              '<select class="form-control col-sm-7 selopt" name="selectkegiatan1" required>'+
+                              '<select class="form-control col-sm-7 selectkeg" name="selectkegiatan1" required>'+
                                 '<option></option>'+
                                 '<option disabled="disabled">Pilih Jenis Kegiatan</option>'+
                                 '<?php foreach ($get_kegiatan->result() as $kegdata ) {?>'+
@@ -265,9 +274,9 @@
 
             var elems = document.getElementsByClassName("input-group-text");
               for(var i = 0; i < elems.length; i++) {
-            elems[i].innerHTML = data['satuan'];
-            document.getElementById("satuan").value=data['satuan'];
-          }  
+                elems[i].innerHTML = data['satuan'];
+                document.getElementById("satuan").value=data['satuan'];
+              }  
         } else { 
              document.getElementById('var1baru').value=data['ideal'];
              document.getElementById('var2baru').value=data['existing'];        
@@ -289,9 +298,8 @@
             } else { document.getElementById('cektanda').value=0;}
           }
             
-        },
-        error: function() {
-            
+      },
+        error: function() {    
         }
     });
   }

@@ -27,7 +27,7 @@
                     <!-- select -->
                     <div class="form-group">
                       <p><label>Pilih Komponen : </label><br>
-                      <select class="form-control select2 col-md-8" id="selectkomponen" name="selectkomponen" onchange="get_option()" required>
+                      <select class="form-control select col-md-8" id="selectkomponen" name="selectkomponen" onchange="get_option()" required>
                           <option></option>
                           <option disabled="disabled">Pilih Komponen Barang</option>
                           <?php foreach ($get_komponen->result() as $kompdata) { ?>
@@ -58,7 +58,7 @@
                         <h5><strong> Alokasi Kebutuhan Barang Pada Kegiatan </strong></h5>
                           <div class="form-group custom_form">
                             <p><label>Pilih Kegiatan : </label><br>
-                            <select class="form-control col-sm-6 selopt" name="selectkegiatan1" required>
+                            <select class="form-control col-sm-6 selectkeg" name="selectkegiatan1" required>
                               <option></option>
                               <option disabled="disabled">Pilih Jenis Kegiatan</option> 
                               <?php foreach ($get_kegiatan->result() as $kegdata ) {?>
