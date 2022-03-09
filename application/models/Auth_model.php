@@ -14,6 +14,7 @@ class Auth_model extends CI_Model{
 	}
 	
 	function get_kegiatan_all($where){
+		
 		return $this->db->get_where('tabel_kegiatan',$where);
 	}
 	function get_komponen_all($where){
@@ -41,6 +42,11 @@ class Auth_model extends CI_Model{
 
 	function entry_data_budgeting($entrydata){
 		return $this->db->insert('ebudgeting2021',$entrydata);
+
+	}
+	
+	function entry_data_komponen($entrydata){
+		return $this->db->insert('list_komponen',$entrydata);
 
 	}
 
@@ -78,6 +84,7 @@ class Auth_model extends CI_Model{
 		$this->db->select('*');
 		$this->db->from($table);
 		$this->db->where($where);
+		$this->db->group_by('kode_kegiatan');
 		$this->db->order_by("nama_kegiatan","asc");
 		return $this->db->get();
 	}

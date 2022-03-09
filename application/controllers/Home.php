@@ -31,17 +31,8 @@ class Home extends CI_Controller {
 
 	public function jsonjson(){
 		$this->cek_sess();
-		$var=$this->session->userdata('kode_opd');
 
-		$where= array(
-			'kode_keuangan !=' => ''
-		);
-
-		$simpanopd=$this->auth_model->ambil_kodeopd($where);
-
-		foreach ($simpanopd->result() as $key) {
-		
-        $url = 'https://devplan.surabaya.go.id/devplan2021/webservice_2021_blp2a.php?pd='.$key->kode_binprog;  
+        $url = 'https://ebudgeting.surabaya.go.id/2022/index.php/view_rka/apiKomponen.html';  
    		 // set HTTP header for json 
 		$headers = array('Content-Type: application/json');
 
@@ -68,74 +59,55 @@ class Home extends CI_Controller {
 
 		// Close connection
 		curl_close($ch);
-		$jum=0;
-		  if(isset($kegiatan)){
-		  	$id_unit=$kegiatan["unit_id"];
-		  	$unit_name=$kegiatan["unit_name"];
-		  	foreach ($kegiatan["kegiatan"] as $key=> $val1) {
-		  		$kode_keg=$val1["kode"];
-		  		$kode_name=$val1["nama"];
-		  		$kode_keg2=$val1["kode_program2"];
-		  		$kode_name2=$val1["nama_program2"];
-		  		$subs=$val1["daftar_subtitle"];
-		  		foreach ($subs as $sub => $val2) {
-			  		$nilai_sub=$val2["nilai"];
-			  		$sub_id=$val2["sub_id"];
-			  		$sub_name=$val2["nama"];
-		  			$daftkomp=$val2["daftar_komponen"];
-		  			foreach ($daftkomp as $komp => $val3) {
-		  				$tipe=$val3["tipe"];
-		  				$det_no=$val3["detail_no"];
-		  				$kode_rek=$val3["rekening_code"];
-				  		$komp_id=$val3["komponen_id"];
-				  		$komp_name=$val3["komponen_name"];
-				  		$detail_name=$val3["detail_name"];
-				  		$volume=$val3["volume"];
-				  		$koef_volume=$val3["keterangan_koefisien"];
-				  		$komp_harga=$val3["komponen_harga"];
-				  		$satuan=$val3["satuan"];
-				  		$pajak=$val3["pajak"];
-				  		$harga_plus_pajak_saldo=$val3["nilai_anggaran"];
-		  			
-				  		$entrydata=array(
+		foreach ($kegiatan['komponen'] as $key1 => $valkomp) {
+			$rekening=array();
+			$nama_rek=array();
+			$komponen_id=$valkomp['komponen_id'];
+			$komponen_name=$valkomp['komponen_name'];
+			$satuan=$valkomp['satuan'];
+			$harga=$valkomp['komponen_harga'];
+			$pajak=$valkomp['pajak'];
+			$rek=$valkomp['rekening'];
+			$name_rek=$valkomp['rekening_name'];
 
-						'id' => '',
-						'unit_id' => $id_unit,
-						'unit_name' => $unit_name,
-						'kode_keg' => $kode_keg,
-						'nama_keg' => $kode_name,
-						'kode_keg_prog2' => $kode_keg2,
-						'nama_keg_prog2' => $kode_name2,
-						'sub_id' => $sub_id,
-						'nama_sub' => $sub_name,
-						'nilai_sub' => $nilai_sub,
-						'tipe' => $tipe,
-						'detail_no' => $det_no,
-						'komp_id' => $komp_id,
-						'komp_name' => $komp_name,
-						'rekening_kode' => $kode_rek,
-						'detail_name' => $detail_name,
-						'volume' => $volume,
-						'ket_koefisien' => $koef_volume,
-						'komp_harga' => $komp_harga,
-						'satuan' => $satuan,
-						'pajak' => $pajak,
-						'nilai_anggaran' => $harga_plus_pajak_saldo
 
-					);
-
-					 $this->auth_model->entry_data_budgeting($entrydata);
-
-		  			
-		  			}
-
-		  		}
-		  		
-		  	} redirect('/home/tabel_rkb');
-
-		  } else { return FALSE ; }
+			// echo "Komponen ID : ".$komponen_id."<p>";		  
+			// echo "Nama Komponen : ".$komponen_name."<p>";
+			// echo "Satuan : ".$satuan."<p>";
+			// echo "Harga Komponen : ".$harga."<p>";
+			// echo "Pajak : ".$pajak."<p>";
+			// $rek=$kegiatan['komponen'][1]['rekening'];
+			// $name_rek=$kegiatan['komponen'][1]['rekening_name'];
+			
+			foreach ($rek as $key2 => $val1){
+				$rekening[]=$val1;
+			}
+			foreach ($name_rek as $key3 => $val2) {
+				$nama_rek[]=$val2;
+			}
+			$jumlah_array=count($rekening);
+			for ($i=0; $i < $jumlah_array; $i++) { 
+				//disini untuk insert into database
+				$entrydata=array(
+					'id' => '',
+					'komponen_id' => $komponen_id,
+					'nama_komponen' => $komponen_name,
+					'satuan' => $satuan,
+					'harga_komponen' => $harga,
+					'pajak' => $pajak,
+					'kode_rekening' => $rekening[$i],
+					'nama_rekening' => $nama_rek[$i]
+				);
+				$this->auth_model->entry_data_komponen($entrydata);
+				// echo "Komponen ID : ".$komponen_id."<p>";		  
+				// echo "Nama Komponen : ".$komponen_name."<p>";
+				// echo "Satuan : ".$satuan."<p>";
+				// echo "Harga Komponen : ".$harga."<p>";
+				// echo "Pajak : ".$pajak."<p>";
+				// echo "Kode Rekening : ".$rekening[$i]."<p>";
+				// echo "Nama Rekening : ".$nama_rek[$i]."<p><hr>";
+			}
 		}
-		  
 	}
 
 	public function cek_jumlah_exist(){
@@ -166,7 +138,7 @@ class Home extends CI_Controller {
 		$kode_opd=$this->session->userdata('kode_opd');
 		$ambildinas = array (
 				'kode_binprog' => $kode_opd,
-				'tahun'	=> '2020'
+				'tahun'	=> '2022'
 			);
 		$data['get_kegiatan']=$this->auth_model->get_kegiatan('tabel_kegiatan',$ambildinas);
 		$data['get_komponen']=$this->auth_model->get_data_komponen("tabel_kode_komponen",$bmsaja); 

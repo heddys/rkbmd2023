@@ -57,19 +57,18 @@
                 $(function () {
                   //Initialize Select2 Elements
                   $('.select').select2({ width: '50%'})
-                  $('.selectkeg').select2({ width: '50%'})
                 })
-                
-                
                 
 
   });
                 const Toast = Swal.mixin({
                       toast: true,
-                      position: 'top-end',
+                      position: 'mid-end',
                       showConfirmButton: false,
-                      timer: 3000
+                      timer: 5000
                 });
+                
+                
 
                 var total_form=1;
                 document.getElementById('vartotal2').value=total_form;
@@ -128,15 +127,9 @@
                 function get_satuan() {
 
                   var elems = document.getElementsByClassName("input-group-text");
-                  if(document.getElementById("satuan")==undifined){
-                    for(var i = 0; i < elems.length; i++) {
-                        elems[i].innerHTML = "";
-                    }
-                  } else {
-                      for(var i = 0; i < elems.length; i++) {
+                  for(var i = 0; i < elems.length; i++) {
                         elems[i].innerHTML = document.getElementById("satuan").value;
                       }
-                    }
                 }
 
                 function hapusform(){
