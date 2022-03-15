@@ -31,7 +31,7 @@
                           <option></option>
                           <option disabled="disabled">Pilih Komponen Barang</option>
                           <?php foreach ($get_komponen->result() as $kompdata) { ?>
-                              <option <?php if (in_array($kompdata->id, $disabled)) { ?> disabled="disabled" <?php }?>value="<?php echo $kompdata->id?>"><font size="10 "><?php echo $kompdata->kode_komponen?> - <?php echo $kompdata->nama_komponen?> - <?php echo $kompdata->spek1?> - <?php echo $kompdata->spek2?> - <?php echo $kompdata->merek?> -<?php echo "Rp.".number_format($kompdata->nilai,2,',','.');?></font></option>
+                              <option <?php if (in_array($kompdata->id, $disabled)) { ?> disabled="disabled" <?php }?>value="<?php echo $kompdata->id?>"><font size="10 "><?php echo $kompdata->komponen_id?> - <?php echo $kompdata->nama_komponen?> - <?php echo "Rp.".number_format($kompdata->harga_komponen,2,',','.');?></font></option>
                           <?php } ?>
                         </select>
 

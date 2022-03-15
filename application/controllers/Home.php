@@ -133,7 +133,7 @@ class Home extends CI_Controller {
 		$this->cek_sess();
 		$data['page']="Rencana Kebutuhan / Barang Modal";
 		$bmsaja= array(
-				'kode_rek_lvl1' => '5.2.3'
+				'left_kode_komp' => '5.2.02'
 			);
 		$kode_opd=$this->session->userdata('kode_opd');
 		$ambildinas = array (
@@ -141,7 +141,7 @@ class Home extends CI_Controller {
 				'tahun'	=> '2022'
 			);
 		$data['get_kegiatan']=$this->auth_model->get_kegiatan('tabel_kegiatan',$ambildinas);
-		$data['get_komponen']=$this->auth_model->get_data_komponen("tabel_kode_komponen",$bmsaja); 
+		$data['get_komponen']=$this->auth_model->get_data_komponen("list_komponen",$bmsaja); 
 		$data['notice']=$var;
 
 		$wherehps=array(
