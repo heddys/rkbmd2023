@@ -37,7 +37,7 @@
 	                  <td><center><?php echo $row->saldo_existing_komponen;?></center></td>
 	                  <td><center><?php echo $row->saldo_ideal_komponen;?></center></td>
 	                  <td><center><?php echo $row->satuan;?></center></td>
-	                  <td class="text-right"><?php echo number_format($row->nilai*$row->volume,2,',','.');?></td>
+	                  <td class="text-right"><?php echo number_format($row->harga_komponen*$row->volume,2,',','.');?></td>
 	                  <td>
 	                  	<center>
 	                  		<a href="javascript:;" class="btn btn-sm btn-success rincian_kegiatan" data="<?php echo $row->id_komponen?>" ><i class="far fa-eye"></i></a>

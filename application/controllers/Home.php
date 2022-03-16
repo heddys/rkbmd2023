@@ -407,6 +407,7 @@ class Home extends CI_Controller {
 			'jumlah_form'				=> $count
 
 		);
+
 		$jumlahsaldokeg=0;
 		for ($i=1,$x=0; $i <= $count; $i++,$x++) { 
 			$arrkeg[$x]=$_POST['selectkegiatan'.$i];
@@ -420,6 +421,7 @@ class Home extends CI_Controller {
 				'kode_binprog' => $kode_opd,
 				'hapus !=' => 1
 			);
+
 		$jumlahkomp=$this->auth_model->get_jumlah_komp($where);
 		$var=0;
 		$jmlhkeb=0;
@@ -513,7 +515,7 @@ class Home extends CI_Controller {
 				}
 			} else {$this->rkbform(2);} 
 		}
-		echo $count;
+		// echo $count;
 	}
 
 	public function showtabelrkp (){
