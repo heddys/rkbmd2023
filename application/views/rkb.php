@@ -58,7 +58,7 @@
                         <h5><strong> Alokasi Kebutuhan Barang Pada Kegiatan </strong></h5>
                           <div class="form-group custom_form">
                             <p><label>Pilih Kegiatan : </label><br>
-                            <select class="form-control col-sm-6 selectkeg" name="selectkegiatan1" required>
+                            <select class="form-control col-sm-6 select" name="selectkegiatan1" required>
                               <option></option>
                               <option disabled="disabled">Pilih Jenis Kegiatan</option> 
                               <?php foreach ($get_kegiatan->result() as $kegdata ) {?>

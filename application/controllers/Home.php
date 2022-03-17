@@ -133,7 +133,7 @@ class Home extends CI_Controller {
 		$this->cek_sess();
 		$data['page']="Rencana Kebutuhan / Barang Modal";
 		$bmsaja= array(
-				'left_kode_komp' => '5.2.02'
+				'tanda'	=>	'Aset'
 			);
 		$kode_opd=$this->session->userdata('kode_opd');
 		$ambildinas = array (
@@ -1151,7 +1151,6 @@ class Home extends CI_Controller {
 				'tabel_list_rkb.id_komponen' => $idkompnya,
 				'tabel_list_rkb.hapus !=' => 1
 			);
-		$kode_opd=$this->session->userdata('kode_opd');
 		$ambildinas = array (
 				'kode_binprog' => $kode_opd
 		);

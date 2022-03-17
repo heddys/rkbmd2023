@@ -10,8 +10,8 @@
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
-	              <table id="example1" class="table table-bordered table-hover">
-	                <thead>
+	              <table id="example1" class="table table-bordered table-hover ">
+	                <thead class="thead-dark">
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Kode Rekening</center></th>
@@ -32,7 +32,7 @@
 	                <tr <?php if (in_array($row->id_komponen, $minuskomp)) { ?> class="table-danger" <?php }?> >
 	                  <td><center><?php echo $x;?></center></td>
 	                  <td><center><?php echo $row->kode_rekening;?></center></td>
-	                  <td><center><?php echo $row->nama_komponen;?></center></td>
+	                  <td><?php echo $row->nama_komponen;?></td>
 	                  <td><center><?php echo $row->volume;?></center></td>
 	                  <td><center><?php echo $row->saldo_existing_komponen;?></center></td>
 	                  <td><center><?php echo $row->saldo_ideal_komponen;?></center></td>
@@ -62,13 +62,16 @@
               <div class="modal-content">
                  <div class="modal-header">
                  	<style type="text/css">.capitalize{text-transform: capitalize;}</style>
-                     <center><span class="oi oi-heart"></span><h3 class="modal-title" id="idku"></h3></center>
+                    <div class="alert alert-success">
+						<h5><i class="icon fas fa-info"></i></span><b>Nama Komponen</b></h5>
+						<h5><p class="modal-title" id="idku"></p></h5>
+                 	</div>
                  </div>
+				 
                  <div class="modal-body" style="overflow-x:auto;">
-                    <style type="text/css"> #modal-body </style>
                       
                           <table id="example1" class="table table-bordered table-hover">
-                            <thead>
+                            <thead class="thead-dark" > 
 				                <tr>
 				                  <th><center>No.</center></th>
 				                  <th><center>Kode Kegiatan</center></th>
@@ -97,14 +100,13 @@
               <div class="modal-content">
                  <div class="modal-header">
                  	<style type="text/css">.capitalize{text-transform: capitalize;}</style>
-                     <center><h4 class="modal-title"><i class="fas fa-network-wired"></i>Notice!!!</h4></center>
+                     <center><h4 class="modal-title"><i class="icon fas fa-exclamation-triangle"></i></h4></center>
                  </div>
                  <div class="modal-body">
-                    <style type="text/css"> #modal-body </style>
 	                    <input type="hidden" id="id">
 	                <center><strong>Apakah Anda Yakin Ingin Menghapus Data ? </strong></center>
 	             </div>
-	                   <div class="modal-footer ">
+	                   <div class="modal-footer">
 	                      <button type="button" class="btn btn-info batal" data-dismiss="modal">Batalkan</button>
 	                      <button type="submit" class="btn btn-danger delete" data-dismiss="modal">Ya! Hapus</button>
 	                   </div>
@@ -118,10 +120,9 @@
               <div class="modal-content">
                  <div class="modal-header">
                  	<style type="text/css">.capitalize{text-transform: capitalize;}</style>
-                     <center><h4 class="modal-title"><i class="fas fa-network-wired"></i></h4></center>
+                     <center><i class="modal-title"><i class="fas fa-network-wired"></i></i></center>
                  </div>
                  <div class="modal-body">
-                    <style type="text/css"> #modal-body </style>
                     <div class="card-header">
 				         <center><h3 class="card-title capitalize" id="idku"></h3></center>
 				    </div>

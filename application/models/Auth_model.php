@@ -195,10 +195,10 @@ class Auth_model extends CI_Model{
 	}
 
 	function get_rincian_kegiatan($where){
-		$this->db->select('tabel_list_rkb.id,tabel_list_rkb.id_kegiatan,tabel_list_rkb.saldo_kegiatan,tabel_list_rkb.id_komponen,tabel_list_rkb.saldo_komponen,tabel_list_rkb.saldo_existing_komponen,tabel_list_rkb.saldo_ideal_komponen,tabel_list_rkb.keterangan,tabel_list_rkb.saldo_kegiatan,tabel_kegiatan.kode_kegiatan,tabel_kegiatan.nama_kegiatan,tabel_kode_komponen.kode_komponen,tabel_kode_komponen.nama_komponen,tabel_kode_komponen.spek1,tabel_kode_komponen.spek2,tabel_kode_komponen.spek2,tabel_kode_komponen.merek,tabel_kode_komponen.satuan,tabel_kode_komponen.nilai,tabel_kode_komponen.kode_rekening,tabel_kode_komponen.rincian_kode_rek');
+		$this->db->select('tabel_list_rkb.id,tabel_list_rkb.id_kegiatan,tabel_list_rkb.saldo_kegiatan,tabel_list_rkb.id_komponen,tabel_list_rkb.saldo_komponen,tabel_list_rkb.saldo_existing_komponen,tabel_list_rkb.saldo_ideal_komponen,tabel_list_rkb.keterangan,tabel_list_rkb.saldo_kegiatan,tabel_kegiatan.kode_kegiatan,tabel_kegiatan.nama_kegiatan,list_komponen.id as id_komp,list_komponen.komponen_id,list_komponen.nama_komponen,list_komponen.satuan,list_komponen.harga_komponen,list_komponen.kode_rekening,list_komponen.nama_rekening');
 		$this->db->from('tabel_list_rkb');
 		$this->db->join('tabel_kegiatan', 'tabel_list_rkb.id_kegiatan = tabel_kegiatan.id');
-		$this->db->join('tabel_kode_komponen', 'tabel_list_rkb.id_komponen = tabel_kode_komponen.id');
+		$this->db->join('list_komponen', 'tabel_list_rkb.id_komponen = list_komponen.id');
 		$this->db->where($where);
 		$query = $this->db->get();
 		return $query->result();
@@ -252,10 +252,10 @@ class Auth_model extends CI_Model{
 	}
 
 	function get_perkomponen($where){
-		$this->db->select('tabel_list_rkb.id,tabel_list_rkb.id_kegiatan,tabel_list_rkb.saldo_kegiatan,tabel_list_rkb.id_komponen,tabel_list_rkb.saldo_komponen,tabel_list_rkb.saldo_existing_komponen,tabel_list_rkb.saldo_ideal_komponen,tabel_list_rkb.keterangan,tabel_kegiatan.kode_kegiatan,tabel_kegiatan.nama_kegiatan,tabel_kode_komponen.kode_komponen,tabel_kode_komponen.nama_komponen,tabel_kode_komponen.spek1,tabel_kode_komponen.spek2,tabel_kode_komponen.spek2,tabel_kode_komponen.merek,tabel_kode_komponen.satuan,tabel_kode_komponen.nilai,tabel_kode_komponen.kode_rekening,tabel_kode_komponen.rincian_kode_rek');    
+		$this->db->select('tabel_list_rkb.id,tabel_list_rkb.id_kegiatan,tabel_list_rkb.saldo_kegiatan,tabel_list_rkb.id_komponen,tabel_list_rkb.saldo_komponen,tabel_list_rkb.saldo_existing_komponen,tabel_list_rkb.saldo_ideal_komponen,tabel_list_rkb.keterangan,tabel_kegiatan.kode_kegiatan,tabel_kegiatan.nama_kegiatan,list_komponen.komponen_id,list_komponen.nama_komponen,list_komponen.satuan,list_komponen.harga_komponen,list_komponen.kode_rekening,list_komponen.nama_rekening');    
 		$this->db->from('tabel_list_rkb');
 		$this->db->join('tabel_kegiatan', 'tabel_list_rkb.id_kegiatan = tabel_kegiatan.id');
-		$this->db->join('tabel_kode_komponen', 'tabel_list_rkb.id_komponen = tabel_kode_komponen.id');
+		$this->db->join('list_komponen', 'tabel_list_rkb.id_komponen = list_komponen.id');
 		$this->db->where($where);
 		$query = $this->db->get();
 		if($query->num_rows() > 0) {
