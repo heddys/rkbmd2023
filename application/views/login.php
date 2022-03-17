@@ -4,7 +4,7 @@
 
   <head>
     <meta charset="utf-8">
-        <title>Adminty - Premium Admin Template by Colorlib</title>
+        <title>E-RKBMD APP KOTA SURABAYA</title>
         <meta name="description" content="Comming soon page - flat able">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Codedthemes">
@@ -30,7 +30,7 @@
       <!-- Loading overlay -->
     <div id="loading" class="dark-back">
       <div class="loading-bar"></div>
-      <span class="loading-text opacity-0">Yakin RKBMD ?</span>
+      <span class="loading-text opacity-0">Yakin Ini E-RKBMD ?</span>
     </div>
 
     <!-- Canvas for particles animation -->
@@ -112,7 +112,7 @@
             </div>
           </div>
         </div>
-        <!-- END - SLIDE 1 / Home -->$
+        <!-- END - SLIDE 1 / Home -->
 
       <!-- </div> -->
       <!-- END - sl-slider -->

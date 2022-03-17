@@ -17,7 +17,7 @@ $(window).load(function(){
 
         $("#loading").addClass('animated-middle fadeOut');
 
-    },2000);
+    },11);
 
     setTimeout(function(){
 
@@ -33,25 +33,25 @@ $(window).load(function(){
 
         }, 0);
         
-    },2000);
+    },1000);
 
     setTimeout(function(){
 
         $(".bar-intro").addClass('animated-middle slideInDown').removeClass('opacity-0');
 
-    },3000);
+    },30);
 
     setTimeout(function(){
 
     	$("#loading").remove();
 
-    },3300);
+    },500);
 
     setTimeout(function(){
 
     	$(".text-intro").removeClass('animated-middle fadeInUp');
 
-    },4000);
+    },40);
 
 });
 
