@@ -15,12 +15,14 @@
   </head>
 
   <style type="text/css">
-    /*body {
-      text-align: center;
+    input[type=text] {
+      width: 34%;
+      box-sizing: border-box;
     }
-    form {
-      display: inline-block;
-    }*/
+    input[type=password] {
+      width: 34%;
+      box-sizing: border-box;
+    }
   </style>
 
     <body>
@@ -83,18 +85,24 @@
               
                 <h1 class="text-intro opacity-0">E-RKBMD</h1>
 
+                <!-- <p class="text-intro opacity-0">TIM IT Bidang Penatausahaan, Pemanfaatan dan Pemindahtanganan Barang Milik Daerah<br>
+                Badan Pengelolaan Keuangan dan Aset Daerah Pemerintah Kota Surabaya</p><br> -->
+
                 <form action="<?php echo site_url('auth/do_login');?>" method="post">
                     <div class="form-group">
                         <div class="controls" style="text-align: center;">
+                          <div align="center">
+                            <input required="" type="text" id="mail-sub" name="usr" placeholder="Username"
+                              oninvalid="this.setCustomValidity('Masukkan username')"
+                              oninput="this.setCustomValidity('')"/ onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" class="form-control email srequiredField text-intro opacity-0"><br>
 
-                            <div style="width: 100%;">
-                              <input type="text" id="mail-sub" name="usr" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" class="form-control email srequiredField text-intro opacity-0"><br>
-
-                              <input type="password" id="mail-sub" name="psswd" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" class="form-control email srequiredField text-intro opacity-0">
-                            </div>
+                            <input required="" type="password" id="mail-sub" name="psswd" placeholder="Password"
+                              oninvalid="this.setCustomValidity('Masukkan password')"
+                              oninput="this.setCustomValidity('')"/ onfocus="this.placeholder = ''" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" class="form-control email srequiredField text-intro opacity-0">
+                          </div>
 
                             <!-- Button -->
-                            <button type="submit" class="action-btn trigger text-intro opacity-0">Submit</button>
+                            <button type="submit" class="action-btn text-intro opacity-0">Submit</button>
 
                         </div>
                     </div>
