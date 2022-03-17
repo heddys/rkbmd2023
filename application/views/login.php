@@ -28,10 +28,10 @@
     <body>
 
       <!-- Loading overlay -->
-    <div id="loading" class="dark-back">
+    <!-- <div id="loading" class="dark-back">
       <div class="loading-bar"></div>
       <span class="loading-text opacity-0">Yakin RKBMD ?</span>
-    </div>
+    </div> -->
 
     <!-- Canvas for particles animation -->
     <div id="particles-js"></div>
@@ -85,6 +85,10 @@
               
                 <h1 class="text-intro opacity-0">E-RKBMD</h1>
 
+                <?php if ($error==1) { ?>
+                  <p class="text-intro opacity-0">Maaf, Username atau Password Salah! Silahkan Coba Lagi</p><br> 
+                <?php } ?>
+
                 <!-- <p class="text-intro opacity-0">TIM IT Bidang Penatausahaan, Pemanfaatan dan Pemindahtanganan Barang Milik Daerah<br>
                 Badan Pengelolaan Keuangan dan Aset Daerah Pemerintah Kota Surabaya</p><br> -->
 
@@ -117,10 +121,6 @@
       <!-- </div> -->
       <!-- END - sl-slider -->
 
-      
-
-    </div>
-    <!-- END - Slider Wrapper -->
 
     <!-- //////////////////////\\\\\\\\\\\\\\\\\\\\\\ -->
       <!-- ********** List of jQuery Plugins ********** -->
