@@ -20,10 +20,13 @@
                   <form role="form" action="save_update" method="post">
                     <!-- select -->
                     <div class="form-group">
-                          <center>
-                          <h5>
-                              <strong><?php echo $perkomp->kode_komponen?> - <?php echo $perkomp->nama_komponen?> - <?php echo $perkomp->spek1?> - <?php echo $perkomp->spek2?> - <?php echo $perkomp->merek?></strong>
-                          </h5></center><hr>
+                            <h5>
+                              <div class="alert alert-success">
+                                <h5><i class="icon fas fa-info"></i></span><b><?php echo $perkomp->komponen_id?></b></h5>
+                                <h5><?php echo $perkomp->nama_komponen?></h5>
+                              </div>
+                            </h5> 
+                          <hr>
                       </div>
                         <!-- text input -->
                         <div class="form-group">

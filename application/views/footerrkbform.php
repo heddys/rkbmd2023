@@ -56,7 +56,7 @@
 
                 $(function () {
                   //Initialize Select2 Elements
-                  $('.select').select2({ width: '50%'})
+                  $('.select').select2({ width: '50%', tags: true})
                 })
                 
 
@@ -78,7 +78,7 @@
                   var parse= n;
                   var isi = '<div class="form-group custom_form'+total_form+'">'
                       isi +='<p><label>Pilih Kegiatan '+n+': </label><br>'
-                      isi +='<select class="form-control col-sm-6 selectkeg" name="selectkegiatan'+n+'" required>'
+                      isi +='<select class="form-control col-sm-6 select" name="selectkegiatan'+n+'" required>'
                       isi +='<option></option><option disabled="disabled">Pilih Jenis Kegiatan</option>'
                       isi +='<?php foreach ($get_kegiatan->result() as $kegdata ) {?><option value="<?php echo $kegdata->id?>"><?php echo $kegdata->kode_kegiatan?> - <?php echo $kegdata->nama_kegiatan?></option><?php } ?>'
                       isi +='</select>'
@@ -89,6 +89,7 @@
                   total_form++;
                   document.getElementById('vartotal2').value=total_form;
                   get_satuan();
+                  $('.select').select2({ width: '50%'})
                   $('select').change(function () {
                     if ($('select option[value="' + $(this).val() + '"]:selected').length > 1) {
                      $(this).val('-1').change();
@@ -177,7 +178,7 @@
                             '<h5><strong> Alokasi Kebutuhan Barang Pada Kegiatan </strong></h5>'+
                             '<div class="form-group custom_form">'+
                               '<p><label>Pilih Kegiatan : </label><br>'+
-                              '<select class="form-control col-sm-7 selectkeg" name="selectkegiatan1" required>'+
+                              '<select class="form-control col-sm-7 select" name="selectkegiatan1" required>'+
                                 '<option></option>'+
                                 '<option disabled="disabled">Pilih Jenis Kegiatan</option>'+
                                 '<?php foreach ($get_kegiatan->result() as $kegdata ) {?>'+
@@ -209,7 +210,7 @@
                             '<h5><strong> Alokasi Kebutuhan Barang Pada Kegiatan </strong></h5>'+
                               '<div class="form-group custom_form">'+
                                 '<p><label>Pilih Kegiatan : </label><br>'+
-                                '<select class="form-control col-sm-6 selopt" name="selectkegiatan1" required>'+
+                                '<select class="form-control col-sm-6 select" name="selectkegiatan1" required>'+
                                   '<option></option>'+
                                   '<option disabled="disabled">Pilih Jenis Kegiatan</option>'+
                                  ' <?php foreach ($get_kegiatan->result() as $kegdata ) {?>'+

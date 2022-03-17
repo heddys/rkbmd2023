@@ -91,20 +91,20 @@
                         '<td><center>'+data[i].kode_kegiatan+'</center></td>'+
                         '<td>'+data[i].nama_kegiatan+'</td>'+
                         '<td><center>'+data[i].saldo_kegiatan+'</center></td>'+
-                        '<td class="text-right">Rp.'+rupiah(data[i].nilai*data[i].saldo_kegiatan)+',00</td>'+       
+                        '<td class="text-right">Rp.'+rupiah(data[i].harga_komponen*data[i].saldo_kegiatan)+',00</td>'+       
                         '<td>'+data[i].keterangan+'</td>'+
                         '<td><center><a href="javascript:;" class="btn btn-sm btn-danger data-delete" data="'+data[i].id+'"><i class="far fa-trash-alt"></i></a>'+
                         '<form action="<?php echo site_url();?>/home/edit_data" method="post">'+
                         '<input type="hidden" name="idrkb" value="'+data[i].id+'">'+
-                        '<input type="hidden" name="idkomp" value="'+data[i].id_komponen+'">'+
+                        '<input type="hidden" name="idkomp" value="'+data[i].id_komp+'">'+
                         '<button type="submit" class="btn btn-sm btn-info" title="Edit Data Kegiatan"><i class="fas fa-edit"></i></a>'+
                         '</form></td></tr>';
                       x++;
-                      jumnilai+=parseInt(data[i].nilai*data[i].saldo_kegiatan);
+                      jumnilai+=parseInt(data[i].harga_komponen*data[i].saldo_kegiatan);
                       jumsaldo+=parseInt(data[i].saldo_kegiatan);
 
             }
-            title+= data[0].nama_komponen+' - '+data[0].spek1;
+            title+= data[0].nama_komponen;
             html2+= '<tr><td colspan="3"><center><b>TOTAL</b></center></td>'+
                     '<td><center><b>'+jumsaldo+'</b></center></td>'+
                     '<td class="text-right"><b>Rp. '+rupiah(jumnilai)+',00</b></td>'+
