@@ -106,7 +106,7 @@
                           </div>
 
                             <!-- Button -->
-                            <button type="submit" class="action-btn text-intro opacity-0">Submit</button>
+                            <button type="submit" class="action-btn text-intro opacity-0">Login</button>
 
                         </div>
                     </div>
