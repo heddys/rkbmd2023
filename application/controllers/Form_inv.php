@@ -22,6 +22,18 @@ class Form_inv extends CI_Controller {
 		$this->load->view('h_footerrkb');		
 		
 	}
+	
+	public function isi_formulir()
+	{
+
+		$this->cek_sess();
+		$data['page']="Form Inventarisasi";
+
+		$data['kib_apa']=2;
+		$this->load->view('header',$data);		
+		$this->load->view('isi_form');
+		$this->load->view('footer_isi_form');
+	}
 
     private function cek_sess() 
 	{
