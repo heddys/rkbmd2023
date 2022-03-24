@@ -86,7 +86,7 @@
                 <h1 class="text-intro opacity-0">E-RKBMD</h1>
 
                 <?php if ($error==1) { ?>
-                  <p class="text-intro opacity-0">Maaf, Username atau Password Salah! Silahkan Coba Lagi</p><br> 
+                  <p style="color: red;" class="text-intro opacity-0"><strong>Maaf, Username atau Password Salah! Silahkan Coba Lagi</strong></p><br> 
                 <?php } ?>
 
                 <!-- <p class="text-intro opacity-0">TIM IT Bidang Penatausahaan, Pemanfaatan dan Pemindahtanganan Barang Milik Daerah<br>
@@ -106,7 +106,7 @@
                           </div>
 
                             <!-- Button -->
-                            <button type="submit" class="action-btn text-intro opacity-0">Submit</button>
+                            <button type="submit" class="action-btn text-intro opacity-0">Login</button>
 
                         </div>
                     </div>

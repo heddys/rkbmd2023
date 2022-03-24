@@ -33,25 +33,25 @@ $(window).load(function(){
 
         }, 0);
         
-    },1000);
+    },20);
 
     setTimeout(function(){
 
         $(".bar-intro").addClass('animated-middle slideInDown').removeClass('opacity-0');
 
-    },30);
+    },20);
 
     setTimeout(function(){
 
     	$("#loading").remove();
 
-    },500);
+    },20);
 
     setTimeout(function(){
 
     	$(".text-intro").removeClass('animated-middle fadeInUp');
 
-    },40);
+    },20);
 
 });
 
