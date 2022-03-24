@@ -57,6 +57,7 @@
                 $(function () {
                   //Initialize Select2 Elements
                   $('.select').select2({ width: '50%', tags: true})
+                  $('.js-example-basic-single').select2({ width: '100%', tags: true})
                 })
                 
 
