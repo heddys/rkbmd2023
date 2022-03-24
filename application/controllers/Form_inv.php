@@ -10,10 +10,10 @@ class Form_inv extends CI_Controller {
 		$data['page']="Form Inventarisasi";
         $data['exist']=$this->cek_jumlah_exist();
 
-        $where = array (
-            'hapus' => '',
-            'extrakomtabel_baru' =>  ''
-        );
+        // $where = array (
+        //     'hapus' => '',
+        //     'extrakomtabel_baru' =>  ''
+        // );
         $data['kib_apa']=$id;
 
         //$data['register']=$this->form_model->get_register($where);
