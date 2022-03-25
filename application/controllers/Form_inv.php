@@ -23,6 +23,17 @@ class Form_inv extends CI_Controller {
 		
 	}
 
+    public function isi_formulir()
+    {
+        $this->cek_sess();
+		$data['page']="Isi Form Inventarisasi";
+        $data['exist']=$this->cek_jumlah_exist();
+
+        $this->load->view('header',$data);		
+		$this->load->view('isi_form');
+		$this->load->view('footer_isi_form');
+    }
+
     private function cek_sess() 
 	{
 		if($this->session->userdata('id') !=NULL){

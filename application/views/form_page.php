@@ -52,7 +52,7 @@
                             <td><center><?php echo $row->harga_baru?></center></td>
 	                  		<td>
                                 <center>
-	                  		        <a href="javascript:;" class="btn btn-sm btn-success rincian_kegiatan" data="<?php echo $row->register?>" ><i class="far fa-eye"></i></a>
+	                  		        <a href="<?php echo site_url('/Form_inv/isi_formulir');?>" class="btn btn-sm btn-success rincian_kegiatan" data="<?php echo $row->register?>" ><i class="far fa-eye"></i></a>
                     	        </center></td>
 	                  	</tr>
 	                  <?php $x++; }?>
