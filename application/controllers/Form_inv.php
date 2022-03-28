@@ -55,9 +55,10 @@ class Form_inv extends CI_Controller {
 	public function cetak_form()
 	{
        	$this->pdf->load_view('cetak_form_inv');
-		$this->pdf->set_paper("A4", "portrait");
+		$this->pdf->set_paper("legal", "portrait");
 		$this->pdf->render();
-		$this->pdf->stream("name-file.pdf");
+		// $this->pdf->stream("name-file.pdf");
+		$this->pdf->stream("dompdf_out.pdf", array("Attachment" => false));
 	}
 
 
