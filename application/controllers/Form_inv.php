@@ -16,7 +16,7 @@ class Form_inv extends CI_Controller {
         );
         $data['kib_apa']=$id;
 
-        $data['register']=$this->form_model->get_register($where);
+        //$data['register']=$this->form_model->get_register($where);
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('form_page');
 		$this->load->view('h_footerrkb');		

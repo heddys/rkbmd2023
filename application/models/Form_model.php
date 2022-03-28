@@ -5,7 +5,7 @@
 
     public function __construct() {
             parent::__construct();
-            $this->simbada = $this->load->database('simbada', TRUE);
+            //$this->simbada = $this->load->database('simbada', TRUE);
         }    
 
 
