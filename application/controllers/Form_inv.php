@@ -52,6 +52,11 @@ class Form_inv extends CI_Controller {
 		return $result;
 	}
 
+	public function cetak_form()
+	{
+		$this->load->view('cetak_form_inv');
+	}
+
 
 }
 ?>
