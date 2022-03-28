@@ -12,6 +12,9 @@
       <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/dist/css/adminlte.min.css">
     <style>
+    table,thead,tbody,tr,th,td{
+        text-align: left;
+    }
     p.ex2 {
         margin: 0px;
     }
@@ -20,6 +23,7 @@
           }
     th { 
           line-height: 20px;
+          font-size: 12px;
           }
     td { 
           line-height: 20px;
