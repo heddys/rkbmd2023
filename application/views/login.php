@@ -73,9 +73,8 @@
       <!-- <div class="sl-slider"> -->
       
         <!-- SLIDE 1 / Home -->
-        <div class="sl-slide bg-1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+        
           
-          <div class="sl-slide-inner">
 
             <div class="content-slide">
 
@@ -113,9 +112,7 @@
                 </form>
 
               </div>
-            </div>
-          </div>
-        </div>
+
         <!-- END - SLIDE 1 / Home -->
 
       <!-- </div> -->

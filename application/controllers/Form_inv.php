@@ -54,7 +54,15 @@ class Form_inv extends CI_Controller {
 
 	public function cetak_form()
 	{
-		$this->load->view('cetak_form_inv');
+		$this->load->library('pdf');
+   
+		$file_pdf = 'laporan-penjualan-hari-ini.pdf';
+		$paper = 'A4';
+		$orientation = "potrait";
+		$html = $this->load->view('cetak_form_inv', $data, true);
+
+		$this->pdf->load($html, $file_pdf, $paper, $orientation);
+		// $this->load->view('cetak_form_inv');
 	}
 
 
