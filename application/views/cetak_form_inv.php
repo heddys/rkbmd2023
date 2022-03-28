@@ -9,8 +9,10 @@
 
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">  
-      <!-- Theme style -->
+    <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/dist/css/adminlte.min.css">
+    <!-- Icon Theme -->
+    <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/fontawesome-free/css/all.min.css">
     <style>
     table,thead,tbody,tr,th,td{
         text-align: left;
@@ -91,6 +93,9 @@
                 <th width="250px">A. Kode Register</th>
                 <th width="50px">:</th>
                 <th>12345678-2020-556458-1</th>
+                <td>
+                    <img src="<?php echo base_url();?>ini_assets/dist/img/checkbox_checked.png" alt="checkbox">
+                </td>   
             </tr>
             <tr>
                 <th width="250px">B. Kode Barang</th>
