@@ -95,24 +95,24 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-// $db['simbada'] = array(
-// 	'dsn'	=> '',
-// 	'hostname' => '172.17.25.165',
-// 	'username' => 'simbada_surabaya',
-// 	'password' => 'simbada_r4h45145ek4l1',
-// 	'database' => '2021_v1',
-// 	'dbdriver' => 'mysqli',
-// 	'dbprefix' => '',
-// 	'pconnect' => TRUE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => FALSE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-// );
+$db['simbada'] = array(
+	'dsn'	=> '',
+	'hostname' => '172.17.25.165',
+	'username' => 'simbada_surabaya',
+	'password' => 'simbada_r4h45145ek4l1',
+	'database' => '2021_v1',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => TRUE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
