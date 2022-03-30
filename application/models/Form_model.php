@@ -27,8 +27,11 @@
 
                 $query = $this->simbada->query($q1 . ' UNION ' . $q2);
                 return $query;
+            }
 
-
+            public function data_kode_barang()
+            {
+                return $this->db->get('kamus_barang');
             }
 
  }

@@ -46,7 +46,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Kode Barang :</label>
                                         </div>
-                                        <input type="text" class="form-control" id="kode_barang" disabled="disabled" placeholder="1.3.1.05.05.12.153">
+                                        <input type="text" class="form-control" id="kode_barang" disabled="disabled" placeholder="1.3.2.02.01.02.003">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button">Pilih Kode Barang</button>
                                         </div>
@@ -73,7 +73,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nama Barang :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="kode_register" disabled="disabled" placeholder="12345678-2022-200901-2">
+                                            <input type="text" class="form-control" id="input_nama_barang" disabled="disabled" placeholder="12345678-2022-200901-2">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -597,8 +597,10 @@
             <!-- /.card -->
           </div>
         </div>
-                        <div class="modal fade" id="modal-isian">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
+
+                        <!-- Modal Untuk Pilih Kode Barang -->
+                        <div class="modal fade" id="modal-kode-bar">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Sebutkan yang sebenarnya</h4></center>
@@ -609,54 +611,66 @@
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th><center>No.</center></th>
-                                                    <th><center>Register</center></th>
-                                                    <th><center>Kode Neraca</center></th>
-                                                    <th><center>Nama Barang</center></th>
-                                                    <th><center>Spesifikasi Barang</center></th>
-                                                    <th><center>Nilai Perolehan </center></th>
+                                                    <th><center>Kode Kelompok</center></th>
+                                                    <th><center>Kelompok</center></th>
+                                                    <th><center>Kode Sub Kelompok</center></th>
+                                                    <th><center>Sub Kelompok</center></th>
+                                                    <th><center>Kode Sub Sub Kelompok</center></th>
+                                                    <th><center>Deskripsi Sub Sub Kelompok</center></th>
                                                     <th><center>Aksi</center></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $x=1; foreach ($kode_barang->result() as $row) {?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>22</td>
-                                                    <td>333</td>
-                                                    <td>4444</td>
-                                                    <td>55555</td>
-                                                    <td>666666</td>
-                                                    <td>7777777</td>
+                                                    <td><?php echo $x;?></td>
+                                                    <td><?php echo $row->kode_kelompok;?></td>
+                                                    <td><?php echo $row->kelompok;?></td>
+                                                    <td><?php echo $row->kode_sub_kelompok;?></td>
+                                                    <td><?php echo $row->sub_kelompok;?></td>
+                                                    <td><?php echo $row->kode_sub_sub_kelompok;?></td>
+                                                    <td><?php echo $row->sub_sub_kelompok;?></td>
+                                                    <td>
+                                                        <center>
+                                                            <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $row->kode_sub_sub_kelompok;?>" onclick="klik_kode_bar(this.getAttribute('data-id'));" data-dismiss="modal"><i class="fa fa-plus"></i></a>
+                                                        </center>
+                                                    </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>212</td>
-                                                    <td>3333</td>
-                                                    <td>444244</td>
-                                                    <td>555515</td>
-                                                    <td>6666466</td>
-                                                    <td>77776777</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>252</td>
-                                                    <td>3323</td>
-                                                    <td>44474</td>
-                                                    <td>555515</td>
-                                                    <td>6666626</td>
-                                                    <td>77777797</td>
-                                                </tr>
+                                                <?php $x++; }?>
                                             </tbody>
                                         </table>  
                                     </div>
                                     <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-danger batal" data-dismiss="modal">Kembali</button>
-                                        <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button>
+                                        <button type="button" class="btn btn-danger batal" onclick="klik_kode_bar(false)" data-dismiss="modal">Batal</button>
+                                        <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
                                     </div>
                             </div>
                                 /* <!-- modal-content --> */
                             </div>
                             /* <!-- /.modal-dialog --> */
                         </div>
-                    /* <!-- /.modal --> */
+                        /* <!-- /.modal --> */
+                        
+                        <!-- Modal Untuk Input Text -->
+                        <div class="modal fade" id="modal-input-text">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <input type="text" class="form-control" id="nama_barang" placeholder="Peralatan Kantor Serbaguna">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_input_text(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success" onclick="klik_input_text(true)" data-dismiss="modal">Simpan Data</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
 
         

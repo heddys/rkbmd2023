@@ -28,6 +28,7 @@ class Form_inv extends CI_Controller {
         $this->cek_sess();
 		$data['page']="Isi Form Inventarisasi";
         $data['exist']=$this->cek_jumlah_exist();
+		$data['kode_barang']=$this->form_model->data_kode_barang();
 
         $this->load->view('header',$data);		
 		$this->load->view('isi_form');

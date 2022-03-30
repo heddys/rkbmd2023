@@ -77,16 +77,39 @@
       $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 
+    // $('#tblkodebar').on('click','.amnil_kode_barang',function(){
+      
+    //   alert("awwww");
+    
+    // });
+
+    function klik_kode_bar(id){
+      if(id == false) {
+        $("input:radio[id=primary4]:checked")[0].checked = false;
+      } else {
+        document.getElementById('kode_barang').value=id;
+      }
+    }
+
+    function klik_input_text(id){
+      if(id == true){
+        var isi_text = document.querySelector("#modal-input-text [id=nama_barang]").value;
+        document.getElementById('input_nama_barang').value=isi_text;
+      } else {
+        $("input:radio[id=primary6]:checked")[0].checked = false;
+      }
+    }
+
     $(document).ready(function () {
       $('#primary4').click(function () {
           if ($(this).is(':checked')) {
-            $('#modal-isian').modal({backdrop: 'static', keyboard: false});
+            $('#modal-kode-bar').modal({backdrop: 'static', keyboard: false});
           }
       });
 
       $('#primary6').click(function () {
           if ($(this).is(':checked')) {
-              alert("2");
+              $('#modal-input-text').modal({backdrop: 'static', keyboard: false});
           }
       });
 
