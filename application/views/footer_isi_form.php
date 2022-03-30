@@ -19,18 +19,6 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url();?>ini_assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Sparkline -->
-<script src="<?php echo base_url();?>ini_assets/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="<?php echo base_url();?>ini_assets/plugins/jqvmap/jquery.vmap.min.js"></script>
-
-<script src="<?php echo base_url();?>ini_assets/plugins/jqvmap/maps/jquery.vmap.world.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="<?php echo base_url();?>ini_assets/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="<?php echo base_url();?>ini_assets/plugins/moment/moment.min.js"></script>
-
-<script src="<?php echo base_url();?>ini_assets/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="<?php echo base_url();?>ini_assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
@@ -49,27 +37,30 @@
 <script src="<?php echo base_url();?>ini_assets/plugins/select2/js/select2.full.min.js"></script>
 <!-- SweetAlert2 -->
 <script src="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
 
-function showTime() {
-      var a_p = "";
-      var today = new Date();
-      var curr_hour = today.getHours();
-      var curr_minute = today.getMinutes();
-      var curr_second = today.getSeconds();
- 
-      curr_hour = checkTime(curr_hour);
-      curr_minute = checkTime(curr_minute);
-      curr_second = checkTime(curr_second);
-      document.getElementById('clock').innerHTML=curr_hour + " : " + curr_minute + " : " + curr_second + " WIB";
+      function showTime() {
+        var a_p = "";
+        var today = new Date();
+        var curr_hour = today.getHours();
+        var curr_minute = today.getMinutes();
+        var curr_second = today.getSeconds();
+  
+        curr_hour = checkTime(curr_hour);
+        curr_minute = checkTime(curr_minute);
+        curr_second = checkTime(curr_second);
+        document.getElementById('clock').innerHTML=curr_hour + " : " + curr_minute + " : " + curr_second + " WIB";
 
-      var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];  
-      var date = new Date();  
-      var day = date.getDate();  
-      var month = date.getMonth();  
-      var yy = date.getYear();  
-      var year = (yy < 1000) ? yy + 1900 : yy;  
-      document.getElementById('date').innerHTML=day + " / " + months[month] + " / " + year + " " + "";
+        var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];  
+        var date = new Date();  
+        var day = date.getDate();  
+        var month = date.getMonth();  
+        var yy = date.getYear();  
+        var year = (yy < 1000) ? yy + 1900 : yy;  
+        document.getElementById('date').innerHTML=day + " / " + months[month] + " / " + year + " " + "";
     }
     
     function checkTime(i) {
@@ -78,7 +69,29 @@ function showTime() {
         }
           return i;
     }
-    setInterval(showTime, 50);           
+    setInterval(showTime, 50);
+    
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+
+    $(document).ready(function () {
+      $('#primary4').click(function () {
+          if ($(this).is(':checked')) {
+            $('#modal-isian').modal({backdrop: 'static', keyboard: false});
+          }
+      });
+
+      $('#primary6').click(function () {
+          if ($(this).is(':checked')) {
+              alert("2");
+          }
+      });
+
+      $("#tblkodebar").DataTable();
+    });
 
 </script>
 </body>

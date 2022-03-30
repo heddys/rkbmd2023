@@ -59,6 +59,7 @@ class Form_inv extends CI_Controller {
 		$this->pdf->render();
 		// $this->pdf->stream("name-file.pdf");
 		$this->pdf->stream("dompdf_out.pdf", array("Attachment" => false));
+		
 	}
 
 

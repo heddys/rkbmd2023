@@ -42,6 +42,7 @@
 	                  <th><center>Aksi</center></th>
 	                </tr>
 	                </thead>
+                  <tbody>
                     <?php $x=1; foreach ($register->result() as $row) {?>
 	                	<tr>
 	                  		<td><center><?php echo $x?></center></td>
@@ -56,8 +57,6 @@
                     	        </center></td>
 	                  	</tr>
 	                  <?php $x++; }?>
-	                <tbody>
-	                
 	                </tbody>
 	              </table>
 	            </div>

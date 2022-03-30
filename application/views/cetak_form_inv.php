@@ -59,7 +59,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th width="320px" style="text-align: right;">NIBAR : 12345678-2020-556458-1</th>   
+                <th width="320px" style="text-align: right;">No. Register : 12345678-2020-556458-1</th>   
             </tr>
     
         </thead>
@@ -219,7 +219,7 @@
                 <th width="150px"></th>
                 <td width="20px"></td>
                 <th width="20px"></th>
-                <th colspan="2">1). NIBAR</th>
+                <th colspan="2">1). No. Register</th>
                 <th><center>:</center></th>
                 <th>.....................................</th>
             </tr>
@@ -480,7 +480,7 @@
                 <th width="20px"></th>
                 <th></th>
                 <th></td>
-                <th width="100px">a. NIBAR</th>
+                <th width="100px">a. No. Register</th>
                 <th>:</th>
                 <th>.....................................</th>
             </tr>
