@@ -9,14 +9,15 @@ class Form_inv extends CI_Controller {
 		$this->cek_sess();
 		$data['page']="Form Inventarisasi";
         $data['exist']=$this->cek_jumlah_exist();
+		$nomor_lokasi=$this->session->userdata('nomor_lokasi');
 
         $where = array (
-            'hapus' => '',
-            'extrakomtabel_baru' =>  ''
+            'ekstrakomtabel' =>  NULL
         );
+
         $data['kib_apa']=$id;
 
-        //$data['register']=$this->form_model->get_register($where);
+        $data['register']=$this->form_model->get_all_register($where,$nomor_lokasi);
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('form_page');
 		$this->load->view('h_footerrkb');		
@@ -29,9 +30,16 @@ class Form_inv extends CI_Controller {
 		$data['page']="Isi Form Inventarisasi";
         $data['exist']=$this->cek_jumlah_exist();
 		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+
+		
+		$register = $_POST['register'];
+		$where = array ( 'register' => $register );
+		
+		$data['data_register'] = $this->form_model->ambil_register($where);
 
         $this->load->view('header',$data);		
-		$this->load->view('isi_form');
+		$this->load->view('isi_form',$data);
 		$this->load->view('footer_isi_form');
     }
 

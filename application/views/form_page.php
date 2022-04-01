@@ -48,13 +48,16 @@
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $row->register?></center></td>
 	                  		<td><center><?php echo $row->kode64_baru?></center></td>
-                            <td><center><?php echo $row->nama_barang_baru?></center></td>
-                            <td><center><?php echo $row->merk_alamat_baru." - ".$row->tipe_baru?></center></td>
-                            <td><center><?php echo $row->harga_baru?></center></td>
-	                  		<td>
+                            <td><center><?php echo $row->nama_barang?></center></td>
+                            <td><center><?php echo $row->merk_alamat." - ".$row->tipe?></center></td>
+                            <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
+	                  		<td>  
+                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
                                 <center>
-	                  		        <a href="<?php echo site_url('/Form_inv/isi_formulir');?>" class="btn btn-sm btn-success rincian_kegiatan" data="<?php echo $row->register?>" ><i class="far fa-eye"></i></a>
-                    	        </center></td>
+                                  <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
+                                    <input type="hidden" name="register" value="<?php echo $row->register?>">
+                                </center></td>
+                              </form>
 	                  	</tr>
 	                  <?php $x++; }?>
 	                </tbody>
