@@ -34,9 +34,10 @@ class Form_inv extends CI_Controller {
 
 		
 		$register = $_POST['register'];
+		$lokasi = $this->session->userdata('no_lokasi');
 		$where = array ( 'register' => $register );
 		
-		$data['data_register'] = $this->form_model->ambil_register($where);
+		$data['data_register'] = $this->form_model->ambil_register($where,$lokasi);
 
         $this->load->view('header',$data);		
 		$this->load->view('isi_form',$data);

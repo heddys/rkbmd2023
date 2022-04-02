@@ -23,21 +23,22 @@ class Auth extends CI_Controller {
 		$user=$this->input->post('usr');
 		$pass=$this->input->post('psswd');
 			$cekuser= array(
-				'user_baru' => $user, 
-				'pass_baru' => md5($pass)
+				'username' => $user, 
+				'password' => $pass
 			);
 		$this->load->model('auth_model');
-		$ceklog=$this->auth_model->ceklogin("skpd",$cekuser)->num_rows();
-		$get=$this->auth_model->ceklogin("skpd",$cekuser);
+		$ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
+		$get=$this->auth_model->ceklogin("pengguna",$cekuser);
 		if($ceklog > 0) {
 				foreach ($get->result() as $row) {
 					$data_session = array(	
 						'id' => $row->id,
-						'skpd' => $row->skpd,
-						'kode_opd' =>$row->kode_binprog
+						'skpd' => $row->nama_opd,
+						'kode_opd' =>$row->opd,
+						'nama_login' =>$row->nama,
+						'no_lokasi' =>$row->nomor_lokasi
 					);
 				}
-			$skpdget = $data_session['kode_opd'];
 			$this->session->set_userdata($data_session);
 			if ($skpdget!='SUR01'){
 				redirect('home');

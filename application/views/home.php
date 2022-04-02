@@ -19,7 +19,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('/Form_inv/isi_formulir');?>" class="small-box-footer">Isi Form Inventarisasi <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('/Form_inv/index/2');?>" class="small-box-footer">Isi Form Inventarisasi <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
           </div>

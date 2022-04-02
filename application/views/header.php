@@ -58,7 +58,7 @@
           .modal { overflow: auto !important; }
         </style>
         <!--UNTUK NAMA DINASNYA-->
-        <strong class="nav-link fontku"><font color="white"><?php echo $this->session->userdata('skpd');?> KOTA SURABAYA</font></strong>
+        <strong class="nav-link fontku"><font color="white"><?php echo $this->session->userdata('skpd');?> KOTA SURABAYA - (<?php echo strtoupper($this->session->userdata('nama_login'));?>) </font></strong>
       </li>
     </ul>
     <!-- Right navbar links -->
