@@ -77,7 +77,8 @@
             <tr>
                 <th width="200px">Pengguna Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">Heddy Sebastian E. P</th>
+                <th width="150px"><?php echo $coba;?></th>
+                
             </tr>
             <tr>
                 <th width="200px">Pengelola Barang</th>
@@ -606,10 +607,10 @@
             <tr>
                 <!-- <th width="120px" rowspan="4"><div class="rectangle"></div></th> -->
                 <th width="120px">
-                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo1.png" alt="checkbox" width="70%" height="70%">
-                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo2.png" alt="checkbox" width="70%" height="70%">
-                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo4.jpg" alt="checkbox" width="70%" height="70%">
-                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/avatar04.png" alt="checkbox" width="70%" height="70%">
+                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo1.png" alt="checkbox" width="150" height="150">
+                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo2.png" alt="checkbox" width="150" height="150">
+                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo4.jpg" alt="checkbox" width="150" height="150">
+                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/avatar04.png" alt="checkbox" width="150" height="150">
                 <th>
                 <th width="25px"></th>
                 <th></th>
