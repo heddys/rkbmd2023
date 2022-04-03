@@ -59,7 +59,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th width="320px" style="text-align: right;">No. Register : 12345678-2020-556458-1</th>   
+                <th width="320px" style="text-align: right;">No. Register : <?php echo $data_register->register; ?></th>   
             </tr>
     
         </thead>
@@ -67,7 +67,7 @@
             <tr>
                 <th width="200px">Kode Lokasi</th>
                 <th width="25px">:</th>
-                <th width="150px">13.20.225.0224.04241</th>
+                <th width="150px"><?php echo $lokasi->nomor_lokasi; ?></th>
             </tr>
             <tr>
                 <th width="200px">Kuasa Pengguna Barang</th>
@@ -77,13 +77,13 @@
             <tr>
                 <th width="200px">Pengguna Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $coba;?></th>
+                <th width="150px"></th>
                 
             </tr>
             <tr>
                 <th width="200px">Pengelola Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">Hakim Jaksa Agung</th>
+                <th width="150px"></th>
             </tr>
         </tbody>
     </table>
@@ -106,7 +106,7 @@
             <tr>
                 <th width="150px">A. Kode Register</th>
                 <th width="25x">:</th>
-                <th width="130px">12345678-2020-556458-1</th>
+                <th width="130px"><?php echo $data_register->register; ?></th>
                 <td width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                 </center></td>
@@ -119,7 +119,7 @@
             <tr>    
                 <th width="120px">B. Kode Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">1.3.3.04.05.002</th>
+                <th width="150px"><?php echo $data_register->kode_barang; ?></th>
                 <td width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                 </center></td>
@@ -131,7 +131,7 @@
             <tr>
                 <th width="120px">C. Nama Barang</th>
                 <th width="25px">:</th>
-                <th width="200px">Biaya Perencanaan Fisik (sederhana), Nilai Pekerjaan  2 M  (PAKET O5) Lapangan Tembak Indoor Surabaya- FISIK TAHUN 2018</th>
+                <th width="200px"><?php echo $data_register->nama_barang; ?></th>
                 <td width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                 </center></td>
@@ -144,7 +144,7 @@
             <tr>
                 <th width="120px">D. Nama Spesifikasi Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">jl. Gayungan Timur VII-IX Kelurahan Menanggal Kecamatan Gayungan</th>
+                <th width="150px"><?php echo $data_register->spesifikasi_barang_merk; ?></th>
                 <td width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                 </center></td>
@@ -162,12 +162,12 @@
             <tr>
                 <th width="120px">F. Satuan Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">Unit</th>
+                <th width="150px"><?php echo $data_register->satuan; ?></th>
             </tr>
             <tr>
                 <th width="120px">G. Keberadaan Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">Ada</th>
+                <th width="150px"><?php echo $data_register->keberadaan_barang; ?></th>
                 <td width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                 </center></td>
@@ -180,7 +180,7 @@
             <tr>
                 <th width="120px">H. Nilai Perolehan Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">Rp. 300.256.025,03</th>
+                <th width="150px"><?php echo $data_register->nilai_perolehan; ?></th>
                 <td width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                 </center></td>
@@ -193,7 +193,7 @@
             <tr>
                 <th width="120px">I. Apakah nilai perolehan merupakan biaya atribusi/biaya yang menambah kapasitas manfaat</th>
                 <th width="25px">:</th>
-                <th width="150px">Bukan</th>
+                <th width="150px"><?php echo $data_register->merupakan_anak; ?></th>
                 <td width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
                 </center></td>
@@ -277,7 +277,7 @@
             <tr>
                 <th width="120px">J. Alamat</th>
                 <th width="25px">:</th>
-                <th width="150px">jl. Gayungan Timur VII-IX Kelurahan Menanggal Kecamatan Gayungan</th>
+                <th width="150px"><?php echo $data_register->alamat; ?></th>
                 <th width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                 </center></th>
@@ -290,18 +290,24 @@
             <tr>
                 <th width="120px">K. Kondisi Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">Baik</th>
-                <th width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></th>
+                <th width="150px"><?php echo $data_register->kondisi_barang; ?></th>
+                <th width="20px">
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </th>
                 <th>Baik</th>
-                <th width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></th>
+                <th width="20px">
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </th>
                 <th>Kurang Baik</th>
-                <th width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></th>
+                <th width="20px">
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </th>
                 <th>Rusak Berat</th>
             </tr>
             <tr>
@@ -320,7 +326,7 @@
                 <th width="25px"></th>
                 <th width="150px">Nama Kuasa Pengguna Barang atau Pengguna Barang Lainnya</th>
                 <th width="20px"><center>:</center></th>
-                <th colspan="4">Heddy Sebastian E. P</th>
+                <th colspan="4">.........................</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -464,7 +470,7 @@
             <tr>
                 <th width="120px">M. Data Barang tercatat ganda</th>
                 <th width="25px">:</th>
-                <th width="150px">jl. Gayungan Timur VII-IX Kelurahan Menanggal Kecamatan Gayungan</th>
+                <th width="150px"><?php echo $data_register->register_ganda; ?></th>
                 <th width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                 </center></th>
@@ -587,22 +593,22 @@
             <tr>
                 <th width="120px">N. Titik Koordinat</th>
                 <th width="25px">:</th>
-                <th width="150px">-7.2564168,112.7506758</th>
+                <th width="150px"><?php echo $data_register->koordinat; ?></th>
             </tr>
             <tr>
                 <th width="120px">O. Lainnya</th>
                 <th width="25px">:</th>
-                <th>................................................................</th>
+                <th><?php echo $data_register->lainnya;?></th>
             </tr>
             <tr>
                 <th width="120px">P. Keterangan</th>
                 <th width="25px">:</th>
-                <th>................................................................</th>
+                <th><?php echo $data_register->keterangan;?></th>
             </tr>
             <tr>
                 <th width="120px">Q. Foto/Denah</th>
                 <th width="25px">:</th>
-                <th>................................................................</th>
+                <th></th>
             </tr>
             <tr>
                 <!-- <th width="120px" rowspan="4"><div class="rectangle"></div></th> -->

@@ -69,8 +69,12 @@ class Status_form extends CI_Controller {
     public function cetak_form()
 	{
 
-        $data['coba'] = "Heddy Sebastian E P22";
-        
+        $register=$_POST['register'];
+        $where = array ( 'register' => $register );
+
+        $data['data_register'] = $this->form_model->ambil_register_form($where)->row();
+        $data['lokasi'] = $this->form_model->ambil_register($where);
+
        	$this->pdf->load_view('cetak_form_inv',$data);
 		$this->pdf->set_paper("legal", "portrait");
 		$this->pdf->render();

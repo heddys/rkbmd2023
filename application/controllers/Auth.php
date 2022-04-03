@@ -36,13 +36,15 @@ class Auth extends CI_Controller {
 						'skpd' => $row->nama_opd,
 						'kode_opd' =>$row->opd,
 						'nama_login' =>$row->nama,
-						'no_lokasi' =>$row->nomor_lokasi
+						'no_lokasi' =>$row->nomor_lokasi,
+						'role' => $row->fungsi
 					);
 				}
+			
 			$this->session->set_userdata($data_session);
-			if ($skpdget!='SUR01'){
+			if ($this->session->userdata('role')!='Verifikator'){
 				redirect('home');
-			} else {redirect('home_survey');}
+			} else {redirect('home_verifikator');}
 		} 
 		  else {
 			$this->index($error=1);

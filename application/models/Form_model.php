@@ -36,6 +36,11 @@
                 return $query->row();
             }
 
+            public function ambil_register_form($where)
+            {
+                return $this->db->from("register_isi")->where($where)->order_by('created_time', 'ASC')->get();
+            }
+
             public function data_kode_barang()
             {
                 return $this->db->get('kamus_barang');

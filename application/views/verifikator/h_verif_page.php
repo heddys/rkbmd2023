@@ -154,7 +154,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Entry Form Inventarisasi
+                List Register Verifikasi
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -210,7 +210,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Status Register
+                List Register Tolak
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>

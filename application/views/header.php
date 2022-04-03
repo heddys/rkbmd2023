@@ -62,10 +62,10 @@
       </li>
     </ul>
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-          jjsakslakdjs  
+    <ul class="navbar-nav ml-auto fontku">
+          <strong><u><?php echo $this->session->userdata('role');?></u></strong> 
     </ul>
-    <ul class="navbar-nav ml-15">
+    <!-- <ul class="navbar-nav ml-15">
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
           <i class="far fa-bell"></i>
@@ -85,11 +85,9 @@
           <a href="#" class="dropdown-item">
             <i class="fas fa-file mr-2"></i> 3 Register Terverifikasi
           </a>
-          <!-- <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> -->
         </div>
       </li>
-    </ul>
+    </ul> -->
     &nbsp; &nbsp; &nbsp;
     <ul class="navbar-nav ml-15 fontku">
       <div id="clock"></div> &nbsp; | &nbsp;<div id="date"></div>

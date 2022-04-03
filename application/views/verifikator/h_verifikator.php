@@ -6,24 +6,32 @@
   <title>E-RKBMD APP KOTA SURABAYA</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/fontawesome-free/css/all.min.css">
   <!-- icon tab -->
   <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>ini_assets/image/surabaya1.png" />
-  <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/toastr/toastr.min.css">
-     <!-- Select2 -->
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/summernote/summernote-bs4.css">
+   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/select2/css/select2.min.css">
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.css">
 </head>
-<body class="sidebar-mini layout-fixed" style="height: auto;> 
+<body class="sidebar-mini layout-fixed" style="height: auto;">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -54,16 +62,37 @@
       </li>
     </ul>
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <ul class="navbar-nav ml-auto fontku">
-      <div id="clock"></div> &nbsp | &nbsp<div id="date"></div>
+    <ul class="navbar-nav ml-auto fontku">
+          <strong><u><?php echo $this->session->userdata('role');?></u></strong> 
     </ul>
-      <!--<li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-          <i class="fas fa-th-large"></i>
+    <!-- <ul class="navbar-nav ml-15">
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
         </a>
-      </li>-->
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 Register Proses Verifikasi
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 Register Di Tolak
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 Register Terverifikasi
+          </a>
+        </div>
+      </li>
+    </ul> -->
+    &nbsp; &nbsp; &nbsp;
+    <ul class="navbar-nav ml-15 fontku">
+      <div id="clock"></div> &nbsp; | &nbsp;<div id="date"></div>
     </ul>
+    
   </nav>
   <!-- /.navbar -->
 
@@ -77,6 +106,7 @@
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
       <hr>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -96,7 +126,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="<?php echo site_url('home');?>" class="nav-link">
+            <a href="<?php echo site_url('home');?>" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -108,7 +138,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Entry Rencana Kebutuhan
+                Rencana Kebutuhan
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -154,7 +184,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Entry Form Inventarisasi
+                List Register Verifikasi
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -210,7 +240,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Status Register
+                List Register Tolak
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -253,6 +283,15 @@
               </li>
             </ul>
           </li>
+         <!-- <li class="nav-item has-treeview">
+            <a href="<?php echo site_url('home/desk_komponen');?>" class="nav-link">
+              <i class="nav-icon fab fa-buffer"></i>
+              <p>
+                Keterangan Eksisting
+                <span class="right badge badge-danger"><?php echo $exist?></span>
+              </p>
+            </a>
+          </li> -->
          <li class="nav-header"><strong>KAMUS</strong></li>
          <li class="nav-item">
             <a href="<?php echo site_url('home/list_kegiatan');?>" class="nav-link">
@@ -295,7 +334,7 @@
           </li>
           -->
 
-          <li class="nav-header"></li>
+           <li class="nav-header"></li>
            <center>
            <li class="nav-item">
             <a href="<?php echo site_url('auth/logout');?>" class="nav-link active">
@@ -326,3 +365,9 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
+
+
+
+
+   
