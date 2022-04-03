@@ -222,8 +222,8 @@ function formatCurrency(input, blur) {
 
     function klik_alamat_barang(id){
       if(id == true){
-        var isi_text = document.querySelector("#modal-alamat-barang [id=input_alamat]").value;
-        document.getElementById('alamat_barang').value=isi_text;
+        var isi_text = document.querySelector("#modal-merk-barang [id=input_merk]").value;
+        document.getElementById('merk_barang').value=isi_text;
       } else {
         $("input:radio[id=primary20]:checked")[0].checked = false;
       }
@@ -238,10 +238,10 @@ function formatCurrency(input, blur) {
       }
     }
 
-    function klik_merk_barang(id){
+    function klik_tipe_barang(id){
       if(id == true){
-        var isi_text = document.querySelector("#modal-merk-barang [id=input_merk]").value;
-        document.getElementById('merk_tipe').value=isi_text;
+        var isi_text = document.querySelector("#modal-tipe-barang [id=input_tipe]").value;
+        document.getElementById('tipe_barang').value=isi_text;
       } else {
         $("input:radio[id=primary24]:checked")[0].checked = false;
       }
@@ -331,7 +331,7 @@ function formatCurrency(input, blur) {
 
       $('#primary20').click(function () {
           if ($(this).is(':checked')) {
-              $('#modal-alamat-barang').modal({backdrop: 'static', keyboard: false});
+              $('#modal-merk-barang').modal({backdrop: 'static', keyboard: false});
           }  
       });
 
@@ -343,7 +343,7 @@ function formatCurrency(input, blur) {
 
       $('#primary24').click(function () {
           if ($(this).is(':checked')) {
-              $('#modal-merk-barang').modal({backdrop: 'static', keyboard: false});
+              $('#modal-tipe-barang').modal({backdrop: 'static', keyboard: false});
           }  
       });
 

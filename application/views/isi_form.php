@@ -11,8 +11,11 @@
                 </center>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form role="form" action="cetak_form" method="post">
+                    <form role="form" action="save_isi_form_peralatan_mesin" method="post">
                         <!-- select -->
+                       
+                        <h4><?php echo $data_register->register." - ".$data_register->nama_barang;?></h4>
+                        <hr style="padding: 2px">
                         <center>
                         <div class="row">
                             <!-- Mulai Form -->
@@ -21,18 +24,19 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Kode Register :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="kode_register" disabled="disabled" value="<?php echo $data_register->register;?>">
-                                    </div>
+                                            <input type="text" class="form-control" name="register" id="kode_register" readonly="true" value="<?php echo $data_register->register;?>">
+                                            <input type="hidden" class="form-control" name="register2" id="kode_register" value="<?php echo $data_register->register;?>">
+                                        </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary1" name="radio_kode_reg" value="reg0" checked="checked"/>
+                                        <input type="radio" id="primary1" name="radio_kode_reg" value="0" checked="checked" required="required"/>
                                         <label for="primary1">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary2" name="radio_kode_reg" value="reg1" disabled="disabled"/>
+                                        <input type="radio" id="primary2" name="radio_kode_reg" value="1" readonly="true"/>
                                         <label for="primary2">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -46,18 +50,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Kode Barang :</label>
                                         </div>
-                                        <input type="text" class="form-control" id="kode_barang" disabled="disabled" value="<?php echo $data_register->kode108_baru;?>">
+                                        <input type="text" class="form-control" name="kode_barang" id="kode_barang" readonly="true" value="<?php echo $data_register->kode108_baru;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary3" name="radio_kode_bar" value="barang0"/>
+                                        <input type="radio" id="primary3" name="radio_kode_bar" value="0" required="required"/>
                                         <label for="primary3">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary4" name="radio_kode_bar" value="barang1"/>
+                                        <input type="radio" id="primary4" name="radio_kode_bar" value="1"/>
                                         <label for="primary4">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -70,18 +74,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nama Barang :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="input_nama_barang" disabled="disabled" value="<?php echo $data_register->nama_barang;?>">
+                                            <input type="text" class="form-control" name="nama_barang" id="input_nama_barang" readonly="true" value="<?php echo $data_register->nama_barang;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-2">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary5" name="radio_nama_bar" value="nama0"/>
+                                        <input type="radio" id="primary5" name="radio_nama_bar" value="0" required="required"/>
                                         <label for="primary5">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary6" name="radio_nama_bar" value="nama1"/>
+                                        <input type="radio" id="primary6" name="radio_nama_bar" value="1"/>
                                         <label for="primary6">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -94,9 +98,9 @@
                             <div class="form-group col-md-6">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Nama Spesifikasi Barang :</label>
+                                            <label class="input-group-text" id="basic-addon3">Alamat : </label>
                                         </div>
-                                            <input type="text" class="form-control" id="nama_spek_barang" required="required" placeholder="Diisi Spesifikasi Aset...">
+                                            <input type="text" class="form-control" name="alamat" required="required" placeholder="Diisi Posisi Barangnya, Contoh : Ruang Kabid, Ruang Server, Dll..">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -125,18 +129,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Jumlah Barang : </label>
                                         </div>
-                                            <input type="text" class="form-control" id="kode_register" disabled="disabled" placeholder="1">
+                                            <input type="text" class="form-control" id="kode_register" readonly="true" placeholder="1">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary9" name="radio_jumlah_bar" checked="checked" value="jumlah0"/>
+                                        <input type="radio" id="primary9" name="radio_jumlah_bar" checked="checked" value="0" required="required"/>
                                         <label for="primary9">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary10" name="radio_jumlah_bar" disabled="disabled" value="jumlah1"/>
+                                        <input type="radio" id="primary10" name="radio_jumlah_bar" readonly="true" value="1"/>
                                         <label for="primary10">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -152,18 +156,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Satuan  :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="satuan_barang" disabled="disabled" value="<?php echo $data_register->satuan;?>">
+                                            <input type="text" class="form-control" name="satuan" id="satuan_barang" readonly="true" value="<?php echo $data_register->satuan;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary11" name="radio_satuan" value="satuan0"/>
+                                        <input type="radio" id="primary11" name="radio_satuan" value="0" required="required"/>
                                         <label for="primary11">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary12" name="radio_satuan" value="satuan1"/>
+                                        <input type="radio" id="primary12" name="radio_satuan" value="1"/>
                                         <label for="primary12">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -179,18 +183,18 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="inputGroupSelect01">Keberadaan Barang : </label>
                                     </div>
-                                    <input type="text" class="form-control" id="keberadaan_bar" disabled="disabled" placeholder="Ada">
+                                    <input type="text" class="form-control" name="keberadaan" id="keberadaan_bar" readonly="true" placeholder="Ada" value="Ada">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary13" name="radio_keberadaan" value="ada0"/>
+                                        <input type="radio" id="primary13" name="radio_keberadaan" value="0" required="required"/>
                                         <label for="primary13">Ada</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary14" name="radio_keberadaan" value="ada1"/>
+                                        <input type="radio" id="primary14" name="radio_keberadaan" value="1"/>
                                         <label for="primary14">Tidak Ada</label>
                                     </div>
                                 </div>
@@ -206,21 +210,18 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">Nilai Perolehan (Rp.)</label>
                                     </div>
-                                    <input type="text" class="form-control" name="input_nilai" id="nilai_perolehan" disabled="disabled" value="<?php echo $data_register->harga_baru;?>">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">.00</span>
-                                    </div>
+                                    <input type="text" class="form-control" name="nilai" id="nilai_perolehan" readonly="true" value="<?php echo number_format($data_register->harga_baru,2,',','.');?>">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary15" name="radio_nilai" value="reg0"/>
+                                        <input type="radio" id="primary15" name="radio_nilai" value="0" required="required"/>
                                         <label for="primary15">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary16" name="radio_nilai" value="reg1"/>
+                                        <input type="radio" id="primary16" name="radio_nilai" value="1"/>
                                         <label for="primary16">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -236,7 +237,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">Apakah Aset Atribusi / Kapitalisasi</label>
                                     </div>
-                                    <input type="text" class="form-control" id="kode_register" disabled="disabled" placeholder="12345678-2022-200901-2">
+                                    <input type="text" class="form-control" name="aset_atrib" id="kode_register" readonly="true" placeholder="-" value="-">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="button">Pilih Register</button>
                                     </div>
@@ -246,11 +247,11 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary17" name="radio_kap_atrib" value="atrib0"/>
+                                        <input type="radio" id="primary17" name="radio_kap_atrib" value="0" required="required"/>
                                         <label for="primary17">Ya</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary18" name="radio_kap_atrib" value="atrib1"/>
+                                        <input type="radio" id="primary18" name="radio_kap_atrib" value="1"/>
                                         <label for="primary18">Bukan</label>
                                     </div>
                                 </div>
@@ -264,20 +265,20 @@
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Alamat : </label>
+                                            <label class="input-group-text" id="basic-addon3">Merk : </label>
                                         </div>
-                                            <input type="text" class="form-control" id="alamat_barang" disabled="disabled" value="<?php echo $data_register->merk_alamat;?>">
+                                            <input type="text" class="form-control" name="merk" id="merk_barang" readonly="true" value="<?php echo $data_register->merk_alamat;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary19" name="radio_alamat" value="alamat0"/>
+                                        <input type="radio" id="primary19" name="radio_merk" value="0" required="required"/>
                                         <label for="primary19">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary20" name="radio_alamat" value="alamat1"/>
+                                        <input type="radio" id="primary20" name="radio_merk" value="1"/>
                                         <label for="primary20">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -293,7 +294,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Kondisi Barang : </label>
                                         </div>
-                                            <input type="text" class="form-control" id="kondisi_barang" disabled="disabled" value="<?php 
+                                            <input type="text" class="form-control" name="kondisi_bar" id="kondisi_barang" readonly="true" value="<?php 
                                                 if($data_register->register = "B") {
                                                     echo "Baik";
                                                 } elseif ($data_register->register = "KB") {
@@ -308,11 +309,11 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary21" name="radio_kondisi" value="kondisi0"/>
+                                        <input type="radio" id="primary21" name="radio_kondisi" value="0" required="required"/>
                                         <label for="primary21">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary22" name="radio_kondisi" value="kondisi1"/>
+                                        <input type="radio" id="primary22" name="radio_kondisi" value="1"/>
                                         <label for="primary22">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -326,20 +327,20 @@
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Merk / Tipe :</label>
+                                            <label class="input-group-text" id="basic-addon3">Tipe :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="merk_tipe" disabled="disabled" value="<?php echo $data_register->tipe;?>">
+                                            <input type="text" class="form-control" name="tipe_barang" id="tipe_barang" readonly="true" value="<?php echo $data_register->tipe;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary23" name="radio_merk" value="merk0"/>
+                                        <input type="radio" id="primary23" name="radio_tipe" value="0" required="required"/>
                                         <label for="primary23">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary24" name="radio_merk" value="merk1"/>
+                                        <input type="radio" id="primary24" name="radio_tipe" value="1"/>
                                         <label for="primary24">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -355,18 +356,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nomor Polisi :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="nopol" style="text-transform:uppercase" disabled="disabled" value="<?php echo $data_register->nopol;?>">
+                                            <input type="text" class="form-control" name="nopol" id="nopol" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register->nopol;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary25" name="radio_nopol" value="nopol0"/>
+                                        <input type="radio" id="primary25" name="radio_nopol" value="0" required="required"/>
                                         <label for="primary25">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary26" name="radio_nopol" value="nopol1"/>
+                                        <input type="radio" id="primary26" name="radio_nopol" value="1"/>
                                         <label for="primary26">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -382,18 +383,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nomor Rangka Seri :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="noka" style="text-transform:uppercase" disabled="disabled" value="<?php echo $data_register->no_rangka_seri;?>">
+                                            <input type="text" class="form-control" name="noka" id="noka" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register->no_rangka_seri;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary27" name="radio_no_rangka" value="rangka0"/>
+                                        <input type="radio" id="primary27" name="radio_no_rangka" value="0" required="required"/>
                                         <label for="primary27">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary28" name="radio_no_rangka" value="rangka1"/>
+                                        <input type="radio" id="primary28" name="radio_no_rangka" value="1"/>
                                         <label for="primary28">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -409,18 +410,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nomor Mesin :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="no_mesin" style="text-transform:uppercase" disabled="disabled" value="<?php echo $data_register->no_mesin;?>">
+                                            <input type="text" class="form-control" name="no_mesin" id="no_mesin" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register->no_mesin;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary29" name="radio_mesin" value="mesin0"/>
+                                        <input type="radio" id="primary29" name="radio_mesin" value="0" required="required"/>
                                         <label for="primary29">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary30" name="radio_mesin" value="mesin1"/>
+                                        <input type="radio" id="primary30" name="radio_mesin" value="1"/>
                                         <label for="primary30">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -435,18 +436,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nomor BPKB :</label>
                                         </div>
-                                            <input type="text" class="form-control" style="text-transform:uppercase" id="no_bpkb" disabled="disabled" value="<?php echo $data_register->no_bpkb?>">
+                                            <input type="text" class="form-control" style="text-transform:uppercase" name="no_bpkb" id="no_bpkb" readonly="true" value="<?php echo $data_register->no_bpkb?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary31" name="radio_bpkb" value="bpkb0"/>
+                                        <input type="radio" id="primary31" name="radio_bpkb" value="0" required="required"/>
                                         <label for="primary31">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary32" name="radio_bpkb" value="bpkb1"/>
+                                        <input type="radio" id="primary32" name="radio_bpkb" value="1"/>
                                         <label for="primary32">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -461,18 +462,18 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="inputGroupSelect01">Penggunaan Barang : </label>
                                     </div>
-                                    <input type="text" class="form-control" id="penggunaan" disabled="disabled" placeholder="12345678-2022-200901-2">
+                                    <input type="text" class="form-control" name="penggunaan" id="penggunaan" readonly="true" value="Pemerintah Kota">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary33" name="radio_pengguna" value="pengguna0"/>
+                                        <input type="radio" id="primary33" name="radio_pengguna" value="0" required="required"/>
                                         <label for="primary33">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary34" name="radio_pengguna" value="pengguna1"/>
+                                        <input type="radio" id="primary34" name="radio_pengguna" value="1"/>
                                         <label for="primary34">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -487,18 +488,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Data Tercatat Ganda :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="catat_ganda" disabled="disabled" placeholder="12345678-2022-200901-2">
+                                            <input type="text" class="form-control" name="catat_ganda" id="catat_ganda" readonly="true" placeholder="-" value="-">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary35" name="radio_ganda" value="ganda0"/>
+                                        <input type="radio" id="primary35" name="radio_ganda" value="0" required="required"/>
                                         <label for="primary35">Ya</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary36" name="radio_ganda" value="ganda1"/>
+                                        <input type="radio" id="primary36" name="radio_ganda" value="1"/>
                                         <label for="primary36">Tidak</label>
                                     </div>
                                 </div>
@@ -510,7 +511,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Titik Koordinat :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="kode_register" placeholder="Input Titik Koordinat">
+                                            <input type="text" class="form-control" id="koordinat" name="koordinat" placeholder="Input Titik Koordinat">
                                     </div>
                             </div>
                             <div class="form-group col-md-8">
@@ -518,13 +519,13 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Lainnya</label>
                                         </div>
-                                            <input type="text" class="form-control" id="kode_register" placeholder="......">
+                                            <input type="text" class="form-control" name="lainnya" id="kode_register" placeholder="......">
                                     </div>
                             </div>
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>
-                                        <textarea class="form-control" rows="3" value="<?php echo $data_register->keterangan?>"></textarea>
+                                        <textarea class="form-control" name="keterangan" rows="3" value="<?php echo $data_register->keterangan?>"></textarea>
                                     </div>
                             </div>
 
@@ -668,7 +669,7 @@
                     <!-- /.modal -->
                     
                     <!-- Modal Untuk Input Nama Spesifikasi Barang -->
-                        <div class="modal fade" id="modal-spek-barang">
+                        <!-- <div class="modal fade" id="modal-spek-barang">
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -682,11 +683,11 @@
                                         <button type="button" class="btn btn-danger" onclick="klik_spek_barang(false)" data-dismiss="modal">Batal</button>
                                         <button type="submit" class="btn btn-success" onclick="klik_spek_barang(true)" data-dismiss="modal">Simpan Data</button>
                                     </div>
-                            </div>
+                            </div> -->
                                 <!-- modal-content --> 
-                            </div>
+                            <!-- </div> -->
                             <!-- /.modal-dialog -->
-                        </div>
+                        <!-- </div> -->
                     <!-- /.modal -->
 
                     <!-- Modal Untuk Input Satuan -->
@@ -772,8 +773,8 @@
                     </div>
                     <!-- /.modal -->
 
-                    <!-- Modal Untuk Input Nama Alamat Barang -->
-                    <div class="modal fade" id="modal-alamat-barang">
+                    <!-- Modal Untuk Input Nama Merk Barang -->
+                    <div class="modal fade" id="modal-merk-barang">
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -781,11 +782,11 @@
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
-                                        <input type="text" class="form-control" id="input_alamat" placeholder="4 Pintu, 250 cc, Memory 500GB">
+                                        <input type="text" class="form-control" id="input_merk" placeholder="Diisi Merk Barang....">
                                     </div>
                                     <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-danger" onclick="klik_alamat_barang(false)" data-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-success" onclick="klik_alamat_barang(true)" data-dismiss="modal">Simpan Data</button>
+                                        <button type="button" class="btn btn-danger" onclick="klik_merk_barang(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success" onclick="klik_merk_barang(true)" data-dismiss="modal">Simpan Data</button>
                                     </div>
                             </div>
                                 <!-- modal-content --> 
@@ -821,8 +822,8 @@
                     </div>
                     <!-- /.modal -->
 
-                    <!-- Modal Untuk Input Merk/Tipe Barang -->
-                    <div class="modal fade" id="modal-merk-barang">
+                    <!-- Modal Untuk Input Tipe Barang -->
+                    <div class="modal fade" id="modal-tipe-barang">
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -830,11 +831,11 @@
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
-                                        <input type="text" class="form-control" id="input_merk" placeholder="Diisi Merk/Tipe Barang">
+                                        <input type="text" class="form-control" id="input_tipe" placeholder="Diisi Tipe Barang....">
                                     </div>
                                     <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-danger" onclick="klik_merk_barang(false)" data-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-success" onclick="klik_merk_barang(true)" data-dismiss="modal">Simpan Data</button>
+                                        <button type="button" class="btn btn-danger" onclick="klik_tipe_barang(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success" onclick="klik_tipe_barang(true)" data-dismiss="modal">Simpan Data</button>
                                     </div>
                             </div>
                                 <!-- modal-content --> 
@@ -941,8 +942,7 @@
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
                                         <select class="custom-select" id="input_penggunaan">
-                                            <option selected disabled="disabled">Pemerintah Kota</option>
-                                            <option value="Pemerintah Kota">Pemerintah Kota</option>
+                                            <option selected value="Pemerintah Kota">Pemerintah Kota</option>
                                             <option value="Pemerintah Pusat">Pemerintah Pusat</option>
                                             <option value="Pemerintah Daerah Lainnya">Pemerintah Daerah Lainnya</option>
                                             <option value="Pihak Lainnya">Pihak Lainnya</option>

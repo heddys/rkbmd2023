@@ -9,14 +9,14 @@
         }    
 
 
-            public function get_all_register($where,$lokasi){
+            public function get_all_register($where,$lokasi,$kib){
 
                 $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru');
                 $this->db->from('data_kib');
                 $this->db->where($where);
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
                 $this->db->like('nomor_lokasi',$lokasi);
-                $this->db->like('kode64_baru','1.3.02');
+                $this->db->like('kode108_baru',$kib);
                 // $q1=$this->db->get();
 
                 // $this->db->select('nomor_lokasi_baru,register,kode64_baru,nama_barang_baru,merk_alamat_baru,tipe_baru,harga_baru');
@@ -44,6 +44,25 @@
             public function data_satuan()
             {
                 return $this->db->get('satuan');
+            }
+
+            public function save_isi_form($data)
+            {
+                $this->db->insert('register_isi', $data);
+                $this->db->error(); 
+            }
+
+            public function save_status_register($data)
+            {
+                $this->db->insert('register_status',$data);
+                $this->db->error();
+            }
+
+            public function tandai_kib($register)
+            {
+                $this->db->where('register', $register);
+                $this->db->update('data_kib', array('status' => 1));
+                $this->db->error();
             }
 
  }
