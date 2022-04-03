@@ -62,9 +62,39 @@
       </li>
     </ul>
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto fontku">
-      <div id="clock"></div> &nbsp | &nbsp<div id="date"></div>
+    <ul class="navbar-nav ml-auto">
+          jjsakslakdjs  
     </ul>
+    <ul class="navbar-nav ml-15">
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 Register Proses Verifikasi
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 Register Di Tolak
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 Register Terverifikasi
+          </a>
+          <!-- <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> -->
+        </div>
+      </li>
+    </ul>
+    &nbsp; &nbsp; &nbsp;
+    <ul class="navbar-nav ml-15 fontku">
+      <div id="clock"></div> &nbsp; | &nbsp;<div id="date"></div>
+    </ul>
+    
   </nav>
   <!-- /.navbar -->
 
@@ -193,6 +223,53 @@
               </li>
               <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/index/6');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Lain-Lain 1.5.03</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Status Register
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/1');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.01</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/2');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.02</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/3');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.03</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/4');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.04</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/5');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.05</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/6');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Lain-Lain 1.5.03</p>
                 </a>

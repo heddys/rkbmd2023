@@ -1,43 +1,80 @@
 <section class="content">
       <div class="row">
-        <div class="col-12">
-          <!-- <a href="<?php echo site_url('/home/rkbform');?>" class="btn btn-primary btn-flat">Tambah Kegiatan </a>
-          <a href="#" class="btn btn-success btn-flat excel" disabled>Export Excel</a> -->
+
+      <div class="col-12">
+          
           <hr>
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                      <center>KARTU INVENTARIS BARANG - 
-                          <?php if ($kib_apa == 1) { 
-                                    echo "ASET TETAP TANAH";
-                                } 
-                                elseif ($kib_apa == 2) {
-                                        echo "ASET TETAP PERALATAN DAN MESIN";
-                                } 
-                                elseif ($kib_apa == 3) {
-                                        echo "ASET TETAP GEDUNG DAN BANGUNAN";
-                                } 
-                                elseif ($kib_apa == 4) {
-                                        echo "ASET TETAP JALAN, IRIGASI DAN JARINGAN";
-                                }
-                                elseif ($kib_apa == 5) {
-                                    echo "ASET TETAP LAINNYA";
-                                }
-                                elseif ($kib_apa == 6) {
-                                    echo "ASET TIDAK BERWUJUD";
-                                } 
-                                ?></center></h3>
+                      <center>STATUS REGISTER SUDAH BISA CETAK FORM - PERALATAN DAN MESIN</center></h3>
+                      
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
-	              <table id="example1" class="table table-bordered table-hover ">
+	              <table id="tabel_cetak" class="table table-bordered table-hover ">
 	                <thead class="thead-dark">
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Register</center></th>
 	                  <th><center>Kode Neraca</center></th>
 	                  <th><center>Nama Barang</center></th>
-	                  <th><center>Spesifikasi Barang</center></th>
+	                  <th><center>Merk / Tipe Barang</center></th>
+	                  <th><center>Nilai Perolehan </center></th>
+	                  <th><center>Aksi</center></th>
+	                </tr>
+	                </thead>
+                  <tbody>
+                    <?php $x=1; foreach ($cetak->result() as $c) {?>
+	                	<tr>
+	                  		<td><center><?php echo $x?></center></td>
+	                  		<td><center><?php echo $c->register?></center></td>
+	                  		<td><center><?php echo $c->kode64_baru?></center></td>
+                            <td><center><?php echo $c->nama_barang?></center></td>
+                            <td><center><?php echo $c->merk_alamat." - ".$c->tipe?></center></td>
+                            <td><center><?php echo number_format($c->harga_baru,2,',','.');?></center></td>
+	                  		<td>  
+                              <form role="form" action="<?php echo site_url();?>/status_form/cetak_form" method="post">
+                                <center>
+                                  <button type="submit" class="btn btn-sm btn-success" title="Isi Form Inventarisasi"><i class="fa fa-print"></i></a>
+                                    <input type="hidden" name="register" value="<?php echo $c->register?>">
+                                </center></td>
+                              </form>
+	                  	</tr>
+	                  <?php $x++; }?>
+	                </tbody>
+	              </table>
+	            </div>
+                
+	            <!-- /.card-body -->
+	          </div>
+	          <!-- /.card --> 
+	        </div>
+	        <!-- /.col -->
+
+            
+	      </div>
+	      <!-- /.row -->
+
+
+        <div class="col-12">   
+          <hr>
+        	<div class="card">
+	            <div class="card-header">
+	              <h3 class="card-title">
+                      <center>STATUS REGISTER PROSES VERIFIKASI - PERALATAN DAN MESIN</center></h3>
+                      
+	            </div>
+	            <!-- /.card-header -->
+	            <div class="card-body" style="overflow-x:auto;">
+	              <table id="tabel_proses_verif" class="table table-bordered table-hover ">
+	                <thead>
+	                <tr>
+	                  <th><center>No.</center></th>
+	                  <th><center>Register</center></th>
+	                  <th><center>Kode Neraca</center></th>
+	                  <th><center>Nama Barang</center></th>
+	                  <th><center>Merk / Tipe Barang</center></th>
 	                  <th><center>Nilai Perolehan </center></th>
 	                  <th><center>Aksi</center></th>
 	                </tr>
@@ -54,7 +91,7 @@
 	                  		<td>  
                               <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
                                 <center>
-                                  <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
+                                  <button type="submit" class="btn btn-sm btn-warning" title="Isi Form Inventarisasi"><i class="far fa-eye"></i></a>
                                     <input type="hidden" name="register" value="<?php echo $row->register?>">
                                 </center></td>
                               </form>
@@ -63,16 +100,21 @@
 	                </tbody>
 	              </table>
 	            </div>
+                
 	            <!-- /.card-body -->
 	          </div>
 	          <!-- /.card --> 
 	        </div>
 	        <!-- /.col -->
+
+            
 	      </div>
 	      <!-- /.row -->
+
+          
 	    </section>
 	    <!-- /.content -->
-	    <div class="modal fade" id="modal-xl">
+	    <div class="modal fade" id="modal-detail-barang">
            <div class="modal-dialog modal-xl ">
               <div class="modal-content">
                  <div class="modal-header">

@@ -36,7 +36,7 @@ class Pagination extends CI_Controller {
           $config['per_page'] = $perpage;
           $this->pagination->initialize($config);
 
-          $this->load->view('pagination', $data);
+          $this->load->view('pagination_view', $data);
      }
-
+     
 }

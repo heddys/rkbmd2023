@@ -30,6 +30,8 @@
 
  $(function () {
    $("#example1").DataTable();
+   $("#tabel_cetak").DataTable();
+   $("#tabel_proses_verif").DataTable();
 
    function showTime() {
       var today = new Date();

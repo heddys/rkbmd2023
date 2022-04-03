@@ -12,7 +12,8 @@ class Form_inv extends CI_Controller {
 		$nomor_lokasi=$this->session->userdata('no_lokasi');
 
         $where = array (
-            'ekstrakomtabel' =>  NULL
+            'ekstrakomtabel' =>  NULL,
+			'status' => NULL
         );
 
         $data['kib_apa']=$id;
@@ -74,16 +75,6 @@ class Form_inv extends CI_Controller {
 		$kode_opd=$this->session->userdata('kode_opd');
 		$result=$this->auth_model->cek_exist($kode_opd)->num_rows();
 		return $result;
-	}
-
-	public function cetak_form()
-	{
-       	$this->pdf->load_view('cetak_form_inv');
-		$this->pdf->set_paper("legal", "portrait");
-		$this->pdf->render();
-		// $this->pdf->stream("name-file.pdf");
-		$this->pdf->stream("dompdf_out.pdf", array("Attachment" => false));
-		
 	}
 
 	public function save_isi_form_peralatan_mesin()
