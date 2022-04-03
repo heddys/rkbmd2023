@@ -36,8 +36,8 @@
           font-size: 11px;
         }
     .rectangle {
-        height: 100px;
-        width: 370px;
+        height: 230px;
+        width: 340px;
         border: 2px solid black;
         }
     </style>
@@ -604,63 +604,63 @@
                 <th>................................................................</th>
             </tr>
             <tr>
-                <th width="120px" rowspan="4"><div class="rectangle"></div></th>
+                <!-- <th width="120px" rowspan="4"><div class="rectangle"></div></th> -->
+                <th width="120px">
+                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo1.png" alt="checkbox" width="70%" height="70%">
+                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo2.png" alt="checkbox" width="70%" height="70%">
+                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo4.jpg" alt="checkbox" width="70%" height="70%">
+                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/avatar04.png" alt="checkbox" width="70%" height="70%">
+                <th>
                 <th width="25px"></th>
                 <th></th>
                 <th></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <th width="120px"></th>
+                <th></th>
+                <th></th>
+                <th colspan="4" width="100px" style="text-align: right;"><center><?php echo "Surabaya, " . date("Y-m-d");?></center></th>
             </tr>
             <tr>
                 <th width="120px"></th>
                 <th width="25px"></th>
                 <th></th>
-                <th></th>
-                <th></th>
-                <th colspan="3" width="100px" style="text-align: right;"><center><?php echo "Surabaya, " . date("Y-m-d");?></center></th>
-            </tr>
-            <tr>
-                <th width="120px"></th>
-                <th width="25px"></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th colspan="3" width="100px" style="text-align: right;"><center>Pelaksana/Petugas Inventarisasi</center></th>
+                <th colspan="4" width="100px" style="text-align: right;"><center>Pelaksana/Petugas Inventarisasi</center></th>
             </tr>
             <tr>
                 <th></th>
                 <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr> 
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th><center>No.</center></th>
+                <th style="text-align: right;">No. &nbsp;&nbsp;</th>
                 <th colspan="3">Nama</th>
+                <th></th>
                 <th></th>
             </tr>   
             <tr>
                 <th></th>
                 <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th><center>1.</center></th>
-                <th colspan="2">Iftita Nuria K. S.Kom, S.AK, S.Pd, M.TR</th>
+                <th style="text-align: right;">1. &nbsp;&nbsp;</th>
+                <th colspan="5">Iftita Nuria K. S.Kom, S.AK, S.Pd, M.TR</th>
                 <th>...............</th>
+                <th></th>
             </tr><tr>
                 <th></th>
                 <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th><center>2.</center></th>
-                <th colspan="2">Iftita Nuria K. S.Kom, S.AK, S.Pd, M.TR</th>
+                <th style="text-align: right;">2. &nbsp;&nbsp;</th>
+                <th colspan="5">M. Ali Fikri, S.KK, S.Kom, M.Sc.</th>
                 <th>................</th>
+                <th></th>
             </tr>  
             
             
