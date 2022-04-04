@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Form_inv extends CI_Controller {
 
     
-    public function index ($id)
+    public function index ($id, $num = '')
 	{	
 		$this->cek_sess();
 		$data['page']="Form Inventarisasi";
@@ -33,8 +33,34 @@ class Form_inv extends CI_Controller {
 				$kib = "1.5.3";
 			}
 
-        $data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib);
-        $this->load->view('h_tablerkb',$data);		
+		$perpage = 10;
+		$config['next_link'] = 'Selanjutnya';
+		$config['prev_link'] = 'Sebelumnya';
+		$config['first_link'] = 'Awal';
+		$config['last_link'] = 'Akhir';
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$offset = $this->uri->segment(1);
+		$data['semua_pengguna'] = $this->form_model->get_all_register_pagination($where,$nomor_lokasi,$kib,$perpage, $offset)->result();
+
+		$config['base_url'] = 'http://localhost:8080/rkbmd2023/index.php/form_inv/index/2/';
+		$config['total_rows'] = $this->form_model->get_all_register($where,$nomor_lokasi,$kib)->num_rows();
+		$config['per_page'] = $perpage;
+		$this->pagination->initialize($config);
+
+        $this->load->view('h_tablerkb',$data);
 		$this->load->view('form_page');
 		$this->load->view('h_footerrkb');		
 		
