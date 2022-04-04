@@ -11,7 +11,7 @@
                 </center>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form role="form" action="save_isi_form_peralatan_mesin" method="post">
+                    <form role="form" action="save_isi_form_peralatan_mesin" method="post" enctype="multipart/form-data">
                         <!-- select -->
                        
                         <h4><?php echo $data_register->register." - ".$data_register->nama_barang;?></h4>
@@ -533,7 +533,7 @@
                                 <div class="mb-3">
                                 <label><h5><b>Upload Foto atau Denah Aset</b></h5></label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" name="filename">
+                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                 </div>

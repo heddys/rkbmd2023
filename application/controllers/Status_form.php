@@ -40,7 +40,7 @@ class Status_form extends CI_Controller {
             $kib = "1.5.3";
         }
 
-        $data['register']=$this->form_model->get_all_register($data_proses_verif,$nomor_lokasi,$kib);
+        $data['register']=$this->form_model->get_all_register_proses_tolak($data_proses_verif,$nomor_lokasi,$kib);
         $data['cetak']=$this->form_model->get_all_register($data_dicetak,$nomor_lokasi,$kib);
 
         $this->load->view('h_tablerkb',$data);		
@@ -73,6 +73,7 @@ class Status_form extends CI_Controller {
         $where = array ( 'register' => $register );
 
         $data['data_register'] = $this->form_model->ambil_register_form($where)->row();
+        $data['image']=$this->form_model->ambil_file($where)->result();
         $data['lokasi'] = $this->form_model->ambil_register($where);
 
        	$this->pdf->load_view('cetak_form_inv',$data);

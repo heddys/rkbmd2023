@@ -13,6 +13,8 @@
   <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>ini_assets/image/surabaya1.png" />
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/toastr/toastr.min.css">
@@ -96,7 +98,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="<?php echo site_url('home');?>" class="nav-link">
+            <a href="<?php echo site_url('home_verifikator');?>" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -105,13 +107,13 @@
           </li>
           <hr>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <!-- <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Entry Rencana Kebutuhan
+                Rencana Kebutuhan
                 <i class="fas fa-angle-left right"></i>
               </p>
-            </a>
+            </a> -->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('home/rkbform');?>" class="nav-link">
@@ -128,13 +130,13 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <!-- <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 List Data
                 <i class="fas fa-angle-left right"></i>
               </p>
-            </a>
+            </a> -->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('home/tabel_rkb');?>" class="nav-link">
@@ -159,19 +161,19 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/index/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.01</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/2');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.02</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/index/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.03</p>
@@ -194,7 +196,7 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Lain-Lain 1.5.03</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           <!-- <li class="nav-item has-treeview">
@@ -210,30 +212,30 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                List Register Tolak
-                <i class="fas fa-angle-left right"></i>
+                List Approved Register
+                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo site_url('status_form/index/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.01</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/2');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/approved_page');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.02</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo site_url('status_form/index/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.03</p>
                 </a>
-              </li>
-              <li class="nav-item">
+              </li> -->
+              <!-- <li class="nav-item">
                 <a href="<?php echo site_url('status_form/index/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.04</p>
@@ -250,9 +252,18 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Lain-Lain 1.5.03</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
+         <!-- <li class="nav-item has-treeview">
+            <a href="<?php echo site_url('home/desk_komponen');?>" class="nav-link">
+              <i class="nav-icon fab fa-buffer"></i>
+              <p>
+                Keterangan Eksisting
+                <span class="right badge badge-danger"><?php echo $exist?></span>
+              </p>
+            </a>
+          </li> -->
          <li class="nav-header"><strong>KAMUS</strong></li>
          <li class="nav-item">
             <a href="<?php echo site_url('home/list_kegiatan');?>" class="nav-link">

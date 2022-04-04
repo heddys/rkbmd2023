@@ -166,6 +166,59 @@ class Form_inv extends CI_Controller {
 		// echo "Koordinat = ".$koordinat."<p><hr></p>";
 		// echo "Keterangan = ".$keterangan."<p><hr></p>";
 
+		$data = array(); 
+        $errorUploadType = $statusMsg = ''; 
+         
+           
+            // If files are selected to upload 
+            if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0){ 
+                $filesCount = count($_FILES['files']['name']); 
+                for($i = 0; $i < $filesCount; $i++){ 
+                    $_FILES['file']['name']     = $_FILES['files']['name'][$i]; 
+                    $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
+                    $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
+                    $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
+                    $_FILES['file']['size']     = $_FILES['files']['size'][$i]; 
+                     
+                    // File upload configuration 
+                    $uploadPath = 'ini_assets/upload/'; 
+                    $config['upload_path'] = $uploadPath; 
+                    $config['allowed_types'] = 'jpg|jpeg'; 
+                    $config['max_size']    = '7000'; 
+                    //$config['max_width'] = '1024'; 
+                    //$config['max_height'] = '768'; 
+                     
+                    // Load and initialize upload library 
+                    $this->load->library('upload', $config); 
+                    $this->upload->initialize($config); 
+                     
+                    // Upload file to server 
+                    if($this->upload->do_upload('file')){ 
+                        // Uploaded file data 
+                        $fileData = $this->upload->data();
+						$uploadData[$i]['register'] = $register;
+                        $uploadData[$i]['file_upload'] = $fileData['file_name']; 
+                        $uploadData[$i]['created_date'] = $updated_date;
+						$uploadData[$i]['created_time'] = $updated_time; 
+                    }else{  
+                        $errorUploadType .= $_FILES['file']['name'].' | ';  
+                    } 
+                } 
+                 
+                $errorUploadType = !empty($errorUploadType)?'<br/>File Type Error: '.trim($errorUploadType, ' | '):''; 
+                if(!empty($uploadData)){ 
+                    // Insert files data into the database 
+                    $insert = $this->form_model->save_image($uploadData); 
+                     
+                    // Upload status message 
+                    $statusMsg = $insert?'Files uploaded successfully!'.$errorUploadType:'Some problem occurred, please try again.'; 
+                }else{ 
+                    $statusMsg = "Sorry, there was an error uploading your file.".$errorUploadType; 
+                } 
+            }else{ 
+                $statusMsg = 'Please select image files to upload.'; 
+            } 
+		
 		$data_form_isian = array(
 		'register' => $register,
 		'kode_barang' => $kode_barang,

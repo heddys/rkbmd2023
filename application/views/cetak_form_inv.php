@@ -613,10 +613,10 @@
             <tr>
                 <!-- <th width="120px" rowspan="4"><div class="rectangle"></div></th> -->
                 <th width="120px">
-                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo1.png" alt="checkbox" width="150" height="150">
-                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo2.png" alt="checkbox" width="150" height="150">
-                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/photo4.jpg" alt="checkbox" width="150" height="150">
-                        <img style="Padding-top: 5px;" src="./ini_assets/dist/img/avatar04.png" alt="checkbox" width="150" height="150">
+                        <?php foreach ($image as $key) {?>
+                            <img style="Padding-top: 5px;" src="./ini_assets/upload/<?php echo $key->file_upload?>" alt="checkbox" width="150" height="150">
+                        <?php } ?>
+                        
                 <th>
                 <th width="25px"></th>
                 <th></th>
@@ -658,17 +658,10 @@
                 <th></th>
                 <th></th>
                 <th style="text-align: right;">1. &nbsp;&nbsp;</th>
-                <th colspan="5">Iftita Nuria K. S.Kom, S.AK, S.Pd, M.TR</th>
+                <th colspan="5"><?php ?></th>
                 <th>...............</th>
                 <th></th>
-            </tr><tr>
-                <th></th>
-                <th></th>
-                <th style="text-align: right;">2. &nbsp;&nbsp;</th>
-                <th colspan="5">M. Ali Fikri, S.KK, S.Kom, M.Sc.</th>
-                <th>................</th>
-                <th></th>
-            </tr>  
+            </tr> 
             
             
         </tbody>

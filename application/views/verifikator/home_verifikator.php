@@ -19,7 +19,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('#');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-6 col-6">

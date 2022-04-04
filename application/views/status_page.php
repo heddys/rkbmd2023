@@ -1,3 +1,4 @@
+
 <section class="content">
       <div class="row">
 
@@ -27,6 +28,7 @@
                   <tbody>
                     <?php $x=1; foreach ($cetak->result() as $c) {?>
 	                	<tr>
+						
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $c->register?></center></td>
 	                  		<td><center><?php echo $c->kode64_baru?></center></td>
@@ -62,7 +64,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                      <center>STATUS REGISTER PROSES VERIFIKASI - PERALATAN DAN MESIN</center></h3>
+                      <center>STATUS REGISTER PROSES VERIFIKASI / REGISTER DI TOLAK - PERALATAN DAN MESIN</center></h3>
                       
 	            </div>
 	            <!-- /.card-header -->
@@ -81,20 +83,22 @@
 	                </thead>
                   <tbody>
                     <?php $x=1; foreach ($register->result() as $row) {?>
-	                	<tr>
+	                	<?php if ($row->status == 3) {echo "<tr class='table-danger'>";} else {echo "<tr>";}?>
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $row->register?></center></td>
 	                  		<td><center><?php echo $row->kode64_baru?></center></td>
                             <td><center><?php echo $row->nama_barang?></center></td>
                             <td><center><?php echo $row->merk_alamat." - ".$row->tipe?></center></td>
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
-	                  		<td>  
+	                  		<td> 
+							  <?php if ($row->status == 3) {?>
                               <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
                                 <center>
-                                  <button type="submit" class="btn btn-sm btn-warning" title="Isi Form Inventarisasi"><i class="far fa-eye"></i></a>
+                                  <button type="submit" class="btn btn-sm btn-info" title="Edit Form Inventarisasi"><i class="far fa-edit"></i>
                                     <input type="hidden" name="register" value="<?php echo $row->register?>">
                                 </center></td>
                               </form>
+							 <?php } else { echo "<center><button type='button' class='btn btn-sm btn-warning' title='Register Masih Dalam Proses Verifikasi'><i class='fa fa-exclamation-triangle'></i></center>";}?>
 	                  	</tr>
 	                  <?php $x++; }?>
 	                </tbody>

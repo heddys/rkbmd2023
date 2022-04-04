@@ -33,60 +33,6 @@
                             <td><center><?php echo $row->merk_alamat." - ".$row->tipe?></center></td>
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>  
-							  <form role="form" action="<?php echo site_url();?>/home_verifikator/verif_register" method="post">
-                                <center>
-                                  <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
-                                    <input type="hidden" name="register" value="<?php echo $row->register?>">
-                                </center></td>
-                              </form>
-                            </td>
-	                  	</tr>
-	                  <?php $x++; }?>
-	                </tbody>
-	              </table>
-	            </div>
-	            <!-- /.card-body -->
-	          </div>
-	          <!-- /.card --> 
-	        </div>
-	        <!-- /.col -->
-	      </div>
-	      <!-- /.row -->
-
-		  <div class="row">
-        <div class="col-12">
-          <!-- <a href="<?php echo site_url('/home/rkbform');?>" class="btn btn-primary btn-flat">Tambah Kegiatan </a>
-          <a href="#" class="btn btn-success btn-flat excel" disabled>Export Excel</a> -->
-          <hr>
-        	<div class="card">
-	            <div class="card-header">
-	              <h3 class="card-title">
-                      <center>LIST REGISTER YANG TELAH DI TOLAK - PERALATAN DAN MESIN</center></h3>
-	            </div>
-	            <!-- /.card-header -->
-	            <div class="card-body" style="overflow-x:auto;">
-	              <table id="tabel_tolak_register" class="table table-bordered table-hover ">
-	                <thead class="thead-dark">
-	                <tr>
-	                  <th><center>No.</center></th>
-	                  <th><center>Register</center></th>
-	                  <th><center>Kode Neraca</center></th>
-	                  <th><center>Nama Barang</center></th>
-	                  <th><center>Spesifikasi Barang</center></th>
-	                  <th><center>Nilai Perolehan </center></th>
-	                  <th><center>Aksi</center></th>
-	                </tr>
-	                </thead>
-                  <tbody>
-                    <?php $x=1; foreach ($tolak->result() as $t) {?>
-	                	<tr>
-	                  		<td><center><?php echo $x?></center></td>
-	                  		<td><center><?php echo $t->register?></center></td>
-	                  		<td><center><?php echo $t->kode64_baru?></center></td>
-                            <td><center><?php echo $t->nama_barang?></center></td>
-                            <td><center><?php echo $t->merk_alamat." - ".$t->tipe?></center></td>
-                            <td><center><?php echo number_format($t->harga_baru,2,',','.');?></center></td>
-	                  		<td>  
 							  <!-- <form role="form" action="<?php echo site_url();?>/home_verifikator/verif_register" method="post">
                                 <center>
                                   <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>

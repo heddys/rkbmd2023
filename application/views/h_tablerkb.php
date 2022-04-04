@@ -54,7 +54,11 @@
       </li>
     </ul>
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto fontku">
+          <strong><u><?php echo $this->session->userdata('role');?></u></strong> 
+    </ul>
+    &nbsp; &nbsp; &nbsp;
+    <ul class="navbar-nav ml-15 fontku">
       <ul class="navbar-nav ml-auto fontku">
       <div id="clock"></div> &nbsp | &nbsp<div id="date"></div>
     </ul>
@@ -105,13 +109,13 @@
           </li>
           <hr>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <!-- <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Entry Rencana Kebutuhan
                 <i class="fas fa-angle-left right"></i>
               </p>
-            </a>
+            </a> -->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('home/rkbform');?>" class="nav-link">
@@ -128,13 +132,13 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <!-- <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 List Data
                 <i class="fas fa-angle-left right"></i>
               </p>
-            </a>
+            </a> -->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('home/tabel_rkb');?>" class="nav-link">
@@ -159,19 +163,19 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/index/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.01</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/index/2');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.02</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/index/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.03</p>
@@ -194,7 +198,7 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Lain-Lain 1.5.03</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           <!-- <li class="nav-item has-treeview">
@@ -215,19 +219,19 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo site_url('status_form/index/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.01</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="<?php echo site_url('status_form/index/2');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.02</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo site_url('status_form/index/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.03</p>
@@ -250,7 +254,7 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Lain-Lain 1.5.03</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
          <li class="nav-header"><strong>KAMUS</strong></li>
