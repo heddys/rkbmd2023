@@ -30,7 +30,7 @@
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
-	              <table class="table table-bordered table-hover ">
+	              <table id="example1" class="table table-bordered table-hover ">
 	                <thead class="thead-dark">
 	                <tr>
 	                  <th><center>No.</center></th>
@@ -43,7 +43,7 @@
 	                </tr>
 	                </thead>
                   <tbody>
-                    <?php $x=1; foreach ($semua_pengguna as $row) {?>
+                    <?php $x=1; foreach ($register->result() as $row) {?>
 	                	<tr>
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $row->register?></center></td>
@@ -62,9 +62,6 @@
 	                  <?php $x++; }?>
 	                </tbody>
 	              </table>
-	              <nav style="text-align: right;" aria-label="Page navigation">
-	                    <?php echo $this->pagination->create_links(); ?>
-	               </nav>
 	            </div>
 	            <!-- /.card-body -->
 	          </div>

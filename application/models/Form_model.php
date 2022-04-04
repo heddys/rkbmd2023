@@ -18,6 +18,7 @@
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
                 $this->db->like('nomor_lokasi',$lokasi);
                 $this->db->like('kode108_baru',$kib);
+                $this->db->order_by("status","DESC");
                 // $q1=$this->db->get();
 
                 // $this->db->select('nomor_lokasi_baru,register,kode64_baru,nama_barang_baru,merk_alamat_baru,tipe_baru,harga_baru');
@@ -147,6 +148,12 @@
                 $this->db->where('register', $register);
                 $this->db->update('data_kib', array('status' => 1));
                 $this->db->error();
+            }
+
+            public function ambil_jurnal_penolakan($data)
+            {
+                $query = $this->db->get_where('jurnal_penolakan', $data);
+                return $query->row();
             }
 
  }

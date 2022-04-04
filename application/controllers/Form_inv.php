@@ -4,7 +4,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Form_inv extends CI_Controller {
 
     
-    public function index ($id, $num = '')
+    // public function index ($id, $num = '')
+	// {	
+	// 	$this->cek_sess();
+	// 	$data['page']="Form Inventarisasi";
+    //     $data['exist']=$this->cek_jumlah_exist();
+	// 	$nomor_lokasi=$this->session->userdata('no_lokasi');
+
+    //     $where = array (
+    //         'ekstrakomtabel' =>  NULL,
+	// 		'status' => NULL
+    //     );
+
+    //     $data['kib_apa']=$id;
+
+	// 		if($id=='1') {
+	// 			$kib = "1.3.1";
+	// 		} 
+	// 		elseif ($id=='2') {
+	// 			$kib = "1.3.2";
+	// 		} elseif ($id=='3') {
+	// 			$kib = "1.3.3";
+	// 		} elseif ($id=='4') {
+	// 			$kib = "1.3.4";
+	// 		} elseif ($kib=='5') {
+	// 			$kib = "1.3.5";
+	// 		} else { 
+	// 			$kib = "1.5.3";
+	// 		}
+
+	// 	// $perpage = 10;
+	// 	// $config['next_link'] = 'Selanjutnya';
+	// 	// $config['prev_link'] = 'Sebelumnya';
+	// 	// $config['first_link'] = 'Awal';
+	// 	// $config['last_link'] = 'Akhir';
+	// 	// $config['full_tag_open'] = '<ul class="pagination">';
+	// 	// $config['full_tag_close'] = '</ul>';
+	// 	// $config['num_tag_open'] = '<li>';
+	// 	// $config['num_tag_close'] = '</li>';
+	// 	// $config['cur_tag_open'] = '<li class="active"><a href="#">';
+	// 	// $config['cur_tag_close'] = '</a></li>';
+	// 	// $config['prev_tag_open'] = '<li>';
+	// 	// $config['prev_tag_close'] = '</li>';
+	// 	// $config['next_tag_open'] = '<li>';
+	// 	// $config['next_tag_close'] = '</li>';
+	// 	// $config['last_tag_open'] = '<li>';
+	// 	// $config['last_tag_close'] = '</li>';
+	// 	// $config['first_tag_open'] = '<li>';
+	// 	// $config['first_tag_close'] = '</li>';
+	// 	// $offset = $this->uri->segment(1);
+	// 	// $data['semua_pengguna'] = $this->form_model->get_all_register_pagination($where,$nomor_lokasi,$kib,$perpage, $offset)->result();
+
+	// 	$config['base_url'] = 'http://localhost/rkbmd2023/index.php/form_inv/index/2/';
+	// 	$config['total_rows'] = $this->form_model->get_all_register($where,$nomor_lokasi,$kib)->num_rows();
+	// 	$config['per_page'] = $perpage;
+	// 	$this->pagination->initialize($config);
+
+    //     $this->load->view('h_tablerkb',$data);
+	// 	$this->load->view('form_page');
+	// 	$this->load->view('h_footerrkb');		
+		
+	// }
+
+	public function index ($id)
 	{	
 		$this->cek_sess();
 		$data['page']="Form Inventarisasi";
@@ -33,34 +95,8 @@ class Form_inv extends CI_Controller {
 				$kib = "1.5.3";
 			}
 
-		// $perpage = 10;
-		// $config['next_link'] = 'Selanjutnya';
-		// $config['prev_link'] = 'Sebelumnya';
-		// $config['first_link'] = 'Awal';
-		// $config['last_link'] = 'Akhir';
-		// $config['full_tag_open'] = '<ul class="pagination">';
-		// $config['full_tag_close'] = '</ul>';
-		// $config['num_tag_open'] = '<li>';
-		// $config['num_tag_close'] = '</li>';
-		// $config['cur_tag_open'] = '<li class="active"><a href="#">';
-		// $config['cur_tag_close'] = '</a></li>';
-		// $config['prev_tag_open'] = '<li>';
-		// $config['prev_tag_close'] = '</li>';
-		// $config['next_tag_open'] = '<li>';
-		// $config['next_tag_close'] = '</li>';
-		// $config['last_tag_open'] = '<li>';
-		// $config['last_tag_close'] = '</li>';
-		// $config['first_tag_open'] = '<li>';
-		// $config['first_tag_close'] = '</li>';
-		// $offset = $this->uri->segment(1);
-		// $data['semua_pengguna'] = $this->form_model->get_all_register_pagination($where,$nomor_lokasi,$kib,$perpage, $offset)->result();
-
-		$config['base_url'] = 'http://localhost/rkbmd2023/index.php/form_inv/index/2/';
-		$config['total_rows'] = $this->form_model->get_all_register($where,$nomor_lokasi,$kib)->num_rows();
-		$config['per_page'] = $perpage;
-		$this->pagination->initialize($config);
-
-        $this->load->view('h_tablerkb',$data);
+        $data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib);
+        $this->load->view('h_tablerkb',$data);		
 		$this->load->view('form_page');
 		$this->load->view('h_footerrkb');		
 		
@@ -82,6 +118,29 @@ class Form_inv extends CI_Controller {
 
         $this->load->view('header',$data);		
 		$this->load->view('isi_form',$data);
+		$this->load->view('footer_isi_form');
+    }
+
+	public function isi_formulir_edit()
+    {
+        $this->cek_sess();
+		$data['page']="Edit Form Inventarisasi";
+        $data['exist']=$this->cek_jumlah_exist();
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+
+		
+		$register = $_POST['register'];
+		$where = array ( 'register' => $register );
+		$whereis = array ( 'is_register' => $register );
+		
+		$data['data_register'] = $this->form_model->ambil_register_form($where)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($whereis)->row();
+		$data['image'] = $this->form_model->ambil_file($where)->result();
+		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => NULL));
+
+        $this->load->view('header',$data);		
+		$this->load->view('edit_form',$data);
 		$this->load->view('footer_isi_form');
     }
 
@@ -195,12 +254,13 @@ class Form_inv extends CI_Controller {
 		$data = array(); 
         $errorUploadType = $statusMsg = ''; 
          
-           
+           $nama_file='';
             // If files are selected to upload 
             if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0){ 
                 $filesCount = count($_FILES['files']['name']); 
-                for($i = 0; $i < $filesCount; $i++){ 
-                    $_FILES['file']['name']     = $_FILES['files']['name'][$i]; 
+                for($i = 0; $i < $filesCount; $i++){
+					$nama_file=$_FILES['files']['name'][$i]."-".$register;
+                    $_FILES['file']['name']     = $nama_file; 
                     $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
                     $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
                     $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
@@ -228,7 +288,8 @@ class Form_inv extends CI_Controller {
 						$uploadData[$i]['created_time'] = $updated_time; 
                     }else{  
                         $errorUploadType .= $_FILES['file']['name'].' | ';  
-                    } 
+                    }
+
                 } 
                  
                 $errorUploadType = !empty($errorUploadType)?'<br/>File Type Error: '.trim($errorUploadType, ' | '):''; 
@@ -304,7 +365,7 @@ class Form_inv extends CI_Controller {
 		//Membuat tanda di data kib
 		$this->form_model->tandai_kib($register);
 
-		redirect('/Form_inv/index/2');
+		redirect('/status_form/index/2');
 
 
 	}

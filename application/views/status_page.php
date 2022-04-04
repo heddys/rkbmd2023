@@ -64,7 +64,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                      <center>STATUS REGISTER PROSES VERIFIKASI / REGISTER DI TOLAK - PERALATAN DAN MESIN</center></h3>
+                      <center>STATUS REGISTER PROSES VERIFIKASI <button type='button' class='btn btn-sm btn-warning' title='Register Masih Dalam Proses Verifikasi'><i class='fa fa-exclamation-triangle'></i></button> / REGISTER DI TOLAK <button type="button" class="btn btn-sm btn-info" title="Edit Form Inventarisasi"><i class="far fa-edit"></i></button></center></h3>
                       
 	            </div>
 	            <!-- /.card-header -->
@@ -92,7 +92,7 @@
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td> 
 							  <?php if ($row->status == 3) {?>
-                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
+                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir_edit" method="post">
                                 <center>
                                   <button type="submit" class="btn btn-sm btn-info" title="Edit Form Inventarisasi"><i class="far fa-edit"></i>
                                     <input type="hidden" name="register" value="<?php echo $row->register?>">

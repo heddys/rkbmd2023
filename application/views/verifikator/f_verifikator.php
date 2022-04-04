@@ -52,6 +52,7 @@
 <!-- Toastr -->
 <script src="<?php echo base_url();?>ini_assets/plugins/toastr/toastr.min.js"></script>
 <script>
+
     function showTime() {
       var a_p = "";
       var today = new Date();
@@ -81,20 +82,6 @@
     }
     setInterval(showTime, 50);    
     
-    $(function() {
-      const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000
-    });
-
-    $('#swalDefaultSuccess').click(function() {
-      Toast.fire({
-        type: 'success',
-        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
 
 </script>
 </body>
