@@ -245,11 +245,11 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary17" name="radio_kap_atrib" value="0" required="required"/>
-                                        <label for="primary17">Ya</label>
+                                        <label for="primary17">Bukan</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary18" name="radio_kap_atrib" value="1"/>
-                                        <label for="primary18">Bukan</label>
+                                        <label for="primary18">Ya</label>
                                     </div>
                                 </div>
                                 <!-- /input-group -->
@@ -493,24 +493,24 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary35" name="radio_ganda" value="0" required="required"/>
-                                        <label for="primary35">Ya</label>
+                                        <label for="primary35">Tidak</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary36" name="radio_ganda" value="1"/>
-                                        <label for="primary36">Tidak</label>
+                                        <label for="primary36">Ya.</label>
                                     </div>
                                 </div>
                                 <!-- /input-group -->
                             </div>
 
-                            <div class="form-group col-md-8">
+                            <!-- <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Titik Koordinat :</label>
                                         </div>
                                             <input type="text" class="form-control" id="koordinat" name="koordinat" placeholder="Input Titik Koordinat">
                                     </div>
-                            </div>
+                            </div> -->
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -955,6 +955,90 @@
                             <!-- /.modal-dialog -->
                         </div>
                     <!-- /.modal -->
+
+                    <!-- Modal Untuk Cari Register Atribusi -->
+                    <div class="modal fade" id="modal-search-register-atrib">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <input type="text" class="form-control" id="search_register_atrib"  style="text-transform:uppercase" placeholder="Cari Berdasarkan Register atau Nama Barang">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_cari_atrib(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-info" onclick="klik_cari_atrib(true)" data-dismiss="modal">Cari Data</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
+                    <!-- Modal Untuk Cari Register Ganda -->
+                    <div class="modal fade" id="modal-search-register-ganda">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <input type="text" class="form-control" id="search_register_ganda"  style="text-transform:uppercase" placeholder="Cari Berdasarkan Register atau Nama Barang">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_cari_ganda(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success" onclick="klik_cari_ganda(true)" data-dismiss="modal">Simpan Data</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
+
+
+                    <!-- Menampilkan Hasil Pencarian Register                                                 -->
+                    <div class="modal fade" id="modal-list-register">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <table id="tblkodebar" class="table table-striped table-hover responsive">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th><center>No.</center></th>
+                                                    <th><center>Kode Barang</center></th>
+                                                    <th><center>Register</center></th>
+                                                    <th><center>Nama Barang</center></th>
+                                                    <th><center>Tipe</center></th>
+                                                    <th><center>Alamat</center></th>
+                                                    <th><center>Tahun Perolehan</center></th>
+                                                    <th><center>Nilai</center></th>
+                                                    <th><center>Aksi</center></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tampil_data">
+                                            </tbody>
+                                        </table>  
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger batal" onclick="klik_kode_bar(false)" data-dismiss="modal">Batal</button>
+                                        <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
+                                    </div>
+                            </div>
+                                /* <!-- modal-content --> */
+                            </div>
+                            /* <!-- /.modal-dialog --> */
+                        </div>
+                        /* <!-- /.modal --> */
 
                     
 

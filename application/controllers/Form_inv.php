@@ -217,15 +217,17 @@ class Form_inv extends CI_Controller {
 		$ganda=$_POST['catat_ganda'];
 		$radio_ganda=$_POST['radio_ganda'];
 
-		if (isset($_POST['koordinat'])){
-			$koordinat = $_POST['koordinat'];
-		} else {$koordinat = "-";}
+		// if (isset($_POST['koordinat'])){
+		// 	$koordinat = $_POST['koordinat'];
+		// } else {$koordinat = "-";}
 
 		if (isset($_POST['lainnya'])){
 			$lainnya = $_POST['lainnya'];
 		} else {$lainnya = "-";}
 
-		$keterangan=$_POST['keterangan'];
+		if (isset($_POST['keterangan'])){
+			$keterangan=$_POST['keterangan'];
+		} else {$keterangan="-";}
 
 		date_default_timezone_set("Asia/Jakarta");	
 		$updated_date=date("Y-m-d");
@@ -254,13 +256,14 @@ class Form_inv extends CI_Controller {
 		$data = array(); 
         $errorUploadType = $statusMsg = ''; 
          
-           $nama_file='';
+           	$nama_file='';
             // If files are selected to upload 
             if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0){ 
                 $filesCount = count($_FILES['files']['name']); 
                 for($i = 0; $i < $filesCount; $i++){
-					$nama_file=$_FILES['files']['name'][$i]."-".$register;
-                    $_FILES['file']['name']     = $nama_file; 
+					$nama_file=$_FILES['files']['name'][$i];
+					$nama_file2=$nama_file." - ".$register;
+                    $_FILES['file']['name']     = $nama_file2; 
                     $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
                     $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
                     $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
@@ -326,7 +329,7 @@ class Form_inv extends CI_Controller {
 		'penggunaan_barang' => $penggunaan,
 		'register_ganda' => $ganda,
 		'Lainnya' => $lainnya,
-		'koordinat' => $koordinat,
+		// 'koordinat' => $koordinat,
 		'keterangan' => $keterangan,
 		'created_date' => $updated_date,
 		'created_time' => $updated_time
@@ -424,15 +427,17 @@ class Form_inv extends CI_Controller {
 		$ganda=$_POST['catat_ganda'];
 		$radio_ganda=$_POST['radio_ganda'];
 
-		if (isset($_POST['koordinat'])){
-			$koordinat = $_POST['koordinat'];
-		} else {$koordinat = "-";}
+		// if (isset($_POST['koordinat'])){
+		// 	$koordinat = $_POST['koordinat'];
+		// } else {$koordinat = "-";}
 
 		if (isset($_POST['lainnya'])){
 			$lainnya = $_POST['lainnya'];
 		} else {$lainnya = "-";}
 
-		$keterangan=$_POST['keterangan'];
+		if (isset($_POST['keterangan'])){
+			$keterangan=$_POST['keterangan'];
+		} else {$keterangan= "-";}
 
 		$id_jurnal_penolakan=$_POST['id_jurnal_penolakan'];
 
@@ -524,6 +529,16 @@ class Form_inv extends CI_Controller {
 
 		redirect('/status_form/index/2');
 		
+	}
+
+	public function cari_data_register()
+	{
+		$this->cek_sess();
+		$id = $this->input->post('id');
+		// $id="Power Supply";
+		$result = $this->form_model->get_data_kib_json($id);
+		echo json_encode($result);
+		// var_dump($result);
 	}
 }
 ?>

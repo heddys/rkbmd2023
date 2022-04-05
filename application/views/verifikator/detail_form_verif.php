@@ -269,13 +269,13 @@
                                         <input type="radio" id="primary17" name="radio_kap_atrib" <?php 
                                                 if ($data_is_register->is_aset_atrib == 0) { echo "checked='checked'";} else {echo "disabled='disabled'";}
                                             ?> value="0" required="required"/>
-                                        <label for="primary17">Ya</label>
+                                        <label for="primary17">Bukan</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary18" name="radio_kap_atrib" <?php 
                                                 if ($data_is_register->is_aset_atrib == 1) { echo "checked='checked'";} else {echo "disabled='disabled'";}
                                             ?> value="1"/>
-                                        <label for="primary18">Bukan</label>
+                                        <label for="primary18">Ya.</label>
                                     </div>
                                 </div>
                                 <!-- /input-group -->
@@ -545,13 +545,13 @@
                                         <input type="radio" id="primary35" name="radio_ganda" <?php 
                                                 if ($data_is_register->is_catat_ganda == 0) { echo "checked='checked'";} else {echo "disabled='disabled'";}
                                             ?>value="0" required="required"/>
-                                        <label for="primary35">Ya</label>
+                                        <label for="primary35">Tidak</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary36" name="radio_ganda" <?php 
                                                 if ($data_is_register->is_catat_ganda == 1) { echo "checked='checked'";} else {echo "disabled='disabled'";}
                                             ?> value="1"/>
-                                        <label for="primary36">Tidak</label>
+                                        <label for="primary36">Ya.</label>
                                     </div>
                                 </div>
                                 <!-- /input-group -->

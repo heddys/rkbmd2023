@@ -153,7 +153,7 @@
             <tr>
                 <th width="120px">C. Nama Barang</th>
                 <th width="25px">:</th>
-                <th width="200px"><?php echo $data_register->nama_barang; ?></th>
+                <th width="200px"><?php echo $data_kib->nama_barang; ?></th>
                 <td width="20px"><?php if($data_is_register->is_nama_barang == 0) {?>
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
@@ -176,7 +176,7 @@
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
-                    <?php if ($data_is_register->is_kode_barang == 1) { echo $data_register->nama_barang;}?>
+                    <?php if ($data_is_register->is_nama_barang == 1) { echo $data_register->nama_barang;}?>
                 </th>
             </tr>
             <tr>
@@ -217,7 +217,7 @@
             <tr>
                 <th width="120px">F. Satuan Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_kib->satuan; ?></th>
+                <th width="150px"><?php echo $data_register->satuan; ?></th>
             </tr>
             <tr>
                 <th width="120px">G. Keberadaan Barang</th>
@@ -542,7 +542,7 @@
                 <th width="120px">O. Nomor BPKB</th>
                 <th width="25px">:</th>
                 <th width="150px"><?php echo $data_kib->no_bpkb; ?></th>
-                <th width="20px"><?php if($data_is_register->is_aset_atrib == 0) {?>
+                <th width="20px"><?php if($data_is_register->is_no_bpkb == 0) {?>
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                         </center>
@@ -564,7 +564,7 @@
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
-                    <?php if ($data_is_register->is_aset_atrib == 1) { echo $data_register->merupakan_anak;}?>
+                    <?php if ($data_is_register->is_no_bpkb == 1) { echo $data_register->no_bpkb;}?>
                 </th>
             </tr>
             <tr>

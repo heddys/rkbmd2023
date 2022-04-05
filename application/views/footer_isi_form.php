@@ -292,6 +292,60 @@ function formatCurrency(input, blur) {
       }
     }
 
+    function klik_cari_atrib(id){
+      if(id == true){
+        var isi_text = document.querySelector("#modal-search-register-atrib [id=search_register_atrib]").value;
+        // document.getElementById('penggunaan').value=isi_text;
+        var id = isi_text;
+          $('#modal-list-register').modal('show');
+          $.ajax({
+            type: 'ajax',
+            method: 'post',
+            url: '<?php echo site_url();?>/form_inv/cari_data_register',
+            data:{id:id},
+            async: false,
+            dataType: 'json',
+            success: function(data){
+                var html = '';
+                var title ='';
+                var i=data.length;
+                var x=1;
+                  for (i=0; i < data.length; i++) {
+                      html += 
+                            '<tr>'+
+                              '<td><center>'+x+'</center></td>'+
+                              '<td><center>'+data[i].kode108_baru+'</center></td>'+
+                              '<td><center>'+data[i].register+'</center></td>'+
+                              '<td>'+data[i].nama_barang+'</td>'+
+                              '<td>'+data[i].tipe+'</td>'+    
+                              '<td>'+data[i].merk_alamat+'</td>'+
+                              '<td><center>'+data[i].tahun_pengadaan+'</center></td>'+
+                              '<td class="text-right">Rp.'+data[i].harga_baru+',00</td>'+  
+                              '<td><center> <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="'+data[i].register+'"data-dismiss="modal"><i class="fa fa-plus"></i></a>'+
+                              '</td></tr>';
+                            x++;
+                  }
+                  $('#modal-list-register').find('#tampil_data').html(html);
+              },
+              error: function() {
+                alert('Koneksi Gagal');
+              }
+          });
+      } else {
+        $("input:radio[id=primary18]:checked")[0].checked = false;
+      }
+    }
+
+    function klik_cari_ganda(id){
+      if(id == true){
+        var isi_text = document.querySelector("#modal-cari-register-ganda [id=search_register_ganda]").value;
+        // document.getElementById('penggunaan').value=isi_text;
+      } else {
+        $("input:radio[id=primary36]:checked")[0].checked = false;
+      }
+    }
+    
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $(document).ready(function () {
@@ -374,6 +428,18 @@ function formatCurrency(input, blur) {
       $('#primary34').click(function () {
           if ($(this).is(':checked')) {
               $('#modal-penggunaan').modal({backdrop: 'static', keyboard: false});
+          }  
+      });
+
+      $('#primary18').click(function () {
+          if ($(this).is(':checked')) {
+              $('#modal-search-register-atrib').modal({backdrop: 'static', keyboard: false});
+          }  
+      });
+
+      $('#primary36').click(function () {
+          if ($(this).is(':checked')) {
+              $('#modal-search-register-ganda').modal({backdrop: 'static', keyboard: false});
           }  
       });
 

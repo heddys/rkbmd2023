@@ -164,5 +164,24 @@
                 $this->db->error();
             }
 
+            public function get_data_kib_json($data)
+            {
+                // $this->db->select('nomor_lokasi,register,kode108_baru,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru,tahun_pengadaan');
+                // $this->db->from('data_kib');
+                // $this->db->where($where = array ('ekstrakomtabel !=' => 1));
+                // $this->db->group_start();
+                // $this->db->like('register',$data);
+                // $this->db->or_like('nama_barang',$data);
+                // $this->db->or_like('merk_alamat',$data);
+                // $this->db->group_end();
+
+                $query = $this->db->query("SELECT * FROM data_kib where ekstrakomtabel <> 1 and register like '%".$data."%' or nama_barang like '%".$data."%' or merk_alamat like '%".$data."%' or tipe like '%".$data."%'");
+
+                // $query = $this->db->get();
+                
+                return $query->result();
+
+            }
+
  }
  ?>

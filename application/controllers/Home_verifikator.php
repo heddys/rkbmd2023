@@ -115,7 +115,7 @@ class Home_verifikator extends CI_Controller {
 			$this->form_model->tandai_status_register($register,$tanda); 
 		}
 
-		redirect('home_verifikator/verif_page/');
+		redirect('home_verifikator/approved+page/');
 	}
 
 

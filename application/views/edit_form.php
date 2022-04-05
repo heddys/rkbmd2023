@@ -561,14 +561,14 @@
                                 <!-- /input-group -->
                             </div>
 
-                            <div class="form-group col-md-8">
+                            <!-- <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Titik Koordinat :</label>
                                         </div>
                                             <input type="text" class="form-control" id="koordinat" name="koordinat" value="<?php echo $data_register->koordinat?>" >
                                     </div>
-                            </div>
+                            </div> -->
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
