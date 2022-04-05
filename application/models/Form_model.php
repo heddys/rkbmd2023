@@ -94,12 +94,12 @@
 
             public function ambil_register_form($where)
             {
-                return $this->db->from("register_isi")->where($where)->order_by('created_time', 'ASC')->get();
+                return $this->db->from("register_isi")->where($where)->order_by('created_time DESC, created_date DESC')->get();
             }
 
             public function ambil_status_register_form($where)
             {
-                return $this->db->from("register_status")->where($where)->order_by('created_time', 'ASC')->get();
+                return $this->db->from("register_status")->where($where)->order_by('created_time DESC, created_date DESC')->get();
             }
 
             public function data_kode_barang()
@@ -152,8 +152,16 @@
 
             public function ambil_jurnal_penolakan($data)
             {
-                $query = $this->db->get_where('jurnal_penolakan', $data);
-                return $query->row();
+                // $query = $this->db->get_where('jurnal_penolakan', $data);
+                return $this->db->from("jurnal_penolakan")->where($data)->order_by('created_time desc, created_time desc')->get();
+                // return $query->row();
+            }
+
+            public function tandai_jurnal_penolakan($data)
+            {
+                $this->db->where($data);
+                $this->db->update('jurnal_penolakan', array('status_register' => 2));
+                $this->db->error();
             }
 
  }

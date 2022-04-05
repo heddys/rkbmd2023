@@ -59,7 +59,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th width="320px" style="text-align: right;">No. Register : <?php echo $data_register->register; ?></th>   
+                <th width="320px" style="text-align: right;">No. Register : <?php echo $data_kib->register; ?></th>   
             </tr>
     
         </thead>
@@ -67,7 +67,7 @@
             <tr>
                 <th width="200px">Kode Lokasi</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $lokasi->nomor_lokasi; ?></th>
+                <th width="150px"><?php echo $data_kib->nomor_lokasi; ?></th>
             </tr>
             <tr>
                 <th width="200px">Kuasa Pengguna Barang</th>
@@ -106,53 +106,108 @@
             <tr>
                 <th width="150px">A. Kode Register</th>
                 <th width="25x">:</th>
-                <th width="130px"><?php echo $data_register->register; ?></th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
+                <th width="130px"><?php echo $data_kib->register; ?></th>
+                <td width="20px">
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </td>
                 <th>Sesuai</th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
+                <td width="20px">
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya :</th>
             </tr>
             <tr>    
                 <th width="120px">B. Kode Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_register->kode_barang; ?></th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th>Sesuai</th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya :</th>
+                <th width="150px"><?php echo $data_kib->kode108_baru; ?></th>
+                <td width="20px">
+                <?php if($data_is_register->is_kode_barang == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?>
+                </td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya :
+                        <?php if ($data_is_register->is_kode_barang == 1) { echo $data_register->kode_barang;}?> 
+                </th>
             <tr>
                 <th width="120px">C. Nama Barang</th>
                 <th width="25px">:</th>
                 <th width="200px"><?php echo $data_register->nama_barang; ?></th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th>Sesuai</th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya :</th>
+                <td width="20px"><?php if($data_is_register->is_nama_barang == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_kode_barang == 1) { echo $data_register->nama_barang;}?>
+                </th>
             </tr>
             <tr>
                 <th width="120px">D. Nama Spesifikasi Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_register->spesifikasi_barang_merk; ?></th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th>Sesuai</th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya :</th>
+                <th width="150px"><?php echo $data_kib->merk_alamat; ?></th>
+                <td width="20px">
+                <?php if($data_is_register->is_spesifikasi_barang_merk == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_spesifikasi_barang_merk == 1) { echo $data_register->spesifikasi_barang_merk;}?>
+                </th>
             </tr>
             <tr>
                 <th width="120px">E. Jumlah Barang</th>
@@ -162,46 +217,94 @@
             <tr>
                 <th width="120px">F. Satuan Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_register->satuan; ?></th>
+                <th width="150px"><?php echo $data_kib->satuan; ?></th>
             </tr>
             <tr>
                 <th width="120px">G. Keberadaan Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_register->keberadaan_barang; ?></th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th>Sesuai</th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya :</th>
+                <th width="150px">Ada</th>
+                <td width="20px"><?php if($data_is_register->is_keberadaan_barang == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_keberadaan_barang == 1) { echo $data_register->keberadaan_barang;}?>
+                </th>
             </tr>
             <tr>
                 <th width="120px">H. Nilai Perolehan Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_register->nilai_perolehan; ?></th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th>Sesuai</th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya :</th>
+                <th width="150px"><?php echo $data_kib->harga_baru; ?></th>
+                <td width="20px"><?php if($data_is_register->is_nilai_perolehan == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_nilai_perolehan == 1) { echo $data_register->nilai_perolehan;}?>
+                </th>
             </tr>
             <tr>
                 <th width="120px">I. Apakah nilai perolehan merupakan biaya atribusi/biaya yang menambah kapasitas manfaat</th>
                 <th width="25px">:</th>
                 <th width="150px"><?php echo $data_register->merupakan_anak; ?></th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th>Sesuai</th>
-                <td width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th colspan="3">Bukan merupakan biaya atribusi/biaya yang menambah kapasitas manfaat</th>
+                <td width="20px"><?php if($data_is_register->is_aset_atrib == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_aset_atrib == 1) { echo $data_register->merupakan_anak;}?>
+                </th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -290,8 +393,9 @@
             <tr>
                 <th width="120px">K. Kondisi Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_register->kondisi_barang; ?></th>
+                <th width="150px"><?php if ($data_kib->kondisi == "B") {echo "Baik";} elseif ($data_kib->kondisi == "KB") {echo "Kurang Baik" ;} else {echo "Rusak Berat";}?></th>
                 <th width="20px">
+                <?php if ($data_kib->kondisi == "B") {?>
                     <center>
                         <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                     </center>
@@ -309,9 +413,162 @@
                     </center>
                 </th>
                 <th>Rusak Berat</th>
+                <?php } elseif ($data_kib->kondisi == "KB") {?>
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_non_checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </th>
+                <th>Baik</th>
+                <th width="20px">
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </th>
+                <th>Kurang Baik</th>
+                <th width="20px">
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </th>
+                <th>Rusak Berat</th>
+                <?php } else {?>
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </th>
+                <th>Baik</th>
+                <th width="20px">
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </th>
+                <th>Kurang Baik</th>
+                <th width="20px">
+                    <center>
+                        <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                    </center>
+                </th>
+                <th>Rusak Berat</th>
+                <?php } ?>
             </tr>
             <tr>
-                <th width="120px">L. Penggunaan Barang</th>
+                <th width="120px">L. Tipe</th>
+                <th width="25px">:</th>
+                <th width="150px"><?php echo $data_kib->tipe; ?></th>
+                <th width="20px"><?php if($data_is_register->is_tipe == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_tipe == 1) { echo $data_register->tipe;}?>
+                </th>
+            </tr>
+            <tr>
+                <th width="120px">M. Nomor Polisi</th>
+                <th width="25px">:</th>
+                <th width="150px"><?php echo $data_kib->nopol; ?></th>
+                <th width="20px"><?php if($data_is_register->is_nopol == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_nopol == 1) { echo $data_register->nopol;}?>
+                </th>
+            </tr>
+            <tr>
+                <th width="120px">N. Nomor Rangka</th>
+                <th width="25px">:</th>
+                <th width="150px"><?php echo $data_kib->no_rangka_seri; ?></th>
+                <th width="20px"><?php if($data_is_register->is_no_rangka == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_no_rangka == 1) { echo $data_register->no_rangka_seri;}?>
+                </th>
+            </tr>
+            <tr>
+                <th width="120px">O. Nomor BPKB</th>
+                <th width="25px">:</th>
+                <th width="150px"><?php echo $data_kib->no_bpkb; ?></th>
+                <th width="20px"><?php if($data_is_register->is_aset_atrib == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_aset_atrib == 1) { echo $data_register->merupakan_anak;}?>
+                </th>
+            </tr>
+            <tr>
+                <th width="120px">P. Penggunaan Barang</th>
                 <th width="25px">:</th>
                 <th width="150x">1. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12"> &nbsp; Pemerintah Daerah</th>
                 <th width="20px"><center></center></th>
@@ -468,17 +725,33 @@
                 <th>.....................................</th>
             </tr>
             <tr>
-                <th width="120px">M. Data Barang tercatat ganda</th>
+                <th width="120px">Q. Data Barang tercatat ganda</th>
                 <th width="25px">:</th>
                 <th width="150px"><?php echo $data_register->register_ganda; ?></th>
-                <th width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></th>
-                <th>Tidak</th>
-                <th width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></th>
-                <th colspan="4">Ya, Jika ya sebutkan pencatatan ganda dengan :</th>
+                <th width="20px"><?php if($data_is_register->is_catat_ganda == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Tidak</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Tidak</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Ya, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_catat_ganda == 1) { echo $data_register->register_ganda;}?>
+                </th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -590,23 +863,23 @@
                 <th>:</th>
                 <th>.....................................</th>
             </tr>
-            <tr>
+            <!-- <tr>
                 <th width="120px">N. Titik Koordinat</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_register->koordinat; ?></th>
-            </tr>
+                <th width="150px"><?php echo $data_kib->koordinat; ?></th>
+            </tr> -->
             <tr>
-                <th width="120px">O. Lainnya</th>
+                <th width="120px">R. Lainnya</th>
                 <th width="25px">:</th>
                 <th><?php echo $data_register->lainnya;?></th>
             </tr>
             <tr>
-                <th width="120px">P. Keterangan</th>
+                <th width="120px">S. Keterangan</th>
                 <th width="25px">:</th>
-                <th><?php echo $data_register->keterangan;?></th>
+                <th><?php echo $data_kib->keterangan;?></th>
             </tr>
             <tr>
-                <th width="120px">Q. Foto/Denah</th>
+                <th width="120px">T. Foto/Denah</th>
                 <th width="25px">:</th>
                 <th></th>
             </tr>

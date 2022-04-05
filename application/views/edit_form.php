@@ -1,9 +1,9 @@
 <section class="content">
             <div class="container-fluid">
                 <div class="callout callout-danger">
-                    <h5><center>Form Inventarisasi anda dengan <?php echo $data_register->register?> telah ditolak oleh verifikato, dengan alasan : </center></h5>
+                    <h5><center>Form Inventarisasi anda dengan <?php echo $data_register->register?> telah ditolak oleh verifikator, dengan alasan : </center></h5>
                     <hr style="padding-top:0px; margin-top:2px;">
-                    <h4><?php echo $penolakan->dasar_penolakan?></h4>
+                    <h4><?php echo $penolakan->dasar_penolakan;?></h4>
                 </div>
             </div>
             <!-- general form elements disabled -->
@@ -16,7 +16,7 @@
                 </center>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form role="form" action="save_isi_form_peralatan_mesin" method="post" enctype="multipart/form-data">
+                    <form role="form" action="update_isi_form_peralatan_mesin" method="post" enctype="multipart/form-data">
                         <!-- select -->
                         <h4><?php echo $data_register->register." - ".$data_register->nama_barang;?></h4>
                         <hr style="padding: 2px">
@@ -113,7 +113,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Alamat : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="alamat" disabled="disabled" value="<?php echo $data_register->alamat;?>" placeholder="Diisi Posisi Barangnya, Contoh : Ruang Kabid, Ruang Server, Dll..">
+                                            <input type="text" class="form-control" name="alamat" value="<?php echo $data_register->alamat;?>" placeholder="Diisi Posisi Barangnya, Contoh : Ruang Kabid, Ruang Server, Dll..">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -339,7 +339,7 @@
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary22" name="radio_kondisi" <?php 
-                                                if ($data_is_register->is_kondisi_barang == 0) { echo "checked='checked'";}
+                                                if ($data_is_register->is_kondisi_barang == 1) { echo "checked='checked'";}
                                             ?> value="1"/>
                                         <label for="primary22">Tidak Sesuai</label>
                                     </div>
@@ -566,7 +566,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Titik Koordinat :</label>
                                         </div>
-                                            <input type="text" class="form-control" id="koordinat" name="koordinat" value="<?php echo $data_register->koordinat?>" readonly="true">
+                                            <input type="text" class="form-control" id="koordinat" name="koordinat" value="<?php echo $data_register->koordinat?>" >
                                     </div>
                             </div>
                             <div class="form-group col-md-8">
@@ -574,19 +574,19 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Lainnya</label>
                                         </div>
-                                            <input type="text" class="form-control" name="lainnya" id="kode_register" value="<?php echo $data_register->lainnya?>" readonly="true">
+                                            <input type="text" class="form-control" name="lainnya" id="kode_register" value="<?php echo $data_register->lainnya?>" >
                                     </div>
                             </div>
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>
-                                        <textarea class="form-control" name="keterangan" rows="3" value="<?php echo $data_register->keterangan?>" readonly="true"></textarea>
+                                        <textarea class="form-control" name="keterangan" rows="3" value="<?php echo $data_register->keterangan?>" ></textarea>
                                     </div>
                             </div>
 
                             <div class="form-group col-md-8">
                                 <div class="mb-3">
-                                <label><h5><b>Upload Foto atau Denah Aset</b></h5></label>
+                                <label><h5><b>Foto atau Denah Aset</b></h5></label>
                                     <div class="mb-3">
                                         <?php foreach ($image as $i) {?>
                                             <img style="Padding-top: 5px;" src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="200" height="200">
@@ -635,6 +635,7 @@
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
                                         <button type="submit" class="btn btn-success">Simpan Data</button>
+                                        <input type="hidden" name="id_jurnal_penolakan" value="<?php echo $penolakan->id?>">
                                     </div>
                             </div>
                                 <!-- modal-content --> 

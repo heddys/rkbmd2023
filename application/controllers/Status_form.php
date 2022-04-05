@@ -71,10 +71,12 @@ class Status_form extends CI_Controller {
 
         $register=$_POST['register'];
         $where = array ( 'register' => $register );
+        $whereis = array ( 'is_register' => $register );
 
         $data['data_register'] = $this->form_model->ambil_register_form($where)->row();
+        $data['data_is_register'] = $this->form_model->ambil_status_register_form($whereis)->row();
         $data['image']=$this->form_model->ambil_file($where)->result();
-        $data['lokasi'] = $this->form_model->ambil_register($where);
+        $data['data_kib'] = $this->form_model->ambil_register($where);
 
        	$this->pdf->load_view('cetak_form_inv',$data);
 		$this->pdf->set_paper("legal", "portrait");

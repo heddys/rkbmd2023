@@ -104,7 +104,8 @@ class Home_verifikator extends CI_Controller {
 				'register' => $register,
 				'dasar_penolakan' => $penolakan,
 				'created_date' => $updated_date,
-				'created_time' => $updated_time
+				'created_time' => $updated_time,
+				'status_register' => 1
 			);
 
 			$this->form_model->tandai_status_register($register,$tanda);
