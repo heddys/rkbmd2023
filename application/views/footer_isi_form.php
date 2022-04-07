@@ -42,7 +42,18 @@
 <script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
 
-      function showTime() {
+
+
+  function rupiah (angka){
+       var reverse = angka.toString().split('').reverse().join(''),
+       ribuan = reverse.match(/\d{1,3}/g);
+       ribuan = ribuan.join('.').split('').reverse().join('');
+       return ribuan;
+    }
+    $("#tblkodebar").DataTable();
+    
+
+    function showTime() {
         var a_p = "";
         var today = new Date();
         var curr_hour = today.getHours();
@@ -70,7 +81,151 @@
           return i;
     }
     setInterval(showTime, 50);
+
+    function klik_cari_atrib(id){
+      var isi_text = document.querySelector("#modal-search-register-atrib [id=search_register_atrib]").value;
+      if(isi_text.length == 0 ) {
+        alert("Mohon Untuk Mengisi Nama atau Register Yang Di Cari");
+        $("input:radio[id=primary18]:checked")[0].checked = false;
+      } else {
+        if(id == true){
+          
+          // document.getElementById('penggunaan').value=isi_text;
+          var id = isi_text;
+            $('#modal-list-register').modal({backdrop: 'static', keyboard: false});
+            function rupiah (angka){
+                      var reverse = angka.toString().split('').reverse().join(''),
+                      ribuan = reverse.match(/\d{1,3}/g);
+                      ribuan = ribuan.join('.').split('').reverse().join('');
+                      return ribuan;
+                    }
+            $.ajax({
+              type: 'ajax',
+              method: 'post',
+              url: '<?php echo site_url();?>/form_inv/cari_data_register',
+              data:{id:id},
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                  var html = '';
+                  var title ='';
+                  var i=data.length;
+                  var x=1;
+                    for (i=0; i < data.length; i++) {
+                        html += 
+                              '<tr>'+
+                                '<td><center>'+x+'</center></td>'+
+                                '<td><center>'+data[i].kode108_baru+'</center></td>'+
+                                '<td><center>'+data[i].register+'</center></td>'+
+                                '<td>'+data[i].nama_barang+'</td>'+
+                                '<td>'+data[i].tipe+'</td>'+    
+                                '<td>'+data[i].merk_alamat+'</td>'+
+                                '<td><center>'+data[i].tahun_pengadaan+'</center></td>'+
+                                '<td class="text-left">Rp.'+rupiah(data[i].harga_baru)+',00</td>'+
+                                '<td><center> <a href="#" class="btn btn-sm btn-success ambil_register" data-id="'+data[i].register+'"><i class="fa fa-plus"></i></a>'+
+                                '</td></tr>';
+                              x++;
+                    }
+                    $('#modal-list-register').find('#tampil_data').html(html);
+                    $('#modal-list-register').find('#tblregister').DataTable();
+
+                    
+                },
+                error: function() {
+                  alert('Koneksi Gagal');
+                }
+            });
+        } else {
+          $("input:radio[id=primary18]:checked")[0].checked = false;
+        }
+      }
+    }
+
+    function klik_cari_ganda(id){
+      var isi_text = document.querySelector("#modal-search-register-ganda [id=search_register_ganda]").value;
+      if(isi_text.length == 0 ) {
+        alert("Mohon Untuk Mengisi Nama atau Register Yang Di Cari");
+        $("input:radio[id=primary36]:checked")[0].checked = false;
+      } else {
+        if(id == true){
+          
+          // document.getElementById('penggunaan').value=isi_text;
+          var id = isi_text;
+            $('#modal-list-register2').modal({backdrop: 'static', keyboard: false});
+            function rupiah (angka){
+                      var reverse = angka.toString().split('').reverse().join(''),
+                      ribuan = reverse.match(/\d{1,3}/g);
+                      ribuan = ribuan.join('.').split('').reverse().join('');
+                      return ribuan;
+                    }
+            $.ajax({
+              type: 'ajax',
+              method: 'post',
+              url: '<?php echo site_url();?>/form_inv/cari_data_register',
+              data:{id:id},
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                  var html = '';
+                  var title ='';
+                  var i=data.length;
+                  var x=1;
+                    for (i=0; i < data.length; i++) {
+                        html += 
+                              '<tr>'+
+                                '<td><center>'+x+'</center></td>'+
+                                '<td><center>'+data[i].kode108_baru+'</center></td>'+
+                                '<td><center>'+data[i].register+'</center></td>'+
+                                '<td>'+data[i].nama_barang+'</td>'+
+                                '<td>'+data[i].tipe+'</td>'+    
+                                '<td>'+data[i].merk_alamat+'</td>'+
+                                '<td><center>'+data[i].tahun_pengadaan+'</center></td>'+
+                                '<td class="text-left">Rp.'+rupiah(data[i].harga_baru)+',00</td>'+
+                                '<td><center> <a href="#" class="btn btn-sm btn-success ambil_register2" data-id="'+data[i].register+'"><i class="fa fa-plus"></i></a>'+
+                                '</td></tr>';
+                              x++;
+                    }
+                    $('#modal-list-register2').find('#tampil_data2').html(html);
+                    $('#modal-list-register2').find('#tblregister2').DataTable();
+
+                    
+                },
+                error: function() {
+                  alert('Koneksi Gagal');
+                }
+            });
+        } else {
+          $("input:radio[id=primary36]:checked")[0].checked = false;
+        }
+      }
+    }
     
+    function klik_destroy() {
+      $('#tblregister').DataTable().destroy();
+      $('#modal-list-register').modal('hide');
+      $("input:radio[id=primary18]:checked")[0].checked = false;
+    }
+
+    function klik_destroy2() {
+      $('#tblregister2').DataTable().destroy();
+      $('#modal-list-register2').modal('hide');
+      $("input:radio[id=primary36]:checked")[0].checked = false;
+    }
+
+    $('#modal-list-register').on('click', '.ambil_register', function(){
+      var idku=$(this).attr('data-id');
+      $('#tblregister').DataTable().destroy();
+      $('#modal-list-register').modal('hide');
+      document.getElementById('aset_atrib').value=idku;
+    });
+
+    $('#modal-list-register2').on('click', '.ambil_register2', function(){
+      var idku=$(this).attr('data-id');
+      $('#tblregister2').DataTable().destroy();
+      $('#modal-list-register2').modal('hide');
+      document.getElementById('catat_ganda').value=idku;
+    });
+
     // Add the following code if you want the name of the file appear on select
     $(".custom-file-input").on("change", function() {
       var fileName = $(this).val().split("\\").pop();
@@ -292,58 +447,16 @@ function formatCurrency(input, blur) {
       }
     }
 
-    function klik_cari_atrib(id){
-      if(id == true){
-        var isi_text = document.querySelector("#modal-search-register-atrib [id=search_register_atrib]").value;
-        // document.getElementById('penggunaan').value=isi_text;
-        var id = isi_text;
-          $('#modal-list-register').modal('show');
-          $.ajax({
-            type: 'ajax',
-            method: 'post',
-            url: '<?php echo site_url();?>/form_inv/cari_data_register',
-            data:{id:id},
-            async: false,
-            dataType: 'json',
-            success: function(data){
-                var html = '';
-                var title ='';
-                var i=data.length;
-                var x=1;
-                  for (i=0; i < data.length; i++) {
-                      html += 
-                            '<tr>'+
-                              '<td><center>'+x+'</center></td>'+
-                              '<td><center>'+data[i].kode108_baru+'</center></td>'+
-                              '<td><center>'+data[i].register+'</center></td>'+
-                              '<td>'+data[i].nama_barang+'</td>'+
-                              '<td>'+data[i].tipe+'</td>'+    
-                              '<td>'+data[i].merk_alamat+'</td>'+
-                              '<td><center>'+data[i].tahun_pengadaan+'</center></td>'+
-                              '<td class="text-right">Rp.'+data[i].harga_baru+',00</td>'+  
-                              '<td><center> <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="'+data[i].register+'"data-dismiss="modal"><i class="fa fa-plus"></i></a>'+
-                              '</td></tr>';
-                            x++;
-                  }
-                  $('#modal-list-register').find('#tampil_data').html(html);
-              },
-              error: function() {
-                alert('Koneksi Gagal');
-              }
-          });
-      } else {
-        $("input:radio[id=primary18]:checked")[0].checked = false;
-      }
-    }
+    
 
-    function klik_cari_ganda(id){
-      if(id == true){
-        var isi_text = document.querySelector("#modal-cari-register-ganda [id=search_register_ganda]").value;
-        // document.getElementById('penggunaan').value=isi_text;
-      } else {
-        $("input:radio[id=primary36]:checked")[0].checked = false;
-      }
-    }
+    // function klik_cari_ganda(id){
+    //   if(id == true){
+    //     var isi_text = document.querySelector("#modal-cari-register-ganda [id=search_register_ganda]").value;
+    //     // document.getElementById('penggunaan').value=isi_text;
+    //   } else {
+    //     $("input:radio[id=primary36]:checked")[0].checked = false;
+    //   }
+    // }
     
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -444,15 +557,9 @@ function formatCurrency(input, blur) {
       });
 
 
-      $("#tblkodebar").DataTable();
+      
     });
 
-    function rupiah($angka){
-    
-      $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-      return $hasil_rupiah;
-     
-    } 
 
 </script>
 </body>

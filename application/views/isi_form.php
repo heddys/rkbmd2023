@@ -237,7 +237,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">Apakah Aset Atribusi / Kapitalisasi</label>
                                     </div>
-                                    <input type="text" class="form-control" name="aset_atrib" id="kode_register" readonly="true" placeholder="-" value="-">
+                                    <input type="text" class="form-control" name="aset_atrib" id="aset_atrib" readonly="true" placeholder="-" value="-">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -963,14 +963,14 @@
                                     <div class="modal-header">
                                         <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
                                     </div>
-                                    <div class="modal-body">
-                                        <style type="text/css"> </style>
-                                        <input type="text" class="form-control" id="search_register_atrib"  style="text-transform:uppercase" placeholder="Cari Berdasarkan Register atau Nama Barang">
-                                    </div>
-                                    <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-danger" onclick="klik_cari_atrib(false)" data-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-info" onclick="klik_cari_atrib(true)" data-dismiss="modal">Cari Data</button>
-                                    </div>
+                                        <div class="modal-body">
+                                            <style type="text/css"> </style>
+                                            <input type="text" class="form-control" id="search_register_atrib" placeholder="Cari Berdasarkan Register atau Nama Barang">
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-danger" onclick="klik_cari_atrib(false)" data-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-info" onclick="klik_cari_atrib(true)" data-dismiss="modal">Cari Data</button>
+                                        </div>
                             </div>
                                 <!-- modal-content --> 
                             </div>
@@ -987,11 +987,11 @@
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
-                                        <input type="text" class="form-control" id="search_register_ganda"  style="text-transform:uppercase" placeholder="Cari Berdasarkan Register atau Nama Barang">
+                                        <input type="text" class="form-control" id="search_register_ganda" placeholder="Cari Berdasarkan Register atau Nama Barang">
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-danger" onclick="klik_cari_ganda(false)" data-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-success" onclick="klik_cari_ganda(true)" data-dismiss="modal">Simpan Data</button>
+                                        <button type="submit" class="btn btn-info" onclick="klik_cari_ganda(true)" data-dismiss="modal">Cari Data</button>
                                     </div>
                             </div>
                                 <!-- modal-content --> 
@@ -1011,7 +1011,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
-                                        <table id="tblkodebar" class="table table-striped table-hover responsive">
+                                        <table id="tblregister" class="table table-striped table-hover responsive">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th><center>No.</center></th>
@@ -1030,7 +1030,45 @@
                                         </table>  
                                     </div>
                                     <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-danger batal" onclick="klik_kode_bar(false)" data-dismiss="modal">Batal</button>
+                                        <button type="button" class="btn btn-danger batal" onclick="klik_destroy()">Batal</button>
+                                        <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
+                                    </div>
+                            </div>
+                                /* <!-- modal-content --> */
+                            </div>
+                            /* <!-- /.modal-dialog --> */
+                        </div>
+                        /* <!-- /.modal --> */
+
+                        <!-- Menampilkan Hasil Pencarian Register                                                 -->
+                    <div class="modal fade" id="modal-list-register2">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <table id="tblregister2" class="table table-striped table-hover responsive">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th><center>No.</center></th>
+                                                    <th><center>Kode Barang</center></th>
+                                                    <th><center>Register</center></th>
+                                                    <th><center>Nama Barang</center></th>
+                                                    <th><center>Tipe</center></th>
+                                                    <th><center>Alamat</center></th>
+                                                    <th><center>Tahun Perolehan</center></th>
+                                                    <th><center>Nilai</center></th>
+                                                    <th><center>Aksi</center></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tampil_data2">
+                                            </tbody>
+                                        </table>  
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger batal" onclick="klik_destroy2()">Batal</button>
                                         <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
                                     </div>
                             </div>

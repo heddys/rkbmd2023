@@ -256,14 +256,12 @@ class Form_inv extends CI_Controller {
 		$data = array(); 
         $errorUploadType = $statusMsg = ''; 
          
-           	$nama_file='';
             // If files are selected to upload 
             if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0){ 
                 $filesCount = count($_FILES['files']['name']); 
                 for($i = 0; $i < $filesCount; $i++){
-					$nama_file=$_FILES['files']['name'][$i];
-					$nama_file2=$nama_file." - ".$register;
-                    $_FILES['file']['name']     = $nama_file2; 
+
+                    $_FILES['file']['name']     = $_FILES['files']['name'][$i]; 
                     $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
                     $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
                     $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
@@ -301,74 +299,72 @@ class Form_inv extends CI_Controller {
                     $insert = $this->form_model->save_image($uploadData); 
                      
                     // Upload status message 
-                    $statusMsg = $insert?'Files uploaded successfully!'.$errorUploadType:'Some problem occurred, please try again.'; 
+                   echo $insert?'Files uploaded successfully!'.$errorUploadType:'Some problem occurred, please try again.'; 
                 }else{ 
-                    $statusMsg = "Sorry, there was an error uploading your file.".$errorUploadType; 
+                    echo "Sorry, there was an error uploading your file.".$errorUploadType; 
                 } 
             }else{ 
                 $statusMsg = 'Please select image files to upload.'; 
             } 
 		
-		$data_form_isian = array(
-		'register' => $register,
-		'kode_barang' => $kode_barang,
-		'nama_barang' => $nama_barang,
-		'spesifikasi_barang_merk' => $merk,
-		'satuan' => $satuan,
-		'keberadaan_barang' => $keberadaan,
-		'nilai_perolehan' => $nilai,
-		'merupakan_anak' => $aset_atrib,
-		'alamat' => $alamat,
-		'jumlah' => 1,
-		'kondisi_barang' => $kondisi_bar,
-		'tipe' => $tipe,
-		'nopol' => $nopol,
-		'no_rangka_seri' => $noka,
-		'no_mesin' => $no_mesin,
-		'no_bpkb' =>$no_bpkb,
-		'penggunaan_barang' => $penggunaan,
-		'register_ganda' => $ganda,
-		'Lainnya' => $lainnya,
-		// 'koordinat' => $koordinat,
-		'keterangan' => $keterangan,
-		'created_date' => $updated_date,
-		'created_time' => $updated_time
-		);
+		// $data_form_isian = array(
+		// 'register' => $register,
+		// 'kode_barang' => $kode_barang,
+		// 'nama_barang' => $nama_barang,
+		// 'spesifikasi_barang_merk' => $merk,
+		// 'satuan' => $satuan,
+		// 'keberadaan_barang' => $keberadaan,
+		// 'nilai_perolehan' => $nilai,
+		// 'merupakan_anak' => $aset_atrib,
+		// 'alamat' => $alamat,
+		// 'jumlah' => 1,
+		// 'kondisi_barang' => $kondisi_bar,
+		// 'tipe' => $tipe,
+		// 'nopol' => $nopol,
+		// 'no_rangka_seri' => $noka,
+		// 'no_mesin' => $no_mesin,
+		// 'no_bpkb' =>$no_bpkb,
+		// 'penggunaan_barang' => $penggunaan,
+		// 'register_ganda' => $ganda,
+		// 'Lainnya' => $lainnya,
+		// // 'koordinat' => $koordinat,
+		// 'keterangan' => $keterangan,
+		// 'created_date' => $updated_date,
+		// 'created_time' => $updated_time
+		// );
 
-		$data_is_form = array(
-			'is_register' => $register,
-			'is_kode_barang' => $radio_kode_bar,
-			'is_nama_barang' => $radio_nama_bar,
-			'is_spesifikasi_barang_merk' => $radio_merk,
-			'is_satuan' => $radio_satuan,
-			'is_jumlah' => 0,
-			'is_keberadaan_barang' => $radio_keberadaan,
-			'is_nilai_perolehan' => $radio_nilai,
-			'is_aset_atrib' =>$radio_kap_atrib,
-			'is_kondisi_barang' => $radio_kondisi,
-			'is_tipe' => $radio_tipe,
-			'is_nopol' => $radio_nopol,
-			'is_no_rangka' => $radio_no_rangka,
-			'is_no_mesin' => $radio_mesin,
-			'is_no_bpkb' => $radio_bpkb,
-			'is_penggunaan_barang' =>$radio_pengguna,
-			'is_catat_ganda' => $radio_ganda,
-			'created_date' => $updated_date,
-			'created_time' => $updated_time
-		);
+		// $data_is_form = array(
+		// 	'is_register' => $register,
+		// 	'is_kode_barang' => $radio_kode_bar,
+		// 	'is_nama_barang' => $radio_nama_bar,
+		// 	'is_spesifikasi_barang_merk' => $radio_merk,
+		// 	'is_satuan' => $radio_satuan,
+		// 	'is_jumlah' => 0,
+		// 	'is_keberadaan_barang' => $radio_keberadaan,
+		// 	'is_nilai_perolehan' => $radio_nilai,
+		// 	'is_aset_atrib' =>$radio_kap_atrib,
+		// 	'is_kondisi_barang' => $radio_kondisi,
+		// 	'is_tipe' => $radio_tipe,
+		// 	'is_nopol' => $radio_nopol,
+		// 	'is_no_rangka' => $radio_no_rangka,
+		// 	'is_no_mesin' => $radio_mesin,
+		// 	'is_no_bpkb' => $radio_bpkb,
+		// 	'is_penggunaan_barang' =>$radio_pengguna,
+		// 	'is_catat_ganda' => $radio_ganda,
+		// 	'created_date' => $updated_date,
+		// 	'created_time' => $updated_time
+		// );
 
-		var_dump($data_form_isian);
+		// //Save Di tabel register_isi
+		// $this->form_model->save_isi_form($data_form_isian);
 
-		//Save Di tabel register_isi
-		$this->form_model->save_isi_form($data_form_isian);
+		// //Save Di tabel register status
+		// $this->form_model->save_status_register($data_is_form);
 
-		//Save Di tabel register status
-		$this->form_model->save_status_register($data_is_form);
+		// //Membuat tanda di data kib
+		// $this->form_model->tandai_kib($register);
 
-		//Membuat tanda di data kib
-		$this->form_model->tandai_kib($register);
-
-		redirect('/status_form/index/2');
+		// redirect('/status_form/index/2');
 
 	}
 

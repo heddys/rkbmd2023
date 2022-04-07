@@ -52,7 +52,7 @@
             </div> -->
             <div class="col-lg-6 col-6">
               <!-- small box -->
-              <div class="small-box bg-info">
+              <!-- <div class="small-box bg-info">
                 <div class="inner">
                   <h3><?php echo $bmaset;?></h3>
                   <p>Jumlah Usulan Belanja Modal</p>
@@ -61,12 +61,12 @@
                   <i class="ion ion-bag"></i>
                 </div>
                 <a href="<?php echo site_url('home/tabel_rkb');?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
+              </div> -->
             </div>
             <!-- ./col -->
             <div class="col-lg-6 col-6">
               <!-- small box -->
-              <div class="small-box bg-primary">
+              <!-- <div class="small-box bg-primary">
                 <div class="inner">
                   <h3><?php echo $bmpersediaan?></h3>
                   <p>Jumlah Usulan Belanja Persediaan</p>
@@ -75,7 +75,7 @@
                   <i class="ion ion-stats-bars"></i>
                 </div>
                 <a href="<?php echo site_url('home/tabel_rkp');?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
+              </div> -->
             </div>
             <!-- 
             <div class="col-lg-3 col-6">

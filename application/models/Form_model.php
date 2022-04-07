@@ -175,7 +175,7 @@
                 // $this->db->or_like('merk_alamat',$data);
                 // $this->db->group_end();
 
-                $query = $this->db->query("SELECT * FROM data_kib where ekstrakomtabel <> 1 and register like '%".$data."%' or nama_barang like '%".$data."%' or merk_alamat like '%".$data."%' or tipe like '%".$data."%'");
+                $query = $this->db->query("SELECT * FROM data_kib where register like '%".$data."%' or nama_barang like '%".$data."%' or merk_alamat like '%".$data."%' or tipe like '%".$data."%' and ekstrakomtabel <> 1");
 
                 // $query = $this->db->get();
                 
