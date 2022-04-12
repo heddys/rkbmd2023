@@ -9,16 +9,19 @@
         }    
 
 
-            public function get_all_register_proses_tolak($where,$lokasi,$kib){
+            public function get_all_register_proses_tolak($lokasi,$kib){
 
-                $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru,status');
-                $this->db->from('data_kib');
-                $this->db->where($where);
-                $this->db->or_where('status = ', 3);
-                // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
-                $this->db->like('nomor_lokasi',$lokasi);
-                $this->db->like('kode108_baru',$kib);
-                $this->db->order_by("status","DESC");
+                $query = $this->db->query("SELECT * FROM data_kib where ekstrakomtabel IS NULL and (status = '1' or status = '3') and nomor_lokasi like '%".$lokasi."%' and kode108_baru like '%".$kib."%' ");
+
+                // $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru,status');*
+                // $this->db->from('data_kib');*
+                // $this->db->where($where);*
+                // $this->db->or_where('status = ', 1);*
+
+                
+                // $this->db->like('nomor_lokasi',$lokasi);*
+                // $this->db->like('kode108_baru',$kib);*
+                // $this->db->order_by("status","DESC");*
                 // $q1=$this->db->get();
 
                 // $this->db->select('nomor_lokasi_baru,register,kode64_baru,nama_barang_baru,merk_alamat_baru,tipe_baru,harga_baru');
@@ -29,7 +32,9 @@
                 // $q2=$this->db->get_compiled_select();
 
                 // $query = $this->db->query($q1 . ' UNION ' . $q2);
-                return $this->db->get();
+                // return $this->db->get();
+
+                return $query;
             }
 
             public function get_all_register($where,$lokasi,$kib){
@@ -41,7 +46,7 @@
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
                 $this->db->like('nomor_lokasi',$lokasi);
                 $this->db->like('kode108_baru',$kib);
-                $this->db->limit(200,1);
+                // $this->db->limit(200,1);
                 // $q1=$this->db->get();
 
                 // $this->db->select('nomor_lokasi_baru,register,kode64_baru,nama_barang_baru,merk_alamat_baru,tipe_baru,harga_baru');

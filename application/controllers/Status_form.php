@@ -11,11 +11,11 @@ class Status_form extends CI_Controller {
         $data['exist']=$this->cek_jumlah_exist();
 		$nomor_lokasi=$this->session->userdata('no_lokasi');
 
-        $data_proses_verif = array (
+        // $data_proses_verif = array (
 
-            'ekstrakomtabel' => NULL,
-            'status' => 1
-        );
+        //     'ekstrakomtabel' => NULL,
+        //     'status' => 2
+        // );
 
         $data_dicetak = array (
 
@@ -40,12 +40,16 @@ class Status_form extends CI_Controller {
             $kib = "1.5.3";
         }
 
-        $data['register']=$this->form_model->get_all_register_proses_tolak($data_proses_verif,$nomor_lokasi,$kib);
+        $data['register']=$this->form_model->get_all_register_proses_tolak($nomor_lokasi,$kib);
         $data['cetak']=$this->form_model->get_all_register($data_dicetak,$nomor_lokasi,$kib);
 
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('status_page');
 		$this->load->view('h_footerrkb');	
+        // echo $nomor_lokasi."<p>";
+        // var_dump($this->form_model->get_all_register_proses_tolak($nomor_lokasi,$kib));
+        // echo "<p>";
+        // var_dump($this->form_model->get_all_register($data_dicetak,$nomor_lokasi,$kib)->result());
     }
 
     private function cek_sess() 
