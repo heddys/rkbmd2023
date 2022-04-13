@@ -11,7 +11,7 @@
 
             public function get_all_register_proses_tolak($lokasi,$kib){
 
-                $query = $this->db->query("SELECT * FROM data_kib where ekstrakomtabel IS NULL and (status = '1' or status = '3') and nomor_lokasi like '%".$lokasi."%' and kode108_baru like '%".$kib."%' ");
+                $query = $this->db->query("SELECT * FROM data_kib where ekstrakomtabel IS NULL and (status = '1' or status = '3') and nomor_lokasi like '%".$lokasi."%' and kode108_baru like '%".$kib."%' LIMIT 300 ");
 
                 // $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru,status');*
                 // $this->db->from('data_kib');*
