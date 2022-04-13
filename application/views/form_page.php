@@ -30,8 +30,8 @@
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
-	              <table id="example1" class="table table-bordered table-hover ">
-	                <thead class="thead-dark">
+	              <table>
+	                <thead>
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Register</center></th>
@@ -43,13 +43,13 @@
 	                </tr>
 	                </thead>
                   <tbody>
-                    <?php $x=1; foreach ($register->result() as $row) {?>
+                    <?php foreach ($register->result() as $row) {?>
 	                	<tr>
-	                  		<td><center><?php echo $x?></center></td>
-	                  		<td><center><?php echo $row->register?></center></td>
-	                  		<td><center><?php echo $row->kode64_baru?></center></td>
-                            <td><center><?php echo $row->nama_barang?></center></td>
-                            <td><center><?php echo $row->merk_alamat." - ".$row->tipe?></center></td>
+	                  		<td><center><?php echo $offset;?></center></td>
+	                  		<td><center><?php echo $row->register;?></center></td>
+	                  		<td><center><?php echo $row->kode64_baru;?></center></td>
+                            <td><center><?php echo $row->nama_barang;?></center></td>
+                            <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>  
                               <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
@@ -59,9 +59,10 @@
                                 </center></td>
                               </form>
 	                  	</tr>
-	                  <?php $x++; }?>
+	                  <?php }?>
 	                </tbody>
 	              </table>
+                <?php echo $this->pagination->create_links(); ?>
 	            </div>
 	            <!-- /.card-body -->
 	          </div>

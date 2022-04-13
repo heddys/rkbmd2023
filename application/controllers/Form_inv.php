@@ -94,10 +94,22 @@ class Form_inv extends CI_Controller {
 			} else { 
 				$kib = "1.5.3";
 			}
+		
+			//Load Library Pagination
+			$this->load->library('pagination');
 
-        $data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib);
+			//Config Pagination
+			$config['base_url'] = 'http://localhost/rkbmd2023/index.php/form_inv/index/2/';
+			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$nomor_lokasi,$kib)->num_rows();
+			$config['per_page'] = 15;
+
+
+			$this->pagination->initialize($config);
+
+		$data['offset']=$this->uri->segment(5);
+        $data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib,$config['per_page'],$data['offset']);
         $this->load->view('h_tablerkb',$data);		
-		$this->load->view('form_page');
+		$this->load->view('form_page',$data);
 		$this->load->view('h_footerrkb');		
 		
 	}
