@@ -97,16 +97,18 @@ class Form_inv extends CI_Controller {
 		
 			//Load Library Pagination
 			$this->load->library('pagination');
-
+			$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
 			//Config Pagination
 			$config['base_url'] = 'http://localhost/rkbmd2023/index.php/form_inv/index/2/';
-			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$nomor_lokasi,$kib)->num_rows();
+			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$nomor_lokasi,$kib,30,$data['offset'])->num_rows();
 			$config['per_page'] = 15;
+			$config['first_link'] = '';
+			$config['last_link'] = '';
 
 
 			$this->pagination->initialize($config);
 
-		$data['offset']=$this->uri->segment(5);
+		
         $data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib,$config['per_page'],$data['offset']);
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('form_page',$data);

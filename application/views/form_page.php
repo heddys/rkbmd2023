@@ -30,8 +30,8 @@
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
-	              <table>
-	                <thead>
+                <table id="example1" class="table table-bordered table-hover">
+                 <thead class="thead-dark" > 
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Register</center></th>
@@ -45,7 +45,7 @@
                   <tbody>
                     <?php foreach ($register->result() as $row) {?>
 	                	<tr>
-	                  		<td><center><?php echo $offset;?></center></td>
+	                  		<td><center><?php echo $offset++;?></center></td>
 	                  		<td><center><?php echo $row->register;?></center></td>
 	                  		<td><center><?php echo $row->kode64_baru;?></center></td>
                             <td><center><?php echo $row->nama_barang;?></center></td>

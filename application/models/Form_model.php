@@ -39,7 +39,7 @@
 
             public function get_all_register($where,$lokasi,$kib,$limit,$offset){
 
-                $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru,status');
+                $this->db->select('*');
                 $this->db->from('data_kib');
                 $this->db->where($where);
                 
@@ -61,15 +61,16 @@
                 return $this->db->get();
             }
 
-            public function hitungBanyakRowRegister($where,$lokasi,$kib)
+            public function hitungBanyakRowRegister($where,$lokasi,$kib,$limit,$offset)
             {
-                $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru,status');
+                $this->db->select('*');
                 $this->db->from('data_kib');
                 $this->db->where($where);
                 
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
                 $this->db->like('nomor_lokasi',$lokasi);
                 $this->db->like('kode108_baru',$kib);
+                $this->db->limit($limit,$offset);
 
                 return $this->db->get();
             }
