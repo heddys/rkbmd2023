@@ -41,7 +41,7 @@ class Status_form extends CI_Controller {
         }
 
         $data['register']=$this->form_model->get_all_register_proses_tolak($nomor_lokasi,$kib);
-        $data['cetak']=$this->form_model->get_all_register($data_dicetak,$nomor_lokasi,$kib);
+        $data['cetak']=$this->form_model->get_all_register($data_dicetak,$nomor_lokasi,$kib,50,1);
 
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('status_page');
