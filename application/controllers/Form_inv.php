@@ -99,15 +99,42 @@ class Form_inv extends CI_Controller {
 			$this->load->library('pagination');
 			$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
 			//Config Pagination
+			
+			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$nomor_lokasi,$kib,1000,$data['offset'])->num_rows();
+			$config['per_page'] = 10;
 			$config['base_url'] = 'http://localhost/rkbmd2023/index.php/form_inv/index/2/';
-			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$nomor_lokasi,$kib,30,$data['offset'])->num_rows();
-			$config['per_page'] = 15;
-			$config['first_link'] = '';
-			$config['last_link'] = '';
+			$config['num_links'] = 3;
 
+			//Pagination Bootstrap Theme
+			$config['full_tag_open']='<nav aria-label="Page navigation example"><ul class="pagination justify-content-center">';
+			$config['full_tag_close']='</ul></nav>';
 
+			$config['first_link'] = 'First';
+			$config['first_tag_open'] = '<li class="page-item">';
+			$config['first_tag_close'] = '</li>';
+
+			$config['last_link'] = 'Last';
+			$config['last_tag_open'] = '<li class="page-item">';
+			$config['last_tag_close'] = '</li>';
+
+			$config['next_link'] = '&raquo';
+			$config['next_tag_open'] = '<li class="page-item">';
+			$config['next_tag_close'] = '</li>';
+
+			$config['prev_link'] = '&laquo';
+			$config['prev_tag_open'] = '<li class="page-item">';
+			$config['prev_tag_close'] = '</li>';
+
+			$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+			$config['cur_tag_close'] = '</a></li>';
+
+			$config['num_tag_open'] = '<li class="page-item">';
+			$config['num_tag_close'] = '</li>';
+
+			$config['attributes'] = array ('class' => 'page-link'); 
+			
+			
 			$this->pagination->initialize($config);
-
 		
         $data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib,$config['per_page'],$data['offset']);
         $this->load->view('h_tablerkb',$data);		

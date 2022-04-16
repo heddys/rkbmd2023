@@ -30,6 +30,20 @@
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
+              <div class="row" style="float:right;">
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <input type="text"  class="form-control" placeholder="Cari Register">
+                    <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <input type="text"  class="form-control" placeholder="Cari Nama Barang">
+                    <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
                 <table id="example1" class="table table-bordered table-hover">
                  <thead class="thead-dark" > 
 	                <tr>
@@ -62,6 +76,7 @@
 	                  <?php }?>
 	                </tbody>
 	              </table>
+                <p>
                 <?php echo $this->pagination->create_links(); ?>
 	            </div>
 	            <!-- /.card-body -->
