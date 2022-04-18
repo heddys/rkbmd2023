@@ -43,8 +43,8 @@ class Home_verifikator extends CI_Controller {
 		$kib="1.3.2";
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi');
-		$data['register']=$this->form_model->get_all_register($where_proses,$nomor_lokasi,$kib);
-		$data['tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib);
+		$data['register']=$this->form_model->get_all_register($where_proses,$nomor_lokasi,$kib,100,1);
+		$data['tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib,100,1);
 
         $this->load->view('verifikator/h_verif_page',$data);		
 		$this->load->view('verifikator/verif_page');
@@ -63,7 +63,7 @@ class Home_verifikator extends CI_Controller {
 		$kib="1.3.2";
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi');
-		$data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib);
+		$data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib,100,1);
 
         $this->load->view('verifikator/h_verif_page',$data);		
 		$this->load->view('verifikator/approved_page');
