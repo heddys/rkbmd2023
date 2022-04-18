@@ -7,7 +7,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                      <center>LIST REGISTER YANG HARUS DI VERIFIKASI - PERALATAN DAN MESIN</center></h3>
+                      <center>LIST REGISTER YANG SUDAH TER-VERIKASI - PERALATAN DAN MESIN</center></h3>
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">

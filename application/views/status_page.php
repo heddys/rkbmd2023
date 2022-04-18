@@ -38,7 +38,7 @@
 	                  		<td>  
                               <form role="form" action="<?php echo site_url();?>/status_form/cetak_form" method="post" target="_blank" >
                                 <center>
-                                  <button type="submit" class="btn btn-sm btn-success" title="Isi Form Inventarisasi"><i class="fa fa-print"></i></a>
+                                  <button type="submit" class="btn btn-sm btn-success" title="Isi Form Inventarisasi"><i class="fa fa-print"></i>
                                     <input type="hidden" name="register" value="<?php echo $c->register?>">
                                 </center></td>
                               </form>

@@ -136,7 +136,7 @@ class Form_inv extends CI_Controller {
 			
 			$this->pagination->initialize($config);
 		
-        $data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib,$config['per_page'],$data['offset']);
+        $data['register']=$this->form_model->get_all_register_pagination($where,$nomor_lokasi,$kib,$config['per_page'],$data['offset']);
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('form_page',$data);
 		$this->load->view('h_footerrkb');		
@@ -576,6 +576,43 @@ class Form_inv extends CI_Controller {
 		$result = $this->form_model->get_data_kib_json($id);
 		echo json_encode($result);
 		// var_dump($result);
+	}
+
+	public function input_petugas()
+	{
+		$this->cek_sess();
+		$data['page']="Halaman Input Petugas Inventarisasi";
+		$nomor_lokasi=$this->session->userdata('no_lokasi');
+
+
+		$data['pangkat']=$this->form_model->get_pangkat();
+		$data['petugas']=$this->form_model->get_petugas($nomor_lokasi);
+
+		$this->load->view('h_tablerkb',$data);
+		$this->load->view('input_petugas',$data);
+		$this->load->view('h_footerrkb');	
+	}
+
+	public function simpan_petugas()
+	{	
+		$this->cek_sess();
+		$nomor_lokasi=$this->session->userdata('no_lokasi');
+		date_default_timezone_set("Asia/Jakarta");	
+		$updated_date=date("Y-m-d");
+		$updated_time=date("H:i:s");
+
+		$save_data = array (
+			'nama_petugas' => $_POST['nama_petugas'],
+			'nip_petugas' => $_POST['nip'],
+			'pangkat_petugas' => $_POST['pangkat'],
+			'nomor_lokasi' => $nomor_lokasi,
+			'date' => $updated_date,
+			'time' => $updated_time
+		);
+
+		$this->form_model->save_petugas($save_data);
+
+		redirect('/form_inv/input_petugas');
 	}
 }
 ?>

@@ -87,12 +87,7 @@
                             <td><center><?php echo $t->merk_alamat." - ".$t->tipe?></center></td>
                             <td><center><?php echo number_format($t->harga_baru,2,',','.');?></center></td>
 	                  		<td>  
-							  <!-- <form role="form" action="<?php echo site_url();?>/home_verifikator/verif_register" method="post">
-                                <center>
-                                  <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
-                                    <input type="hidden" name="register" value="<?php echo $row->register?>">
-                                </center></td>
-                              </form> -->
+							  <center><button type='button' class='btn btn-sm btn-warning' title='Register Masih Dalam Proses Pembenaran'><i class='fa fa-exclamation-triangle'></i></center>
                             </td>
 	                  	</tr>
 	                  <?php $x++; }?>

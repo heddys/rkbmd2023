@@ -41,7 +41,7 @@ class Status_form extends CI_Controller {
         }
 
         $data['register']=$this->form_model->get_all_register_proses_tolak($nomor_lokasi,$kib);
-        $data['cetak']=$this->form_model->get_all_register($data_dicetak,$nomor_lokasi,$kib,50,1);
+        $data['cetak']=$this->form_model->get_all_register($data_dicetak,$nomor_lokasi,$kib);
 
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('status_page');
@@ -71,8 +71,9 @@ class Status_form extends CI_Controller {
 	}
 
     public function cetak_form()
-	{
-
+	{   
+        $this->cek_sess();
+        $nomor_lokasi=$this->session->userdata('no_lokasi');
         $register=$_POST['register'];
         $where = array ( 'register' => $register );
         $whereis = array ( 'is_register' => $register );
@@ -81,6 +82,7 @@ class Status_form extends CI_Controller {
         $data['data_is_register'] = $this->form_model->ambil_status_register_form($whereis)->row();
         $data['image']=$this->form_model->ambil_file($where)->result();
         $data['data_kib'] = $this->form_model->ambil_register($where);
+        $data['petugas']=$this->form_model->get_petugas($nomor_lokasi);
 
        	$this->pdf->load_view('cetak_form_inv',$data);
 		$this->pdf->set_paper("legal", "portrait");

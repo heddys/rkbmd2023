@@ -37,7 +37,7 @@
                 return $query;
             }
 
-            public function get_all_register($where,$lokasi,$kib,$limit,$offset){
+            public function get_all_register($where,$lokasi,$kib){
 
                 $this->db->select('*');
                 $this->db->from('data_kib');
@@ -46,7 +46,6 @@
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
                 $this->db->like('nomor_lokasi',$lokasi);
                 $this->db->like('kode108_baru',$kib);
-                $this->db->limit($limit,$offset);
                 // $this->db->limit(200,1);
                 // $q1=$this->db->get();
 
@@ -204,5 +203,21 @@
 
             }
 
+
+            public function get_pangkat()
+            {
+                return $this->db->get('pangkat');
+            }
+
+            public function get_petugas($nomor_lokasi)
+            {
+                return $this->db->get_where('petugas_inv',array('nomor_lokasi' => $nomor_lokasi));
+            }
+
+            public function save_petugas($data)
+            {
+                $this->db->insert('petugas_inv', $data);
+                $this->db->error(); 
+            }
  }
  ?>

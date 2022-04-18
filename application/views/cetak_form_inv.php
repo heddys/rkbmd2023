@@ -49,7 +49,7 @@
             <b>
             <p class="ex2">LEMBAR KERJA INVENTARISASI (LKI)</p>
             <p class="ex2">PERALATAN DAN MESIN</p>
-            <p class="ex2">KOTA SURABAYA</p>
+            <p class="ex2"><?php echo strtoupper($this->session->userdata('skpd'));?> KOTA SURABAYA</p>
             </b>
         </h5>
     </center>
@@ -77,13 +77,13 @@
             <tr>
                 <th width="200px">Pengguna Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"></th>
+                <th width="150px"><?php echo $this->session->userdata('kepala_opd');?></th>
                 
             </tr>
             <tr>
                 <th width="200px">Pengelola Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"></th>
+                <th width="150px">Ir. Hendro Gunawan, MA</th>
             </tr>
         </tbody>
     </table>
@@ -583,7 +583,7 @@
                 <th width="25px"></th>
                 <th width="150px">Nama Kuasa Pengguna Barang atau Pengguna Barang Lainnya</th>
                 <th width="20px"><center>:</center></th>
-                <th colspan="4">.........................</th>
+                <th colspan="4"><?php echo $this->session->userdata('kepala_opd');?></th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -926,15 +926,17 @@
                 <th colspan="3">Nama</th>
                 <th></th>
                 <th></th>
-            </tr>   
+            </tr>
+            <?php $x=1; foreach ($petugas->result() as $row) {?>   
             <tr>
                 <th></th>
                 <th></th>
-                <th style="text-align: right;">1. &nbsp;&nbsp;</th>
-                <th colspan="5"><?php ?></th>
-                <th>...............</th>
+                <th style="text-align: right;"><?php echo $x?>. &nbsp;&nbsp;</th>
+                <th colspan="5"><?php echo $row->nama_petugas?></th>
+                <th>............................</th>
                 <th></th>
-            </tr> 
+            </tr>
+            <?php $x++; } ?> 
             
             
         </tbody>

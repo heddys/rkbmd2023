@@ -8,12 +8,27 @@
           <h4>Notice!</h4>
           Selamat Datang, Tolong Untuk Mengisi Form Inventarisasi Terlebih Dahulu.
         </div>
-          <div class="row">
-            <div class="col-lg-6 col-6">
+        <div class="row">
+            <div class="col-lg-12">
               <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <center><h3>20</h3></center>
+                    <center><h3><?php echo $jumlah_terverifikasi;?></h3></center>
+                    <center><p>Register Yang Terverifikasi</p></center>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                    <a href="<?php echo site_url('home_verifikator/approved_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+          <div class="row">
+            <div class="col-lg-6 col-6">
+              <!-- small box -->
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <center><h3><?php echo $jumlah_proses;?></h3></center>
                     <center><p>Register Yang Harus Di Verifikasi</p></center>
                   </div>
                   <div class="icon">
@@ -24,15 +39,15 @@
             </div>
             <div class="col-lg-6 col-6">
               <!-- small box -->
-                <div class="small-box bg-success">
+                <div class="small-box bg-danger">
                   <div class="inner">
-                    <center><h3>10</h3></center>
+                    <center><h3><?php echo $jumlah_tolak;?></h3></center>
                     <center><p>Register Yang Di Tolak</p></center>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('#');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
           </div>

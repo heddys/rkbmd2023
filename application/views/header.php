@@ -56,9 +56,14 @@
             }
           }
           .modal { overflow: auto !important; }
+
+          .modal-backdrop {
+            width: 100% !important;
+            height: 100% !important;
+          }
         </style>
         <!--UNTUK NAMA DINASNYA-->
-        <strong class="nav-link fontku"><font color="white"><?php echo $this->session->userdata('skpd');?> KOTA SURABAYA - (<?php echo strtoupper($this->session->userdata('no_lokasi'));?>) </font></strong>
+        <strong class="nav-link fontku"><font color="white"><?php echo $this->session->userdata('skpd');?> KOTA SURABAYA - (<?php echo strtoupper($this->session->userdata('nama_login'));?>) </font></strong>
       </li>
     </ul>
     <!-- Right navbar links -->
@@ -179,6 +184,14 @@
                 </a>
               </li> -->
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('form_inv/input_petugas');?>" class="nav-link">
+              <i class="nav-icon fa fa-address-book"></i>
+              <p>
+                Entry Petugas Inventarisasi
+              </p>
+            </a>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

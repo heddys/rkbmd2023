@@ -9,6 +9,27 @@ class Home_verifikator extends CI_Controller {
         $data['page']="Dashboard";
 		// $data['bmaset']=$this->cek_jumlah_bmaset();
 		// $data['bmpersediaan']=$this->cek_jumlah_persediaan();
+
+		$where_proses = array (
+            'ekstrakomtabel' =>  NULL,
+			'status' => 1
+        );
+		$where_terverifikasi = array (
+            'ekstrakomtabel' =>  NULL,
+			'status' => 2
+        );
+		$where_tolak = array (
+            'ekstrakomtabel' =>  NULL,
+			'status' => 3
+        );
+
+		$kib="1.3.2";
+
+		$nomor_lokasi=$this->session->userdata('no_lokasi');
+		$data['jumlah_proses']=$this->form_model->get_all_register($where_proses,$nomor_lokasi,$kib)->num_rows();
+		$data['jumlah_tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib)->num_rows();
+		$data['jumlah_terverifikasi']=$this->form_model->get_all_register($where_terverifikasi,$nomor_lokasi,$kib)->num_rows();
+
 		$this->load->view('verifikator/h_verifikator',$data);		
 		$this->load->view('verifikator/home_verifikator');
 		$this->load->view('verifikator/f_verifikator');
@@ -43,8 +64,8 @@ class Home_verifikator extends CI_Controller {
 		$kib="1.3.2";
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi');
-		$data['register']=$this->form_model->get_all_register($where_proses,$nomor_lokasi,$kib,100,1);
-		$data['tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib,100,1);
+		$data['register']=$this->form_model->get_all_register($where_proses,$nomor_lokasi,$kib);
+		$data['tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib);
 
         $this->load->view('verifikator/h_verif_page',$data);		
 		$this->load->view('verifikator/verif_page');
@@ -63,7 +84,7 @@ class Home_verifikator extends CI_Controller {
 		$kib="1.3.2";
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi');
-		$data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib,100,1);
+		$data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib);
 
         $this->load->view('verifikator/h_verif_page',$data);		
 		$this->load->view('verifikator/approved_page');
@@ -89,8 +110,8 @@ class Home_verifikator extends CI_Controller {
 		$this->load->view('verifikator/f_verifikator');	
 	}
 
-	public function tandai_status_register()
-	{
+	public function tandai_status_register(){
+		
 		$register=$_POST['register'];
 		$tanda=$_POST['tanda'];
 		if($tanda == 1) {
@@ -110,12 +131,14 @@ class Home_verifikator extends CI_Controller {
 
 			$this->form_model->tandai_status_register($register,$tanda);
 			$this->form_model->buat_jurnal_tolak($data);
+			redirect('home_verifikator/verif_page/');
 			
 		} else {
 			$this->form_model->tandai_status_register($register,$tanda); 
+			redirect('home_verifikator/approved_page/');
 		}
 
-		redirect('home_verifikator/approved_page/');
+		
 	}
 
 

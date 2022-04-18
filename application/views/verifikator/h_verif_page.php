@@ -56,7 +56,11 @@
       </li>
     </ul>
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto fontku">
+          <strong><u><?php echo $this->session->userdata('role');?></u></strong> 
+    </ul>
+    &nbsp; &nbsp; &nbsp;
+    <ul class="navbar-nav ml-15 fontku">
       <ul class="navbar-nav ml-auto fontku">
       <div id="clock"></div> &nbsp | &nbsp<div id="date"></div>
     </ul>

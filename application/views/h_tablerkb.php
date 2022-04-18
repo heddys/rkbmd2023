@@ -49,6 +49,10 @@
             }
           }
           .modal { overflow: auto !important; }
+          .modal-backdrop {
+              width: 100% !important;
+              height: 100% !important;
+          }
         </style>
         <!--UNTUK NAMA DINASNYA-->
         <strong class="nav-link fontku"><font color="white"><?php echo $this->session->userdata('skpd');?> KOTA SURABAYA - (<?php echo strtoupper($this->session->userdata('nama_login'));?>) </font></strong>
