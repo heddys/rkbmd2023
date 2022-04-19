@@ -30,7 +30,7 @@
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
+                                <!-- <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary1" name="radio_kode_reg" value="0" checked="checked" required="required"/>
                                         <label for="primary1">Sesuai</label>
@@ -39,8 +39,7 @@
                                         <input type="radio" id="primary2" name="radio_kode_reg" value="1" disabled/>
                                         <label for="primary2">Tidak Sesuai</label>
                                     </div>
-                                </div>
-                                <!-- /input-group -->
+                                </div> -->
                             </div>
 
                             <!-- Batas Per Form -->
@@ -217,11 +216,11 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary15" name="radio_nilai" value="0" required="required"/>
+                                        <input type="radio" id="primary15" name="radio_nilai" value="0" checked="checked" required="required"/>
                                         <label for="primary15">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary16" name="radio_nilai" value="1"/>
+                                        <input type="radio" id="primary16" name="radio_nilai" value="1" disabled/>
                                         <label for="primary16">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -264,7 +263,8 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Merk : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="merk" id="merk_barang" readonly="true" value="<?php echo $data_register->merk_alamat;?>">
+                                            <input type="text" class="form-control" name="merk" id="merk_barang" readonly="true" value="<?php echo  str_replace('"', '', $data_register->merk_alamat);?>">
+                                            <!-- <textarea class="form-control" name="merk" rows="3" id="merk_barang" value="<?php echo str_replace('"', '', $data_register->merk_alamat);?>"></textarea> -->
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->

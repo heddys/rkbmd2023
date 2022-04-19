@@ -8,7 +8,7 @@
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
-	              <table id="example1" class="table table-bordered table-hover">
+	              <table id="list_komponen_tabel" class="table table-bordered table-hover">
 	                <thead>
 	                <tr>
 	                  <th><center>No.</center></th>

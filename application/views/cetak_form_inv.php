@@ -280,13 +280,13 @@
             <tr>
                 <th width="120px">I. Apakah nilai perolehan merupakan biaya atribusi/biaya yang menambah kapasitas manfaat</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_register->merupakan_anak; ?></th>
+                <th width="150px"></th>
                 <td width="20px"><?php if($data_is_register->is_aset_atrib == 0) {?>
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
-                    <th>Sesuai</th>
+                    <th>Tidak</th>
                     <td width="20px">
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
@@ -302,7 +302,7 @@
                             <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
-                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
+                <th colspan="3">Ya, sebutkan yang seharusnya : 
                     <?php if ($data_is_register->is_aset_atrib == 1) { echo $data_register->merupakan_anak;}?>
                 </th>
             </tr>
@@ -325,7 +325,7 @@
                 <th width="20px"></th>
                 <th colspan="2">1). No. Register</th>
                 <th><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -335,7 +335,7 @@
                 <th width="20px"></th>
                 <th colspan="2">2). Kode Barang</th>
                 <th><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -345,7 +345,7 @@
                 <th width="20px"></th>
                 <th colspan="2">3). Kode Lokasi</th>
                 <th><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -355,7 +355,7 @@
                 <th width="20px"></th>
                 <th colspan="2">4). Kode Register</th>
                 <th><center>:</center></th>
-                <th>.....................................</th>
+                <th>-$_ENV</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -365,7 +365,7 @@
                 <th width="20px"></th>
                 <th colspan="2">5). Nama Barang</th>
                 <th><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -375,7 +375,7 @@
                 <th width="20px"></th>
                 <th colspan="2">6). Spesifikasi Nama Barang</th>
                 <th><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px">J. Alamat</th>
@@ -607,7 +607,7 @@
                 <th width="150x"></th>
                 <th colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.) &nbsp; Nama</th>
                 <th width="20px"><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -615,7 +615,7 @@
                 <th width="150x"></th>
                 <th colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.) &nbsp; Nama Dokumen</th>
                 <th width="20px"><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -629,7 +629,7 @@
                 <th width="150x"></th>
                 <th colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.) &nbsp; Nama</th>
                 <th width="20px"><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             
             <tr>
@@ -654,7 +654,7 @@
                 <th width="150x"></th>
                 <th colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.) &nbsp; Nama</th>
                 <th width="20px" ><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -662,7 +662,7 @@
                 <th width="150x"></th>
                 <th colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.) &nbsp; Nama Dokumen</th>
                 <th width="20px"><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -676,7 +676,7 @@
                 <th width="150x"></th>
                 <th colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.) &nbsp; Nama</th>
                 <th width="20px"><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -700,7 +700,7 @@
                 <th width="150x"></th>
                 <th colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.) &nbsp; Nama Pihak Lain</th>
                 <th width="20px" ><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -708,7 +708,7 @@
                 <th width="150x"></th>
                 <th colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.) &nbsp; Nama Dokumen</th>
                 <th width="20px"><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -722,7 +722,7 @@
                 <th width="150x"></th>
                 <th colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.) &nbsp; Nama Pihak Lain</th>
                 <th width="20px"><center>:</center></th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px">Q. Data Barang tercatat ganda</th>
@@ -762,7 +762,7 @@
                 <th></td>
                 <th width="100px">a. No. Register</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -773,7 +773,7 @@
                 <th></td>
                 <th width="100px">b. Kode Register</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -784,7 +784,7 @@
                 <th></td>
                 <th width="100px">c. Kode Barang</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -795,7 +795,7 @@
                 <th></td>
                 <th width="100px">d. Nama Barang</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -806,7 +806,7 @@
                 <th></td>
                 <th width="100px">e. Nama Spesifikasi Barang</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -817,7 +817,7 @@
                 <th></td>
                 <th width="100px">f. Jumlah</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -828,7 +828,7 @@
                 <th></td>
                 <th width="100px">g. Satuan</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -839,7 +839,7 @@
                 <th></td>
                 <th width="100px">h. Nilai Perolehan Barang</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -850,7 +850,7 @@
                 <th></td>
                 <th width="100px">i. Tanggal, Bulan, Tahun perolehan</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -861,7 +861,7 @@
                 <th></td>
                 <th width="100px">j. Kuasa Pengguna Barang Lainnya, Pengguna Barang Lainnya, atau Pengelola Barang</th>
                 <th>:</th>
-                <th>.....................................</th>
+                <th>-</th>
             </tr>
             <!-- <tr>
                 <th width="120px">N. Titik Koordinat</th>

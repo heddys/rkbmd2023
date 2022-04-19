@@ -102,7 +102,7 @@ class Form_inv extends CI_Controller {
 			
 			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$nomor_lokasi,$kib,1000,$data['offset'])->num_rows();
 			$config['per_page'] = 10;
-			$config['base_url'] = 'http://localhost/rkbmd2023/index.php/form_inv/index/2/';
+			$config['base_url'] = '/rkbmd2023/index.php/form_inv/index/2/';
 			$config['num_links'] = 3;
 
 			//Pagination Bootstrap Theme

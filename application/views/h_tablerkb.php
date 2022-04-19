@@ -159,6 +159,14 @@
               </li> -->
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('form_inv/input_petugas');?>" class="nav-link">
+              <i class="nav-icon fa fa-address-book"></i>
+              <p>
+                Entry Petugas Inventarisasi
+              </p>
+            </a>
+          </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
