@@ -86,7 +86,7 @@
 
             public function get_all_register_pagination($where,$lokasi,$kib, $limit, $offset){
 
-                $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru');
+                $this->db->select('a.nomor_lokasi,a.register,a.kode64_baru,a.nama_barang,a.merk_alamat,a.tipe,a.harga_baru,b.lokasi');
                 $this->db->from('data_kib');
                 $this->db->where($where);
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
