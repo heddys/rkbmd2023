@@ -1,6 +1,6 @@
  <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <font size="2"><strong>IT BLPPA - APLIKASI E-RKBMD SURABAYA - Theme By AdminLTE.io</strong>
+    <font size="2"><strong>IT BLPPA - APLIKASI SI-IBMD SURABAYA - Theme By AdminLTE.io</strong>
     All rights reserved.</font>
     <div class="float-right d-none d-sm-inline-block">
       <font size="2"><b>Version</b> RKBMD.Beta-01</font>
@@ -26,12 +26,14 @@
 <script src="<?php echo base_url();?>ini_assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/select2/js/select2.full.min.js"></script>
 <script>
 
  $(function () {
   //  $("#example1").DataTable();
    $("#tabel_cetak").DataTable();
    $("#tabel_proses_verif").DataTable();
+   $('.select2').select2()
 
    function showTime() {
       var today = new Date();

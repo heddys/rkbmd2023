@@ -4,7 +4,7 @@
 
   <head>
     <meta charset="utf-8">
-        <title>E-RKBMD APP KOTA SURABAYA</title>
+        <title>SI-IBMD KOTA SURABAYA</title>
         <meta name="description" content="Comming soon page - flat able">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Codedthemes">
@@ -82,7 +82,7 @@
 
                 <img src="<?php echo base_url();?>ini_assets/dist/img/surabaya.png" alt="" class="brand-logo text-intro opacity-0" width="100px">
               
-                <h1 class="text-intro opacity-0">E-RKBMD</h1>
+                <h1 class="text-intro opacity-0">SI-IBMD</h1>
 
                 <?php if ($error==1) { ?>
                   <p style="color: red;" class="text-intro opacity-0"><strong>Maaf, Username atau Password Salah! Silahkan Coba Lagi</strong></p><br> 

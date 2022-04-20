@@ -1009,7 +1009,7 @@
                                     <div class="modal-header">
                                         <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body" style="overflow-x:auto;">
                                         <style type="text/css"> </style>
                                         <table id="tblregister" class="table table-striped table-hover responsive">
                                             <thead class="thead-dark">
@@ -1047,7 +1047,7 @@
                                     <div class="modal-header">
                                         <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body" style="overflow-x:auto;">
                                         <style type="text/css"> </style>
                                         <table id="tblregister2" class="table table-striped table-hover responsive">
                                             <thead class="thead-dark">

@@ -71,7 +71,21 @@ class Form_inv extends CI_Controller {
 		$this->cek_sess();
 		$data['page']="Form Inventarisasi";
         $data['exist']=$this->cek_jumlah_exist();
-		$nomor_lokasi=$this->session->userdata('no_lokasi');
+		$form = 0;		
+
+		if(isset($_POST['select_lokasi'])){
+				$nomor_lokasi = $_POST['select_lokasi'];
+				$form = 1;
+				$this->session->set_userdata('no_lokasi',$nomor_lokasi);
+				$this->session->set_userdata('status',1);
+		} else {
+			if($this->session->userdata()==0) {
+				$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+			} else {
+				$nomor_lokasi=$this->session->userdata('no_lokasi');
+			}
+		}
+
 
         $where = array (
             'ekstrakomtabel' =>  NULL,
@@ -99,8 +113,7 @@ class Form_inv extends CI_Controller {
 			$this->load->library('pagination');
 			$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
 			//Config Pagination
-			
-			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$nomor_lokasi,$kib,1000,$data['offset'])->num_rows();
+			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$nomor_lokasi,1000,$data['offset'],$kib,$form)->num_rows();
 			$config['per_page'] = 10;
 			$config['base_url'] = '/rkbmd2023/index.php/form_inv/index/2/';
 			$config['num_links'] = 3;
@@ -135,8 +148,9 @@ class Form_inv extends CI_Controller {
 			
 			
 			$this->pagination->initialize($config);
-		
-        $data['register']=$this->form_model->get_all_register_pagination($where,$nomor_lokasi,$kib,$config['per_page'],$data['offset']);
+		$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
+
+        $data['register']=$this->form_model->get_all_register_pagination($nomor_lokasi,$kib,$config['per_page'],$data['offset'],$form);
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('form_page',$data);
 		$this->load->view('h_footerrkb');		
@@ -612,6 +626,12 @@ class Form_inv extends CI_Controller {
 
 		$this->form_model->save_petugas($save_data);
 
+		redirect('/form_inv/input_petugas');
+	}
+
+	public function hapus_petugas($id)
+	{
+		$this->form_model->hapus_petugas($id);
 		redirect('/form_inv/input_petugas');
 	}
 }

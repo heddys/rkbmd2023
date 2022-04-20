@@ -84,7 +84,7 @@
     }
     setInterval(showTime, 50);
 
-    function klik_cari_ (id){
+    function klik_cari_atrib(id){
       var isi_text = document.querySelector("#modal-search-register-atrib [id=search_register_atrib]").value;
       if(isi_text.length == 0 ) {
         alert("Mohon Untuk Mengisi Nama atau Register Yang Di Cari");

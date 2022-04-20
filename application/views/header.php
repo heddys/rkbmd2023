@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-RKBMD APP KOTA SURABAYA</title>
+  <title>SI-IBMD KOTA SURABAYA</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -107,7 +107,7 @@
     <a href="index.php" class="brand-link navbar-info">
       <img src="<?php echo base_url();?>ini_assets/dist/img/surabaya.png" alt="Logo Surabaya" class="brand-image"
            style="opacity: 1.8">
-      <center><span class="brand-text font-weight-bold">E-RKBMD</span></center>
+      <center><span class="brand-text font-weight-bold">SI-IBMD</span></center>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">

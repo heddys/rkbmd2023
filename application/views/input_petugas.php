@@ -28,7 +28,7 @@
 	                  		<td><center><?php echo $row->nama_petugas?></center></td>
 	                  		<td><center><?php echo $row->nip_petugas?></center></td>
                             <td><center><?php echo $row->pangkat_petugas?></center></td>
-	                  		<td></td>
+                            <td><center><a class="btn btn-danger" href="<?php echo site_url('/form_inv/hapus_petugas/'.$row->id);?>"><i class="fa fa-trash" aria-hidden="true"></i></a></center></td>
 	                  	</tr>
 	                  <?php $x++; }?>
 	                </tbody>
