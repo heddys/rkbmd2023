@@ -36,7 +36,7 @@ class Auth extends CI_Controller {
 						'skpd' => $row->nama_opd,
 						'kode_opd' =>$row->opd,
 						'nama_login' =>$row->nama,
-						'no_lokasi' =>$row->nomor_lokasi,
+						'data' =>$row->nomor_lokasi,
 						'role' => $row->fungsi,
 						'kepala_opd' => $row->nama_kepala,
 						'no_lokasi_asli' => $row->nomor_lokasi,

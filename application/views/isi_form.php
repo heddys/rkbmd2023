@@ -97,30 +97,26 @@
                             <div class="form-group col-md-6">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Alamat : </label>
+                                            <label class="input-group-text" id="basic-addon3">Lokasi : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="alamat" required="required" placeholder="Diisi Posisi Barangnya, Contoh : Ruang Kabid, Ruang Server, Dll..">
+                                            <input type="text" class="form-control" id="input_alamat" name="alamat" value="<?php echo $data_register->nomor_lokasi?> - <?php echo $data_register->lokasi?>" readonly="true">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
-                            <!-- <div class=" mt-2 mb-6 col-lg-2">
+                            <div class=" mt-2 mb-6 col-lg-2">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary7" name="radio_spek_nama" value="spek0"/>
+                                        <input type="radio" id="primary7" name="radio_alamat" value="spek0"/>
                                         <label for="primary7">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary8" name="radio_spek_nama" value="spek1"/>
+                                        <input type="radio" id="primary8" name="radio_alamat" value="spek1"/>
                                         <label for="primary8">Tidak Sesuai</label>
                                     </div>
-                                </div> -->
-                            <!-- </div> -->
+                                </div>
+                            </div>
 
                             <!-- Batas Per Form -->
-
-                            <div class=" mt-2 mb-6 col-lg-2">
-                                &nbsp;
-                            </div>
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
@@ -530,7 +526,7 @@
                                 <div class="mb-3">
                                 <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg , Ukuran File Max : 5MB, dan Rotasi Foto : Portrait, dan Foto Disertai Geotag)
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]">
+                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]" required="required" accept="image/jpeg">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                 </div>
@@ -599,49 +595,105 @@
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
-                                        <table id="tblkodebar" class="table table-striped table-hover responsive">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th><center>No.</center></th>
-                                                    <th><center>Kode Kelompok</center></th>
-                                                    <th><center>Kelompok</center></th>
-                                                    <th><center>Kode Sub Kelompok</center></th>
-                                                    <th><center>Sub Kelompok</center></th>
-                                                    <th><center>Kode Sub Sub Kelompok</center></th>
-                                                    <th><center>Deskripsi Sub Sub Kelompok</center></th>
-                                                    <th><center>Aksi</center></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $x=1; foreach ($kode_barang->result() as $row) {?>
-                                                <tr>
-                                                    <td><?php echo $x;?></td>
-                                                    <td><?php echo $row->kode_kelompok;?></td>
-                                                    <td><?php echo $row->kelompok;?></td>
-                                                    <td><?php echo $row->kode_sub_kelompok;?></td>
-                                                    <td><?php echo $row->sub_kelompok;?></td>
-                                                    <td><?php echo $row->kode_sub_sub_kelompok;?></td>
-                                                    <td><?php echo $row->sub_sub_kelompok;?></td>
-                                                    <td>
-                                                        <center>
-                                                            <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $row->kode_sub_sub_kelompok;?>" onclick="klik_kode_bar(this.getAttribute('data-id'));" data-dismiss="modal"><i class="fa fa-plus"></i></a>
-                                                        </center>
-                                                    </td>
-                                                </tr>
-                                                <?php $x++; }?>
-                                            </tbody>
-                                        </table>  
+                                        <div style="overflow-x:auto;">
+                                            <table id="tblkodebar" class="table table-striped table-hover responsive">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th><center>No.</center></th>
+                                                        <th><center>Kode Kelompok</center></th>
+                                                        <th><center>Kelompok</center></th>
+                                                        <th><center>Kode Sub Kelompok</center></th>
+                                                        <th><center>Sub Kelompok</center></th>
+                                                        <th><center>Kode Sub Sub Kelompok</center></th>
+                                                        <th><center>Deskripsi Sub Sub Kelompok</center></th>
+                                                        <th><center>Aksi</center></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $x=1; foreach ($kode_barang->result() as $row) {?>
+                                                    <tr>
+                                                        <td><?php echo $x;?></td>
+                                                        <td><?php echo $row->kode_kelompok;?></td>
+                                                        <td><?php echo $row->kelompok;?></td>
+                                                        <td><?php echo $row->kode_sub_kelompok;?></td>
+                                                        <td><?php echo $row->sub_kelompok;?></td>
+                                                        <td><?php echo $row->kode_sub_sub_kelompok;?></td>
+                                                        <td><?php echo $row->sub_sub_kelompok;?></td>
+                                                        <td>
+                                                            <center>
+                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $row->kode_sub_sub_kelompok;?>" onclick="klik_kode_bar(this.getAttribute('data-id'));" data-dismiss="modal"><i class="fa fa-plus"></i></a>
+                                                            </center>
+                                                        </td>
+                                                    </tr>
+                                                    <?php $x++; }?>
+                                                </tbody>
+                                            </table> 
+                                        </div> 
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-danger batal" onclick="klik_kode_bar(false)" data-dismiss="modal">Batal</button>
                                         <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
                                     </div>
                             </div>
-                                /* <!-- modal-content --> */
+                                 <!-- modal-content -->
                             </div>
-                            /* <!-- /.modal-dialog --> */
+                            <!-- /.modal-dialog -->
                         </div>
-                        /* <!-- /.modal --> */
+                        <!-- /.modal -->
+
+                        <div class="modal fade" id="modal-spek-barang">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Sebutkan yang sebenarnya</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <div style="overflow-x:auto;">
+                                            <table id="tblalamatbarang" class="table table-striped table-hover responsive" style="overflow:auto;">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th><center>No.</center></th>
+                                                        <th><center>Nomor Unit</center></th>
+                                                        <th><center>unit</center></th>
+                                                        <th><center>Nomor Sub Unit</center></th>
+                                                        <th><center>Sub Unit</center></th>
+                                                        <th><center>Nomor Lokasi</center></th>
+                                                        <th><center>Lokasi</center></th>
+                                                        <th><center>Aksi</center></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $x=1; foreach ($kamus_lokasi->result() as $data_row) {?>
+                                                    <tr>
+                                                        <td><?php echo $x;?></td>
+                                                        <td><?php echo $data_row->nomor_unit;?></td>
+                                                        <td><?php echo $data_row->unit;?></td>
+                                                        <td><?php echo $data_row->nomor_sub_unit;?></td>
+                                                        <td><?php echo $data_row->sub_unit;?></td>
+                                                        <td><?php echo $data_row->nomor_lokasi;?></td>
+                                                        <td><?php echo $data_row->lokasi;?></td>
+                                                        <td>
+                                                            <center>
+                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi;?>" onclick="klik_spek_barang(this.getAttribute('data-id'));" data-dismiss="modal"><i class="fa fa-plus"></i></a>
+                                                            </center>
+                                                        </td>
+                                                    </tr>
+                                                    <?php $x++; }?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger batal" onclick="klik_spek_barang(false)" data-dismiss="modal">Batal</button>
+                                        <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
+                                    </div>
+                            </div>
+                                 <!-- modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
                         
                         <!-- Modal Untuk Input Nama Barang -->
                         <div class="modal fade" id="modal-nama-barang">

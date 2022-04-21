@@ -71,19 +71,38 @@ class Form_inv extends CI_Controller {
 		$this->cek_sess();
 		$data['page']="Form Inventarisasi";
         $data['exist']=$this->cek_jumlah_exist();
-		$form = 0;		
+		$data_cari=$this->session->userdata('data');
+		
 
+		// if($this->session->userdata('status')==0){
+		// 	$form=0;
+		// } elseif($this->session->userdata('status')==2) {
+		// 	$form=3;
+		// }
+		
+		//Session Status 1, Artinya Lagi di Isi Search By Lokasi dan untuk Session Status 2, Artinya Lagi di Isi Search By Register dan Nama
 		if(isset($_POST['select_lokasi'])){
-				$nomor_lokasi = $_POST['select_lokasi'];
+				$data_cari = $_POST['select_lokasi'];
 				$form = 1;
-				$this->session->set_userdata('no_lokasi',$nomor_lokasi);
+				$this->session->set_userdata('data',$data_cari);
 				$this->session->set_userdata('status',1);
 		} else {
-			if($this->session->userdata()==0) {
-				$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+			if($this->session->userdata('status')==0) {
+				$form = 0;
+				$data_cari=$this->session->userdata('no_lokasi_asli');
+			} elseif($this->session->userdata('status')==1) {
+				$form = 1;
+				$data_cari=$this->session->userdata('data');
 			} else {
-				$nomor_lokasi=$this->session->userdata('no_lokasi');
+				$form = 3;
 			}
+		}
+
+		if(isset($_POST['cariregname'])){
+			$data_cari=$_POST['cariregname'];
+			$form=3;
+			$this->session->set_userdata('data',$data_cari);
+			$this->session->set_userdata('status',2);
 		}
 
 
@@ -113,7 +132,7 @@ class Form_inv extends CI_Controller {
 			$this->load->library('pagination');
 			$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
 			//Config Pagination
-			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$nomor_lokasi,1000,$data['offset'],$kib,$form)->num_rows();
+			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$data_cari,$kib,$form)->num_rows();
 			$config['per_page'] = 10;
 			$config['base_url'] = '/rkbmd2023/index.php/form_inv/index/2/';
 			$config['num_links'] = 3;
@@ -148,9 +167,10 @@ class Form_inv extends CI_Controller {
 			
 			
 			$this->pagination->initialize($config);
+			
 		$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
-
-        $data['register']=$this->form_model->get_all_register_pagination($nomor_lokasi,$kib,$config['per_page'],$data['offset'],$form);
+		// $data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
+        $data['register']=$this->form_model->get_all_register_pagination($data_cari,$kib,$config['per_page'],$data['offset']-1,$form);
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('form_page',$data);
 		$this->load->view('h_footerrkb');		
@@ -164,12 +184,12 @@ class Form_inv extends CI_Controller {
         $data['exist']=$this->cek_jumlah_exist();
 		$data['kode_barang']=$this->form_model->data_kode_barang();
 		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
 
 		
 		$register = $_POST['register'];
-		$where = array ( 'register' => $register );
 		
-		$data['data_register'] = $this->form_model->ambil_register($where);
+		$data['data_register'] = $this->form_model->ambil_register($register);
 
         $this->load->view('header',$data);		
 		$this->load->view('isi_form',$data);
@@ -596,7 +616,7 @@ class Form_inv extends CI_Controller {
 	{
 		$this->cek_sess();
 		$data['page']="Halaman Input Petugas Inventarisasi";
-		$nomor_lokasi=$this->session->userdata('no_lokasi');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 
 
 		$data['pangkat']=$this->form_model->get_pangkat();
@@ -610,7 +630,7 @@ class Form_inv extends CI_Controller {
 	public function simpan_petugas()
 	{	
 		$this->cek_sess();
-		$nomor_lokasi=$this->session->userdata('no_lokasi');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		date_default_timezone_set("Asia/Jakarta");	
 		$updated_date=date("Y-m-d");
 		$updated_time=date("H:i:s");

@@ -60,18 +60,23 @@
                 return $this->db->get();
             }
 
-            public function hitungBanyakRowRegister($where,$lokasi,$limit,$offset,$kib,$form)
+            public function hitungBanyakRowRegister($where,$data,$kib,$form)
             {
-                $this->db->select('*');
-                $this->db->from('data_kib');
-                $this->db->where($where);
-                
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
-                $this->db->like('nomor_lokasi',$lokasi);
-                $this->db->like('kode108_baru',$kib);
-                $this->db->limit($limit,$offset);
+                if ($form == 3){
+                    $no_lokasi=$this->session->userdata('no_lokasi_asli');
+                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi` like '%".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%')");
 
-                return $this->db->get();
+                    return $query;
+                } else {
+                    $this->db->select('*');
+                    $this->db->from('data_kib');
+                    $this->db->where($where);
+                    $this->db->like('nomor_lokasi',$data);
+                    $this->db->like('kode108_baru',$kib);
+
+                    return $this->db->get();
+                }
             }
             
             public function save_image($data = array())
@@ -84,7 +89,7 @@
                 return $this->db->get_Where('jurnal_upload',$data);
             }
 
-            public function get_all_register_pagination($lokasi,$kib, $limit, $offset){
+            public function get_all_register_pagination($data,$kib, $limit, $offset,$form){
 
                 // $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru');
                 // $this->db->from('data_kib');
@@ -96,17 +101,24 @@
                 
 
             //    return $this->db->get();
-                    
-                $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi` like '%".$lokasi."%' limit ".$limit." offset ".$offset."");
+                if($form == 3){
+                    $no_lokasi=$this->session->userdata('no_lokasi_asli');
+                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi` like '%".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+                } else {
+                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi` like '%".$data."%' limit ".$limit." offset ".$offset."");
+                }
 
-
-            return $query->result();
+                return $query->result();
             }
 
-            public function ambil_register($where)
+            public function ambil_register($register)
             {   
-                $query = $this->db->get_where('data_kib', $where);
+                
+                $query = $this->db->query("SELECT a.*,b.* FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.register = '".$register."'");
+
                 return $query->row();
+                // $query = $this->db->get_where('data_kib', $where);
+                // return $query->row();
             }
 
             public function ambil_register_form($where)
@@ -227,6 +239,11 @@
                 $this->db->where('id', $id);
                 $this->db->update('petugas_inv',array('status' => 1));
                 $this->db->error();
+            }
+
+            public function data_kamus_lokasi()
+            {
+                return $this->db->get('kamus_lokasi');
             }
  }
  ?>

@@ -53,6 +53,7 @@
        return ribuan;
     }
     $("#tblkodebar").DataTable();
+    $("#tblalamatbarang").DataTable();
     
 
     function showTime() {
@@ -342,11 +343,10 @@ function formatCurrency(input, blur) {
     }
 
     function klik_spek_barang(id){
-      if(id == true){
-        var isi_text = document.querySelector("#modal-spek-barang [id=spek_barang]").value;
-        document.getElementById('nama_spek_barang').value=isi_text;
-      } else {
+      if(id == false) {
         $("input:radio[id=primary8]:checked")[0].checked = false;
+      } else {
+        document.getElementById('input_alamat').value=id;
       }
     }
 

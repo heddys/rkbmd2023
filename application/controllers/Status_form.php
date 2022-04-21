@@ -9,7 +9,7 @@ class Status_form extends CI_Controller {
         $this->cek_sess();
 		$data['page']="Form Inventarisasi";
         $data['exist']=$this->cek_jumlah_exist();
-		$nomor_lokasi=$this->session->userdata('no_lokasi');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 
         // $data_proses_verif = array (
 
@@ -73,7 +73,7 @@ class Status_form extends CI_Controller {
     public function cetak_form()
 	{   
         $this->cek_sess();
-        $nomor_lokasi=$this->session->userdata('no_lokasi');
+        $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
         $register=$_POST['register'];
         $where = array ( 'register' => $register );
         $whereis = array ( 'is_register' => $register );

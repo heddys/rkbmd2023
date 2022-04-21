@@ -107,13 +107,13 @@
                             <div class="form-group col-md-6">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Alamat : </label>
+                                            <label class="input-group-text" id="basic-addon3">Lokasi : </label>
                                         </div>
                                             <input type="text" class="form-control" name="alamat" disabled="disabled" value="<?php echo $data_register->alamat;?>" placeholder="Diisi Posisi Barangnya, Contoh : Ruang Kabid, Ruang Server, Dll..">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
-                            <!-- <div class=" mt-2 mb-6 col-lg-2">
+                            <div class=" mt-2 mb-6 col-lg-2">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary7" name="radio_spek_nama" value="spek0"/>
@@ -124,7 +124,7 @@
                                         <label for="primary8">Tidak Sesuai</label>
                                     </div>
                                 </div> -->
-                            <!-- </div> -->
+                            <!-- </div>
 
                             <!-- Batas Per Form -->
 
