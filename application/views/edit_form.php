@@ -111,24 +111,28 @@
                             <div class="form-group col-md-6">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Alamat : </label>
+                                            <label class="input-group-text" id="basic-addon3">Lokasi : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="alamat" value="<?php echo $data_register->alamat;?>" placeholder="Diisi Posisi Barangnya, Contoh : Ruang Kabid, Ruang Server, Dll..">
+                                            <input type="text" class="form-control" id="input_alamat" name="alamat" value="<?php echo $data_register->nomor_lokasi." - ".$data_register->lokasi;?>" readonly="true" placeholder="">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
-                            <!-- <div class=" mt-2 mb-6 col-lg-2">
+                            <div class=" mt-2 mb-6 col-lg-2">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary7" name="radio_spek_nama" value="spek0"/>
+                                        <input type="radio" id="primary7" name="radio_alamat" value="0" <?php 
+                                                if ($data_is_register->is_lokasi == 0) { echo "checked='checked'";}
+                                            ?> require="required"/>
                                         <label for="primary7">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary8" name="radio_spek_nama" value="spek1"/>
+                                        <input type="radio" id="primary8" name="radio_alamat" value="1" <?php 
+                                                if ($data_is_register->is_lokasi == 1) { echo "checked='checked'";}
+                                            ?>/>
                                         <label for="primary8">Tidak Sesuai</label>
                                     </div>
-                                </div> -->
-                            <!-- </div> -->
+                                </div>
+                            </div>
 
                             <!-- Batas Per Form -->
 
@@ -1016,6 +1020,60 @@
                             <!-- /.modal-dialog -->
                         </div>
                     <!-- /.modal -->
+
+                    <div class="modal fade" id="modal-spek-barang">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Sebutkan yang sebenarnya</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <div style="overflow-x:auto;">
+                                            <table id="tblalamatbarang" class="table table-striped table-hover responsive" style="overflow:auto;">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th><center>No.</center></th>
+                                                        <th><center>Nomor Unit</center></th>
+                                                        <th><center>unit</center></th>
+                                                        <th><center>Nomor Sub Unit</center></th>
+                                                        <th><center>Sub Unit</center></th>
+                                                        <th><center>Nomor Lokasi</center></th>
+                                                        <th><center>Lokasi</center></th>
+                                                        <th><center>Aksi</center></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $x=1; foreach ($kamus_lokasi->result() as $data_row) {?>
+                                                    <tr>
+                                                        <td><?php echo $x;?></td>
+                                                        <td><?php echo $data_row->nomor_unit;?></td>
+                                                        <td><?php echo $data_row->unit;?></td>
+                                                        <td><?php echo $data_row->nomor_sub_unit;?></td>
+                                                        <td><?php echo $data_row->sub_unit;?></td>
+                                                        <td><?php echo $data_row->nomor_lokasi;?></td>
+                                                        <td><?php echo $data_row->lokasi;?></td>
+                                                        <td>
+                                                            <center>
+                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi;?>" onclick="klik_spek_barang(this.getAttribute('data-id'));" data-dismiss="modal"><i class="fa fa-plus"></i></a>
+                                                            </center>
+                                                        </td>
+                                                    </tr>
+                                                    <?php $x++; }?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger batal" onclick="klik_spek_barang(false)" data-dismiss="modal">Batal</button>
+                                        <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
+                                    </div>
+                            </div>
+                                 <!-- modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
                     
 
                     

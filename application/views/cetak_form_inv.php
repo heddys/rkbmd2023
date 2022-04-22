@@ -42,6 +42,36 @@
         }
     </style>
 </head>
+<?php 
+function to_rp($val)
+{
+    return "Rp " . number_format($val,0,',00','.');
+}
+
+function tgl_indo($tanggal){
+    $bulan = array (
+      1 => 'Januari',
+      2 => 'Februari',
+      3 => 'Maret',
+      4 => 'April',
+      5 => 'Mei',
+      6 => 'Juni',
+      7 => 'Juli',
+      8 => 'Agustus',
+      9 => 'September',
+      10 => 'Oktober',
+      11 => 'November',
+      12 => 'Desember'
+    );
+    $pecahkan = explode('-', $tanggal);
+    
+    // variabel pecahkan 0 = tahun
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tanggal
+   
+    return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+  }
+?>
 <body class="sidebar-mini layout-fixed" style="height: auto;">
     <!--  -->
     <center>
@@ -251,7 +281,7 @@
             <tr>
                 <th width="120px">H. Nilai Perolehan Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_kib->harga_baru; ?></th>
+                <th width="150px"><?php echo to_rp($data_kib->harga_baru); ?></th>
                 <td width="20px"><?php if($data_is_register->is_nilai_perolehan == 0) {?>
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
@@ -274,7 +304,7 @@
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
-                    <?php if ($data_is_register->is_nilai_perolehan == 1) { echo $data_register->nilai_perolehan;}?>
+                    <?php if ($data_is_register->is_nilai_perolehan == 1) { echo to_rp($data_register->nilai_perolehan);}?>
                 </th>
             </tr>
             <tr>
@@ -355,7 +385,7 @@
                 <th width="20px"></th>
                 <th colspan="2">4). Kode Register</th>
                 <th><center>:</center></th>
-                <th>-$_ENV</th>
+                <th>-</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -380,7 +410,7 @@
             <tr>
                 <th width="120px">J. Alamat</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_register->alamat; ?></th>
+                <th width="150px"><?php echo $data_kib->nomor_lokasi; ?></th>
                 <th width="20px"><center>
                     <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                 </center></th>
@@ -911,7 +941,7 @@
                 <th width="120px"></th>
                 <th></th>
                 <th></th>
-                <th colspan="4" width="100px" style="text-align: right;"><center><?php echo "Surabaya, " . date("Y-m-d");?></center></th>
+                <th colspan="4" width="100px" style="text-align: right;"><center><?php echo "Surabaya, " . tgl_indo(date("Y-m-d"));?></center></th>
             </tr>
             <tr>
                 <th width="120px"></th>

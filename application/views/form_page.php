@@ -7,6 +7,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
+                  <?php echo $dummy['rows']." || ".$dummy['form']." || ".$this->session->userdata('data');?>
                       <center>KARTU INVENTARIS BARANG - 
                           <?php if ($kib_apa == 1) { 
                                     echo "ASET TETAP TANAH";

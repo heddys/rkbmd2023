@@ -72,7 +72,9 @@ class Status_form extends CI_Controller {
 
     public function cetak_form()
 	{   
+        
         $this->cek_sess();
+        ini_set('max_execution_time', 2000);
         $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
         $register=$_POST['register'];
         $where = array ( 'register' => $register );
@@ -81,14 +83,17 @@ class Status_form extends CI_Controller {
         $data['data_register'] = $this->form_model->ambil_register_form($where)->row();
         $data['data_is_register'] = $this->form_model->ambil_status_register_form($whereis)->row();
         $data['image']=$this->form_model->ambil_file($where)->result();
-        $data['data_kib'] = $this->form_model->ambil_register($where);
+        $data['data_kib'] = $this->form_model->ambil_register($register);
         $data['petugas']=$this->form_model->get_petugas($nomor_lokasi);
+
+        // var_dump($data['data_kib']);
 
        	$this->pdf->load_view('cetak_form_inv',$data);
 		$this->pdf->set_paper("legal", "portrait");
 		$this->pdf->render();
-		// $this->pdf->stream("name-file.pdf");
+        ob_end_clean();
 		$this->pdf->stream("dompdf_out.pdf", array("Attachment" => false));
+
 		
 	}
 

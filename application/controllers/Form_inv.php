@@ -94,13 +94,13 @@ class Form_inv extends CI_Controller {
 				$form = 1;
 				$data_cari=$this->session->userdata('data');
 			} else {
-				$form = 3;
+				$form = 2;
 			}
 		}
 
 		if(isset($_POST['cariregname'])){
 			$data_cari=$_POST['cariregname'];
-			$form=3;
+			$form=2;
 			$this->session->set_userdata('data',$data_cari);
 			$this->session->set_userdata('status',2);
 		}
@@ -169,7 +169,7 @@ class Form_inv extends CI_Controller {
 			$this->pagination->initialize($config);
 			
 		$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
-		// $data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
+		$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
         $data['register']=$this->form_model->get_all_register_pagination($data_cari,$kib,$config['per_page'],$data['offset']-1,$form);
         $this->load->view('h_tablerkb',$data);		
 		$this->load->view('form_page',$data);
@@ -203,6 +203,7 @@ class Form_inv extends CI_Controller {
         $data['exist']=$this->cek_jumlah_exist();
 		$data['kode_barang']=$this->form_model->data_kode_barang();
 		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
 
 		
 		$register = $_POST['register'];
@@ -240,7 +241,7 @@ class Form_inv extends CI_Controller {
 	public function save_isi_form_peralatan_mesin()
 	{
 		$register=$_POST['register'];
-		$radio_register=$_POST['radio_kode_reg'];
+		//$radio_register=$_POST['radio_kode_reg'];
 
 		$kode_barang=$_POST['kode_barang'];
 		$radio_kode_bar=$_POST['radio_kode_bar'];
@@ -266,7 +267,8 @@ class Form_inv extends CI_Controller {
 		$aset_atrib=$_POST['aset_atrib'];
 		$radio_kap_atrib=$_POST['radio_kap_atrib'];
 
-		$alamat=$_POST['alamat'];
+		$alamat=$_POST['lokasi'];
+		$radio_alamat=$_POST['radio_alamat'];
 
 		$kondisi_bar=$_POST['kondisi_bar'];
 		$radio_kondisi=$_POST['radio_kondisi'];
@@ -391,7 +393,7 @@ class Form_inv extends CI_Controller {
 		'keberadaan_barang' => $keberadaan,
 		'nilai_perolehan' => $nilai,
 		'merupakan_anak' => $aset_atrib,
-		'alamat' => $alamat,
+		'lokasi' => $alamat,
 		'jumlah' => 1,
 		'kondisi_barang' => $kondisi_bar,
 		'tipe' => $tipe,
@@ -413,6 +415,7 @@ class Form_inv extends CI_Controller {
 			'is_kode_barang' => $radio_kode_bar,
 			'is_nama_barang' => $radio_nama_bar,
 			'is_spesifikasi_barang_merk' => $radio_merk,
+			'is_lokasi' => $radio_alamat,
 			'is_satuan' => $radio_satuan,
 			'is_jumlah' => 0,
 			'is_keberadaan_barang' => $radio_keberadaan,
@@ -472,7 +475,8 @@ class Form_inv extends CI_Controller {
 		$aset_atrib=$_POST['aset_atrib'];
 		$radio_kap_atrib=$_POST['radio_kap_atrib'];
 
-		$alamat=$_POST['alamat'];
+		$alamat=$_POST['lokasi'];
+		$radio_alamat=$_POST['radio_alamat'];
 
 		$kondisi_bar=$_POST['kondisi_bar'];
 		$radio_kondisi=$_POST['radio_kondisi'];
@@ -547,7 +551,7 @@ class Form_inv extends CI_Controller {
 			'keberadaan_barang' => $keberadaan,
 			'nilai_perolehan' => $nilai,
 			'merupakan_anak' => $aset_atrib,
-			'alamat' => $alamat,
+			'lokasi' => $alamat,
 			'jumlah' => 1,
 			'kondisi_barang' => $kondisi_bar,
 			'tipe' => $tipe,
@@ -570,6 +574,7 @@ class Form_inv extends CI_Controller {
 				'is_nama_barang' => $radio_nama_bar,
 				'is_spesifikasi_barang_merk' => $radio_merk,
 				'is_satuan' => $radio_satuan,
+				'is_lokasi' => $radio_alamat,	
 				'is_jumlah' => 0,
 				'is_keberadaan_barang' => $radio_keberadaan,
 				'is_nilai_perolehan' => $radio_nilai,
