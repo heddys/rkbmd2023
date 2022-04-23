@@ -679,7 +679,7 @@
                                                         <td><?php echo $data_row->lokasi;?></td>
                                                         <td>
                                                             <center>
-                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi;?>" data_id2="<?php echo $data_row->lokasi?>" onclick="klik_spek_barang(this.getAttribute('data-id'));" data-dismiss="modal"><i class="fa fa-plus"></i></a>
+                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi;?>" data_id2="<?php echo $data_row->lokasi?>" onclick="klik_spek_barang(this);" data-dismiss="modal"><i class="fa fa-plus"></i></a>
                                                             </center>
                                                         </td>
                                                     </tr>
