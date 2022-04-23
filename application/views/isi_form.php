@@ -99,7 +99,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Lokasi : </label>
                                         </div>
-                                            <input type="text" class="form-control" id="input_alamat" name="alamat" value="<?php echo $data_register->nomor_lokasi?>" readonly="true" style="width:100px;" placeholder="">
+                                            <input type="text" class="form-control" id="input_alamat" name="lokasi" value="<?php echo $data_register->nomor_lokasi?>" readonly="true" style="width:100px;" placeholder="">
                                             <p>
                                             <div class="input-group-append">
                                                 <label class="input-group-text" id="label_lokasi"><?php echo $data_register->lokasi?></label>
@@ -110,11 +110,11 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary7" name="radio_alamat" value="spek0"/>
+                                        <input type="radio" id="primary7" name="radio_alamat" value="0"/>
                                         <label for="primary7">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary8" name="radio_alamat" value="spek1"/>
+                                        <input type="radio" id="primary8" name="radio_alamat" value="1"/>
                                         <label for="primary8">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -679,7 +679,7 @@
                                                         <td><?php echo $data_row->lokasi;?></td>
                                                         <td>
                                                             <center>
-                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi;?>" data_id2="<?php echo $data_row->lokasi?>" onclick="klik_spek_barang(this);" data-dismiss="modal"><i class="fa fa-plus"></i></a>
+                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi;?>" data_id2="<?php echo $data_row->lokasi?>" onclick="klik_spek_barang('<?php echo $data_row->nomor_lokasi;?>','<?php echo $data_row->lokasi?>');" data-dismiss="modal"><i class="fa fa-plus"></i></a>
                                                             </center>
                                                         </td>
                                                     </tr>
