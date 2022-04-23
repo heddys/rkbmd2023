@@ -408,17 +408,33 @@ function tgl_indo($tanggal){
                 <th>-</th>
             </tr>
             <tr>
-                <th width="120px">J. Alamat</th>
+                <th width="120px">J. Lokasi</th>
                 <th width="25px">:</th>
                 <th width="150px"><?php echo $data_kib->nomor_lokasi; ?></th>
-                <th width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
-                </center></th>
-                <th>Sesuai</th>
-                <th width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
-                </center></td>
-                <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya :</th>
+                <td width="20px"><?php if($data_is_register->is_lokasi == 0) {?>
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Tidak</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                <?php } else { ?>
+                    <center>
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    </td>
+                    <th>Sesuai</th>
+                    <td width="20px">
+                        <center>
+                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        </center>
+                    <?php } ?></td>
+                <th colspan="3">Ya, sebutkan yang seharusnya : 
+                    <?php if ($data_is_register->is_lokasi == 1) { echo $data_register->nomor_lokasi;}?>
+                </th>
             </tr>
             <tr>
                 <th width="120px">K. Kondisi Barang</th>

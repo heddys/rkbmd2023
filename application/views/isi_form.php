@@ -100,7 +100,6 @@
                                             <label class="input-group-text" id="basic-addon3">Lokasi : </label>
                                         </div>
                                             <input type="text" class="form-control" id="input_alamat" name="lokasi" value="<?php echo $data_register->nomor_lokasi?>" readonly="true" style="width:100px;" placeholder="">
-                                            <p>
                                             <div class="input-group-append">
                                                 <label class="input-group-text" id="label_lokasi"><?php echo $data_register->lokasi?></label>
                                             </div>   

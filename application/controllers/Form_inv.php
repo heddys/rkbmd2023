@@ -594,6 +594,10 @@ class Form_inv extends CI_Controller {
 				'created_date' => $updated_date,
 				'created_time' => $updated_time
 			);
+		
+		// var_dump($data_form_isian);
+		// echo "<p>";
+		// var_dump($data_is_form);
 
 		//Save Di tabel register_isi
 		$this->form_model->save_isi_form($data_form_isian);
