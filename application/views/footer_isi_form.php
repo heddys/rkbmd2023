@@ -342,11 +342,12 @@ function formatCurrency(input, blur) {
       }
     }
 
-    function klik_spek_barang(id){
+    function klik_spek_barang(id,id2){
       if(id == false) {
         $("input:radio[id=primary8]:checked")[0].checked = false;
       } else {
         document.getElementById('input_alamat').value=id;
+        document.getElementById('label_lokasi').innerHTML=id2;
       }
     }
 
