@@ -16,6 +16,7 @@
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Nama Petugas</center></th>
+                      <th><center>Lokasi</center></th>
 	                  <th><center>NIP / NIK</center></th>
 	                  <th><center>Pangkat</center></th>
 	                  <th><center>Aksi</center></th>
@@ -26,6 +27,7 @@
 	                	<tr>
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $row->nama_petugas?></center></td>
+                              <td><center><?php echo $row->lokasi?></center></td>
 	                  		<td><center><?php echo $row->nip_petugas?></center></td>
                             <td><center><?php echo $row->pangkat_petugas?></center></td>
                             <td><center><a class="btn btn-danger" href="<?php echo site_url('/form_inv/hapus_petugas/'.$row->id);?>"><i class="fa fa-trash" aria-hidden="true"></i></a></center></td>
@@ -75,6 +77,16 @@
                                     <option disabled="disabled">Pilih Jenis Pangkat</option>
                                     <?php foreach ($pangkat->result() as $data ) {?>
                                         <option value="<?php echo $data->PANGKAT;?>"><?php echo $data->PANGKAT;?></option>
+                                    <?php } ?> 
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Pilih Lokasi Petugas :</label>
+                                <select class="form-control" name="lokasi" required>
+                                    <option></option>
+                                    <option disabled="disabled">Pilih Lokasi</option>
+                                    <?php foreach ($lokasi->result() as $lok ) {?>
+                                        <option value="<?php echo $lok->nomor_lokasi;?>"><?php echo $lok->lokasi;?></option>
                                     <?php } ?> 
                                 </select>
                             </div>

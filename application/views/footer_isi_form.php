@@ -144,6 +144,28 @@
       }
     }
 
+    function klik_hapus_image(id) {
+    
+            $.ajax({
+            type: 'ajax',
+            method: 'post',
+            url: '<?php echo site_url();?>/form_inv/hapus_image',
+            data:{id:id},
+            async: false,
+            dataType: 'json',
+            success: function(data){
+              setInterval(function(){
+                      $("#image").load(window.location.href + " #image" );
+                }, 3000);
+            },
+              error: function() {
+                setInterval(function(){
+                      $("#image").load(window.location.href + " #image" );
+                }, 3000);
+              }
+          });
+    }
+
     function klik_cari_ganda(id){
       var isi_text = document.querySelector("#modal-search-register-ganda [id=search_register_ganda]").value;
       if(isi_text.length == 0 ) {

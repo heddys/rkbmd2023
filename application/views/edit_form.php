@@ -269,7 +269,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">Apakah Aset Atribusi / Kapitalisasi</label>
                                     </div>
-                                    <input type="text" class="form-control" name="aset_atrib" id="kode_register" readonly="true" placeholder="-" value="<?php echo $data_register->merupakan_anak?>">
+                                    <input type="text" class="form-control" name="aset_atrib" id="aset_atrib" readonly="true" placeholder="-" value="<?php echo $data_register->merupakan_anak?>">
                                     
                                 </div>
                             </div>
@@ -591,15 +591,26 @@
                                     </div>
                             </div>
 
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-8 image" id="image">
                                 <div class="mb-3">
-                                <label><h5><b>Foto atau Denah Aset</b></h5></label>
+                                <label><h5><b>Foto atau Denah Aset : </b></h5></label>
                                     <div class="mb-3">
                                         <?php foreach ($image as $i) {?>
-                                            <img style="Padding-top: 5px;" src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="200" height="200">
+                                                <img style="Padding-top: 5px;" src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="200" height="200">
+                                                <a href="#" class="btn btn-sm btn-danger ambil_kode_barang" data-id="<?php echo $i->id;?>" onclick="klik_hapus_image(this.getAttribute('data-id'));">Hapus</i></a>
                                         <?php } ?>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-group col-md-8 image">
+                                <div class="mb-5 mt-5">
+                                    <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg , Ukuran File Max : 5MB, dan Rotasi Foto : Portrait, dan Foto Disertai Geotag)
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]"  accept="image/jpeg">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                </div>                      
+
                             </div>
                             <!-- Batas Per Form -->
                             
@@ -705,11 +716,11 @@
                                         <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
                                     </div>
                             </div>
-                                /* <!-- modal-content --> */
+                                
                             </div>
-                            /* <!-- /.modal-dialog --> */
+                           
                         </div>
-                        /* <!-- /.modal --> */
+                       
                         
                         <!-- Modal Untuk Input Nama Barang -->
                         <div class="modal fade" id="modal-nama-barang">
@@ -1075,8 +1086,126 @@
                                  <!-- modal-content -->
                             </div>
                             <!-- /.modal-dialog -->
-                        </div>
+                    </div>
                         <!-- /.modal -->
+
+                        <!-- Modal Untuk Cari Register Atribusi -->
+                    <div class="modal fade" id="modal-search-register-atrib">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                    </div>
+                                        <div class="modal-body">
+                                            <style type="text/css"> </style>
+                                            <input type="text" class="form-control" id="search_register_atrib" placeholder="Cari Berdasarkan Register atau Nama Barang">
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-danger" onclick="klik_cari_atrib(false)" data-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-info" onclick="klik_cari_atrib(true)" data-dismiss="modal">Cari Data</button>
+                                        </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
+                     <!-- Menampilkan Hasil Pencarian Register                                                 -->
+                     <div class="modal fade" id="modal-list-register">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
+                                    </div>
+                                    <div class="modal-body" style="overflow-x:auto;">
+                                        <style type="text/css"> </style>
+                                        <table id="tblregister" class="table table-striped table-hover responsive">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th><center>No.</center></th>
+                                                    <th><center>Kode Barang</center></th>
+                                                    <th><center>Register</center></th>
+                                                    <th><center>Nama Barang</center></th>
+                                                    <th><center>Tipe</center></th>
+                                                    <th><center>Alamat</center></th>
+                                                    <th><center>Tahun Perolehan</center></th>
+                                                    <th><center>Nilai</center></th>
+                                                    <th><center>Aksi</center></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tampil_data">
+                                            </tbody>
+                                        </table>  
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger batal" onclick="klik_destroy()">Batal</button>
+                                        <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
+                                    </div>
+                            </div>
+                               
+                            </div>
+                            
+                        </div>
+
+                        <!-- Modal Untuk Cari Register Ganda -->
+                    <div class="modal fade" id="modal-search-register-ganda">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <input type="text" class="form-control" id="search_register_ganda" placeholder="Cari Berdasarkan Register atau Nama Barang">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_cari_ganda(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-info" onclick="klik_cari_ganda(true)" data-dismiss="modal">Cari Data</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
+                     <!-- Menampilkan Hasil Pencarian Register                                                 -->
+                     <div class="modal fade" id="modal-list-register2">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
+                                    </div>
+                                    <div class="modal-body" style="overflow-x:auto;">
+                                        <style type="text/css"> </style>
+                                        <table id="tblregister2" class="table table-striped table-hover responsive">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th><center>No.</center></th>
+                                                    <th><center>Kode Barang</center></th>
+                                                    <th><center>Register</center></th>
+                                                    <th><center>Nama Barang</center></th>
+                                                    <th><center>Tipe</center></th>
+                                                    <th><center>Alamat</center></th>
+                                                    <th><center>Tahun Perolehan</center></th>
+                                                    <th><center>Nilai</center></th>
+                                                    <th><center>Aksi</center></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tampil_data2">
+                                            </tbody>
+                                        </table>  
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger batal" onclick="klik_destroy2()">Batal</button>
+                                        <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
+                                    </div>
+                            </div>
+                                <!-- modal-content -->
+                            </div>
+                             <!-- /.modal-dialog --> 
+                        </div>
                     
 
                     

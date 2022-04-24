@@ -11,7 +11,7 @@
 
             public function get_all_register_proses_tolak($lokasi,$kib){
 
-                $query = $this->db->query("SELECT * FROM data_kib where ekstrakomtabel IS NULL and (status = '1' or status = '3') and nomor_lokasi_baru like '".$lokasi."%' and kode108_baru like '%".$kib."%' LIMIT 100 ");
+                $query = $this->db->query("SELECT * FROM data_kib where ekstrakomtabel IS NULL and (status = '1' or status = '3') and nomor_lokasi_baru like '".$lokasi."%' and kode108_baru like '%".$kib."%'");
 
                 // $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru,status');*
                 // $this->db->from('data_kib');*
@@ -128,14 +128,14 @@
                 $this->db->select('*');
                 $this->db->from('register_isi');
                 $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = register_isi.lokasi');
+                $this->db->order_by('created_date', 'DESC');
                 $this->db->order_by('created_time', 'DESC');
-                $this->db->order_by('created_date', 'ASC');
                 return $this->db->get();
             }
 
             public function ambil_status_register_form($where)
             {
-                return $this->db->from("register_status")->where($where)->order_by('created_time DESC, created_date DESC')->get();
+                return $this->db->from("register_status")->where($where)->order_by('created_date DESC, created_time DESC')->get();
             }
 
             public function data_kode_barang()
@@ -231,8 +231,12 @@
             }
 
             public function get_petugas($nomor_lokasi)
-            {
-                return $this->db->get_where('petugas_inv',array('nomor_lokasi' => $nomor_lokasi, 'status' => NULL));
+            {   
+                $this->db->select('*');
+                $this->db->from('petugas_inv');
+                $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = petugas_inv.nomor_lokasi');
+                $this->db->where(array('petugas_inv.nomor_lokasi' => $nomor_lokasi, 'petugas_inv.status' => NULL, 'petugas_inv.status' => 2));
+                return $this->db->get();
             }
 
             public function save_petugas($data)
@@ -251,6 +255,16 @@
             public function data_kamus_lokasi()
             {
                 return $this->db->get('kamus_lokasi');
+            }
+
+            public function get_path($id)
+            {
+                return $this->db->get_where('jurnal_upload',array('id' => $id));
+            }
+
+            public function hapus_image_record($id)
+            {
+                return $this->db->delete('jurnal_upload',array('id' => $id));
             }
  }
  ?>
