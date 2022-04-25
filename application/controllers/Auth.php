@@ -40,14 +40,17 @@ class Auth extends CI_Controller {
 						'role' => $row->fungsi,
 						'kepala_opd' => $row->nama_kepala,
 						'no_lokasi_asli' => $row->nomor_lokasi,
-						'status' => 0
+						'status' => 0,
+						'nip' => $row->nip
 					);
 				}
 			
 			$this->session->set_userdata($data_session);
-			if ($this->session->userdata('role')!='Verifikator'){
-				redirect('home');
-			} else {redirect('home_verifikator');}
+			if ($this->session->userdata('role')=='Verifikator'){
+				redirect('home_verifikator');
+			} elseif ($this->session->userdata('role')=='Penyelia') {
+				redirect('home_admin');
+			} else {redirect('home');}
 		} 
 		  else {
 			$this->index($error=1);
