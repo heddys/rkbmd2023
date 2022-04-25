@@ -86,7 +86,7 @@
 
             public function ambil_file($data)
             {
-                return $this->db->get_Where('jurnal_upload',$data);
+                return $this->db->get_Where('jurnal_upload',array('register' => $data));
             }
 
             public function get_all_register_pagination($data,$kib, $limit, $offset,$form){
@@ -121,21 +121,25 @@
                 return $query->row();
             }
 
-            public function ambil_register_form($where)
+            public function ambil_register_form($register)
             {
                 // return $this->db->from("register_isi")->where($where)->order_by('created_time DESC, created_date DESC')->get();
 
-                $this->db->select('*');
-                $this->db->from('register_isi');
-                $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = register_isi.lokasi');
-                $this->db->order_by('created_date', 'DESC');
-                $this->db->order_by('created_time', 'DESC');
-                return $this->db->get();
+                // $this->db->select('*');
+                // $this->db->from('register_isi');
+                // $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = register_isi.lokasi');
+                // $this->db->where('register_isi.register',$where);
+                // $this->db->order_by('created_date', 'DESC');
+                // $this->db->order_by('created_time', 'DESC');
+                // return $this->db->get();
+
+                $query = $this->db->query("SELECT a.*,b.* FROM `register_isi` a join kamus_lokasi b on a.lokasi=b.nomor_lokasi where a.register = '".$register."' order by created_date DESC, created_time DESC");
+                return $query;
             }
 
-            public function ambil_status_register_form($where)
+            public function ambil_status_register_form($register)
             {
-                return $this->db->from("register_status")->where($where)->order_by('created_date DESC, created_time DESC')->get();
+                return $this->db->from("register_status")->where(array('is_register' => $register))->order_by('created_date DESC, created_time DESC')->get();
             }
 
             public function data_kode_barang()
@@ -232,11 +236,15 @@
 
             public function get_petugas($nomor_lokasi)
             {   
-                $this->db->select('*');
-                $this->db->from('petugas_inv');
-                $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = petugas_inv.nomor_lokasi');
-                $this->db->where(array('petugas_inv.nomor_lokasi' => $nomor_lokasi, 'petugas_inv.status' => NULL, 'petugas_inv.status' => 2));
-                return $this->db->get();
+                // $this->db->select('*');
+                // $this->db->from('petugas_inv');
+                // $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = petugas_inv.nomor_lokasi');
+                // $this->db->where(array('petugas_inv.status' => NULL, 'petugas_inv.status' => 2));
+                // $this->db->like('petugas_inv.nomor_lokasi',$nomor_lokasi);
+                // return $this->db->get();
+
+                $query=$this->db->query("SELECT a.*,b.* FROM `petugas_inv` a INNER JOIN kamus_lokasi b ON a.nomor_lokasi=b.nomor_lokasi where a.nomor_lokasi like '%".$nomor_lokasi."%' and a.status is null");
+                return $query;
             }
 
             public function save_petugas($data)

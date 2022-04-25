@@ -77,16 +77,18 @@ class Status_form extends CI_Controller {
         ini_set('max_execution_time', 2000);
         $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
         $register=$_POST['register'];
-        $where = array ( 'register' => $register );
-        $whereis = array ( 'is_register' => $register );
 
-        $data['data_register'] = $this->form_model->ambil_register_form($where)->row();
-        $data['data_is_register'] = $this->form_model->ambil_status_register_form($whereis)->row();
-        $data['image']=$this->form_model->ambil_file($where)->result();
+        $data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+        $data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+        $data['image']=$this->form_model->ambil_file($register)->result();
         $data['data_kib'] = $this->form_model->ambil_register($register);
-        $data['petugas']=$this->form_model->get_petugas($nomor_lokasi);
 
-        // var_dump($data['data_kib']);
+        $nomor_lokasi_petugas=$data['data_register']->nomor_lokasi;
+
+        
+        $data['petugas']=$this->form_model->get_petugas($nomor_lokasi_petugas);
+
+        // // var_dump($data['data_kib']);
 
        	$this->pdf->load_view('cetak_form_inv',$data);
 		$this->pdf->set_paper("legal", "portrait");

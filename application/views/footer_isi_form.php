@@ -154,14 +154,10 @@
             async: false,
             dataType: 'json',
             success: function(data){
-              setInterval(function(){
-                      $("#image").load(window.location.href + " #image" );
-                }, 3000);
+              document.location.reload(true);
             },
               error: function() {
-                setInterval(function(){
-                      $("#image").load(window.location.href + " #image" );
-                }, 3000);
+                document.location.reload(true);
               }
           });
     }

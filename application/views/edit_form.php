@@ -247,13 +247,13 @@
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary15" name="radio_nilai" <?php 
                                                 if ($data_is_register->is_nilai_perolehan == 0) { echo "checked='checked'";}
-                                            ?> value="0" required="required"/>
+                                            ?> value="0"/>
                                         <label for="primary15">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary16" name="radio_nilai" <?php 
                                                 if ($data_is_register->is_nilai_perolehan == 1) { echo "checked='checked'";}
-                                            ?> value="1"/>
+                                            ?> value="1" disabled/>
                                         <label for="primary16">Tidak Sesuai</label>
                                     </div>
                                 </div>
@@ -596,7 +596,7 @@
                                 <label><h5><b>Foto atau Denah Aset : </b></h5></label>
                                     <div class="mb-3">
                                         <?php foreach ($image as $i) {?>
-                                                <img style="Padding-top: 5px;" src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="200" height="200">
+                                                <img style="Padding-top: 5px;" src="<?php echo base_url();?>ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="200" height="200">
                                                 <a href="#" class="btn btn-sm btn-danger ambil_kode_barang" data-id="<?php echo $i->id;?>" onclick="klik_hapus_image(this.getAttribute('data-id'));">Hapus</i></a>
                                         <?php } ?>
                                     </div>

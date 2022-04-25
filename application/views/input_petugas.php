@@ -7,7 +7,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                      <center>LIST PETUGAS INVENTARISASI</center></h3>   
+                      <center>LIST PETUGAS INVENTARISASI - <?php echo $this->session->userdata('no_lokasi_asli');?></center></h3>   
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">

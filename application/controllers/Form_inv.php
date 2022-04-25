@@ -207,12 +207,10 @@ class Form_inv extends CI_Controller {
 
 		
 		$register = $_POST['register'];
-		$where = array ( 'register' => $register );
-		$whereis = array ( 'is_register' => $register );
 		
-		$data['data_register'] = $this->form_model->ambil_register_form($where)->row();
-		$data['data_is_register'] = $this->form_model->ambil_status_register_form($whereis)->row();
-		$data['image'] = $this->form_model->ambil_file($where)->result();
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
 		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
 
         $this->load->view('header',$data);		
@@ -589,7 +587,7 @@ class Form_inv extends CI_Controller {
                 $errorUploadType = !empty($errorUploadType)?'<br/>File Type Error: '.trim($errorUploadType, ' | '):''; 
                 if(!empty($uploadData)){ 
                     // Insert files data into the database 
-                    // $insert = $this->form_model->save_image($uploadData); 
+                    $insert = $this->form_model->save_image($uploadData); 
                      
                     // Upload status message 
                    echo $insert?'Files uploaded successfully!'.$errorUploadType:'Some problem occurred, please try again.'; 

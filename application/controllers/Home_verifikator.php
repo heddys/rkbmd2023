@@ -25,7 +25,7 @@ class Home_verifikator extends CI_Controller {
 
 		$kib="1.3.2";
 
-		$nomor_lokasi=$this->session->userdata('no_lokasi');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['jumlah_proses']=$this->form_model->get_all_register($where_proses,$nomor_lokasi,$kib)->num_rows();
 		$data['jumlah_tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib)->num_rows();
 		$data['jumlah_terverifikasi']=$this->form_model->get_all_register($where_terverifikasi,$nomor_lokasi,$kib)->num_rows();
@@ -97,16 +97,18 @@ class Home_verifikator extends CI_Controller {
 		$data['page']="Halaman Verifikasi Detail Register";
 
 		$register = $_POST['register'];
-		$where = array ( 'register' => $register );
-		$whereis = array ( 'is_register' => $register );
 		
+		// echo $register;
 		
-		$data['data_register'] = $this->form_model->ambil_register_form($where)->row();
-		$data['data_is_register'] = $this->form_model->ambil_status_register_form($whereis)->row();
-		$data['image'] = $this->form_model->ambil_file($where)->result();
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+
+		// echo $register;
+		// var_dump($data['data_register']);
 
 		$this->load->view('verifikator/h_verifikator',$data);		
-		$this->load->view('verifikator/detail_form_verif');
+		$this->load->view('verifikator/detail_form_verif',$data);
 		$this->load->view('verifikator/f_verifikator');	
 	}
 
