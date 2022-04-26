@@ -39,7 +39,7 @@
                     
                         <?php foreach ($get_proses_reg as $key) {
                             echo "<li class='nav-item'><a href='#' class='nav-link'>";
-                            echo $key->unit."<span class='float-right badge bg-primary'>".$key->jumlah."</span></a></li>";
+                            echo strtoupper($key->unit)."<span class='float-right badge bg-primary'>".$key->jumlah."</span></a></li>";
                         }?>
                     
                     </ul>
@@ -59,28 +59,14 @@
                 </div>
                 <div class="card-footer p-0">
                     <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        Projects <span class="float-right badge bg-primary">31</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        Tasks <span class="float-right badge bg-info">5</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        Completed Projects <span class="float-right badge bg-success">12</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        Followers <span class="float-right badge bg-danger">842</span>
-                        </a>
-                    </li>
+                      <li class="nav-item">
+                        <?php foreach ($get_tolak_reg as $row) {
+                            echo "<li class='nav-item'><a href='#' class='nav-link'>";
+                            echo strtoupper($row->unit)."<span class='float-right badge bg-primary'>".$row->jumlah."</span></a></li>";
+                        }?>
+                      </li>
                     </ul>
-                </div>
+                </div>  
                 </div>
                 <!-- /.widget-user -->
             </div>

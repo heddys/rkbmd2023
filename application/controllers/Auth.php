@@ -49,9 +49,9 @@ class Auth extends CI_Controller {
 			if ($this->session->userdata('role')=='Verifikator'){
 				redirect('home_verifikator');
 			} elseif ($this->session->userdata('role')=='Penyelia') {
-				redirect('home_admin');
+				redirect('home_penyelia');
 			} elseif ($this->session->userdata('role')=='Admin') {
-				redirect('home_admin/admin');
+				redirect('home_admin');
 			} else {
 				redirect('home');
 			}

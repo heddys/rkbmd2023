@@ -31,6 +31,26 @@ class Admin_model extends CI_Model{
     return $query->result();
    }
 
+   public function get_tolak_reg($list)
+   {
+
+    $query = $this->db->query("SELECT
+            b.unit,
+            a.unit_baru,
+            a.nama_barang,
+            a.register,
+            COUNT( a.register ) as jumlah
+        FROM
+            `data_kib` a
+            INNER JOIN (select * from kamus_lokasi GROUP BY unit_baru) b ON b.unit_baru = a.unit_baru 
+        WHERE
+            a.`status` = '2' and a.unit_baru in ('".implode("','",$list)."')
+        GROUP BY
+            a.unit_baru");
+
+        return $query->result();
+   }
+
 
 }
 
