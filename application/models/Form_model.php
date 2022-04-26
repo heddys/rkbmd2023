@@ -243,7 +243,7 @@
                 // $this->db->like('petugas_inv.nomor_lokasi',$nomor_lokasi);
                 // return $this->db->get();
 
-                $query=$this->db->query("SELECT a.*,b.* FROM `petugas_inv` a INNER JOIN kamus_lokasi b ON a.nomor_lokasi=b.nomor_lokasi where a.nomor_lokasi like '%".$nomor_lokasi."%' and a.status is null");
+                $query=$this->db->query("SELECT a.*,b.lokasi FROM `petugas_inv` a INNER JOIN kamus_lokasi b ON a.nomor_lokasi=b.nomor_lokasi where a.nomor_lokasi like '%".$nomor_lokasi."%' and a.status is null");
                 return $query;
             }
 

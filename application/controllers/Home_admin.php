@@ -9,7 +9,7 @@ class Home_admin extends CI_Controller {
     {
         $this->cek_sess();
 
-        $data['page']="Admin Dashboard";
+        $data['page']="Dashboard Penyelia";
 
         $list_pangkuan=$this->get_list_pangkuan();
         
@@ -20,9 +20,9 @@ class Home_admin extends CI_Controller {
         $data['get_proses_reg']=$this->admin_model->get_proses_reg($data_unit);
         // var_dump($data['get_proses_reg']);
 
-        $this->load->view('admin/header_admin',$data);		
-		$this->load->view('admin/home_admin');
-		$this->load->view('admin/footer_admin');	
+        $this->load->view('admin/header_penyelia',$data);		
+		$this->load->view('admin/home_penyelia');
+		$this->load->view('admin/footer_penyelia');	
     }
 
     private function cek_sess() 
@@ -42,6 +42,17 @@ class Home_admin extends CI_Controller {
         $this->cek_sess();
         $nip=$this->session->userdata('nip');
         return $this->admin_model->get_pangkuan($nip)->result();
+    }
+
+    public function admin()
+    {
+        $this->cek_sess();
+
+        $data['page']="Dashboard Admin";
+
+        $this->load->view('admin/header_admin',$data);		
+		$this->load->view('admin/admin_page');
+		$this->load->view('admin/footer_admin');
     }
 
 }

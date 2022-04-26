@@ -19,8 +19,16 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url();?>ini_assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Sparkline -->
+<script src="<?php echo base_url();?>ini_assets/plugins/sparklines/sparkline.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="<?php echo base_url();?>ini_assets/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="<?php echo base_url();?>ini_assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="<?php echo base_url();?>ini_assets/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="<?php echo base_url();?>ini_assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url();?>ini_assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -30,6 +38,13 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
 <!-- Select2 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/select2/js/select2.full.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="<?php echo base_url();?>ini_assets/plugins/toastr/toastr.min.js"></script>
+<!-- PIE Chart JS -->
+<script src="<?php echo base_url();?>ini_assets/plugins/chart.js/Chart.min.js"></script>
 <script>
 
     function showTime() {
@@ -61,6 +76,44 @@
     }
     setInterval(showTime, 50);
 
+    $(function () {;
+    
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var pieData        = {
+        labels: [
+            'Register Proses', 
+            'Register Di Tolak',
+            'Register Ter-Verifikasi', 
+        ],
+        datasets: [
+            {
+            data: [700,500,400],
+            backgroundColor : ['#f56954', '#00a65a', '#f39c12'],
+            }
+        ]
+        }
+
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieOptions     = {
+        maintainAspectRatio : false,
+        responsive : true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        var pieChart = new Chart(pieChartCanvas, {
+        type: 'pie',
+        data: pieData,
+        options: pieOptions      
+        });
+
+    
+    
+    
+    
+    });
     
 
 </script>

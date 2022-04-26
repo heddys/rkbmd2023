@@ -521,7 +521,7 @@
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>
-                                        <textarea class="form-control" name="keterangan" rows="3" value="<?php echo $data_register->keterangan?>"></textarea>
+                                        <textarea class="form-control" name="keterangan" rows="4" ><?php echo $data_register->keterangan?></textarea>
                                     </div>
                             </div>
 

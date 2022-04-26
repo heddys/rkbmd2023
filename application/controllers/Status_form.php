@@ -95,7 +95,6 @@ class Status_form extends CI_Controller {
 		$this->pdf->render();
         ob_end_clean();
 		$this->pdf->stream("dompdf_out.pdf", array("Attachment" => false));
-
 		
 	}
 

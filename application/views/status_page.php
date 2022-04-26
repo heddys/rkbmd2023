@@ -12,8 +12,8 @@
                       
 	            </div>
 	            <!-- /.card-header -->
-	            <div class="card-body" style="overflow-x:auto;">
-	              <table id="tabel_cetak" class="table table-bordered table-hover ">
+	            <div class="card-body">
+	              <table id="tabel_cetak2" class="table table-bordered table-hover">
 	                <thead class="thead-dark">
 	                <tr>
 	                  <th><center>No.</center></th>
@@ -22,13 +22,13 @@
 	                  <th><center>Nama Barang</center></th>
 	                  <th><center>Merk / Tipe Barang</center></th>
 	                  <th><center>Nilai Perolehan </center></th>
-	                  <th><center>Aksi</center></th>
+	                  <th><center>Cetak</center></th>
+					  <th><center>Edit Data</center></th>
 	                </tr>
 	                </thead>
                   <tbody>
                     <?php $x=1; foreach ($cetak->result() as $c) {?>
 	                	<tr>
-						
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $c->register?></center></td>
 	                  		<td><center><?php echo $c->kode64_baru?></center></td>
@@ -40,8 +40,17 @@
                                 <center>
                                   <button type="submit" class="btn btn-sm btn-success" title="Isi Form Inventarisasi"><i class="fa fa-print"></i>
                                     <input type="hidden" name="register" value="<?php echo $c->register?>">
-                                </center></td>
-                              </form>
+                                </center>
+								</form>
+							</td>
+							<td>
+								<form role="form" action="<?php echo site_url();?>/form_inv/edit_form_verif" method="post">
+								<center>
+                                  <button type="submit" class="btn btn-sm btn-primary" title="Edit Form Inventarisasi"><i class="fa fa-align-left"></i>
+                                    <input type="hidden" name="register" value="<?php echo $c->register?>">
+                                </center>
+								</form>
+							</td>  
 	                  	</tr>
 	                  <?php $x++; }?>
 	                </tbody>
@@ -68,8 +77,8 @@
                       
 	            </div>
 	            <!-- /.card-header -->
-	            <div class="card-body" style="overflow-x:auto;">
-	              <table id="tabel_proses_verif" class="table table-bordered table-hover ">
+	            <div class="card-body">
+	              <table id="tabel_proses_verif2" class="table table-bordered table-hover">
 	                <thead>
 	                <tr>
 	                  <th><center>No.</center></th>

@@ -1,13 +1,4 @@
 <section class="content">
-            <div class="container-fluid">
-                <div class="callout callout-danger">
-                    <h5><center>Form Inventarisasi anda dengan <?php echo $data_register->register?> telah ditolak oleh verifikator, dengan alasan : </center></h5>
-                    <hr style="padding-top:0px; margin-top:2px;">
-                    <h4><?php echo $penolakan->dasar_penolakan;?></h4>
-                </div>
-            </div>
-            <!-- general form elements disabled -->
-
               <div class="card card-dark">
                 <center>
                   <div class="card-header">
@@ -653,7 +644,6 @@
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
                                         <button type="submit" class="btn btn-success">Simpan Data</button>
-                                        <input type="hidden" name="id_jurnal_penolakan" value="<?php echo $penolakan->id?>">
                                     </div>
                             </div>
                                 <!-- modal-content --> 

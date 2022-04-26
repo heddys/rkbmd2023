@@ -11,7 +11,7 @@
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
-	              <table id="tabel_proses_verif" class="table table-bordered table-hover ">
+	              <table id="tabel_petugas" class="table table-bordered table-hover ">
 	                <thead class="thead-dark" >
 	                <tr>
 	                  <th><center>No.</center></th>
@@ -58,7 +58,7 @@
             <div class="modal-body">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form role="form" action="simpan_petugas" method="post">
+                        <form role="form" action="<?php echo site_url();?>/form_inv/simpan_petugas" method="post">
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Nama Petugas</label>
@@ -80,10 +80,10 @@
                                     <?php } ?> 
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-lg-4">
                                 <label>Pilih Lokasi Petugas :</label>
-                                <select class="form-control" name="lokasi" required>
-                                    <option></option>
+                                <select class="form-control select_lokasi"  name="lokasi" required style="width: 300%">
+                                    <option selected disable="disabled"></option>
                                     <option disabled="disabled">Pilih Lokasi</option>
                                     <?php foreach ($lokasi->result() as $lok ) {?>
                                         <option value="<?php echo $lok->nomor_lokasi;?>"><?php echo $lok->lokasi;?></option>

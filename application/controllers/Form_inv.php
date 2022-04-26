@@ -218,6 +218,30 @@ class Form_inv extends CI_Controller {
 		$this->load->view('footer_isi_form');
     }
 
+	public function edit_form_verif()
+	{
+		$this->cek_sess();
+		$data['page']="Edit Form Inventarisasi";
+        $data['exist']=$this->cek_jumlah_exist();
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+		
+		// var_dump($data['data_register']);
+		// echo $register;
+
+        $this->load->view('header',$data);		
+		$this->load->view('edit_form_verif',$data);
+		$this->load->view('footer_isi_form');
+	}
+
     private function cek_sess() 
 	{
 		if($this->session->userdata('id') !=NULL){
@@ -516,7 +540,6 @@ class Form_inv extends CI_Controller {
 			$keterangan=$_POST['keterangan'];
 		} else {$keterangan= "-";}
 
-		$id_jurnal_penolakan=$_POST['id_jurnal_penolakan'];
 
 		date_default_timezone_set("Asia/Jakarta");	
 		$updated_date=date("Y-m-d");
@@ -656,9 +679,6 @@ class Form_inv extends CI_Controller {
 		//Save Di tabel register status
 		$this->form_model->save_status_register($data_is_form);
 
-		//Tandai Pada Jurnal Penolakan
-		$this->form_model->tandai_jurnal_penolakan($data = array('register' => $register, 'id' => $id_jurnal_penolakan));
-
 		//Membuat tanda di data kib
 		$this->form_model->tandai_kib($register);
 
@@ -709,6 +729,8 @@ class Form_inv extends CI_Controller {
 			'time' => $updated_time
 		);
 
+		// var_dump($save_data);
+
 		$this->form_model->save_petugas($save_data);
 
 		redirect('/form_inv/input_petugas');
@@ -717,7 +739,7 @@ class Form_inv extends CI_Controller {
 	public function hapus_petugas($id)
 	{
 		$this->form_model->hapus_petugas($id);
-		redirect('/form_inv/input_petugas');
+		redirect('/form_inv/input_petugas/');
 	}
 
 	public function hapus_image()

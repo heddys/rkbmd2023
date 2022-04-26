@@ -634,7 +634,7 @@
 	                <center><div class="form-group col-md-12">
                                     <div class="mb-3">
                                         <label><h5><b>Dasar Penolakan</b></h5></label>
-                                        <textarea class="form-control" name="penolakan" rows="3" required="required"></textarea>
+                                        <textarea class="form-control" name="penolakan" rows="3" required="required"><?php echo $data_register->keterangan?></textarea>
                                     </div>
                             </div></center>
 	             </div>
