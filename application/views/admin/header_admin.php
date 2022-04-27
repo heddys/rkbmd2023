@@ -133,6 +133,7 @@
               </p>
             </a>
           </li>
+          
           <hr>
           <li class="nav-item has-treeview">
             <!-- <a href="#" class="nav-link">
@@ -235,6 +236,14 @@
                 </a>
               </li> -->
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('home_admin/setting_penyelia');?>" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Pengelola Penyelia
+              </p>
+            </a>
           </li>
          <!-- <li class="nav-item has-treeview">
             <a href="<?php echo site_url('home/desk_komponen');?>" class="nav-link">

@@ -335,7 +335,7 @@
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary22" name="radio_kondisi" <?php 
-                                                if ($data_is_register->is_kondisi_barang == 0) { echo "checked='checked'";} else {echo "disabled='disabled'";}
+                                                if ($data_is_register->is_kondisi_barang == 1) { echo "checked='checked'";} else {echo "disabled='disabled'";}
                                             ?> value="1"/>
                                         <label for="primary22">Tidak Sesuai</label>
                                     </div>
@@ -576,7 +576,7 @@
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>
-                                        <textarea class="form-control" name="keterangan" rows="3" value="<?php echo $data_register->keterangan?>" readonly="true"></textarea>
+                                        <textarea class="form-control" name="keterangan" rows="3" readonly="true"><?php echo $data_register->keterangan?></textarea>
                                     </div>
                             </div>
 

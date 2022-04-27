@@ -29,7 +29,8 @@
 <script src="<?php echo base_url();?>ini_assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
-<!-- Select2 -->
+<!-- PIE Chart JS -->
+<script src="<?php echo base_url();?>ini_assets/plugins/chart.js/Chart.min.js"></script>
 <script>
 
     function showTime() {
@@ -60,6 +61,44 @@
           return i;
     }
     setInterval(showTime, 50);
+
+    $(document).ready(function () {;
+
+      var proses = document.getElementById('proses').value;
+      var tolak = document.getElementById('tolak').value;
+      var verif = document.getElementById('verif').value;
+
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var pieData        = {
+        labels: [
+            'Register Proses', 
+            'Register Di Tolak',
+            'Register Ter-Verifikasi', 
+        ],
+        datasets: [
+            {
+            data: [proses,tolak,verif],
+            backgroundColor : ['#f56954', '#00a65a', '#f39c12'],
+            }
+        ]
+        }
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieOptions     = {
+        maintainAspectRatio : false,
+        responsive : true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        var pieChart = new Chart(pieChartCanvas, {
+        type: 'pie',
+        data: pieData,
+        options: pieOptions      
+        });
+
+    });
 
     
 

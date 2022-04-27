@@ -17,7 +17,9 @@ class Home_penyelia extends CI_Controller {
         }
         $data['get_proses_reg']=$this->admin_model->get_proses_reg($data_unit);
         $data['get_tolak_reg']=$this->admin_model->get_tolak_reg($data_unit);
-        // var_dump($data['get_proses_reg']);
+        $data['get_data_chart']=$this->admin_model->get_data_chart($data_unit);
+
+        // echo $data['get_data_chart']->jumlah_proses; 
 
         $this->load->view('admin/header_penyelia',$data);		
 		$this->load->view('admin/home_penyelia');

@@ -76,8 +76,12 @@
     }
     setInterval(showTime, 50);
 
-    $(function () {;
-    
+    $(document).ready(function () {;
+
+      var proses = document.getElementById('proses').value;
+      var tolak = document.getElementById('tolak').value;
+      var verif = document.getElementById('verif').value;
+     
         //-------------
         //- PIE CHART -
         //-------------
@@ -90,7 +94,7 @@
         ],
         datasets: [
             {
-            data: [700,500,400],
+            data: [proses,tolak,verif],
             backgroundColor : ['#f56954', '#00a65a', '#f39c12'],
             }
         ]
