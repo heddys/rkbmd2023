@@ -774,12 +774,11 @@
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-sm">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Pilih Status Keberadaan Barang</h4></center>
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
                                         <select class="custom-select" id="keberadaan">
-                                            <option selected disabled="disabled">Pilih Status Keberadaan Barang</option>
                                             <option value="Hilang">Hilang</option>
                                             <option value="Tidak Diketemukan">Tidak Diketemukan</option>
                                         </select>
@@ -852,12 +851,11 @@
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-sm">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Pilih Kondisi Barang</h4></center>
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
                                         <select class="custom-select" id="input_kondisi">
-                                            <option selected disabled="disabled">Pilih Kondisi Barang</option>
                                             <option value="Baik">Baik</option>
                                             <option value="Kurang Baik">Kurang Baik</option>
                                             <option value="Rusak Berat">Rusak Berat</option>

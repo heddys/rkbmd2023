@@ -39,13 +39,14 @@
 
             public function get_all_register($where,$lokasi,$kib){
 
-                $this->db->select('*');
+                $this->db->select('data_kib.*,kamus_lokasi.lokasi');
                 $this->db->from('data_kib');
+                $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = data_kib.nomor_lokasi');
                 $this->db->where($where);
                 
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
-                $this->db->like('nomor_lokasi_baru',$lokasi,'after');
-                $this->db->like('kode108_baru',$kib);
+                $this->db->like('data_kib.nomor_lokasi_baru',$lokasi,'after');
+                $this->db->like('data_kib.kode108_baru',$kib);
                 // $this->db->limit(200,1);
                 // $q1=$this->db->get();
 

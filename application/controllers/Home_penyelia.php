@@ -13,7 +13,7 @@ class Home_penyelia extends CI_Controller {
         
         $data_unit=array();
         foreach ($list_pangkuan as $key) {
-            $data_unit[] = $key->unit;
+            $data_unit[] = $key->nomor_unit;
         }
         $data['get_proses_reg']=$this->admin_model->get_proses_reg($data_unit);
         $data['get_tolak_reg']=$this->admin_model->get_tolak_reg($data_unit);

@@ -5,8 +5,8 @@ class Admin_model extends CI_Model{
 
    public function get_pangkuan($nip)
    {
-       $this->db->select('unit');
-       $this->db->from('list_penyelia');
+       $this->db->select('nomor_unit');
+       $this->db->from('kamus_penyelia');
        $this->db->where('nip_penyelia',$nip);
        return $this->db->get();
    }
@@ -96,7 +96,36 @@ class Admin_model extends CI_Model{
        return $query->row();
    }
 
-   
+   public function get_user_penyelia()
+   {
+       return $this->db->get_where('pengguna', array ('fungsi' => 'Penyelia'));
+   }
+
+   public function get_kamus_penyelia()
+   {
+       return $this->db->get('kamus_penyelia');
+   }
+
+   public function simpan_status_penyelia($id_kamus,$data)
+   {
+        $this->db->where('id', $id_kamus);
+        $this->db->update('kamus_penyelia',$data);
+        $this->db->error(); 
+   }
+
+   public function get_data_opd_penyelia($id)
+   {
+      return $this->db->get_where('kamus_penyelia',array('nip_penyelia' => $id));
+   }
+
+   public function hapus_opd_pemangku($id,$data)
+   {
+       $this->db->where('nomor_unit', $id);
+       $this->db->update('kamus_penyelia', $data);
+       $this->db->error();
+   }
+
+
 
 
 }

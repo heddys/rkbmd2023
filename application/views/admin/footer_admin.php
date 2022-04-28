@@ -31,8 +31,24 @@
 <script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
 <!-- PIE Chart JS -->
 <script src="<?php echo base_url();?>ini_assets/plugins/chart.js/Chart.min.js"></script>
-<script>
+<!-- DataTables -->
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
+<!-- SweetAlert2 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="<?php echo base_url();?>ini_assets/plugins/toastr/toastr.min.js"></script>
 
+<script>
+    $(function () {
+    
+      $("#tabel_penyelia").DataTable();
+      $("#tabel_opd").DataTable();
+      $("#tabel_penyelia2").DataTable();
+
+      
+       
+    });
     function showTime() {
       var a_p = "";
       var today = new Date();
@@ -62,7 +78,8 @@
     }
     setInterval(showTime, 50);
 
-    $(document).ready(function () {;
+    $(document).ready(function () {
+     
 
       var proses = document.getElementById('proses').value;
       var tolak = document.getElementById('tolak').value;
@@ -100,7 +117,76 @@
 
     });
 
-    
+    function klik_detail_penyelia(nip) {
+      var id=nip;
+      $('#list_opd_penyelia').modal({backdrop: 'static', keyboard: false});
+      $.ajax({
+              type: 'ajax',
+              method: 'post',
+              url: '<?php echo site_url();?>/home_admin/get_list_opd_penyelia',
+              data:{id:id},
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                  var html = '';
+                  var title ='';
+                  var i=data.length;
+                  var x=1;
+                    for (i=0; i < data.length; i++) {
+                        html += 
+                              '<tr>'+
+                                '<td><center>'+x+'</center></td>'+
+                                '<td><center>'+data[i].nomor_unit+'</center></td>'+
+                                '<td><center>'+data[i].unit+'</center></td>'+
+                                '<td><center> <a href="#" class="btn btn-sm btn-danger delete_opd" data-id="'+data[i].nomor_unit+'"><i class="fa fa-trash"></i></a>'+
+                                '</td></tr>';
+                              x++;
+                    }
+                    $('#list_opd_penyelia').find('.isi_body').html(html);
+                    $('#list_opd_penyelia').find('#tabel_list_opd').DataTable();
+
+                    
+                },
+                error: function() {
+                  alert('Koneksi Gagal');
+                }
+            });
+    }  
+
+    $('#list_opd_penyelia').find('.isi_body').on('click', '.delete_opd', function(){
+      var id=$(this).attr('data-id');
+      $.ajax({
+              type: 'ajax',
+              method: 'post',
+              url: '<?php echo site_url();?>/home_admin/hapus_opd_pemangku',
+              data:{id:id},
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'center',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+                    Toast.fire({
+                      type: 'success',
+                      title: 'Success!! Menghapus OPD.'
+                    })
+                    setTimeout(function(){ location.reload(); }, 2000);
+
+                },
+                error: function() {
+                  alert('Koneksi Gagal');
+                }
+            });
+    });
+
+    function klik_tambah_penyelia(id) {
+      var id_kamus=id;
+      $('#list_pilih_penyelia').modal({backdrop: 'static', keyboard: false});
+      $(".modal-body #id_kamus").val( id_kamus );
+    }
 
 </script>
 </body>
