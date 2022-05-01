@@ -76,6 +76,7 @@ class Home_admin extends CI_Controller {
 
 	public function hapus_opd_pemangku()
 	{
+		$this->cek_sess();
 		$id = $this->input->post('id');
 		// $id=17;
 		$data = array(

@@ -177,7 +177,17 @@
 
                 },
                 error: function() {
-                  alert('Koneksi Gagal');
+                  const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'center',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+                    Toast.fire({
+                      type: 'success',
+                      title: 'Success!! Menghapus OPD.'
+                    })
+                    setTimeout(function(){ location.reload(); }, 2000);
                 }
             });
     });
