@@ -378,10 +378,13 @@ function formatCurrency(input, blur) {
       }
     }
 
+    
+
     function klik_keberadaan(id){
       if(id == true){
         var isi_text = document.querySelector("#modal-keberadaan [id=keberadaan]").value;
         document.getElementById('keberadaan_bar').value=isi_text;
+        $("#customFile").removeAttr('required');
       } else {
         $("input:radio[id=primary14]:checked")[0].checked = false;
       }
@@ -504,6 +507,13 @@ function formatCurrency(input, blur) {
               $('#modal-satuan-barang').modal({backdrop: 'static', keyboard: false});
           }  
       });
+
+      $('#primary13').click(function () {
+          if ($(this).is(':checked')) {
+            document.getElementById('keberadaan_bar').value="Ada";
+            $("#customFile").attr('required', '');
+          }  
+      })
 
       $('#primary14').click(function () {
           if ($(this).is(':checked')) {

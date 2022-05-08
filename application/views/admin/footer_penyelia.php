@@ -45,7 +45,20 @@
 <script src="<?php echo base_url();?>ini_assets/plugins/toastr/toastr.min.js"></script>
 <!-- PIE Chart JS -->
 <script src="<?php echo base_url();?>ini_assets/plugins/chart.js/Chart.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
+
+    $(document).ready(function(){
+      $("#tabel-home").DataTable();
+      
+    });
+
+    $('#select_lokasi').select2({
+        width: 'resolve'
+      });
+    
 
     function showTime() {
       var a_p = "";

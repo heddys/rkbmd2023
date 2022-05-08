@@ -11,8 +11,8 @@
 
             public function get_all_register_proses_tolak($lokasi,$kib){
 
-                $query = $this->db->query("SELECT * FROM data_kib where ekstrakomtabel IS NULL and (status = '1' or status = '3') and nomor_lokasi_baru like '".$lokasi."%' and kode108_baru like '%".$kib."%'");
-
+                $query = $this->db->query("SELECT a.*,b.lokasi FROM data_kib a inner join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi where a.ekstrakomtabel IS NULL and (a.status = '1' or a.status = '3') and a.nomor_lokasi_baru like '".$lokasi."%' and a.kode108_baru like '%".$kib."%' order by a.status DESC");
+                
                 // $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru,status');*
                 // $this->db->from('data_kib');*
                 // $this->db->where($where);*
@@ -37,28 +37,35 @@
                 return $query;
             }
 
+            public function get_kib_for_excel($lokasi,$kib)
+            {
+                $query = $this->db->query("SELECT a.*,b.lokasi FROM data_kib a inner join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi where a.ekstrakomtabel IS NULL and a.nomor_lokasi_baru like '".$lokasi."%' and a.kode108_baru like '%".$kib."%' order by a.status DESC");
+                return $query;
+            }
+
             public function get_all_register($where,$lokasi,$kib){
 
-                $this->db->select('data_kib.*,kamus_lokasi.lokasi');
-                $this->db->from('data_kib');
-                $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = data_kib.nomor_lokasi');
-                $this->db->where($where);
-                
-                // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
-                $this->db->like('data_kib.nomor_lokasi_baru',$lokasi,'after');
-                $this->db->like('data_kib.kode108_baru',$kib);
-                // $this->db->limit(200,1);
-                // $q1=$this->db->get();
+                $query=$this->db->query("SELECT
+                    a.*,
+                    b.lokasi,
+                    c.*
+                FROM
+                    `register_isi` a
+                    INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.lokasi
+                    INNER JOIN data_kib c ON a.register = c.register 
+                WHERE
+                    c.ekstrakomtabel IS NULL 
+                    AND c.STATUS = ".$where['status']."
+                    AND a.lokasi LIKE '".$lokasi."%'
+                    AND a.kode_barang like '".$kib."%'
+                GROUP BY
+                    c.register 
+                ORDER BY
+                    a.created_date DESC,
+                    a.created_time DESC"
+            );
 
-                // $this->db->select('nomor_lokasi_baru,register,kode64_baru,nama_barang_baru,merk_alamat_baru,tipe_baru,harga_baru');
-                // $this->db->from('kib');
-                // $this->db->where($where);
-                // $this->db->like('nomor_lokasi_baru',$lokasi);
-                // $this->db->like('kode64_baru','1.3.02');
-                // $q2=$this->db->get_compiled_select();
-
-                // $query = $this->db->query($q1 . ' UNION ' . $q2);
-                return $this->db->get();
+                return $query;
             }
 
             public function hitungBanyakRowRegister($where,$data,$kib,$form)
@@ -274,6 +281,23 @@
             public function hapus_image_record($id)
             {
                 return $this->db->delete('jurnal_upload',array('id' => $id));
+            }
+
+            public function update_petugas($id,$update_data)
+            {
+                $this->db->where('id', $id);
+                $this->db->update('petugas_inv',$update_data);
+                $this->db->error();
+            }
+
+            public function pb_verif($nomor_lokasi)
+            {   
+                
+                $this->db->select('*');
+                $this->db->from('pengguna');
+                $this->db->like('nomor_lokasi', $nomor_lokasi);
+                $this->db->where_not_in('fungsi', array('Penyelia','Admin'));
+                return $this->db->get();
             }
  }
  ?>

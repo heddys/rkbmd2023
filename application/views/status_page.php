@@ -18,6 +18,7 @@
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Register</center></th>
+					  <th><centeR>Loaksi</center></th>
 	                  <th><center>Kode Neraca</center></th>
 	                  <th><center>Nama Barang</center></th>
 	                  <th><center>Merk / Tipe Barang</center></th>
@@ -31,6 +32,7 @@
 	                	<tr>
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $c->register?></center></td>
+							<td><center><?php echo $c->lokasi?></center></td>
 	                  		<td><center><?php echo $c->kode64_baru?></center></td>
                             <td><center><?php echo $c->nama_barang?></center></td>
                             <td><center><?php echo $c->merk_alamat." - ".$c->tipe?></center></td>
@@ -83,6 +85,7 @@
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Register</center></th>
+					  <th><centeR>Loaksi</center></th>
 	                  <th><center>Kode Neraca</center></th>
 	                  <th><center>Nama Barang</center></th>
 	                  <th><center>Merk / Tipe Barang</center></th>
@@ -95,6 +98,7 @@
 	                	<?php if ($row->status == 3) {echo "<tr class='table-danger'>";} else {echo "<tr>";}?>
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $row->register?></center></td>
+							<td><center><?php echo $row->lokasi?></center></td>  
 	                  		<td><center><?php echo $row->kode64_baru?></center></td>
                             <td><center><?php echo $row->nama_barang?></center></td>
                             <td><center><?php echo $row->merk_alamat." - ".$row->tipe?></center></td>

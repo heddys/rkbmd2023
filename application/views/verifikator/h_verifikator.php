@@ -56,6 +56,22 @@
             }
           }
           .modal { overflow: auto !important; }
+
+          /* [1] The container */
+          .gambar {
+            
+            overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+          }
+
+          /* [2] Transition property for smooth transformation of images */
+          .gambar img {
+            transition: transform .5s ease;
+          }
+
+          /* [3] Finally, transforming the image when container gets hovered */
+          .gambar:hover img {
+            transform: scale(2.0);
+          }
         </style>
         <!--UNTUK NAMA DINASNYA-->
         <strong class="nav-link fontku"><font color="white"><?php echo $this->session->userdata('skpd');?> KOTA SURABAYA - (<?php echo strtoupper($this->session->userdata('nama_login'));?>) </font></strong>

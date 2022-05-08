@@ -112,7 +112,6 @@
               </p>
             </a>
           </li>
-          <hr>
           <li class="nav-item has-treeview">
             <!-- <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -121,6 +120,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a> -->
+            <li class="nav-header"><strong>MENU UTAMA</strong></li>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('home/rkbform');?>" class="nav-link">
@@ -270,6 +270,15 @@
               </li> -->
             </ul>
           </li>
+          <li class="nav-header"><strong>CETAK LAPORAN</strong></li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('form_inv/export_excel_all_kibpm_user');?>" class="nav-link">
+                <i class="nav-icon fa fa-download"></i>
+                <p>
+                    Cetak Status Register 1.3.2
+                </p>
+              </a>
+            </li>
          <li class="nav-header"><strong>KAMUS</strong></li>
          <li class="nav-item">
             <a href="<?php echo site_url('home/list_kegiatan');?>" class="nav-link">

@@ -83,15 +83,17 @@ class Status_form extends CI_Controller {
         $data['image']=$this->form_model->ambil_file($register)->result();
         $data['data_kib'] = $this->form_model->ambil_register($register);
 
-        $nomor_lokasi_petugas=$data['data_register']->nomor_lokasi;
-
+        $nomor_lokasi_petugas=$data['data_kib']->nomor_lokasi;
         
+
+        $data['pb_verif']=$this->form_model->pb_verif($nomor_lokasi)->result();
         $data['petugas']=$this->form_model->get_petugas($nomor_lokasi_petugas);
 
-        // // var_dump($data['data_kib']);
+        // // var_dump($data['pengguna']);
+        // // echo $nomor_lokasi;
 
        	$this->pdf->load_view('cetak_form_inv',$data);
-		$this->pdf->set_paper("legal", "portrait");
+		$this->pdf->set_paper("legal", "potrait");
 		$this->pdf->render();
         ob_end_clean();
 		$this->pdf->stream("dompdf_out.pdf", array("Attachment" => false));

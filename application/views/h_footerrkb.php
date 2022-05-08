@@ -32,9 +32,19 @@
   //  $("#example1").DataTable();
    $('#tabel_cetak2').DataTable();
    $('#tabel_proses_verif2').DataTable();
-   $('#tabel_petugas').DataTable();
+   $('#tabel_petugas').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        'colvis',
+        'excel',
+        'print'
+    ]
+   });
    $('.select2').select2();
    $('.select_lokasi').select2({
+    width: 'resolve'
+   });
+   $('.select_lokasi_edit').select2({
     width: 'resolve'
    });
    
@@ -72,6 +82,38 @@
        ribuan = reverse.match(/\d{1,3}/g);
        ribuan = ribuan.join('.').split('').reverse().join('');
        return ribuan;
+    }
+
+    function get_data_petugas(id) {
+      $.ajax({
+              type: 'ajax',
+              method: 'post',
+              url: '<?php echo site_url();?>/home_penyelia/get_data_petugas',
+              data:{id:id},
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                    $('#edit_modal').modal({backdrop: 'static', keyboard: false});
+                    document.getElementById("id").value=data['id'];
+                    document.getElementById("nama").value=data['nama_petugas'];
+                    document.getElementById("nip").value=data['nip_petugas'];
+                    document.getElementById("pangkat_select").value=data['pangkat_petugas'];
+                    $("#lokasi_select").val(data['nomor_lokasi']).change();
+                    // $("#lokasi_select option[value="+data['nomor_lokasi']+"]").attr('selected', 'selected');
+              },
+                error: function() {
+                  const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 3000
+                  });
+                    Toast.fire({
+                      type: 'error',
+                      title: 'Oops! Koneksi Ke Database Gagal!!'
+                    })
+                }
+            });
     }
 </script>
 </body>

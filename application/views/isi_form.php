@@ -291,9 +291,9 @@
                                             <label class="input-group-text" id="basic-addon3">Kondisi Barang : </label>
                                         </div>
                                             <input type="text" class="form-control" name="kondisi_bar" id="kondisi_barang" readonly="true" value="<?php 
-                                                if($data_register->register = "B") {
+                                                if($data_register->kondisi == "B") {
                                                     echo "Baik";
-                                                } elseif ($data_register->register = "KB") {
+                                                } elseif ($data_register->kondisi == "KB") {
                                                     echo "Kurang Baik";
                                                     } else { 
                                                         echo "Rusak Berat";

@@ -45,7 +45,7 @@
 <?php 
 function to_rp($val)
 {
-    return "Rp " . number_format($val,0,',00','.');
+    return "Rp " . number_format($val,2,',','.');
 }
 
 function tgl_indo($tanggal){
@@ -97,7 +97,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="200px">Kode Lokasi</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_kib->nomor_lokasi; ?></th>
+                <th width="150px"><?php echo $data_kib->nomor_lokasi." - ".$data_kib->lokasi;?></th>
             </tr>
             <tr>
                 <th width="200px">Kuasa Pengguna Barang</th>
@@ -408,15 +408,26 @@ function tgl_indo($tanggal){
                 <th>-</th>
             </tr>
             <tr>
+                <th width="120px"></th>
+                <th width="25px"></th>
+                <th width="150px"></th>
+                <th width="20px"><center>b.</center></th>
+                <th width="20px"><center>
+                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                </center></th>
+                <th colspan="3">Ya, Tidak Diketahui data awal/induknya</th>
+                <th></th>
+            </tr>
+            <tr>
                 <th width="120px">J. Lokasi</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_kib->nomor_lokasi; ?></th>
+                <th width="150px"><?php echo $data_kib->nomor_lokasi." - ".$data_kib->lokasi; ?></th>
                 <td width="20px"><?php if($data_is_register->is_lokasi == 0) {?>
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
-                    <th>Tidak</th>
+                    <th>Sesuai</th>
                     <td width="20px">
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
@@ -433,15 +444,15 @@ function tgl_indo($tanggal){
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Ya, sebutkan yang seharusnya : 
-                    <?php if ($data_is_register->is_lokasi == 1) { echo $data_register->nomor_lokasi;}?>
+                    <?php if ($data_is_register->is_lokasi == 1) { echo $data_register->nomor_lokasi." - ".$data_register->lokasi;}?>
                 </th>
             </tr>
             <tr>
                 <th width="120px">K. Kondisi Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php if ($data_kib->kondisi == "B") {echo "Baik";} elseif ($data_kib->kondisi == "KB") {echo "Kurang Baik" ;} else {echo "Rusak Berat";}?></th>
+                <th width="150px"><?php if ($data_register->kondisi_barang == "Baik") {echo "Baik";} elseif ($data_register->kondisi_barang == "Kurang <Baik></Baik>") {echo "Kurang Baik" ;} else {echo "Rusak Berat";}?></th>
                 <th width="20px">
-                <?php if ($data_kib->kondisi == "B") {?>
+                <?php if ($data_register->kondisi_barang == "Baik") {?>
                     <center>
                         <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
                     </center>
@@ -459,7 +470,7 @@ function tgl_indo($tanggal){
                     </center>
                 </th>
                 <th>Rusak Berat</th>
-                <?php } elseif ($data_kib->kondisi == "KB") {?>
+                <?php } elseif ($data_register->kondisi_barang == "Kurang Baik") {?>
                     <center>
                         <img src="./ini_assets/dist/img/checkbox_non_checked.png" alt="checkbox" width="12" height="12">
                     </center>
@@ -922,7 +933,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px">S. Keterangan</th>
                 <th width="25px">:</th>
-                <th><?php echo $data_kib->keterangan;?></th>
+                <th><?php echo $data_register->keterangan;?></th>
             </tr>
             <tr>
                 <th width="120px">T. Foto/Denah</th>
@@ -973,8 +984,63 @@ function tgl_indo($tanggal){
                 <th></th>
                 <th></th>
             </tr>
-            <?php $x=1; foreach ($petugas->result() as $row) {?>   
             <tr>
+                <th></th>
+                <th></th>
+                <th style="text-align: right;">1. &nbsp;&nbsp;</th>
+                <th colspan="5"><?php echo $this->session->userdata('kepala_opd');?></th>
+                <th>............................</th>
+                <th></th>
+            </tr>
+            
+            <?php $pbp="NULL"; $ppb="NULL"; foreach ($pb_verif as $user) {
+                if($user->fungsi=="Verifikator"){
+                    $verifikator=$user->nama;
+                } elseif ($user->fungsi=="Pengurus Barang") {
+                    $pb=$user->nama;
+                } elseif ($user->fungsi=="Pembantu Pengurus Barang") {
+                    $ppb=$user->nama;
+                } else {
+                    $pbp=$user->nama;
+                }
+            } ?>
+            <tr>
+                <th></th>
+                <th></th>
+                <th style="text-align: right;">2. &nbsp;&nbsp;</th>
+                <th colspan="5"><?php echo $verifikator;?></th>
+                <th>............................</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th style="text-align: right;">3. &nbsp;&nbsp;</th>
+                <th colspan="5"><?php echo $pb;?></th>
+                <th>............................</th>
+                <th></th>
+            </tr>
+            <?php if($ppb != "NULL") {?>
+            <tr>
+                <th></th>
+                <th></th>
+                <th style="text-align: right;">4. &nbsp;&nbsp;</th>
+                <th colspan="5"><?php echo $ppb;?></th>
+                <th>............................</th>
+                <th></th>
+            </tr>
+                <?php } if ($pbp != "NULL") {?>
+            <tr>
+                <th></th>
+                <th></th>
+                <th style="text-align: right;">5. &nbsp;&nbsp;</th>
+                <th colspan="5"><?php echo $pbp;?></th>
+                <th>............................</th>
+                <th></th>
+            </tr>
+
+                <?php } $x=count($pb_verif)+2; foreach ($petugas->result() as $row) {?>   
+             <tr>   
                 <th></th>
                 <th></th>
                 <th style="text-align: right;"><?php echo $x?>. &nbsp;&nbsp;</th>

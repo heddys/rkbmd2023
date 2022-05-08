@@ -11,7 +11,7 @@
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
-	              <table id="tabel_petugas" class="table table-bordered table-hover ">
+	              <table id="tabel_petugas" class="table table-bordered table-hover dataTable js-exportable">
 	                <thead class="thead-dark" >
 	                <tr>
 	                  <th><center>No.</center></th>
@@ -32,7 +32,7 @@
 	                  		<td><center><?php echo $row->nip_petugas?></center></td>
                             <td><center><?php echo $row->pangkat_petugas?></center></td>
                             <td style="width:50px">
-                                <center><a class="btn btn-info" href="#"><i class="fa fa-align-justify" title="Edit Data Pegawai"></i></a></center>
+                                <center><a class="btn btn-info" href="#"><i onclick="get_data_petugas(<?php echo $row->id?>)" class="fa fa-align-justify" title="Edit Data Pegawai"></i></a></center>
                             </td>
                             <td style="width:50px">
                                 <center><a class="btn btn-danger" href="<?php echo site_url('/form_inv/hapus_petugas/'.$row->id);?>"><i class="fa fa-trash" aria-hidden="true" title="Hapus Data Pegawai"></i></a></center>
@@ -72,7 +72,7 @@
                             </div>
                             <div class="form-group">
                                 <label>NIP / NIK Petugas</label>
-                                <input type="text" name="nip" class="form-control" placeholder="Input NIP Jika PNS dan NIK Jika Non PNS" required>
+                                <input type="number" name="nip" class="form-control" maxlength="10" placeholder="Input NIP Jika PNS dan NIK Jika Non PNS" required>
                             </div>
 
                             <!-- select -->
@@ -122,23 +122,23 @@
                 <div class="modal-body">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form role="form" action="<?php echo site_url();?>/form_inv/simpan_petugas" method="post">
+                        <form role="form" action="<?php echo site_url();?>/form_inv/update_petugas" method="post">
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Nama Petugas</label>
-                                <input type="text" name="nama_petugas" class="form-control" placeholder="Input Nama Petugas" required>
+                                <input type="text" name="nama_petugas" id="nama" class="form-control" placeholder="Input Nama Petugas" required>
                             </div>
                             <div class="form-group">
                                 <label>NIP / NIK Petugas</label>
-                                <input type="text" name="nip" class="form-control" placeholder="Input NIP Jika PNS dan NIK Jika Non PNS" required>
-                            </div>
+                                <input type="number" name="nip" id="nip" class="form-control" placeholder="Input NIP Jika PNS dan NIK Jika Non PNS" required>
+                            </div>  
+
+                            <input type="hidden" name="id" id="id">
 
                             <!-- select -->
                             <div class="form-group">
                                 <label>Pilih Pangkat :</label>
-                                <select class="form-control" name="pangkat" required>
-                                    <option></option>
-                                    <option disabled="disabled">Pilih Jenis Pangkat</option>
+                                <select class="form-control" name="pangkat" id="pangkat_select" required>
                                     <?php foreach ($pangkat->result() as $data ) {?>
                                         <option value="<?php echo $data->PANGKAT;?>"><?php echo $data->PANGKAT;?></option>
                                     <?php } ?> 
@@ -146,9 +146,7 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <label>Pilih Lokasi Petugas :</label>
-                                <select class="form-control select_lokasi"  name="lokasi" required style="width: 300%">
-                                    <option selected disable="disabled"></option>
-                                    <option disabled="disabled">Pilih Lokasi</option>
+                                <select class="form-control select_lokasi_edit"  name="lokasi" id="lokasi_select" required style="width: 300%">
                                     <?php foreach ($lokasi->result() as $lok ) {?>
                                         <option value="<?php echo $lok->nomor_lokasi;?>"><?php echo $lok->lokasi;?></option>
                                     <?php } ?> 

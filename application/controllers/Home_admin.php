@@ -90,9 +90,7 @@ class Home_admin extends CI_Controller {
 
 		echo json_decode($result);
 	}
-    
 
-    
 
 }
 ?>

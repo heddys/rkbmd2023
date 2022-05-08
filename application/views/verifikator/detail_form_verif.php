@@ -580,12 +580,12 @@
                                     </div>
                             </div>
 
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-8 gambar">
                                 <div class="mb-3">
                                 <label><h5><b>Upload Foto atau Denah Aset</b></h5></label>
                                     <div class="mb-3">
                                         <?php foreach ($image as $i) {?>
-                                            <img style="Padding-top: 5px;" src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="200" height="200">
+                                            <img style="Padding-top: 5px;" src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="20%">
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -634,7 +634,7 @@
 	                <center><div class="form-group col-md-12">
                                     <div class="mb-3">
                                         <label><h5><b>Dasar Penolakan</b></h5></label>
-                                        <textarea class="form-control" name="penolakan" rows="3" required="required"><?php echo $data_register->keterangan?></textarea>
+                                        <textarea class="form-control" name="penolakan" rows="3" required="required"></textarea>
                                     </div>
                             </div></center>
 	             </div>

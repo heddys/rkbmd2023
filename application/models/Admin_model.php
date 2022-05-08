@@ -125,9 +125,83 @@ class Admin_model extends CI_Model{
        $this->db->error();
    }
 
+   public function get_row_petugas($id)
+   {
+       return $this->db->get_where('petugas_inv', array('id' => $id));
+   }
+
+   public function get_rekap_opd($unit)
+   {
+       $query=$this->db->query(
+            "SELECT
+                b.unit,
+                count( a.register ) as total,
+                COUNT(
+                IF
+                ( a.STATUS = 1, 1, NULL )) AS proses,
+                COUNT(
+                IF
+                ( a.STATUS = 2, 1, NULL )) AS verif,
+                COUNT(
+                IF
+                ( a.STATUS = 3, 1, NULL )) AS tolak,
+                COUNT(
+                IF
+                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                    count( a.register )- COUNT(
+                    IF
+                    ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+            FROM
+                data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi GROUP BY unit_baru) b on a.unit_baru=b.unit_baru 
+            WHERE
+                a.unit_baru IN ( '".implode("','",$unit)."' ) 
+            GROUP BY
+                a.unit_baru 
+            ORDER BY
+                persentase DESC");
+        
+        return $query->result();
+   }
+
+   public function get_per_opd_penyelia($list_unit)
+   {
+    
+        $this->db->select('*');
+        $this->db->from('kamus_lokasi');
+        $this->db->where_in('unit_baru',$list_unit);
+        $this->db->group_by('unit_baru');
+        return $this->db->get();
+   }
 
 
+   public function get_status_for_penyelia($data,$kib, $limit, $offset,$form){
 
+        if($form == 2){
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+        } else {
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`unit_baru` IN ( '".implode("','",$data)."' ) limit ".$limit." offset ".$offset."");
+        } 
+
+        return $query->result();
+    }
+
+    public function hitungBanyakRowRegister($data,$kib,$form)
+    {
+                // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
+                if ($form == 2){
+                    $no_lokasi=$this->session->userdata('no_lokasi_asli');
+                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%')");
+
+                    return $query;
+                } else {
+                    $this->db->select('*');
+                    $this->db->from('data_kib');
+                    $this->db->where_in('unit_baru',$data);
+                    $this->db->like('kode108_baru',$kib);
+
+                    return $this->db->get();
+                } 
+    }
 }
 
 ?>

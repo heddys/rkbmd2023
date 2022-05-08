@@ -61,6 +61,10 @@
             width: 100% !important;
             height: 100% !important;
           }
+
+          .gambar:hover {
+            transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+          }
         </style>
         <!--UNTUK NAMA DINASNYA-->
         <strong class="nav-link fontku"><font color="white"><?php echo $this->session->userdata('skpd');?> KOTA SURABAYA - (<?php echo strtoupper($this->session->userdata('nama_login'));?>) </font></strong>
@@ -138,7 +142,7 @@
               </p>
             </a>
           </li>
-          <hr>
+          <li class="nav-header"><strong>MENU UTAMA</strong></li>
           <li class="nav-item has-treeview">
             <!-- <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -296,6 +300,15 @@
               </p>
             </a>
           </li> -->
+          <li class="nav-header"><strong>CETAK LAPORAN</strong></li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('form_inv/export_excel_all_kibpm_user');?>" class="nav-link">
+                <i class="nav-icon fa fa-download"></i>
+                <p>
+                    Cetak Status Register 1.3.2
+                </p>
+              </a>
+            </li>
          <li class="nav-header"><strong>KAMUS</strong></li>
          <li class="nav-item">
             <a href="<?php echo site_url('home/list_kegiatan');?>" class="nav-link">

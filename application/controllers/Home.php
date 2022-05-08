@@ -20,13 +20,21 @@ class Home extends CI_Controller {
 	private function cek_sess() 
 	{
 		if($this->session->userdata('id') !=NULL){
-			$opd=$this->session->userdata('skpd');
-			$this->load->model('auth_model');
-			return;
-			} else { 
-				$par=2;
-				redirect('auth/index/'.$par);
-			}
+				if ($this->session->userdata('role')=='Verifikator'){
+					redirect('home_verifikator');
+				} elseif ($this->session->userdata('role')=='Penyelia') {
+					redirect('home_penyelia');
+				} elseif ($this->session->userdata('role')=='Admin') {
+					redirect('home_admin');
+				} else {
+					$opd=$this->session->userdata('skpd');
+					$this->load->model('auth_model');
+					return;
+				}
+		} else { 
+			$par=2;
+			redirect('auth/index/'.$par);
+		}
 	}
 
 	public function jsonjson(){
