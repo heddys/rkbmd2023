@@ -152,11 +152,11 @@ class Admin_model extends CI_Model{
                     IF
                     ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
             FROM
-                data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi GROUP BY unit_baru) b on a.unit_baru=b.unit_baru 
+                data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi where kode_binprog <> '' GROUP BY unit_baru) b on a.unit_baru=b.unit_baru 
             WHERE
                 a.unit_baru IN ( '".implode("','",$unit)."' ) 
             GROUP BY
-                a.unit_baru 
+                a.unit 
             ORDER BY
                 persentase DESC");
         
@@ -168,6 +168,7 @@ class Admin_model extends CI_Model{
     
         $this->db->select('*');
         $this->db->from('kamus_lokasi');
+        $this->db->where('kode_binprog <>','');
         $this->db->where_in('unit_baru',$list_unit);
         $this->db->group_by('unit_baru');
         return $this->db->get();
