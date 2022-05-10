@@ -54,7 +54,7 @@
                     INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.lokasi
                     INNER JOIN data_kib c ON a.register = c.register 
                 WHERE
-                    c.ekstrakomtabel IS NULL 
+                    c.ekstrakomtabel IS NULL
                     AND c.STATUS = ".$where['status']."
                     AND a.lokasi LIKE '".$lokasi."%'
                     AND a.kode_barang like '".$kib."%'

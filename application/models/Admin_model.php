@@ -234,6 +234,73 @@ class Admin_model extends CI_Model{
                     return $this->db->get();
                 } 
     }
+
+    public function ambil_register_form_penyelia($register) {
+                // return $this->db->from("register_isi")->where($where)->order_by('created_time DESC, created_date DESC')->get();
+
+                // $this->db->select('*');
+                // $this->db->from('register_isi');
+                // $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = register_isi.lokasi');
+                // $this->db->where('register_isi.register',$where);
+                // $this->db->order_by('created_date', 'DESC');
+                // $this->db->order_by('created_time', 'DESC');
+                // return $this->db->get();
+
+                $query = $this->db->query("SELECT a.*,b.* FROM `register_isi` a join kamus_lokasi b on a.lokasi=b.nomor_lokasi where a.register = '".$register."' order by created_date DESC, created_time DESC");
+                return $query;
+    }
+
+    public function ambil_status_register_form($register){
+
+                return $this->db->from("register_status")->where(array('is_register' => $register))->order_by('created_date DESC, created_time DESC')->get();
+    }
+
+    public function ambil_file($data) {
+                return $this->db->get_Where('jurnal_upload',array('register' => $data));
+    }
+
+    public function ambil_jurnal_penolakan($data)
+    {
+                // $query = $this->db->get_where('jurnal_penolakan', $data);
+                return $this->db->from("jurnal_penolakan")->where($data)->order_by('created_time desc, created_time desc')->get();
+                // return $query->row();
+    }
+
+    public function ambil_register_form($register)
+    {
+                // return $this->db->from("register_isi")->where($where)->order_by('created_time DESC, created_date DESC')->get();
+
+                // $this->db->select('*');
+                // $this->db->from('register_isi');
+                // $this->db->join('kamus_lokasi', 'kamus_lokasi.nomor_lokasi = register_isi.lokasi');
+                // $this->db->where('register_isi.register',$where);
+                // $this->db->order_by('created_date', 'DESC');
+                // $this->db->order_by('created_time', 'DESC');
+                // return $this->db->get();
+
+                $query = $this->db->query("SELECT a.*,b.* FROM `register_isi` a join kamus_lokasi b on a.lokasi=b.nomor_lokasi where a.register = '".$register."' order by created_date DESC, created_time DESC");
+                return $query;
+    }
+
+    public function ambil_register($register)
+    {   
+
+                $query = $this->db->query("SELECT a.*,b.* FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.register = '".$register."'");
+
+                // return $query->result();
+                // $query = $this->db->get_where('data_kib', $where);
+                return $query->row();
+    }
+
+    public function pb_verif($nomor_lokasi)
+    {   
+
+                $this->db->select('*');
+                $this->db->from('pengguna');
+                $this->db->like('nomor_lokasi', $nomor_lokasi);
+                $this->db->where_not_in('fungsi', array('Penyelia','Admin'));
+                return $this->db->get();
+    }
 }
 
 ?>

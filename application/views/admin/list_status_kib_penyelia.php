@@ -108,11 +108,11 @@
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>
                                 <?php if ($row->status==1) {?>
-                                    <center><button type="button" class="btn btn-sm btn-warning" title="Register Ini Masih Dalam Proses Verifikasi"><i class="fa fa-spinner"></i></a></center>
+                                    <center><a href="<?php echo site_url('home_penyelia/show_form_inv_penyelia?status=1&amp;register='.$row->register)?>" class="btn btn-sm btn-warning" title="Register Ini Masih Dalam Proses Verifikasi"><i class="fa fa-spinner"></i></a></center>
                                 <?php } elseif ($row->status==2) { ?>
-                                    <center><button type="button" class="btn btn-sm btn-success" title="Register Telah Di Verifikasi"><i class="fas fa-eye"></i></a></center>
+                                    <center><a href="<?php echo site_url('home_penyelia/show_form_inv_penyelia?status=2&amp;register='.$row->register)?>" class="btn btn-sm btn-success" title="Register Telah Di Verifikasi"><i class="fas fa-eye"></i></a></center>
                                 <?php } elseif ($row->status==3) { ?>
-                                    <center><button type="button" class="btn btn-sm btn-danger" title="Register Di Tolak Verifikator"><i class="fa fa-ban"></i></a></center>
+                                    <center><a href="<?php echo site_url('home_penyelia/show_form_inv_penyelia?status=3&amp;register='.$row->register)?>" class="btn btn-sm btn-danger" title="Register Di Tolak Verifikator"><i class="fa fa-ban"></i></a></center>
                                 <?php } else {?>
                                     <center>Belum Di Invetarisasi</center>                                    
                                 <?php } ?>

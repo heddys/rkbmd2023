@@ -175,6 +175,51 @@ class Home_penyelia extends CI_Controller {
 		
     }
 
+	public function show_form_inv_penyelia()
+	{
+		$this->cek_sess();
+
+		$data['page']="Lihat Form Inventarisasi OPD";
+		$data['status'] = $_GET['status'];
+		$register=$_GET['register'];
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+		if($data['status']==3) {
+			$data['penolakan'] =$this->admin_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
+		}
+		
+		$this->load->view('admin/header_penyelia',$data);		
+		$this->load->view('admin/detail_form_penyelia',$data);
+		$this->load->view('admin/footer_penyelia');		
+
+	}
+
+	public function cetak_form_inv_penyelia()
+	{
+		$this->cek_sess();
+        ini_set('max_execution_time', 2000);
+        $register=$_POST['register'];
+		$nomor_lokasi=substr($_POST['no_lokasi'],0,-6);
+
+        $data['data_register'] = $this->admin_model->ambil_register_form($register)->row();
+        $data['data_is_register'] = $this->admin_model->ambil_status_register_form($register)->row();
+        $data['image']=$this->admin_model->ambil_file($register)->result();
+        $data['data_kib'] = $this->admin_model->ambil_register($register);
+
+        $data['pb_verif']=$this->admin_model->pb_verif($nomor_lokasi)->row();
+
+        // // var_dump($data['pengguna']);
+        // // echo $nomor_lokasi;
+
+       	$this->pdf->load_view('admin/cetak_register_inventarisasi_penyelia',$data);
+		$this->pdf->set_paper("legal", "potrait");
+		$this->pdf->render();
+        ob_end_clean();
+		$this->pdf->stream("dompdf_out.pdf", array("Attachment" => false));
+
+	}
+
 	public function export_excel_rekap_penyelia()
 	{
 		$this->cek_sess();
