@@ -88,7 +88,7 @@ class Admin_model extends CI_Model{
    public function get_data_chart($list)
    {
         if($list==1) {
-            $query = $this->db->query("SELECT (select count(register) from data_kib where status ='1') as jumlah_proses, (select count(register) from data_kib where status ='3') as jumlah_tolak, (select count(register) from data_kib where status ='2') as jumlah_terverif, (select count(register) from data_kib where status is null) as jumlah_reg_belum_diisi");
+            $query = $this->db->query("SELECT (select count(register) from data_kib where status ='1') as jumlah_proses, (select count(register) from data_kib where status ='3') as jumlah_tolak, (select count(register) from data_kib where status ='2') as jumlah_terverif, (select count(register) from data_kib where status is null and ekstrakomtabel is null) as jumlah_reg_belum_diisi");
         } else {
                 $query = $this->db->query("SELECT (select count(register) from data_kib where unit_baru in ('".implode("','",$list)."') and status ='1') as jumlah_proses, (select count(register) from data_kib where unit_baru in ('".implode("','",$list)."') and status ='3') as jumlah_tolak, (select count(register) from data_kib where unit_baru in ('".implode("','",$list)."') and status ='2') as jumlah_terverif, (select count(register) from data_kib where unit_baru in ('".implode("','",$list)."') and status is null) as jumlah_reg_belum_diisi");
             }
@@ -156,7 +156,38 @@ class Admin_model extends CI_Model{
             WHERE
                 a.unit_baru IN ( '".implode("','",$unit)."' ) 
             GROUP BY
-                a.unit 
+                b.unit 
+            ORDER BY
+                persentase DESC");
+        
+        return $query->result();
+   }
+
+   public function get_rekap_opd_admin()
+   {
+       $query=$this->db->query(
+            "SELECT
+                b.unit,
+                count( a.register ) as total,
+                COUNT(
+                IF
+                ( a.STATUS = 1, 1, NULL )) AS proses,
+                COUNT(
+                IF
+                ( a.STATUS = 2, 1, NULL )) AS verif,
+                COUNT(
+                IF
+                ( a.STATUS = 3, 1, NULL )) AS tolak,
+                COUNT(
+                IF
+                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                    count( a.register )- COUNT(
+                    IF
+                    ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+            FROM
+                data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi where kode_binprog <> '' GROUP BY unit_baru) b on a.unit_baru=b.unit_baru
+            GROUP BY
+                b.unit 
             ORDER BY
                 persentase DESC");
         

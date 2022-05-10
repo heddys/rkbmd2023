@@ -34,7 +34,7 @@
               <div class="card-header no-border ">
                 <h3 class="card-title">Rekapan Per OPD</h3>
                 <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-sm" title="Download Rekapan">
+                  <a href="<?php echo site_url('home_penyelia/export_excel_rekap_penyelia')?>" class="btn btn-tool btn-sm" title="Download Rekapan">
                     <i class="fas fa-download"></i>
                   </a>
                 </div>
@@ -44,7 +44,7 @@
                   <table class="table table-striped table-hover responsive" id="tabel-home">
                     <thead class="thead-dark">
                     <tr>
-                      <th>Perangkat Daerah</th>
+                      <th><center>Perangkat Daerah<center></th>
                       <th>Total Register</th>
                       <th>Register Telah Di Verif</th>
                       <th>Register Masih Proses Verif</th>
@@ -58,7 +58,7 @@
                       <?php foreach ($rekap_opd as $row) { ?>
                       <tr>
                         <td>
-                          <?php echo $row->unit?>
+                          <?php echo strtoupper($row->unit);?>
                         </td>
                         <td><center><?php echo number_format($row->total);?></center></td>
                         <td><center><?php echo number_format($row->verif);?></center></td>

@@ -16,6 +16,7 @@
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Register</center></th>
+					  <th><centeR>Loaksi</center></th>
 	                  <th><center>Kode Neraca</center></th>
 	                  <th><center>Nama Barang</center></th>
 	                  <th><center>Spesifikasi Barang</center></th>
@@ -28,6 +29,7 @@
 	                	<tr>
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $row->register?></center></td>
+							<td><center><?php echo $row->lokasi?></center></td>
 	                  		<td><center><?php echo $row->kode64_baru?></center></td>
                             <td><center><?php echo $row->nama_barang?></center></td>
                             <td><center><?php echo $row->merk_alamat." - ".$row->tipe?></center></td>
@@ -70,6 +72,7 @@
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Register</center></th>
+	                  <th><center>Lokasi</center></th>
 	                  <th><center>Kode Neraca</center></th>
 	                  <th><center>Nama Barang</center></th>
 	                  <th><center>Spesifikasi Barang</center></th>
@@ -82,6 +85,7 @@
 	                	<tr>
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $t->register?></center></td>
+	                  		<td><center><?php echo $t->lokasi?></center></td>
 	                  		<td><center><?php echo $t->kode64_baru?></center></td>
                             <td><center><?php echo $t->nama_barang?></center></td>
                             <td><center><?php echo $t->merk_alamat." - ".$t->tipe?></center></td>
