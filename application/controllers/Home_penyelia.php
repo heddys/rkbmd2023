@@ -123,7 +123,7 @@ class Home_penyelia extends CI_Controller {
 			//Config Pagination
 			$config['total_rows'] = $this->admin_model->hitungBanyakRowRegister($data_cari,$kib,$form)->num_rows();
 			$config['per_page'] = 10;
-			$config['base_url'] = '/rkbmd2023/index.php/home_penyelia/list_status_register/2';
+			$config['base_url'] = site_url('/home_penyelia/list_status_register/2');
 			$config['num_links'] = 3;
 
 			//Pagination Bootstrap Theme
@@ -323,7 +323,7 @@ class Home_penyelia extends CI_Controller {
         ob_end_clean();
 		header('Last-Modified:'. gmdate("D, d M Y H:i:s").'GMT');
         header('Content-type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment; filename='.$filename);
+        header('Content-Disposition: attachment; filename="'.$filename.'"');
         $objWriter->save('php://output');    
 
 

@@ -65,7 +65,7 @@
                         <td><center><?php echo number_format($row->proses);?></center></td>
                         <td><center><?php echo number_format($row->tolak);?></center></td>
                         <td><center><?php echo number_format($row->sisa);?></center></td>
-                        <td><center><?php echo round((float)$row->persentase,3) . '%';?></center></td>
+                        <td><center><?php echo round(float($row->persentase),3) . '%';?></center></td>
                         <td>
                           <center>
                             <a href="#" class="text-muted">

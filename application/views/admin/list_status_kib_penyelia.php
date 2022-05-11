@@ -56,7 +56,7 @@
                               <option selected disable="disabled">Cari Berdasarkan Lokasi</option>
                               <option value="semua_opd">Semua OPD</option>
                                 <?php $x=1; foreach ($lokasi->result() as $row) {?>
-                                <option value="<?php echo $row->unit_baru;?>"><?php echo $row->unit;?></option>
+                                <option value="<?php echo $row->unit_baru;?>"><?php echo strtoupper($row->unit);?></option>
                                 <?php }?>
                             </select> 
                           </div>

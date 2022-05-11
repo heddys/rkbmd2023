@@ -134,7 +134,7 @@ class Form_inv extends CI_Controller {
 			//Config Pagination
 			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$data_cari,$kib,$form)->num_rows();
 			$config['per_page'] = 10;
-			$config['base_url'] = '/rkbmd2023/index.php/form_inv/index/2/';
+			$config['base_url'] = site_url('/form_inv/index/2/');
 			$config['num_links'] = 3;
 
 			//Pagination Bootstrap Theme
@@ -837,7 +837,10 @@ class Form_inv extends CI_Controller {
 		$i=4;
 		$no=1;
 
-		
+		function to_rp($val)
+		{
+    		return number_format($val,2,',','.');
+		}
         foreach ($data_kib->result() as $kib) 
         {
 			$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
@@ -848,7 +851,7 @@ class Form_inv extends CI_Controller {
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, $kib->merk_alamat);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, $kib->tipe);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $kib->tahun_pengadaan);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, $kib->harga_baru);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, to_rp($kib->harga_baru));
 
 				if($kib->status == 1) {
                       $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $i, "Register Dalam Proses Verifikasi");
@@ -890,7 +893,7 @@ class Form_inv extends CI_Controller {
         ob_end_clean();
 		header('Last-Modified:'. gmdate("D, d M Y H:i:s").'GMT');
         header('Content-type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment; filename='.$filename);
+        header('Content-Disposition: attachment; filename="'.$filename.'"');
         $objWriter->save('php://output');    
 	}
 }
