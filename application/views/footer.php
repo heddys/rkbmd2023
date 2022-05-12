@@ -28,7 +28,7 @@
 <!-- jQuery Knob Chart -->
 <script src="<?php echo base_url();?>ini_assets/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
-<script src="<?php echo base_url();?>ini_assets/plugins/moment/moment.min.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/jquery/jquery.min.js"></script>
 
 <script src="<?php echo base_url();?>ini_assets/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->

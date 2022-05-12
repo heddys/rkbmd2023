@@ -468,7 +468,7 @@ class Form_inv extends CI_Controller {
 		//Membuat tanda di data kib
 		$this->form_model->tandai_kib($register);
 
-		redirect('/status_form/index/2');
+		redirect('/form_inv/index/2');
 
 	}
 
@@ -755,8 +755,7 @@ class Form_inv extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function update_petugas()
-	{
+	public function update_petugas() {
 		$this->cek_sess();
 
 		$id=$_POST['id'];

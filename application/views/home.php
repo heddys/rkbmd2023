@@ -8,6 +8,27 @@
           <h4>Notice!</h4>
           Selamat Datang, Tolong Untuk Mengisi Form Inventarisasi Terlebih Dahulu.
         </div>
+        
+        <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Progress bars</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" >
+                <div class="progress mb-3">
+                  <div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                    40% Complete (success)
+                  </div><div class="progress-bar bg-info  " role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                    50% Complete (success)
+                  </div>
+                </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
           <div class="row">
             <div class="col-lg-12 col-12">
               <!-- small box -->

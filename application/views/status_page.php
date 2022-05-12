@@ -12,7 +12,7 @@
                       
 	            </div>
 	            <!-- /.card-header -->
-	            <div class="card-body">
+	            <div class="card-body" style="overflow-x:auto;">
 	              <table id="tabel_cetak2" class="table table-bordered table-hover">
 	                <thead class="thead-dark">
 	                <tr>
@@ -79,7 +79,7 @@
                       
 	            </div>
 	            <!-- /.card-header -->
-	            <div class="card-body">
+	            <div class="card-body" style="overflow-x:auto;">
 	              <table id="tabel_proses_verif2" class="table table-bordered table-hover">
 	                <thead>
 	                <tr>
