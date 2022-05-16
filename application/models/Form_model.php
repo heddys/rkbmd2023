@@ -299,5 +299,34 @@
                 $this->db->where_not_in('fungsi', array('Penyelia','Admin'));
                 return $this->db->get();
             }
+
+            public function data_progres_opd($lokasi)
+            {
+                $query=$this->db->query(
+                    "SELECT
+                        b.unit,
+                        count( a.register ) as total,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 1, 1, NULL )) AS proses,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 2, 1, NULL )) AS verif,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 3, 1, NULL )) AS tolak,
+                        COUNT(
+                        IF
+                            ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                            count( a.register )- COUNT(
+                            IF
+                            ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                    FROM
+                        data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi where kode_binprog <> '' GROUP BY unit_baru) b on a.unit_baru=b.unit_baru 
+                    WHERE
+                        a.unit_baru like '%".$lokasi."%'");
+                
+                return $query;
+            }
  }
  ?>

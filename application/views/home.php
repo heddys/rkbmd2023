@@ -9,26 +9,76 @@
           Selamat Datang, Tolong Untuk Mengisi Form Inventarisasi Terlebih Dahulu.
         </div>
         
-        <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Progress bars</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body" >
-                <div class="progress mb-3">
-                  <div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                    40% Complete (success)
-                  </div><div class="progress-bar bg-info  " role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                    50% Complete (success)
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Progres Pengisian Form Inventarisasi</h5>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="progress" style="height:25px">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap->persentase,3) . '%';?></strong></div>
+                      </div>
+                    </div>
+                    <!-- /.col -->
                   </div>
+                  <!-- /.row -->
                 </div>
+                <!-- ./card-body -->
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap->total);?></h5>
+                        <span class="description-text">TOTAL REGISTER</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap->proses);?></h5>
+                        <span class="description-text">TOTAL REGISTER PROSES VERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap->tolak);?></h5>
+                        <span class="description-text">TOTAL REGISTER DI TOLAK</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap->verif);?></h5>
+                        <span class="description-text">TOTAL REGISTER TERVERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <div class="col-sm col-6">
+                      <div class="description-block">
+                        <h5 class="description-header"><?php echo number_format($rekap->sisa);?></h5>
+                        <span class="description-text">TOTAL REGISTER BELUM DI KERJAKAN</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
                 </div>
+                <!-- /.card-footer -->
               </div>
-              <!-- /.card-body -->
+              <!-- /.card -->
             </div>
-            <!-- /.card -->
+            <!-- /.col -->
           </div>
+          <!-- /.row -->
           <div class="row">
             <div class="col-lg-12 col-12">
               <!-- small box -->
@@ -122,6 +172,7 @@
         <!-- /.row -->
         <!-- Main row -->
     </div>
+
+    </div>
     </section>
     <!-- /.content -->
-  </div>
