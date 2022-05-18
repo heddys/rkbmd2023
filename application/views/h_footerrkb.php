@@ -31,6 +31,7 @@
 
   //  $("#example1").DataTable();
    $('#tabel_cetak2').DataTable();
+   $('#tabel_pbp').DataTable();
    $('#tabel_proses_verif2').DataTable();
    $('#tabel_petugas').DataTable({
     dom: 'Bfrtip',

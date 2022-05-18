@@ -7,13 +7,24 @@ class Home extends CI_Controller {
 	public function index ()
 	{	
 		$this->cek_sess();
-		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$jabatan=$this->session->userdata('role');
 		$data['page']="Dashboard";
 		// $data['exist']=$this->cek_jumlah_exist();
 		// $data['bmaset']=$this->cek_jumlah_bmaset();
 		// $data['bmpersediaan']=$this->cek_jumlah_persediaan();
+		if($jabatan == "Pengurus Barang Pembantu UPTD"){
+			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
+			$nomor_lokasi=array();
+			foreach ($get_lokasi_pbp as $key) {
+				$nomor_lokasi[]=$key->nomor_lokasi;
+			} 
+		}
+		else {
+			$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		}
+
+
 		$data['rekap']=$this->form_model->data_progres_opd($nomor_lokasi)->row();
-		// var_dump($data->unit);
 		$this->load->view('header',$data);		
 		$this->load->view('home');
 		$this->load->view('footer');

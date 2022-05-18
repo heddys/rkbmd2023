@@ -517,9 +517,9 @@ class Auth_model extends CI_Model{
 		return $this->db->get();
 	}
 
-	function showhistory($where){
-
-
+	public function ambil_data_pbp($nip)
+	{
+		return $this->db->get_where('kamus_pengurus_barang_pembantu',array('nip_pbp' => $nip));
 	}
 
 }

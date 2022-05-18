@@ -73,107 +73,134 @@ class Form_inv extends CI_Controller {
         $data['exist']=$this->cek_jumlah_exist();
 		$data_cari=$this->session->userdata('data');
 		
-
-		// if($this->session->userdata('status')==0){
-		// 	$form=0;
-		// } elseif($this->session->userdata('status')==2) {
-		// 	$form=3;
-		// }
 		
 		//Session Status 1, Artinya Lagi di Isi Search By Lokasi dan untuk Session Status 2, Artinya Lagi di Isi Search By Register dan Nama
-		if(isset($_POST['select_lokasi'])){
+
+		//Kondisi Untuk Fungsi User Pengurus Barang Pembantu
+		if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
+			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
+			$nomor_lokasi=array();
+			foreach ($get_lokasi_pbp as $key) {
+				$nomor_lokasi[]=$key->nomor_lokasi;
+			}
+			$data['kib_apa']=$id;
+
+				if($id=='1') {
+					$kib = "1.3.1";
+				} 
+				elseif ($id=='2') {
+					$kib = "1.3.2";
+				} elseif ($id=='3') {
+					$kib = "1.3.3";
+				} elseif ($id=='4') {
+					$kib = "1.3.4";
+				} elseif ($kib=='5') {
+					$kib = "1.3.5";
+				} else { 
+					$kib = "1.5.3";
+				} 
+				
+			$data['register']=$this->form_model->get_all_register_pagination_Pbp($kib,$nomor_lokasi);
+		
+			
+		// Kondisi Untuk Fungsi User Bukan Pengurus Barang Pembantu.	
+		} else {
+			if(isset($_POST['select_lokasi'])){
 				$data_cari = $_POST['select_lokasi'];
 				$form = 1;
 				$this->session->set_userdata('data',$data_cari);
 				$this->session->set_userdata('status',1);
-		} else {
-			if($this->session->userdata('status')==0) {
-				$form = 0;
-				$data_cari=$this->session->userdata('no_lokasi_asli');
-			} elseif($this->session->userdata('status')==1) {
-				$form = 1;
-				$data_cari=$this->session->userdata('data');
 			} else {
-				$form = 2;
+				if($this->session->userdata('status')==0) {
+					$form = 0;
+					$data_cari=$this->session->userdata('no_lokasi_asli');
+				} elseif($this->session->userdata('status')==1) {
+					$form = 1;
+					$data_cari=$this->session->userdata('data');
+				} else {
+					$form = 2;
+				}
 			}
+
+			if(isset($_POST['cariregname'])){
+				$data_cari=$_POST['cariregname'];
+				$form=2;
+				$this->session->set_userdata('data',$data_cari);
+				$this->session->set_userdata('status',2);
+			}
+
+
+			$where = array (
+				'ekstrakomtabel' =>  NULL,
+				'status' => NULL
+			);
+
+			$data['kib_apa']=$id;
+
+				if($id=='1') {
+					$kib = "1.3.1";
+				} 
+				elseif ($id=='2') {
+					$kib = "1.3.2";
+				} elseif ($id=='3') {
+					$kib = "1.3.3";
+				} elseif ($id=='4') {
+					$kib = "1.3.4";
+				} elseif ($kib=='5') {
+					$kib = "1.3.5";
+				} else { 
+					$kib = "1.5.3";
+				}
+			
+				//Load Library Pagination
+				$this->load->library('pagination');
+				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
+				//Config Pagination
+				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$data_cari,$kib,$form)->num_rows();
+				$config['per_page'] = 10;
+				$config['base_url'] = site_url('/form_inv/index/2/');
+				$config['num_links'] = 3;
+
+				//Pagination Bootstrap Theme
+				$config['full_tag_open']='<nav aria-label="Page navigation example"><ul class="pagination justify-content-center">';
+				$config['full_tag_close']='</ul></nav>';
+
+				$config['first_link'] = 'First';
+				$config['first_tag_open'] = '<li class="page-item">';
+				$config['first_tag_close'] = '</li>';
+
+				$config['last_link'] = 'Last';
+				$config['last_tag_open'] = '<li class="page-item">';
+				$config['last_tag_close'] = '</li>';
+
+				$config['next_link'] = '&raquo';
+				$config['next_tag_open'] = '<li class="page-item">';
+				$config['next_tag_close'] = '</li>';
+
+				$config['prev_link'] = '&laquo';
+				$config['prev_tag_open'] = '<li class="page-item">';
+				$config['prev_tag_close'] = '</li>';
+
+				$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+				$config['cur_tag_close'] = '</a></li>';
+
+				$config['num_tag_open'] = '<li class="page-item">';
+				$config['num_tag_close'] = '</li>';
+
+				$config['attributes'] = array ('class' => 'page-link'); 
+				
+				
+				$this->pagination->initialize($config);
+				
+			$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
+			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
+			$data['register']=$this->form_model->get_all_register_pagination($data_cari,$kib,$config['per_page'],$data['offset']-1,$form);
+        
 		}
 
-		if(isset($_POST['cariregname'])){
-			$data_cari=$_POST['cariregname'];
-			$form=2;
-			$this->session->set_userdata('data',$data_cari);
-			$this->session->set_userdata('status',2);
-		}
-
-
-        $where = array (
-            'ekstrakomtabel' =>  NULL,
-			'status' => NULL
-        );
-
-        $data['kib_apa']=$id;
-
-			if($id=='1') {
-				$kib = "1.3.1";
-			} 
-			elseif ($id=='2') {
-				$kib = "1.3.2";
-			} elseif ($id=='3') {
-				$kib = "1.3.3";
-			} elseif ($id=='4') {
-				$kib = "1.3.4";
-			} elseif ($kib=='5') {
-				$kib = "1.3.5";
-			} else { 
-				$kib = "1.5.3";
-			}
-		
-			//Load Library Pagination
-			$this->load->library('pagination');
-			$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
-			//Config Pagination
-			$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$data_cari,$kib,$form)->num_rows();
-			$config['per_page'] = 10;
-			$config['base_url'] = site_url('/form_inv/index/2/');
-			$config['num_links'] = 3;
-
-			//Pagination Bootstrap Theme
-			$config['full_tag_open']='<nav aria-label="Page navigation example"><ul class="pagination justify-content-center">';
-			$config['full_tag_close']='</ul></nav>';
-
-			$config['first_link'] = 'First';
-			$config['first_tag_open'] = '<li class="page-item">';
-			$config['first_tag_close'] = '</li>';
-
-			$config['last_link'] = 'Last';
-			$config['last_tag_open'] = '<li class="page-item">';
-			$config['last_tag_close'] = '</li>';
-
-			$config['next_link'] = '&raquo';
-			$config['next_tag_open'] = '<li class="page-item">';
-			$config['next_tag_close'] = '</li>';
-
-			$config['prev_link'] = '&laquo';
-			$config['prev_tag_open'] = '<li class="page-item">';
-			$config['prev_tag_close'] = '</li>';
-
-			$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-			$config['cur_tag_close'] = '</a></li>';
-
-			$config['num_tag_open'] = '<li class="page-item">';
-			$config['num_tag_close'] = '</li>';
-
-			$config['attributes'] = array ('class' => 'page-link'); 
-			
-			
-			$this->pagination->initialize($config);
-			
-		$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
-		$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
-        $data['register']=$this->form_model->get_all_register_pagination($data_cari,$kib,$config['per_page'],$data['offset']-1,$form);
-        $this->load->view('h_tablerkb',$data);		
+		$this->load->view('h_tablerkb',$data);		
 		$this->load->view('form_page',$data);
-		$this->load->view('h_footerrkb');		
+		$this->load->view('h_footerrkb');
 		
 	}
 

@@ -163,6 +163,23 @@
                     return $this->db->get();
                 }
             }
+
+            public function hitungBanyakRowRegisterPbp($where,$data,$kib,$form,$no_lokasi)
+            {
+                if ($form == 2){
+                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.nomor_lokasi IN ( '".implode("','",$no_lokasi)."' ) and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%')");
+
+                    return $query;
+                } else {
+                    $this->db->select('*');
+                    $this->db->from('data_kib');
+                    $this->db->where($where);
+                    $this->db->where_in('nomor_lokasi',$no_lokasi);
+                    $this->db->like('kode108_baru',$kib);
+
+                    return $this->db->get();
+                }
+            }
             
             public function save_image($data = array())
             {
@@ -233,6 +250,13 @@
                 } else {
                     $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi_baru` like '%".$data."%' limit ".$limit." offset ".$offset."");
                 } 
+
+                return $query->result();
+            }
+
+            public function get_all_register_pagination_Pbp($kib,$no_lokasi){
+
+                $query=$this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.nomor_lokasi IN ( '".implode("','",$no_lokasi)."' )");
 
                 return $query->result();
             }
@@ -466,7 +490,31 @@
                 //     '1.3.2.05.03.07')");
                 
                 // return $query;
-
+                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ){
+                    $query=$this->db->query(
+                        "SELECT
+                            b.unit,
+                            count( a.register ) as total,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 1, 1, NULL )) AS proses,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 2, 1, NULL )) AS verif,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 3, 1, NULL )) AS tolak,
+                            COUNT(
+                            IF
+                                ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                                count( a.register )- COUNT(
+                                IF
+                                ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                        FROM
+                            data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi where kode_binprog <> '' GROUP BY unit_baru) b on a.unit_baru=b.unit_baru 
+                        WHERE
+                            a.nomor_lokasi IN ( '".implode("','",$lokasi)."' )");
+                } else {
                 $query=$this->db->query(
                     "SELECT
                         b.unit,
@@ -490,8 +538,14 @@
                         data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi where kode_binprog <> '' GROUP BY unit_baru) b on a.unit_baru=b.unit_baru 
                     WHERE
                         a.unit_baru like '%".$lokasi."%'");
-                
+                }
                 return $query;
+            }
+
+            public function ambil_data_pbp()
+            {   
+                $nip=$this->session->userdata('nip');
+                return $this->db->get_where('kamus_pengurus_barang_pembantu',array('nip_pbp' => $nip));
             }
  }
  ?>

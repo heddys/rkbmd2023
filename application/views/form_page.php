@@ -42,8 +42,43 @@
               </div>
 
                 
-                    
-
+                <?php if ($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD") {?>   
+                  <table id="tabel_pbp" class="table table-bordered table-hover">
+                 <thead class="thead-dark" > 
+	                <tr>
+	                  <th><center>No.</center></th>
+	                  <th><center>Register</center></th>
+                    <th><center>Lokasi</center></th>
+	                  <th><center>Kode Neraca</center></th>
+	                  <th><center>Nama Barang</center></th>
+	                  <th><center>Spesifikasi Barang</center></th>
+	                  <th><center>Nilai Perolehan </center></th>
+	                  <th><center>Aksi</center></th>
+	                </tr>
+	                </thead>
+                  <tbody>
+                    <?php $x=1; foreach ($register as $row) {?>
+	                	<tr>
+	                  		<td><center><?php echo $x;?></center></td>
+	                  		<td><center><?php echo $row->register;?></center></td>
+                        <td><center><?php echo $row->lokasi;?></center></td>
+	                  		<td><center><?php echo $row->kode64_baru;?></center></td>
+                            <td><center><?php echo $row->nama_barang;?></center></td>
+                            <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
+                            <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
+	                  		<td>  
+                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
+                                <center>
+                                  <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
+                                    <input type="hidden" name="register" value="<?php echo $row->register?>">
+                                </center></td>
+                              </form>
+	                  	</tr>
+	                  <?php $x++; }?>
+	                </tbody>
+	              </table>
+                  
+                <?php } else {?>
                 <table>
                   <thead>
                     <tr>
@@ -120,7 +155,8 @@
 	                </tbody>
 	              </table>
                 <p>
-                <?php echo $this->pagination->create_links(); ?>
+                <?php echo $this->pagination->create_links(); } ?>
+
 	            </div>
 	            <!-- /.card-body -->
 	          </div>
