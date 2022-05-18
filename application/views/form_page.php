@@ -8,7 +8,7 @@
 	            <div class="card-header">
 	              <h3 class="card-title">
                   
-                      <center>KARTU INVENTARIS BARANG <?php echo $dummy['rows']." = ".$dummy['form']?> - 
+                      <center>KARTU INVENTARIS BARANG  - 
                           <?php if ($kib_apa == 1) { 
                                     echo "ASET TETAP TANAH";
                                 } 

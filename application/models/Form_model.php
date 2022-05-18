@@ -39,29 +39,29 @@
 
             public function get_kib_for_excel($lokasi,$kib)
             {
-                //$query = $this->db->query("SELECT a.*,b.lokasi FROM data_kib a inner join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi where a.ekstrakomtabel IS NULL and a.nomor_lokasi_baru like '".$lokasi."%' and a.kode108_baru like '%".$kib."%' order by a.status DESC");
-                $query = $this->db->query("SELECT a.*,b.lokasi FROM data_kib a inner join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi where a.ekstrakomtabel IS NULL and a.nomor_lokasi_baru like '".$lokasi."%' and left(a.kode108_baru,14) IN ('1.3.2.02.01.02',
-                '1.3.2.02.01.03',
-                '1.3.2.02.01.06',
-                '1.3.2.02.01.04',
-                '1.3.2.02.01.05',
-                '1.3.2.05.01.04',
-                '1.3.2.05.01.05',
-                '1.3.2.05.02.01',
-                '1.3.2.05.02.04',
-                '1.3.2.05.02.05',
-                '1.3.2.10.01.01',
-                '1.3.2.10.01.02',
-                '1.3.2.10.01.03',
-                '1.3.2.10.02.02',
-                '1.3.2.10.02.03',
-                '1.3.2.05.03.01',
-                '1.3.2.05.03.02',
-                '1.3.2.05.03.03',
-                '1.3.2.05.03.04',
-                '1.3.2.05.03.05',
-                '1.3.2.05.03.06',
-                '1.3.2.05.03.07') order by a.status DESC");
+                $query = $this->db->query("SELECT a.*,b.lokasi FROM data_kib a inner join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi where a.ekstrakomtabel IS NULL and a.nomor_lokasi_baru like '".$lokasi."%' and a.kode108_baru like '%".$kib."%' order by a.status DESC");
+                // $query = $this->db->query("SELECT a.*,b.lokasi FROM data_kib a inner join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi where a.ekstrakomtabel IS NULL and a.nomor_lokasi_baru like '".$lokasi."%' and left(a.kode108_baru,14) IN ('1.3.2.02.01.02',
+                // '1.3.2.02.01.03',
+                // '1.3.2.02.01.06',
+                // '1.3.2.02.01.04',
+                // '1.3.2.02.01.05',
+                // '1.3.2.05.01.04',
+                // '1.3.2.05.01.05',
+                // '1.3.2.05.02.01',
+                // '1.3.2.05.02.04',
+                // '1.3.2.05.02.05',
+                // '1.3.2.10.01.01',
+                // '1.3.2.10.01.02',
+                // '1.3.2.10.01.03',
+                // '1.3.2.10.02.02',
+                // '1.3.2.10.02.03',
+                // '1.3.2.05.03.01',
+                // '1.3.2.05.03.02',
+                // '1.3.2.05.03.03',
+                // '1.3.2.05.03.04',
+                // '1.3.2.05.03.05',
+                // '1.3.2.05.03.06',
+                // '1.3.2.05.03.07') order by a.status DESC");
                 return $query;
             }
 
@@ -78,14 +78,14 @@
                 WHERE
                     c.ekstrakomtabel IS NULL
                     AND c.STATUS = ".$where['status']."
-                    AND a.lokasi LIKE '".$lokasi."%'
+                    AND c.nomor_lokasi_baru LIKE '".$lokasi."%'
                     AND a.kode_barang like '".$kib."%'
                 GROUP BY
                     c.register 
                 ORDER BY
                     a.created_date DESC,
                     a.created_time DESC"
-            );
+                );
 
                 return $query;
             }
@@ -93,61 +93,75 @@
             public function hitungBanyakRowRegister($where,$data,$kib,$form)
             {
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
+                // if ($form == 2){
+                //     $no_lokasi=$this->session->userdata('no_lokasi_asli');
+                //     $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and left(a.`kode108_baru`,14) in ('1.3.2.02.01.01',
+                //     '1.3.2.02.01.02',
+                //     '1.3.2.02.01.03',
+                //     '1.3.2.02.01.06',
+                //     '1.3.2.02.01.04',
+                //     '1.3.2.02.01.05',
+                //     '1.3.2.05.01.04',
+                //     '1.3.2.05.01.05',
+                //     '1.3.2.05.02.01',
+                //     '1.3.2.05.02.04',
+                //     '1.3.2.05.02.05',
+                //     '1.3.2.10.01.01',
+                //     '1.3.2.10.01.02',
+                //     '1.3.2.10.01.03',
+                //     '1.3.2.10.02.02',
+                //     '1.3.2.10.02.03',
+                //     '1.3.2.05.03.01',
+                //     '1.3.2.05.03.02',
+                //     '1.3.2.05.03.03',
+                //     '1.3.2.05.03.04',
+                //     '1.3.2.05.03.05',
+                //     '1.3.2.05.03.06',
+                //     '1.3.2.05.03.07') and a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%')");
+
+                //     return $query;
+                // } else {
+
+                //     $query = $this->db->query("SELECT * FROM data_kib WHERE ekstrakomtabel is null and status is null and left(kode108_baru,14) in ('1.3.2.02.01.01',
+                //     '1.3.2.02.01.02',
+                //     '1.3.2.02.01.03',
+                //     '1.3.2.02.01.06',
+                //     '1.3.2.02.01.04',
+                //     '1.3.2.02.01.05',
+                //     '1.3.2.05.01.04',
+                //     '1.3.2.05.01.05',
+                //     '1.3.2.05.02.01',
+                //     '1.3.2.05.02.04',
+                //     '1.3.2.05.02.05',
+                //     '1.3.2.10.01.01',
+                //     '1.3.2.10.01.02',
+                //     '1.3.2.10.01.03',
+                //     '1.3.2.10.02.02',
+                //     '1.3.2.10.02.03',
+                //     '1.3.2.05.03.01',
+                //     '1.3.2.05.03.02',
+                //     '1.3.2.05.03.03',
+                //     '1.3.2.05.03.04',
+                //     '1.3.2.05.03.05',
+                //     '1.3.2.05.03.06',
+                //     '1.3.2.05.03.07') and nomor_lokasi_baru like '%".$data."%'");
+
+                //     return $query;
+                // } 
                 if ($form == 2){
                     $no_lokasi=$this->session->userdata('no_lokasi_asli');
-                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and left(a.`kode108_baru`,14) in ('1.3.2.02.01.01',
-                    '1.3.2.02.01.02',
-                    '1.3.2.02.01.03',
-                    '1.3.2.02.01.06',
-                    '1.3.2.02.01.04',
-                    '1.3.2.02.01.05',
-                    '1.3.2.05.01.04',
-                    '1.3.2.05.01.05',
-                    '1.3.2.05.02.01',
-                    '1.3.2.05.02.04',
-                    '1.3.2.05.02.05',
-                    '1.3.2.10.01.01',
-                    '1.3.2.10.01.02',
-                    '1.3.2.10.01.03',
-                    '1.3.2.10.02.02',
-                    '1.3.2.10.02.03',
-                    '1.3.2.05.03.01',
-                    '1.3.2.05.03.02',
-                    '1.3.2.05.03.03',
-                    '1.3.2.05.03.04',
-                    '1.3.2.05.03.05',
-                    '1.3.2.05.03.06',
-                    '1.3.2.05.03.07') and a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%')");
+                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%')");
 
                     return $query;
                 } else {
+                    $this->db->select('*');
+                    $this->db->from('data_kib');
+                    $this->db->where($where);
+                    $this->db->like('nomor_lokasi_baru',$data,'both');
+                    $this->db->like('kode108_baru',$kib);
 
-                    $query = $this->db->query("SELECT * FROM data_kib WHERE ekstrakomtabel is null and status is null and left(kode108_baru,14) in ('1.3.2.02.01.01',
-                    '1.3.2.02.01.02',
-                    '1.3.2.02.01.03',
-                    '1.3.2.02.01.06',
-                    '1.3.2.02.01.04',
-                    '1.3.2.02.01.05',
-                    '1.3.2.05.01.04',
-                    '1.3.2.05.01.05',
-                    '1.3.2.05.02.01',
-                    '1.3.2.05.02.04',
-                    '1.3.2.05.02.05',
-                    '1.3.2.10.01.01',
-                    '1.3.2.10.01.02',
-                    '1.3.2.10.01.03',
-                    '1.3.2.10.02.02',
-                    '1.3.2.10.02.03',
-                    '1.3.2.05.03.01',
-                    '1.3.2.05.03.02',
-                    '1.3.2.05.03.03',
-                    '1.3.2.05.03.04',
-                    '1.3.2.05.03.05',
-                    '1.3.2.05.03.06',
-                    '1.3.2.05.03.07') and nomor_lokasi_baru like '%".$data."%'");
-
-                    return $query;
-                } 
+                    return $this->db->get();
+                }
             }
             
             public function save_image($data = array())
@@ -162,63 +176,62 @@
 
             public function get_all_register_pagination($data,$kib, $limit, $offset,$form){
 
-                // $this->db->select('nomor_lokasi,register,kode64_baru,nama_barang,merk_alamat,tipe,harga_baru');
-                // $this->db->from('data_kib');
-                // $this->db->where($where);
-               
-                // $this->db->like('nomor_lokasi',$lokasi);
-                // $this->db->like('kode108_baru',$kib);
-                // $this->db->limit($limit, $offset);
-                
+                // if($form == 2){
+                //     $no_lokasi=$this->session->userdata('no_lokasi_asli');
+                //     $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi_baru` like '".$no_lokasi."%' and left(a.`kode108_baru`,14) in ('1.3.2.02.01.02',
+                //     '1.3.2.02.01.03',
+                //     '1.3.2.02.01.06',
+                //     '1.3.2.02.01.04',
+                //     '1.3.2.02.01.05',
+                //     '1.3.2.05.01.04',
+                //     '1.3.2.05.01.05',
+                //     '1.3.2.05.02.01',
+                //     '1.3.2.05.02.04',
+                //     '1.3.2.05.02.05',
+                //     '1.3.2.10.01.01',
+                //     '1.3.2.10.01.02',
+                //     '1.3.2.10.01.03',
+                //     '1.3.2.10.02.02',
+                //     '1.3.2.10.02.03',
+                //     '1.3.2.05.03.01',
+                //     '1.3.2.05.03.02',
+                //     '1.3.2.05.03.03',
+                //     '1.3.2.05.03.04',
+                //     '1.3.2.05.03.05',
+                //     '1.3.2.05.03.06',
+                //     '1.3.2.05.03.07') and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+                // } else {
+                //     $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and left(a.`kode108_baru`,14) in ('1.3.2.02.01.02',
+                //     '1.3.2.02.01.03',
+                //     '1.3.2.02.01.06',
+                //     '1.3.2.02.01.04',
+                //     '1.3.2.02.01.05',
+                //     '1.3.2.05.01.04',
+                //     '1.3.2.05.01.05',
+                //     '1.3.2.05.02.01',
+                //     '1.3.2.05.02.04',
+                //     '1.3.2.05.02.05',
+                //     '1.3.2.10.01.01',
+                //     '1.3.2.10.01.02',
+                //     '1.3.2.10.01.03',
+                //     '1.3.2.10.02.02',
+                //     '1.3.2.10.02.03',
+                //     '1.3.2.05.03.01',
+                //     '1.3.2.05.03.02',
+                //     '1.3.2.05.03.03',
+                //     '1.3.2.05.03.04',
+                //     '1.3.2.05.03.05',
+                //     '1.3.2.05.03.06',
+                //     '1.3.2.05.03.07') and a.`nomor_lokasi_baru` like '%".$data."%' limit ".$limit." offset ".$offset."");
+                // } 
 
-            //    return $this->db->get();
+                // return $query->result();
+
                 if($form == 2){
                     $no_lokasi=$this->session->userdata('no_lokasi_asli');
-                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi_baru` like '".$no_lokasi."%' and left(a.`kode108_baru`,14) in ('1.3.2.02.01.02',
-                    '1.3.2.02.01.03',
-                    '1.3.2.02.01.06',
-                    '1.3.2.02.01.04',
-                    '1.3.2.02.01.05',
-                    '1.3.2.05.01.04',
-                    '1.3.2.05.01.05',
-                    '1.3.2.05.02.01',
-                    '1.3.2.05.02.04',
-                    '1.3.2.05.02.05',
-                    '1.3.2.10.01.01',
-                    '1.3.2.10.01.02',
-                    '1.3.2.10.01.03',
-                    '1.3.2.10.02.02',
-                    '1.3.2.10.02.03',
-                    '1.3.2.05.03.01',
-                    '1.3.2.05.03.02',
-                    '1.3.2.05.03.03',
-                    '1.3.2.05.03.04',
-                    '1.3.2.05.03.05',
-                    '1.3.2.05.03.06',
-                    '1.3.2.05.03.07') and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
                 } else {
-                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and left(a.`kode108_baru`,14) in ('1.3.2.02.01.02',
-                    '1.3.2.02.01.03',
-                    '1.3.2.02.01.06',
-                    '1.3.2.02.01.04',
-                    '1.3.2.02.01.05',
-                    '1.3.2.05.01.04',
-                    '1.3.2.05.01.05',
-                    '1.3.2.05.02.01',
-                    '1.3.2.05.02.04',
-                    '1.3.2.05.02.05',
-                    '1.3.2.10.01.01',
-                    '1.3.2.10.01.02',
-                    '1.3.2.10.01.03',
-                    '1.3.2.10.02.02',
-                    '1.3.2.10.02.03',
-                    '1.3.2.05.03.01',
-                    '1.3.2.05.03.02',
-                    '1.3.2.05.03.03',
-                    '1.3.2.05.03.04',
-                    '1.3.2.05.03.05',
-                    '1.3.2.05.03.06',
-                    '1.3.2.05.03.07') and a.`nomor_lokasi_baru` like '%".$data."%' limit ".$limit." offset ".$offset."");
+                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi_baru` like '%".$data."%' limit ".$limit." offset ".$offset."");
                 } 
 
                 return $query->result();
@@ -407,6 +420,53 @@
 
             public function data_progres_opd($lokasi)
             {
+                // $query=$this->db->query(
+                //     "SELECT
+                //         b.unit,
+                //         count( a.register ) as total,
+                //         COUNT(
+                //         IF
+                //         ( a.STATUS = 1, 1, NULL )) AS proses,
+                //         COUNT(
+                //         IF
+                //         ( a.STATUS = 2, 1, NULL )) AS verif,
+                //         COUNT(
+                //         IF
+                //         ( a.STATUS = 3, 1, NULL )) AS tolak,
+                //         COUNT(
+                //         IF
+                //             ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                //             count( a.register )- COUNT(
+                //             IF
+                //             ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                //     FROM
+                //         data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi where kode_binprog <> '' GROUP BY unit_baru) b on a.unit_baru=b.unit_baru 
+                //     WHERE
+                //         a.unit_baru like '%".$lokasi."%' and left(a.kode108_baru,14) in ('1.3.2.02.01.02',
+                //     '1.3.2.02.01.03',
+                //     '1.3.2.02.01.06',
+                //     '1.3.2.02.01.04',
+                //     '1.3.2.02.01.05',
+                //     '1.3.2.05.01.04',
+                //     '1.3.2.05.01.05',
+                //     '1.3.2.05.02.01',
+                //     '1.3.2.05.02.04',
+                //     '1.3.2.05.02.05',
+                //     '1.3.2.10.01.01',
+                //     '1.3.2.10.01.02',
+                //     '1.3.2.10.01.03',
+                //     '1.3.2.10.02.02',
+                //     '1.3.2.10.02.03',
+                //     '1.3.2.05.03.01',
+                //     '1.3.2.05.03.02',
+                //     '1.3.2.05.03.03',
+                //     '1.3.2.05.03.04',
+                //     '1.3.2.05.03.05',
+                //     '1.3.2.05.03.06',
+                //     '1.3.2.05.03.07')");
+                
+                // return $query;
+
                 $query=$this->db->query(
                     "SELECT
                         b.unit,
@@ -429,28 +489,7 @@
                     FROM
                         data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi where kode_binprog <> '' GROUP BY unit_baru) b on a.unit_baru=b.unit_baru 
                     WHERE
-                        a.unit_baru like '%".$lokasi."%' and left(a.kode108_baru,14) in ('1.3.2.02.01.02',
-                    '1.3.2.02.01.03',
-                    '1.3.2.02.01.06',
-                    '1.3.2.02.01.04',
-                    '1.3.2.02.01.05',
-                    '1.3.2.05.01.04',
-                    '1.3.2.05.01.05',
-                    '1.3.2.05.02.01',
-                    '1.3.2.05.02.04',
-                    '1.3.2.05.02.05',
-                    '1.3.2.10.01.01',
-                    '1.3.2.10.01.02',
-                    '1.3.2.10.01.03',
-                    '1.3.2.10.02.02',
-                    '1.3.2.10.02.03',
-                    '1.3.2.05.03.01',
-                    '1.3.2.05.03.02',
-                    '1.3.2.05.03.03',
-                    '1.3.2.05.03.04',
-                    '1.3.2.05.03.05',
-                    '1.3.2.05.03.06',
-                    '1.3.2.05.03.07')");
+                        a.unit_baru like '%".$lokasi."%'");
                 
                 return $query;
             }
