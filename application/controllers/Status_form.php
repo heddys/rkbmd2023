@@ -9,8 +9,15 @@ class Status_form extends CI_Controller {
         $this->cek_sess();
 		$data['page']="Form Inventarisasi";
         $data['exist']=$this->cek_jumlah_exist();
-		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-
+        if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
+			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
+			$nomor_lokasi=array();
+			foreach ($get_lokasi_pbp as $key) {
+				$nomor_lokasi[]=$key->nomor_lokasi;
+			} 
+        }else {
+		    $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+        }
         // $data_proses_verif = array (
 
         //     'ekstrakomtabel' => NULL,

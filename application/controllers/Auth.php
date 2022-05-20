@@ -29,12 +29,14 @@ class Auth extends CI_Controller {
 		$this->load->model('auth_model');
 		$ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
 		$get=$this->auth_model->ceklogin("pengguna",$cekuser)->row();
-		if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
-			$ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
-			$role=$ambil_lokasi_pbp->nama_lokasi;
-		} else {$role=$get->fungsi;}
+		// var_dump($get);
+		
 		
 		if($ceklog > 0) {
+			if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
+				$ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
+				$role=$ambil_lokasi_pbp->nama_lokasi;
+			} else {$role=$get->fungsi;}
 					$data_session = array(	
 							'id' => $get->id,
 							'skpd' => $get->nama_opd,
