@@ -154,7 +154,7 @@ class Form_inv extends CI_Controller {
 			
 				//Load Library Pagination
 				$this->load->library('pagination');
-				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
+				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 				//Config Pagination
 				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$data_cari,$kib,$form)->num_rows();
 				$config['per_page'] = 10;
@@ -194,7 +194,7 @@ class Form_inv extends CI_Controller {
 				
 			$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
 			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
-			$data['register']=$this->form_model->get_all_register_pagination($data_cari,$kib,$config['per_page'],$data['offset']-1,$form);
+			$data['register']=$this->form_model->get_all_register_pagination($data_cari,$kib,$config['per_page'],$data['offset'],$form);
         
 		}
 

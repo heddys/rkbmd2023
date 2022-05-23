@@ -8,7 +8,7 @@
 	            <div class="card-header">
 	              <h3 class="card-title">
                   
-                      <center>KARTU INVENTARIS BARANG - <?php echo $lok." - ".$lok2;?>
+                      <center>KARTU INVENTARIS BARANG -
                           <?php if ($kib_apa == 1) { 
                                     echo "ASET TETAP TANAH";
                                 } 
@@ -68,12 +68,12 @@
                       <td>
                       </td>
                       <td width="50%">
-                      <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/2" method="post">
+                      <!-- <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/2" method="post">
                           <div class="input-group">
                             <input type="text"  class="form-control" name="cariregname" placeholder="Cari Berdasarkan Register atau Nama Barang" >
                             <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
                           </div>
-                      </form>
+                      </form> -->
                       </td>
                     </tr>
                     
@@ -96,9 +96,9 @@
 	                </tr>
 	                </thead>
                   <tbody>
-                    <?php foreach ($register as $row) {?>
+                    <?php  $x=$offset+1;  foreach ($register as $row) {?>
 	                	<tr>
-	                  		<td><center><?php echo $offset++;?></center></td>
+	                  		<td><center><?php echo $x++;?></center></td>
 	                  		<td><center><?php echo $row->register;?></center></td>
                             <td><center><?php echo $row->unit;?></center></td>
                             <td><center><?php echo $row->lokasi;?></center></td>

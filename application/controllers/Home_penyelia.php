@@ -61,7 +61,10 @@ class Home_penyelia extends CI_Controller {
         $this->cek_sess();
 		$data['page']="Form Inventarisasi";
         $list_pangkuan=$this->get_list_pangkuan();
-		$data_cari=$this->session->userdata('data');
+		if($this->session->userdata('status') >= 10){
+			$this->session->set_userdata('data',$this->session->userdata('no_lokasi_asli'));
+			$this->session->set_userdata('status',0);
+		}
 		$list_unit=array();
 		foreach ($list_pangkuan as $key) {
 			$list_unit[] = $key->nomor_unit;
@@ -77,9 +80,9 @@ class Home_penyelia extends CI_Controller {
 				}
 				$this->session->set_userdata('data',$data_cari);
 			} else {
-				$this->session->set_userdata('data',array($_POST['select_lokasi']));
+				$this->session->set_userdata('data',$_POST['select_lokasi']);
 				$data_cari=$this->session->userdata('data');
-				$form=0;
+				$form=1;
 				$this->session->set_userdata('status',1);
 			}
 			
@@ -92,7 +95,7 @@ class Home_penyelia extends CI_Controller {
 				}
 				$this->session->set_userdata('data',$data_cari);
 			} elseif($this->session->userdata('status')==1) {
-				$form = 0;
+				$form = 1;
 				$data_cari=$this->session->userdata('data');
 			} else {
 				$form = 2;
@@ -119,7 +122,7 @@ class Home_penyelia extends CI_Controller {
 		
 			//Load Library Pagination
 			$this->load->library('pagination');
-			$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
+			$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 			//Config Pagination
 			$config['total_rows'] = $this->admin_model->hitungBanyakRowRegister($data_cari,$kib,$form)->num_rows();
 			$config['per_page'] = 10;
@@ -156,10 +159,10 @@ class Home_penyelia extends CI_Controller {
 			
 			
 			$this->pagination->initialize($config);
-			
+			var_dump ($data_cari);
 			$data['lokasi']=$this->admin_model->get_per_opd_penyelia($list_unit);
 			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
-			$data['register']=$this->admin_model->get_status_for_penyelia($data_cari,$kib,$config['per_page'],$data['offset']-1,$form);
+			$data['register']=$this->admin_model->get_status_for_penyelia($data_cari,$kib,$config['per_page'],$data['offset'],$form);
         
         // foreach ($data['lokasi'] as $key) {
         //     echo $key->unit." - ".$key->unit_baru."<p>";
@@ -229,11 +232,12 @@ class Home_penyelia extends CI_Controller {
 		if(isset($_GET['lokasi'])) {
 			$list_unit=$_GET['lokasi'];
 			$this->session->set_userdata('data_temp',$list_unit);
+			$this->session->set_userdata('status',10);
 		} else {$list_unit=$this->session->userdata('data_temp');}
 
         if(isset($_POST['select_lokasi'])){
 			if($_POST['select_lokasi'] == "semua_opd") {
-				$this->session->set_userdata('status',0);
+				$this->session->set_userdata('status',10);
 				$form=0;
 				$data_cari=$this->session->userdata('data_temp');
 				$this->session->set_userdata('data',$data_cari);
@@ -241,15 +245,15 @@ class Home_penyelia extends CI_Controller {
 				$this->session->set_userdata('data',$_POST['select_lokasi']);
 				$data_cari=$this->session->userdata('data');
 				$form=0;
-				$this->session->set_userdata('status',1);
+				$this->session->set_userdata('status',11);
 			}
 			
 		} else {
-			if($this->session->userdata('status')==0) {
+			if($this->session->userdata('status')==10) {
 				$form=0;
 				$data_cari=$this->session->userdata('data_temp');;
 				$this->session->set_userdata('data',$data_cari);
-			} elseif($this->session->userdata('status')==1) {
+			} elseif($this->session->userdata('status')==11) {
 				$form = 0;
 				$data_cari=$this->session->userdata('data');
 			} else {
@@ -277,9 +281,9 @@ class Home_penyelia extends CI_Controller {
 		
 			//Load Library Pagination
 			$this->load->library('pagination');
-			$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
+			$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 			//Config Pagination
-			$config['total_rows'] = $this->admin_model->hitungBanyakRowRegister($data_cari,$kib,$form)->num_rows();
+			$config['total_rows'] = $this->admin_model->hitungBanyakRowRegister_peropd($data_cari,$kib,$form)->num_rows();
 			$config['per_page'] = 10;
 			$config['base_url'] = site_url('/home_penyelia/show_list_status_per_opd/2');
 			$config['num_links'] = 3;
@@ -317,7 +321,7 @@ class Home_penyelia extends CI_Controller {
 			
 			$data['lokasi']=$this->admin_model->get_per_opd_penyelia_peropd($list_unit);
 			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
-			$data['register']=$this->admin_model->get_status_for_penyelia_peropd($data_cari,$kib,$config['per_page'],$data['offset']-1,$form);
+			$data['register']=$this->admin_model->get_status_for_penyelia_peropd($data_cari,$kib,$config['per_page'],$data['offset'],$form);
         
         // foreach ($data['lokasi'] as $key) {
         //     echo $key->unit." - ".$key->unit_baru."<p>";

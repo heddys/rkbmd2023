@@ -134,9 +134,9 @@
 	                </tr>
 	                </thead>
                   <tbody>
-                    <?php foreach ($register as $row) {?>
+                    <?php $x=$offset+1; foreach ($register as $row) {?>
 	                	<tr>
-	                  		<td><center><?php echo $offset++;?></center></td>
+	                  		<td><center><?php echo $x++;?></center></td>
 	                  		<td><center><?php echo $row->register;?></center></td>
                         <td><center><?php echo $row->lokasi;?></center></td>
 	                  		<td><center><?php echo $row->kode64_baru;?></center></td>
