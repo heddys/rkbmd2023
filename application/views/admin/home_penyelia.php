@@ -68,7 +68,7 @@
                         <td><center><?php echo round((float)$row->persentase,3) . '%';?></center></td>
                         <td>
                           <center>
-                            <a href="#" class="text-muted">
+                            <a href="<?php echo site_url('home_penyelia/show_list_status_per_opd/2?lokasi='.$row->unit_baru)?>" class="text-muted">
                               <i class="fas fa-search"></i>
                             </a>
                           </center>

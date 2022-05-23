@@ -318,6 +318,7 @@ class Form_inv extends CI_Controller {
 
 		$alamat=$_POST['lokasi'];
 		$radio_alamat=$_POST['radio_alamat'];
+		$lokasi_awal=$_POST['no_lokasi_awal'];
 
 		$kondisi_bar=$_POST['kondisi_bar'];
 		$radio_kondisi=$_POST['radio_kondisi'];
@@ -442,6 +443,7 @@ class Form_inv extends CI_Controller {
 		'keberadaan_barang' => $keberadaan,
 		'nilai_perolehan' => $nilai,
 		'merupakan_anak' => $aset_atrib,
+		'nomor_lokasi_awal' => $lokasi_awal,
 		'lokasi' => $alamat,
 		'jumlah' => 1,
 		'kondisi_barang' => $kondisi_bar,
@@ -530,6 +532,7 @@ class Form_inv extends CI_Controller {
 
 		$alamat=$_POST['lokasi'];
 		$radio_alamat=$_POST['radio_alamat'];
+		$lokasi_awal=$_POST['no_lokasi_awal'];
 
 		$kondisi_bar=$_POST['kondisi_bar'];
 		$radio_kondisi=$_POST['radio_kondisi'];
@@ -657,6 +660,7 @@ class Form_inv extends CI_Controller {
 			'keberadaan_barang' => $keberadaan,
 			'nilai_perolehan' => $nilai,
 			'merupakan_anak' => $aset_atrib,
+			'nomor_lokasi_awal' => $lokasi_awal,
 			'lokasi' => $alamat,
 			'jumlah' => 1,
 			'kondisi_barang' => $kondisi_bar,

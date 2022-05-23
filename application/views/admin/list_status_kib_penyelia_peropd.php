@@ -8,7 +8,7 @@
 	            <div class="card-header">
 	              <h3 class="card-title">
                   
-                      <center>KARTU INVENTARIS BARANG - 
+                      <center>KARTU INVENTARIS BARANG - <?php echo $lok." - ".$lok2;?>
                           <?php if ($kib_apa == 1) { 
                                     echo "ASET TETAP TANAH";
                                 } 
@@ -50,13 +50,13 @@
                   <tbody>
                     <tr>
                       <td width="70%">
-                        <form role="form" action="<?php echo base_url();?>index.php/home_penyelia/list_status_register/2" method="post">
+                        <form role="form" action="<?php echo base_url();?>index.php/home_penyelia/show_list_status_per_opd/2" method="post">
                           <div class="col-md-7">
                             <select class="form-control select2" id="select_lokasi" name="select_lokasi" style="width: 100%">
                               <option selected disable="disabled">Cari Berdasarkan Lokasi</option>
                               <option value="semua_opd">Semua OPD</option>
                                 <?php $x=1; foreach ($lokasi->result() as $row) {?>
-                                <option value="<?php echo $row->unit_baru;?>"><?php echo strtoupper($row->unit);?></option>
+                                <option value="<?php echo $row->nomor_lokasi;?>"><?php echo strtoupper($row->lokasi);?></option>
                                 <?php }?>
                             </select> 
                           </div>
@@ -108,11 +108,11 @@
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>
                                 <?php if ($row->status==1) {?>
-                                    <center><a href="<?php echo site_url('home_penyelia/show_form_inv_penyelia?status=1&amp;register='.$row->register)?>" class="btn btn-sm btn-warning" title="Register Ini Masih Dalam Proses Verifikasi" target="_blank"><i class="fa fa-spinner"></i></a></center>
+                                    <center><a href="<?php echo site_url('home_penyelia/show_form_inv_penyelia?status=1&amp;register='.$row->register)?>" class="btn btn-sm btn-warning" title="Register Ini Masih Dalam Proses Verifikasi"><i class="fa fa-spinner"></i></a></center>
                                 <?php } elseif ($row->status==2) { ?>
-                                    <center><a href="<?php echo site_url('home_penyelia/show_form_inv_penyelia?status=2&amp;register='.$row->register)?>" class="btn btn-sm btn-success" title="Register Telah Di Verifikasi" target="_blank"><i class="fas fa-eye"></i></a></center>
+                                    <center><a href="<?php echo site_url('home_penyelia/show_form_inv_penyelia?status=2&amp;register='.$row->register)?>" class="btn btn-sm btn-success" title="Register Telah Di Verifikasi"><i class="fas fa-eye"></i></a></center>
                                 <?php } elseif ($row->status==3) { ?>
-                                    <center><a href="<?php echo site_url('home_penyelia/show_form_inv_penyelia?status=3&amp;register='.$row->register)?>" class="btn btn-sm btn-danger" title="Register Di Tolak Verifikator" target="_blank"><i class="fa fa-ban"></i></a></center>
+                                    <center><a href="<?php echo site_url('home_penyelia/show_form_inv_penyelia?status=3&amp;register='.$row->register)?>" class="btn btn-sm btn-danger" title="Register Di Tolak Verifikator"><i class="fa fa-ban"></i></a></center>
                                 <?php } else {?>
                                     <center>Belum Di Invetarisasi</center>                                    
                                 <?php } ?>

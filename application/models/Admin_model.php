@@ -134,7 +134,7 @@ class Admin_model extends CI_Model{
    {
        $query=$this->db->query(
             "SELECT
-                b.unit,
+                b.unit,b.unit_baru,
                 count( a.register ) as total,
                 COUNT(
                 IF
@@ -205,6 +205,16 @@ class Admin_model extends CI_Model{
         return $this->db->get();
    }
 
+   public function get_per_opd_penyelia_peropd($list_unit)
+   {
+    
+        $this->db->select('*');
+        $this->db->from('kamus_lokasi');
+        $this->db->where('kode_binprog <>','');
+        $this->db->where_in('unit_baru',$list_unit);
+        return $this->db->get();
+   }
+
 
    public function get_status_for_penyelia($data,$kib, $limit, $offset,$form){
 
@@ -212,6 +222,17 @@ class Admin_model extends CI_Model{
             $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
         } else {
             $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`unit_baru` IN ( '".implode("','",$data)."' ) limit ".$limit." offset ".$offset."");
+        } 
+
+        return $query->result();
+    }
+
+    public function get_status_for_penyelia_peropd($data,$kib, $limit, $offset,$form){
+
+        if($form == 2){
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+        } else {
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`unit_baru` ='".$data."' limit ".$limit." offset ".$offset."");
         } 
 
         return $query->result();
