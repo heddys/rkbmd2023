@@ -139,13 +139,13 @@ function tgl_indo($tanggal){
                 <th width="130px"><?php echo $data_kib->register; ?></th>
                 <td width="20px">
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </td>
                 <th>Sesuai</th>
                 <td width="20px">
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya :</th>
@@ -157,23 +157,23 @@ function tgl_indo($tanggal){
                 <td width="20px">
                 <?php if($data_is_register->is_kode_barang == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?>
                 </td>
@@ -186,23 +186,23 @@ function tgl_indo($tanggal){
                 <th width="200px"><?php echo $data_kib->nama_barang; ?></th>
                 <td width="20px"><?php if($data_is_register->is_nama_barang == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
@@ -216,23 +216,23 @@ function tgl_indo($tanggal){
                 <td width="20px">
                 <?php if($data_is_register->is_spesifikasi_barang_merk == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
@@ -255,23 +255,23 @@ function tgl_indo($tanggal){
                 <th width="150px">Ada</th>
                 <td width="20px"><?php if($data_is_register->is_keberadaan_barang == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
@@ -284,23 +284,23 @@ function tgl_indo($tanggal){
                 <th width="150px"><?php echo to_rp($data_kib->harga_baru); ?></th>
                 <td width="20px"><?php if($data_is_register->is_nilai_perolehan == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
@@ -313,23 +313,23 @@ function tgl_indo($tanggal){
                 <th width="150px"></th>
                 <td width="20px"><?php if($data_is_register->is_aset_atrib == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Tidak</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Ya, sebutkan yang seharusnya : 
@@ -342,7 +342,7 @@ function tgl_indo($tanggal){
                 <th width="150px"></th>
                 <th width="20px"><center>a.</center></th>
                 <th width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                    <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                 </center></th>
                 <th colspan="3">Ya, Diketahui data awal/induknya dan sebutkan data barang awal/induknya:</th>
                 <th></th>
@@ -413,7 +413,7 @@ function tgl_indo($tanggal){
                 <th width="150px"></th>
                 <th width="20px"><center>b.</center></th>
                 <th width="20px"><center>
-                    <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                    <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                 </center></th>
                 <th colspan="3">Ya, Tidak Diketahui data awal/induknya</th>
                 <th></th>
@@ -424,23 +424,23 @@ function tgl_indo($tanggal){
                 <th width="150px"><?php echo $data_kib->nomor_lokasi." - ".$data_kib->lokasi; ?></th>
                 <td width="20px"><?php if($data_is_register->is_lokasi == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Ya, sebutkan yang seharusnya : 
@@ -450,59 +450,59 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px">K. Kondisi Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php if ($data_register->kondisi_barang == "Baik") {echo "Baik";} elseif ($data_register->kondisi_barang == "Kurang <Baik></Baik>") {echo "Kurang Baik" ;} else {echo "Rusak Berat";}?></th>
+                <th width="150px"><?php if ($data_register->kondisi_barang == "B") {echo "Baik";} elseif ($data_register->kondisi_barang == "KB") {echo "Kurang Baik" ;} else {echo "Rusak Berat";}?></th>
                 <th width="20px">
-                <?php if ($data_register->kondisi_barang == "Baik") {?>
+                <?php if ($data_register->kondisi_barang == "B") {?>
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </th>
                 <th>Baik</th>
                 <th width="20px">
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </th>
                 <th>Kurang Baik</th>
                 <th width="20px">
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </th>
                 <th>Rusak Berat</th>
-                <?php } elseif ($data_register->kondisi_barang == "Kurang Baik") {?>
+                <?php } elseif ($data_register->kondisi_barang == "KB") {?>
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_non_checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </th>
                 <th>Baik</th>
                 <th width="20px">
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </th>
                 <th>Kurang Baik</th>
                 <th width="20px">
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </th>
                 <th>Rusak Berat</th>
                 <?php } else {?>
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </th>
                 <th>Baik</th>
                 <th width="20px">
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </th>
                 <th>Kurang Baik</th>
                 <th width="20px">
                     <center>
-                        <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                        <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                     </center>
                 </th>
                 <th>Rusak Berat</th>
@@ -514,23 +514,23 @@ function tgl_indo($tanggal){
                 <th width="150px"><?php echo $data_kib->tipe; ?></th>
                 <th width="20px"><?php if($data_is_register->is_tipe == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
@@ -543,23 +543,23 @@ function tgl_indo($tanggal){
                 <th width="150px"><?php echo $data_kib->nopol; ?></th>
                 <th width="20px"><?php if($data_is_register->is_nopol == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
@@ -572,23 +572,23 @@ function tgl_indo($tanggal){
                 <th width="150px"><?php echo $data_kib->no_rangka_seri; ?></th>
                 <th width="20px"><?php if($data_is_register->is_no_rangka == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
@@ -601,23 +601,23 @@ function tgl_indo($tanggal){
                 <th width="150px"><?php echo $data_kib->no_bpkb; ?></th>
                 <th width="20px"><?php if($data_is_register->is_no_bpkb == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Sesuai</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Tidak Sesuai, sebutkan yang seharusnya : 
@@ -627,7 +627,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px">P. Penggunaan Barang</th>
                 <th width="25px">:</th>
-                <th width="150x">1. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12"> &nbsp; Pemerintah Daerah</th>
+                <th width="150x">1. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Pemerintah Daerah</th>
                 <th width="20px"><center></center></th>
                 <th width="20px"></th>
                 <th></th>
@@ -645,7 +645,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px"></th>
                 <th width="25px"></th>
-                <th width="150x">2. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12"> &nbsp; Pemerintah Pusat</th>
+                <th width="150x">2. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Pemerintah Pusat</th>
                 <th colspan="4">Dasar Penggunaan :</th>
                 <th></th>
                 <th></th>
@@ -654,7 +654,7 @@ function tgl_indo($tanggal){
                 <th width="120px"></th>
                 <th width="25px"></th>
                 <th width="150x"></th>
-                <th colspan="5">a. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12"> &nbsp; Ada, sebutkan..........</th>
+                <th colspan="5">a. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Ada, sebutkan..........</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -678,7 +678,7 @@ function tgl_indo($tanggal){
                 <th width="120px"></th>
                 <th width="25px"></th>
                 <th width="150x"></th>
-                <th colspan="6">b. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12"> &nbsp; Tidak Ada dasar penggunaan...</th>
+                <th colspan="6">b. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Tidak Ada dasar penggunaan...</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -692,7 +692,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px"></th>
                 <th width="25px"></th>
-                <th width="150x">3. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12"> &nbsp; Pemerintahan Daerah Lainnya</th>
+                <th width="150x">3. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Pemerintahan Daerah Lainnya</th>
                 <th colspan="4">Dasar Penggunaan :</th>
                 <th></th>
                 <th></th>
@@ -701,7 +701,7 @@ function tgl_indo($tanggal){
                 <th width="120px"></th>
                 <th width="25px"></th>
                 <th width="150x"></th>
-                <th colspan="4">a. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12"> &nbsp; Ada, sebutkan..........</th>
+                <th colspan="4">a. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Ada, sebutkan..........</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -725,7 +725,7 @@ function tgl_indo($tanggal){
                 <th width="120px"></th>
                 <th width="25px"></th>
                 <th width="150x"></th>
-                <th colspan="6">b. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12"> &nbsp; Tidak Ada dasar penggunaan...</th>
+                <th colspan="6">b. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Tidak Ada dasar penggunaan...</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -738,7 +738,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px"></th>
                 <th width="25px"></th>
-                <th width="150x">4. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12"> &nbsp; Pihak Lain</th>
+                <th width="150x">4. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Pihak Lain</th>
                 <th colspan="4">Dasar Penggunaan :</th>
                 <th></th>
                 <th></th>
@@ -747,7 +747,7 @@ function tgl_indo($tanggal){
                 <th width="120px"></th>
                 <th width="25px"></th>
                 <th width="150x"></th>
-                <th colspan="4">a. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12"> &nbsp; Ada, sebutkan..........</th>
+                <th colspan="4">a. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Ada, sebutkan..........</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -771,7 +771,7 @@ function tgl_indo($tanggal){
                 <th width="120px"></th>
                 <th width="25px"></th>
                 <th width="150x"></th>
-                <th colspan="6">b. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12"> &nbsp; Tidak Ada dasar penggunaan...</th>
+                <th colspan="6">b. &nbsp; <img style="Padding-top: 5px;" src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12"> &nbsp; Tidak Ada dasar penggunaan...</th>
             </tr>
             <tr>
                 <th width="120px"></th>
@@ -787,23 +787,23 @@ function tgl_indo($tanggal){
                 <th width="150px"><?php echo $data_register->register_ganda; ?></th>
                 <th width="20px"><?php if($data_is_register->is_catat_ganda == 0) {?>
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Tidak</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                 <?php } else { ?>
                     <center>
-                            <img src="./ini_assets/dist/img/checkbox_non-checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_non-checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     </td>
                     <th>Tidak</th>
                     <td width="20px">
                         <center>
-                            <img src="./ini_assets/dist/img/checkbox_checked.png" alt="checkbox" width="12" height="12">
+                            <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
                         </center>
                     <?php } ?></td>
                 <th colspan="3">Ya, sebutkan yang seharusnya : 

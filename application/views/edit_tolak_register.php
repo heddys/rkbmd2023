@@ -321,7 +321,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Kondisi Barang : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="kondisi_bar" id="kondisi_barang" readonly="true" value="<?php echo $data_register->kondisi_barang?>">
+                                            <input type="text" class="form-control" name="kondisi_bar" id="kondisi_barang" readonly="true" value="<?php if($data_register->kondisi_barang == "B"){echo "Baik";} elseif ($data_register->kondisi_barang == "KB"){echo "Kurang Baik";} else {echo "Rusak Berat";}?>">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->

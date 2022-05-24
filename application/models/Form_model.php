@@ -36,9 +36,9 @@
                 return $query;
             }
 
-            public function get_kib_rusak_berat_for_excel($lokasi,$kib)
+            public function get_kondisi_kib_for_excel($lokasi,$kib)
             {
-                $query = $this->db->query("SELECT a.*,b.lokasi FROM data_kib a inner join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi where a.ekstrakomtabel IS NULL and a.nomor_lokasi_baru like '".$lokasi."%' and a.kode108_baru like '%".$kib."%' order by a.status DESC");
+                $query = $this->db->query("SELECT a.*,b.* from data_kib a inner join kamus_lokasi b on a.unit_baru=b.unit where a.unit_baru like '".$lokasi."' and a.kode108_baru like '%".$kib."%' a.status = 2");
                 
                 return $query;
             }

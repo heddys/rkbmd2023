@@ -105,6 +105,7 @@
                                             <label class="input-group-text" id="basic-addon3">Lokasi : </label>
                                         </div>
                                             <input type="text" class="form-control" id="input_alamat" name="lokasi" value="<?php echo $data_register->nomor_lokasi?>" readonly="true" placeholder="">
+                                            <input type="hidden" name="no_lokasi_awal" value="<?php echo $data_register->nomor_lokasi;?>">
                                             <div class="input-group-append">
                                                 <label class="input-group-text" id="label_lokasi"><?php echo $data_register->lokasi?></label>
                                             </div>    
@@ -323,7 +324,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Kondisi Barang : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="kondisi_bar" id="kondisi_barang" readonly="true" value="<?php echo $data_register->kondisi_barang?>">
+                                            <input type="text" class="form-control" name="kondisi_bar" id="kondisi_barang" readonly="true" value="<?php if($data_register->kondisi_barang == "B"){echo "Baik";} elseif ($data_register->kondisi_barang == "KB"){echo "Kurang Baik";} else {echo "Rusak Berat";}?>">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
