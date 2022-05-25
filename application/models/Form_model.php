@@ -36,10 +36,16 @@
                 return $query;
             }
 
-            public function get_kondisi_kib_for_excel($lokasi,$kib)
+            public function get_register_sudah_verf($lokasi,$kib)
             {
-                $query = $this->db->query("SELECT a.*,b.* from data_kib a inner join kamus_lokasi b on a.unit_baru=b.unit where a.unit_baru like '".$lokasi."' and a.kode108_baru like '%".$kib."%' a.status = 2");
+                $query = $this->db->query("SELECT a.*,b.unit,b.lokasi from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.unit_baru like '%".$lokasi."%' and a.kode108_baru like '%".$kib."%' and a.status = '2'");
                 
+                return $query;
+            }
+
+            public function get_kondisi_update($register)
+            {
+                $query = $this->db->query("SELECT * FROM register_isi where register = '".$register."' ORDER BY created_date desc, created_time desc limit 1");
                 return $query;
             }
 
