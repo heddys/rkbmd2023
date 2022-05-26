@@ -99,13 +99,69 @@ class Status_form extends CI_Controller {
         // // var_dump($data['pengguna']);
         // // echo $nomor_lokasi;
 
-       	$this->pdf->load_view('cetak_form_inv',$data);
+       	$this->pdf->load_view('laporan/cetak_form_inv',$data);
 		$this->pdf->set_paper("legal", "potrait");
 		$this->pdf->render();
         ob_end_clean();
-		$this->pdf->stream("dompdf_out.pdf", array("Attachment" => false));
+		$this->pdf->stream("Cetak Form Inventarisasi.pdf", array("Attachment" => false));
 		
 	}
+
+    public function cetak_form_kondisi_barang()
+    {
+        $this->cek_sess();
+        $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+        $get_data_pb=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
+		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,'1.3.2')->result();
+		$data_register=array();
+		$data_register_updated=array();
+		foreach ($get_data_register as $key) {
+			$data_register[]=array(
+				'no_lokasi' => $key->nomor_lokasi,
+				'register' =>$key->register,
+				'opd' => $key->unit,
+				'lokasi' => $key->lokasi,
+				'kondisi_awal' => $key->kondisi,
+				'kode108' => $key->kode108_baru,
+				'nama_barang' => $key->nama_barang,
+				'merk' => $key->merk_alamat,
+				'tipe' => $key->tipe,
+				'satuan' => $key->satuan,
+				'harga' => $key->harga_baru,
+			);
+		}
+
+		
+		foreach ($data_register as $row) {
+			$data_updated=$this->form_model->get_kondisi_update($row['register'])->row();
+			$data_register_updated[]=array(
+				'no_lokasi' => $row['no_lokasi'],
+				'register' =>$row['register'],
+				'opd' => $row['opd'],
+				'lokasi' => $row['lokasi'],
+				'kondisi_awal' => $row['kondisi_awal'],
+				'kondisi_baru' => $data_updated->kondisi_barang,
+				'kode108' => $row['kode108'],
+				'nama_barang' => $row['nama_barang'],
+				'merk' => $row['merk'],
+				'tipe' => $row['tipe'],
+				'satuan' => $row['satuan'],
+				'harga' => $row['harga'],
+				'keterangan' => $data_updated->keterangan
+			);
+		}
+
+        $data['data_kondisi']=$data_register_updated;
+        $data['data_pb']=$get_data_pb;
+
+        $this->pdf->load_view('laporan/cetak_form_kondisi_barang',$data);
+		$this->pdf->set_paper("legal", "landscape");
+		$this->pdf->render();
+        ob_end_clean();
+		$this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
+    }
+
+
 
 }
 ?>

@@ -420,6 +420,11 @@
                 return $this->db->get();
             }
 
+            public function ambil_data_pb($nomor_lokasi)
+            {
+               return $this->db->get_where('pengguna',array('nomor_lokasi',$nomor_lokasi));
+            }
+
             public function data_progres_opd($lokasi)
             {
                 // $query=$this->db->query(

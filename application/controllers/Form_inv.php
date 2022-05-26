@@ -1016,6 +1016,7 @@ class Form_inv extends CI_Controller {
 				'kode108' => $key->kode108_baru,
 				'nama_barang' => $key->nama_barang,
 				'merk' => $key->merk_alamat,
+				'tipe' => $key->tipe,
 				'satuan' => $key->satuan,
 				'harga' => $key->harga_baru,
 			);
@@ -1034,6 +1035,7 @@ class Form_inv extends CI_Controller {
 				'kode108' => $row['kode108'],
 				'nama_barang' => $row['nama_barang'],
 				'merk' => $row['merk'],
+				'tipe' => $row['tipe'],
 				'satuan' => $row['satuan'],
 				'harga' => $row['harga'],
 				'keterangan' => $data_updated->keterangan
@@ -1055,7 +1057,7 @@ class Form_inv extends CI_Controller {
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, $kib['register']);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, $kib['kode108']);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, $kib['nama_barang']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $kib['merk']);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $kib['merk']." / ".$kib['tipe']);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, "1");
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $i, $kib['satuan']);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K' . $i, to_rp($kib['harga']));

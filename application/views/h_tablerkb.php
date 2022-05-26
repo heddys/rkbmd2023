@@ -270,15 +270,53 @@
               </li> -->
             </ul>
           </li>
-          <li class="nav-header"><strong>CETAK LAPORAN</strong></li>
-            <li class="nav-item">
-              <a href="<?php echo site_url('form_inv/export_excel_all_kibpm_user');?>" class="nav-link">
-                <i class="nav-icon fa fa-download"></i>
-                <p>
-                    Cetak Status Register 1.3.2
-                </p>
-              </a>
-            </li>
+          <li class="nav-header"><strong>MENU LAPORAN</strong></li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-bookmark"></i>
+              <p>
+                Buku Bantu
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('form_inv/export_excel_all_kibpm_user');?>" class="nav-link">
+                  <i class="nav-icon fa fa-download"></i>
+                  <p>
+                      Status Register 1.3.2
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('form_inv/export_excel_kondisi_kibpm_user');?>" class="nav-link">
+                  <i class="nav-icon fa fa-download"></i>
+                  <p>
+                      Kondisi Barang 1.3.2
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-bookmark"></i>
+              <p>
+                Cetak Laporan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('form_inv/export_excel_kondisi_kibpm_user');?>" class="nav-link">
+                  <i class="nav-icon fa fa-print"></i>
+                  <p>
+                      Cetak Kondisi Barang 1.3.2
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
          <li class="nav-header"><strong>KAMUS</strong></li>
          <li class="nav-item">
             <a href="<?php echo site_url('home/list_kegiatan');?>" class="nav-link">
