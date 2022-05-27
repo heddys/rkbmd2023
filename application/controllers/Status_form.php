@@ -154,11 +154,13 @@ class Status_form extends CI_Controller {
         $data['data_kondisi']=$data_register_updated;
         $data['data_pb']=$get_data_pb;
 
-        $this->pdf->load_view('laporan/cetak_form_kondisi_barang',$data);
-		$this->pdf->set_paper("legal", "landscape");
-		$this->pdf->render();
-        ob_end_clean();
-		$this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
+		// ini_set('memory_limit','0');
+        // $this->pdf->load_view('laporan/cetak_form_kondisi_barang',$data);
+		// $this->pdf->set_paper("legal", "landscape");
+		// $this->pdf->render();
+        // ob_end_clean();
+		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
+		$this->load->view('laporan/cetak_form_kondisi_barang',$data);		
     }
 
 

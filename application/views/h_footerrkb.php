@@ -45,6 +45,11 @@
    $('.select_lokasi').select2({
     width: 'resolve'
    });
+
+   $('.select_limit').select2({
+    width: '5%',
+    minimumResultsForSearch: Infinity
+   });
    $('.select_lokasi_edit').select2({
     width: 'resolve'
    });
@@ -116,6 +121,14 @@
                 }
             });
     }
+
+    function show_sk() {
+      $('#show_sk').modal({backdrop: 'static', keyboard: false});
+    }
+
+    function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+  }
 </script>
 </body>
 </html>

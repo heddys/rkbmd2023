@@ -282,7 +282,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/export_excel_all_kibpm_user');?>" class="nav-link">
-                  <i class="nav-icon fa fa-download"></i>
+                  <i class="nav-icon fa fa-file"></i>
                   <p>
                       Status Register 1.3.2
                   </p>
@@ -290,7 +290,7 @@
               </li>
               <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/export_excel_kondisi_kibpm_user');?>" class="nav-link">
-                  <i class="nav-icon fa fa-download"></i>
+                  <i class="nav-icon fa fa-file"></i>
                   <p>
                       Kondisi Barang 1.3.2
                   </p>
@@ -308,10 +308,10 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/export_excel_kondisi_kibpm_user');?>" class="nav-link">
-                  <i class="nav-icon fa fa-print"></i>
+                <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang');?>" class="nav-link" target="_blank">
+                  <i class="nav-icon fa fa-file"></i>
                   <p>
-                      Cetak Kondisi Barang 1.3.2
+                      Perubahan Kondisi Barang
                   </p>
                 </a>
               </li>

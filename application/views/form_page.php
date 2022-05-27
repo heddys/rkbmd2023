@@ -52,6 +52,7 @@
 	                  <th><center>Kode Neraca</center></th>
 	                  <th><center>Nama Barang</center></th>
 	                  <th><center>Spesifikasi Barang</center></th>
+                    <th><center>Tahun Pengadaan</center></th>
 	                  <th><center>Nilai Perolehan </center></th>
 	                  <th><center>Aksi</center></th>
 	                </tr>
@@ -63,9 +64,10 @@
 	                  		<td><center><?php echo $row->register;?></center></td>
                         <td><center><?php echo $row->lokasi;?></center></td>
 	                  		<td><center><?php echo $row->kode64_baru;?></center></td>
-                            <td><center><?php echo $row->nama_barang;?></center></td>
-                            <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
-                            <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
+                        <td><center><?php echo $row->nama_barang;?></center></td>
+                        <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
+                        <td><center><?php echo $row->tahun_pengadaan;?></center></td>
+                        <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>  
                               <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
                                 <center>
@@ -129,6 +131,7 @@
 	                  <th><center>Kode Neraca</center></th>
 	                  <th><center>Nama Barang</center></th>
 	                  <th><center>Spesifikasi Barang</center></th>
+                    <th><center>Tahun Pengadaan</center></th>
 	                  <th><center>Nilai Perolehan </center></th>
 	                  <th><center>Aksi</center></th>
 	                </tr>
@@ -142,6 +145,7 @@
 	                  		<td><center><?php echo $row->kode64_baru;?></center></td>
                             <td><center><?php echo $row->nama_barang;?></center></td>
                             <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
+                            <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>  
                               <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
@@ -154,7 +158,17 @@
 	                  <?php }?>
 	                </tbody>
 	              </table>
-                <p>
+                <br>
+                <b><u>Silahkan Pilih Banyak Data Per Halaman : </b></u>
+                <form role="form" action="<?php echo site_url();?>/form_inv/index/2" method="post">
+                  <select class="form-control select_limit" name="limit" id="limit">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  <button type="submit" class="btn btn-sm btn-info" title="Rubah Banyak List Register"><i class="fa fa-bomb"></i></button>
+                </form>
                 <?php echo $this->pagination->create_links(); } ?>
 
 	            </div>

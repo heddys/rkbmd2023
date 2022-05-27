@@ -74,6 +74,18 @@ class Form_inv extends CI_Controller {
 		$data_cari=$this->session->userdata('data');
 		
 		
+		//Set Session untuk jumlah limit pagination
+		if(isset($_POST['limit'])){
+			$this->session->set_userdata('limit',$_POST['limit']);
+			$limit=$_POST['limit'];
+		} 
+
+		if($this->session->userdata('limit')){
+			$limit=$this->session->userdata('limit');
+		} else {$limit=10;}
+
+
+
 		//Session Status 1, Artinya Lagi di Isi Search By Lokasi dan untuk Session Status 2, Artinya Lagi di Isi Search By Register dan Nama
 
 		//Kondisi Untuk Fungsi User Pengurus Barang Pembantu
@@ -157,7 +169,7 @@ class Form_inv extends CI_Controller {
 				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 				//Config Pagination
 				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$data_cari,$kib,$form)->num_rows();
-				$config['per_page'] = 10;
+				$config['per_page'] = $limit;
 				$config['base_url'] = site_url('/form_inv/index/2/');
 				$config['num_links'] = 3;
 

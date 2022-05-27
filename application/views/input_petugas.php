@@ -3,6 +3,7 @@
     <div class="row">
         <div class="col-12">
             <button type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#exampleModal"><i class="far fa-plus-square"></i> &nbsp;&nbsp;Tambah Petugas</button> 
+            <button type="button" class="btn btn-lg btn-primary" onclick="show_sk()"><i class="fa fa-address-book"></i> &nbsp;&nbsp;SK Petugas Inventarisasi</button>
           <hr>
         	<div class="card">
 	            <div class="card-header">
@@ -165,5 +166,25 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="show_sk"  data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Dokumen SK Petugas Inventarisasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <div class="modal-body">
+                    <iframe src="<?php echo base_url();?>ini_assets/sk_petugas_inv/MEJA_SETENGAH_BIRO5.jpeg" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  
+</script>
 
           
