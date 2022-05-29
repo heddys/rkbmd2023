@@ -47,7 +47,15 @@
 <script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
 <!-- Select2 -->
 <script src="<?php echo base_url();?>ini_assets/plugins/select2/js/select2.full.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
+    
+    
+    $(document).ready(function(){
+      $("#tabel-home-dinkes").DataTable();
+      
     function showTime() {
       var a_p = "";
       var today = new Date();

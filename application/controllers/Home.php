@@ -23,7 +23,9 @@ class Home extends CI_Controller {
 			$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		}
 
-
+		if($this->session->userdata('nip') == "198210182010011002") {
+			$data['rekap_puskesmas'] = $this->form_model->get_rekap_per_puskesmas($nomor_lokasi);
+		}
 		$data['rekap']=$this->form_model->data_progres_opd($nomor_lokasi)->row();
 		$this->load->view('header',$data);		
 		$this->load->view('home');

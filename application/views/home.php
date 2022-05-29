@@ -79,91 +79,73 @@
             <!-- /.col -->
           </div>
           <!-- /.row -->
+          <?php if ($this->session->userdata('nip') == "198210182010011002") {?>
           <div class="row">
             <div class="col-lg-12 col-12">
-              <!-- small box -->
-                <div class="small-box bg-success">
-                  <div class="inner">
-                    <center><h3>Form Inventarisasi</h3></center>
-                    <center><p>Pengisian Form Untuk Memverifikasi Atribut Aset</p></center>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                  </div>
-                    <a href="<?php echo site_url('/Form_inv/index/2');?>" class="small-box-footer">Isi Form Inventarisasi <i class="fas fa-arrow-circle-right"></i></a>
+            <div class="card card-info">
+          <div class="card">
+              <div class="card-header no-border ">
+                <h3 class="card-title">Rekapan Per Puskesmas</h3>
+                <div class="card-tools">
+                  <!-- <a href="<?php echo site_url('home_penyelia/export_excel_rekap_penyelia')?>" class="btn btn-tool btn-sm" title="Download Rekapan"> -->
+                    <i class="fas fa-download"></i>
+                  </a>
                 </div>
+              </div>
+              <div class="card-body p-3">
+                <div style="overflow-x:auto;">
+                  <table class="table table-striped table-hover responsive" id="tabel-home-dinkes">
+                    <thead class="thead-dark">
+                    <tr>
+                      <th><center>Perangkat Daerah<center></th>
+                      <th>Total Register</th>
+                      <th>Register Telah Di Verif</th>
+                      <th>Register Masih Proses Verif</th>
+                      <th>Register Di Tolak</th>
+                      <th>Register Belum Terjamah</th>
+                      <th>Persentase</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($rekap_puskesmas as $row) { ?>
+                      <tr>
+                        <td>
+                          <?php echo strtoupper($row->nama_lokasi);?>
+                        </td>
+                        <td><center><?php echo number_format($row->total);?></center></td>
+                        <td><center><?php echo number_format($row->verif);?></center></td>
+                        <td><center><?php echo number_format($row->proses);?></center></td>
+                        <td><center><?php echo number_format($row->tolak);?></center></td>
+                        <td><center><?php echo number_format($row->sisa);?></center></td>
+                        <td><center><?php echo round((float)$row->persentase,3) . '%';?></center></td>
+                      </tr>
+                      <?php } ?> 
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+                      </div>
             </div>
           </div>
         <center>
-          <div class="row">
-            <!-- <div class="col-lg-4 col-6">
-              <?php if($exist >= 1) {?>
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3><?php echo $exist?></h3>
-                  <p>Eksisting Barang Belum Disertai Keterangan</p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </div>
-                <a href="<?php echo site_url('home/desk_komponen');?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div> -->
-            <!-- <?php } else {?>
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <h3><?php echo $exist?></h3>
-                  <p>Semua Eksisting Barang Sudah Disertai Keterangan</p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-check-circle"></i>
-                </div>
-                <a href="<?php echo site_url('home/desk_komponen');?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            <?php }?>
-            </div> -->
-            <div class="col-lg-6 col-6">
-              <!-- small box -->
-              <!-- <div class="small-box bg-info">
-                <div class="inner">
-                  <h3><?php echo $bmaset;?></h3>
-                  <p>Jumlah Usulan Belanja Modal</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="<?php echo site_url('home/tabel_rkb');?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div> -->
+        <?php }?>
+      
+        <div class="row">
+         <div class="col-lg-12 col-12">
+           <!-- small box -->
+           <div class="small-box bg-success">
+             <div class="inner">
+               <center><h3>Form Inventarisasi</h3></center>
+                 <center><p>Pengisian Form Untuk Memverifikasi Atribut Aset</p></center>
+             </div>
+            <div class="icon">
+               <i class="ion ion-stats-bars"></i>
             </div>
-            <!-- ./col -->
-            <div class="col-lg-6 col-6">
-              <!-- small box -->
-              <!-- <div class="small-box bg-primary">
-                <div class="inner">
-                  <h3><?php echo $bmpersediaan?></h3>
-                  <p>Jumlah Usulan Belanja Persediaan</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="<?php echo site_url('home/tabel_rkp');?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div> -->
-            </div>
-            <!-- 
-            <div class="col-lg-3 col-6">
-              <div class="small-box bg-warning">
-                <div class="inner">
-                  <h3>44</h3>
-
-                  <p>User Registrations</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-          -->
-            <!-- ./col -->
+                <a href="<?php echo site_url('/Form_inv/index/2');?>" class="small-box-footer">Isi Form Inventarisasi <i class="fas fa-arrow-circle-right"></i></a>
+           </div>
+         </div>
+        </div>
             
             <!-- ./col -->
           </div>
