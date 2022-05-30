@@ -185,7 +185,7 @@
                         <input type="file" class="custom-file-input" id="customFile" multiple="" name="files_pdf" required="required" accept="application/pdf">
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
-                    <br>
+                    <p>
                     <div id="alert"></div>
                 </div>
 

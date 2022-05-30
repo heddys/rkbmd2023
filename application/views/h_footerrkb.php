@@ -139,8 +139,8 @@
                       "<h5><i class='icon fas fa-ban'></i> Oops!</h5>"+
                       "Mohon Maaf Ukuran File Lebih Dari 8 Mb, Silahkan Periksa Kembali Ukuran File Yang Anda Upload"+
                   "</div>";
-                  alert('oppsssss')
-        // $('.custom-file').find('#alert').html(html);
+                  
+        $('#alert').html(html);
         document.getElementById("customFile").value = "";
       }
     });
