@@ -3,7 +3,9 @@
     <div class="row">
         <div class="col-12">
             <button type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#exampleModal"><i class="far fa-plus-square"></i> &nbsp;&nbsp;Tambah Petugas</button> 
-            <button type="button" class="btn btn-lg btn-primary" onclick="show_sk()"><i class="fa fa-address-book"></i> &nbsp;&nbsp;SK Petugas Inventarisasi</button>
+            <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#show_sk"><i class="fa fa-upload" aria-hidden="true"></i>  &nbsp; Upload SP Petugas</button>
+            <!-- <button type="button" class="btn btn-lg btn-warning" onclick="show_sk()"><i class="fa fa-address-book"></i> &nbsp;&nbsp;Lihat SP Petugas Inventarisasi</button> -->
+            <a href="http://" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-warning" type="button"><i class="fa fa-address-book"></i> &nbsp;&nbsp;Lihat SP Petugas Inventarisasi</a>
           <hr>
         	<div class="card">
 	            <div class="card-header">
@@ -167,18 +169,31 @@
     </div>
 </div>
 
-<div class="modal fade" id="show_sk"  data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="show_sk">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Dokumen SK Petugas Inventarisasi</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Upload Dokumen Untuk Surat Perintah Petugas Inventarisasi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-                <div class="modal-body">
-                    <iframe src="<?php echo base_url();?>ini_assets/sk_petugas_inv/MEJA_SETENGAH_BIRO5.jpeg" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+            <div class="modal-body">
+                <form role="form" action="save_dokumen_sk" method="post" enctype="multipart/form-data">
+                <label><h5><b>(Tipe FIle : PDF | Ukuran Maks File : 8Mb)</b></h5></label> 
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files_pdf" required="required" accept="application/pdf">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <br>
+                    <div id="alert"></div>
                 </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-upload" aria-hidden="true"></i> Upload File</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>

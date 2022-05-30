@@ -826,6 +826,11 @@ class Form_inv extends CI_Controller {
 		redirect('/form_inv/input_petugas');
 	}
 
+	public function save_dokumen_sk()
+	{
+		# code...
+	}
+
 	public function export_excel_all_kibpm_user() {
 
 		$this->cek_sess();
