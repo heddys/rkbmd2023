@@ -375,6 +375,23 @@
                 return $query;
             }
 
+            public function cek_sk_petugas($nip)
+            {
+                return $this->db->get_where('jurnal_sk_petugas_inv',array('nip_pb' => $nip));
+            }
+
+            public function save_sk_db($data,$cek_exist)
+            {
+                if($cek_exist == 0) {
+                    $this->db->insert('jurnal_sk_petugas_inv', $data);
+                    $this->db->error(); 
+                } else {
+                    $this->db->where('nip_pb', $data['nip_pb']);
+                    $this->db->update('jurnal_sk_petugas_inv',$data);
+                    $this->db->error();
+                }
+            }
+
             public function save_petugas($data)
             {
                 $this->db->insert('petugas_inv', $data);

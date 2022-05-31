@@ -142,6 +142,9 @@
                   
         $('#alert').html(html);
         document.getElementById("customFile").value = "";
+      } else {
+        var html = ""
+        $('#alert').html(html);
       }
     });
 

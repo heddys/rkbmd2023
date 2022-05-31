@@ -753,11 +753,15 @@ class Form_inv extends CI_Controller {
 		$this->cek_sess();
 		$data['page']="Halaman Input Petugas Inventarisasi";
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$nip=$this->session->userdata('nip');
 
 
 		$data['pangkat']=$this->form_model->get_pangkat();
 		$data['petugas']=$this->form_model->get_petugas($nomor_lokasi);
-		$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
+		$data['lokasi']=$this->form_model->get_lokasi_per_opd($nomor_lokasi);
+		$data['cek_exist_sk']=$this->form_model->cek_sk_petugas($nip)->num_rows();
+		$data['dokumen_sk']=$this->form_model->cek_sk_petugas($nip)->row();
+
 
 		$this->load->view('h_tablerkb',$data);
 		$this->load->view('input_petugas',$data);
@@ -826,9 +830,48 @@ class Form_inv extends CI_Controller {
 		redirect('/form_inv/input_petugas');
 	}
 
-	public function save_dokumen_sk()
-	{
-		# code...
+	public function save_dokumen_sk() {
+		$this->cek_sess();
+
+		$nip=$this->session->userdata('nip');
+		$lokasi = $this->session->userdata('no_lokasi_asli'); 
+		$dokumen_sk=$this->form_model->cek_sk_petugas($nip);
+		$cek_exist=0;
+
+		date_default_timezone_set("Asia/Jakarta");
+		$timestamp = date("Y-m-d H:i:s");
+		
+		$cek_exist=$_POST['exist_sk'];
+		$data=array();
+
+		// ambil data file
+		$namaFile = $_FILES['dokumen']['name'];
+		$namaSementara = $_FILES['dokumen']['tmp_name'];
+
+		// tentukan lokasi file akan dipindahkan
+		$dirUpload = 'ini_assets/sk_petugas_inv/';
+
+		// pindahkan file
+		$terupload = move_uploaded_file($namaSementara, $dirUpload.$namaFile);
+		$dokumen=$dokumen_sk->row();
+
+		$link="ini_assets/sk_petugas_inv/".$dokumen->nama_file_sk;
+		if($dokumen_sk->num_rows() > 0){
+			unlink($link);
+			$cek_exist=1;
+		}
+		if ($terupload) {
+			$data=array(
+				'nomor_unit' =>$lokasi,
+				'nip_pb' => $nip,
+				'nama_file_sk' => $namaFile,
+				'updated_on' => $timestamp
+			);
+			$this->form_model->save_sk_db($data,$cek_exist);
+			redirect('/form_inv/input_petugas');
+		} else {
+			redirect('/form_inv/input_petugas');
+		}
 	}
 
 	public function export_excel_all_kibpm_user() {
