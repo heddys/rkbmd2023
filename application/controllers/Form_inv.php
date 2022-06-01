@@ -841,26 +841,35 @@ class Form_inv extends CI_Controller {
 		date_default_timezone_set("Asia/Jakarta");
 		$timestamp = date("Y-m-d H:i:s");
 		
-		$cek_exist=$_POST['exist_sk'];
 		$data=array();
 
+		$uploadPath = 'ini_assets/sk_petugas_inv/'; 
+		$config['upload_path']          = $uploadPath;
+		$config['allowed_types']        = 'pdf';
+		$config['max_size']             = 8000;
+
+		// Load and initialize upload library 
+		$this->load->library('upload', $config); 
+		$this->upload->initialize($config); 
+
 		// ambil data file
-		$namaFile = $_FILES['dokumen']['name'];
-		$namaSementara = $_FILES['dokumen']['tmp_name'];
-
-		// tentukan lokasi file akan dipindahkan
-		$dirUpload = 'ini_assets/sk_petugas_inv/';
-
-		// pindahkan file
-		$terupload = move_uploaded_file($namaSementara, $dirUpload.$namaFile);
+		
+		
 		$dokumen=$dokumen_sk->row();
+		$link='ini_assets/sk_petugas_inv/'.$dokumen->nama_file_sk;
 
-		$link="ini_assets/sk_petugas_inv/".$dokumen->nama_file_sk;
-		if($dokumen_sk->num_rows() > 0){
-			unlink($link);
-			$cek_exist=1;
-		}
-		if ($terupload) {
+		if (! $this->upload->do_upload('dokumen')) {
+			
+			$error = array('error' => $this->upload->display_errors());
+
+			var_dump($error);
+		} else {
+			$namaFile = $this->upload->data('file_name'); 
+			if($dokumen_sk->num_rows() > 0){
+				unlink($link);
+				$cek_exist=1;
+			}
+
 			$data=array(
 				'nomor_unit' =>$lokasi,
 				'nip_pb' => $nip,
@@ -868,8 +877,6 @@ class Form_inv extends CI_Controller {
 				'updated_on' => $timestamp
 			);
 			$this->form_model->save_sk_db($data,$cek_exist);
-			redirect('/form_inv/input_petugas');
-		} else {
 			redirect('/form_inv/input_petugas');
 		}
 	}

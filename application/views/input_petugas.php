@@ -2,14 +2,14 @@
 <section class="content">
     <div class="row">
         <div class="col-12">
-            <button type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#exampleModal"><i class="far fa-plus-square"></i> &nbsp;&nbsp;Tambah Petugas</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="far fa-plus-square"></i> &nbsp;&nbsp;Tambah Petugas</button>
 
             
-                <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#show_sk"><i class="fa fa-upload" aria-hidden="true"></i>  &nbsp; Upload SP Petugas</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show_sk"><i class="fa fa-upload" aria-hidden="true"></i>  &nbsp; Upload SP Petugas</button>
             
             <!-- <button type="button" class="btn btn-lg btn-warning" onclick="show_sk()"><i class="fa fa-address-book"></i> &nbsp;&nbsp;Lihat SP Petugas Inventarisasi</button> -->
             <?php if($cek_exist_sk > 0) {?>
-                <a href="<?php echo base_url();?>/ini_assets/sk_petugas_inv/<?php echo $dokumen_sk->nama_file_sk?>" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-warning" type="button"><i class="fa fa-address-book"></i> &nbsp;&nbsp;Lihat SP Petugas Inventarisasi</a>
+                <a href="<?php echo base_url();?>ini_assets/sk_petugas_inv/<?php echo $dokumen_sk->nama_file_sk?>" target="_blank" rel="noopener noreferrer" class="btn btn-warning" type="button"><i class="fa fa-address-book"></i> &nbsp;&nbsp;Lihat SP Petugas Inventarisasi</a>
             <?php }?>
           <hr>
         	<div class="card">
