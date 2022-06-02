@@ -580,12 +580,13 @@
                                     </div>
                             </div>
 
-                            <div class="form-group col-md-8 gambar">
+                            <div class="form-group col-md-8">
                                 <div class="mb-3">
                                 <label><h5><b>Upload Foto atau Denah Aset</b></h5></label>
                                     <div class="mb-3">
                                         <?php foreach ($image as $i) {?>
-                                            <img style="Padding-top: 5px;" src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="20%">
+                                            <!-- <img style="Padding-top: 5px;" src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="20%"> -->
+                                            <iframe src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" frameborder="0" width="75%" height="800px"></iframe>
                                         <?php } ?>
                                     </div>
                                 </div>

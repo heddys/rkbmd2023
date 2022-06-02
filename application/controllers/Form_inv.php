@@ -414,7 +414,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg'; 
+                    $config['allowed_types'] = 'jpg|jpeg|pdf'; 
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -635,7 +635,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg'; 
+                    $config['allowed_types'] = 'jpg|jpeg|pdf'; 
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -937,7 +937,7 @@ class Form_inv extends CI_Controller {
         $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
 		
         // Add data
-
+		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data_kib=$this->form_model->get_kib_for_excel($nomor_lokasi,'1.3.2');
 		$i=4;

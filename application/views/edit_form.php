@@ -1,3 +1,20 @@
+<style>
+    .frame-container {
+  position: relative;
+    }
+    .iframe-button {
+    display: none;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    }
+
+    /* Only show the button when the parent is hovered: */
+
+    .frame-container:hover .iframe-button {
+    display: initial;
+    }
+</style>
 <section class="content">
             <div class="container-fluid">
                 <div class="callout callout-danger">
@@ -592,13 +609,19 @@
                                     </div>
                             </div>
 
-                            <div class="form-group col-md-8 image gambar" id="image">
+                            <div class="form-group col-md-8 image" id="image">
                                 <div class="mb-3">
                                 <label><h5><b>Foto atau Denah Aset : </b></h5></label>
                                     <div class="mb-3">
                                         <?php foreach ($image as $i) {?>
-                                                <img style="Padding-top: 5px;" src="<?php echo base_url();?>ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="200" height="200">
-                                                <a href="#" class="btn btn-sm btn-danger ambil_kode_barang" data-id="<?php echo $i->id;?>" onclick="klik_hapus_image(this.getAttribute('data-id'));">Hapus</i></a>
+                                            <div class="frame-container">
+                                            <a href="#" class="iframe-button btn btn-lg btn-danger ambil_kode_barang" data-id="<?php echo $i->id;?>" onclick="klik_hapus_image(this.getAttribute('data-id'));">
+                                                Hapus
+                                            </a>
+                                            <iframe src="<?php echo base_url();?>/ini_assets/upload/<?php echo $i->file_upload?>" frameborder="0" width="75%" height="800px"></iframe>
+                                            </div>
+                                                <!-- <img style="Padding-top: 5px;" src="<?php echo base_url();?>ini_assets/upload/<?php echo $i->file_upload?>" alt="checkbox" width="200" height="200">
+                                                <a href="#" class="btn btn-sm btn-danger ambil_kode_barang" data-id="<?php echo $i->id;?>" onclick="klik_hapus_image(this.getAttribute('data-id'));">Hapus</i></a> -->
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -607,7 +630,7 @@
                                 <div class="mb-5 mt-5">
                                     <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg , Ukuran File Max : 5MB, dan Rotasi Foto : Portrait, dan Foto Disertai Geotag)
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]"  accept="image/jpeg">
+                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]" accept="image/jpeg,application/pdf">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                     <p>
