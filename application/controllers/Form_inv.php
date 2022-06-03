@@ -216,6 +216,11 @@ class Form_inv extends CI_Controller {
 		
 	}
 
+	public function cobacoba()
+	{
+		
+	}
+
     public function isi_formulir()
     {
         $this->cek_sess();
