@@ -549,35 +549,35 @@
             }
 
             public function get_rekap_per_puskesmas($lokasi)
-   {
-       $query=$this->db->query(
-            "SELECT
-            b.nama_lokasi,
-            count( a.register ) AS total,
-            COUNT(
-            IF
-            ( a.STATUS = 1, 1, NULL )) AS proses,
-            COUNT(
-            IF
-            ( a.STATUS = 2, 1, NULL )) AS verif,
-            COUNT(
-            IF
-            ( a.STATUS = 3, 1, NULL )) AS tolak,
-            COUNT(
-            IF
-                ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                count( a.register )- COUNT(
-                IF
-                ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
-        FROM
-            data_kib a
-        INNER JOIN kamus_pengurus_barang_pembantu b ON a.nomor_lokasi = b.nomor_lokasi 
-        GROUP BY
-            b.nip_pbp
-        ORDER BY
-            persentase DESC");
-        
-        return $query->result();
-   }
+            {
+                $query=$this->db->query(
+                        "SELECT
+                        b.nama_lokasi,
+                        count( a.register ) AS total,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 1, 1, NULL )) AS proses,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 2, 1, NULL )) AS verif,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 3, 1, NULL )) AS tolak,
+                        COUNT(
+                        IF
+                            ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                            count( a.register )- COUNT(
+                            IF
+                            ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
+                    FROM
+                        data_kib a
+                    INNER JOIN kamus_pengurus_barang_pembantu b ON a.nomor_lokasi = b.nomor_lokasi 
+                    GROUP BY
+                        b.nip_pbp
+                    ORDER BY
+                        persentase DESC");
+                    
+                    return $query->result();
+            }
  }
  ?>
