@@ -107,6 +107,17 @@
                     </tr>
                     </thead>
                     <tbody>
+                      <tr>
+                        <td>
+                          KANTOR DINAS KESEHATAN
+                        </td>
+                        <td><center><?php echo number_format($only_dinkes->total);?></center></td>
+                        <td><center><?php echo number_format($only_dinkes->verif);?></center></td>
+                        <td><center><?php echo number_format($only_dinkes->proses);?></center></td>
+                        <td><center><?php echo number_format($only_dinkes->tolak);?></center></td>
+                        <td><center><?php echo number_format($only_dinkes->sisa);?></center></td>
+                        <td><center><?php echo round((float)$only_dinkes->persentase,3) . '%';?></center></td>
+                      </tr>
                       <?php foreach ($rekap_puskesmas as $row) { ?>
                       <tr>
                         <td>
