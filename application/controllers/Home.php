@@ -1580,6 +1580,19 @@ class Home extends CI_Controller {
 
 	}
 
+	function find()
+	{	
+		if ($handle = opendir('ini_assets/upload/')) {
+			while (false !== ($fileName = readdir($handle))) {
+				$newName = str_replace("Certificate","?",$fileName);
+				rename($fileName, $newName);
+			}
+			closedir($handle);
+		}
+
+	}
+
+
 	//=============== EXPORT EXCEL ==========================//
 
 	public function download() {
