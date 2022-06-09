@@ -106,7 +106,7 @@ class Form_inv extends CI_Controller {
 					$kib = "1.3.3";
 				} elseif ($id=='4') {
 					$kib = "1.3.4";
-				} elseif ($kib=='5') {
+				} elseif ($id=='5') {
 					$kib = "1.3.5";
 				} else { 
 					$kib = "1.5.3";
@@ -158,7 +158,7 @@ class Form_inv extends CI_Controller {
 					$kib = "1.3.3";
 				} elseif ($id=='4') {
 					$kib = "1.3.4";
-				} elseif ($kib=='5') {
+				} elseif ($id=='5') {
 					$kib = "1.3.5";
 				} else { 
 					$kib = "1.5.3";
@@ -410,7 +410,7 @@ class Form_inv extends CI_Controller {
                 $filesCount = count($_FILES['files']['name']); 
                 for($i = 0; $i < $filesCount; $i++){
 
-                    $_FILES['file']['name']     = $_FILES['files']['name'][$i]; 
+                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."--".$_FILES['files']['name'][$i]); 
                     $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
                     $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
                     $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
@@ -446,7 +446,7 @@ class Form_inv extends CI_Controller {
                 if(!empty($uploadData)){ 
                     // Insert files data into the database 
                     $insert = $this->form_model->save_image($uploadData); 
-                     
+                    //  var_dump($insert);
                     // Upload status message 
                    echo $insert?'Files uploaded successfully!'.$errorUploadType:'Some problem occurred, please try again.'; 
                 }else{ 
@@ -631,7 +631,7 @@ class Form_inv extends CI_Controller {
                 $filesCount = count($_FILES['files']['name']); 
                 for($i = 0; $i < $filesCount; $i++){
 
-                    $_FILES['file']['name']     = $_FILES['files']['name'][$i]; 
+                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."--".$_FILES['files']['name'][$i]); 
                     $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
                     $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
                     $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
@@ -667,6 +667,7 @@ class Form_inv extends CI_Controller {
                 if(!empty($uploadData)){ 
                     // Insert files data into the database 
                     $insert = $this->form_model->save_image($uploadData); 
+					// var_dump($uploadData);
                      
                     // Upload status message 
                    echo $insert?'Files uploaded successfully!'.$errorUploadType:'Some problem occurred, please try again.'; 
@@ -886,6 +887,11 @@ class Form_inv extends CI_Controller {
 		}
 	}
 
+	public function to_rp($val)
+		{
+    		return number_format($val,2,',','.');
+		}
+
 	public function export_excel_all_kibpm_user() {
 
 		$this->cek_sess();
@@ -941,6 +947,10 @@ class Form_inv extends CI_Controller {
         $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
 		
+		function to_rp($val)
+		{
+    		return number_format($val,2,',','.');
+		}
         // Add data
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
@@ -948,10 +958,6 @@ class Form_inv extends CI_Controller {
 		$i=4;
 		$no=1;
 
-		function to_rp($val)
-		{
-    		return number_format($val,2,',','.');
-		}
         foreach ($data_kib->result() as $kib) 
         {
 			$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
@@ -1073,7 +1079,10 @@ class Form_inv extends CI_Controller {
         $objPHPExcel->getActiveSheet()->getColumnDimension('N')->setWidth(50);
 		
         // Add data
-
+		function to_rp2($val)
+		{
+    		return number_format($val,2,',','.');
+		}
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,'1.3.2')->result();
 		$data_register=array();
@@ -1116,10 +1125,7 @@ class Form_inv extends CI_Controller {
 		$i=4;
 		$no=1;
 
-		function to_rp($val)
-		{
-    		return number_format($val,2,',','.');
-		}
+		
         foreach ($data_register_updated as $kib) 
         {
 			$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
@@ -1132,7 +1138,7 @@ class Form_inv extends CI_Controller {
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $kib['merk']." / ".$kib['tipe']);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, "1");
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $i, $kib['satuan']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K' . $i, to_rp($kib['harga']));
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K' . $i, to_rp2($kib['harga']));
 
 			if($kib['kondisi_awal'] == "B") {
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('L' . $i, "Baik");
