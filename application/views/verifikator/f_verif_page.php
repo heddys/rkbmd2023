@@ -26,11 +26,21 @@
 <script src="<?php echo base_url();?>ini_assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
+<!-- select2 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/select2/js/select2.full.min.js"></script>
 <script>
 
- $(function () {
    $("#tabel_proses_register").DataTable();
    $("#tabel_tolak_register").DataTable();
+
+   $('.select_lokasi').select2({
+    width: 'resolve'
+   });
+
+   $('.select_limit').select2({
+    width: '5%',
+    minimumResultsForSearch: Infinity
+   });
 
    function showTime() {
       var today = new Date();
@@ -78,9 +88,7 @@
  $('#modal-delete').on('click', '.batal', function(){
     $('#modal-delete').modal('hide');
     $('#modal-xl').modal('show');
- });
- 
-});      
+ });    
 </script>
 </body>
 </html>

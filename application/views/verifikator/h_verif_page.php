@@ -25,7 +25,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="sidebar-mini layout-fixed" style="height: auto;> 
+<body class="sidebar-mini layout-fixed" style="height: auto;"> 
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -203,6 +203,53 @@
               </li> -->
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                List Register Di Tolak
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <!-- <li class="nav-item">
+                <a href="<?php echo site_url('form_inv/index/1');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.01</p>
+                </a>
+              </li> -->
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_verifikator/tolak_page');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.02</p>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                <a href="<?php echo site_url('form_inv/index/3');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.03</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('form_inv/index/4');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.04</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('form_inv/index/5');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.05</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('form_inv/index/6');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Lain-Lain 1.5.03</p>
+                </a>
+              </li> -->
+            </ul>
+          </li> 
           <!-- <li class="nav-item has-treeview">
             <a href="<?php echo site_url('home/desk_komponen');?>" class="nav-link">
               <i class="nav-icon fab fa-buffer"></i>

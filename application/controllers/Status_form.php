@@ -41,7 +41,7 @@ class Status_form extends CI_Controller {
             $kib = "1.3.3";
         } elseif ($id=='4') {
             $kib = "1.3.4";
-        } elseif ($kib=='5') {
+        } elseif ($id=='5') {
             $kib = "1.3.5";
         } else { 
             $kib = "1.5.3";
