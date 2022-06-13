@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-RKBMD APP KOTA SURABAYA</title>
+  <title>SI-IBMD APP KOTA SURABAYA</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -104,7 +104,7 @@
     <a href="index.php" class="brand-link navbar-info">
       <img src="<?php echo base_url();?>ini_assets/dist/img/surabaya.png" alt="Logo Surabaya" class="brand-image"
            style="opacity: 1.8">
-      <center><span class="brand-text font-weight-bold">E-RKBMD</span></center>
+      <center><span class="brand-text font-weight-bold">Admin SI-IBMD</span></center>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -239,14 +239,34 @@
               </li> -->
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="<?php echo site_url('home_admin/setting_penyelia');?>" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fa fa-cogs" aria-hidden="true"></i>
               <p>
-                Pengelola Penyelia
+              Pengaturan  
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/setting_penyelia');?>" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Pengelola Penyelia
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/setting_kode_barang');?>" class="nav-link">
+                <i class="nav-icon fa fa-barcode"></i>
+                  <p>
+                    Pengelola Kode Barang
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
+          
          <!-- <li class="nav-item has-treeview">
             <a href="<?php echo site_url('home/desk_komponen');?>" class="nav-link">
               <i class="nav-icon fab fa-buffer"></i>

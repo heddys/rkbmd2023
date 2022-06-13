@@ -45,9 +45,13 @@
       $("#tabel_penyelia").DataTable();
       $("#tabel_opd").DataTable();
       $("#tabel_penyelia2").DataTable();
+      $("#tabel_kunci_kodebar").DataTable({
+          "language": {
+            "emptyTable": "Tidak Ada Kode Barang Yang Dikunci"
+          }
+      });
+      $("#tabel_kodebar").DataTable();
 
-      
-       
     });
     function showTime() {
       var a_p = "";
@@ -142,6 +146,7 @@
                                 '</td></tr>';
                               x++;
                     }
+                    
                     $('#list_opd_penyelia').find('.isi_body').html(html);
                     $('#list_opd_penyelia').find('#tabel_list_opd').DataTable();
 
@@ -152,6 +157,84 @@
                 }
             });
     }  
+
+    function klik_detail_kode(kode_sub) {
+      var id=kode_sub;
+      $('#tabel_rincian_kode').DataTable().clear();
+      $('#list_detail_kode').modal({backdrop: 'static', keyboard: false});
+      $.ajax({
+              type: 'ajax',
+              method: 'post',
+              url: '<?php echo site_url();?>/home_admin/get_list_rincian_kode',
+              data:{id:id},
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                  var html = '';
+                  var title ='';
+                  var i=data.length;
+                  var x=1;
+                    for (i=0; i < data.length; i++) {
+                        html += 
+                              '<tr>'+
+                                '<td><center>'+x+'</center></td>'+
+                                '<td><center>'+data[i].kode_sub_sub_kelompok+'</center></td>'+
+                                '<td><center>'+data[i].sub_sub_kelompok+'</center></td>'+
+                                '</td></tr>';
+                              x++;
+                    }
+                    title+=data[0].kode_sub_kelompok+" - "+data[0].sub_kelompok;
+                    $('#list_detail_kode').find('#title').html(title);
+                    $('#list_detail_kode').find('.rincian_kode').html(html);
+                    $('#list_detail_kode').find('#tabel_rincian_kode').DataTable();
+
+                    
+                },
+                error: function() {
+                  alert('Koneksi Gagal');
+                }
+            });
+      } 
+      
+      function klik_kunci_kode(id) {
+        var id=id;
+        
+        $.ajax({
+              type: 'ajax',
+              method: 'post',
+              url: '<?php echo site_url();?>/home_admin/kunci_kodebar',
+              data:{id:id},
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'center',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+                    Toast.fire({
+                      type: 'success',
+                      title: 'Success!! Mengunci Kode Barang.'
+                    })
+                    setTimeout(function(){ location.reload(); }, 2000);
+
+                },
+                error: function() {
+                  const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'center',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+                    Toast.fire({
+                      type: 'error',
+                      title: 'Oops!! Tidak Bisa Mengunci Kode Barang.'
+                    })
+                    setTimeout(function(){ location.reload(); }, 2000);
+                }
+            });
+      }
 
     $('#list_opd_penyelia').find('.isi_body').on('click', '.delete_opd', function(){
       var id=$(this).attr('data-id');

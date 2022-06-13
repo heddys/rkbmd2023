@@ -84,7 +84,7 @@
           return i;
     }
     setInterval(showTime, 50);                  
-
+  });
 </script>
 </body>
 </html>

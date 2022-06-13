@@ -106,6 +106,31 @@ class Admin_model extends CI_Model{
        return $this->db->get('kamus_penyelia');
    }
 
+   public function get_kodebar()
+   {
+    $this->db->select('*');
+    $this->db->from('kamus_barang');
+    $this->db->where('kunci',NULL);
+    $this->db->like('kode_bidang','1.3.2');
+    $this->db->group_by('kode_sub_kelompok');
+    return $this->db->get();
+   }
+
+   public function get_rincian_kode_sub($id)
+   {
+        return $this->db->get_where('kamus_barang',array('kode_sub_kelompok' => $id));
+   }
+
+   public function get_kodebar_kunci()
+   {
+        $this->db->select('*');
+        $this->db->from('kamus_barang');
+        $this->db->where('kunci',1);
+        $this->db->like('kode_bidang','1.3.2');
+        $this->db->group_by('kode_sub_kelompok');
+        return $this->db->get();
+   }
+
    public function simpan_status_penyelia($id_kamus,$data)
    {
         $this->db->where('id', $id_kamus);
@@ -215,11 +240,18 @@ class Admin_model extends CI_Model{
         return $this->db->get();
    }
 
+   public function kunci_kode($kodebar)
+   {
+    $this->db->where('kode_sub_kelompok', $kodebar);
+    return $this->db->update('kamus_barang', array('kunci' => 1));
+        
+   }
+
 
    public function get_status_for_penyelia($data,$kib, $limit, $offset,$form){
 
         if($form == 2){
-            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%' limit ".$limit." offset ".$offset."");
         } elseif ($form == 1) {
             $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`unit_baru` = '".$data."' limit ".$limit." offset ".$offset."");
         } else {
@@ -232,7 +264,7 @@ class Admin_model extends CI_Model{
     public function get_status_for_penyelia_peropd($data,$kib, $limit, $offset,$form){
 
         if($form == 2){
-            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%' limit ".$limit." offset ".$offset."");
         } else {
             $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`nomor_lokasi_baru` like '%".$data."%' limit ".$limit." offset ".$offset."");
         } 

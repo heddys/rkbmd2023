@@ -48,6 +48,42 @@ class Home_admin extends CI_Controller {
 		$this->load->view('admin/footer_admin');
 	}
 
+	public function setting_kode_barang()
+	{
+		$this->cek_sess();
+
+		$data['page']="Setting Penyelia";
+
+		$data['kodebar']=$this->admin_model->get_kodebar()->result();
+		$data['kodebar_kunci']=$this->admin_model->get_kodebar_kunci()->result();
+		$this->load->view('admin/header_admin',$data);
+		$this->load->view('admin/setting_kodebar_page');
+		$this->load->view('admin/footer_admin');
+	}
+
+	public function kunci_kodebar()
+	{
+		$this->cek_sess();
+		$id = $this->input->post('id');
+		// $id="1.3.2.01.01.01";
+		$result = $this->admin_model->kunci_kode($id);
+
+		// echo $id;
+		// var_dump($result);
+		echo json_encode($result);
+	}
+
+	public function get_list_rincian_kode()
+	{
+		$this->cek_sess();
+		$id = $this->input->post('id');
+		// $id="197902062009011001";
+		$result = $this->admin_model->get_rincian_kode_sub($id)->result();
+
+		// var_dump($result);
+		echo json_encode($result);
+	}
+
 	public function save_opd_penyelia()
 	{
 		$this->cek_sess();
