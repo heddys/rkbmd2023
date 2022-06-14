@@ -244,11 +244,59 @@
               </li> -->
             </ul>
           </li>
+          <li class="nav-header"><strong>STATUS REGISTER</strong></li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Status Register
+                Telah Di Verifikasi
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <!-- <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/1');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.01</p>
+                </a>
+              </li> -->
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/verif_page/2');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.02</p>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/3');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.03</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/4');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.04</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/5');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Tetap 1.3.05</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/index/6');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Aset Lain-Lain 1.5.03</p>
+                </a>
+              </li> -->
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Di Tolak
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
