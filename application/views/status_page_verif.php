@@ -8,7 +8,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                  <center>KARTU INVENTARIS BARANG  - 
+                  <center>LIST DATA YANG TELAH DI VERIFIKASI  - 
                           <?php if ($kib_apa == 1) { 
                                     echo "ASET TETAP TANAH";
                                 } 
@@ -126,13 +126,14 @@
                             <tr>
                             <th><center>No.</center></th>
                             <th><center>Register</center></th>
-                            <th><center>Lokasi</center></th>
+                            <th><centeR>Loaksi</center></th>
                             <th><center>Kode Neraca</center></th>
                             <th><center>Nama Barang</center></th>
-                            <th><center>Spesifikasi Barang</center></th>
-                            <th><center>Tahun Pengadaan</center></th>
+                            <th><center>Merk / Tipe Barang</center></th>
                             <th><center>Nilai Perolehan </center></th>
-                            <th><center>Aksi</center></th>
+                            <th><center>Tahun</center></th>
+                            <th><center>Cetak</center></th>
+                            <th><center>Edit Data</center></th>
                             </tr>
                             </thead>
                         <tbody>
@@ -140,13 +141,12 @@
                                 <tr>
                                     <td><center><?php echo $x++;?></center></td>
                                     <td><center><?php echo $row->register;?></center></td>
-                                <td><center><?php echo $row->lokasi;?></center></td>
+                                    <td><center><?php echo $row->lokasi;?></center></td>
                                     <td><center><?php echo $row->kode64_baru;?></center></td>
                                     <td><center><?php echo $row->nama_barang;?></center></td>
                                     <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
                                     <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                                     <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
-                                    <td>  
                                     <td>  
                                         <form role="form" action="<?php echo site_url();?>/status_form/cetak_form" method="post" target="_blank" >
                                             <center>
