@@ -49,7 +49,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $x=1; foreach ($cetak->result() as $c) {?>
+                            <?php $x=1; foreach ($register as $c) {?>
                                 <tr>
                                     <td><center><?php echo $x?></center></td>
                                     <td><center><?php echo $c->register?></center></td>

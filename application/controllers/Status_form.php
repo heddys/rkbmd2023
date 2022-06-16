@@ -64,6 +64,22 @@ class Status_form extends CI_Controller {
 		
 		$this->cek_sess();
 		$data['page']="List Status Register Yang Terverifikasi";
+		$data['kib_apa']=$id;
+
+				if($id=='1') {
+					$kib = "1.3.1";
+				} 
+				elseif ($id=='2') {
+					$kib = "1.3.2";
+				} elseif ($id=='3') {
+					$kib = "1.3.3";
+				} elseif ($id=='4') {
+					$kib = "1.3.4";
+				} elseif ($id=='5') {
+					$kib = "1.3.5";
+				} else { 
+					$kib = "1.5.3";
+				} 
         if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
 			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
 			$nomor_lokasi=array();
@@ -91,24 +107,8 @@ class Status_form extends CI_Controller {
 			foreach ($get_lokasi_pbp as $key) {
 				$nomor_lokasi[]=$key->nomor_lokasi;
 			}
-			$data['kib_apa']=$id;
-
-				if($id=='1') {
-					$kib = "1.3.1";
-				} 
-				elseif ($id=='2') {
-					$kib = "1.3.2";
-				} elseif ($id=='3') {
-					$kib = "1.3.3";
-				} elseif ($id=='4') {
-					$kib = "1.3.4";
-				} elseif ($id=='5') {
-					$kib = "1.3.5";
-				} else { 
-					$kib = "1.5.3";
-				} 
 				
-			$data['register']=$this->form_model->get_all_register_pagination_Pbp($kib,$nomor_lokasi);
+			$data['register']=$this->form_model->get_verif_register_pagination_Pbp($kib,$nomor_lokasi);
 		
 			
 		// Kondisi Untuk Fungsi User Bukan Pengurus Barang Pembantu.	
@@ -143,22 +143,6 @@ class Status_form extends CI_Controller {
 				'status' => NULL
 			);
 
-			$data['kib_apa']=$id;
-
-				if($id=='1') {
-					$kib = "1.3.1";
-				} 
-				elseif ($id=='2') {
-					$kib = "1.3.2";
-				} elseif ($id=='3') {
-					$kib = "1.3.3";
-				} elseif ($id=='4') {
-					$kib = "1.3.4";
-				} elseif ($id=='5') {
-					$kib = "1.3.5";
-				} else { 
-					$kib = "1.5.3";
-				}
 			
 				//Load Library Pagination
 				$this->load->library('pagination');
