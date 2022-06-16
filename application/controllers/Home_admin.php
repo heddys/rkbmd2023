@@ -52,10 +52,9 @@ class Home_admin extends CI_Controller {
 	{
 		$this->cek_sess();
 
-		$data['page']="Setting Penyelia";
+		$data['page']="Setting Kode Barang";
 
 		$data['kodebar']=$this->admin_model->get_kodebar()->result();
-		$data['kodebar_kunci']=$this->admin_model->get_kodebar_kunci()->result();
 		$this->load->view('admin/header_admin',$data);
 		$this->load->view('admin/setting_kodebar_page');
 		$this->load->view('admin/footer_admin');
@@ -67,6 +66,18 @@ class Home_admin extends CI_Controller {
 		$id = $this->input->post('id');
 		// $id="1.3.2.01.01.01";
 		$result = $this->admin_model->kunci_kode($id);
+
+		// echo $id;
+		// var_dump($result);
+		echo json_encode($result);
+	}
+
+	public function buka_kunci_kodebar()
+	{
+		$this->cek_sess();
+		$id = $this->input->post('id');
+		// $id="1.3.2.01.01.01";
+		$result = $this->admin_model->buka_kode($id);
 
 		// echo $id;
 		// var_dump($result);

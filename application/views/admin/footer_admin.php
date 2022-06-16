@@ -180,6 +180,7 @@
                                 '<td><center>'+x+'</center></td>'+
                                 '<td><center>'+data[i].kode_sub_sub_kelompok+'</center></td>'+
                                 '<td><center>'+data[i].sub_sub_kelompok+'</center></td>'+
+                                '<button class="btn btn-sm btn-danger" title="Kunci Kode Sub Kelompok" onclick="klik_kunci_kode('+data[i].kode_sub_sub_kelompok+')"><i class="fa fa-lock" aria-hidden="true"></i></a>'
                                 '</td></tr>';
                               x++;
                     }
@@ -216,6 +217,46 @@
                     Toast.fire({
                       type: 'success',
                       title: 'Success!! Mengunci Kode Barang.'
+                    })
+                    setTimeout(function(){ location.reload(); }, 2000);
+
+                },
+                error: function() {
+                  const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'center',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+                    Toast.fire({
+                      type: 'error',
+                      title: 'Oops!! Tidak Bisa Mengunci Kode Barang.'
+                    })
+                    setTimeout(function(){ location.reload(); }, 2000);
+                }
+            });
+      }
+
+      function klik_buka_kunci_kode(id) {
+        var id=id;
+        
+        $.ajax({
+              type: 'ajax',
+              method: 'post',
+              url: '<?php echo site_url();?>/home_admin/buka_kunci_kodebar',
+              data:{id:id},
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'center',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+                    Toast.fire({
+                      type: 'success',
+                      title: 'Success!! Membuka Kode Barang.'
                     })
                     setTimeout(function(){ location.reload(); }, 2000);
 

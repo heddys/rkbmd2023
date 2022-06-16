@@ -110,9 +110,8 @@ class Admin_model extends CI_Model{
    {
     $this->db->select('*');
     $this->db->from('kamus_barang');
-    $this->db->where('kunci',NULL);
     $this->db->like('kode_bidang','1.3.2');
-    $this->db->group_by('kode_sub_kelompok');
+    $this->db->order_by('kunci','DESC');
     return $this->db->get();
    }
 
@@ -242,8 +241,15 @@ class Admin_model extends CI_Model{
 
    public function kunci_kode($kodebar)
    {
-    $this->db->where('kode_sub_kelompok', $kodebar);
+    $this->db->where('kode_sub_sub_kelompok', $kodebar);
     return $this->db->update('kamus_barang', array('kunci' => 1));
+        
+   }
+
+   public function buka_kode($kodebar)
+   {
+    $this->db->where('kode_sub_sub_kelompok', $kodebar);
+    return $this->db->update('kamus_barang', array('kunci' => NULL));
         
    }
 
