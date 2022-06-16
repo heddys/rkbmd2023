@@ -150,7 +150,7 @@ class Status_form extends CI_Controller {
 				//Config Pagination
 				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister_sudahdiverif($where,$data_cari,$kib,$form)->num_rows();
 				$config['per_page'] = $limit;
-				$config['base_url'] = site_url('/form_inv/index/2/');
+				$config['base_url'] = site_url('/status_form/verif_page/2/');
 				$config['num_links'] = 3;
 
 				//Pagination Bootstrap Theme
@@ -185,7 +185,7 @@ class Status_form extends CI_Controller {
 				$this->pagination->initialize($config);
 				
 			$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
-			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
+			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form, 'data' => $data_cari, 'lokasi_asli' => $this->session->userdata('no_lokasi_asli'));
 			$data['register']=$this->form_model->get_verif_register_pagination($data_cari,$kib,$config['per_page'],$data['offset'],$form);
         
 		}
