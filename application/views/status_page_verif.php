@@ -8,7 +8,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                  <center>LIST DATA YANG TELAH DI VERIFIKASI  - <?php echo $dummy['lokasi_asli']." - ".$dummy['data']." - ".$dummy['form'];?>
+                  <center>LIST DATA YANG TELAH DI VERIFIKASI  - 
                           <?php if ($kib_apa == 1) { 
                                     echo "ASET TETAP TANAH";
                                 } 
@@ -90,7 +90,7 @@
                         <tbody>
                             <tr>
                             <td width="70%">
-                                <form role="form" action="<?php echo base_url();?>index.php/status_form/verif_page/index/2" method="post">
+                                <form role="form" action="<?php echo base_url();?>index.php/status_form/verif_page/2" method="post">
                                 <div class="col-md-5">
                                     <select class="form-control select2" id="select_lokasi" name="select_lokasi">
                                     <option selected disable="disabled">Cari Berdasarkan Lokasi</option>
@@ -108,7 +108,7 @@
                             <td>
                             </td>
                             <td width="50%">
-                            <form role="form" action="<?php echo base_url();?>index.php/status_form/verif_page/index/2" method="post">
+                            <form role="form" action="<?php echo base_url();?>index.php/status_form/verif_page/2" method="post">
                                 <div class="input-group">
                                     <input type="text"  class="form-control" name="cariregname" placeholder="Cari Berdasarkan Register atau Nama Barang" >
                                     <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
