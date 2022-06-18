@@ -204,8 +204,8 @@ class Home_verifikator extends CI_Controller {
 		$kib="1.3.2";
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		ini_set('memory_limit', '2048M');
 		$data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib);
+		ini_set('memory_limit', '2048M');
 
         $this->load->view('verifikator/h_verif_page',$data);		
 		$this->load->view('verifikator/approved_page');
@@ -261,7 +261,7 @@ class Home_verifikator extends CI_Controller {
 		} else {
 			ini_set('memory_limit', '2048M');
 			$this->form_model->tandai_status_register($register,$tanda); 
-			redirect('home_verifikator/approved_page/');
+			redirect('home_verifikator/verif_page/');
 		}
 
 		
