@@ -193,6 +193,7 @@ class Home_verifikator extends CI_Controller {
 
 	public function approved_page()
 	{
+		
 		$this->cek_sess();	
 		$data['page']="Halaman List Register Approved";
 		$where = array (
@@ -203,6 +204,7 @@ class Home_verifikator extends CI_Controller {
 		$kib="1.3.2";
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		ini_set('memory_limit', '2048M');
 		$data['register']=$this->form_model->get_all_register($where,$nomor_lokasi,$kib);
 
         $this->load->view('verifikator/h_verif_page',$data);		
@@ -235,6 +237,7 @@ class Home_verifikator extends CI_Controller {
 		
 		$register=$_POST['register'];
 		$tanda=$_POST['tanda'];
+		
 		if($tanda == 1) {
 			$penolakan=$_POST['penolakan'];
 			date_default_timezone_set("Asia/Jakarta");	
@@ -250,11 +253,13 @@ class Home_verifikator extends CI_Controller {
 				'status_register' => 1
 			);
 
+			ini_set('memory_limit', '2048M');
 			$this->form_model->tandai_status_register($register,$tanda);
 			$this->form_model->buat_jurnal_tolak($data);
 			redirect('home_verifikator/verif_page/');
 			
 		} else {
+			ini_set('memory_limit', '2048M');
 			$this->form_model->tandai_status_register($register,$tanda); 
 			redirect('home_verifikator/approved_page/');
 		}

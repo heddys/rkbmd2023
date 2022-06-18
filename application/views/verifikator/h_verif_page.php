@@ -6,7 +6,8 @@
   <title>E-RKBMD APP KOTA SURABAYA</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="<?php echo base_url();?>ini_asset/fontawesome-free/css/all.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/ionicons/ionicons.min.css">
   <!-- icon tab -->
