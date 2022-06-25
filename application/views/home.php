@@ -8,7 +8,21 @@
           <h4>Notice!</h4>
           Selamat Datang, Tolong Untuk Mengisi Form Inventarisasi Terlebih Dahulu.
         </div>
-        
+        <div class="row">
+         <div class="col-lg-12 col-12">
+           <!-- small box -->
+           <div class="small-box bg-success">
+             <div class="inner">
+               <center><h3>Form Inventarisasi</h3></center>
+                 <center><p>Pengisian Form Untuk Memverifikasi Atribut Aset</p></center>
+             </div>
+            <div class="icon">
+               <i class="ion ion-stats-bars"></i>
+            </div>
+                <a href="<?php echo site_url('/Form_inv/index/2');?>" class="small-box-footer">Isi Form Inventarisasi <i class="fas fa-arrow-circle-right"></i></a>
+           </div>
+         </div>
+        </div>
           <div class="row">
             <div class="col-md-12">
               <div class="card">
@@ -142,21 +156,7 @@
         <center>
         <?php }?>
       
-        <div class="row">
-         <div class="col-lg-12 col-12">
-           <!-- small box -->
-           <div class="small-box bg-success">
-             <div class="inner">
-               <center><h3>Form Inventarisasi</h3></center>
-                 <center><p>Pengisian Form Untuk Memverifikasi Atribut Aset</p></center>
-             </div>
-            <div class="icon">
-               <i class="ion ion-stats-bars"></i>
-            </div>
-                <a href="<?php echo site_url('/Form_inv/index/2');?>" class="small-box-footer">Isi Form Inventarisasi <i class="fas fa-arrow-circle-right"></i></a>
-           </div>
-         </div>
-        </div>
+        
             
             <!-- ./col -->
           </div>
