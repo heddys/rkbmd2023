@@ -93,8 +93,8 @@
                       <td width="70%">
                         <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/2" method="post">
                           <div class="col-md-5">
-                            <select class="form-control select2" id="select_lokasi" name="select_lokasi">
-                              <option selected disable="disabled">Cari Berdasarkan Lokasi</option>
+                          <select class="form-control select2" id="select_lokasi" name="select_lokasi" required="required">
+                                    <option selected value="">Cari Berdasarkan Lokasi</option>
                               <option value="<?php echo $this->session->userdata('no_lokasi_asli');?>">Semua Lokasi</option>
                                 <?php $x=1; foreach ($lokasi->result() as $row) {?>
                                 <option value="<?php echo $row->nomor_lokasi;?>"><?php echo $row->lokasi;?></option>
@@ -111,7 +111,7 @@
                       <td width="50%">
                       <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/2" method="post">
                           <div class="input-group">
-                            <input type="text"  class="form-control" name="cariregname" placeholder="Cari Berdasarkan Register atau Nama Barang" >
+                            <input type="text"  class="form-control" name="cariregname" placeholder="Cari Berdasarkan Register atau Nama Barang" required>
                             <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
                           </div>
                       </form>
