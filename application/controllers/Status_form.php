@@ -126,7 +126,8 @@ class Status_form extends CI_Controller {
 					$form = 1;
 					$data_cari=$this->session->userdata('data');
 				} else {
-					$form = 2;
+					$data_cari=$this->session->userdata('no_lokasi_asli');
+					$form = 0;
 				}
 			}
 
