@@ -96,7 +96,7 @@ class Status_form extends CI_Controller {
 			$limit=$_POST['limit'];
 		} 
 
-		if($this->session->userdata('limit')){
+		if($this->session->userdata('limit')){	
 			$limit=$this->session->userdata('limit');
 		} else {$limit=10;}
 
@@ -185,7 +185,7 @@ class Status_form extends CI_Controller {
 				$this->pagination->initialize($config);
 				
 			$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
-			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form, 'data' => $data_cari, 'lokasi_asli' => $this->session->userdata('no_lokasi_asli'), 'offset' => $data['offset']);
+			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form, 'data' => $data_cari, 'lokasi_asli' => $this->session->userdata('no_lokasi_asli'), 'offset' => $data['offset'], 'status' => $this->session->userdata('status'));
 			$data['register']=$this->form_model->get_verif_register_pagination($data_cari,$kib,$config['per_page'],$data['offset'],$form);
         
 		}
