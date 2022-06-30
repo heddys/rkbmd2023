@@ -49,6 +49,12 @@
                 return $query;
             }
 
+            public function get_keberadaan_barang_update($register)
+            {
+                $query = $this->db->query("SELECT * FROM register_isi where register = '".$register."' ORDER BY created_date desc, created_time desc limit 1");
+                return $query;
+            }
+
             public function get_all_register($where,$lokasi,$kib){
                 if ($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
                     $query=$this->db->query("SELECT
@@ -568,7 +574,7 @@
                 return $this->db->get_where('kamus_pengurus_barang_pembantu',array('nip_pbp' => $nip));
             }
 
-            public function get_rekap_per_puskesmas($lokasi)
+            public function get_rekap_per_uptd($lokasi)
             {
                 $query=$this->db->query(
                         "SELECT
@@ -591,7 +597,8 @@
                             ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
                     FROM
                         data_kib a
-                    INNER JOIN kamus_pengurus_barang_pembantu b ON a.nomor_lokasi = b.nomor_lokasi 
+                    INNER JOIN kamus_pengurus_barang_pembantu b ON a.nomor_lokasi = b.nomor_lokasi
+                    WHERE b.nomor_lokasi like '%".$lokasi."%'
                     GROUP BY
                         b.nip_pbp
                     ORDER BY

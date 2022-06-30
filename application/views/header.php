@@ -393,6 +393,14 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan');?>" class="nav-link" target="_blank">
+                  <i class="nav-icon fa fa-file"></i>
+                  <p>
+                      Barang Tidak Diketemukan
+                  </p>
+                </a>
+              </li>
             </ul>
           </li>
          <li class="nav-header"><strong>KAMUS</strong></li>

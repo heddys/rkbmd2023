@@ -125,14 +125,65 @@
                         <td>
                           KANTOR DINAS KESEHATAN
                         </td>
-                        <td><center><?php echo number_format($only_dinkes->total);?></center></td>
-                        <td><center><?php echo number_format($only_dinkes->verif);?></center></td>
-                        <td><center><?php echo number_format($only_dinkes->proses);?></center></td>
-                        <td><center><?php echo number_format($only_dinkes->tolak);?></center></td>
-                        <td><center><?php echo number_format($only_dinkes->sisa);?></center></td>
-                        <td><center><?php echo round((float)$only_dinkes->persentase,3) . '%';?></center></td>
+                        <td><center><?php echo number_format($only_opd->total);?></center></td>
+                        <td><center><?php echo number_format($only_opd->verif);?></center></td>
+                        <td><center><?php echo number_format($only_opd->proses);?></center></td>
+                        <td><center><?php echo number_format($only_opd->tolak);?></center></td>
+                        <td><center><?php echo number_format($only_opd->sisa);?></center></td>
+                        <td><center><?php echo round((float)$only_opd->persentase,3) . '%';?></center></td>
                       </tr>
-                      <?php foreach ($rekap_puskesmas as $row) { ?>
+                      <?php foreach ($rekap_upt as $row) { ?>
+                      <tr>
+                        <td>
+                          <?php echo strtoupper($row->nama_lokasi);?>
+                        </td>
+                        <td><center><?php echo number_format($row->total);?></center></td>
+                        <td><center><?php echo number_format($row->verif);?></center></td>
+                        <td><center><?php echo number_format($row->proses);?></center></td>
+                        <td><center><?php echo number_format($row->tolak);?></center></td>
+                        <td><center><?php echo number_format($row->sisa);?></center></td>
+                        <td><center><?php echo round((float)$row->persentase,3) . '%';?></center></td>
+                      </tr>
+                      <?php } ?> 
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+                      </div>
+            </div>
+          </div>
+        <center>
+        <?php }?>
+        <?php if ($this->session->userdata('nip') == "197605082010011002") {?>
+          <div class="row">
+            <div class="col-lg-12 col-12">
+            <div class="card card-info">
+          <div class="card">
+              <div class="card-header no-border ">
+                <h3 class="card-title">Rekapan Per Puskesmas</h3>
+                <div class="card-tools">
+                  <!-- <a href="<?php echo site_url('home_penyelia/export_excel_rekap_penyelia')?>" class="btn btn-tool btn-sm" title="Download Rekapan"> -->
+                    <i class="fas fa-download"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="card-body p-3">
+                <div style="overflow-x:auto;">
+                  <table class="table table-striped table-hover responsive" id="tabel-home-dinkes">
+                    <thead class="thead-dark">
+                    <tr>
+                      <th><center>Perangkat Daerah<center></th>
+                      <th>Total Register</th>
+                      <th>Register Telah Di Verif</th>
+                      <th>Register Masih Proses Verif</th>
+                      <th>Register Di Tolak</th>
+                      <th>Register Belum Terjamah</th>
+                      <th>Persentase</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($rekap_upt as $row) { ?>
                       <tr>
                         <td>
                           <?php echo strtoupper($row->nama_lokasi);?>
