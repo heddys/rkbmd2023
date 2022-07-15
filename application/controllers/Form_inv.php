@@ -525,6 +525,7 @@ class Form_inv extends CI_Controller {
 
 	public function update_isi_form_peralatan_mesin()
 	{
+	
 		$register=$_POST['register'];
 		$radio_register=$_POST['radio_kode_reg'];
 
@@ -702,7 +703,7 @@ class Form_inv extends CI_Controller {
 			'keterangan' => $keterangan,
 			'created_date' => $updated_date,
 			'created_time' => $updated_time
-			);
+		);
 	
 			$data_is_form = array(
 				'is_register' => $register,
