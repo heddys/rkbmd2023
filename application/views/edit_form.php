@@ -133,7 +133,7 @@
                                             <input type="text" class="form-control" id="input_alamat" name="lokasi" value="<?php echo $data_register->nomor_lokasi?>" readonly="true" placeholder="">
                                             <input type="hidden" name="no_lokasi_awal" value="<?php echo $data_register->nomor_lokasi;?>">
                                             <div class="input-group-append">
-                                                <label class="input-group-text" id="label_lokasi"><?php echo $data_register->lokasi?></label>
+                                                <label class="input-group-text" id="label_lokasi"><?php echo $data_register->nama_lokasi?></label>
                                             </div>    
                                     </div>
                             </div>
@@ -678,6 +678,8 @@
                                         <center><strong><p>Apakah Anda Yakin Ingin Menyimpan Data Tersebut ?</p></strong></center>
                                     </div>
                                     <div class="modal-footer justify-content-between">
+                                        <input type="hidden" value="<?php echo $data_register->id;?>" name="id_isi_register">
+                                        <input type="hidden" value="<?php echo $data_is_register->id;?>" name="id_status_register">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
                                         <button type="submit" class="btn btn-success">Simpan Data</button>
                                         <input type="hidden" name="id_jurnal_penolakan" value="<?php echo $penolakan->id?>">

@@ -287,7 +287,7 @@
                 // $this->db->order_by('created_time', 'DESC');
                 // return $this->db->get();
 
-                $query = $this->db->query("SELECT a.*,b.* FROM `register_isi` a join kamus_lokasi b on a.lokasi=b.nomor_lokasi where a.register = '".$register."' order by created_date DESC, created_time DESC");
+                $query = $this->db->query("SELECT a.*,b.kode_binprog,b.nomor_lokasi,b.unit,b.lokasi as nama_lokasi FROM `register_isi` a join kamus_lokasi b on a.lokasi=b.nomor_lokasi where a.register = '".$register."' order by created_date DESC, created_time DESC");
                 return $query;
             }
 
@@ -328,12 +328,23 @@
             public function save_isi_form($data)
             {
                 $this->db->insert('register_isi', $data);
-                $this->db->error(); 
+                return $this->db->insert_id();
+            }
+
+            public function save_isi_form_history($data)
+            {
+                $this->db->insert('register_isi_history', $data);
             }
 
             public function save_status_register($data)
             {
                 $this->db->insert('register_status',$data);
+                return $this->db->insert_id();
+            }
+
+            public function save_status_register_history($data)
+            {
+                $this->db->insert('register_status_history',$data);
                 $this->db->error();
             }
 
@@ -341,6 +352,20 @@
             {
                 $this->db->where('register', $register);
                 $this->db->update('data_kib', array('status' => 1));
+                $this->db->error();
+            }
+
+            public function update_isi_form ($data,$id){
+
+                $this->db->where('id', $id);
+                $this->db->update('register_isi', $data);
+                $this->db->error();
+            }
+
+            public function update_status_register ($data,$id){
+
+                $this->db->where('id', $id);
+                $this->db->update('register_status', $data);
                 $this->db->error();
             }
 

@@ -511,10 +511,27 @@ class Form_inv extends CI_Controller {
 		// var_dump($data_is_form);
 
 		//Save Di tabel register_isi
-		$this->form_model->save_isi_form($data_form_isian);
+		$id_register_isi=$this->form_model->save_isi_form($data_form_isian);
+
+
+		$data_form_isian += array(
+			'id_register_isi' => $id_register_isi
+		);
+
+		//Save Di Tabel register_isi_history
+		$this->form_model->save_isi_form_history($data_form_isian);
+
 
 		//Save Di tabel register status
-		$this->form_model->save_status_register($data_is_form);
+		$id_register_status=$this->form_model->save_status_register($data_is_form);
+
+		$data_is_form += array (
+
+			'id_status_register' => $id_register_status
+
+		);
+
+		$this->form_model->save_status_register_history($data_is_form);
 
 		//Membuat tanda di data kib
 		$this->form_model->tandai_kib($register);
@@ -523,11 +540,14 @@ class Form_inv extends CI_Controller {
 
 	}
 
+	
+
 	public function update_isi_form_peralatan_mesin()
 	{
 	
 		$register=$_POST['register'];
-		$radio_register=$_POST['radio_kode_reg'];
+		$id_isi_register=$_POST['id_isi_register'];
+		$id_status_register=$_POST['id_status_register'];
 
 		$kode_barang=$_POST['kode_barang'];
 		$radio_kode_bar=$_POST['radio_kode_bar'];
@@ -627,7 +647,7 @@ class Form_inv extends CI_Controller {
 		$data = array(); 
         $errorUploadType = $statusMsg = ''; 
          
-            // If files are selected to upload 
+            //If files are selected to upload 
             if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0){ 
                 $filesCount = count($_FILES['files']['name']); 
                 for($i = 0; $i < $filesCount; $i++){
@@ -677,7 +697,7 @@ class Form_inv extends CI_Controller {
                 } 
             }else{ 
                 $statusMsg = 'Please select image files to upload.'; 
-            }
+        	}
 
 		$data_form_isian = array(
 			'register' => $register,
@@ -702,7 +722,7 @@ class Form_inv extends CI_Controller {
 			'Lainnya' => $lainnya,
 			'keterangan' => $keterangan,
 			'created_date' => $updated_date,
-			'created_time' => $updated_time
+			'created_time' => $updated_time,
 		);
 	
 			$data_is_form = array(
@@ -725,7 +745,7 @@ class Form_inv extends CI_Controller {
 				'is_penggunaan_barang' =>$radio_pengguna,
 				'is_catat_ganda' => $radio_ganda,
 				'created_date' => $updated_date,
-				'created_time' => $updated_time
+				'created_time' => $updated_time,
 			);
 		
 		// var_dump($data_form_isian);
@@ -733,10 +753,24 @@ class Form_inv extends CI_Controller {
 		// var_dump($data_is_form);
 
 		//Save Di tabel register_isi
-		$this->form_model->save_isi_form($data_form_isian);
+		$this->form_model->update_isi_form($data_form_isian,$id_isi_register);
+
+		$data_form_isian += array(
+			'id_register_isi' => $id_isi_register
+		);
+
+		//Save Di tabel register_isi
+		$this->form_model->save_isi_form_history($data_form_isian);
 
 		//Save Di tabel register status
-		$this->form_model->save_status_register($data_is_form);
+		$this->form_model->update_status_register($data_is_form,$id_status_register);
+
+		$data_is_form += array(
+			'id_status_register' => $id_status_register
+		);
+
+		//Save Di tabel register status
+		$this->form_model->save_status_register_history($data_is_form);
 
 		//Membuat tanda di data kib
 		$this->form_model->tandai_kib($register);
