@@ -1222,7 +1222,7 @@ class Form_inv extends CI_Controller {
         $objWriter->save('php://output');    
 	}
 
-	public function export_excel_perubahan_lokasi_kibpm_user() {
+	public function export_excel_lokasi_kibpm_user() {
 
 		$this->cek_sess();
 		// // Read an Excel File
@@ -1244,130 +1244,11 @@ class Form_inv extends CI_Controller {
 		 // Merge Cells
 		$skpd=$this->session->userdata('skpd');
         $objPHPExcel->getActiveSheet()->mergeCells('A1:N1');
-        $objPHPExcel->getActiveSheet()->setCellValue('A1', "DATA KONDISI BARANG INVENTARISASI KIB - ".$skpd);
-        
-
-        // Create a first sheet
-        $objPHPExcel->setActiveSheetIndex(0);
-        $objPHPExcel->getActiveSheet()->setCellValue('A3', "No.");
-        $objPHPExcel->getActiveSheet()->setCellValue('B3', "Nomor Lokasi");
-        $objPHPExcel->getActiveSheet()->setCellValue('C3', "OPD");
-        $objPHPExcel->getActiveSheet()->setCellValue('D3', "Lokasi");
-        $objPHPExcel->getActiveSheet()->setCellValue('E3', "Kode Register");
-        $objPHPExcel->getActiveSheet()->setCellValue('F3', "Kode Barang");
-        $objPHPExcel->getActiveSheet()->setCellValue('G3', "Nama Spesifikasi Barang");
-        $objPHPExcel->getActiveSheet()->setCellValue('H3', "Merek/Tipe");
-        $objPHPExcel->getActiveSheet()->setCellValue('I3', "Jumlah");
-        $objPHPExcel->getActiveSheet()->setCellValue('J3', "Satuan Barang");
-        $objPHPExcel->getActiveSheet()->setCellValue('K3', "Nilai Perolehan Barang (Rp.)");
-        $objPHPExcel->getActiveSheet()->setCellValue('L3', "Kondisi Fisik Sebelum Inventarisasi");
-        $objPHPExcel->getActiveSheet()->setCellValue('M3', "Kondisi Fisik Sesudah Inventarisasi");
-        $objPHPExcel->getActiveSheet()->setCellValue('N3', "Keterangan");
+        $objPHPExcel->getActiveSheet()->setCellValue('A1', "DATA PERUBAHAN LOKASI BARANG INVENTARISASI KIB - ".$skpd);
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A3:N3')->getFont()->setBold( true );
-		
-        // Hide F and G column
-        // $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setVisible(false);
-        // $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setVisible(false);
 
-        // Set auto size
-        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(50);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(50);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(50);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(50);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('L')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('M')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('N')->setWidth(50);
-		
-        // Add data
-
-		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,'1.3.2')->result();
-		$data_register=array();
-		$data_register_updated=array();
-		foreach ($get_data_register as $key) {
-			$data_register[]=array(
-				'no_lokasi' => $key->nomor_lokasi,
-				'register' =>$key->register,
-				'opd' => $key->unit,
-				'lokasi' => $key->lokasi,
-				'kondisi_awal' => $key->kondisi,
-				'kode108' => $key->kode108_baru,
-				'nama_barang' => $key->nama_barang,
-				'merk' => $key->merk_alamat,
-				'tipe' => $key->tipe,
-				'satuan' => $key->satuan,
-				'harga' => $key->harga_baru,
-			);
-		}
-
-		
-		foreach ($data_register as $row) {
-			$data_updated=$this->form_model->get_kondisi_update($row['register'])->row();
-			$data_register_updated[]=array(
-				'no_lokasi' => $row['no_lokasi'],
-				'register' =>$row['register'],
-				'opd' => $row['opd'],
-				'lokasi' => $row['lokasi'],
-				'kondisi_awal' => $row['kondisi_awal'],
-				'kondisi_baru' => $data_updated->kondisi_barang,
-				'kode108' => $row['kode108'],
-				'nama_barang' => $row['nama_barang'],
-				'merk' => $row['merk'],
-				'tipe' => $row['tipe'],
-				'satuan' => $row['satuan'],
-				'harga' => $row['harga'],
-				'keterangan' => $data_updated->keterangan
-			);
-		}
-		$i=4;
-		$no=1;
-
-		
-        foreach ($data_register_updated as $kib) 
-        {
-			$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, $kib['no_lokasi']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, $kib['opd']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, $kib['lokasi']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, $kib['register']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, $kib['kode108']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, $kib['nama_barang']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $kib['merk']." / ".$kib['tipe']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, "1");
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $i, $kib['satuan']);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K' . $i, to_rp2($kib['harga']));
-
-			if($kib['kondisi_awal'] == "B") {
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('L' . $i, "Baik");
-			} elseif ($kib['kondisi_awal'] == "KB") {
-					$objPHPExcel->setActiveSheetIndex(0)->setCellValue('L' . $i, "Kurang Baik");
-			} else {
-						$objPHPExcel->setActiveSheetIndex(0)->setCellValue('L' . $i, "Rusak Berat");
-				}
-
-            if($kib['kondisi_baru'] == "B") {
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('M' . $i, "Baik");
-			} elseif ($kib['kondisi_baru'] == "KB") {
-					$objPHPExcel->setActiveSheetIndex(0)->setCellValue('M' . $i, "Kurang Baik");
-			} else {
-					$objPHPExcel->setActiveSheetIndex(0)->setCellValue('M' . $i, "Rusak Berat");
-				}
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('N' . $i, $kib['keterangan']);
-
-			$i++;
-			$no++;
-        }
-
-        // Set Font Color, Font Style and Font Alignment
-        $stil=array(
+		 // Set Font Color, Font Style and Font Alignment
+		 $stil=array(
             'borders' => array(
               'allborders' => array(
                 'style' => PHPExcel_Style_Border::BORDER_THIN,
@@ -1378,15 +1259,110 @@ class Form_inv extends CI_Controller {
               'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
             )
         );
+
+        // Create a first sheet
+        $objPHPExcel->setActiveSheetIndex(0);
+        $objPHPExcel->getActiveSheet()->setCellValue('A3', "No.");
+        $objPHPExcel->getActiveSheet()->setCellValue('B3', "Kode Register");
+        $objPHPExcel->getActiveSheet()->setCellValue('C3', "Perubahan Lokasi");
+        $objPHPExcel->getActiveSheet()->setCellValue('I3', "Kode Barang");
+        $objPHPExcel->getActiveSheet()->setCellValue('J3', "Nama Spesifikasi Barang");
+        $objPHPExcel->getActiveSheet()->setCellValue('K3', "Merek/Tipe");
+        $objPHPExcel->getActiveSheet()->setCellValue('L3', "Jumlah");
+        $objPHPExcel->getActiveSheet()->setCellValue('M3', "Satuan Barang");
+        $objPHPExcel->getActiveSheet()->setCellValue('N3', "Nilai Perolehan Barang (Rp.)");
+        $objPHPExcel->getActiveSheet()->setCellValue('O3', "Keterangan");
+
+
+		$objPHPExcel->getActiveSheet()->setCellValue('C4', "Nomor Lokasi Lama");
+		$objPHPExcel->getActiveSheet()->setCellValue('D4', "OPD Lama");
+		$objPHPExcel->getActiveSheet()->setCellValue('E4', "Lokasi Lama");
+		$objPHPExcel->getActiveSheet()->setCellValue('F4', "Nomor Lokasi Baru");
+		$objPHPExcel->getActiveSheet()->setCellValue('G4', "OPD Baru");
+		$objPHPExcel->getActiveSheet()->setCellValue('H4', "Lokasi Baru");
+		
+		$objPHPExcel->getActiveSheet()->getStyle('A3:O4')->getFont()->setBold( true );
+		$objPHPExcel->getActiveSheet()->mergeCells('C3:H3');
+		$objPHPExcel->getActiveSheet()->mergeCells('A3:A4');
+		$objPHPExcel->getActiveSheet()->mergeCells('B3:B4');
+		$objPHPExcel->getActiveSheet()->mergeCells('I3:I4');
+		$objPHPExcel->getActiveSheet()->mergeCells('J3:J4');
+		$objPHPExcel->getActiveSheet()->mergeCells('K3:K4');
+		$objPHPExcel->getActiveSheet()->mergeCells('L3:L4');
+		$objPHPExcel->getActiveSheet()->mergeCells('M3:M4');
+		$objPHPExcel->getActiveSheet()->mergeCells('N3:N4');
+		$objPHPExcel->getActiveSheet()->mergeCells('O3:O4');
+		$objPHPExcel->getActiveSheet()->getStyle('B3:G3')->applyFromArray($stil);
+		
+        // Hide F and G column
+        // $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setVisible(false);
+        // $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setVisible(false);
+
+        // Set auto size
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('L')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('M')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('N')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('O')->setAutoSize(true);
+		
+        //Add data
+
+		function to_rp3($val)
+		{
+    		return number_format($val,2,',','.');
+		}
+		
+
+
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$get_data_register=$this->form_model->get_register_lokasi_baru($nomor_lokasi,'1.3.2')->result();
+
+		$i=5;
+		$no=1;
+
+		
+        foreach ($get_data_register as $kib) 
+        {
+			$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, $kib->register);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, $kib->nomor_lokasi);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, $kib->opd_lama);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, $kib->lokasi_lama);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, $kib->lokasi);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, $kib->opd_baru);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $kib->lokasi_baru);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, $kib->kode_barang);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $i, $kib->nama_baru);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K' . $i, $kib->spesifikasi_barang_merk);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('L' . $i, "1");
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('M' . $i, $kib->satuan);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('N' . $i, to_rp3($kib->harga_baru));
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('O' . $i, $kib->keterangan);
+
+			$i++;
+			$no++;
+        }
+
+       
 		$i=$i-1;
-        $objPHPExcel->getActiveSheet()->getStyle('A3:N3')->applyFromArray($stil);
-		$objPHPExcel->getActiveSheet()->getStyle('A1:N1')->applyFromArray($stil);
-		$objPHPExcel->getActiveSheet()->getStyle('A4:N'.$i)->applyFromArray($stil);
+        $objPHPExcel->getActiveSheet()->getStyle('A3:O4')->applyFromArray($stil);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:O1')->applyFromArray($stil);
+		$objPHPExcel->getActiveSheet()->getStyle('A4:O'.$i)->applyFromArray($stil);
 		
 	
         
         // Save Excel xls File
-        $filename="Data Kondisi KIB - ".$skpd." - ".date('Ymd').".xls";
+        $filename="Data Perubahan Lokasi KIB - ".$skpd." - ".date('Ymd').".xls";
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
         ob_end_clean();
 		header('Last-Modified:'. gmdate("D, d M Y H:i:s").'GMT');

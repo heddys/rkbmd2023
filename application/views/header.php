@@ -374,6 +374,14 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('form_inv/export_excel_lokasi_kibpm_user');?>" class="nav-link">
+                  <i class="nav-icon fa fa-file"></i>
+                  <p>
+                      Perubahan Lokasi 1.3.2
+                  </p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
