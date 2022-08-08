@@ -150,7 +150,7 @@ class Status_form extends CI_Controller {
 				//Config Pagination
 				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister_tolak_proses($where,$data_cari,$kib,$form)->num_rows();
 				$config['per_page'] = $limit;
-				$config['base_url'] = site_url('/status_form/verif_page/2/');
+				$config['base_url'] = site_url('/status_form/index/2/');
 				$config['num_links'] = 3;
 
 				//Pagination Bootstrap Theme

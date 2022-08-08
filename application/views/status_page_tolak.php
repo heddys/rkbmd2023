@@ -107,7 +107,7 @@
                             </thead>
                         <tbody>
                             <?php $x=$offset+1; foreach ($register as $row) {?>
-                                <tr>
+                                <?php if ($row->status == 3) {echo "<tr class='table-danger'>";} else {echo "<tr>";}?>
                                     <td><center><?php echo $x++;?></center></td>
                                     <td><center><?php echo $row->register;?></center></td>
                                     <td><center><?php echo $row->lokasi;?></center></td>
