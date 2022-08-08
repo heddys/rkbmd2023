@@ -169,7 +169,7 @@
                         </table>
                         <br>
                         <b><u>Silahkan Pilih Banyak Data Per Halaman : </b></u>
-                        <form role="form" action="<?php echo site_url();?>/form_inv/index/2" method="post">
+                        <form role="form" action="<?php echo site_url();?>/status_form/verif_page/2" method="post">
                         <select class="form-control select_limit" name="limit" id="limit">
                             <option value="10">10</option>
                             <option value="20">20</option>
