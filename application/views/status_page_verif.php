@@ -126,7 +126,8 @@
                             <tr>
                             <th><center>No.</center></th>
                             <th><center>Register</center></th>
-                            <th><centeR>Loaksi</center></th>
+                            <th><centeR>Loaksi Semula</center></th>
+                            <th><centeR>Loaksi Baru</center></th>
                             <th><center>Kode Neraca</center></th>
                             <th><center>Nama Barang</center></th>
                             <th><center>Merk / Tipe Barang</center></th>
@@ -141,7 +142,8 @@
                                 <tr>
                                     <td><center><?php echo $x++;?></center></td>
                                     <td><center><?php echo $row->register;?></center></td>
-                                    <td><center><?php echo $row->lokasi;?></center></td>
+                                    <td><center><?php echo $row->lokasi_awal;?></center></td>
+                                    <td><center><?php echo $row->lokasi_baru;?></center></td>
                                     <td><center><?php echo $row->kode64_baru;?></center></td>
                                     <td><center><?php echo $row->nama_barang;?></center></td>
                                     <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
