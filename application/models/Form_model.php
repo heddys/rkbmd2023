@@ -29,6 +29,13 @@
                 return $query;
             }
 
+            public function get_kib_dikerjakan_excel($lokasi,$kib)
+            {
+                $query = $this->db->query("SELECT a.*,b.lokasi FROM register_isi a inner join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi where a.ekstrakomtabel IS NULL and a.nomor_lokasi_baru like '".$lokasi."%' and a.kode108_baru like '%".$kib."%' order by a.status DESC");
+
+                return $query;
+            }
+
             public function get_kib_for_excel_pbp($lokasi,$kib)
             {
                 $query = $this->db->query("SELECT a.*,b.lokasi FROM data_kib a inner join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi where a.ekstrakomtabel IS NULL and a.nomor_lokasi_baru like '".$lokasi."%' and a.kode108_baru like '%".$kib."%' order by a.status DESC");
