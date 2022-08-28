@@ -489,6 +489,26 @@ class Status_form extends CI_Controller {
     }
 
 
+	public function cetak_perubahan_data_barang()
+    {
+        $this->cek_sess();
+        $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+        $get_data_pb=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
+		
+		$data['data_register']=$this->form_model->get_perubahan_data_verif($nomor_lokasi,'1.3.2')->result();
+		
+
+		// 
+        // $this->pdf->load_view('laporan/cetak_form_kondisi_barang',$data);
+		// $this->pdf->set_paper("legal", "landscape");
+		// $this->pdf->render();
+        // ob_end_clean();
+		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
+		$data['data_pb']=$get_data_pb;
+		$this->load->view('laporan/cetak_perubahan_data_barang',$data);		
+    }
+
+
 
 }
 ?>

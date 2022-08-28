@@ -43,6 +43,13 @@
                 return $query;
             }
 
+            public function get_perubahan_data_verif($nomor_lokasi,$kib)
+            {
+                $query = $this->db->query("SELECT a.kode108_baru,a.nama_barang as name_awal,a.register,a.merk_alamat,a.tipe as tipe_awal,a.satuan,a.harga_baru,b.kode_barang,b.nama_barang as name_baru,b.spesifikasi_barang_merk,b.register,b.tipe as tipe_baru,b.keterangan,b.lainnya,c.unit,c.lokasi from data_kib a inner join register_isi b on a.register=b.register INNER JOIN kamus_lokasi c on a.nomor_lokasi=c.nomor_lokasi where a.nomor_lokasi like '%".$nomor_lokasi."%' and a.kode108_baru like '%".$kib."%' and a.status = 2 GROUP BY b.register");
+
+                return $query;
+            }
+
             public function get_register_sudah_verf($lokasi,$kib)
             {
                 $query = $this->db->query("SELECT a.*,b.unit,b.lokasi from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.unit_baru like '%".$lokasi."%' and a.kode108_baru like '%".$kib."%' and a.status = '2'");

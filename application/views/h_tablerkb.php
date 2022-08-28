@@ -372,6 +372,13 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang');?>" class="nav-link" target="_blank">
+                  <i class="nav-icon fa fa-file"></i>
+                  <p>
+                      Perubahan Data Barang
+                  </p>
+                </a>
+              <li class="nav-item">
                 <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan');?>" class="nav-link" target="_blank">
                   <i class="nav-icon fa fa-file"></i>
                   <p>
