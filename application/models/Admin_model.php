@@ -380,6 +380,37 @@ class Admin_model extends CI_Model{
                 $this->db->where_not_in('fungsi', array('Penyelia','Admin'));
                 return $this->db->get();
     }
+
+
+    public function get_perubahan_fisik_barang($kib)
+    {
+        $query = $this->db->query("SELECT a.*,b.unit,b.lokasi,c.kondisi_barang,c.register,d.is_kondisi_barang,d.is_register from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join register_isi c on a.register=c.register inner join register_status d on a.register=d.is_register where a.kode108_baru like '%".$kib."%' and a.status = '2' and d.is_kondisi_barang = '1' group by c.register,d.is_register");
+        
+        return $query;
+    }
+
+    public function get_data_tidak_ditemukan($kib)
+    {
+        $query = $this->db->query("SELECT a.*,b.unit,b.lokasi,c.kondisi_barang,c.register,c.keterangan as ket_baru from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join register_isi c on a.register=c.register where a.kode108_baru like '%".$kib."%' and a.status = '2' and c.keberadaan_barang = 'Tidak Diketemukan' group by c.register");
+        
+        return $query;
+    }
+
+    public function get_perubahan_data_barang($kib)
+    {
+        $query = $this->db->query("SELECT a.kode108_baru,a.nama_barang as name_awal,a.register,a.merk_alamat,a.tipe as tipe_awal,a.satuan,a.harga_baru,b.kode_barang,b.nama_barang as name_baru,b.spesifikasi_barang_merk,b.register,b.tipe as tipe_baru,b.keterangan,b.lainnya,c.unit,c.lokasi from data_kib a inner join register_isi b on a.register=b.register INNER JOIN kamus_lokasi c on a.nomor_lokasi=c.nomor_lokasi inner join register_status d on a.register=d.is_register where a.kode108_baru like '%".$kib."%' and a.status = 2 and (d.is_kode_barang=1 or d.is_nama_barang=1 or d.is_spesifikasi_barang_merk=1 or d.is_tipe=1) GROUP BY b.register");
+
+        return $query;
+    
+    }
+    public function get_data_hilang($kib)
+    {
+        $query = $this->db->query("SELECT a.*,b.unit,b.lokasi,c.kondisi_barang,c.register,c.keterangan as ket_baru from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join register_isi c on a.register=c.register where a.kode108_baru like '%".$kib."%' and a.status = '2' and c.keberadaan_barang = 'Hilang' group by c.register");
+
+        return $query;
+    }
+    
+    
 }
 
 ?>

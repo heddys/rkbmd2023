@@ -266,6 +266,52 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-header"><strong>MENU LAPORAN</strong></li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fa fa-cogs" aria-hidden="true"></i>
+              <p>
+             Laporan Hasil Inventarisasi  
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/laporan_perubahan_data_barang');?>" class="nav-link" target="_blank">
+                <i class="nav-icon fa fa-file"></i>
+                  <p>
+                    Perubahan Data Barang
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/laporan_perubahan_kondisi_fisik_barang');?>" class="nav-link" target="_blank">
+                <i class="nav-icon fa fa-file"></i>
+                  <p>
+                    Perubahan Fisik Barang
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/laporan_barang_tidak_ditemukan');?>" class="nav-link" target="_blank">
+                <i class="nav-icon fa fa-file"></i>
+                  <p>
+                    Barang Tidak Diketemukan
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/laporan_barang_hilang');?>" class="nav-link" target="_blank">
+                <i class="nav-icon fa fa-file"></i>
+                  <p>
+                    Barang Hilang
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
           
          <!-- <li class="nav-item has-treeview">
             <a href="<?php echo site_url('home/desk_komponen');?>" class="nav-link">

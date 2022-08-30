@@ -45,7 +45,7 @@
 
             public function get_perubahan_data_verif($nomor_lokasi,$kib)
             {
-                $query = $this->db->query("SELECT a.kode108_baru,a.nama_barang as name_awal,a.register,a.merk_alamat,a.tipe as tipe_awal,a.satuan,a.harga_baru,b.kode_barang,b.nama_barang as name_baru,b.spesifikasi_barang_merk,b.register,b.tipe as tipe_baru,b.keterangan,b.lainnya,c.unit,c.lokasi from data_kib a inner join register_isi b on a.register=b.register INNER JOIN kamus_lokasi c on a.nomor_lokasi=c.nomor_lokasi where a.nomor_lokasi like '%".$nomor_lokasi."%' and a.kode108_baru like '%".$kib."%' and a.status = 2 GROUP BY b.register");
+                $query = $this->db->query("SELECT a.kode108_baru,a.nama_barang as name_awal,a.register,a.merk_alamat,a.tipe as tipe_awal,a.satuan,a.harga_baru,b.kode_barang,b.nama_barang as name_baru,b.spesifikasi_barang_merk,b.register,b.tipe as tipe_baru,b.keterangan,b.lainnya,c.unit,c.lokasi from data_kib a inner join register_isi b on a.register=b.register INNER JOIN kamus_lokasi c on a.nomor_lokasi=c.nomor_lokasi inner join register_status d on a.register=d.is_register where a.nomor_lokasi like '%".$nomor_lokasi."%' and a.kode108_baru like '%".$kib."%' and a.status = 2 and (d.is_kode_barang=1 or d.is_nama_barang=1 or d.is_spesifikasi_barang_merk=1 or d.is_tipe=1) GROUP BY b.register");
 
                 return $query;
             }
@@ -573,7 +573,11 @@
 
             public function ambil_data_pb($nomor_lokasi)
             {
-               return $this->db->get_where('pengguna',array('nomor_lokasi' => $nomor_lokasi));
+                $this->db->select('*');
+                $this->db->from('pengguna');
+                $this->db->like('nomor_lokasi', $nomor_lokasi);
+                $this->db->where_in('fungsi', array('Pengurus Barang','Verifikator'));
+                return $this->db->get();
             }
 
             public function data_progres_opd($lokasi)

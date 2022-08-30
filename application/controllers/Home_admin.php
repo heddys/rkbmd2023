@@ -139,6 +139,42 @@ class Home_admin extends CI_Controller {
 		echo json_decode($result);
 	}
 
+	public function laporan_perubahan_kondisi_fisik_barang()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '4056M');
+		$data['data_kondisi']=$this->admin_model->get_perubahan_fisik_barang('1.3.2')->result();
+
+		$this->load->view('admin/laporan_admin/cetak_form_kondisi_barang',$data);	
+	}
+
+	public function laporan_barang_tidak_ditemukan()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$data['data_barang']=$this->admin_model->get_data_tidak_ditemukan('1.3.2')->result();
+
+		$this->load->view('admin/laporan_admin/cetak_barang_tidak_ditemukan',$data);
+	}
+
+	public function laporan_barang_hilang()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$data['data_barang']=$this->admin_model->get_data_hilang('1.3.2')->result();
+
+		$this->load->view('admin/laporan_admin/cetak_barang_hilang',$data);
+	}
+
+	public function laporan_perubahan_data_barang()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$data['data_barang']=$this->admin_model->get_perubahan_data_barang('1.3.2')->result();
+
+		$this->load->view('admin/laporan_admin/cetak_perubahan_data_barang',$data);
+	}
+
 	public function export_excel_rekap_admin()
 	{
 		$this->cek_sess();

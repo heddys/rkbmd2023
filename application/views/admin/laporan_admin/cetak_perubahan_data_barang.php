@@ -55,7 +55,7 @@ function tgl_indo($tanggal){
             <p class="ex2">LAPORAN HASIL INVENTARISASI(LHI)</p>
             <p class="ex2">REKAPITULASI BMD TERKAIT PERUBAHAN DATA</p>
             <p class="ex2">BMD BERUPA PERALATAN DAN MESIN</p>
-            <p class="ex2"><?php echo strtoupper($this->session->userdata('skpd'));?> KOTA SURABAYA</p>
+            <p class="ex2">KOTA SURABAYA</p>
         </b>
     </h5>
 </center>
@@ -88,6 +88,8 @@ function tgl_indo($tanggal){
     <center>
         <tr style="border:1px solid">
             <th style="border:1px solid" rowspan="2">No.</th>
+            <th style="border:1px solid" rowspan="2">OPD</th>
+            <th style="border:1px solid" rowspan="2">Lokasi</th>
             <th style="border:1px solid" rowspan="2">NIBAR</th>
             <th style="border:1px solid" colspan="6">Sebelum Inventarisasi</th>
             <th style="border:1px solid" colspan="6">Setelah Inventarisasi</th>
@@ -112,19 +114,21 @@ function tgl_indo($tanggal){
             <th style="border:1px solid">Merk / Alamat</th>
         </tr>
     </center>
-    <?php $x=1;$jumtot=0; foreach ($data_register as $row) {?>
+    <?php $x=1;$jumtot=0; foreach ($data_barang as $row) {?>
         <tr>
             <td style="border:1px solid"><?php echo $x;?></td>
+            <td style="border:1px solid"><?php echo $row->unit;?></td>
+            <td style="border:1px solid"><?php echo $row->lokasi;?></td>
             <td style="border:1px solid"><?php echo $row->register;?></td>
             <td style="border:1px solid"><?php echo $row->kode108_baru;?></td>
             <td style="border:1px solid"><?php echo $row->name_awal;?></td>
-            <td style="border:1px solid"><?php echo $row->register;?></td>
+            <td style="border:1px solid" width="6%"><?php echo $row->register;?></td>
             <td style="border:1px solid"><?php echo $row->tipe_awal;?></td>
             <td style="border:1px solid; text-align: center; vertical-align: middle;">1</td>
             <td style="border:1px solid"><?php echo $row->merk_alamat;?></td>
             <td style="border:1px solid"><?php echo $row->kode_barang;?></td>
             <td style="border:1px solid"><?php echo $row->name_baru;?></td>
-            <td style="border:1px solid"><?php echo $row->register;?></td>
+            <td style="border:1px solid" width="6%"><?php echo $row->register;?></td>
             <td style="border:1px solid"><?php echo $row->tipe_baru;?></td>
             <td style="border:1px solid; text-align: center; vertical-align: middle;">1</td>
             <td style="border:1px solid"><?php echo $row->spesifikasi_barang_merk;?></td>
@@ -134,7 +138,7 @@ function tgl_indo($tanggal){
         </tr>
     <?php $x++; $jumtot+=$row->harga_baru;} ?>
     <tr>
-        <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="15">Jumlah (Rp.)</td>
+        <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="17">Jumlah (Rp.)</td>
         <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($jumtot)?></td>
         <td style="border:1px solid;"></td>
     </tr>
@@ -164,7 +168,7 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;">Pengurus Barang</td>
+        <td style="text-align: center; vertical-align: middle;">Pejabat Penatausahaan Barang Pengelola</td>
     </tr>
     <tr>
         <td colspan="13"></td>
@@ -180,15 +184,15 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->nama?></b></td>
+        <td style="text-align: center; vertical-align: middle;"><b>IRA TURSILOWATI, SH, MH</b></td>
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->pangkat?></b></td>
+        <td style="text-align: center; vertical-align: middle;"><b>PEMBINA UTAMA MUDA</b></td>
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b>NIP. <?php echo $data_pb->nip?></b></td>
+        <td style="text-align: center; vertical-align: middle;"><b>NIP. 196910171993032006</b></td>
     </tr>
 </table>
     
