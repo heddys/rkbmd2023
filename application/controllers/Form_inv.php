@@ -943,7 +943,7 @@ class Form_inv extends CI_Controller {
 
 		 // Merge Cells
 		$skpd=$this->session->userdata('skpd');
-        $objPHPExcel->getActiveSheet()->mergeCells('A1:J1');
+        $objPHPExcel->getActiveSheet()->mergeCells('A1:K1');
         $objPHPExcel->getActiveSheet()->setCellValue('A1', "DATA STATUS INVENTARISASI KIB - ".$skpd);
         
 
@@ -959,8 +959,9 @@ class Form_inv extends CI_Controller {
         $objPHPExcel->getActiveSheet()->setCellValue('H3', "Tahun Pengadaan");
         $objPHPExcel->getActiveSheet()->setCellValue('I3', "Nilai");
         $objPHPExcel->getActiveSheet()->setCellValue('J3', "Status");
+        $objPHPExcel->getActiveSheet()->setCellValue('K3', "Status");
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A3:J3')->getFont()->setBold( true );
+		$objPHPExcel->getActiveSheet()->getStyle('A3:K3')->getFont()->setBold( true );
 		
         // Hide F and G column
         // $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setVisible(false);
@@ -976,6 +977,8 @@ class Form_inv extends CI_Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(50);
         $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
 		
         // Add data
 		ini_set('memory_limit', '2048M');
@@ -1010,8 +1013,11 @@ class Form_inv extends CI_Controller {
 				}	else {
 						  $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $i, "");
 					}
-						$i++;
-						$no++;
+			
+			$objPHPExcel->setActiveSheetIndex(0)->setCellValue('K' . $i, $kib->tanggal);
+			
+			$i++;
+			$no++;
         }
 
         // Set Font Color, Font Style and Font Alignment
@@ -1027,9 +1033,10 @@ class Form_inv extends CI_Controller {
             )
         );
 		$i=$i-1;
-        $objPHPExcel->getActiveSheet()->getStyle('A3:J3')->applyFromArray($stil);
-		$objPHPExcel->getActiveSheet()->getStyle('A1:J1')->applyFromArray($stil);
-		$objPHPExcel->getActiveSheet()->getStyle('A4:J'.$i)->applyFromArray($stil);
+        $objPHPExcel->getActiveSheet()->getStyle('A3:K3')->applyFromArray($stil);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($stil);
+		$objPHPExcel->getActiveSheet()->getStyle('A4:K'.$i)->applyFromArray($stil);
+		$objPHPExcel->getActiveSheet()->getStyle('K4:K'.$i)->getNumberFormat()->setFormatCode('dd-mmm-yyyy');
 		
 		
 
