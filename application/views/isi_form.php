@@ -559,7 +559,7 @@
                                     <a href="javascript:history.back()" class="btn btn-danger btn-block btn-lg">Kembali</a>
                                 </div>
                                 <div class="col-6">
-                                    <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#modal-sm">Save Data</button>
+                                    <button type="button" class="btn btn-success btn-block btn-lg" id="save_form" data-toggle="modal" data-target="#modal-sm">Save Data</button>
                                 </div>
                             </div>
                         </div>

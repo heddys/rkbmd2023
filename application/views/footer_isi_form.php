@@ -166,6 +166,7 @@
 
       //this.files[0].size gets the size of your file.
       var image = document.getElementById('customFile');
+      document.getElementById("save_form").disabled = true;
       for (i =0; i < image.files.length; i++) {
         if(image.files.item(i).size > 8000000) {
           var html = "<div class='alert alert-danger alert-dismissible'>"+
@@ -174,10 +175,14 @@
                     "</div>";
           $('.file_upload').find('#alert').html(html);
           document.getElementById("customFile").value = "";
+        } else {
+          var html = "<div class='alert alert-success alert-dismissible'>"+
+                        "<h5><i class='icon fas fa-ban'></i>Success Upload File</h5>"+
+                    "</div>";
+          $('.file_upload').find('#alert').html(html);
+          document.getElementById("save_form").disabled = false;
         }
       }
-      
-
     });
 
     function klik_cari_ganda(id){
