@@ -175,6 +175,15 @@ class Home_admin extends CI_Controller {
 		$this->load->view('admin/laporan_admin/cetak_perubahan_data_barang',$data);
 	}
 
+	public function laporan_belum_dikapt_tidak_diketahui_induk()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		// $data['data_barang']=$this->admin_model->get_perubahan_data_barang('1.3.2')->result();
+
+		$this->load->view('admin/laporan_admin/cetak_belum_kapt_diketahui');
+	}
+
 	public function export_excel_rekap_admin()
 	{
 		$this->cek_sess();

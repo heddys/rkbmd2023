@@ -52,15 +52,15 @@ function tgl_indo($tanggal){
 <center>
     <h5>
         <b>
-            <p class="ex2">LAPORAN HASIL INVENTARISASI (LHI)</p>
-            <p class="ex2">REKAPITULASI BMD HILANG KARENA KECURIAN</p>
+            <p class="ex2">LEMBAR HASIL INVENTARISASI (LKI)</p>
+            <p class="ex2">REKAPITULASI BMD BELUM DIKAPITALISASI DAN DIKETAHUI DATA AWAL/DATA INDUKNYA</p>
             <p class="ex2">BMD BERUPA PERALATAN DAN MESIN</p>
             <p class="ex2">KOTA SURABAYA</p>
         </b>
     </h5>
 </center>
 <p>
-<table style="font-size : 12px;">
+<table class="table table-bordered" style="font-size : 12px;">
         <thead>    
         </thead>
         <tbody>
@@ -72,7 +72,7 @@ function tgl_indo($tanggal){
             <tr>
                 <td width="200px">Pengguna Barang</td>
                 <td width="25px">:</td>
-                <td width="60%"><?php echo $this->session->userdata('kepala_opd');?></td>
+                <td width="150px"><?php echo $this->session->userdata('kepala_opd');?></td>
                 
             </tr>
             <tr>
@@ -87,39 +87,66 @@ function tgl_indo($tanggal){
 <table style="width: 100%; border:1px solid; border-collapse: collapse; font-size:11px;">
     <center>
     <tr style="border:1px solid">
-        <th style="border:1px solid">No.</th>
-        <th style="border:1px solid">OPD</th>
-        <th style="border:1px solid">Lokasi</th>
-        <th style="border:1px solid">Kode Register</th>
-        <th style="border:1px solid">Kode Barang</th>
-        <th style="border:1px solid">Nama Spesifikasi Barang</th>
-        <th style="border:1px solid">Merk / Tipe</th>
-        <th style="border:1px solid">Jumlah</th>
-        <th style="border:1px solid">Satuan Barang</th>
-        <th style="border:1px solid">Nilai Perolehan Barang (Rp.)</th>
-        <th style="border:1px solid">Keterangan</th>
+        <th style="border:1px solid" rowspan="2">No.</th>
+        <th style="border:1px solid" rowspan="2">OPD</th>
+        <th style="border:1px solid" rowspan="2">Lokasi</th>
+        <th style="border:1px solid" rowspan="2">Kode Register</th>
+        <th style="border:1px solid" rowspan="2">Kode Barang</th>
+        <th style="border:1px solid" rowspan="2">Nama Spesifikasi Barang</th>
+        <th style="border:1px solid" rowspan="2">Merk / Tipe</th>
+        <th style="border:1px solid" rowspan="2">Jumlah</th>
+        <th style="border:1px solid" rowspan="2">Satuan Barang</th>
+        <th style="border:1px solid" rowspan="2">Nilai Perolehan Barang (Rp.)</th>
+        <th style="border:1px solid" colspan="4">Data Awal/Induk</th>
+        <th style="border:1px solid" rowspan="2">Keterangan</th>
+    </tr>
+    </center>
+    <center>
+    <tr style="border:1px solid">
+       <th style="border:1px solid">Kode Register</th>
+       <th style="border:1px solid">Kode Barang</th>
+       <th style="border:1px solid">Kode Lokasi</th>
+       <th style="border:1px solid">Nama Spesifikasi Barang</th>
     </tr>
     </center>
     <!-- Isi Datanya -->
     
-        <?php $x=1;$jumlah=0; foreach ($data_barang as $row) {?>
+        <!-- <?php $x=1;$jumlah=0; foreach ($data_kondisi as $row) {?>
             <tr style="border:1px solid">
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $x?></td>
-                <td style="border:1px solid;"><?php echo $row->unit;?></td>
-                <td style="border:1px solid;"><?php echo $row->lokasi;?></td>
+                <td style="border:1px solid"><?php echo strtoupper($row->unit);?></td>
+                <td style="border:1px solid"><?php echo $row->lokasi?></td>
                 <td style="border:1px solid"><?php echo $row->register?></td>
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->kode108_baru?></td>
                 <td style="border:1px solid"><?php echo $row->nama_barang?></td>
                 <td style="border:1px solid"><?php echo $row->merk_alamat." / ".$row->tipe?></td>
                 <td style="border:1px solid; text-align: center; vertical-align: middle;">1</td>
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->satuan?></td>
-                <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row->harga_baru);?></td>
-                <td style="border:1px solid"><?php echo $row->ket_baru?></td>
+                <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row->harga_baru);?></td> -->
+
+                <!-- Isi Kondisi Awal -->
+
+                <!-- <?php if ($row->kondisi == "B"){?>
+                    <td style="border:1px solid; text-align: center; vertical-align: middle;">v</td>
+                    <td style="border:1px solid"></td>
+                    <td style="border:1px solid"></td>
+                <?php } elseif ($row->kondisi == "KB") { ?>
+                    <td style="border:1px solid"></td>
+                    <td style="border:1px solid; text-align: center; vertical-align: middle;">v</td>
+                    <td style="border:1px solid"></td> 
+                <?php } else {?>
+                    <td style="border:1px solid"></td>
+                    <td style="border:1px solid"></td> 
+                    <td style="border:1px solid; text-align: center; vertical-align: middle;">v</td>
+                <?php }?>  -->
+
+                  <!-- Isi Kondisi Akhir  -->
             </tr>
-        <?php $x++; $jumlah+=$row->harga_baru;}?>
+        <!-- <?php $x++; $jumlah+=$row->harga_baru;}?> -->
     <tr>
-        <td style="border:2px solid; text-align: center; vertical-align: middle;" colspan="9"><b>Jumlah (Rp.)</b></td>
-        <td style="border:2px solid; text-align: right; vertical-align: middle;"><b><?php echo to_rp($jumlah)?></b></td>
+        <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="9">Jumlah (Rp.)</td>
+        <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp(241464654654)?></td>
+        <td style="border:1px solid;" colspan="7"></td>
     </tr>
 </table>
 <p>

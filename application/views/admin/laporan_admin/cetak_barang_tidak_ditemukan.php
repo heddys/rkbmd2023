@@ -52,6 +52,7 @@ function tgl_indo($tanggal){
 <center>
     <h5>
         <b>
+            <p class="ex2">LAPORAN HASIL INVENTARISASI (LHI)</p>
             <p class="ex2">REKAPITULASI TIDAK ADA KARENA TIDAK DIKETEMUKAN</p>
             <p class="ex2">BMD BERUPA PERALATAN DAN MESIN</p>
             <p class="ex2">KOTA SURABAYA</p>
