@@ -52,7 +52,7 @@ function tgl_indo($tanggal){
 <center>
     <h5>
         <b>
-            <p class="ex2">LEMBAR HASIL INVENTARISASI (LKI)</p>
+            <p class="ex2">LEMBAR HASIL INVENTARISASI (LHI)</p>
             <p class="ex2">REKAPITULASI BMD TERJADI PERUBAHAN KONDISI FISIK BARANG</p>
             <p class="ex2">BMD BERUPA PERALATAN DAN MESIN</p>
             <p class="ex2">KOTA SURABAYA</p>

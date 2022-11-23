@@ -175,14 +175,36 @@ class Home_admin extends CI_Controller {
 		$this->load->view('admin/laporan_admin/cetak_perubahan_data_barang',$data);
 	}
 
-	public function laporan_belum_dikapt_tidak_diketahui_induk()
+	public function laporan_belum_dikapt_diketahui_induk()
 	{
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
-		// $data['data_barang']=$this->admin_model->get_perubahan_data_barang('1.3.2')->result();
+		$data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk('1.3.2')->result();
 
-		$this->load->view('admin/laporan_admin/cetak_belum_kapt_diketahui');
+		$this->load->view('admin/laporan_admin/cetak_belum_kapt_diketahui',$data);
 	}
+
+	public function laporan_belum_dikapt_tidak_diketahui_induk()
+	{
+		$this->cek_sess();
+		// ini_set('memory_limit', '2048M');
+		// $data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk('1.3.2')->result();
+
+		$this->load->view('admin/laporan_admin/cetak_belum_kapt_tidak_diketahui_induk');
+	}
+
+	public function laporan_data_tercatat_ganda()
+	{
+		$this->cek_sess();
+		// ini_set('memory_limit', '2048M');
+		// $data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk('1.3.2')->result();
+
+		$this->load->view('admin/laporan_admin/cetak_barang_ganda');
+	}
+
+
+
+
 
 	public function export_excel_rekap_admin()
 	{

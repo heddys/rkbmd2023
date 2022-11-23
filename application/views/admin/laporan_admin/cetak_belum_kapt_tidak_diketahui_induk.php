@@ -53,7 +53,7 @@ function tgl_indo($tanggal){
     <h5>
         <b>
             <p class="ex2">LEMBAR HASIL INVENTARISASI (LHI)</p>
-            <p class="ex2">REKAPITULASI BMD BELUM DIKAPITALISASI DAN DIKETAHUI DATA AWAL/DATA INDUKNYA</p>
+            <p class="ex2">REKAPITULASI BMD BELUM DIKAPITALISASI DAN TIDAK DIKETAHUI DATA AWAL/DATA INDUKNYA</p>
             <p class="ex2">BMD BERUPA PERALATAN DAN MESIN</p>
             <p class="ex2">KOTA SURABAYA</p>
         </b>
@@ -86,57 +86,35 @@ function tgl_indo($tanggal){
 <p>
 <table style="width: 100%; border:1px solid; border-collapse: collapse; font-size:11px;">
     <center>
-    <tr style="border:1px solid">
-        <th style="border:1px solid" rowspan="2">No.</th>
-        <th style="border:1px solid" rowspan="2">OPD</th>
-        <th style="border:1px solid" rowspan="2">Lokasi</th>
-        <th style="border:1px solid" rowspan="2">Kode Register</th>
-        <th style="border:1px solid" rowspan="2">Kode Barang</th>
-        <th style="border:1px solid" rowspan="2">Nama Spesifikasi Barang</th>
-        <th style="border:1px solid" rowspan="2">Merk / Tipe</th>
-        <th style="border:1px solid" rowspan="2">Jumlah</th>
-        <th style="border:1px solid" rowspan="2">Satuan Barang</th>
-        <th style="border:1px solid" rowspan="2">Nilai Perolehan Barang (Rp.)</th>
-        <th style="border:1px solid" colspan="5">Data Awal/Induk</th>
-        <th style="border:1px solid" rowspan="2">Keterangan</th>
-    </tr>
-    </center>
-    <center>
-    <tr style="border:1px solid">
-       <th style="border:1px solid">Kode Register</th>
-       <th style="border:1px solid">Kode Barang</th>
-       <th style="border:1px solid">Kode Lokasi</th>
-       <th style="border:1px solid">Nama Spesifikasi Barang</th>
-       <th style="border:1px solid">Merk / Tipe</th>
-    </tr>
+    <thead>
+        <tr style="border:1px solid">
+            <th style="border:1px solid" rowspan="2">No.</th>
+            <th style="border:1px solid" rowspan="2">OPD</th>
+            <th style="border:1px solid" rowspan="2">Lokasi</th>
+            <th style="border:1px solid" rowspan="2">Kode Register</th>
+            <th style="border:1px solid" rowspan="2">Kode Barang</th>
+            <th style="border:1px solid" rowspan="2">Nama Spesifikasi Barang</th>
+            <th style="border:1px solid" rowspan="2">Merk / Tipe</th>
+            <th style="border:1px solid" rowspan="2">Jumlah</th>
+            <th style="border:1px solid" rowspan="2">Satuan Barang</th>
+            <th style="border:1px solid" rowspan="2">Nilai Perolehan Barang (Rp.)</th>
+            <th style="border:1px solid" rowspan="2">Keterangan</th>
+        </tr>
+    </thead>
     </center>
     <!-- Isi Datanya -->
-    
-        <?php $x=1;$jumlah=0; foreach ($data_barang as $row) {?>
-            <tr style="border:1px solid">
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $x?></td>
-                <td style="border:1px solid"><?php echo strtoupper($row->unit);?></td>
-                <td style="border:1px solid"><?php echo $row->lokasi?></td>
-                <td style="border:1px solid"><?php echo $row->register?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->kode_barang?></td>
-                <td style="border:1px solid"><?php echo $row->nama_barang?></td>
-                <td style="border:1px solid"><?php echo $row->spesifikasi_barang_merk." / ".$row->tipe?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;">1</td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->satuan?></td>
-                <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row->nilai_perolehan);?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->merupakan_anak;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->kode108_baru;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->nomor_lokasi;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->name_anak;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->merk_anak." / ".$row->tipe_anak;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->keterangan;?></td>
-            </tr>
-        <?php $x++; $jumlah+=$row->nilai_perolehan;}?>
-    <tr>
-        <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="9">Jumlah (Rp.)</td>
-        <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($jumlah)?></td>
-        <td style="border:1px solid;" colspan="7"></td>
-    </tr>
+    <tbody>
+        <tr>
+            <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="11"><b>N I H I L</b></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="9">Jumlah (Rp.)</td>
+            <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp(0)?></td>
+            <td style="border:1px solid;" colspan="7"></td>
+        </tr>
+    </tfoot>
 </table>
 <p>
 <table style="font-size:12px; width:100%;">
