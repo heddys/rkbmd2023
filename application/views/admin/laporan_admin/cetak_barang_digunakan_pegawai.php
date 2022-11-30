@@ -53,7 +53,7 @@ function tgl_indo($tanggal){
     <h5>
         <b>
             <p class="ex2">LEMBAR HASIL INVENTARISASI (LHI)</p>
-            <p class="ex2">REKAPITULASI BMD TERCATAT GANDA</p>
+            <p class="ex2">REKAPITULASI BMD DIGUNAKAN OLEH PEGEAWAI PEMERINTAH DAERAH YANG BERSANGKUTAN</p>
             <p class="ex2">BMD BERUPA PERALATAN DAN MESIN</p>
             <p class="ex2">KOTA SURABAYA</p>
         </b>
@@ -86,38 +86,67 @@ function tgl_indo($tanggal){
 <p>
 <table style="width: 100%; border:1px solid; border-collapse: collapse; font-size:11px;">
     <center>
-    <tr style="border:1px solid">
-        <th style="border:1px solid" rowspan="2">No.</th>
-        <th style="border:1px solid" rowspan="2">OPD</th>
-        <th style="border:1px solid" rowspan="2">Lokasi</th>
-        <th style="border:1px solid" rowspan="2">Kode Register</th>
-        <th style="border:1px solid" rowspan="2">Kode Barang</th>
-        <th style="border:1px solid" rowspan="2">Nama Spesifikasi Barang</th>
-        <th style="border:1px solid" rowspan="2">Merk / Tipe</th>
-        <th style="border:1px solid" rowspan="2">Jumlah</th>
-        <th style="border:1px solid" rowspan="2">Satuan Barang</th>
-        <th style="border:1px solid" rowspan="2">Nilai Perolehan Barang (Rp.)</th>
-        <th style="border:1px solid" colspan="10">Data Pencatatan Ganda</th>
-        <th style="border:1px solid" rowspan="2">Keterangan</th>
-    </tr>
-    </center>
-    <center>
-    <tr style="border:1px solid">
-       <th style="border:1px solid">Kode Register</th>
-       <th style="border:1px solid">Kode Barang</th>
-       <th style="border:1px solid">Kode Lokasi</th>
-       <th style="border:1px solid">Nama Spesifikasi Barang</th>
-       <th style="border:1px solid">Merk / Tipe</th>
-       <th style="border:1px solid">Jumlah</th>
-       <th style="border:1px solid">Satuan Barang</th>
-       <th style="border:1px solid">Nilai Perolehan Barang (Rp.)</th>
-       <th style="border:1px solid">Tgl/Bln/Th Perolehan</th>
-       <th style="border:1px solid">Pengelola Barang/Pengguna Barang Lainnya/Kuasa Pengguna Barang Lainnya</th>
-    </tr>
+    <thead>
+        <tr style="border:1px solid">
+            <th style="border:1px solid" rowspan="3">No.</th>
+            <th style="border:1px solid" rowspan="3">OPD</th>
+            <th style="border:1px solid" rowspan="3">Lokasi</th>
+            <th style="border:1px solid" rowspan="3">Kode Register</th>
+            <th style="border:1px solid" rowspan="3">Kode Barang</th>
+            <th style="border:1px solid" rowspan="3">Nama Spesifikasi Barang</th>
+            <th style="border:1px solid" rowspan="3">Merk / Tipe</th>
+            <th style="border:1px solid" rowspan="3">Jumlah</th>
+            <th style="border:1px solid" rowspan="3">Satuan Barang</th>
+            <th style="border:1px solid" rowspan="3">Nilai Perolehan Barang (Rp.)</th>
+            <th style="border:1px solid" rowspan="3">Alamat</th>
+            <th style="border:1px solid" colspan="6">Pemakai</th>
+            <th style="border:1px solid" rowspan="3">Keterangan</th>
+        </tr>
+        </center>
+        <center>
+        <tr style="border:1px solid">
+            <th style="border:1px solid" rowspan="2">Nama Pemakai</th>
+            <th style="border:1px solid" rowspan="2">Status Pemakai</th>
+            <th style="border:1px solid" colspan="2">BAST Pemakai</th>
+            <th style="border:1px solid" colspan="2">Surat Ijin Penghunian</th>
+        </tr>
+        <tr>
+            <th style="border:1px solid">Ada</th>
+            <th style="border:1px solid">Tidak Ada</th>
+            <th style="border:1px solid">Ada</th>
+            <th style="border:1px solid">Tidak Ada</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <!-- <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td>
+            <td style="border:1px solid">1</td> -->
+            <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="18"><h4>N I H I L</h4></td>
+        </tr>
+    </tbody>
     </center>
     <!-- Isi Datanya -->
     
-        <?php $x=1;$jumlah=0; foreach ($data_barang as $row) {?>
+        <!-- <?php $x=1;$jumlah=0; foreach ($data_barang as $row) {?>
             <tr style="border:1px solid">
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $x?></td>
                 <td style="border:1px solid"><?php echo strtoupper($row->unit);?></td>
@@ -141,12 +170,12 @@ function tgl_indo($tanggal){
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->nama_kepala;?></td>
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->keterangan;?></td>
             </tr>
-        <?php $x++; $jumlah+=$row->nilai_perolehan;}?>
-    <tr>
+        <?php $x++; $jumlah+=$row->nilai_perolehan;}?> -->
+    <!-- <tr>
         <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="9">Jumlah (Rp.)</td>
-        <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($jumlah)?></td>
+        <td style="border:1px solid; text-align: right; vertical-align: middle;"></td>
         <td style="border:1px solid;" colspan="7"></td>
-    </tr>
+    </tr> -->
 </table>
 <p>
 <table style="font-size:12px; width:100%;">

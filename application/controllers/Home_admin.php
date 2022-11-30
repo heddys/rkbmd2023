@@ -95,6 +95,18 @@ class Home_admin extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	public function halaman_laporan()
+	{
+		$this->cek_sess();
+
+		$data['page']="Halaman Cetak Laporan";
+
+		$this->load->view('admin/header_admin',$data);
+		$this->load->view('admin/cetak_laporan_admin_page');
+		$this->load->view('admin/footer_admin');
+
+	}
+
 	public function save_opd_penyelia()
 	{
 		$this->cek_sess();
@@ -196,10 +208,28 @@ class Home_admin extends CI_Controller {
 	public function laporan_data_tercatat_ganda()
 	{
 		$this->cek_sess();
-		// ini_set('memory_limit', '2048M');
-		// $data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk('1.3.2')->result();
+		ini_set('memory_limit', '2048M');
+		$data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
 
-		$this->load->view('admin/laporan_admin/cetak_barang_ganda');
+		$this->load->view('admin/laporan_admin/cetak_barang_ganda',$data);
+	}
+
+	public function laporan_data_digunakan_pihak_lain()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		// $data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
+
+		$this->load->view('admin/laporan_admin/cetak_barang_digunakan_instansi_lain');
+	}
+
+	public function laporan_data_digunakan_pegawai_pemda()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		// $data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
+
+		$this->load->view('admin/laporan_admin/cetak_barang_digunakan_pegawai');
 	}
 
 

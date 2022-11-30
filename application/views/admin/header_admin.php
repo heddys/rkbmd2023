@@ -270,14 +270,14 @@
           <li class="nav-header"><strong>MENU LAPORAN</strong></li>
 
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="<?php echo site_url('home_admin/halaman_laporan');?>" class="nav-link">
               <i class="fa fa-cogs" aria-hidden="true"></i>
               <p>
-             Laporan Hasil Inventarisasi  
-                <i class="fas fa-angle-left right"></i>
+                Laporan Hasil Inventarisasi  
+                <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('home_admin/laporan_perubahan_data_barang');?>" class="nav-link" target="_blank">
                 <i class="nav-icon fa fa-file"></i>
@@ -310,7 +310,15 @@
                   </p>
                 </a>
               </li>
-            </ul>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/laporan_belum_dikapt_diketahui_induk');?>" class="nav-link" target="_blank">
+                <i class="nav-icon fa fa-file"></i>
+                  <p style="font-size: 10px;">
+                    Barang Belum Dikapitalisasi dan Diketahui Induk
+                  </p>
+                </a>
+              </li>
+            </ul> -->
           </li>
           
          <!-- <li class="nav-item has-treeview">
