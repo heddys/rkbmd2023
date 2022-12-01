@@ -393,14 +393,13 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="<?php echo site_url('status_form/halaman_cetak_laporan')?>" class="nav-link">
               <i class="nav-icon fa fa-bookmark"></i>
               <p>
                 Cetak Laporan
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang');?>" class="nav-link" target="_blank">
                   <i class="nav-icon fa fa-file"></i>
@@ -425,7 +424,7 @@
                   </p>
                 </a>
               </li>
-            </ul>
+            </ul> -->
           </li>
          <li class="nav-header"><strong>KAMUS</strong></li>
          <li class="nav-item">

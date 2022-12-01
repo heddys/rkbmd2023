@@ -1,4 +1,4 @@
-<section class="content">
+    <section class="content">
       <div class="row">
         <div class="col-12">
           <!-- <a href="<?php echo site_url('/home/rkbform');?>" class="btn btn-primary btn-flat">Tambah Kegiatan </a>
@@ -179,7 +179,6 @@
 	        <!-- /.col -->
 	      </div>
 	      <!-- /.row -->
+        </div>
 	    </section>
 	    <!-- /.content -->  
-                    </div>
-                    </div>

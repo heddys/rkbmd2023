@@ -746,5 +746,12 @@
 
                     return $query;
             }
+
+            public function get_data_hilang($kib,$lokasi)
+            {
+                $query = $this->db->query("SELECT a.*,b.unit,b.lokasi,c.kondisi_barang,c.register,c.keterangan as ket_baru from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join register_isi c on a.register=c.register where a.nomor_lokasi like '%".$lokasi."%' and a.kode108_baru like '%".$kib."%' and a.status = '2' and c.keberadaan_barang = 'Hilang' group by c.register");
+
+                return $query;
+            }
  }
  ?>

@@ -23,7 +23,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui perubahan setiap atribut barang yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_admin/laporan_perubahan_data_barang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
                           </div>
                         </div>
                       </div>
@@ -39,7 +39,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui perubahan kondisi barang (Baik/Kurang Baik/Rusak Berat) barang yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_admin/laporan_perubahan_kondisi_fisik_barang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
                           </div>
                         </div>
                       </div>
@@ -55,7 +55,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui status keberadaan barang yang tidak diketemukan dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_admin/laporan_barang_tidak_ditemukan');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
                           </div>
                         </div>
                       </div>
@@ -72,7 +72,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui status keberadaan barang yang hilang dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_admin/laporan_barang_hilang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <a href="<?php echo site_url('status_form/laporan_barang_hilang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
                           </div>
                         </div>
                       </div>

@@ -1,11 +1,12 @@
 <!-- /.content-wrapper -->
-  <footer class="main-footer">
+<footer class="main-footer">
     <font size="2"><strong>IT BLPPA - APLIKASI E-RKBMD SURABAYA - Theme By AdminLTE.io</strong>
     All rights reserved.</font>
     <div class="float-right d-none d-sm-inline-block">
       <font size="2"><b>Version</b> RKBMD.Beta-01</font>
     </div>
   </footer>
+
 </div>
 <!-- ./wrapper -->
 

@@ -345,6 +345,16 @@ class Status_form extends CI_Controller {
 			}
 	}
 
+	public function halaman_cetak_laporan()
+	{
+		$this->cek_sess();
+		$data['page']="List Cetak Laporan";
+
+		$this->load->view('header',$data);		
+		$this->load->view('halaman_cetak_laporan_user');
+		$this->load->view('footer');	
+	}
+
     public function cetak_form()
 	{   
         
@@ -507,6 +517,19 @@ class Status_form extends CI_Controller {
 		$data['data_pb']=$get_data_pb;
 		$this->load->view('laporan/cetak_perubahan_data_barang',$data);		
     }
+
+	public function laporan_barang_hilang()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$get_data_pb['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
+		$data['data_barang']=$this->form_model->get_data_hilang('1.3.2',$nomor_lokasi)->result();
+
+		$this->load->view('laporan/cetak_barang_hilang',$data);
+	}
+
+
 
 
 

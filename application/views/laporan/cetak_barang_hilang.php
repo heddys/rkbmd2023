@@ -53,9 +53,9 @@ function tgl_indo($tanggal){
     <h5>
         <b>
             <p class="ex2">LAPORAN HASIL INVENTARISASI (LHI)</p>
-            <p class="ex2">REKAPITULASI TIDAK ADA KARENA TIDAK DIKETEMUKAN</p>
+            <p class="ex2">REKAPITULASI BMD HILANG KARENA KECURIAN</p>
             <p class="ex2">BMD BERUPA PERALATAN DAN MESIN</p>
-            <p class="ex2"><?php echo strtoupper($this->session->userdata('skpd'));?> KOTA SURABAYA</p>
+            <p class="ex2">KOTA SURABAYA</p>
         </b>
     </h5>
 </center>
@@ -88,6 +88,8 @@ function tgl_indo($tanggal){
     <center>
     <tr style="border:1px solid">
         <th style="border:1px solid">No.</th>
+        <th style="border:1px solid">OPD</th>
+        <th style="border:1px solid">Lokasi</th>
         <th style="border:1px solid">Kode Register</th>
         <th style="border:1px solid">Kode Barang</th>
         <th style="border:1px solid">Nama Spesifikasi Barang</th>
@@ -100,21 +102,23 @@ function tgl_indo($tanggal){
     </center>
     <!-- Isi Datanya -->
     
-        <?php $x=1;$jumlah=0; foreach ($data_kondisi as $row) {?>
+        <?php $x=1;$jumlah=0; foreach ($data_barang as $row) {?>
             <tr style="border:1px solid">
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $x?></td>
-                <td style="border:1px solid"><?php echo $row['register']?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row['kode108']?></td>
-                <td style="border:1px solid"><?php echo $row['nama_barang']?></td>
-                <td style="border:1px solid"><?php echo $row['merk']." / ".$row['tipe']?></td>
+                <td style="border:1px solid;"><?php echo $row->unit;?></td>
+                <td style="border:1px solid;"><?php echo $row->lokasi;?></td>
+                <td style="border:1px solid"><?php echo $row->register?></td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->kode108_baru?></td>
+                <td style="border:1px solid"><?php echo $row->nama_barang?></td>
+                <td style="border:1px solid"><?php echo $row->merk_alamat." / ".$row->tipe?></td>
                 <td style="border:1px solid; text-align: center; vertical-align: middle;">1</td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row['satuan']?></td>
-                <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row['harga']);?></td>
-                <td style="border:1px solid"><?php echo $row['keterangan']?></td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->satuan?></td>
+                <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row->harga_baru);?></td>
+                <td style="border:1px solid"><?php echo $row->ket_baru?></td>
             </tr>
-        <?php $x++; $jumlah+=$row['harga'];}?>
+        <?php $x++; $jumlah+=$row->harga_baru;}?>
     <tr>
-        <td style="border:2px solid; text-align: center; vertical-align: middle;" colspan="7"><b>Jumlah (Rp.)</b></td>
+        <td style="border:2px solid; text-align: center; vertical-align: middle;" colspan="9"><b>Jumlah (Rp.)</b></td>
         <td style="border:2px solid; text-align: right; vertical-align: middle;"><b><?php echo to_rp($jumlah)?></b></td>
     </tr>
 </table>
