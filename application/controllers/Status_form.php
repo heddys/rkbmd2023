@@ -523,11 +523,68 @@ class Status_form extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$get_data_pb['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
+		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
 		$data['data_barang']=$this->form_model->get_data_hilang('1.3.2',$nomor_lokasi)->result();
 
 		$this->load->view('laporan/cetak_barang_hilang',$data);
 	}
+
+	public function laporan_belum_dikapt_diketahui_induk()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
+		$data['data_barang']=$this->form_model->get_belum_kapt_ada_induk('1.3.2',$nomor_lokasi)->result();
+
+		$this->load->view('laporan/cetak_belum_kapt_diketahui',$data);
+	}
+
+	public function laporan_belum_dikapt_tidak_diketahui_induk()
+	{
+		$this->cek_sess();
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
+		// ini_set('memory_limit', '2048M');
+		// $data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk('1.3.2')->result();
+
+		$this->load->view('laporan/cetak_belum_kapt_tidak_diketahui_induk',$data);
+	}
+
+	public function laporan_data_tercatat_ganda()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
+		$data['data_barang']=$this->form_model->get_data_ganda('1.3.2',$nomor_lokasi)->result();
+
+		$this->load->view('laporan/cetak_barang_ganda',$data);
+	}
+
+	public function laporan_data_digunakan_pihak_lain()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
+		// $data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
+
+		$this->load->view('laporan/cetak_barang_digunakan_instansi_lain',$data);
+	}
+
+	public function laporan_data_digunakan_pegawai_pemda()
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
+		// $data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
+
+		$this->load->view('laporan/cetak_barang_digunakan_pegawai',$data);
+	}
+
+
 
 
 

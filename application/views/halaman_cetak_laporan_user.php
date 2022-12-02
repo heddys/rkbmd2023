@@ -89,7 +89,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui barang harusnya dikapitalisasi dengan barang lain yang diketahui induknya dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_admin/laporan_belum_dikapt_diketahui_induk');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <a href="<?php echo site_url('status_form/laporan_belum_dikapt_diketahui_induk');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
                           </div>
                         </div>
                       </div>
@@ -106,7 +106,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui barang harusnya dikapitalisasi dengan barang lain yang tida diketahui induknya dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_admin/laporan_belum_dikapt_tidak_diketahui_induk');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <a href="<?php echo site_url('status_form/laporan_belum_dikapt_tidak_diketahui_induk');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
                           </div>
                         </div>
                       </div>
@@ -123,7 +123,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui barang tercatat ganda dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_admin/laporan_data_tercatat_ganda');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <a href="<?php echo site_url('status_form/laporan_data_tercatat_ganda');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
                           </div>
                         </div>
                       </div>
@@ -140,7 +140,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui informasi barang/aset yang digunakan oleh pihak lain dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_admin/laporan_data_digunakan_pihak_lain');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <a href="<?php echo site_url('status_form/laporan_data_digunakan_pihak_lain');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
                           </div>
                         </div>
                       </div>
@@ -157,7 +157,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui informasi barang/aset digunakan oleh pegawai pemerintah kota dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_admin/laporan_data_digunakan_pegawai_pemda');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <a href="<?php echo site_url('status_form/laporan_data_digunakan_pegawai_pemda');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
                           </div>
                         </div>
                       </div>
