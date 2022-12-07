@@ -101,7 +101,13 @@ function tgl_indo($tanggal){
     </tr>
     </center>
     <!-- Isi Datanya -->
-    
+    <?php if(count($data_barang) == 0) {?>
+        <center>
+            <tr>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="11"><h4>N I H I L</h4></td>
+            </tr>
+        </center>
+    <?php } else {?>
         <?php $x=1;$jumlah=0; foreach ($data_barang as $row) {?>
             <tr style="border:1px solid">
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $x?></td>
@@ -116,7 +122,7 @@ function tgl_indo($tanggal){
                 <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row->harga_baru);?></td>
                 <td style="border:1px solid"><?php echo $row->ket_baru?></td>
             </tr>
-        <?php $x++; $jumlah+=$row->harga_baru;}?>
+        <?php $x++; $jumlah+=$row->harga_baru;}}?>
     <tr>
         <td style="border:2px solid; text-align: center; vertical-align: middle;" colspan="9"><b>Jumlah (Rp.)</b></td>
         <td style="border:2px solid; text-align: right; vertical-align: middle;"><b><?php echo to_rp($jumlah)?></b></td>

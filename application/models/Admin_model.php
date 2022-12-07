@@ -384,7 +384,7 @@ class Admin_model extends CI_Model{
 
     public function get_perubahan_fisik_barang($kib)
     {
-        $query = $this->db->query("SELECT a.*,b.unit,b.lokasi,c.kondisi_barang,c.register,d.is_kondisi_barang,d.is_register from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join register_isi c on a.register=c.register inner join register_status d on a.register=d.is_register where a.kode108_baru like '%".$kib."%' and a.status = '2' and d.is_kondisi_barang = '1' group by c.register,d.is_register");
+        $query = $this->db->query("SELECT a.*,b.unit,b.lokasi,c.kondisi_barang,c.register from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join register_isi c on a.register=c.register  where a.kode108_baru like '%".$kib."%' and a.status = '2' and a.kondisi <> c.kondisi_barang");
         
         return $query;
     }
@@ -403,7 +403,7 @@ class Admin_model extends CI_Model{
         return $query;
     
     }
-    
+
     public function get_data_hilang($kib)
     {
         $query = $this->db->query("SELECT a.*,b.unit,b.lokasi,c.kondisi_barang,c.register,c.keterangan as ket_baru from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join register_isi c on a.register=c.register where a.kode108_baru like '%".$kib."%' and a.status = '2' and c.keberadaan_barang = 'Hilang' group by c.register");
@@ -421,6 +421,13 @@ class Admin_model extends CI_Model{
     public function get_data_ganda($kib)
     {
         $query = $this->db->query("SELECT b.unit,b.lokasi,a.register,a.kode_barang,a.nama_barang,a.spesifikasi_barang_merk,a.tipe,a.satuan,a.nilai_perolehan,a.register_ganda,c.kode108_baru,c.nomor_lokasi,c.nama_barang as name_anak,c.merk_alamat as merk_anak,c.tipe as tipe_anak,c.satuan as satuan_anak,c.harga_baru,c.tahun_pengadaan,d.nama_kepala,a.keterangan FROM `register_isi` a inner join kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi inner join data_kib c on a.register_ganda=c.register inner join pengguna d on left(c.nomor_lokasi,11) = d.nomor_lokasi where a.register <> a.register_ganda and c.`status` = '2' and a.kode_barang like '%".$kib."%' GROUP BY a.register");
+
+        return $query;
+    }
+
+    public function get_data_dipakai_pegawai($kib)
+    {
+        $query = $this->db->query("SELECT b.unit,b.lokasi,a.register,a.nama_barang,a.kode108_baru,a.merk_alamat,a.tipe,a.satuan,a.harga_baru,c.nama_penanggung_jawab,a.keterangan FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join data_pemegang_kendaraan c on a.register=c.register where a.`status` = '2' and a.kode108_baru like '%".$kib."%' and (c.nama_penanggung_jawab <> '' and c.nama_penanggung_jawab <> '-')");
 
         return $query;
     }

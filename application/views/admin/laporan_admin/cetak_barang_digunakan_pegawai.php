@@ -116,66 +116,46 @@ function tgl_indo($tanggal){
             <th style="border:1px solid">Ada</th>
             <th style="border:1px solid">Tidak Ada</th>
         </tr>
+        </center>
     </thead>
     <tbody>
-        <tr>
-            <!-- <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td>
-            <td style="border:1px solid">1</td> -->
-            <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="18"><h4>N I H I L</h4></td>
-        </tr>
-    </tbody>
-    </center>
+    <?php if(count($data_barang) == 0) {?>
+        <center>
+            <tr>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="18"><h4>N I H I L</h4></td>
+            </tr>
+        </center>
+    <?php } else {?>
     <!-- Isi Datanya -->
     
-        <!-- <?php $x=1;$jumlah=0; foreach ($data_barang as $row) {?>
+        <?php $x=1;$jumlah=0; foreach ($data_barang as $row) {?>
             <tr style="border:1px solid">
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $x?></td>
                 <td style="border:1px solid"><?php echo strtoupper($row->unit);?></td>
                 <td style="border:1px solid"><?php echo $row->lokasi?></td>
                 <td style="border:1px solid"><?php echo $row->register?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->kode_barang?></td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->kode108_baru?></td>
                 <td style="border:1px solid"><?php echo $row->nama_barang?></td>
-                <td style="border:1px solid"><?php echo $row->spesifikasi_barang_merk." / ".$row->tipe?></td>
+                <td style="border:1px solid"><?php echo $row->merk_alamat." / ".$row->tipe?></td>
                 <td style="border:1px solid; text-align: center; vertical-align: middle;">1</td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->satuan?></td>
-                <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row->nilai_perolehan);?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->register_ganda;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->kode108_baru;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->nomor_lokasi;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->name_anak;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->merk_anak." / ".$row->tipe_anak;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;">1</td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->satuan_anak;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo to_rp($row->harga_baru);?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->tahun_pengadaan;?></td>
-                <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->nama_kepala;?></td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;">Unit</td>
+                <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row->harga_baru);?></td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;">-</td>
+                <td style="border:1px solid; vertical-align: middle;"><?php echo $row->nama_penanggung_jawab;?></td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;">Pegawai Pemerintah</td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;">v</td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;"></td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;"></td>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;"></td>
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $row->keterangan;?></td>
             </tr>
-        <?php $x++; $jumlah+=$row->nilai_perolehan;}?> -->
-    <!-- <tr>
+        <?php $x++; $jumlah+=$row->harga_baru;}?>
+    <tr>
         <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="9">Jumlah (Rp.)</td>
-        <td style="border:1px solid; text-align: right; vertical-align: middle;"></td>
-        <td style="border:1px solid;" colspan="7"></td>
-    </tr> -->
+        <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($jumlah);?></td>
+    </tr>
+    <?php } ?>
+    </tbody>
 </table>
 <p>
 <table style="font-size:12px; width:100%;">

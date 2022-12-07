@@ -358,7 +358,7 @@
             <a href="<?php echo site_url('status_form/halaman_cetak_laporan')?>" class="nav-link">
               <i class="nav-icon fa fa-bookmark"></i>
               <p>
-                Cetak Laporan
+                Laporan Hasil Inventarisasi
               </p>
             </a>
             <!-- <ul class="nav nav-treeview">

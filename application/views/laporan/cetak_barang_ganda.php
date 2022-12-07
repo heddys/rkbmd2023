@@ -116,7 +116,7 @@ function tgl_indo($tanggal){
     </tr>
     </center>
     <!-- Isi Datanya -->
-
+        
         <?php $x=1;$jumlah=0; 
             if (count($data_barang) > 0) {
                 foreach ($data_barang as $row) {?>

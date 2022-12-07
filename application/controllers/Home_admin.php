@@ -227,13 +227,10 @@ class Home_admin extends CI_Controller {
 	{
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
-		// $data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
+		$data['data_barang']=$this->admin_model->get_data_dipakai_pegawai('1.3.2')->result();
 
-		$this->load->view('admin/laporan_admin/cetak_barang_digunakan_pegawai');
+		$this->load->view('admin/laporan_admin/cetak_barang_digunakan_pegawai',$data);
 	}
-
-
-
 
 
 	public function export_excel_rekap_admin()

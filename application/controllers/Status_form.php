@@ -391,6 +391,7 @@ class Status_form extends CI_Controller {
         $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
         $get_data_pb=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
 		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,'1.3.2')->result();
+		ini_set('memory_limit', '2048M');
 		$data_register=array();
 		$data_register_updated=array();
 		foreach ($get_data_register as $key) {
@@ -412,21 +413,23 @@ class Status_form extends CI_Controller {
 		
 		foreach ($data_register as $row) {
 			$data_updated=$this->form_model->get_kondisi_update($row['register'])->row();
-			$data_register_updated[]=array(
-				'no_lokasi' => $row['no_lokasi'],
-				'register' =>$row['register'],
-				'opd' => $row['opd'],
-				'lokasi' => $row['lokasi'],
-				'kondisi_awal' => $row['kondisi_awal'],
-				'kondisi_baru' => $data_updated->kondisi_barang,
-				'kode108' => $row['kode108'],
-				'nama_barang' => $row['nama_barang'],
-				'merk' => $row['merk'],
-				'tipe' => $row['tipe'],
-				'satuan' => $row['satuan'],
-				'harga' => $row['harga'],
-				'keterangan' => $data_updated->keterangan
-			);
+			if($row['kondisi_awal'] != $data_updated->kondisi_barang) {
+				$data_register_updated[]=array(
+					'no_lokasi' => $row['no_lokasi'],
+					'register' =>$row['register'],
+					'opd' => $row['opd'],
+					'lokasi' => $row['lokasi'],
+					'kondisi_awal' => $row['kondisi_awal'],
+					'kondisi_baru' => $data_updated->kondisi_barang,
+					'kode108' => $row['kode108'],
+					'nama_barang' => $row['nama_barang'],
+					'merk' => $row['merk'],
+					'tipe' => $row['tipe'],
+					'satuan' => $row['satuan'],
+					'harga' => $row['harga'],
+					'keterangan' => $data_updated->keterangan
+				);
+			}
 		}
 
         $data['data_kondisi']=$data_register_updated;
@@ -447,6 +450,7 @@ class Status_form extends CI_Controller {
         $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
         $get_data_pb=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
 		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,'1.3.2')->result();
+		ini_set('memory_limit', '2048M');
 		$data_register=array();
 		$data_register_updated=array();
 		foreach ($get_data_register as $key) {
@@ -579,7 +583,7 @@ class Status_form extends CI_Controller {
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
-		// $data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
+		$data['data_barang']=$this->form_model->get_data_dipakai_pegawai('1.3.2',$nomor_lokasi)->result();
 
 		$this->load->view('laporan/cetak_barang_digunakan_pegawai',$data);
 	}
