@@ -217,15 +217,6 @@ class Status_form extends CI_Controller {
 				} else { 
 					$kib = "1.5.3";
 				} 
-        if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
-			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
-			$nomor_lokasi=array();
-			foreach ($get_lokasi_pbp as $key) {
-				$nomor_lokasi[]=$key->nomor_lokasi;
-			} 
-        }else {
-		    $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-        }
 
 		//Set Session untuk jumlah limit pagination
 		if(isset($_POST['limit'])){
