@@ -55,7 +55,7 @@ function tgl_indo($tanggal){
             <p class="ex2">LAPORAN HASIL INVENTARISASI (LHI)</p>
             <p class="ex2">REKAPITULASI BMD HILANG KARENA KECURIAN</p>
             <p class="ex2">BMD BERUPA PERALATAN DAN MESIN</p>
-            <p class="ex2">KOTA SURABAYA</p>
+            <p class="ex2"><?php echo strtoupper($this->session->userdata('skpd'));?> KOTA SURABAYA</p>
         </b>
     </h5>
 </center>
@@ -78,7 +78,7 @@ function tgl_indo($tanggal){
             <tr>
                 <td width="200px">Pengelola Barang</td>
                 <td width="25px">:</td>
-                <td width="150px">Ir. Hendro Gunawan, MA</td>
+                <td width="150px">Ir. Erna Purnawati</td>
             </tr>
         </tbody>
 </table>
@@ -106,6 +106,10 @@ function tgl_indo($tanggal){
             <tr>
                 <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="11"><h4>N I H I L</h4></td>
             </tr>
+            <tr>
+                <td style="border:2px solid; text-align: center; vertical-align: middle;" colspan="9"><b>Jumlah (Rp.)</b></td>
+                <td style="border:2px solid; text-align: right; vertical-align: middle;"><b>0,00</b></td>
+            </tr>
         </center>
     <?php } else {?>
         <?php $x=1;$jumlah=0; foreach ($data_barang as $row) {?>
@@ -122,11 +126,12 @@ function tgl_indo($tanggal){
                 <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row->harga_baru);?></td>
                 <td style="border:1px solid"><?php echo $row->ket_baru?></td>
             </tr>
-        <?php $x++; $jumlah+=$row->harga_baru;}}?>
+        <?php $x++; $jumlah+=$row->harga_baru;}?>
     <tr>
         <td style="border:2px solid; text-align: center; vertical-align: middle;" colspan="9"><b>Jumlah (Rp.)</b></td>
         <td style="border:2px solid; text-align: right; vertical-align: middle;"><b><?php echo to_rp($jumlah)?></b></td>
     </tr>
+    <?php } ?>
 </table>
 <p>
 <table style="font-size:12px; width:100%;">
@@ -153,7 +158,7 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;">Pengurus Barang</td>
+        <td style="text-align: center; vertical-align: middle;">Pengguna Barang</td>
     </tr>
     <tr>
         <td colspan="13"></td>
@@ -169,15 +174,11 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->nama?></b></td>
+        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->nama_kepala?></b></td>
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->pangkat?></b></td>
-    </tr>
-    <tr>
-        <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b>NIP. <?php echo $data_pb->nip?></b></td>
+        <td style="text-align: center; vertical-align: middle;"><b>NIP. <?php echo $data_pb->nip_kepala?></b></td>
     </tr>
 </table>
     

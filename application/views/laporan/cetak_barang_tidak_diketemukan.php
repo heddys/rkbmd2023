@@ -78,7 +78,7 @@ function tgl_indo($tanggal){
             <tr>
                 <td width="200px">Pengelola Barang</td>
                 <td width="25px">:</td>
-                <td width="150px">Ir. Hendro Gunawan, MA</td>
+                <td width="150px">Ir. Erna Purnawati</td>
             </tr>
         </tbody>
 </table>
@@ -104,7 +104,12 @@ function tgl_indo($tanggal){
             <tr>
                 <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="9"><h4>N I H I L</h4></td>
             </tr>
+            
         </center>
+        <tr>
+            <td style="border:2px solid; text-align: center; vertical-align: middle;" colspan="7"><b>Jumlah (Rp.)</b></td>
+            <td style="border:2px solid; text-align: right; vertical-align: middle;"><b>0,00</b></td>
+        </tr>
     <?php } else {?>
         <?php $x=1;$jumlah=0; foreach ($data_kondisi as $row) {?>
             <tr style="border:1px solid">
@@ -118,11 +123,12 @@ function tgl_indo($tanggal){
                 <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($row['harga']);?></td>
                 <td style="border:1px solid"><?php echo $row['keterangan']?></td>
             </tr>
-        <?php $x++; $jumlah+=$row['harga'];}}?>
+        <?php $x++; $jumlah+=$row['harga'];}?>
     <tr>
         <td style="border:2px solid; text-align: center; vertical-align: middle;" colspan="7"><b>Jumlah (Rp.)</b></td>
         <td style="border:2px solid; text-align: right; vertical-align: middle;"><b><?php echo to_rp($jumlah)?></b></td>
     </tr>
+    <?php } ?>
 </table>
 <p>
 <table style="font-size:12px; width:100%;">
@@ -149,7 +155,7 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;">Pengurus Barang</td>
+        <td style="text-align: center; vertical-align: middle;">Pengguna Barang</td>
     </tr>
     <tr>
         <td colspan="13"></td>
@@ -165,15 +171,11 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->nama?></b></td>
+        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->nama_kepala?></b></td>
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->pangkat?></b></td>
-    </tr>
-    <tr>
-        <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b>NIP. <?php echo $data_pb->nip?></b></td>
+        <td style="text-align: center; vertical-align: middle;"><b>NIP. <?php echo $data_pb->nip_kepala?></b></td>
     </tr>
 </table>
     

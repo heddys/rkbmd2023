@@ -78,7 +78,7 @@ function tgl_indo($tanggal){
             <tr>
                 <td width="200px">Pengelola Barang</td>
                 <td width="25px">:</td>
-                <td width="150px">Ir. Hendro Gunawan, MA</td>
+                <td width="150px">Ir. Erna Purnawati</td>
             </tr>
         </tbody>
 </table>
@@ -188,7 +188,7 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;">Pengurus Barang</td>
+        <td style="text-align: center; vertical-align: middle;">Pengguna Barang</td>
     </tr>
     <tr>
         <td colspan="13"></td>
@@ -204,15 +204,11 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->nama?></b></td>
+        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->nama_kepala?></b></td>
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->pangkat?></b></td>
-    </tr>
-    <tr>
-        <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b>NIP. <?php echo $data_pb->nip?></b></td>
+        <td style="text-align: center; vertical-align: middle;"><b>NIP. <?php echo $data_pb->nip_kepala?></b></td>
     </tr>
 </table>
     

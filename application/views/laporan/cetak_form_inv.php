@@ -113,7 +113,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="200px">Pengelola Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">Ir. Hendro Gunawan, MA</th>
+                <th width="150px">Ir. Erna Purnawati</th>
             </tr>
         </tbody>
     </table>
@@ -984,14 +984,6 @@ function tgl_indo($tanggal){
                 <th></th>
                 <th></th>
             </tr>
-            <tr>
-                <th></th>
-                <th></th>
-                <th style="text-align: right;">1. &nbsp;&nbsp;</th>
-                <th colspan="5"><?php echo $this->session->userdata('kepala_opd');?></th>
-                <th>............................</th>
-                <th></th>
-            </tr>
             
             <?php $pbp="NULL"; $ppb="NULL"; foreach ($pb_verif as $user) {
                 if($user->fungsi=="Verifikator"){
@@ -1007,7 +999,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th></th>
                 <th></th>
-                <th style="text-align: right;">2. &nbsp;&nbsp;</th>
+                <th style="text-align: right;">1. &nbsp;&nbsp;</th>
                 <th colspan="5"><?php echo $verifikator;?></th>
                 <th>............................</th>
                 <th></th>
@@ -1015,7 +1007,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th></th>
                 <th></th>
-                <th style="text-align: right;">3. &nbsp;&nbsp;</th>
+                <th style="text-align: right;">2. &nbsp;&nbsp;</th>
                 <th colspan="5"><?php echo $pb;?></th>
                 <th>............................</th>
                 <th></th>
@@ -1024,7 +1016,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th></th>
                 <th></th>
-                <th style="text-align: right;">4. &nbsp;&nbsp;</th>
+                <th style="text-align: right;">3. &nbsp;&nbsp;</th>
                 <th colspan="5"><?php echo $ppb;?></th>
                 <th>............................</th>
                 <th></th>
@@ -1033,13 +1025,13 @@ function tgl_indo($tanggal){
             <tr>
                 <th></th>
                 <th></th>
-                <th style="text-align: right;">5. &nbsp;&nbsp;</th>
+                <th style="text-align: right;">4. &nbsp;&nbsp;</th>
                 <th colspan="5"><?php echo $pbp;?></th>
                 <th>............................</th>
                 <th></th>
             </tr>
 
-                <?php } $x=count($pb_verif)+2; foreach ($petugas->result() as $row) {?>   
+                <?php } $x=count($pb_verif)+1; foreach ($petugas->result() as $row) {?>   
              <tr>   
                 <th></th>
                 <th></th>
