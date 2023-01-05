@@ -984,52 +984,116 @@ function tgl_indo($tanggal){
                 <th></th>
                 <th></th>
             </tr>
-            
-            <?php $pbp="NULL"; $ppb="NULL"; foreach ($pb_verif as $user) {
-                if($user->fungsi=="Verifikator"){
-                    $verifikator=$user->nama;
-                } elseif ($user->fungsi=="Pengurus Barang") {
-                    $pb=$user->nama;
-                } elseif ($user->fungsi=="Pembantu Pengurus Barang") {
-                    $ppb=$user->nama;
+            <?php
+                if ($this->session->userdata('kode_opd') == '3200') { 
+                    $pbp="NULL"; $ppb="NULL"; foreach ($pb_verif as $user) {
+                        if($user->fungsi=="Verifikator"){
+                            $verifikator=$user->nama;
+                        } elseif ($user->fungsi=="Pengurus Barang") {
+                            $pb=$user->nama;
+                        } else {
+                            $pbp=$user->nama;
+                        }
+                    } ?>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: right;">1. &nbsp;&nbsp;</th>
+                    <th colspan="5">Ir. MOHAMMAD AMINUDDIN</th>
+                    <th>............................</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: right;">2. &nbsp;&nbsp;</th>
+                    <th colspan="5"><?php echo $verifikator;?></th>
+                    <th>............................</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: right;">3. &nbsp;&nbsp;</th>
+                    <th colspan="5"><?php echo $pb;?></th>
+                    <th>............................</th>
+                    <th></th>
+                </tr>
+                <?php if($ppb != "NULL") {?>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: right;">4. &nbsp;&nbsp;</th>
+                    <th colspan="5"><?php echo $ppb;?></th>
+                    <th>............................</th>
+                    <th></th>
+                </tr>
+                    <?php } if ($pbp != "NULL") {?>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: right;">5. &nbsp;&nbsp;</th>
+                    <th colspan="5"><?php echo $pbp;?></th>
+                    <th>............................</th>
+                    <th></th>
+                </tr>
+
+            <?php } $x=count($pb_verif)+2; foreach ($petugas->result() as $row) {?>   
+                <tr>   
+                   <th></th>
+                   <th></th>
+                   <th style="text-align: right;"><?php echo $x?>. &nbsp;&nbsp;</th>
+                   <th colspan="5"><?php echo $row->nama_petugas?></th>
+                   <th>............................</th>
+                   <th></th>
+               </tr>
+               <?php $x++; }
                 } else {
-                    $pbp=$user->nama;
-                }
-            } ?>
-            <tr>
-                <th></th>
-                <th></th>
-                <th style="text-align: right;">1. &nbsp;&nbsp;</th>
-                <th colspan="5"><?php echo $verifikator;?></th>
-                <th>............................</th>
-                <th></th>
-            </tr>
-            <tr>
-                <th></th>
-                <th></th>
-                <th style="text-align: right;">2. &nbsp;&nbsp;</th>
-                <th colspan="5"><?php echo $pb;?></th>
-                <th>............................</th>
-                <th></th>
-            </tr>
-            <?php if($ppb != "NULL") {?>
-            <tr>
-                <th></th>
-                <th></th>
-                <th style="text-align: right;">3. &nbsp;&nbsp;</th>
-                <th colspan="5"><?php echo $ppb;?></th>
-                <th>............................</th>
-                <th></th>
-            </tr>
-                <?php } if ($pbp != "NULL") {?>
-            <tr>
-                <th></th>
-                <th></th>
-                <th style="text-align: right;">4. &nbsp;&nbsp;</th>
-                <th colspan="5"><?php echo $pbp;?></th>
-                <th>............................</th>
-                <th></th>
-            </tr>
+                 $pbp="NULL"; $ppb="NULL"; foreach ($pb_verif as $user) {
+                    if($user->fungsi=="Verifikator"){
+                        $verifikator=$user->nama;
+                    } elseif ($user->fungsi=="Pengurus Barang") {
+                        $pb=$user->nama;
+                    } elseif ($user->fungsi=="Pembantu Pengurus Barang") {
+                        $ppb=$user->nama;
+                    } else {
+                        $pbp=$user->nama;
+                    }
+                } ?>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: right;">1. &nbsp;&nbsp;</th>
+                    <th colspan="5"><?php echo $verifikator;?></th>
+                    <th>............................</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: right;">2. &nbsp;&nbsp;</th>
+                    <th colspan="5"><?php echo $pb;?></th>
+                    <th>............................</th>
+                    <th></th>
+                </tr>
+                <?php if($ppb != "NULL") {?>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: right;">3. &nbsp;&nbsp;</th>
+                    <th colspan="5"><?php echo $ppb;?></th>
+                    <th>............................</th>
+                    <th></th>
+                </tr>
+                    <?php } if ($pbp != "NULL") {?>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: right;">4. &nbsp;&nbsp;</th>
+                    <th colspan="5"><?php echo $pbp;?></th>
+                    <th>............................</th>
+                    <th></th>
+                </tr>
 
                 <?php } $x=count($pb_verif)+1; foreach ($petugas->result() as $row) {?>   
              <tr>   
@@ -1040,8 +1104,7 @@ function tgl_indo($tanggal){
                 <th>............................</th>
                 <th></th>
             </tr>
-            <?php $x++; } ?> 
-            
+            <?php $x++; }} ?> 
             
         </tbody>
     </table>
