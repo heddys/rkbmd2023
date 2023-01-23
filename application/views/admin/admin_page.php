@@ -8,6 +8,29 @@
           <h4>Notice!</h4>
           Selamat Datang, Administrator
         </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-edit"></i>
+                  Update Penambahan Register Baru (inc. Pengadaan, Inventarisasi, Hibah Masuk, dan Penambahan Lainnya)
+                </h3>
+              </div>
+              <div class="card-body pad table-responsive" id="tombol_update">
+                  <td>
+                    <button type="button" class="btn btn-block btn-outline-primary btn-lg add_pengadaan">Update Now!</button>
+                  </td>
+              </div>
+              <div class="loader" id="loader"></div>
+              <!-- /.card -->
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+
+
         <!-- PIE CHART -->
         <div class="card card-primary">
             <div class="card-header">

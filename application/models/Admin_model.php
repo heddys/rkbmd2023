@@ -96,6 +96,25 @@ class Admin_model extends CI_Model{
        return $query->row();
    }
 
+   public function get_register_simbada()
+   {
+    $db_simbada = $this->load->database('simbada',TRUE);
+
+    $query=$db_simbada->query("SELECT * FROM kib where hapus = '' and extrakomtabel_baru = '' and kode108_baru like '1.3.2%'");
+    return $query;
+
+   }
+
+   public function insert_register($data)
+   {
+    return $this->db->insert('data_kib',$data);
+   }
+
+   public function cek_register($register)
+   {
+    return $this->db->get_where('data_kib', array ('register' => $register));
+   }
+
    public function get_user_penyelia()
    {
        return $this->db->get_where('pengguna', array ('fungsi' => 'Penyelia'));

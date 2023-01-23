@@ -56,7 +56,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary3" name="radio_kode_bar" value="0" required="required"/>
+                                        <input type="radio" id="primary3" name="radio_kode_bar" checked="checked" value="0" required="required"/>
                                         <label for="primary3">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -80,7 +80,7 @@
                             <div class=" mt-2 mb-6 col-lg-2">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary5" name="radio_nama_bar" value="0" required="required"/>
+                                        <input type="radio" id="primary5" name="radio_nama_bar" checked="checked" value="0" required="required"/>
                                         <label for="primary5">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -110,7 +110,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary7" name="radio_alamat" value="0"/>
+                                        <input type="radio" id="primary7" name="radio_alamat" checked="checked" value="0" required="required"/>
                                         <label for="primary7">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -162,7 +162,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary11" name="radio_satuan" value="0" required="required"/>
+                                        <input type="radio" id="primary11" name="radio_satuan" value="0" checked="checked" required="required"/>
                                         <label for="primary11">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -189,7 +189,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary13" name="radio_keberadaan" value="0" required="required"/>
+                                        <input type="radio" id="primary13" name="radio_keberadaan" value="0" checked="checked" required="required"/>
                                         <label for="primary13">Ada</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -244,7 +244,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary17" name="radio_kap_atrib" value="0" required="required"/>
+                                        <input type="radio" id="primary17" name="radio_kap_atrib" value="0" checked="checked" required="required"/>
                                         <label for="primary17">Bukan</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -272,7 +272,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary19" name="radio_merk" value="0" required="required"/>
+                                        <input type="radio" id="primary19" name="radio_merk" value="0" checked="checked" required="required"/>
                                         <label for="primary19">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -307,7 +307,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary21" name="radio_kondisi" value="0" required="required"/>
+                                        <input type="radio" id="primary21" name="radio_kondisi" checked="checked" value="0" required="required"/>
                                         <label for="primary21">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -334,7 +334,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary23" name="radio_tipe" value="0" required="required"/>
+                                        <input type="radio" id="primary23" name="radio_tipe" value="0" checked="checked" required="required"/>
                                         <label for="primary23">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -361,7 +361,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary25" name="radio_nopol" value="0" required="required"/>
+                                        <input type="radio" id="primary25" name="radio_nopol" value="0" checked="checked" required="required"/>
                                         <label for="primary25">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -388,7 +388,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary27" name="radio_no_rangka" value="0" required="required"/>
+                                        <input type="radio" id="primary27" name="radio_no_rangka" value="0" checked="checked" required="required"/>
                                         <label for="primary27">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -415,7 +415,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary29" name="radio_mesin" value="0" required="required"/>
+                                        <input type="radio" id="primary29" name="radio_mesin" value="0" checked="checked" required="required"/>
                                         <label for="primary29">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -441,7 +441,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary31" name="radio_bpkb" value="0" required="required"/>
+                                        <input type="radio" id="primary31" name="radio_bpkb" value="0" checked="checked" required="required"/>
                                         <label for="primary31">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -467,7 +467,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary33" name="radio_pengguna" value="0" required="required"/>
+                                        <input type="radio" id="primary33" name="radio_pengguna" value="0" checked="checked" required="required"/>
                                         <label for="primary33">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -493,7 +493,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary35" name="radio_ganda" value="0" required="required"/>
+                                        <input type="radio" id="primary35" name="radio_ganda" value="0" checked="checked" required="required"/>
                                         <label for="primary35">Tidak</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">

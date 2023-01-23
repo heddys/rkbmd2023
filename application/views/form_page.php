@@ -1,8 +1,7 @@
     <section class="content">
       <div class="row">
-        <div class="col-12">
-          <!-- <a href="<?php echo site_url('/home/rkbform');?>" class="btn btn-primary btn-flat">Tambah Kegiatan </a>
-          <a href="#" class="btn btn-success btn-flat excel" disabled>Export Excel</a> -->
+        <div class="col-12" id="main">
+          <!-- <a href="#" class="btn btn-warning btn-flat add_pengadaan">Check Data Penambahan Register</a> -->
           <hr>
         	<div class="card">
 	            <div class="card-header">
@@ -54,6 +53,7 @@
 	                  <th><center>Spesifikasi Barang</center></th>
                     <th><center>Tahun Pengadaan</center></th>
 	                  <th><center>Nilai Perolehan </center></th>
+                    <th><center>Status Register</center></th>
 	                  <th><center>Aksi</center></th>
 	                </tr>
 	                </thead>
@@ -68,6 +68,7 @@
                         <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
                         <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                         <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
+                        <td><center><?php echo $row->sttaus_register;?></center></td>
 	                  		<td>  
                               <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
                                 <center>
@@ -133,6 +134,7 @@
 	                  <th><center>Spesifikasi Barang</center></th>
                     <th><center>Tahun Pengadaan</center></th>
 	                  <th><center>Nilai Perolehan </center></th>
+                    <th><center>Status Register</center></th>
 	                  <th><center>Aksi</center></th>
 	                </tr>
 	                </thead>
@@ -147,6 +149,7 @@
                             <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
                             <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
+                            <td><center><?php echo $row->status_register;?></center></td>
 	                  		<td>  
                               <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
                                 <center>

@@ -322,6 +322,67 @@
       $(".modal-body #id_kamus").val( id_kamus );
     }
 
+    $('#tombol_update').on('click', '.add_pengadaan', function(){
+      $('#loader').show();
+      $.ajax({
+              type: 'ajax',
+              method: 'get',
+              url: '<?php echo site_url();?>/home_admin/update_data_pengadaan',
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                  if(data==TRUE) {
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 3000
+                  });
+                      Toast.fire({
+                        type: 'success',
+                        title: 'Success!! Menambahkan Data Register.'
+                      })
+                  } else {
+
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 3000
+                  });
+                      Toast.fire({
+                        type: 'error',
+                        title: 'Tidak Ada Penambahan Data Baru  '
+                      })
+
+                  }
+
+              },
+              complete: function(){
+                $('#loader').hide();
+              },
+              error: function() {
+                  const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'center',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+                    Toast.fire({
+                      type: 'error',
+                      title: 'Data Gagal Di Tambahkan'
+                    })
+                }
+            });
+
+
+
+
+
+
+
+    });
+
 </script>
 </body>
 </html>

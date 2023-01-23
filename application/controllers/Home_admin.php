@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home_admin extends CI_Controller {
 
-
-
     public function index()
     {
         $this->cek_sess();
@@ -31,6 +29,64 @@ class Home_admin extends CI_Controller {
 				$par=2;
 				redirect('auth/index/'.$par);
 			}
+	}
+
+	public function update_data_pengadaan()
+	{
+		$this->cek_sess();
+
+		$get_simbada = $this->admin_model->get_register_simbada()->result();
+		$count = 0;
+		ini_set('memory_limit', '4056M');
+		ini_set('max_execution_time', '5000');
+		foreach ($get_simbada as $row) {
+
+			$exist = $this->admin_model->cek_register($row->register)->num_rows();
+			
+
+			if($exist < 1) {
+				$data_reg= array (
+
+					'register' => $row->register,
+ 					'kode108_baru' => $row->kode108_baru,
+					'kode64_baru' => $row->kode64_baru,
+					'nomor_lokasi' => $row->nomor_lokasi_baru,
+					'nama_barang' => $row->nama_barang_baru,
+					'merk_alamat' => $row->merk_alamat_baru,
+					'tipe' => $row->tipe_baru,
+					'satuan' => $row->satuan,
+					'harga_baru' => $row->harga_baru,
+					'tahun_pengadaan' => $row->tahun_pengadaan,
+					'no_bpkb' => $row->no_bpkb,
+					'no_rangka_seri' => $row->no_rangka_seri,
+					'nopol' => $row->nopol,
+					'no_mesin' => $row->no_mesin,
+					'kondisi' => $row->kondisi,
+					'keterangan' => $row->keterangan,
+					'ekstrakomtabel' => NULL,
+					'status' => NULL,
+					'unit_baru' => substr($row->nomor_lokasi_baru,0,11),
+					'nomor_lokasi_baru' => substr($row->nomor_lokasi_baru,0,11).'_'.$row->nomor_lokasi_baru,
+					'status_simbada' => $row->hapus,
+					'koreksi_hapus' => NULL,
+					'penghapusan' => $row->penghapusan,
+					'status_register' => 'PENAMBAHAN'
+				);				
+				$count++;
+				$this->admin_model->insert_register($data_reg);
+			} 
+
+		}
+
+		if($count > 0) {
+			$result = TRUE;
+		} else {
+			$result = FALSE;
+		}
+
+		echo json_encode($result);
+
+
 	}
 
 	public function setting_penyelia()
