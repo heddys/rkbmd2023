@@ -287,6 +287,14 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/halaman_setting_user');?>" class="nav-link">
+                <i class="nav-icon far fa-address-card"></i>
+                  <p>
+                    Pengelola User
+                  </p>
+                </a>
+              </li>
             </ul>
           </li>
 

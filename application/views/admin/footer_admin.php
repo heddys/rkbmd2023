@@ -51,6 +51,7 @@
           }
       });
       $("#tabel_kodebar").DataTable();
+      $("#tabel_user").DataTable();
 
     });
     function showTime() {

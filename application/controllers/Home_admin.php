@@ -73,6 +73,7 @@ class Home_admin extends CI_Controller {
 					'status_register' => 'PENAMBAHAN'
 				);				
 				$count++;
+				
 				$this->admin_model->insert_register($data_reg);
 			} 
 
@@ -128,6 +129,8 @@ class Home_admin extends CI_Controller {
 		echo json_encode($result);
 	}
 
+
+
 	public function buka_kunci_kodebar()
 	{
 		$this->cek_sess();
@@ -149,18 +152,6 @@ class Home_admin extends CI_Controller {
 
 		// var_dump($result);
 		echo json_encode($result);
-	}
-
-	public function halaman_laporan()
-	{
-		$this->cek_sess();
-
-		$data['page']="Halaman Cetak Laporan";
-
-		$this->load->view('admin/header_admin',$data);
-		$this->load->view('admin/cetak_laporan_admin_page');
-		$this->load->view('admin/footer_admin');
-
 	}
 
 	public function save_opd_penyelia()
@@ -205,6 +196,34 @@ class Home_admin extends CI_Controller {
 		$result = $this->admin_model->hapus_opd_pemangku($id,$data);
 
 		echo json_decode($result);
+	}
+
+	public function halaman_setting_user()
+	{
+		$this->cek_sess();
+		$data['page']="Setting Akses User";
+
+		$data['user'] = $this->admin_model->get_users()->result();
+
+		$this->load->view('admin/header_admin',$data);
+		$this->load->view('admin/setting_user_page');
+		$this->load->view('admin/footer_admin');
+
+	}
+
+	// HALAMAN LAPORAN DAN CONTROLLER CETAK LAPORAN
+	// ===================================================================================================================
+
+	public function halaman_laporan()
+	{
+		$this->cek_sess();
+
+		$data['page']="Halaman Cetak Laporan";
+
+		$this->load->view('admin/header_admin',$data);
+		$this->load->view('admin/cetak_laporan_admin_page');
+		$this->load->view('admin/footer_admin');
+
 	}
 
 	public function laporan_perubahan_kondisi_fisik_barang()

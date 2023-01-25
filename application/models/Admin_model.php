@@ -450,6 +450,11 @@ class Admin_model extends CI_Model{
 
         return $query;
     }
+
+    public function get_users()
+    {
+        return $this->db->get_where('pengguna',array ('fungsi !=' => 'Admin'));
+    }
     
     
 }
