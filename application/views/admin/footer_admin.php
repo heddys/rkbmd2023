@@ -324,7 +324,7 @@
     }
 
     $('#tombol_update').on('click', '.add_pengadaan', function(){
-      $('#loader').show();
+      document.getElementById('loader').className = 'loader'
       $.ajax({
               type: 'ajax',
               method: 'get',
@@ -360,7 +360,7 @@
 
               },
               complete: function(){
-                $('#loader').hide();
+                document.getElementById('loader').className = 'hide-loader'
               },
               error: function() {
                   const Toast = Swal.mixin({

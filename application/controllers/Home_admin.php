@@ -36,14 +36,17 @@ class Home_admin extends CI_Controller {
 		$this->cek_sess();
 
 		$get_simbada = $this->admin_model->get_register_simbada()->result();
-		$count = 0;
+		$count = TRUE;
 		ini_set('memory_limit', '4056M');
 		ini_set('max_execution_time', '5000');
+		date_default_timezone_set("Asia/Jakarta");	
+		$date=date("Y-m-d");
+		$time=date("H:i:s");
 		foreach ($get_simbada as $row) {
 
 			$exist = $this->admin_model->cek_register($row->register)->num_rows();
 			
-
+			
 			if($exist < 1) {
 				$data_reg= array (
 
@@ -70,21 +73,47 @@ class Home_admin extends CI_Controller {
 					'status_simbada' => $row->hapus,
 					'koreksi_hapus' => NULL,
 					'penghapusan' => $row->penghapusan,
-					'status_register' => 'PENAMBAHAN'
+					'status_register' => 'PENAMBAHAN',
+					'created_at_date' => $date,
+					'created_at_time' => $time
 				);				
-				$count++;
 				
 				$this->admin_model->insert_register($data_reg);
+			} else {
+
+				$register = $row->register;
+
+				$data_for_kib=array (
+					'nomor_lokasi' => $row->nomor_lokasi_baru,
+					'unit_baru' => substr($row->nomor_lokasi_baru,0,11),
+					'nomor_lokasi_baru' => substr($row->nomor_lokasi_baru,0,11).'_'.$row->nomor_lokasi_baru,
+					'status_simbada' => $row->hapus,
+					'penghapusan' => $row->penghapusan,
+					'update_at_date' => $date,
+					'update_at_time' => $time
+				);
+
+				$this->admin_model->update_data($register,$data_for_kib,'data_kib');
+
+				$data_for_isi=array(
+					'nomor_lokasi_awal' => $row->nomor_lokasi_baru,
+					'lokasi' => $row->nomor_lokasi_baru,
+					'update_at_date' => $date,
+					'update_at_time' => $time
+				);
+
+				$this->admin_model->update_data($register,$data_for_isi,'register_isi');
+
+				$data_for_isi_history=array(
+					'nomor_lokasi_awal' => $row->nomor_lokasi_baru,
+					'lokasi' => $row->nomor_lokasi_baru
+				);
+				$this->admin_model->update_data($register,$data_for_isi_history,'register_isi_history');
+
 			} 
 
 		}
-
-		if($count > 0) {
-			$result = TRUE;
-		} else {
-			$result = FALSE;
-		}
-
+		$result=TRUE;
 		echo json_encode($result);
 
 

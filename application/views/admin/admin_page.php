@@ -23,7 +23,8 @@
                     <button type="button" class="btn btn-block btn-outline-primary btn-lg add_pengadaan">Update Now!</button>
                   </td>
               </div>
-              <div class="loader" id="loader"></div>
+              <center><div class="hide-loader" id="loader"></div></center>
+              <br>
               <!-- /.card -->
             </div>
           </div>

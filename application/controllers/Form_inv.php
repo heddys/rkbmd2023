@@ -143,7 +143,7 @@ class Form_inv extends CI_Controller {
 				$this->pagination->initialize($config);
 				
 			$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
-			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
+			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form, 'data' => $data_cari);
 			$data['register']=$this->form_model->get_all_register_pagination($data_cari,$kib,$config['per_page'],$data['offset'],$form);
         
 		}
