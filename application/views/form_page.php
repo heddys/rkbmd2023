@@ -2,6 +2,7 @@
       <div class="row">
         <div class="col-12" id="main">
           <!-- <a href="#" class="btn btn-warning btn-flat add_pengadaan">Check Data Penambahan Register</a> -->
+          <!-- <?php echo $dummy['data']; ?> -->
           <hr>
         	<div class="card">
 	            <div class="card-header">
