@@ -367,9 +367,9 @@ class Home_admin extends CI_Controller {
         $objPHPExcel->getActiveSheet()->setCellValue('B3', "OPD");
         $objPHPExcel->getActiveSheet()->setCellValue('C3', "Total Register");
         $objPHPExcel->getActiveSheet()->setCellValue('D3', "Register Telah Di Verif");
-        $objPHPExcel->getActiveSheet()->setCellValue('E3', "Register Masih Proses Verif	");
+        $objPHPExcel->getActiveSheet()->setCellValue('E3', "Register Masih Proses Verif");
         $objPHPExcel->getActiveSheet()->setCellValue('F3', "Register Di Tolak");
-        $objPHPExcel->getActiveSheet()->setCellValue('G3', "Register Belum Terjamah	");
+        $objPHPExcel->getActiveSheet()->setCellValue('G3', "Register Belum Di Kerjakan");
         $objPHPExcel->getActiveSheet()->setCellValue('H3', "Persentase");
 		
 		$objPHPExcel->getActiveSheet()->getStyle('A3:H3')->getFont()->setBold( true );
