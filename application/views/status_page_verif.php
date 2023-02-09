@@ -8,6 +8,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
+                    <!-- <?php echo $dummy['data']." - ".$dummy['lokasi_asli']." - ".$dummy['status']?> -->
                   <center>LIST DATA YANG TELAH DI VERIFIKASI
                           <?php if ($kib_apa == 1) { 
                                     echo "ASET TETAP TANAH";

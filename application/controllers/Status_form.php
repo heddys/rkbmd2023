@@ -202,6 +202,7 @@ class Status_form extends CI_Controller {
 		$this->cek_sess();
 		$data['page']="List Status Register Yang Terverifikasi";
 		$data['kib_apa']=$id;
+		$data_cari=$this->session->userdata('data');
 
 				if($id=='1') {
 					$kib = "1.3.1";
@@ -254,8 +255,8 @@ class Status_form extends CI_Controller {
 					$form = 1;
 					$data_cari=$this->session->userdata('data');
 				} else {
-					$data_cari=$this->session->userdata('no_lokasi_asli');
-					$form = 0;
+					$data_cari=$this->session->userdata('data');
+					$form = 2;
 				}
 			}
 
