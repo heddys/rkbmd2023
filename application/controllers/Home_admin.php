@@ -44,7 +44,7 @@ class Home_admin extends CI_Controller {
 		$time=date("H:i:s");
 		foreach ($get_simbada as $row) {
 
-			$exist = $this->admin_model->cek_register($row->register)->num_rows();
+			$exist = $this->admin_model->cek_register($row->register);
 			
 			
 			if($exist < 1) {
