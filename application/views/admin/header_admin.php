@@ -161,65 +161,10 @@
           
           <hr>
           <li class="nav-item has-treeview">
-            <!-- <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Rencana Kebutuhan
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a> -->
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo site_url('#');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Entry Belanja Aset</p>
-                </a>
-              </li>
-              <!-- <li class="nav-item">
-                <a href="<?php echo site_url('home/rkpform');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Entry Belanja Persediaan</p>
-                </a>
-              </li> -->
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <!-- <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                List Data
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a> -->
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo site_url('#');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Tabel RK Belanja Aset</p>
-                </a>
-              </li>
-              <!-- <li class="nav-item">
-                <a href="<?php echo site_url('home/tabel_rkp');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Tabel RK Belanja Persediaan</p>
-                </a>
-              </li> -->
-            </ul>
-          </li>
-          <!-- <li class="nav-item has-treeview">
-            <a href="<?php echo site_url('home/desk_komponen');?>" class="nav-link">
-              <i class="nav-icon fab fa-buffer"></i>
-              <p>
-                Keterangan Eksisting
-                <span class="right badge badge-danger"><?php echo $exist?></span>
-              </p>
-            </a>
-          </li> -->
-          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon 	fa fa-search"></i>
               <p>
-              List Approved Register
+              Cari Register
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -231,7 +176,7 @@
                 </a>
               </li> -->
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('home_admin/cari_register/2')?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.02</p>
                 </a>

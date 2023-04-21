@@ -297,24 +297,6 @@ class Admin_model extends CI_Model{
         return $query->result();
     }
 
-    public function hitungBanyakRowRegister($data,$kib,$form)
-    {
-                // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
-                if ($form == 2){
-                    $no_lokasi=$this->session->userdata('no_lokasi_asli');
-                    $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`status` is null and a.`nomor_lokasi_baru` like '".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%')");
-
-                    return $query;
-                } else {
-                    $this->db->select('*');
-                    $this->db->from('data_kib');
-                    $this->db->where_in('unit_baru',$data);
-                    $this->db->like('kode108_baru',$kib);
-
-                    return $this->db->get();
-                } 
-    }
-
     public function hitungBanyakRowRegister_peropd($data,$kib,$form)
     {
                 // $this->db->where(array('register' => '19012142-2019-1140133-1-143-1'));
@@ -462,7 +444,37 @@ class Admin_model extends CI_Model{
         $this->db->where('register',$register);
         return $this->db->update($table,$data);
     }
+
+    public function hitungBanyakRowRegister($where,$data,$kib,$form)
+    {
+
+        if ($form == 2){                       
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) ");
+
+            } else {
+                $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1)");
+                       
+            }
+
+        return $query;
+    }
+
+    public function list_unit()
+    {
+        return $this->db->get_where('kamus_lokasi');
+    }
+
+    public function get_all_register_pagination($data,$kib, $limit, $offset,$form)
     
+    {
+        if($form == 2){
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+
+        } else {
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL limit ".$limit." offset ".$offset."");
+        } 
+        return $query->result();
+    }    
     
 }
 
