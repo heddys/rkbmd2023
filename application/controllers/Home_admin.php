@@ -243,7 +243,7 @@ class Home_admin extends CI_Controller {
 	public function cari_register($id)
 	{
 		$this->cek_sess();
-		$data['page']="Register Search System";
+		$data['page']="Register Searching System";
      	// $data['exist']=$this->cek_jumlah_exist();
 		$data_cari=$this->session->userdata('data');
 		

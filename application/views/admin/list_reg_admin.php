@@ -40,49 +40,6 @@
                   </div>
                 </div> -->
               </div>
-
-                
-                <?php if ($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD") {?>   
-                  <table id="tabel_pbp" class="table table-bordered table-hover">
-                 <thead class="thead-dark" > 
-	                <tr>
-	                  <th><center>No.</center></th>
-	                  <th><center>Register</center></th>
-                    <th><center>Lokasi</center></th>
-	                  <th><center>Kode Neraca</center></th>
-	                  <th><center>Nama Barang</center></th>
-	                  <th><center>Spesifikasi Barang</center></th>
-                    <th><center>Tahun Pengadaan</center></th>
-	                  <th><center>Nilai Perolehan </center></th>
-                    <th><center>Status Register</center></th>
-	                  <th><center>Aksi</center></th>
-	                </tr>
-	                </thead>
-                  <tbody>
-                    <?php $x=1; foreach ($register as $row) {?>
-	                	<tr>
-	                  		<td><center><?php echo $x;?></center></td>
-	                  		<td><center><?php echo $row->register;?></center></td>
-                        <td><center><?php echo $row->lokasi;?></center></td>
-	                  		<td><center><?php echo $row->kode64_baru;?></center></td>
-                        <td><center><?php echo $row->nama_barang;?></center></td>
-                        <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
-                        <td><center><?php echo $row->tahun_pengadaan;?></center></td>
-                        <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
-                        <td><center><?php echo $row->sttaus_register;?></center></td>
-	                  		<td>  
-                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir" method="post">
-                                <center>
-                                  <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
-                                    <input type="hidden" name="register" value="<?php echo $row->register?>">
-                                </center></td>
-                              </form>
-	                  	</tr>
-	                  <?php $x++; }?>
-	                </tbody>
-	              </table>
-                  
-                <?php } else {?>
                 <table>
                   <thead>
                     <tr>
@@ -93,11 +50,11 @@
                   <tbody>
                     <tr>
                       <td width="70%">
-                        <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/2" method="post">
+                        <form role="form" action="<?php echo site_url();?>/home_admin/cari_register/2" method="post">
                           <div class="col-md-5">
                           <select class="form-control select2" id="select_lokasi" name="select_lokasi" required="required">
                                     <option selected value="">Cari Berdasarkan Lokasi</option>
-                              <option value="<?php echo $this->session->userdata('no_lokasi_asli');?>">Semua Lokasi</option>
+                              <option value="13.30">Semua Lokasi</option>
                                 <?php $x=1; foreach ($lokasi->result() as $row) {?>
                                 <option value="<?php echo $row->nomor_lokasi;?>"><?php echo $row->lokasi;?></option>
                                 <?php }?>
@@ -111,7 +68,7 @@
                       <td>
                       </td>
                       <td width="50%">
-                      <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/2" method="post">
+                      <form role="form" action="#" method="post">
                           <div class="input-group">
                             <input type="text"  class="form-control" name="cariregname" placeholder="Cari Berdasarkan Register atau Nama Barang" required>
                             <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
@@ -173,7 +130,7 @@
                   </select>
                   <button type="submit" class="btn btn-sm btn-info" title="Rubah Banyak List Register"><i class="fa fa-bomb"></i></button>
                 </form>
-                <?php echo $this->pagination->create_links(); } ?>
+                <?php echo $this->pagination->create_links();?>
 
 	            </div>
 	            <!-- /.card-body -->

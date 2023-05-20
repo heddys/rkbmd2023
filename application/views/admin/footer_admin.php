@@ -38,7 +38,8 @@
 <script src="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
 <script src="<?php echo base_url();?>ini_assets/plugins/toastr/toastr.min.js"></script>
-
+<!-- Select2 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/select2/js/select2.full.min.js"></script>
 <script>
     $(function () {
     
@@ -52,8 +53,17 @@
       });
       $("#tabel_kodebar").DataTable();
       $("#tabel_user").DataTable();
+      $('.select_limit').select2({
+        width: '5%',
+        minimumResultsForSearch: Infinity
+      });
+      $('#select_lokasi').select2({
+        width: 'resolve'
+      });
 
     });
+
+
     function showTime() {
       var a_p = "";
       var today = new Date();
