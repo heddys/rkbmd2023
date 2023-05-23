@@ -37,17 +37,17 @@
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">
 	              <table id="tabel_user" class="table table-bordered table-hover">
-	                <thead>
-	                <tr>
-	                  <th><center>No.</center></th>
-	                  <th><center>Kode Unit</center></th>
-	                  <th><center>Nama OPD</center></th>
-	                  <th><center>NIP</center></th>
-	                  <th><center>Nama User</center></th>
-	                  <th><center>Pangkat</center></th>
-	                  <th><center>Role</center></th>
-	                  <th><center>Detail</center></th>
-	                </tr>
+	                <thead class="thead-dark">
+						<tr>
+							<th><center>No.</center></th>
+							<th><center>Kode Unit</center></th>
+							<th><center>Nama OPD</center></th>
+							<th><center>NIP</center></th>
+							<th><center>Nama User</center></th>
+							<th><center>Pangkat</center></th>
+							<th><center>Role</center></th>
+							<th><center>Detail</center></th>
+						</tr>
 	                </thead>
 	                <tbody>
 						<?php $x=1; foreach ($user as $row) {?>
@@ -59,13 +59,14 @@
 							<td><center><?php echo $row->nama?><center></td>
 							<td><center><?php echo $row->pangkat?><center></td>
 							<td><center><?php echo $row->fungsi?><center></td>
-							<td>
-                                <center>
+							<td style="width:50px">
 										<span class="d-inline-block" data-toggle="tooltip" title="Kunci Semua Akses Bidang Di OPD Ini">
 											<a href="javascript:;" class="btn btn-block btn-outline-danger kunci_opd" data="<?php echo $row->id?>"><i class="fa fa-lock"></i></a>
 										</span>
-								</center>
-                            </td>
+										<span class="d-inline-block" data-toggle="tooltip" title="Kunci Semua Akses Bidang Di OPD Ini">
+											<a href="javascript:;" class="btn btn-block btn-outline-danger kunci_opd" data="<?php echo $row->id?>"><i class="fa fa-lock"></i></a>
+										</span>
+							</td>
 						</tr>
 						<?php $x++;}?>
 	                </tbody>
@@ -79,9 +80,6 @@
 	</div>
     <!-- /.row -->
 </section>
-
-
-
 
 	    <!-- /.content -->
 	    <div class="modal fade" id="rincian_user">
@@ -245,3 +243,4 @@
 
 
 </div>
+						</div>
