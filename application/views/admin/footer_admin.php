@@ -208,6 +208,10 @@
             });
       } 
       
+
+
+      //Javascript Untuk Setting Kode Barang
+
       function klik_kunci_kode(id) {
         var id=id;
         
@@ -287,6 +291,11 @@
                 }
             });
       }
+
+
+    
+    //Javascript Untuk Fitur Setting Penyelia//
+
 
     $('#list_opd_penyelia').find('.isi_body').on('click', '.delete_opd', function(){
       var id=$(this).attr('data-id');
@@ -387,9 +396,9 @@
             });
 
 
+            //Javasctipt Untuk Fitur Setting User//
 
-
-
+            
 
 
     });

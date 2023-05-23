@@ -46,7 +46,8 @@
 							<th><center>Nama User</center></th>
 							<th><center>Pangkat</center></th>
 							<th><center>Role</center></th>
-							<th><center>Detail</center></th>
+							<th><center>Edit</center></th>
+							<th><center>Lock</center></th>
 						</tr>
 	                </thead>
 	                <tbody>
@@ -59,13 +60,19 @@
 							<td><center><?php echo $row->nama?><center></td>
 							<td><center><?php echo $row->pangkat?><center></td>
 							<td><center><?php echo $row->fungsi?><center></td>
-							<td style="width:50px">
-										<span class="d-inline-block" data-toggle="tooltip" title="Kunci Semua Akses Bidang Di OPD Ini">
-											<a href="javascript:;" class="btn btn-block btn-outline-danger kunci_opd" data="<?php echo $row->id?>"><i class="fa fa-lock"></i></a>
-										</span>
-										<span class="d-inline-block" data-toggle="tooltip" title="Kunci Semua Akses Bidang Di OPD Ini">
-											<a href="javascript:;" class="btn btn-block btn-outline-danger kunci_opd" data="<?php echo $row->id?>"><i class="fa fa-lock"></i></a>
-										</span>
+							<td>
+								<center>
+								<span class="d-inline-block" data-toggle="tooltip" title="Edit Detail User">
+										<a href="javascript:;" class="btn btn-block btn-outline-success edit_user" data="<?php echo $row->id?>"><i class="fas fa-edit"></i></a>
+									</span>
+								</center>
+							</td>
+							<td>
+								<center>
+									<span class="d-inline-block" data-toggle="tooltip" title="Kunci Semua Akses Bidang Di OPD Ini">
+										<a href="javascript:;" class="btn btn-block btn-outline-danger kunci_opd" data="<?php echo $row->id?>"><i class="fa fa-lock"></i></a>
+									</span>
+								</center>
 							</td>
 						</tr>
 						<?php $x++;}?>
