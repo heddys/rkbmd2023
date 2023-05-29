@@ -438,6 +438,11 @@ class Admin_model extends CI_Model{
         return $this->db->get_where('pengguna',array ('fungsi !=' => 'Admin'));
     }
 
+    public function get_data_user($id)
+    {
+        return $this->db->get_where('pengguna', array ('id' => $id));
+    }
+
     public function update_data($register,$data,$table)
     {   
 

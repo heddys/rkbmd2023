@@ -41,27 +41,30 @@
 <!-- Select2 -->
 <script src="<?php echo base_url();?>ini_assets/plugins/select2/js/select2.full.min.js"></script>
 <script>
-    $(function () {
-    
-      $("#tabel_penyelia").DataTable();
-      $("#tabel_opd").DataTable();
-      $("#tabel_penyelia2").DataTable();
-      $("#tabel_kunci_kodebar").DataTable({
-          "language": {
-            "emptyTable": "Tidak Ada Kode Barang Yang Dikunci"
-          }
-      });
-      $("#tabel_kodebar").DataTable();
-      $("#tabel_user").DataTable();
-      $('.select_limit').select2({
-        width: '5%',
-        minimumResultsForSearch: Infinity
-      });
-      $('#select_lokasi').select2({
-        width: 'resolve'
-      });
+  $(function () {
+      
+        $("#tabel_penyelia").DataTable();
+        $("#tabel_opd").DataTable();
+        $("#tabel_penyelia2").DataTable();
+        $("#tabel_kunci_kodebar").DataTable({
+            "language": {
+              "emptyTable": "Tidak Ada Kode Barang Yang Dikunci"
+            }
+        });
+        $("#tabel_kodebar").DataTable();
+        $("#tabel_user").DataTable();
+        $('.select_limit').select2({
+          width: '5%',
+          minimumResultsForSearch: Infinity
+        });
+        $('#select_lokasi').select2({
+          width: 'resolve'
+        });
+        $('.select_pangkat').select2({
+          width: 'resolve'
+        });
 
-    });
+  });
 
 
     function showTime() {
@@ -334,7 +337,7 @@
                     setTimeout(function(){ location.reload(); }, 2000);
                 }
             });
-    });
+      });
 
     function klik_tambah_penyelia(id) {
       var id_kamus=id;
@@ -393,16 +396,32 @@
                       title: 'Data Gagal Di Tambahkan'
                     })
                 }
-            });
+        });
+    });
 
 
             //Javasctipt Untuk Fitur Setting User//
 
-            
+      function klik_edit_user(id) {
+        var id=id;
+        $.ajax({
+              type: 'ajax',
+              method: 'post',
+              url: '<?php echo site_url();?>/home_admin/get_detail_user',
+              data:{id:id},
+              async: false,
+              dataType: 'json',
+              success: function(data){
+                $('#rincian_user').modal();
+                document.getElementById("pd").value=data['nama_opd'];
 
-
-    });
-
+                    
+                },
+                error: function() {
+                  alert('Koneksi Gagal');
+                }
+        });
+      }
 </script>
 </body>
 </html>

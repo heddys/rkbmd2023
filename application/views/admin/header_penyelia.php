@@ -198,24 +198,24 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <!-- <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/1');?>" class="nav-link">
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_penyelia/list_status_register/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.01</p>
                 </a>
-              </li> -->
+              </li>
               <li class="nav-item">
                 <a href="<?php echo site_url('home_penyelia/list_status_register/2')?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.02</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/3');?>" class="nav-link">
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_penyelia/list_status_register/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.03</p>
                 </a>
-              </li> -->
+              </li>
               <!-- <li class="nav-item">
                 <a href="<?php echo site_url('status_form/index/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>

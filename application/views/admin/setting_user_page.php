@@ -62,9 +62,7 @@
 							<td><center><?php echo $row->fungsi?><center></td>
 							<td>
 								<center>
-								<span class="d-inline-block" data-toggle="tooltip" title="Edit Detail User">
-										<a href="javascript:;" class="btn btn-block btn-outline-success edit_user" data="<?php echo $row->id?>"><i class="fas fa-edit"></i></a>
-									</span>
+									<button class="btn btn-sm btn-info" title="Kunci Kode Sub Kelompok" onclick="klik_edit_user('<?php echo $row->id;?>')"><i class="fa fa-edit" aria-hidden="true"></i></a>
 								</center>
 							</td>
 							<td>
@@ -90,35 +88,60 @@
 
 	    <!-- /.content -->
 	    <div class="modal fade" id="rincian_user">
-           <div class="modal-dialog modal-xl ">
-              <div class="modal-content">
-                 <div class="modal-header">
-                 	<style type="text/css">.capitalize{text-transform: capitalize;}</style>
-                     <center><span class="oi oi-heart"></span><h4 class="modal-title" id="idku"></h4></center>
-                 </div>
-                 <div class="modal-body" style="overflow-x:auto;">
-                      
-                          <table id="example1" class="table table-bordered table-hover">
-                            <thead>
-				                <tr>
-				                  <th><center>No.</center></th>
-				                  <th><center>Bidang</center></th>
-				                  <th><center>Username</center>
-				                  <th><center>Password</center></th>
-				                  <th><center>Role</center></th>
-				                  <th><center>Akses</center>
-				                </tr>
-				            </thead>
-                            <tbody id="tampil_data">
-                            </tbody>
-                          </table>
-                     </div>
-                   <div class="modal-footer ">
-                      <button type="button" class="btn btn-warning" data-dismiss="modal">Kembali</button>
-                   </div>
-                 </div>
+           <div class="modal-dialog modal-lg">
+              	<div class="modal-content">
+					<div class="modal-header">
+						<style type="text/css">.capitalize{text-transform: capitalize;}</style>
+						<center><h4 class="modal-title"><i class="fas fa-question-circle"></i> Rincian User</h4></center>
+					</div>
+					<div class="modal-body" style="overflow-x:auto;">
+					
+					<form role="form">
+					<div class="form-group">
+						<label>Perangkat Daerah : </label>
+						<input type="text" class="form-control pd" disabled>
+					</div>
+					<div class="form-group">
+						<label>NIP : </label>
+						<input type="text" class="form-control nip">
+					</div>
+					<div class="form-group">
+						<label>Nama : </label>
+						<input type="text" class="form-control nama">
+					</div>
+					<div class="form-group">
+					<label>Pangkat</label>
+					<select class="form-control select_pangkat pangkat" style="width: 100%;">
+						<option selected="selected">Alabama</option>
+						<option>Alaska</option>
+						<option>California</option>
+						<option>Delaware</option>
+						<option>Tennessee</option>
+						<option>Texas</option>
+						<option>Washington</option>
+					</select>
+					</div>
+
+					<!-- select -->
+					<div class="form-group">
+						<label>Tugas : </label>
+						<select class="form-control tugas">
+						<option selected="selected">Pengurus Barang</option>
+						<option>Pengurus Barang</option>
+						<option>Verifikator</option>
+						<option>Penyelia</option>
+						</select>
+					</div>
+					</form>
+
+					</div>
+					<div class="modal-footer ">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Simpan</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+            	</div>
                       <!-- /.modal-content -->
-               </div>
+        	</div>
                     <!-- /.modal-dialog -->
         </div>
           <div class="modal fade" id="modal-kunci">

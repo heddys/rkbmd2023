@@ -240,6 +240,16 @@ class Home_admin extends CI_Controller {
 
 	}
 
+	public function get_detail_user()
+	{
+		$this->cek_sess();
+		$id = $this->input->post('id');
+		$data[] = $this->admin_model->get_data_user($id)->row();
+
+		echo $data['nama_opd'];
+		echo json_decode($data);
+	}
+
 	public function cari_register($id)
 	{
 		$this->cek_sess();
