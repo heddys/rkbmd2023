@@ -414,7 +414,10 @@
               success: function(data){
                 $('#rincian_user').modal();
                 document.getElementById("pd").value=data['nama_opd'];
-
+                document.getElementById("nip").value=data['nip'];
+                document.getElementById("nama").value=data['nama'];
+                document.getElementById("pangkat").value="2";
+                
                     
                 },
                 error: function() {

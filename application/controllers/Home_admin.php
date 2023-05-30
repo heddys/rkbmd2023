@@ -244,10 +244,9 @@ class Home_admin extends CI_Controller {
 	{
 		$this->cek_sess();
 		$id = $this->input->post('id');
-		$data[] = $this->admin_model->get_data_user($id)->row();
+		$data = $this->admin_model->get_data_user($id)->row();
 
-		echo $data['nama_opd'];
-		echo json_decode($data);
+		echo json_encode($data);
 	}
 
 	public function cari_register($id)

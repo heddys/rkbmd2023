@@ -99,26 +99,25 @@
 					<form role="form">
 					<div class="form-group">
 						<label>Perangkat Daerah : </label>
-						<input type="text" class="form-control pd" disabled>
+						<input type="text" class="form-control" id="pd" disabled>
 					</div>
 					<div class="form-group">
 						<label>NIP : </label>
-						<input type="text" class="form-control nip">
+						<input type="text" class="form-control" id="nip">
 					</div>
 					<div class="form-group">
 						<label>Nama : </label>
-						<input type="text" class="form-control nama">
+						<input type="text" class="form-control" id="nama">
 					</div>
 					<div class="form-group">
 					<label>Pangkat</label>
-					<select class="form-control select_pangkat pangkat" style="width: 100%;">
-						<option selected="selected">Alabama</option>
-						<option>Alaska</option>
-						<option>California</option>
-						<option>Delaware</option>
-						<option>Tennessee</option>
-						<option>Texas</option>
-						<option>Washington</option>
+					<select class="form-control select_pangkat" id="pangkat" style="width: 100%;">
+						<option value="1">PENATA TINGKAT I / IIID</option>
+						<option value="2">California</option>
+						<option value="3">Delaware</option>
+						<option value="4">Tennessee</option>
+						<option value="5">Texas</option>
+						<option value="6">Washington</option>
 					</select>
 					</div>
 
