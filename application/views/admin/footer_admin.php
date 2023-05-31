@@ -412,12 +412,13 @@
               async: false,
               dataType: 'json',
               success: function(data){
-                $('#rincian_user').modal();
+                
                 document.getElementById("pd").value=data['nama_opd'];
                 document.getElementById("nip").value=data['nip'];
                 document.getElementById("nama").value=data['nama'];
-                document.getElementById("pangkat").value="2";
-                
+                document.getElementById("pangkat").value=data['pangkat'];
+                document.getElementById("tugas").value=data['fungsi'];
+                $('#rincian_user').modal();
                     
                 },
                 error: function() {

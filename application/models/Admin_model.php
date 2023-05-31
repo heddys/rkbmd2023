@@ -470,6 +470,14 @@ class Admin_model extends CI_Model{
         return $this->db->get_where('kamus_lokasi');
     }
 
+    public function get_pangkat()
+    {
+        $this->db->select('*');
+        $this->db->from('pangkat');
+        $this->db->order_by('urut','ASC');
+        return $this->db->get();
+    }
+
     public function get_all_register_pagination($data,$kib, $limit, $offset,$form)
     
     {

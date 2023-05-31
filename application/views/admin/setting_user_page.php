@@ -112,24 +112,20 @@
 					<div class="form-group">
 					<label>Pangkat</label>
 					<select class="form-control select_pangkat" id="pangkat" style="width: 100%;">
-						<option value="1">PENATA TINGKAT I / IIID</option>
-						<option value="2">California</option>
-						<option value="3">Delaware</option>
-						<option value="4">Tennessee</option>
-						<option value="5">Texas</option>
-						<option value="6">Washington</option>
+					<?php foreach ($jabatan as $row2) { ?>
+						<option value="<?php echo $row2->PANGKAT?>"><?php echo $row2->PANGKAT?></option>
+					<?php } ?>
 					</select>
 					</div>
 
 					<!-- select -->
 					<div class="form-group">
-						<label>Tugas : </label>
-						<select class="form-control tugas">
-						<option selected="selected">Pengurus Barang</option>
-						<option>Pengurus Barang</option>
-						<option>Verifikator</option>
-						<option>Penyelia</option>
-						</select>
+					<label>Tugas : </label>
+					<select class="form-control tugas" id="tugas">
+						<option value="Pengurus Barang">Pengurus Barang</option>
+						<option value="Verifikator">Verifikator</option>
+						<option value="Penyelia">Penyelia</option>
+					</select>
 					</div>
 					</form>
 

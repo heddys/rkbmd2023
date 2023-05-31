@@ -233,9 +233,10 @@ class Home_admin extends CI_Controller {
 		$data['page']="Setting Akses User";
 
 		$data['user'] = $this->admin_model->get_users()->result();
+		$data['jabatan'] = $this->admin_model->get_pangkat()->result();
 
 		$this->load->view('admin/header_admin',$data);
-		$this->load->view('admin/setting_user_page');
+		$this->load->view('admin/setting_user_page',$data);
 		$this->load->view('admin/footer_admin');
 
 	}
