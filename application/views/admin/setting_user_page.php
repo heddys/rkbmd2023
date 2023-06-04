@@ -95,43 +95,40 @@
 						<center><h4 class="modal-title"><i class="fas fa-question-circle"></i> Rincian User</h4></center>
 					</div>
 					<div class="modal-body" style="overflow-x:auto;">
-					
-					<form role="form">
-					<div class="form-group">
-						<label>Perangkat Daerah : </label>
-						<input type="text" class="form-control" id="pd" disabled>
-					</div>
-					<div class="form-group">
-						<label>NIP : </label>
-						<input type="text" class="form-control" id="nip">
-					</div>
-					<div class="form-group">
-						<label>Nama : </label>
-						<input type="text" class="form-control" id="nama">
-					</div>
-					<div class="form-group">
-					<label>Pangkat</label>
-					<select class="form-control select_pangkat" id="pangkat" style="width: 100%;">
-					<?php foreach ($jabatan as $row2) { ?>
-						<option value="<?php echo $row2->PANGKAT?>"><?php echo $row2->PANGKAT?></option>
-					<?php } ?>
-					</select>
-					</div>
+						<div class="form-group">
+							<label>Perangkat Daerah : </label>
+							<input type="text" class="form-control" id="pd" disabled>
+						</div>
+						<div class="form-group">
+							<label>NIP : </label>
+							<input type="text" class="form-control" id="nip">
+						</div>
+						<div class="form-group">
+							<label>Nama : </label>
+							<input type="text" class="form-control" id="nama">
+						</div>
+						<input type="hidden" id="id">
+						<div class="form-group">
+						<label>Pangkat</label>
+						<select class="form-control select_pangkat" id="pangkat" style="width: 100%;">
+						<?php foreach ($jabatan as $row2) { ?>
+							<option value="<?php echo $row2->PANGKAT?>"><?php echo $row2->PANGKAT?></option>
+						<?php } ?>
+						</select>
+						</div>
 
-					<!-- select -->
-					<div class="form-group">
-					<label>Tugas : </label>
-					<select class="form-control tugas" id="tugas">
-						<option value="Pengurus Barang">Pengurus Barang</option>
-						<option value="Verifikator">Verifikator</option>
-						<option value="Penyelia">Penyelia</option>
-					</select>
-					</div>
-					</form>
-
+						<!-- select -->
+						<div class="form-group">
+						<label>Tugas : </label>
+						<select class="form-control tugas" id="tugas">
+							<option value="Pengurus Barang">Pengurus Barang</option>
+							<option value="Verifikator">Verifikator</option>
+							<option value="Penyelia">Penyelia</option>
+						</select>
+						</div>
 					</div>
 					<div class="modal-footer ">
-						<button type="button" class="btn btn-success" data-dismiss="modal">Simpan</button>
+						<button type="button" class="btn btn-success" id="simpan_edit" data-dismiss="modal">Simpan</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 					</div>
             	</div>
@@ -139,49 +136,6 @@
         	</div>
                     <!-- /.modal-dialog -->
         </div>
-          <div class="modal fade" id="modal-kunci">
-           <div class="modal-dialog modal-sm-danger">
-              <div class="modal-content">
-                 <div class="modal-header">
-                 	<style type="text/css">.capitalize{text-transform: capitalize;}</style>
-                     <center><h4 class="modal-title"><i class="fa fa-exclamation-triangle"></i>Notifikasi !</h4></center>
-                 </div>
-                 <div class="modal-body">
-	                    <input type="hidden" id="id_kunci">
-	                <center><strong>Apakah Anda Yakin Ingin Mengunci Semua Akun Di Perangkat Daerah Tersebut ? </strong></center>
-	             </div>
-	                   <div class="modal-footer ">
-	                      <button type="button" class="btn btn-info batal" data-dismiss="modal">Batalkan</button>
-	                      <button type="submit" class="btn btn-danger kunci" data-dismiss="modal">Ya! Kunci</button>
-	                   </div>
-                 </div>
-                      <!-- /.modal-content -->
-               </div>
-                    <!-- /.modal-dialog -->
-            </div>
-
-
-          <div class="modal fade" id="modal-buka_kunci">
-           <div class="modal-dialog modal-sm-danger">
-              <div class="modal-content">
-                 <div class="modal-header">
-                 	<style type="text/css">.capitalize{text-transform: capitalize;}</style>
-                     <center><h4 class="modal-title"><i class="fa fa-exclamation-triangle"></i>Notifikasi !</h4></center>
-                 </div>
-                 <div class="modal-body">
-	                    <input type="hidden" id="id_buka">
-	                <center><strong>Apakah Anda Yakin Ingin Membuka Semua Akun Di Perangkat Daerah Tersebut ? </strong></center>
-	             </div>
-	                   <div class="modal-footer ">
-	                      <button type="button" class="btn btn-danger batal" data-dismiss="modal">Batalkan</button>
-	                      <button type="submit" class="btn btn-success buka" data-dismiss="modal">Ya! Buka</button>
-	                   </div>
-                 </div>
-                      <!-- /.modal-content -->
-               </div>
-                    <!-- /.modal-dialog -->
-            </div>
-
 
           <div class="modal fade" id="modal-buka_bidang">
            <div class="modal-dialog modal-sm-danger">
@@ -225,47 +179,5 @@
                     <!-- /.modal-dialog -->
             </div>
 
-		<div class="modal fade" id="modal-buka-all">
-           <div class="modal-dialog modal-sm-danger">
-              <div class="modal-content">
-                 <div class="modal-header">
-                 	<style type="text/css">.capitalize{text-transform: capitalize;}</style>
-                     <center><h4 class="modal-title"><i class="fa fa-exclamation-triangle"></i>Notifikasi !</h4></center>
-                 </div>
-                 <div class="modal-body">
-	                <center><strong>Apakah Anda Yakin Ingin Membuka Semua Akun Bidang ? </strong></center>
-	             </div>
-	                   <div class="modal-footer ">
-	                      <button type="button" class="btn btn-danger batal" data-dismiss="modal">Batalkan</button>
-	                      <button type="submit" class="btn btn-success buka_all" data-dismiss="modal">Ya! Buka</button>
-	                   </div>
-                 </div>
-                      <!-- /.modal-content -->
-               </div>
-                    <!-- /.modal-dialog -->
-        	</div>
-
-          <div class="modal fade" id="modal-kunci-all">
-           <div class="modal-dialog modal-sm-danger">
-              <div class="modal-content">
-                 <div class="modal-header">
-                 	<style type="text/css">.capitalize{text-transform: capitalize;}</style>
-                     <center><h4 class="modal-title"><i class="fa fa-exclamation-triangle"></i>Notifikasi !</h4></center>
-                 </div>
-                 <div class="modal-body">
-	                <center><strong>Apakah Anda Yakin Ingin Mengunci Semua Akun Bidang ? </strong></center>
-	             </div>
-	                   <div class="modal-footer ">
-	                      <button type="button" class="btn btn-danger batal" data-dismiss="modal">Batalkan</button>
-	                      <button type="submit" class="btn btn-success kunci_all" data-dismiss="modal">Ya! Kunci</button>
-	                   </div>
-                 </div>
-                      <!-- /.modal-content -->
-               </div>
-                    <!-- /.modal-dialog -->
-        	</div>
-
-
-
-</div>
-						</div>
+		</div>
+	</div>

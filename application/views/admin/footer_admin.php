@@ -400,7 +400,7 @@
     });
 
 
-            //Javasctipt Untuk Fitur Setting User//
+    //Javasctipt Untuk Fitur Setting User//
 
       function klik_edit_user(id) {
         var id=id;
@@ -416,8 +416,10 @@
                 document.getElementById("pd").value=data['nama_opd'];
                 document.getElementById("nip").value=data['nip'];
                 document.getElementById("nama").value=data['nama'];
-                document.getElementById("pangkat").value=data['pangkat'];
-                document.getElementById("tugas").value=data['fungsi'];
+                document.getElementById("id").value=data['id'];
+                $("#pangkat").val(data['pangkat']).change();
+                $("#tugas").val(data['fungsi']).change();
+                // document.getElementById("tugas").value=data['fungsi'];
                 $('#rincian_user').modal();
                     
                 },
@@ -426,6 +428,58 @@
                 }
         });
       }
+
+      $('#rincian_user').on('click','#simpan_edit', function () {
+        
+        var id=document.getElementById("id").value;
+        var nip=document.getElementById("nip").value;
+        var nama=document.getElementById("nama").value;
+        var pangkat=document.getElementById("pangkat").value;
+        var tugas=document.getElementById("tugas").value;
+
+        $.ajax({
+
+          type: 'ajax',
+          method: 'post',
+          url: '<?php echo site_url();?>/home_admin/save_edit_user',
+          data:{id:id,nip:nip,nama:nama,pangkat:pangkat,tugas:tugas},
+          async: false,
+          dataType: 'json',
+          success: function(data){
+            const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 3000
+                  });
+                      Toast.fire({
+                        type: 'success',
+                        title: 'Edit Data User Berhasil'
+                      })
+                      setTimeout(function(){ location.reload(); }, 2000);
+                    
+          },
+          error: function() {
+            const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'center',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+                    Toast.fire({
+                      type: 'error',
+                      title: 'Data Gagal Di Tambahkan'
+                    })
+          }
+
+
+        });
+
+      });
+
+
+
+
 </script>
 </body>
 </html>

@@ -36,18 +36,24 @@ class Form_inv extends CI_Controller {
 			$data['kib_apa']=$id;
 
 				if($id=='1') {
-					$kib = "1.3.1";
+					$this->session->set_userdata('kib','1.3.1');
+					$kib = $this->session->userdata('kib');
 				} 
 				elseif ($id=='2') {
-					$kib = "1.3.2";
+					$this->session->set_userdata('kib','1.3.2');
+					$kib = $this->session->userdata('kib');
 				} elseif ($id=='3') {
-					$kib = "1.3.3";
+					$this->session->set_userdata('kib','1.3.3');
+					$kib = $this->session->userdata('kib');
 				} elseif ($id=='4') {
-					$kib = "1.3.4";
+					$this->session->set_userdata('kib','1.3.4');
+					$kib = $this->session->userdata('kib');
 				} elseif ($id=='5') {
-					$kib = "1.3.5";
+					$this->session->set_userdata('kib','1.3.5');
+					$kib = $this->session->userdata('kib');
 				} else { 
-					$kib = "1.5.3";
+					$this->session->set_userdata('kib','1.3.6');
+					$kib = $this->session->userdata('kib');
 				} 
 				
 			$data['register']=$this->form_model->get_all_register_pagination_Pbp($kib,$nomor_lokasi);
@@ -88,20 +94,26 @@ class Form_inv extends CI_Controller {
 
 			$data['kib_apa']=$id;
 
-				if($id=='1') {
-					$kib = "1.3.1";
-				} 
-				elseif ($id=='2') {
-					$kib = "1.3.2";
-				} elseif ($id=='3') {
-					$kib = "1.3.3";
-				} elseif ($id=='4') {
-					$kib = "1.3.4";
-				} elseif ($id=='5') {
-					$kib = "1.3.5";
-				} else { 
-					$kib = "1.5.3";
-				}
+			if($id=='1') {
+				$this->session->set_userdata('kib','1.3.1');
+				$kib = $this->session->userdata('kib');
+			} 
+			elseif ($id=='2') {
+				$this->session->set_userdata('kib','1.3.2');
+				$kib = $this->session->userdata('kib');
+			} elseif ($id=='3') {
+				$this->session->set_userdata('kib','1.3.3');
+				$kib = $this->session->userdata('kib');
+			} elseif ($id=='4') {
+				$this->session->set_userdata('kib','1.3.4');
+				$kib = $this->session->userdata('kib');
+			} elseif ($id=='5') {
+				$this->session->set_userdata('kib','1.3.5');
+				$kib = $this->session->userdata('kib');
+			} else { 
+				$this->session->set_userdata('kib','1.3.6');
+				$kib = $this->session->userdata('kib');
+			}
 			
 				//Load Library Pagination
 				$this->load->library('pagination');
@@ -109,7 +121,7 @@ class Form_inv extends CI_Controller {
 				//Config Pagination
 				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$data_cari,$kib,$form)->num_rows();
 				$config['per_page'] = $limit;
-				$config['base_url'] = site_url('/form_inv/index/2/');
+				$config['base_url'] = site_url('/form_inv/index/'.$id.'/');
 				$config['num_links'] = 3;
 
 				//Pagination Bootstrap Theme
@@ -222,7 +234,7 @@ class Form_inv extends CI_Controller {
 
     private function cek_sess() 
 	{
-		if($this->session->userdata('id') !=NULL){
+		if($this->session->userdata('role') =="Pengurus Barang" ){
 			$opd=$this->session->userdata('skpd');
 			$this->load->model('auth_model');
 			return;

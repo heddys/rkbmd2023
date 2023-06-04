@@ -21,7 +21,7 @@ class Home_admin extends CI_Controller {
 
     private function cek_sess() 
 	{
-		if($this->session->userdata('id') !=NULL){
+		if($this->session->userdata('role') =="Admin" ){
 			$opd=$this->session->userdata('skpd');
 			$this->load->model('admin_model');
 			return;
@@ -44,7 +44,7 @@ class Home_admin extends CI_Controller {
 		$time=date("H:i:s");
 		foreach ($get_simbada as $row) {
 
-			$exist = $this->admin_model->cek_register($row->register);
+			$exist = $this->admin_model->cek_register($row->register,'data_kib');
 			
 			
 			if($exist < 1) {
@@ -83,33 +83,76 @@ class Home_admin extends CI_Controller {
 
 				$register = $row->register;
 
-				$data_for_kib=array (
-					'nomor_lokasi' => $row->nomor_lokasi_baru,
-					'unit_baru' => substr($row->nomor_lokasi_baru,0,11),
-					'nomor_lokasi_baru' => substr($row->nomor_lokasi_baru,0,11).'_'.$row->nomor_lokasi_baru,
-					'status_simbada' => $row->hapus,
-					'penghapusan' => $row->penghapusan,
-					'update_at_date' => $date,
-					'update_at_time' => $time
-				);
+				$exist = $this->admin_model->cek_register($row->register,'data_kib');
 
-				$this->admin_model->update_data($register,$data_for_kib,'data_kib');
+				if($exist < 1) { 
 
-				$data_for_isi=array(
-					'nomor_lokasi_awal' => $row->nomor_lokasi_baru,
-					'lokasi' => $row->nomor_lokasi_baru,
-					'update_at_date' => $date,
-					'update_at_time' => $time
-				);
+					$data_for_kib=array (
+						'nomor_lokasi' => $row->nomor_lokasi_baru,
+						'kode64_baru' => $row->$row->kode64_baru,
+						'kode108_baru' => $row->kode108_baru,
+						'status_simbada' => $row->hapus,
+						'penghapusan' => $row->penghapusan,
+						'update_at_date' => $date,
+						'update_at_time' => $time
+					);
 
-				$this->admin_model->update_data($register,$data_for_isi,'register_isi');
+					$this->admin_model->update_data($register,$data_for_kib,'data_kib');
 
-				$data_for_isi_history=array(
-					'nomor_lokasi_awal' => $row->nomor_lokasi_baru,
-					'lokasi' => $row->nomor_lokasi_baru
-				);
-				$this->admin_model->update_data($register,$data_for_isi_history,'register_isi_history');
+				} else {
 
+					$data_for_isi=array(
+						'nomor_lokasi_awal' => $row->nomor_lokasi_baru,
+						'lokasi' => $row->nomor_lokasi_baru,
+						'kode_barang' => $row->kode108_baru,
+						'update_at_date' => $date,
+						'update_at_time' => $time
+					);
+
+					$this->admin_model->update_data($register,$data_for_isi,'register_isi');
+					$get_data_register_isi=$this->admin_model->get_data_reg_isi($register)-row();
+
+					$data_for_isi_history=array(
+						`register` => $register,
+						`nomor_lokasi_awal` => $get_data_register_isi->nomor_lokasi_baru,
+						`kode_barang` => $get_data_register_isi->kode108_baru,
+						`nama_barang` => $get_data_register_isi->nama_barang,
+						`spesifikasi_barang_merk` => $get_data_register_isi-> spesifikasi_barang_merk,
+						`satuan` => $get_data_register_isi->satuan,
+						`keberadaan_barang` => $get_data_register_isi->keberadaan_barang,
+						`nilai_perolehan` => $get_data_register_isi->nilai_perolehan,
+						`merupakan_anak` => $get_data_register_isi->merupakan_anak,
+						`lokasi` => $get_data_register_isi->lokasi,
+						`jumlah` => $get_data_register_isi->jumlah,
+						`kondisi_barang` => $get_data_register_isi->kondisi_barang,
+						`penggunaan_barang` => $get_data_register_isi->penggunaan_barang,
+						`register_ganda` => $get_data_register_isi->register_ganda,
+						`status_kepemilikan_tanah` => $get_data_register_isi->status_kepemilikan_tanah,
+						`tipe` => $get_data_register_isi->tipe,
+						`nopol` => $get_data_register_isi->nopol,
+						`no_rangka_seri` => $get_data_register_isi->no_rangka_seri,
+						`no_mesin`=> $get_data_register_isi->no_mesin,
+						`no_bpkb`=> $get_data_register_isi->no_bpkb,
+						`jenis_perkerasan_jalan`=> $get_data_register_isi->jenis_perkerasan_jalan,
+						`jenis_bahan_jembatan`=> $get_data_register_isi->jenis_bahan_jembatan,
+						`no_ruas`=> $get_data_register_isi->no_ruas,
+						`no_jaringan_irigasi`=> $get_data_register_isi->no_jaringan_irigasi,
+						`luas_tanah`=> $get_data_register_isi->luas_tanah,
+						`luas_bangunan`=> $get_data_register_isi->luas_bangunan,
+						`no_sertifikat`=> $get_data_register_isi->no_sertifikat,
+						`kota`=> $get_data_register_isi->kota,
+						`kecamatan`=> $get_data_register_isi->kecamatan,
+						`kelurahan`=> $get_data_register_isi->kelurahan,
+						`created_date`=> $date,
+						`created_time`=> $time,
+						`lainnya`=> $get_data_register_isi->lainnya,
+						`koordinat`=> $get_data_register_isi->koordinat,
+						`keterangan`=> $get_data_register_isi->keterangan,
+						`update_at_date`=> $date,
+						`update_at_time`=> $time
+					);
+					$this->admin_model->insert_data_history($data_for_isi_history,'register_isi_history');	
+				}
 			} 
 
 		}
@@ -117,6 +160,18 @@ class Home_admin extends CI_Controller {
 		echo json_encode($result);
 
 
+	}
+
+	public function run_map()
+	{
+		$this->load->view('admin/jalan_map');
+	}
+
+	public function trynerror()
+	{
+		$get_data_register_isi=$this->admin_model->get_data_reg_isi('18020960-2018-522401-1')->row();
+		
+		echo $get_data_register_isi->register;
 	}
 
 	public function setting_penyelia()
@@ -224,7 +279,7 @@ class Home_admin extends CI_Controller {
 		);
 		$result = $this->admin_model->hapus_opd_pemangku($id,$data);
 
-		echo json_decode($result);
+		echo json_encode($result);
 	}
 
 	public function halaman_setting_user()
@@ -241,6 +296,7 @@ class Home_admin extends CI_Controller {
 
 	}
 
+	
 	public function get_detail_user()
 	{
 		$this->cek_sess();
@@ -249,6 +305,30 @@ class Home_admin extends CI_Controller {
 
 		echo json_encode($data);
 	}
+
+	public function save_edit_user()
+	{
+		$this->cek_sess();
+		
+		$id = $this->input->post('id');
+		date_default_timezone_set("Asia/Jakarta");	
+		$tgl_update=date("Y-m-d H:i:s");
+		$data = array(
+			'nama' => $this->input->post('nama'),
+			'nip' => $this->input->post('nip'),
+			'pangkat' => $this->input->post('pangkat'),
+			'fungsi' => $this->input->post('tugas'),
+			'username' => $this->input->post('nip'),
+			'password' => $this->input->post('nip'),
+			'tgl_update' => $tgl_update
+
+		);
+		
+		$result = $this->admin_model->update_row_user($id,$data);
+
+		echo json_encode($result);
+	}
+
 
 	public function cari_register($id)
 	{

@@ -7,8 +7,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                  
-                      <center>KARTU INVENTARIS BARANG -
+                <center>KARTU INVENTARIS BARANG - 
                           <?php if ($kib_apa == 1) { 
                                     echo "ASET TETAP TANAH";
                                 } 
@@ -133,4 +132,4 @@
 	      <!-- /.row -->
 	    </section>
 	    <!-- /.content -->
-    </div>S
+    </div>

@@ -7,6 +7,10 @@
         <div class="callout callout-info">
           <h4>Notice!</h4>
           Selamat Datang, Administrator
+          <?php 
+            echo $this->session->userdata('role')." | ";
+            echo $this->session->userdata('no_lokasi_asli');
+          ?>
         </div>
 
         <div class="row">

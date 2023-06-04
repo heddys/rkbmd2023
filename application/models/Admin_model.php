@@ -16,32 +16,32 @@ class Admin_model extends CI_Model{
        if($list==1) {
         $query = $this->db->query("SELECT
                 b.unit,
-                a.unit_baru,
+                a.nomor_lokasi,
                 a.nama_barang,
                 a.register,
                 COUNT( a.register ) as jumlah
             FROM
                 `data_kib` a
-                INNER JOIN (select * from kamus_lokasi GROUP BY unit_baru) b ON b.unit_baru = a.unit_baru 
+                INNER JOIN (select * from kamus_lokasi GROUP BY nomor_unit) b ON b.nomor_unit = left(a.nomor_lokasi,12)
             WHERE
                 a.`status` = '1'
             GROUP BY
-                a.unit_baru");
+                left(a.nomor_lokasi,12)");
 
        } else {
                 $query = $this->db->query("SELECT
                 b.unit,
-                a.unit_baru,
+                a.nomor_lokasi,
                 a.nama_barang,
                 a.register,
                 COUNT( a.register ) as jumlah
             FROM
                 `data_kib` a
-                INNER JOIN (select * from kamus_lokasi GROUP BY unit_baru) b ON b.unit_baru = a.unit_baru 
+                INNER JOIN (select * from kamus_lokasi GROUP BY nomor_unit) b ON b.nomor_unit = left(a.nomor_lokasi,12) 
             WHERE
-                a.`status` = '1' and a.unit_baru in ('".implode("','",$list)."')
+                a.`status` = '1' and left(a.nomor_lokasi,12) in ('".implode("','",$list)."')
             GROUP BY
-                a.unit_baru");
+                left(a.nomor_lokasi,12)");
        }
         
 
@@ -54,32 +54,32 @@ class Admin_model extends CI_Model{
     if($list==1) {
         $query = $this->db->query("SELECT
                 b.unit,
-                a.unit_baru,
+                left(a.nomor_lokasi,12),
                 a.nama_barang,
                 a.register,
                 COUNT( a.register ) as jumlah
             FROM
                 `data_kib` a
-                INNER JOIN (select * from kamus_lokasi GROUP BY unit_baru) b ON b.unit_baru = a.unit_baru 
+                INNER JOIN (select * from kamus_lokasi GROUP BY nomor_unit) b ON b.nomor_unit = left(a.nomor_lokasi,12) 
             WHERE
                 a.`status` = '3'
             GROUP BY
-                a.unit_baru");
+                left(a.nomor_lokasi,12)");
     } else {
 
         $query = $this->db->query("SELECT
                 b.unit,
-                a.unit_baru,
+                left(a.nomor_lokasi,12),
                 a.nama_barang,
                 a.register,
                 COUNT( a.register ) as jumlah
             FROM
                 `data_kib` a
-                INNER JOIN (select * from kamus_lokasi GROUP BY unit_baru) b ON b.unit_baru = a.unit_baru 
+                INNER JOIN (select * from kamus_lokasi GROUP BY nomor_unit) b ON b.nomor_unit = left(a.nomor_lokasi,12) 
             WHERE
-                a.`status` = '3' and a.unit_baru in ('".implode("','",$list)."')
+                a.`status` = '3' and left(a.nomor_lokasi,12) in ('".implode("','",$list)."')
             GROUP BY
-                a.unit_baru");
+                left(a.nomor_lokasi,12)");
         }
 
         return $query->result();
@@ -110,9 +110,9 @@ class Admin_model extends CI_Model{
     return $this->db->insert('data_kib',$data);
    }
 
-   public function cek_register($register)
+   public function cek_register($register,$tabel)
    {
-    return $this->db->get_where('data_kib', array ('register' => $register));
+    return $this->db->get_where($tabel, array ('register' => $register));
    }
 
    public function get_user_penyelia()
@@ -177,7 +177,7 @@ class Admin_model extends CI_Model{
    {
        $query=$this->db->query(
             "SELECT
-                b.unit,b.unit_baru,
+                b.unit,b.nomor_unit,
                 count( a.register ) as total,
                 COUNT(
                 IF
@@ -195,9 +195,9 @@ class Admin_model extends CI_Model{
                     IF
                     ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
             FROM
-                data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi where kode_binprog <> '' GROUP BY unit_baru) b on a.unit_baru=b.unit_baru 
+                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi where kode_binprog <> '' GROUP BY nomor_unit) b on left(a.nomor_lokasi,12)=b.nomor_unit
             WHERE
-                a.unit_baru IN ( '".implode("','",$unit)."' ) 
+                a.nomor_lokasi IN ( '".implode("','",$unit)."' ) 
             GROUP BY
                 b.unit 
             ORDER BY
@@ -228,7 +228,7 @@ class Admin_model extends CI_Model{
                     IF
                     ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
             FROM
-                data_kib a inner join (SELECT unit_baru,unit from kamus_lokasi where kode_binprog <> '' GROUP BY unit_baru) b on a.unit_baru=b.unit_baru
+                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi where kode_binprog <> '' GROUP BY nomor_unit) b on left(a.nomor_lokasi,12)=b.nomor_unit
             GROUP BY
                 b.unit 
             ORDER BY
@@ -450,6 +450,16 @@ class Admin_model extends CI_Model{
         return $this->db->update($table,$data);
     }
 
+    public function insert_data_history($data,$table)
+    {
+        return $this->db->insert($table,$data);
+    }
+
+    public function get_data_reg_isi($register)
+    {
+        return $this->db->get_where('register_isi', array ('register' => $register));
+    }
+
     public function hitungBanyakRowRegister($where,$data,$kib,$form)
     {
 
@@ -476,6 +486,13 @@ class Admin_model extends CI_Model{
         $this->db->from('pangkat');
         $this->db->order_by('urut','ASC');
         return $this->db->get();
+    }
+
+    public function update_row_user($id,$data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('pengguna', $data);
+
     }
 
     public function get_all_register_pagination($data,$kib, $limit, $offset,$form)
