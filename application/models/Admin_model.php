@@ -105,6 +105,14 @@ class Admin_model extends CI_Model{
 
    }
 
+   public function update_sawal_simbada(Type $var = null)
+   {
+    $db_simbada = $this->load->database('simbada',TRUE);
+
+    $query=$db_simbada->query("SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri,no_mesin,no_bpkb, keterangan, penghapusan,koreksi_hapus, hibah_keluar,extrakomtabel_baru FROM kib_awal where kode64_baru like '1.3.02%' union SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri,no_mesin,no_bpkb, keterangan, penghapusan,koreksi_hapus = NULL, hibah_keluar, extrakomtabel_baru FROM kib_awal where kode64_baru like '1.3.02%'");
+    return $query;
+   }
+
    public function insert_register($data)
    {
     return $this->db->insert('data_kib',$data);
