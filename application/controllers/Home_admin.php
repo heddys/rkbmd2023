@@ -303,76 +303,76 @@ class Home_admin extends CI_Controller {
 		date_default_timezone_set("Asia/Jakarta");	
 		$date=date("Y-m-d");
 		$time=date("H:i:s");
-		// foreach ($get_simbada as $row) {
+		foreach ($get_simbada as $row) {
 
-		// 	$exist = $this->admin_model->cek_register($row->register,'data_kib');
+			$exist = $this->admin_model->cek_register($row->register,'data_kib');
 			
 			
-		// 	if($exist->num_rows() < 1 ) {
+			if($exist->num_rows() < 1 ) {
 
-		// 		$data_reg= array (
+				$data_reg= array (
 
-		// 			'register' => $row->register,
- 		// 			'kode_108' => $row->kode_108,
-		// 			'kode_64' => $row->kode_64,
-		// 			'nomor_lokasi' => $row->nomor_lokasi,
-		// 			'nama_barang' => $row->nama_barang,
-		// 			'merk_alamat' => $row->merk_alamat,
-		// 			'tipe' => $row->tipe,
-		// 			'satuan' => $row->satuan,
-		// 			'harga_baru' => $row->harga_baru,
-		// 			'tahun_pengadaan' => $row->tahun_pengadaan,
-		// 			'no_bpkb' => $row->no_bpkb,
-		// 			'no_rangka_seri' => $row->no_rangka_seri,
-		// 			'nopol' => $row->nopol,
-		// 			'no_mesin' => $row->no_mesin,
-		// 			'kondisi' => $row->kondisi,
-		// 			'nomor_lokasi_baru' => $row->nomor_lokasi_baru,
-		// 			'kode108_baru' => $row->kode108_baru,
-		// 			'kode64_baru' => $row->kode64_baru,
-		// 			'harga_baru' => $row->harga_baru,
-		// 			'keterangan' => $row->keterangan,
-		// 			'status_simbada' => $row->status_simbada,
-		// 			'penghapusan' => $row->penghapusan,
-		// 			'koreksi_hapus' => $row->koreksi_hapus,
-		// 			'hibah_keluar' => $row->hibah_keluar,
-		// 			'luas_tanah' => $row->luas_tanah,
-		// 			'luas_bangunan' => $row->luas_bangunan,
-		// 			'no_sertifikat' => $row->no_sertifikat,
-		// 			'kota' => $row->kota,
-		// 			'kecamatan' => $row->kecamatan,
-		// 			'kelurahan' => $row->kelurahan,
-		// 			'ekstrakomtabel' => $row->ekstrakomtabel,
-		// 			'status_register' => 'SAWAL',
-		// 			'created_at_date' => $date,
-		// 			'created_at_time' => $time,
-		// 			'update_at_date' => $date,
-		// 			'update_at_time' => $time
-		// 		);				
-		// 			$this->admin_model->insert_register($data_reg);
-		// 	} else {
+					'register' => $row->register,
+ 					'kode_108' => $row->kode_108,
+					'kode_64' => $row->kode_64,
+					'nomor_lokasi' => $row->nomor_lokasi,
+					'nama_barang' => $row->nama_barang,
+					'merk_alamat' => $row->merk_alamat,
+					'tipe' => $row->tipe,
+					'satuan' => $row->satuan,
+					'harga_baru' => $row->harga_baru,
+					'tahun_pengadaan' => $row->tahun_pengadaan,
+					'no_bpkb' => $row->no_bpkb,
+					'no_rangka_seri' => $row->no_rangka_seri,
+					'nopol' => $row->nopol,
+					'no_mesin' => $row->no_mesin,
+					'kondisi' => $row->kondisi,
+					'nomor_lokasi_baru' => $row->nomor_lokasi_baru,
+					'kode108_baru' => $row->kode108_baru,
+					'kode64_baru' => $row->kode64_baru,
+					'harga_baru' => $row->harga_baru,
+					'keterangan' => $row->keterangan,
+					'status_simbada' => $row->status_simbada,
+					'penghapusan' => $row->penghapusan,
+					'koreksi_hapus' => $row->koreksi_hapus,
+					'hibah_keluar' => $row->hibah_keluar,
+					'luas_tanah' => $row->luas_tanah,
+					'luas_bangunan' => $row->luas_bangunan,
+					'no_sertifikat' => $row->no_sertifikat,
+					'kota' => $row->kota,
+					'kecamatan' => $row->kecamatan,
+					'kelurahan' => $row->kelurahan,
+					'ekstrakomtabel' => $row->ekstrakomtabel,
+					'status_register' => 'SAWAL',
+					'created_at_date' => $date,
+					'created_at_time' => $time,
+					'update_at_date' => $date,
+					'update_at_time' => $time
+				);				
+					$this->admin_model->insert_register($data_reg);
+			} else {
 
-		// 		$register = $row->register;
+				$register = $row->register;
 
-		// 		$data_for_kib=array (
-		// 			'nomor_lokasi_baru' => $row->nomor_lokasi_baru,
-		// 			'kode64_baru'	=> $row->kode64_baru,
-		// 			'kode108_baru' => $row->kode108_baru,
-		// 			'harga_baru' => $row->harga_baru,
-		// 			'status_simbada' => $row->status_simbada,
-		// 			'penghapusan' => $row->penghapusan,
-		// 			'koreksi_hapus' => $row->koreksi_hapus,
-		// 			'hibah_keluar' => $row->hibah_keluar,
-		// 			'ekstrakomtabel' => $row->ekstrakomtabel,
-		// 			'update_at_date' => $date,
-		// 			'update_at_time' => $time
-		// 		);
-		// 		$this->admin_model->update_data($register,$data_for_kib,'data_kib');
+				$data_for_kib=array (
+					'nomor_lokasi_baru' => $row->nomor_lokasi_baru,
+					'kode64_baru'	=> $row->kode64_baru,
+					'kode108_baru' => $row->kode108_baru,
+					'harga_baru' => $row->harga_baru,
+					'status_simbada' => $row->status_simbada,
+					'penghapusan' => $row->penghapusan,
+					'koreksi_hapus' => $row->koreksi_hapus,
+					'hibah_keluar' => $row->hibah_keluar,
+					'ekstrakomtabel' => $row->ekstrakomtabel,
+					'update_at_date' => $date,
+					'update_at_time' => $time
+				);
+				$this->admin_model->update_data($register,$data_for_kib,'data_kib');
 
-		// 	}
-		// }
+			}
+		}
 
-		// echo "<h2>DONE Proses Penyamaan DATA KIB Dengan AUDITED, Lanjut Proses Pengeditan Register Yang Telah Di Kerjakan !!!! </h2>";
+		echo "<h2>DONE Proses Penyamaan DATA KIB Dengan AUDITED, Lanjut Proses Pengeditan Register Yang Telah Di Kerjakan !!!! </h2>";
 
 
 		$get_simbada2 = $this->admin_model->get_kib_simbada('data_kib')->result();
@@ -385,8 +385,6 @@ class Home_admin extends CI_Controller {
 			if ($exist2->num_rows() > 0) {
 
 				$subs=substr($data->kode108_baru, 0, 5);
-				
-				echo $data->register." - ".$subs;
 
 				if ($subs == '1.5.4') {
 

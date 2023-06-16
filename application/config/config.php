@@ -369,7 +369,7 @@ $config['encryption_key'] = 'heddysebastian1993';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'siibmd_session';
+$config['sess_cookie_name'] = 'siibmd_loc_session';
 $config['sess_expiration'] = 0;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;

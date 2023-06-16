@@ -89,7 +89,8 @@ class Form_inv extends CI_Controller {
 
 			$where = array (
 				'ekstrakomtabel' =>  NULL,
-				'status' => NULL
+				'status' => NULL,
+				'status_simbada' => NULL
 			);
 
 			$data['kib_apa']=$id;
