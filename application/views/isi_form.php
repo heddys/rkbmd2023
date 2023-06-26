@@ -562,16 +562,13 @@
 
                             <!-- Batas Per Form -->
 
-
-
-
                             <?php  } ?>
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5 ">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Penggunaan Barang : </label>
+                                        <label class="input-group-text" for="inputGroupSelect01">Pengguna Barang : </label>
                                     </div>
                                     <input type="text" class="form-control" name="penggunaan" id="penggunaan" readonly="true" value="Pemerintah Kota">
                                 </div>
@@ -625,14 +622,25 @@
                                             <input type="text" class="form-control" id="koordinat" name="koordinat" placeholder="Input Titik Koordinat">
                                     </div>
                             </div> -->
+                            <?php if(substr($data_register->kode108_baru,0,5) == '1.3.2') { ?>   
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Lainnya</label>
+                                            <label class="input-group-text" id="basic-addon3">Lainnya : </label>
                                         </div>
                                             <input type="text" class="form-control" name="lainnya" id="kode_register" placeholder="......">
                                     </div>
                             </div>
+                            <?php } else { ?>
+                            <div class="form-group col-md-8">
+                                   <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Penggunaan : </label>
+                                        </div>
+                                            <input type="text" class="form-control" name="lainnya" id="kode_register" placeholder="Penggunaan Aset Untuk Apa ? .....">
+                                    </div>
+                            </div>
+                            <?php }?>
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>

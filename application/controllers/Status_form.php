@@ -200,7 +200,14 @@ class Status_form extends CI_Controller {
 		   $this->load->view('h_tablerkb',$data);		
 		   $this->load->view('status_page_tolak');
 		   $this->load->view('h_footerrkb');
-		}
+	}
+	
+	public function cari_status_reg() {
+		
+		$this->cek_sess();
+		
+
+	}
 
 	public function verif_page($id)
 	{

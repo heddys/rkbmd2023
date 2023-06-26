@@ -246,6 +246,14 @@
           </li>
           <li class="nav-header"><strong>STATUS REGISTER</strong></li>
           <li class="nav-item has-treeview">
+            <a href="<?php echo site_url('status_form/cari_status_reg')?>" class="nav-link">
+              <i class="nav-icon fa fa-bookmark"></i>
+              <p>
+                Cari Status Register
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
