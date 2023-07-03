@@ -3,62 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Status_form extends CI_Controller {
 
-    
-    // public function index($id)
-    // {
-    //     $this->cek_sess();
-	// 	$data['page']="Form Inventarisasi";
-    //     if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
-	// 		$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
-	// 		$nomor_lokasi=array();
-	// 		foreach ($get_lokasi_pbp as $key) {
-	// 			$nomor_lokasi[]=$key->nomor_lokasi;
-	// 		} 
-    //     }else {
-	// 	    $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-    //     }
-    //     // $data_proses_verif = array (
-
-    //     //     'ekstrakomtabel' => NULL,
-    //     //     'status' => 2
-    //     // );
-		
-
-    //     $data_dicetak = array (
-
-    //         'ekstrakomtabel' => NULL,
-    //         'status' => 2
-    //     );
-
-    //     $data['kib_apa']=$id;
-
-    //     if($id=='1') {
-    //         $kib = "1.3.1";
-    //     } 
-    //     elseif ($id=='2') {
-    //         $kib = "1.3.2";
-    //     } elseif ($id=='3') {
-    //         $kib = "1.3.3";
-    //     } elseif ($id=='4') {
-    //         $kib = "1.3.4";
-    //     } elseif ($id=='5') {
-    //         $kib = "1.3.5";
-    //     } else { 
-    //         $kib = "1.5.3";
-    //     }
-
-    //     $data['register']=$this->form_model->get_all_register_proses_tolak($nomor_lokasi,$kib);
-    //     $data['cetak']=$this->form_model->get_all_register($data_dicetak,$nomor_lokasi,$kib);
-
-    //  $this->load->view('h_tablerkb',$data);		
-	// 	$this->load->view('status_page_tolak');
-	// 	$this->load->view('h_footerrkb');	
-    //     // echo $nomor_lokasi."<p>";
-    //     // var_dump($this->form_model->get_all_register_proses_tolak($nomor_lokasi,$kib));
-    //     // echo "<p>";
-    //     // var_dump($this->form_model->get_all_register($data_dicetak,$nomor_lokasi,$kib)->result());
-    // }
-
 	public function index($id)
 	{
 		$this->cek_sess();
@@ -203,9 +147,125 @@ class Status_form extends CI_Controller {
 	}
 	
 	public function cari_status_reg() {
+	
+        $this->cek_sess();
+		$data['page']="Form Inventarisasi";
+        $data_cari=$this->session->userdata('data');
+        
+		if(isset($_POST['limit'])){
+			$this->session->set_userdata('limit',$_POST['limit']);
+			$limit=$_POST['limit'];
+		} 
+
+		if($this->session->userdata('limit')){	
+			$limit=$this->session->userdata('limit');
+		} else {$limit=10;}
 		
+        if(isset($_POST['select_lokasi'])){
+			if($_POST['select_lokasi'] == "semua_opd") {
+				$data_cari = $_POST['select_lokasi'];
+				$form = 1;
+				$this->session->set_userdata('data',$data_cari);
+				$this->session->set_userdata('status',1);
+			} else {
+				$this->session->set_userdata('data',$_POST['select_lokasi']);
+				$data_cari=$this->session->userdata('data');
+				$form=1;
+				$this->session->set_userdata('status',1);
+			}
+			
+		} else {
+			if($this->session->userdata('status')==0) {
+				$form=0;
+				$data_cari=array();
+				$data_cari=$this->session->userdata('no_lokasi_asli');
+				$this->session->set_userdata('data',$data_cari);
+			} elseif($this->session->userdata('status')==1) {
+				$form = 1;
+				$data_cari=$this->session->userdata('data');
+			} else {
+				$form = 2;
+				$data_cari=$this->session->userdata('data');
+
+			}
+			
+		}
+
+		if(isset($_POST['cariregname'])){
+			$data_cari=$_POST['cariregname'];
+			$form=2;
+			$this->session->set_userdata('data',$data_cari);
+			$this->session->set_userdata('status',2);
+		}
+
+        	
+			//Load Library Pagination
+			$this->load->library('pagination');
+			$data['offset']=($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+			//Config Pagination
+			$config['total_rows'] = $this->form_model->hitungBanyakRowCariRegister($data_cari,$form)->num_rows();
+			$config['per_page'] = $limit;
+			$config['base_url'] = site_url('/status_form/cari_status_reg/');
+			$config['num_links'] = 3;
+
+			//Pagination Bootstrap Theme
+			$config['full_tag_open']='<nav aria-label="Page navigation example"><ul class="pagination justify-content-center">';
+			$config['full_tag_close']='</ul></nav>';
+
+			$config['first_link'] = 'First';
+			$config['first_tag_open'] = '<li class="page-item">';
+			$config['first_tag_close'] = '</li>';
+
+			$config['last_link'] = 'Last';
+			$config['last_tag_open'] = '<li class="page-item">';
+			$config['last_tag_close'] = '</li>';
+
+			$config['next_link'] = '&raquo';
+			$config['next_tag_open'] = '<li class="page-item">';
+			$config['next_tag_close'] = '</li>';
+
+			$config['prev_link'] = '&laquo';
+			$config['prev_tag_open'] = '<li class="page-item">';
+			$config['prev_tag_close'] = '</li>';
+
+			$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+			$config['cur_tag_close'] = '</a></li>';
+
+			$config['num_tag_open'] = '<li class="page-item">';
+			$config['num_tag_close'] = '</li>';
+
+			$config['attributes'] = array ('class' => 'page-link'); 
+			
+			
+			$this->pagination->initialize($config);
+			// var_dump ($data_cari);
+			$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
+			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
+			$data['register']=$this->form_model->get_status_register($data_cari,$config['per_page'],$data['offset'],$form);
+        
+        
+			$this->load->view('h_tablerkb',$data);		
+			$this->load->view('cari_register_status');
+			$this->load->view('h_footerrkb');	
+	}
+
+	public function show_form_inv_user()
+	{
 		$this->cek_sess();
+
+		$data['page']="Lihat Form Inventarisasi OPD";
+		$data['status'] = $_GET['status'];
+		$register=$_GET['register'];
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+		if($data['status']==3) {
+			$data['penolakan'] =$this->admin_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
+		}
 		
+		$this->load->view('h_tablerkb',$data);		
+		$this->load->view('detail_form_user',$data);
+		$this->load->view('h_footerrkb');		
 
 	}
 
@@ -287,17 +347,12 @@ class Status_form extends CI_Controller {
 			}
 
 
-			$where = array (
-				'ekstrakomtabel' =>  NULL,
-				'status' => NULL
-			);
-
-			
+		
 				//Load Library Pagination
 				$this->load->library('pagination');
 				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 				//Config Pagination
-				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister_sudahdiverif($where,$data_cari,$kib,$form)->num_rows();
+				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister_sudahdiverif($data_cari,$kib,$form)->num_rows();
 				$config['per_page'] = $limit;
 				$config['base_url'] = site_url('/status_form/verif_page/'.$id.'/');
 				$config['num_links'] = 3;

@@ -22,7 +22,7 @@ class Admin_model extends CI_Model{
                 COUNT( a.register ) as jumlah
             FROM
                 `data_kib` a
-                INNER JOIN (select * from kamus_lokasi GROUP BY nomor_unit) b ON b.nomor_unit = left(a.nomor_lokasi,12)
+                INNER JOIN (select * from kamus_lokasi GROUP BY nomor_unit) b ON b.nomor_unit = left(a.nomor_lokasi_baru,12)
             WHERE
                 a.`status` = '1'
             GROUP BY
@@ -90,9 +90,9 @@ class Admin_model extends CI_Model{
         if($list==1) {
             $query = $this->db->query("SELECT (select count(register) from data_kib where status ='1') as jumlah_proses, (select count(register) from data_kib where status ='3') as jumlah_tolak, (select count(register) from data_kib where status ='2') as jumlah_terverif, (select count(register) from data_kib where status is null and ekstrakomtabel is null) as jumlah_reg_belum_diisi");
         } else {
-                $query = $this->db->query("SELECT (select count(register) from data_kib where unit_baru in ('".implode("','",$list)."') and status ='1') as jumlah_proses, (select count(register) from data_kib where unit_baru in ('".implode("','",$list)."') and status ='3') as jumlah_tolak, (select count(register) from data_kib where unit_baru in ('".implode("','",$list)."') and status ='2') as jumlah_terverif, (select count(register) from data_kib where unit_baru in ('".implode("','",$list)."') and status is null) as jumlah_reg_belum_diisi");
+                $query = $this->db->query("SELECT (select count(register) from data_kib where left(nomor_lokasi_baru,12) in ('".implode("','",$list)."') and status ='1') as jumlah_proses, (select count(register) from data_kib where left(nomor_lokasi_baru,12) in ('".implode("','",$list)."') and status ='3') as jumlah_tolak, (select count(register) from data_kib where left(nomor_lokasi_baru,12) in ('".implode("','",$list)."') and status ='2') as jumlah_terverif, (select count(register) from data_kib where left(nomor_lokasi_baru,12) in ('".implode("','",$list)."') and status is null) as jumlah_reg_belum_diisi");
             }
-
+    
        return $query->row();
    }
 
@@ -208,9 +208,9 @@ class Admin_model extends CI_Model{
                     IF
                     ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
             FROM
-                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi where kode_binprog <> '' GROUP BY nomor_unit) b on left(a.nomor_lokasi,12)=b.nomor_unit
+                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi where kode_binprog <> '' GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit
             WHERE
-                a.nomor_lokasi IN ( '".implode("','",$unit)."' ) 
+                left(a.nomor_lokasi_baru,12) IN ( '".implode("','",$unit)."' ) 
             GROUP BY
                 b.unit 
             ORDER BY
@@ -256,8 +256,8 @@ class Admin_model extends CI_Model{
         $this->db->select('*');
         $this->db->from('kamus_lokasi');
         $this->db->where('kode_binprog <>','');
-        $this->db->where_in('unit_baru',$list_unit);
-        $this->db->group_by('unit_baru');
+        $this->db->where_in('nomor_unit',$list_unit);
+        $this->db->group_by('nomor_unit');
         return $this->db->get();
    }
 
@@ -267,7 +267,7 @@ class Admin_model extends CI_Model{
         $this->db->select('*');
         $this->db->from('kamus_lokasi');
         $this->db->where('kode_binprog <>','');
-        $this->db->where_in('unit_baru',$list_unit);
+        $this->db->where_in('nomor_unit',$list_unit);
         return $this->db->get();
    }
 
@@ -289,11 +289,11 @@ class Admin_model extends CI_Model{
    public function get_status_for_penyelia($data,$kib, $limit, $offset,$form){
 
         if($form == 2){
-            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%' limit ".$limit." offset ".$offset."");
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where kode108_baru like '%".$kib."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
         } elseif ($form == 1) {
-            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`unit_baru` = '".$data."' limit ".$limit." offset ".$offset."");
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where left(a.`nomor_lokasi_baru`,12) = '".$data."' and kode108_baru like '%".$kib."%' limit ".$limit." offset ".$offset."");
         } else {
-            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.`unit_baru` IN ( '".implode("','",$data)."' ) limit ".$limit." offset ".$offset."");
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,b.unit,a.satuan,a.harga_baru,a.status FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where left(a.`nomor_lokasi_baru`,12) IN ( '".implode("','",$data)."' ) and kode108_baru like '%".$kib."%' limit ".$limit." offset ".$offset."");
         }
 
         return $query->result();
@@ -473,15 +473,15 @@ class Admin_model extends CI_Model{
         return $this->db->get_where('register_isi', array ('register' => $register));
     }
 
-    public function hitungBanyakRowRegister($where,$data,$kib,$form)
+    public function hitungBanyakRowRegister($data,$kib,$form)
     {
 
         if ($form == 2){    
 
-            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) ");
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.ekstrakomtabel is NULL and kode108_baru like '%".$kib."%' and  (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) ");
 
             } else {
-                $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`nomor_lokasi_baru` like '%".$data."%' and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1)");
+                $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.ekstrakomtabel is NULL and kode108_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) IN ( '".implode("','",$data)."' ) and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1)");
                        
             }
 
@@ -512,10 +512,10 @@ class Admin_model extends CI_Model{
     
     {
         if($form == 2){
-            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and kode108_baru like '%".$kib."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
 
         } else {
-            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL  and a.`nomor_lokasi_baru` like '%".$data."%' limit ".$limit." offset ".$offset."");
+            $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL  and kode108_baru like '%".$kib."%' and a.`nomor_lokasi_baru` like '%".$data."%' limit ".$limit." offset ".$offset."");
         } 
         return $query->result();
     }    

@@ -99,26 +99,41 @@ class Home_penyelia extends CI_Controller {
 				$data_cari=$this->session->userdata('data');
 			} else {
 				$form = 2;
+				$data_cari=$this->session->userdata('data');
+
 			}
 			
 		}
 
+		if(isset($_POST['cariregname'])){
+			$data_cari=$_POST['cariregname'];
+			$form=2;
+			$this->session->set_userdata('data',$data_cari);
+			$this->session->set_userdata('status',2);
+		}
+
         $data['kib_apa']=$id;
 
-			if($id=='1') {
-				$kib = "1.3.1";
-			} 
-			elseif ($id=='2') {
-				$kib = "1.3.2";
-			} elseif ($id=='3') {
-				$kib = "1.3.3";
-			} elseif ($id=='4') {
-				$kib = "1.3.4";
-			} elseif ($id=='5') {
-				$kib = "1.3.5";
-			} else { 
-				$kib = "1.5.3";
-			}
+		if($id=='1') {
+			$this->session->set_userdata('kib','1.3.1');
+			$kib = $this->session->userdata('kib');
+		} 
+		elseif ($id=='2') {
+			$this->session->set_userdata('kib','1.3.2');
+			$kib = $this->session->userdata('kib');
+		} elseif ($id=='3') {
+			$this->session->set_userdata('kib','1.3.3');
+			$kib = $this->session->userdata('kib');
+		} elseif ($id=='4') {
+			$this->session->set_userdata('kib','1.3.4');
+			$kib = $this->session->userdata('kib');
+		} elseif ($id=='5') {
+			$this->session->set_userdata('kib','1.3.5');
+			$kib = $this->session->userdata('kib');
+		} else { 
+			$this->session->set_userdata('kib','1.5.3');
+			$kib = $this->session->userdata('kib');
+		} 
 		
 			//Load Library Pagination
 			$this->load->library('pagination');
@@ -126,7 +141,7 @@ class Home_penyelia extends CI_Controller {
 			//Config Pagination
 			$config['total_rows'] = $this->admin_model->hitungBanyakRowRegister($data_cari,$kib,$form)->num_rows();
 			$config['per_page'] = 10;
-			$config['base_url'] = site_url('/home_penyelia/list_status_register/2');
+			$config['base_url'] = site_url('/home_penyelia/list_status_register/'.$id);
 			$config['num_links'] = 3;
 
 			//Pagination Bootstrap Theme
@@ -159,21 +174,15 @@ class Home_penyelia extends CI_Controller {
 			
 			
 			$this->pagination->initialize($config);
-			var_dump ($data_cari);
+			// var_dump ($data_cari);
 			$data['lokasi']=$this->admin_model->get_per_opd_penyelia($list_unit);
 			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form);
 			$data['register']=$this->admin_model->get_status_for_penyelia($data_cari,$kib,$config['per_page'],$data['offset'],$form);
         
-        // foreach ($data['lokasi'] as $key) {
-        //     echo $key->unit." - ".$key->unit_baru."<p>";
-        // }
-
+        
         $this->load->view('admin/header_penyelia',$data);		
 		$this->load->view('admin/list_status_kib_penyelia',$data);
 		$this->load->view('admin/footer_penyelia');		
-
-		// var_dump($this->session->userdata('data'));
-		// var_dump($data_cari);
 
 		
     }

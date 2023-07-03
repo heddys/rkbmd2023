@@ -236,18 +236,18 @@
                   <p>Aset Tetap Lainnya</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/index/6');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Lain-Lain 1.5.03</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
           <li class="nav-header"><strong>STATUS REGISTER</strong></li>
           <li class="nav-item has-treeview">
             <a href="<?php echo site_url('status_form/cari_status_reg')?>" class="nav-link">
-              <i class="nav-icon fa fa-bookmark"></i>
+              <i class="nav-icon 	fas fa-glasses"></i>
               <p>
                 Cari Status Register
               </p>
@@ -255,9 +255,9 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-calendar-check"></i>
               <p>
-                Telah Di Verifikasi
+                Register Terverifikasi
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -302,9 +302,9 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-clock"></i>
               <p>
-                Di Tolak
+                Register Proses Verifikasi
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>

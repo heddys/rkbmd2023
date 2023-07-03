@@ -225,10 +225,18 @@
           </li> -->
           <li class="nav-header"><strong>STATUS REGISTER</strong></li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+            <a href="<?php echo site_url('status_form/cari_status_reg')?>" class="nav-link">
+              <i class="nav-icon 	fas fa-glasses"></i>
               <p>
-                Telah Di Verifikasi
+                Cari Status Register
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Register Terverifikasi
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -273,9 +281,9 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-clock"></i>
               <p>
-                Di Tolak
+                Register Proses Verifikasi
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>

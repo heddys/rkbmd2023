@@ -120,7 +120,7 @@ class Form_inv extends CI_Controller {
 				$this->load->library('pagination');
 				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 				//Config Pagination
-				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($where,$data_cari,$kib,$form)->num_rows();
+				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($data_cari,$kib,$form)->num_rows();
 				$config['per_page'] = $limit;
 				$config['base_url'] = site_url('/form_inv/index/'.$id.'/');
 				$config['num_links'] = 3;
