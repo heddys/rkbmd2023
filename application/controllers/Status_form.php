@@ -346,8 +346,6 @@ class Status_form extends CI_Controller {
 				$this->session->set_userdata('status',2);
 			}
 
-
-		
 				//Load Library Pagination
 				$this->load->library('pagination');
 				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;

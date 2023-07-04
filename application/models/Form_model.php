@@ -237,11 +237,11 @@
             
                     if($form == 2){
                         $no_lokasi=$this->session->userdata('no_lokasi_asli');
-                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi as lokasi_awal,a.satuan,a.tahun_pengadaan,a.harga_baru,d.lokasi,e.lokasi as lokasi_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi inner join register_isi d on a.register=d.register inner join kamus_lokasi e on d.lokasi=e.nomor_lokasi where a.ekstrakomtabel is NULL and a.status_simbada is null and a.`status` = '2' and a.kode108_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) limit ".$limit." offset ".$offset."");
+                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi as lokasi_awal,a.satuan,a.tahun_pengadaan,a.harga_baru,d.lokasi,e.lokasi as lokasi_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi inner join register_isi d on a.register=d.register inner join kamus_lokasi e on d.lokasi=e.nomor_lokasi where a.ekstrakomtabel is NULL and a.status_simbada is null and a.`status` = '2' and a.kode108_baru like '%".$kib."%' and a.`nomor_lokasi_baru` like '%".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) limit ".$limit." offset ".$offset."");
         
         
                     } else {
-                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi as lokasi_awal,a.satuan,a.tahun_pengadaan,a.harga_baru,d.lokasi,e.lokasi as lokasi_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi inner join register_isi d on a.register=d.register inner join kamus_lokasi e on d.lokasi=e.nomor_lokasi where a.ekstrakomtabel is NULL and a.status_simbada is null and a.status = '2' and a.kode108_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$data."%' and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) limit ".$limit." offset ".$offset."");
+                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi as lokasi_awal,a.satuan,a.tahun_pengadaan,a.harga_baru,d.lokasi,e.lokasi as lokasi_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi inner join register_isi d on a.register=d.register inner join kamus_lokasi e on d.lokasi=e.nomor_lokasi where a.ekstrakomtabel is NULL and a.status_simbada is null and a.status = '2' and a.kode108_baru like '%".$kib."%' and a.`nomor_lokasi_baru` like '%".$data."%' and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) limit ".$limit." offset ".$offset."");
                     } 
                 
 
@@ -249,7 +249,7 @@
             }
 
             public function get_tolak_register_pagination($data,$kib, $limit, $offset,$form)
-            {
+            {   
 
                     if($form == 2){
                         $no_lokasi=$this->session->userdata('no_lokasi_asli');
