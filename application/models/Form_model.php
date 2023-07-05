@@ -176,7 +176,7 @@
                 return $query;
             }
 
-            public function hitungBanyakRowRegister_tolak_proses($where,$data,$kib,$form)
+            public function hitungBanyakRowRegister_tolak_proses($data,$kib,$form)
             {
 
 

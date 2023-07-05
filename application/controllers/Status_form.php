@@ -87,18 +87,12 @@ class Status_form extends CI_Controller {
 				$this->session->set_userdata('status',2);
 			}
 
-
-			$where = array (
-				'ekstrakomtabel' =>  NULL,
-				'status' => NULL
-			);
-
 			
 				//Load Library Pagination
 				$this->load->library('pagination');
 				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 				//Config Pagination
-				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister_tolak_proses($where,$data_cari,$kib,$form)->num_rows();
+				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister_tolak_proses($data_cari,$kib,$form)->num_rows();
 				$config['per_page'] = $limit;
 				$config['base_url'] = site_url('/status_form/index/'.$id.'/');
 				$config['num_links'] = 3;
