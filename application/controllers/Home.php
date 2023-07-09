@@ -33,6 +33,12 @@ class Home extends CI_Controller {
 			// $data['only_opd'] = $this->form_model->get_data_dinkes_only()->row();
 		}
 		$data['rekap']=$this->form_model->data_progres_opd($nomor_lokasi)->row();
+		$data['rekap_tanah']=$this->form_model->data_progres_opd_tanah($nomor_lokasi)->row();
+		$data['rekap_pm']=$this->form_model->data_progres_opd_pm($nomor_lokasi)->row();
+		$data['rekap_gdb']=$this->form_model->data_progres_opd_gdb($nomor_lokasi)->row();
+		$data['rekap_jij']=$this->form_model->data_progres_opd_jij($nomor_lokasi)->row();
+		$data['rekap_atl']=$this->form_model->data_progres_opd_atl($nomor_lokasi)->row();
+		$data['rekap_atb']=$this->form_model->data_progres_opd_atb($nomor_lokasi)->row();
 		$this->load->view('header',$data);		
 		$this->load->view('home');
 		$this->load->view('footer');

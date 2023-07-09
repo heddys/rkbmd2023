@@ -5,29 +5,14 @@
         <!-- Small boxes (Stat box) -->
         <!-- Untuk Pemberitahuan -->
         <div class="callout callout-info">
-          <h4>Notice!</h4>
-          Selamat Datang, Tolong Untuk Mengisi Form Inventarisasi Terlebih Dahulu.
-        </div>
-        <div class="row">
-         <div class="col-lg-12 col-12">
-           <!-- small box -->
-           <div class="small-box bg-success">
-             <div class="inner">
-               <center><h3>Form Inventarisasi</h3></center>
-                 <center><p>Pengisian Form Untuk Memverifikasi Atribut Aset</p></center>
-             </div>
-            <div class="icon">
-               <i class="ion ion-stats-bars"></i>
-            </div>
-                <a href="<?php echo site_url('/Form_inv/index/2');?>" class="small-box-footer">Isi Form Inventarisasi <i class="fas fa-arrow-circle-right"></i></a>
-           </div>
-         </div>
+          <h4>Hai!</h4>
+          Selamat Datang Di Sistem Inventarisasi Barang Milik Daerah, Sistem ini akan membantu Perangkat Daerah untuk melakukan sensus terhadap aset - aset yang dimiliki.
         </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h5 class="card-title">Progres Pengisian Form Inventarisasi</h5>
+                  <h5 class="card-title">Progres Semua Aset Tetap Untuk Pengisian Form Inventarisasi</h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -55,7 +40,7 @@
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
                         <h5 class="description-header"><?php echo number_format($rekap->proses);?></h5>
-                        <span class="description-text">TOTAL REGISTER PROSES VERIFIKASI</span>
+                        <span class="description-text">PROSES VERIFIKASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -63,7 +48,7 @@
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
                         <h5 class="description-header"><?php echo number_format($rekap->tolak);?></h5>
-                        <span class="description-text">TOTAL REGISTER DI TOLAK</span>
+                        <span class="description-text">REGISTER DI TOLAK</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -71,14 +56,437 @@
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
                         <h5 class="description-header"><?php echo number_format($rekap->verif);?></h5>
-                        <span class="description-text">TOTAL REGISTER TERVERIFIKASI</span>
+                        <span class="description-text">REGISTER TERVERIFIKASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
                     <div class="col-sm col-6">
                       <div class="description-block">
                         <h5 class="description-header"><?php echo number_format($rekap->sisa);?></h5>
-                        <span class="description-text">TOTAL REGISTER BELUM DI KERJAKAN</span>
+                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.card-footer -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <div class="row">
+            <div class="col-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Progres Aset Tetap Tanah Untuk Pengisian Form Inventarisasi</h5>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="progress" style="height:25px">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_tanah->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_tanah->persentase,3) . '%';?></strong></div>
+                      </div>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- ./card-body -->
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->total);?></h5>
+                        <span class="description-text">TOTAL REGISTER</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->proses);?></h5>
+                        <span class="description-text">PROSES VERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->tolak);?></h5>
+                        <span class="description-text">REGISTER DI TOLAK</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->verif);?></h5>
+                        <span class="description-text">REGISTER TERVERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <div class="col-sm col-6">
+                      <div class="description-block">
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->sisa);?></h5>
+                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.card-footer -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Progres Aset Tetap Peralatan dan Mesin Untuk Pengisian Form Inventarisasi</h5>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="progress" style="height:25px">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_pm->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_pm->persentase,3) . '%';?></strong></div>
+                      </div>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- ./card-body -->
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_pm->total);?></h5>
+                        <span class="description-text">TOTAL REGISTER</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_pm->proses);?></h5>
+                        <span class="description-text">PROSES VERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_pm->tolak);?></h5>
+                        <span class="description-text">REGISTER DI TOLAK</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_pm->verif);?></h5>
+                        <span class="description-text">REGISTER TERVERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <div class="col-sm col-6">
+                      <div class="description-block">
+                        <h5 class="description-header"><?php echo number_format($rekap_pm->sisa);?></h5>
+                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.card-footer -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Progres Aset Tetap Gedung dan Bangunan Untuk Pengisian Form Inventarisasi</h5>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="progress" style="height:25px">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_gdb->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_gdb->persentase,3) . '%';?></strong></div>
+                      </div>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- ./card-body -->
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_gdb->total);?></h5>
+                        <span class="description-text">TOTAL REGISTER</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_gdb->proses);?></h5>
+                        <span class="description-text">PROSES VERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_gdb->tolak);?></h5>
+                        <span class="description-text">REGISTER DI TOLAK</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_gdb->verif);?></h5>
+                        <span class="description-text">REGISTER TERVERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <div class="col-sm col-6">
+                      <div class="description-block">
+                        <h5 class="description-header"><?php echo number_format($rekap_gdb->sisa);?></h5>
+                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.card-footer -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Progres Aset Tetap Jalan, Irigasi dan Jaringan Untuk Pengisian Form Inventarisasi</h5>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="progress" style="height:25px">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_jij->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_jij->persentase,3) . '%';?></strong></div>
+                      </div>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- ./card-body -->
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_jij->total);?></h5>
+                        <span class="description-text">TOTAL REGISTER</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_jij->proses);?></h5>
+                        <span class="description-text">PROSES VERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_jij->tolak);?></h5>
+                        <span class="description-text">REGISTER DI TOLAK</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_jij->verif);?></h5>
+                        <span class="description-text">REGISTER TERVERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <div class="col-sm col-6">
+                      <div class="description-block">
+                        <h5 class="description-header"><?php echo number_format($rekap_jij->sisa);?></h5>
+                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.card-footer -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Progres Aset Tetap Lainnya Untuk Pengisian Form Inventarisasi</h5>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="progress" style="height:25px">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_atl->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_atl->persentase,3) . '%';?></strong></div>
+                      </div>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- ./card-body -->
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_atl->total);?></h5>
+                        <span class="description-text">TOTAL REGISTER</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_atl->proses);?></h5>
+                        <span class="description-text">PROSES VERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_atl->tolak);?></h5>
+                        <span class="description-text">REGISTER DI TOLAK</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_atl->verif);?></h5>
+                        <span class="description-text">REGISTER TERVERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <div class="col-sm col-6">
+                      <div class="description-block">
+                        <h5 class="description-header"><?php echo number_format($rekap_atl->sisa);?></h5>
+                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.card-footer -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Progres Aset Tidak Berwujud Untuk Pengisian Form Inventarisasi</h5>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="progress" style="height:25px">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_atb->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_atb->persentase,3) . '%';?></strong></div>
+                      </div>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- ./card-body -->
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_atb->total);?></h5>
+                        <span class="description-text">TOTAL REGISTER</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_atb->proses);?></h5>
+                        <span class="description-text">PROSES VERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_atb->tolak);?></h5>
+                        <span class="description-text">REGISTER DI TOLAK</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm col-6">
+                      <div class="description-block border-right">
+                        <h5 class="description-header"><?php echo number_format($rekap_atb->verif);?></h5>
+                        <span class="description-text">REGISTER TERVERIFIKASI</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <div class="col-sm col-6">
+                      <div class="description-block">
+                        <h5 class="description-header"><?php echo number_format($rekap_atb->sisa);?></h5>
+                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
                       </div>
                       <!-- /.description-block -->
                     </div>

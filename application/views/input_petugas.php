@@ -36,7 +36,7 @@
 	                	<tr>
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $row->nama_petugas?></center></td>
-                              <td><center><?php echo $row->lokasi?></center></td>
+                            <td><center><?php echo $row->lokasi?></center></td>
 	                  		<td><center><?php echo $row->nip_petugas?></center></td>
                             <td><center><?php echo $row->pangkat_petugas?></center></td>
                             <td style="width:50px">

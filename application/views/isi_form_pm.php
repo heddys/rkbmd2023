@@ -346,8 +346,8 @@
                             </div>
 
                             <!-- Batas Per Form -->
+                  
 
-                            <?php if(substr($data_register->kode108_baru,0,5) == '1.3.2') { ?>                        
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
@@ -454,115 +454,6 @@
 
                             <!-- Batas Per Form -->
                             
-                            <?php } else { ?>
-
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3"><?php echo (substr($data_register->kode108_baru,0,5) == '1.3.1') ? "Luas Tanah : " : "Luas Bangunan : "; ?></label>
-                                        </div>
-                                            <input type="text" class="form-control" name="nopol" id="nopol" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register->nopol;?>">
-                                    </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary25" name="radio_nopol" value="0" checked="checked" required="required"/>
-                                        <label for="primary25">Sesuai</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary26" name="radio_nopol" value="1"/>
-                                        <label for="primary26">Tidak Sesuai</label>
-                                    </div>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-
-                            <!-- Batas Per Form -->
-
-
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Nomor Sertifikat :</label>
-                                        </div>
-                                            <input type="text" class="form-control" name="noka" id="noka" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register->no_rangka_seri;?>">
-                                    </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary27" name="radio_no_rangka" value="0" checked="checked" required="required"/>
-                                        <label for="primary27">Sesuai</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary28" name="radio_no_rangka" value="1"/>
-                                        <label for="primary28">Tidak Sesuai</label>
-                                    </div>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-
-                            <!-- Batas Per Form -->
-
-
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Kota :</label>
-                                        </div>
-                                            <input type="text" class="form-control" name="no_mesin" id="no_mesin" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register->no_mesin;?>">
-                                    </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary29" name="radio_mesin" value="0" checked="checked" required="required"/>
-                                        <label for="primary29">Sesuai</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary30" name="radio_mesin" value="1"/>
-                                        <label for="primary30">Tidak Sesuai</label>
-                                    </div>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-
-                            <!-- Batas Per Form -->
-
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Kecamatan dan Kelurahan :</label>
-                                        </div>
-                                            <input type="text" class="form-control" style="text-transform:uppercase" name="no_bpkb" id="no_bpkb" readonly="true" value="<?php echo $data_register->no_bpkb?>">
-                                    </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary31" name="radio_bpkb" value="0" checked="checked" required="required"/>
-                                        <label for="primary31">Sesuai</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary32" name="radio_bpkb" value="1"/>
-                                        <label for="primary32">Tidak Sesuai</label>
-                                    </div>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-
-                            <!-- Batas Per Form -->
-
-                            <?php  } ?>
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5 ">
@@ -622,7 +513,6 @@
                                             <input type="text" class="form-control" id="koordinat" name="koordinat" placeholder="Input Titik Koordinat">
                                     </div>
                             </div> -->
-                            <?php if(substr($data_register->kode108_baru,0,5) == '1.3.2') { ?>   
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -631,16 +521,7 @@
                                             <input type="text" class="form-control" name="lainnya" id="kode_register" placeholder="......">
                                     </div>
                             </div>
-                            <?php } else { ?>
-                            <div class="form-group col-md-8">
-                                   <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Penggunaan : </label>
-                                        </div>
-                                            <input type="text" class="form-control" name="lainnya" id="kode_register" placeholder="Penggunaan Aset Untuk Apa ? .....">
-                                    </div>
-                            </div>
-                            <?php }?>
+                            
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>
@@ -650,7 +531,7 @@
 
                             <div class="form-group col-md-8 file_upload">
                                 <div class="mb-3">
-                                <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg | .pdf , Ukuran File Max : 5MB, dan Rotasi Foto : Portrait, dan Foto Disertai Geotag)
+                                <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg | .pdf , Ukuran File Max : 5MB dan Foto Disertai Geotag)
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]" required="required" accept="image/jpeg,application/pdf">
                                         <label class="custom-file-label" for="customFile">Choose file</label>

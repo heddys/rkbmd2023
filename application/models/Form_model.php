@@ -64,6 +64,10 @@
                 return $query;
             }
             
+            public function get_kamus_kelurahan($kms_kel) {
+                
+                return $this->db->get_where('kamus_kelurahan', array ('id' => $kms_kel));
+            }
 
             public function get_kondisi_update($register)
             {
@@ -301,7 +305,7 @@
             public function ambil_register($register)
             {   
 
-                $query = $this->db->query("SELECT a.*,b.* FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.register = '".$register."'");
+                $query = $this->db->query("SELECT a.*,b.nomor_unit,b.unit,b.nomor_lokasi,b.lokasi FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.register = '".$register."'");
 
                 // return $query->result();
                 // $query = $this->db->get_where('data_kib', $where);
@@ -334,6 +338,11 @@
                 return $this->db->get('kamus_barang');
             }
 
+            public function kamus_kelurahan()
+            {
+                return $this->db->get('kamus_kelurahan');
+            }
+            
             public function tandai_status_register($where,$tanda)
             {
                 if($tanda == 1) {
@@ -554,9 +563,9 @@
                                 IF
                                 ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
                         FROM
-                            data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi where kode_binprog <> '' GROUP BY nomor_unit) b on left(a.nomor_lokasi,12)=b.nomor_unit 
+                            data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
                         WHERE
-                            a.ekstrakomtabel is null and a.nomor_lokasi IN ( '".implode("','",$lokasi)."' )");
+                            a.ekstrakomtabel is null and a.status_simbada is null and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -578,9 +587,333 @@
                             IF
                             ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
                     FROM
-                        data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi where kode_binprog <> '' GROUP BY nomor_unit) b on left(a.nomor_lokasi,12)=b.nomor_unit 
+                        data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
                     WHERE
-                    a.ekstrakomtabel is null and left(a.nomor_lokasi,12) like '%".$lokasi."%'");
+                    a.ekstrakomtabel is null and a.status_simbada is null and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
+                }
+                return $query;
+            }
+
+            function data_progres_opd_tanah($lokasi){
+                // return $query;
+                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ){
+                    $query=$this->db->query(
+                        "SELECT
+                            b.unit,
+                            count( a.register ) as total,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 1, 1, NULL )) AS proses,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 2, 1, NULL )) AS verif,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 3, 1, NULL )) AS tolak,
+                            COUNT(
+                            IF
+                                ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                                count( a.register )- COUNT(
+                                IF
+                                ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                        FROM
+                            data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                        WHERE
+                            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.1%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
+                } else {
+                $query=$this->db->query(
+                    "SELECT
+                        b.unit,
+                        count( a.register ) as total,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 1, 1, NULL )) AS proses,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 2, 1, NULL )) AS verif,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 3, 1, NULL )) AS tolak,
+                        COUNT(
+                        IF
+                            ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                            count( a.register )- COUNT(
+                            IF
+                            ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                    FROM
+                        data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                    WHERE
+                    a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.1%' and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
+                }
+                return $query;
+            }
+
+            function data_progres_opd_pm($lokasi){
+                // return $query;
+                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ){
+                    $query=$this->db->query(
+                        "SELECT
+                            b.unit,
+                            count( a.register ) as total,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 1, 1, NULL )) AS proses,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 2, 1, NULL )) AS verif,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 3, 1, NULL )) AS tolak,
+                            COUNT(
+                            IF
+                                ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                                count( a.register )- COUNT(
+                                IF
+                                ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                        FROM
+                            data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                        WHERE
+                            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.2%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
+                } else {
+                $query=$this->db->query(
+                    "SELECT
+                        b.unit,
+                        count( a.register ) as total,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 1, 1, NULL )) AS proses,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 2, 1, NULL )) AS verif,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 3, 1, NULL )) AS tolak,
+                        COUNT(
+                        IF
+                            ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                            count( a.register )- COUNT(
+                            IF
+                            ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                    FROM
+                        data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                    WHERE
+                    a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.2%' and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
+                }
+                return $query;
+            }
+
+            function data_progres_opd_gdb($lokasi){
+                // return $query;
+                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ){
+                    $query=$this->db->query(
+                        "SELECT
+                            b.unit,
+                            count( a.register ) as total,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 1, 1, NULL )) AS proses,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 2, 1, NULL )) AS verif,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 3, 1, NULL )) AS tolak,
+                            COUNT(
+                            IF
+                                ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                                count( a.register )- COUNT(
+                                IF
+                                ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                        FROM
+                            data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                        WHERE
+                            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.3%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
+                } else {
+                $query=$this->db->query(
+                    "SELECT
+                        b.unit,
+                        count( a.register ) as total,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 1, 1, NULL )) AS proses,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 2, 1, NULL )) AS verif,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 3, 1, NULL )) AS tolak,
+                        COUNT(
+                        IF
+                            ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                            count( a.register )- COUNT(
+                            IF
+                            ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                    FROM
+                        data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                    WHERE
+                    a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.3%' and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
+                }
+                return $query;
+            }
+
+            function data_progres_opd_jij($lokasi){
+                // return $query;
+                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ){
+                    $query=$this->db->query(
+                        "SELECT
+                            b.unit,
+                            count( a.register ) as total,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 1, 1, NULL )) AS proses,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 2, 1, NULL )) AS verif,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 3, 1, NULL )) AS tolak,
+                            COUNT(
+                            IF
+                                ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                                count( a.register )- COUNT(
+                                IF
+                                ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                        FROM
+                            data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                        WHERE
+                            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.4%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
+                } else {
+                $query=$this->db->query(
+                    "SELECT
+                        b.unit,
+                        count( a.register ) as total,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 1, 1, NULL )) AS proses,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 2, 1, NULL )) AS verif,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 3, 1, NULL )) AS tolak,
+                        COUNT(
+                        IF
+                            ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                            count( a.register )- COUNT(
+                            IF
+                            ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                    FROM
+                        data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                    WHERE
+                    a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.4%' and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
+                }
+                return $query;
+            }
+
+            function data_progres_opd_atl($lokasi){
+                // return $query;
+                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ){
+                    $query=$this->db->query(
+                        "SELECT
+                            b.unit,
+                            count( a.register ) as total,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 1, 1, NULL )) AS proses,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 2, 1, NULL )) AS verif,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 3, 1, NULL )) AS tolak,
+                            COUNT(
+                            IF
+                                ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                                count( a.register )- COUNT(
+                                IF
+                                ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                        FROM
+                            data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                        WHERE
+                            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.5%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
+                } else {
+                $query=$this->db->query(
+                    "SELECT
+                        b.unit,
+                        count( a.register ) as total,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 1, 1, NULL )) AS proses,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 2, 1, NULL )) AS verif,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 3, 1, NULL )) AS tolak,
+                        COUNT(
+                        IF
+                            ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                            count( a.register )- COUNT(
+                            IF
+                            ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                    FROM
+                        data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                    WHERE
+                    a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.5%' and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
+                }
+                return $query;
+            }
+
+            function data_progres_opd_atb($lokasi){
+                // return $query;
+                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ){
+                    $query=$this->db->query(
+                        "SELECT
+                            b.unit,
+                            count( a.register ) as total,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 1, 1, NULL )) AS proses,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 2, 1, NULL )) AS verif,
+                            COUNT(
+                            IF
+                            ( a.STATUS = 3, 1, NULL )) AS tolak,
+                            COUNT(
+                            IF
+                                ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                                count( a.register )- COUNT(
+                                IF
+                                ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                        FROM
+                            data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                        WHERE
+                            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.5.3%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
+                } else {
+                $query=$this->db->query(
+                    "SELECT
+                        b.unit,
+                        count( a.register ) as total,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 1, 1, NULL )) AS proses,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 2, 1, NULL )) AS verif,
+                        COUNT(
+                        IF
+                        ( a.STATUS = 3, 1, NULL )) AS tolak,
+                        COUNT(
+                        IF
+                            ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                            count( a.register )- COUNT(
+                            IF
+                            ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                    FROM
+                        data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                    WHERE
+                    a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.5.3%' and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
                 }
                 return $query;
             }
