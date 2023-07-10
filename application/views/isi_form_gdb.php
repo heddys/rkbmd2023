@@ -351,9 +351,9 @@
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Luas Tanah (m2) :</label>
+                                            <label class="input-group-text" id="basic-addon3">Luas Bangunan (m2) :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="luas_tanah" id="luas_tanah" readonly="true" value="<?php echo number_format($data_register->luas_tanah,2,',','.');?>">
+                                            <input type="text" class="form-control" name="luas_tanah" id="luas_tanah" readonly="true" value="<?php echo number_format($data_register->luas_bangunan,2,',','.');?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -363,67 +363,15 @@
                                         <input type="radio" id="primary25" name="radio_luas" value="0" checked="checked" required="required"/>
                                         <label for="primary25">Sesuai</label>
                                     </div>
-
-                                    <?php if (strpos($data_register->no_sertifikat, 'Hak Pengelolaan') !== FALSE || strpos($data_register->no_sertifikat, 'Hak Pakai') !== FALSE) { ?>
-
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary26" name="radio_luas" value="1" disabled/>
-                                        <label for="primary26">Tidak Sesuai</label>
-                                    </div>
-
-                                    <?php } else { ?>
-
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary26" name="radio_luas" value="1"/>
                                         <label for="primary26">Tidak Sesuai</label>
                                     </div>
-                                    
-                                    <?php } ?>
                                 </div>
                                 <!-- /input-group -->
                             </div>
 
                             <!-- Batas Per Form -->
-
-
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Nomor Sertifikat :</label>
-                                        </div>
-                                            <input type="text" class="form-control" name="no_sertif" id="no_sertif" readonly="true" value="<?php echo $data_register->no_sertifikat;?>">
-                                    </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary27" name="radio_no_sertif" value="0" checked="checked" required="required"/>
-                                        <label for="primary27">Sesuai</label>
-                                    </div>
-
-                                    <?php if (strpos($data_register->no_sertifikat, 'Hak Pengelolaan') !== FALSE || strpos($data_register->no_sertifikat, 'Hak Pakai') !== FALSE) { ?>
-                                    
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary28" name="radio_no_sertif" value="1" disabled/>
-                                        <label for="primary28">Tidak Sesuai</label>
-                                    </div>
-                                    
-                                    <?php } else { ?>
-
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary28" name="radio_no_sertif" value="1" />
-                                        <label for="primary28">Tidak Sesuai</label>
-                                    </div>
-
-                                    <?php } ?>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-
-                            <!-- Batas Per Form -->
-
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
@@ -517,11 +465,40 @@
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary36" name="radio_ganda" value="1"/>
-                                        <label for="primary36">Ya.</label>
+                                        <label for="primary36">Ya</label>
                                     </div>
                                 </div>
                                 <!-- /input-group -->
                             </div>
+
+                            <!-- Batas Per Form -->
+
+                            <!-- Mulai Form -->
+
+                            <div class="form-group col-md-5">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Data Register Tanah :</label>
+                                        </div>
+                                            <input type="text" class="form-control" name="register_tanah" id="register_tanah" readonly="true" placeholder="-" value="<?php echo $data_register->register_tanah?>">
+                                    </div>
+                            </div>
+                            <!-- /.col-lg-6 -->
+                            <div class=" mt-2 mb-6 col-lg-4">
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary37" name="radio_reg_tanah" value="0" checked="checked" required="required"/>
+                                        <label for="primary37">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary38" name="radio_reg_tanah" value="1"/>
+                                        <label for="primary38">Tidak</label>
+                                    </div>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+
+                            <!-- Batas Per Form -->
 
                             <!-- <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
@@ -1072,6 +1049,33 @@
                         </div>
                     <!-- /.modal -->
 
+                    <!-- Modal Untuk Cari Register Tanah -->
+                    <div class="modal fade" id="modal-register-tanah">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Pilih Status Tanah </h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <select class="custom-select" id="status_tanah">
+                                            <option selected value="1">Pemerintah Kota</option>
+                                            <option value="2">Pemerintah Pusat</option>
+                                            <option value="3">Pemerintah Daerah Lainnya</option>
+                                            <option value="4">Pihak Lainnya</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_reg_tanah(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-info" onclick="klik_reg_tanah(true)" data-dismiss="modal">Proses</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
 
 
                     <!-- Menampilkan Hasil Pencarian Register                                                 -->
@@ -1112,15 +1116,15 @@
                         </div>
                       
 
-                            <!-- Menampilkan Hasil Pencarian Register                                                 -->
+                        <!-- Menampilkan Hasil Pencarian Register                                                 -->
                         <div class="modal fade" id="modal-list-register2">
-                                <div class="modal-dialog modal-dialog-centered modal-xl">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
-                                        </div>
-                                        <div class="modal-body" style="overflow-x:auto;">
-                                            <style type="text/css"> </style>
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
+                                    </div>
+                                    <div class="modal-body" style="overflow-x:auto;">
+                                        <style type="text/css"> </style>
                                             <table id="tblregister2" class="table table-striped table-hover responsive">
                                                 <thead class="thead-dark">
                                                     <tr>
@@ -1138,16 +1142,53 @@
                                                 <tbody id="tampil_data2">
                                                 </tbody>
                                             </table>  
-                                        </div>
-                                        <div class="modal-footer justify-content-between">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-danger batal" onclick="klik_destroy2()">Batal</button>
                                             <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
-                                        </div>
+                                    </div>
                                 </div>
                                     <!-- modal-content -->
-                                </div>
-                                <!-- /.modal-dialog --> 
                             </div>
+                                <!-- /.modal-dialog --> 
+                        </div>
+
+                        <!-- Menampilkan Hasil Pencarian Register                                                 -->
+                        <div class="modal fade" id="modal-list-register3">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
+                                    </div>
+                                    <div class="modal-body" style="overflow-x:auto;">
+                                        <style type="text/css"> </style>
+                                            <table id="tblregister3" class="table table-striped table-hover responsive">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th><center>No.</center></th>
+                                                        <th><center>Kode Barang</center></th>
+                                                        <th><center>Register</center></th>
+                                                        <th><center>Nama Barang</center></th>
+                                                        <th><center>Tipe</center></th>
+                                                        <th><center>Alamat</center></th>
+                                                        <th><center>Tahun Perolehan</center></th>
+                                                        <th><center>Nilai</center></th>
+                                                        <th><center>Aksi</center></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tampil_data3">
+                                                </tbody>
+                                            </table>  
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-danger batal" onclick="klik_destroy3()">Batal</button>
+                                            <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
+                                    </div>
+                                </div>
+                                    <!-- modal-content -->
+                            </div>
+                                <!-- /.modal-dialog --> 
+                        </div>
                         
 
                     

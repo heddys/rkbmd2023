@@ -1045,10 +1045,17 @@ class Form_inv extends CI_Controller {
 	{
 		$this->cek_sess();
 		$id = $this->input->post('id');
-		// $id="Power Supply";
-		$result = $this->form_model->get_data_kib_json($id);
+		
+		if($id == "reg_tanah") {
+
+			$result = $this->form_model->get_reg_tanah();
+			
+		} else {
+
+			$result = $this->form_model->get_data_kib_json($id);
+		}
 		echo json_encode($result);
-		// var_dump($result);
+		
 	}
 
 	public function input_petugas()

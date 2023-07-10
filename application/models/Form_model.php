@@ -444,6 +444,12 @@
 
             }
 
+            public function get_reg_tanah()
+            {
+                $query = $this->db->query("SELECT * FROM data_kib where kode108_baru like '%1.3.1%' and ekstrakomtabel is null and status_simbada is null");
+                
+                return $query->result();
+            }
 
             public function get_lokasi_per_opd($no_lokasi)
             {
