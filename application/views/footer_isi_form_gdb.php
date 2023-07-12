@@ -302,6 +302,7 @@
 
           $('#modal-isi_status_tanah').modal({backdrop: 'static', keyboard: false});
           $('#modal-isi_status_tanah').find('#title_status').html("Isi Nama Instansi Pemerintahan Daerah Lainnya : ");
+          document.querySelector("#modal-isi_status_tanah [id=isi_status_tanah]").placeholder("Isi Nama Pemerintah Daerah nya....");
         }
       } else {
         $("input:radio[id=primary38]:checked")[0].checked = false;
@@ -574,17 +575,15 @@ function formatCurrency(input, blur) {
       }
     }
 
-    
-
-    // function klik_cari_ganda(id){
-    //   if(id == true){
-    //     var isi_text = document.querySelector("#modal-cari-register-ganda [id=search_register_ganda]").value;
-    //     // document.getElementById('penggunaan').value=isi_text;
-    //   } else {
-    //     $("input:radio[id=primary36]:checked")[0].checked = false;
-    //   }
-    // }
-    
+    function klik_status_tanah(id){
+      if(id == true){
+        var isi_text = document.querySelector("#modal-isi_status_tanah [id=isi_status_tanah]").value;
+        document.getElementById('register_tanah').value=isi_text;
+      } else {
+        $("input:radio[id=primary38]:checked")[0].checked = false;
+      }
+    }
+     
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

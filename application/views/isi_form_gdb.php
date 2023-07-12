@@ -1058,11 +1058,11 @@
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
-                                        <input type="text" class="form-control" id="search_register_ganda" placeholder="Cari Berdasarkan Register atau Nama Barang">
+                                        <input type="text" class="form-control" id="isi_status_tanah" placeholder="">
                                     </div>
                                     <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-danger" onclick="klik_cari_ganda(false)" data-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-info" onclick="klik_cari_ganda(true)" data-dismiss="modal">Cari Data</button>
+                                        <button type="button" class="btn btn-danger" onclick="klik_status_tanah(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-info" onclick="klik_status_tanah(true)" data-dismiss="modal">Cari Data</button>
                                     </div>
                             </div>
                                 <!-- modal-content --> 
