@@ -294,8 +294,14 @@
                   alert('Koneksi Gagal');
                 }
             });
-        } else {
-        $("input:radio[id=primary38]:checked")[0].checked = false;
+        } else if (isi_text == 2) {
+          
+          document.getElementById('register_tanah').value="Pemerintah Pusat";
+             
+        } else if (isi_text == 3) {
+
+          $('#modal-isi_status_tanah').modal({backdrop: 'static', keyboard: false});
+          $('#modal-isi_status_tanah').find('#title_status').html("Isi Nama Instansi Pemerintahan Daerah Lainnya : ");
         }
       } else {
         $("input:radio[id=primary38]:checked")[0].checked = false;

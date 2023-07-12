@@ -476,12 +476,12 @@
                             <!-- Mulai Form -->
 
                             <div class="form-group col-md-5">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Data Register Tanah :</label>
-                                        </div>
-                                            <input type="text" class="form-control" name="register_tanah" id="register_tanah" readonly="true" placeholder="-" value="<?php echo $data_register->register_tanah?>">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" id="basic-addon3">Data Register Tanah :</label>
                                     </div>
+                                        <input type="text" class="form-control" name="register_tanah" id="register_tanah" readonly="true" placeholder="-" value="<?php echo $data_register->register_tanah?>">
+                                </div>
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
@@ -1033,6 +1033,28 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <input type="text" class="form-control" id="search_register_ganda" placeholder="Cari Berdasarkan Register atau Nama Barang">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_cari_ganda(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-info" onclick="klik_cari_ganda(true)" data-dismiss="modal">Cari Data</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
+                    <!-- Modal Untuk Cari Register Ganda -->
+                    <div class="modal fade" id="modal-isi_status_tanah">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"></i><div id="title_status"></div></h4></center>
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
