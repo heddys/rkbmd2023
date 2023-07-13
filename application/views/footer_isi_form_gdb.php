@@ -297,12 +297,19 @@
         } else if (isi_text == 2) {
           
           document.getElementById('register_tanah').value="Pemerintah Pusat";
+          document.getElementById('status_tanah').value="Pemerintah Pusat";
              
         } else if (isi_text == 3) {
 
           $('#modal-isi_status_tanah').modal({backdrop: 'static', keyboard: false});
           $('#modal-isi_status_tanah').find('#title_status').html("Isi Nama Instansi Pemerintahan Daerah Lainnya : ");
-          document.querySelector("#modal-isi_status_tanah [id=isi_status_tanah]").placeholder("Isi Nama Pemerintah Daerah nya....");
+          document.querySelector("#modal-isi_status_tanah [id=isi_status_tanah]").placeholder="Isi Nama Pemerintah Daerah nya....";
+        } else if (isi_text == 4) {
+
+          $('#modal-isi_status_tanah').modal({backdrop: 'static', keyboard: false});
+          $('#modal-isi_status_tanah').find('#title_status').html("Isi Nama Pihak Lainnya : ");
+          document.querySelector("#modal-isi_status_tanah [id=isi_status_tanah]").placeholder="Isi Nama Pihak Lainnya....";
+
         }
       } else {
         $("input:radio[id=primary38]:checked")[0].checked = false;
@@ -578,7 +585,15 @@ function formatCurrency(input, blur) {
     function klik_status_tanah(id){
       if(id == true){
         var isi_text = document.querySelector("#modal-isi_status_tanah [id=isi_status_tanah]").value;
+        var status_tanah = document.querySelector("#modal-register-tanah [id=status_tanah]").value;
+        
+        if(status_tanah == 3) {
+          var status = "Pemerintah Daerah Lainnya";
+        } else { var status ="Pihak Lainnya"; }
+
         document.getElementById('register_tanah').value=isi_text;
+        document.getElementById('status_tanah').value=status;
+
       } else {
         $("input:radio[id=primary38]:checked")[0].checked = false;
       }

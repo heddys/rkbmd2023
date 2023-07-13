@@ -11,7 +11,7 @@
                 </center>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form role="form" action="save_isi_form_tanah" method="post" enctype="multipart/form-data">
+                    <form role="form" action="save_isi_form_gdb" method="post" enctype="multipart/form-data">
                         <!-- select -->
                        
                         <h4><?php echo $data_register->register." - ".$data_register->nama_barang;?></h4>
@@ -481,6 +481,7 @@
                                         <label class="input-group-text" id="basic-addon3">Data Register Tanah :</label>
                                     </div>
                                         <input type="text" class="form-control" name="register_tanah" id="register_tanah" readonly="true" placeholder="-" value="<?php echo $data_register->register_tanah?>">
+                                        <input type="hidden" name="status_tanah" id="status_tanah" value="Pemerintah Daerah">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -1049,7 +1050,7 @@
                         </div>
                     <!-- /.modal -->
 
-                    <!-- Modal Untuk Cari Register Ganda -->
+                    <!-- Modal Untuk Isi Status Tanah -->
                     <div class="modal fade" id="modal-isi_status_tanah">
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">

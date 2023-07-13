@@ -802,7 +802,218 @@ class Form_inv extends CI_Controller {
 
 	}
 
-	
+	public function save_isi_form_gdb()
+	{
+		$register=$_POST['register'];
+		
+		$kode_barang=$_POST['kode_barang'];
+		$radio_kode_bar=$_POST['radio_kode_bar'];
+
+		$nama_barang=$_POST['nama_barang'];
+		$radio_nama_bar=$_POST['radio_nama_bar'];
+
+		$merk=$_POST['merk'];
+		$radio_merk=$_POST['radio_merk'];
+
+		$jumlah_bar=1;
+		$radio_jum_bar=0;
+
+		$satuan=$_POST['satuan'];
+		$radio_satuan=$_POST['radio_satuan'];
+
+		$keberadaan=$_POST['keberadaan'];
+		$radio_keberadaan=$_POST['radio_keberadaan'];
+
+		$nilai=str_replace(".", "",$_POST['nilai']);
+		$radio_nilai=$_POST['radio_nilai'];
+
+		$aset_atrib=$_POST['aset_atrib'];
+		$radio_kap_atrib=$_POST['radio_kap_atrib'];
+
+		$alamat=$_POST['lokasi'];
+		$radio_alamat=$_POST['radio_alamat'];
+		$lokasi_awal=$_POST['no_lokasi_awal'];
+
+		if($_POST['kondisi_bar'] == "Baik") {
+			$kondisi_bar="B";
+		} elseif ($_POST['kondisi_bar'] == "Kurang Baik") {
+			$kondisi_bar="KB";
+		} else {$kondisi_bar="RB";}
+		
+		$radio_kondisi=$_POST['radio_kondisi'];
+
+		$tipe=$_POST['tipe_barang'];
+		$radio_tipe=$_POST['radio_tipe'];
+
+		$luas_tanah=$_POST['luas_tanah'];
+		$radio_luas=$_POST['radio_luas'];
+
+		
+		$kms_kel=$_POST['kamus_kelurahan'];
+		$radio_kms_kel=$_POST['radio_kelurahan'];
+		
+		// $no_bpkb=$_POST['no_bpkb'];
+		// $radio_bpkb=$_POST['radio_bpkb'];
+		
+		$penggunaan=$_POST['penggunaan'];
+		$radio_pengguna=$_POST['radio_pengguna'];
+		
+		$ganda=$_POST['catat_ganda'];
+		$radio_ganda=$_POST['radio_ganda'];
+		
+		$register_tanah=$_POST['register_tanah'];
+		$radio_reg_tanah=$_POST['radio_reg_tanah'];
+		
+		$pemanfaatan = $_POST['pemanfaatan'];
+
+		if (isset($_POST['keterangan'])){
+			$keterangan=$_POST['keterangan'];
+		} else {$keterangan="-";}
+
+		date_default_timezone_set("Asia/Jakarta");	
+		$updated_date=date("Y-m-d");
+		$updated_time=date("H:i:s");
+
+		$data = array(); 
+        $errorUploadType = $statusMsg = ''; 
+         
+            // If files are selected to upload 
+            if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0){ 
+                $filesCount = count($_FILES['files']['name']); 
+                for($i = 0; $i < $filesCount; $i++){
+
+                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."--".$_FILES['files']['name'][$i]); 
+                    $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
+                    $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
+                    $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
+                    $_FILES['file']['size']     = $_FILES['files']['size'][$i]; 
+                     
+                    // File upload configuration 
+                    $uploadPath = 'ini_assets/upload/'; 
+                    $config['upload_path'] = $uploadPath; 
+                    $config['allowed_types'] = 'jpg|jpeg|pdf'; 
+                    $config['max_size']    = '7000'; 
+                    //$config['max_width'] = '1024'; 
+                    //$config['max_height'] = '768'; 
+                     
+                    // Load and initialize upload library 
+                    $this->load->library('upload', $config); 
+                    $this->upload->initialize($config); 
+                     
+                    // Upload file to server 
+                    if($this->upload->do_upload('file')){ 
+                        // Uploaded file data 
+                        $fileData = $this->upload->data();
+						$uploadData[$i]['register'] = $register;
+                        $uploadData[$i]['file_upload'] = $fileData['file_name']; 
+                        $uploadData[$i]['created_date'] = $updated_date;
+						$uploadData[$i]['created_time'] = $updated_time; 
+                    }else{  
+                        $errorUploadType .= $_FILES['file']['name'].' | ';  
+                    }
+
+                } 
+                 
+                $errorUploadType = !empty($errorUploadType)?'<br/>File Type Error: '.trim($errorUploadType, ' | '):''; 
+                if(!empty($uploadData)){ 
+                    // Insert files data into the database 
+                    $insert = $this->form_model->save_image($uploadData); 
+                    //  var_dump($insert);
+                    // Upload status message 
+                   echo $insert?'Files uploaded successfully!'.$errorUploadType:'Some problem occurred, please try again.'; 
+                }else{ 
+                    echo "Sorry, there was an error uploading your file.".$errorUploadType; 
+                } 
+            }else{ 
+                $statusMsg = 'Please select image files to upload.'; 
+            } 
+		
+
+		$kelurahan = $this->form_model->get_kamus_kelurahan($kms_kel)->row();
+
+		$data_form_isian = array(
+		'register' => $register,
+		'kode_barang' => $kode_barang,
+		'nama_barang' => $nama_barang,
+		'spesifikasi_barang_merk' => $merk,
+		'satuan' => $satuan,
+		'keberadaan_barang' => $keberadaan,
+		'nilai_perolehan' => $nilai,
+		'merupakan_anak' => $aset_atrib,
+		'nomor_lokasi_awal' => $lokasi_awal,
+		'lokasi' => $alamat,
+		'jumlah' => 1,
+		'kondisi_barang' => $kondisi_bar,
+		'tipe' => $tipe,
+		'luas' => $luas_tanah,
+		'no_sertifikat' => $no_sertif,
+		'kota' => $kelurahan['kab_kota'],
+		'kelurahan' => $kelurahan['des_kel'],
+		'kecamatan' => $kelurahan['kec'],
+		'penggunaan_barang' => $penggunaan,
+		'pemanfaatan_aset' => $pemanfaatan,
+		'register_ganda' => $ganda,
+		// 'koordinat' => $koordinat,
+		'keterangan' => $keterangan,
+		'created_date' => $updated_date,
+		'created_time' => $updated_time
+		);
+
+		$data_is_form = array(
+			'is_register' => $register,
+			'is_kode_barang' => $radio_kode_bar,
+			'is_nama_barang' => $radio_nama_bar,
+			'is_spesifikasi_barang_merk' => $radio_merk,
+			'is_lokasi' => $radio_alamat,
+			'is_satuan' => $radio_satuan,
+			'is_jumlah' => 0,
+			'is_keberadaan_barang' => $radio_keberadaan,
+			'is_nilai_perolehan' => $radio_nilai,
+			'is_aset_atrib' =>$radio_kap_atrib,
+			'is_kondisi_barang' => $radio_kondisi,
+			'is_tipe' => $radio_tipe,
+			'is_no_sertif' => $radio_no_sertif,
+			'is_penggunaan_barang' =>$radio_pengguna,
+			'is_catat_ganda' => $radio_ganda,
+			'created_date' => $updated_date,
+			'created_time' => $updated_time
+		);
+
+		// var_dump($data_form_isian);
+		// echo "<p>";
+		// var_dump($data_is_form);
+
+		// echo "<h1>ASDSADSAD</h1>";
+
+		//Save Di tabel register_isi
+		$id_register_isi=$this->form_model->save_isi_form($data_form_isian);
+
+
+		$data_form_isian += array(
+			'id_register_isi' => $id_register_isi
+		);
+
+		//Save Di Tabel register_isi_history
+		$this->form_model->save_isi_form_history($data_form_isian);
+
+
+		//Save Di tabel register status
+		$id_register_status=$this->form_model->save_status_register($data_is_form);
+
+		$data_is_form += array (
+
+			'id_status_register' => $id_register_status
+
+		);
+
+		$this->form_model->save_status_register_history($data_is_form);
+
+		//Membuat tanda di data kib
+		$this->form_model->tandai_kib($register);
+
+		redirect('/form_inv/index/3');
+
+	}
 
 	public function update_isi_form_peralatan_mesin()
 	{
