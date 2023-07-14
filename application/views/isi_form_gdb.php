@@ -353,7 +353,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Luas Bangunan (m2) :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="luas_tanah" id="luas_tanah" readonly="true" value="<?php echo number_format($data_register->luas_bangunan,2,',','.');?>">
+                                            <input type="text" class="form-control" name="luas_bangunan" id="luas_bangunan" readonly="true" value="<?php echo number_format($data_register->luas_bangunan,2,',','.');?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -488,7 +488,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary37" name="radio_reg_tanah" value="0" checked="checked" required="required"/>
+                                        <input type="radio" id="primary37" name="radio_reg_tanah" value="0"  required="required" required="required"/>
                                         <label for="primary37">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
@@ -887,7 +887,7 @@
                     <!-- /.modal -->
 
                     <!-- Modal Untuk Input Luas -->
-                    <div class="modal fade" id="modal-luas-tanah">
+                    <div class="modal fade" id="modal-luas-bangunan">
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">

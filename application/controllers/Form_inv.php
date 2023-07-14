@@ -459,7 +459,7 @@ class Form_inv extends CI_Controller {
                 $filesCount = count($_FILES['files']['name']); 
                 for($i = 0; $i < $filesCount; $i++){
 
-                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."--".$_FILES['files']['name'][$i]); 
+                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."-pm-".$_FILES['files']['name'][$i]); 
                     $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
                     $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
                     $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
@@ -669,7 +669,7 @@ class Form_inv extends CI_Controller {
                 $filesCount = count($_FILES['files']['name']); 
                 for($i = 0; $i < $filesCount; $i++){
 
-                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."--".$_FILES['files']['name'][$i]); 
+                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."-tanah-".$_FILES['files']['name'][$i]); 
                     $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
                     $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
                     $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
@@ -845,7 +845,7 @@ class Form_inv extends CI_Controller {
 		$tipe=$_POST['tipe_barang'];
 		$radio_tipe=$_POST['radio_tipe'];
 
-		$luas_tanah=$_POST['luas_tanah'];
+		$luas_bangunan=$_POST['luas_bangunan'];
 		$radio_luas=$_POST['radio_luas'];
 
 		
@@ -862,6 +862,7 @@ class Form_inv extends CI_Controller {
 		$radio_ganda=$_POST['radio_ganda'];
 		
 		$register_tanah=$_POST['register_tanah'];
+		$status_tanah=$_POST['status_tanah'];
 		$radio_reg_tanah=$_POST['radio_reg_tanah'];
 		
 		$pemanfaatan = $_POST['pemanfaatan'];
@@ -882,7 +883,7 @@ class Form_inv extends CI_Controller {
                 $filesCount = count($_FILES['files']['name']); 
                 for($i = 0; $i < $filesCount; $i++){
 
-                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."--".$_FILES['files']['name'][$i]); 
+                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."-gdb-".$_FILES['files']['name'][$i]); 
                     $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
                     $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
                     $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
@@ -945,15 +946,15 @@ class Form_inv extends CI_Controller {
 		'jumlah' => 1,
 		'kondisi_barang' => $kondisi_bar,
 		'tipe' => $tipe,
-		'luas' => $luas_tanah,
-		'no_sertifikat' => $no_sertif,
+		'luas' => $luas_bangunan,
 		'kota' => $kelurahan['kab_kota'],
 		'kelurahan' => $kelurahan['des_kel'],
 		'kecamatan' => $kelurahan['kec'],
 		'penggunaan_barang' => $penggunaan,
 		'pemanfaatan_aset' => $pemanfaatan,
 		'register_ganda' => $ganda,
-		// 'koordinat' => $koordinat,
+		'register_tanah' => $register_tanah,
+		'status_tanah' => $status_tanah,
 		'keterangan' => $keterangan,
 		'created_date' => $updated_date,
 		'created_time' => $updated_time
@@ -972,7 +973,7 @@ class Form_inv extends CI_Controller {
 			'is_aset_atrib' =>$radio_kap_atrib,
 			'is_kondisi_barang' => $radio_kondisi,
 			'is_tipe' => $radio_tipe,
-			'is_no_sertif' => $radio_no_sertif,
+			'is_register_tanah' => $radio_reg_tanah,
 			'is_penggunaan_barang' =>$radio_pengguna,
 			'is_catat_ganda' => $radio_ganda,
 			'created_date' => $updated_date,
@@ -982,8 +983,6 @@ class Form_inv extends CI_Controller {
 		// var_dump($data_form_isian);
 		// echo "<p>";
 		// var_dump($data_is_form);
-
-		// echo "<h1>ASDSADSAD</h1>";
 
 		//Save Di tabel register_isi
 		$id_register_isi=$this->form_model->save_isi_form($data_form_isian);

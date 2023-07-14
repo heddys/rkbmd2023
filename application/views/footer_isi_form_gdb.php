@@ -536,8 +536,8 @@ function formatCurrency(input, blur) {
 
     function klik_luas(id){
       if(id == true){
-        var isi_text = document.querySelector("#modal-luas-tanah [id=edit_luas]").value;
-        document.getElementById('luas_tanah').value=isi_text;
+        var isi_text = document.querySelector("#modal-luas-bangunan [id=edit_luas]").value;
+        document.getElementById('luas_bangunan').value=isi_text;
       } else {
         $("input:radio[id=primary26]:checked")[0].checked = false;
       }
@@ -665,7 +665,7 @@ function formatCurrency(input, blur) {
 
       $('#primary26').click(function () {
           if ($(this).is(':checked')) {
-              $('#modal-luas-tanah').modal({backdrop: 'static', keyboard: false});
+              $('#modal-luas-bangunan').modal({backdrop: 'static', keyboard: false});
           }  
       });
 
