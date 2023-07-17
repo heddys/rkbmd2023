@@ -11,8 +11,8 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Progres Semua Aset Tetap Untuk Pengisian Form Inventarisasi</h5>
+                <div class="card-header bg-danger">
+                  <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Semua Aset Tetap Untuk Pengisian Form Inventarisasi</strong></center></h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -80,10 +80,10 @@
           <!-- /.row -->
 
           <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
               <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Progres Aset Tetap Tanah Untuk Pengisian Form Inventarisasi</h5>
+                <div class="card-header bg-warning">
+                  <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Progres Aset Tetap Tanah Terhadap Pengisian Form Inventarisasi</strong></center></h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -148,11 +148,10 @@
             </div>
             <!-- /.col -->
 
-          <div class="row">
-            <div class="col-sm-6">
+            <div class="col-md-6">
               <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Progres Aset Tetap Peralatan dan Mesin Untuk Pengisian Form Inventarisasi</h5>
+                <div class="card-header bg-success">
+                  <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Progres Aset Tetap Peralatan dan Mesin Terhadap Pengisian Form Inventarisasi</strong></center></h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -219,10 +218,10 @@
           </div>
 
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
               <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Progres Aset Tetap Gedung dan Bangunan Untuk Pengisian Form Inventarisasi</h5>
+                <div class="card-header bg-primary">
+                  <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Progres Aset Tetap Gedung dan Bangunan Terhadap Pengisian Form Inventarisasi</strong></center></h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -286,14 +285,12 @@
               <!-- /.card -->
             </div>
             <!-- /.col -->
-          </div>
-          <!-- /.row -->
+          
 
-          <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Progres Aset Tetap Jalan, Irigasi dan Jaringan Untuk Pengisian Form Inventarisasi</h5>
+                <div class="card-header bg-info">
+                  <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Progres Aset Tetap Jalan, Irigasi dan Jaringan Terhadap Pengisian Form Inventarisasi</strong></center></h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -361,10 +358,10 @@
           <!-- /.row -->
 
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Progres Aset Tetap Lainnya Untuk Pengisian Form Inventarisasi</h5>
+                <div class="card-header bg-success">
+                  <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Progres Aset Tetap Lainnya Terhadap Pengisian Form Inventarisasi</strong></center></h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -428,14 +425,12 @@
               <!-- /.card -->
             </div>
             <!-- /.col -->
-          </div>
-          <!-- /.row -->
-
-          <div class="row">
-            <div class="col-md-4">
+          
+          
+            <div class="col-md-6">
               <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Progres Aset Tidak Berwujud Untuk Pengisian Form Inventarisasi</h5>
+                <div class="card-header bg-gray">
+                  <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Progres Aset Tidak Berwujud Terhadap Pengisian Form Inventarisasi</strong></center></h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
