@@ -105,16 +105,16 @@ class Admin_model extends CI_Model{
 
    }
 
-   public function get_kib_simbada($tabel)
+   public function get_kib_simbada()
    {
-    return $this->db->get($tabel);
+    return $this->db->get_where('data_kib',array('status !=' => NULL));
    }
 
-   public function update_sawal_simbada(Type $var = null)
+   public function update_sawal_simbada()
    {
     $db_simbada = $this->load->database('simbada',TRUE);
 
-    $query=$db_simbada->query("SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri,no_mesin,no_bpkb, keterangan, penghapusan,koreksi_hapus, hibah_keluar,extrakomtabel_baru,hapus FROM kib_awal where kode64_baru like '1.3.02%' union SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri,no_mesin,no_bpkb, keterangan, penghapusan, NULL, hibah_keluar, extrakomtabel_baru,hapus FROM kib where kode64_baru like '1.3.02%'");
+    $query=$db_simbada->query("SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri,no_mesin,no_bpkb,register_tanah,penggunaan, keterangan, penghapusan,koreksi_hapus, hibah_keluar,extrakomtabel_baru,hapus FROM kib_awal where left(kode64_baru,6) in ('1.3.01','1.3.02','1.3.03','1.3.04','1.3.05','1.5.03') union SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri, no_mesin, no_bpkb, register_tanah, penggunaan, keterangan, penghapusan, NULL, hibah_keluar, extrakomtabel_baru,hapus FROM kib where left(kode64_baru,6) in ('1.3.01','1.3.02','1.3.03','1.3.04','1.3.05','1.5.03')");
     return $query;
    }
 

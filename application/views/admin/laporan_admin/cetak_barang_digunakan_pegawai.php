@@ -61,26 +61,10 @@ function tgl_indo($tanggal){
 </center>
 <p>
 <table class="table table-bordered" style="font-size : 12px;">
-        <thead>    
-        </thead>
-        <tbody>
-            <tr>
-                <td width="200px">Kuasa Pengguna Barang</td>
-                <td width="25px">:</td>
-                <td width="150px">-</td>
-            </tr>
-            <tr>
-                <td width="200px">Pengguna Barang</td>
-                <td width="25px">:</td>
-                <td width="150px"><?php echo $this->session->userdata('kepala_opd');?></td>
-                
-            </tr>
-            <tr>
-                <td width="200px">Pengelola Barang</td>
-                <td width="25px">:</td>
-                <td width="150px">Ir. Hendro Gunawan, MA</td>
-            </tr>
-        </tbody>
+<p>
+	
+</p>
+        
 </table>
 <hr>
 <p>
@@ -105,7 +89,7 @@ function tgl_indo($tanggal){
         </center>
         <center>
         <tr style="border:1px solid">
-            <th style="border:1px solid" rowspan="2">Nama Pemakai</th>
+            <th style="border:1px solid" rowspan="2">Nama Pemakai / Penanggung Jawab</th>
             <th style="border:1px solid" rowspan="2">Status Pemakai</th>
             <th style="border:1px solid" colspan="2">BAST Pemakai</th>
             <th style="border:1px solid" colspan="2">Surat Ijin Penghunian</th>
@@ -116,7 +100,6 @@ function tgl_indo($tanggal){
             <th style="border:1px solid">Ada</th>
             <th style="border:1px solid">Tidak Ada</th>
         </tr>
-        </center>
     </thead>
     <tbody>
     <?php if(count($data_barang) == 0) {?>
@@ -125,6 +108,10 @@ function tgl_indo($tanggal){
                 <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="18"><h4>N I H I L</h4></td>
             </tr>
         </center>
+        <tr>
+            <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="9">Jumlah (Rp.)</td>
+            <td style="border:1px solid; text-align: right; vertical-align: middle;">0,00</td>
+        </tr>
     <?php } else {?>
     <!-- Isi Datanya -->
     
@@ -153,36 +140,25 @@ function tgl_indo($tanggal){
     <tr>
         <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="9">Jumlah (Rp.)</td>
         <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($jumlah);?></td>
+        <td style="border:1px solid;" colspan="7"></td>
     </tr>
-    <?php } ?>
-    </tbody>
+</tbody>
+<?php } ?>
 </table>
 <p>
+
 <table style="font-size:12px; width:100%;">
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td colspan="13"></td>
+        <td width="13%" style="margin-left: 70%; vertical-align: middle;">
+        <?php for($i=1;$i<=12;$i++){ ?>
+        	&nbsp;
+    	<?php } ?>
+    	Surabaya,</td>
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td width="20%" style="text-align: center; vertical-align: middle;"><?php echo "Surabaya, " . tgl_indo(date("Y-m-d"));?></td>
-    </tr>
-    <tr>
-        <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;">Pejabat Penatausahaan Barang Pengelola</td>
+        <td style="text-align: center; vertical-align: middle;">PEJABAT PENATAUSAHAAN PENGGUNA BARANG KOTA SURABAYA</td>
     </tr>
     <tr>
         <td colspan="13"></td>
@@ -194,20 +170,28 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;">................................................</td>
+        <td style="text-align: center; vertical-align: middle;"></td>
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b>IRA TURSILOWATI, SH, MH</b></td>
+        <td style="text-align: center; vertical-align: middle;"></td>
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b>PEMBINA UTAMA MUDA</b></td>
+        <td style="text-align: center; vertical-align: middle;"></td>
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;"><b>NIP. 196910171993032006</b></td>
+        <td style="text-align: center; vertical-align: middle;"><b><u>SYAMSUL HARIADI, ST. MT</u></b></td>
     </tr>
+    <tr>
+        <td colspan="13"></td>
+        <td style="text-align: center; vertical-align: middle;"><b>Pembina Tingkat I</b></td>
+    </tr>
+    <tr>
+        <td colspan="13"></td>
+        <td style="text-align: center; vertical-align: middle;"><b>NIP. 197211032001121003</b></td>
+    </tr>   
 </table>
     
 </body>

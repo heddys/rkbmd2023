@@ -296,13 +296,12 @@ class Home_admin extends CI_Controller {
 
 	public function update_sawal_ver2()
 	{
-		$get_simbada = $this->admin_model->get_kib_simbada('data_kib_simbada')->result();
-		$count = TRUE;
 		ini_set('memory_limit', '-1');
 		ini_set('max_execution_time', '0');
 		date_default_timezone_set("Asia/Jakarta");	
 		$date=date("Y-m-d");
 		$time=date("H:i:s");
+		$get_simbada = $this->admin_model->update_sawal_simbada()->result();
 		foreach ($get_simbada as $row) {
 
 			$exist = $this->admin_model->cek_register($row->register,'data_kib');
@@ -316,9 +315,9 @@ class Home_admin extends CI_Controller {
  					'kode_108' => $row->kode_108,
 					'kode_64' => $row->kode_64,
 					'nomor_lokasi' => $row->nomor_lokasi,
-					'nama_barang' => $row->nama_barang,
-					'merk_alamat' => $row->merk_alamat,
-					'tipe' => $row->tipe,
+					'nama_barang' => $row->nama_barang_baru,
+					'merk_alamat' => $row->merk_alamat_baru,
+					'tipe' => $row->tipe_baru,
 					'satuan' => $row->satuan,
 					'harga_baru' => $row->harga_baru,
 					'tahun_pengadaan' => $row->tahun_pengadaan,
@@ -332,17 +331,19 @@ class Home_admin extends CI_Controller {
 					'kode64_baru' => $row->kode64_baru,
 					'harga_baru' => $row->harga_baru,
 					'keterangan' => $row->keterangan,
-					'status_simbada' => $row->status_simbada,
+					'status_simbada' => $row->hapus,
 					'penghapusan' => $row->penghapusan,
 					'koreksi_hapus' => $row->koreksi_hapus,
 					'hibah_keluar' => $row->hibah_keluar,
 					'luas_tanah' => $row->luas_tanah,
 					'luas_bangunan' => $row->luas_bangunan,
 					'no_sertifikat' => $row->no_sertifikat,
+					'register_tanah' => $row->register_tanah,
+					'penggunaan' => $row->penggunaan,
 					'kota' => $row->kota,
 					'kecamatan' => $row->kecamatan,
 					'kelurahan' => $row->kelurahan,
-					'ekstrakomtabel' => $row->ekstrakomtabel,
+					'ekstrakomtabel' => $row->extrakomtabel_baru,
 					'status_register' => 'SAWAL',
 					'created_at_date' => $date,
 					'created_at_time' => $time,
@@ -359,23 +360,22 @@ class Home_admin extends CI_Controller {
 					'kode64_baru'	=> $row->kode64_baru,
 					'kode108_baru' => $row->kode108_baru,
 					'harga_baru' => $row->harga_baru,
-					'status_simbada' => $row->status_simbada,
+					'status_simbada' => $row->hapus,
 					'penghapusan' => $row->penghapusan,
 					'koreksi_hapus' => $row->koreksi_hapus,
 					'hibah_keluar' => $row->hibah_keluar,
-					'ekstrakomtabel' => $row->ekstrakomtabel,
+					'ekstrakomtabel' => $row->extrakomtabel_baru,
 					'update_at_date' => $date,
 					'update_at_time' => $time
 				);
 				$this->admin_model->update_data($register,$data_for_kib,'data_kib');
-
 			}
 		}
 
 		echo "<h2>DONE Proses Penyamaan DATA KIB Dengan AUDITED, Lanjut Proses Pengeditan Register Yang Telah Di Kerjakan !!!! </h2>";
 
 
-		$get_simbada2 = $this->admin_model->get_kib_simbada('data_kib')->result();
+		$get_simbada2 = $this->admin_model->get_kib_simbada()->result();
 
 		
 		foreach ($get_simbada2 as $data) {
@@ -436,6 +436,12 @@ class Home_admin extends CI_Controller {
 								'jenis_bahan_jembatan'=> $get_data_register_isi->jenis_bahan_jembatan,
 								'no_ruas'=> $get_data_register_isi->no_ruas,
 								'no_jaringan_irigasi'=> $get_data_register_isi->no_jaringan_irigasi,
+								'no_sertifikat' => $get_data_register_isi->no_sertifikat,
+								'register_tanah' => $get_data_register_isi->register_tanah,
+								'kota' => $get_data_register_isi->kota,
+								'kelurahan' => $get_data_register_isi->kelurahan,
+								'kecamatan' => $get_data_register_isi->kecamatan,
+								'pemanfaatan_aset' => $get_data_register_isi->pemanfaatan_aset,
 								'created_date'=> $date,
 								'created_time'=> $time,
 								'lainnya'=> $get_data_register_isi->lainnya,
