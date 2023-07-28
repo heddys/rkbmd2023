@@ -48,16 +48,11 @@ class Home_verifikator extends CI_Controller {
 			}
 	}
 
-    public function verif_page()
+    public function verif_page($id)
     {
 			$this->cek_sess();	
 			$data['page']="Halaman List Register Proses Verifikasi";
-			$where_proses = array (
-				'ekstrakomtabel' =>  NULL,
-				'status' => 1
-			);
 
-			$id="2";
 
 			// $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 			// $data['register']=$this->form_model->get_all_register($where_proses,$nomor_lokasi,"1.3.2");
@@ -106,29 +101,38 @@ class Home_verifikator extends CI_Controller {
 	
 	
 				$data['kib_apa']=$id;
-	
-					if($id=='1') {
-						$kib = "1.3.1";
-					} 
-					elseif ($id=='2') {
-						$kib = "1.3.2";
-					} elseif ($id=='3') {
-						$kib = "1.3.3";
-					} elseif ($id=='4') {
-						$kib = "1.3.4";
-					} elseif ($id=='5') {
-						$kib = "1.3.5";
-					} else { 
-						$kib = "1.5.3";
-					}
+				
+				if($id=='1') {
+					$this->session->set_userdata('kib','1.3.1');
+					$kib = $this->session->userdata('kib');
+				} 
+				elseif ($id=='2') {
+					$this->session->set_userdata('kib','1.3.2');
+					$kib = $this->session->userdata('kib');
+				} elseif ($id=='3') {
+					$this->session->set_userdata('kib','1.3.3');
+					$kib = $this->session->userdata('kib');
+				} elseif ($id=='4') {
+					$this->session->set_userdata('kib','1.3.4');
+					$kib = $this->session->userdata('kib');
+				} elseif ($id=='5') {
+					$this->session->set_userdata('kib','1.3.5');
+					$kib = $this->session->userdata('kib');
+				} else { 
+					$this->session->set_userdata('kib','1.3.6');
+					$kib = $this->session->userdata('kib');
+				} 
+
+
+
 				
 					//Load Library Pagination
 					$this->load->library('pagination');
 					$data['offset']=($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 					//Config Pagination
-					$config['total_rows'] = $this->form_model->hitungBanyakRowRegister_verifikator($where_proses,$data_cari,$kib,$form)->num_rows();
+					$config['total_rows'] = $this->form_model->hitungBanyakRowRegister_verifikator($data_cari,$kib,$form)->num_rows();
 					$config['per_page'] = $limit;
-					$config['base_url'] = site_url('/home_verifikator/verif_page/');
+					$config['base_url'] = site_url('/home_verifikator/verif_page/'.$id);
 					$config['num_links'] = 3;
 	
 					//Pagination Bootstrap Theme
