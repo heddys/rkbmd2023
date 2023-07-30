@@ -320,32 +320,7 @@
                             <!-- Batas Per Form -->
 
 
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Tipe :</label>
-                                        </div>
-                                            <input type="text" class="form-control" name="tipe_barang" id="tipe_barang" readonly="true" value="<?php echo $data_register->tipe;?>">
-                                    </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary23" name="radio_tipe" value="0" checked="checked" required="required"/>
-                                        <label for="primary23">Sesuai</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary24" name="radio_tipe" value="1"/>
-                                        <label for="primary24">Tidak Sesuai</label>
-                                    </div>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
 
-                            <!-- Batas Per Form -->
-                  
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
@@ -886,27 +861,7 @@
                     </div>
                     <!-- /.modal -->
 
-                    <!-- Modal Untuk Input Tipe Barang -->
-                    <div class="modal fade" id="modal-tipe-barang">
-                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
-                                    </div>
-                                    <div class="modal-body">
-                                        <style type="text/css"> </style>
-                                        <input type="text" class="form-control" id="input_tipe" placeholder="Diisi Tipe Barang....">
-                                    </div>
-                                    <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-danger" onclick="klik_tipe_barang(false)" data-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-success" onclick="klik_tipe_barang(true)" data-dismiss="modal">Simpan Data</button>
-                                    </div>
-                            </div>
-                                <!-- modal-content --> 
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                    <!-- /.modal -->
+                    
 
                     <!-- Modal Untuk Input Luas -->
                     <div class="modal fade" id="modal-luas-tanah">

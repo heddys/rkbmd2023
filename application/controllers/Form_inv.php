@@ -629,8 +629,6 @@ class Form_inv extends CI_Controller {
 		
 		$radio_kondisi=$_POST['radio_kondisi'];
 
-		$tipe=$_POST['tipe_barang'];
-		$radio_tipe=$_POST['radio_tipe'];
 
 		$luas_tanah=$_POST['luas_tanah'];
 		$radio_luas=$_POST['radio_luas'];
@@ -731,7 +729,6 @@ class Form_inv extends CI_Controller {
 		'lokasi' => $alamat,
 		'jumlah' => 1,
 		'kondisi_barang' => $kondisi_bar,
-		'tipe' => $tipe,
 		'luas' => $luas_tanah,
 		'no_sertifikat' => $no_sertif,
 		'kota' => $kelurahan->kab_kota,
@@ -758,7 +755,6 @@ class Form_inv extends CI_Controller {
 			'is_nilai_perolehan' => $radio_nilai,
 			'is_aset_atrib' =>$radio_kap_atrib,
 			'is_kondisi_barang' => $radio_kondisi,
-			'is_tipe' => $radio_tipe,
 			'is_no_sertif' => $radio_no_sertif,
 			'is_penggunaan_barang' =>$radio_pengguna,
 			'is_catat_ganda' => $radio_ganda,
