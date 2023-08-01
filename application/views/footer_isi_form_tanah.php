@@ -497,7 +497,15 @@ function formatCurrency(input, blur) {
       }
     }
 
-    
+    function klik_rtrw(id){
+      if(id == true){
+        var isi_rt = document.querySelector("#modal-rt [id=input_rt]").value;
+        var isi_rw = document.querySelector("#modal-rt [id=input_rw]").value;
+        document.getElementById('rtrw').value="RT "+isi_rt+"/"+"RW "+isi_rw;
+      } else {
+        $("input:radio[id=primaryrt2]:checked")[0].checked = false;
+      }
+    }
 
     // function klik_cari_ganda(id){
     //   if(id == true){
@@ -611,6 +619,12 @@ function formatCurrency(input, blur) {
       $('#primary36').click(function () {
           if ($(this).is(':checked')) {
               $('#modal-search-register-ganda').modal({backdrop: 'static', keyboard: false});
+          }  
+      });
+
+      $('#primaryrt2').click(function () {
+          if ($(this).is(':checked')) {
+              $('#modal-rt').modal({backdrop: 'static', keyboard: false});
           }  
       });
 

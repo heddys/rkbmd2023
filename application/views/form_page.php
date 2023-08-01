@@ -71,7 +71,7 @@
                         <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
                         <td><center><?php echo $row->sttaus_register;?></center></td>
 	                  		<td>  
-                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir/<?php echo $kib_apa; ?>" method="post">
+                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir_<?php echo $kib_apa; ?>" method="post">
                                 <center>
                                   <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
                                     <input type="hidden" name="register" value="<?php echo $row->register?>">

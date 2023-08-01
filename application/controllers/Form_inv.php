@@ -290,7 +290,7 @@ class Form_inv extends CI_Controller {
 
     }
 
-	public function isi_formulir_edit()
+	public function isi_formulir_edit_1()
     {
         $this->cek_sess();
 		$data['page']="Edit Form Inventarisasi";
@@ -310,6 +310,50 @@ class Form_inv extends CI_Controller {
 		$this->load->view('edit_form',$data);
 		$this->load->view('footer_isi_form_pm');
     }
+
+	public function isi_formulir_edit_2()
+    {
+        $this->cek_sess();
+		$data['page']="Edit Form Inventarisasi";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
+
+        $this->load->view('header',$data);		
+		$this->load->view('edit_form',$data);
+		$this->load->view('footer_isi_form_pm');
+    }
+
+	public function isi_formulir_edit_3()
+    {
+        $this->cek_sess();
+		$data['page']="Edit Form Inventarisasi";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
+
+        $this->load->view('header',$data);		
+		$this->load->view('edit_form',$data);
+		$this->load->view('footer_isi_form_pm');
+    }
+	
+
 
 	public function edit_form_verif()
 	{
@@ -599,7 +643,7 @@ class Form_inv extends CI_Controller {
 		$nama_barang=$_POST['nama_barang'];
 		$radio_nama_bar=$_POST['radio_nama_bar'];
 
-		$merk=$_POST['merk'];
+		$merk=$_POST['merk'].",".$_POST['rtrw'];
 		$radio_merk=$_POST['radio_merk'];
 
 		$jumlah_bar=1;
