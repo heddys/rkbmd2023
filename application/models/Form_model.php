@@ -1017,5 +1017,13 @@
 
                 return $query;
             }
+
+            function get_sk_penggunaan($register) {
+                $db_simbada = $this->load->database('simbada',TRUE);
+
+                $query=$db_simbada->query("SELECT a.register,b.id_sk,c.nomor,c.tentang,c.file FROM `kib` a inner join rincian_sk_pengguna b on a.register=b.register inner join sk_pengguna c on b.id_sk=c.id where a.sk_pengguna <> '' and c.kunci = 1 and a.register = '".$register."' union SELECT a.register,b.id_sk,c.nomor,c.tentang,c.file FROM `kib_awal` a inner join rincian_sk_pengguna b on a.register=b.register inner join sk_pengguna c on b.id_sk=c.id  where a.sk_pengguna <> '' and c.kunci = 1 and a.register = '".$register."'");
+                
+                return $query;
+            }
  }
  ?>

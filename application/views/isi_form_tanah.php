@@ -426,6 +426,23 @@
                             <!-- Batas Per Form -->
 
 
+                            <!-- Mulai Form -->  
+                            <div class="form-group col-md-5 mb-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <b>No. Keputusan Penetapan Status Penggunaan :</b>
+                                        </span>
+                                    </div>
+                                        <input type="text" class="form-control" value="<?php echo $sk_penggunaan->nomor?>" readonly="true">
+                                </div>
+                            </div>
+                            <div class=" mt-2 mb-4 col-lg-4">
+                                <button type="button" class="btn btn-success btn-block btn-md" id="show_sk_pengguna"><i class="fas fa-eye"> Lihat Dokumen</i></button>
+                            </div> 
+                            <!-- Batas Per Form -->  
+                           
+
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
@@ -1023,6 +1040,26 @@
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-danger" onclick="klik_cari_atrib(false)" data-dismiss="modal">Batal</button>
                                             <button type="submit" class="btn btn-info" onclick="klik_cari_atrib(true)" data-dismiss="modal">Cari Data</button>
+                                        </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
+                    <!-- Modal Untuk Cari Register Atribusi -->
+                    <div class="modal fade" id="modal-sk_pengguna">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-cloud"></i> Informasi Status Penggunaan</h4></center>
+                                    </div>
+                                        <div class="modal-body">
+                                            
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                                         </div>
                             </div>
                                 <!-- modal-content --> 

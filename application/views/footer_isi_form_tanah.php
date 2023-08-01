@@ -177,7 +177,7 @@
           document.getElementById("customFile").value = "";
         } else {
           var html = "<div class='alert alert-success alert-dismissible'>"+
-                        "<h5><i class='icon fas fa-ban'></i>Success Upload File</h5>"+
+                        "<h5><i class='icon fas fa-check'></i>Ukuran dan Jenis File Sesuai</h5>"+
                     "</div>";
           $('.file_upload').find('#alert').html(html);
           document.getElementById("save_form").disabled = false;
@@ -628,6 +628,9 @@ function formatCurrency(input, blur) {
           }  
       });
 
+      $('#show_sk_pengguna').click(function () {
+        $('#modal-sk_pengguna').modal({});
+      })
 
       
     });

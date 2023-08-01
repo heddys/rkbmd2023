@@ -181,6 +181,7 @@ class Form_inv extends CI_Controller {
 		
 		$data['data_register'] = $this->form_model->ambil_register($register);
 		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		$data['sk_penggunaan']=$this->form_model->get_sk_penggunaan($register)->row();
 		
 		$this->load->view('header',$data);		
 		$this->load->view('isi_form_tanah',$data);
@@ -643,8 +644,10 @@ class Form_inv extends CI_Controller {
 		$nama_barang=$_POST['nama_barang'];
 		$radio_nama_bar=$_POST['radio_nama_bar'];
 
-		$merk=$_POST['merk'].",".$_POST['rtrw'];
+		$merk=$_POST['merk'];
 		$radio_merk=$_POST['radio_merk'];
+
+		$rtrw=$_POST['rtrw'];
 
 		$jumlah_bar=1;
 		$radio_jum_bar=0;
@@ -772,6 +775,7 @@ class Form_inv extends CI_Controller {
 		'nomor_lokasi_awal' => $lokasi_awal,
 		'lokasi' => $alamat,
 		'jumlah' => 1,
+		'rt_rw' => $rtrw,
 		'kondisi_barang' => $kondisi_bar,
 		'luas' => $luas_tanah,
 		'no_sertifikat' => $no_sertif,
