@@ -434,11 +434,14 @@
                                             <b>No. Keputusan Penetapan Status Penggunaan :</b>
                                         </span>
                                     </div>
-                                        <input type="text" class="form-control" value="<?php echo $sk_penggunaan->nomor?>" readonly="true">
+                                        <input type="text" class="form-control" value="<?php echo ($sk_penggunaan == "NULL") ? "Belum Ada SK Penetapan Status Penggunaan" : $sk_penggunaan->nomor;?>" readonly="true">
                                 </div>
                             </div>
-                            <div class=" mt-2 mb-4 col-lg-4">
-                                <button type="button" class="btn btn-success btn-block btn-md" id="show_sk_pengguna"><i class="fas fa-eye"> Lihat Dokumen</i></button>
+                            <div class=" mt-0 mb-3 col-lg-1">
+                                <button type="button" class="btn btn-success btn-block btn-md" id="show_sk_pengguna" <?php echo ($sk_penggunaan == "NULL") ? "disabled" : ""?>><i class="fas fa-eye"> Lihat Dokumen</i></button>
+                            </div> 
+                            <div class=" mt-0 mb-3 col-lg-3">
+                                
                             </div> 
                             <!-- Batas Per Form -->  
                            
@@ -1056,7 +1059,7 @@
                                         <center><h4 class="modal-title"><i class="fas fa-cloud"></i> Informasi Status Penggunaan</h4></center>
                                     </div>
                                         <div class="modal-body">
-                                            
+                                            <embed src="<?php echo base_url();?>/ini_assets/sk_penggunaan/<?php echo $sk_penggunaan->file?>">
                                         </div>
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>

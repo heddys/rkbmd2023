@@ -181,7 +181,13 @@ class Form_inv extends CI_Controller {
 		
 		$data['data_register'] = $this->form_model->ambil_register($register);
 		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
-		$data['sk_penggunaan']=$this->form_model->get_sk_penggunaan($register)->row();
+		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+
+		if($sk_penggunaan->num_rows() > 0) {
+			$data['sk_penggunaan']=$sk_penggunaan->row();
+		} else {
+			$data['sk_penggunaan']="NULL";
+		}
 		
 		$this->load->view('header',$data);		
 		$this->load->view('isi_form_tanah',$data);
