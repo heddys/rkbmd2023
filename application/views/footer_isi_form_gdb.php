@@ -598,6 +598,25 @@ function formatCurrency(input, blur) {
         $("input:radio[id=primary38]:checked")[0].checked = false;
       }
     }
+
+    function klik_penggunaan(id){
+      if(id == true){
+        var isi_text = document.querySelector("#modal-penggunaan [id=input_penggunaan]").value;
+        document.getElementById('penggunaan').value=isi_text;
+      } else {
+        $("input:radio[id=primary34]:checked")[0].checked = false;
+      }
+    }
+
+    function klik_rtrw(id){
+      if(id == true){
+        var isi_rt = document.querySelector("#modal-rt [id=input_rt]").value;
+        var isi_rw = document.querySelector("#modal-rt [id=input_rw]").value;
+        document.getElementById('rtrw').value="RT "+isi_rt+"/"+"RW "+isi_rw;
+      } else {
+        $("input:radio[id=primaryrt2]:checked")[0].checked = false;
+      }
+    }
      
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -711,7 +730,15 @@ function formatCurrency(input, blur) {
           }  
       });
 
+      $('#primaryrt2').click(function () {
+          if ($(this).is(':checked')) {
+              $('#modal-rt').modal({backdrop: 'static', keyboard: false});
+          }  
+      });
 
+      $('#show_sk_pengguna').click(function () {
+        $('#modal-sk_pengguna').modal({});
+      })
       
     });
 

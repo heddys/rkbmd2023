@@ -286,6 +286,33 @@
 
 
                             <!-- Mulai Form -->
+                            <div class="form-group col-md-5 ">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">RT/RW : </label>
+                                    </div>
+                                    <input type="text" class="form-control" name="rtrw" id="rtrw" readonly="true">
+                                </div>
+                            </div>
+                            <!-- /.col-lg-6 -->
+                            <div class=" mt-2 mb-6 col-lg-4">
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primaryrt1" name="radio_rt" value="0" required="required" disabled/>
+                                        <label for="primaryrt1">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primaryrt2" name="radio_rt" value="1"/>
+                                        <label for="primaryrt2">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+
+                            <!-- Batas Per Form -->
+
+
+                            <!-- Mulai Form -->
                             <div class="form-group col-md-5">
                                 <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -446,6 +473,28 @@
                             </div>
 
                             <!-- Batas Per Form -->
+                            
+
+                            <!-- Mulai Form -->  
+                            <div class="form-group col-md-5 mb-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <b>No. Keputusan Penetapan Status Penggunaan :</b>
+                                        </span>
+                                    </div>
+                                        <input type="text" class="form-control" value="<?php echo ($sk_penggunaan == "NULL") ? "Belum Ada SK Penetapan Status Penggunaan" : $sk_penggunaan->nomor;?>" readonly="true">
+                                </div>
+                            </div>
+                            <div class=" mt-0 mb-3 col-lg-1">
+                                <button type="button" class="btn btn-success btn-block btn-md" id="show_sk_pengguna" <?php echo ($sk_penggunaan == "NULL") ? "disabled" : ""?>><i class="fas fa-eye"> Lihat Dokumen</i></button>
+                            </div> 
+                            <div class=" mt-0 mb-3 col-lg-3">
+                                
+                            </div> 
+                            <!-- Batas Per Form -->  
+
+
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
@@ -1099,7 +1148,27 @@
                         </div>
                     <!-- /.modal -->
 
-
+                    <!-- Modal Untuk Cari Register Atribusi -->
+                    <div class="modal fade" id="modal-sk_pengguna">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-cloud"></i> Informasi Status Penggunaan</h4></center>
+                                    </div>
+                                        <div class="modal-body">
+                                            <object width="100%" height="1100" type="application/pdf" data="<?php echo base_url();?>/ini_assets/sk_penggunaan/<?php echo $sk_penggunaan->file?>">
+                                                <p>PDF Tidak Bisa Dibuka...</p>
+                                            </object>
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                                        </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
 
                     <!-- Menampilkan Hasil Pencarian Register                                                 -->
                     <div class="modal fade" id="modal-list-register">
@@ -1175,6 +1244,37 @@
                             </div>
                                 <!-- /.modal-dialog --> 
                         </div>
+
+                        <!-- Modal Untuk Input RT/RW -->
+                        <div class="modal fade" id="modal-rt">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Input RT dan RW</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <label for="input_rt">RT </label>
+                                                <input type="number" class="form-control" id="input_rt" placeholder="000">
+                                            </div>
+                                            <div class="col-5">
+                                                <label for="input_rt">RW </label>
+                                                <input type="number" class="form-control" id="input_rw" placeholder="000">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_rtrw(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-info" onclick="klik_rtrw(true)" data-dismiss="modal">Simpan</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
 
                         <!-- Menampilkan Hasil Pencarian Register                                                 -->
                         <div class="modal fade" id="modal-list-register3">

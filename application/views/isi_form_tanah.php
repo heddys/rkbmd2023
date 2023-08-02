@@ -1059,7 +1059,9 @@
                                         <center><h4 class="modal-title"><i class="fas fa-cloud"></i> Informasi Status Penggunaan</h4></center>
                                     </div>
                                         <div class="modal-body">
-                                            <embed src="<?php echo base_url();?>/ini_assets/sk_penggunaan/<?php echo $sk_penggunaan->file?>">
+                                            <object width="100%" height="1100" type="application/pdf" data="<?php echo base_url();?>/ini_assets/sk_penggunaan/<?php echo $sk_penggunaan->file?>">
+                                                <p>PDF Tidak Bisa Dibuka...</p>
+                                            </object>
                                         </div>
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
