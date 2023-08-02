@@ -222,9 +222,9 @@ class Home_admin extends CI_Controller {
 					$this->admin_model->insert_register($data_reg);
 			} else {
 
-				if($status == NULL) {
+				if($get_status->status == NULL) {
 					$data_for_kib=array (
-						'kode_108' => $row->kode_108,
+					'kode_108' => $row->kode_108,
 					'kode_64' => $row->kode_64,
 					'nomor_lokasi' => $row->nomor_lokasi,
 					'nama_barang' => $row->nama_barang_baru,
