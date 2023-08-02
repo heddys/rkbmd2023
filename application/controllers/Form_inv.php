@@ -228,6 +228,13 @@ class Form_inv extends CI_Controller {
 		
 		$data['data_register'] = $this->form_model->ambil_register($register);
 		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+
+		if($sk_penggunaan->num_rows() > 0) {
+			$data['sk_penggunaan']=$sk_penggunaan->row();
+		} else {
+			$data['sk_penggunaan']="NULL";
+		}
 		
 		$this->load->view('header',$data);	
 		$this->load->view('isi_form_gdb',$data);
@@ -868,6 +875,8 @@ class Form_inv extends CI_Controller {
 		$jumlah_bar=1;
 		$radio_jum_bar=0;
 
+		$rtrw=$_POST['rtrw'];
+
 		$satuan=$_POST['satuan'];
 		$radio_satuan=$_POST['radio_satuan'];
 
@@ -994,6 +1003,7 @@ class Form_inv extends CI_Controller {
 		'nomor_lokasi_awal' => $lokasi_awal,
 		'lokasi' => $alamat,
 		'jumlah' => 1,
+		'rt_rw' => $rtrw,
 		'kondisi_barang' => $kondisi_bar,
 		'tipe' => $tipe,
 		'luas' => $luas_bangunan,
