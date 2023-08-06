@@ -1014,7 +1014,7 @@ class Form_inv extends CI_Controller {
 		'pemanfaatan_aset' => $pemanfaatan,
 		'register_ganda' => $ganda,
 		'register_tanah' => $register_tanah,
-		'status_tanah' => $status_tanah,
+		'status_kepemilikan_tanah' => $status_tanah,
 		'keterangan' => $keterangan,
 		'created_date' => $updated_date,
 		'created_time' => $updated_time
