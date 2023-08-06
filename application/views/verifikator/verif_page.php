@@ -58,11 +58,11 @@
 	                <tr>
 	                  <th><center>No.</center></th>
 	                  <th><center>Register</center></th>
-                      <th><center>Lokasi</center></th>
+                    <th><center>Lokasi</center></th>
 	                  <th><center>Kode Neraca</center></th>
 	                  <th><center>Nama Barang</center></th>
 	                  <th><center>Spesifikasi Barang</center></th>
-                      <th><center>Tahun Pengadaan</center></th>
+                    <th><center>Tahun Pengadaan</center></th>
 	                  <th><center>Nilai Perolehan </center></th>
 	                  <th><center>Aksi</center></th>
 	                </tr>
@@ -79,7 +79,7 @@
                             <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>  
-                              <form role="form" action="<?php echo site_url();?>/home_verifikator/verif_register" method="post">
+                              <form role="form" action="<?php echo site_url();?>/home_verifikator/verif_register_<?php echo $kib_apa; ?>" method="post">
                                 <center>
                                   <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
                                     <input type="hidden" name="register" value="<?php echo $row->register?>">

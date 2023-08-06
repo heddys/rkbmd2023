@@ -166,40 +166,40 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <!-- <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/1');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.01</p>
-                </a>
-              </li> -->
               <li class="nav-item">
-                <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/verif_page/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.02</p>
+                  <p>Tanah</p>
                 </a>
-              </li>
-              <!-- <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/3');?>" class="nav-link">
+              </li> 
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_verifikator/verif_page/2');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.03</p>
+                  <p>Peralatan dan Mesin</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/4');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/verif_page/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.04</p>
+                  <p>Gedung dan Bangunan</p>
+                </a>
+              </li>
+              <!--<li class="nav-item">
+                <a href="<?php echo site_url('home_verifikator/verif_page/4');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Jalan, Irigasi dan Jaringan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/5');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/verif_page/5');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.05</p>
+                  <p>Aset Tetap Lainnya</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/6');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/verif_page/6');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Lain-Lain 1.5.03</p>
+                  <p>Aset Tak Berwujud</p>
                 </a>
               </li> -->
             </ul>
@@ -213,40 +213,40 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <!-- <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/1');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.01</p>
-                </a>
-              </li> -->
               <li class="nav-item">
-                <a href="<?php echo site_url('home_verifikator/tolak_page');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/tolak_page/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.02</p>
+                  <p>Tanah</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_verifikator/tolak_page/2');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Peralatan dan Mesin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_verifikator/tolak_page/3');?>" class="nav-link">
+                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+                  <p>Gedung dan Bangunan</p>
                 </a>
               </li>
               <!-- <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/3');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/tolak_page/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.03</p>
+                  <p>Jalan, Irigasi dan Jaringan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/4');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/tolak_page/5');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.04</p>
+                  <p>Aset Tetap Lainnya</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/5');?>" class="nav-link">
+                <a href="<?php echo site_url('home_verifikator/tolak_page/6');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Tetap 1.3.05</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo site_url('form_inv/index/6');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Aset Lain-Lain 1.5.03</p>
+                  <p>Aset Tak Berwujud</p>
                 </a>
               </li> -->
             </ul>

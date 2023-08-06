@@ -612,6 +612,7 @@
                                     <form role="form" action="tandai_status_register" method="post">
                                         <button type="submit" class="btn btn-success btn-block btn-lg">Setujui</button>
                                         <input type="hidden" name="register" value="<?php echo $data_register->register?>">
+                                        <input type="hidden" name="kib" value="<?php echo $kib_apa?>">
                                         <input type="hidden" name="tanda" value="2">
                                     </form>
                                 </div>
@@ -644,6 +645,7 @@
                                 <button type="button" class="btn btn-info batal" data-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-danger tolak">Ya! Tolak</button>
                                 <input type="hidden" name="register" value="<?php echo $data_register->register?>">
+                                <input type="hidden" name="kib" value="<?php echo $kib_apa?>">
                                 <input type="hidden" name="tanda" value="1">
                             </form>
 	                   </div>

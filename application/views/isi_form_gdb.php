@@ -561,7 +561,7 @@
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Penggunaan Aset : </label>
+                                            <label class="input-group-text" id="basic-addon3">Pemanfaatan Aset : </label>
                                         </div>
                                             <input type="text" class="form-control" name="pemanfaatan" id="kode_register" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->penggunaan;?>" required="required">
                                     </div>

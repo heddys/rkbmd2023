@@ -280,7 +280,6 @@ class Home_admin extends CI_Controller {
 					);
 					$this->admin_model->update_data($register,$data_for_kib,'data_kib');
 
-
 				}
 
 				

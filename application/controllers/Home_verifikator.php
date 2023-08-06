@@ -11,24 +11,25 @@ class Home_verifikator extends CI_Controller {
 		// $data['bmpersediaan']=$this->cek_jumlah_persediaan();
 
 		$where_proses = array (
-            'ekstrakomtabel' =>  NULL,
+            'ekstrakomtabel' => NULL,
+			'status_simbada' => NULL,
 			'status' => 1
         );
 		$where_terverifikasi = array (
-            'ekstrakomtabel' =>  NULL,
+            'ekstrakomtabel' => NULL,
+			'status_simbada' => NULL,
 			'status' => 2
         );
 		$where_tolak = array (
-            'ekstrakomtabel' =>  NULL,
+            'ekstrakomtabel' => NULL,
+			'status_simbada' => NULL,
 			'status' => 3
         );
 
-		$kib="1.3.2";
-
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data['jumlah_proses']=$this->form_model->get_all_register($where_proses,$nomor_lokasi,$kib)->num_rows();
-		$data['jumlah_tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib)->num_rows();
-		$data['jumlah_terverifikasi']=$this->form_model->get_all_register($where_terverifikasi,$nomor_lokasi,$kib)->num_rows();
+		$data['jumlah_proses']=$this->form_model->get_all_register($where_proses,$nomor_lokasi)->num_rows();
+		$data['jumlah_tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi)->num_rows();
+		$data['jumlah_terverifikasi']=$this->form_model->get_all_register($where_terverifikasi,$nomor_lokasi)->num_rows();
 
 		$this->load->view('verifikator/h_verifikator',$data);		
 		$this->load->view('verifikator/home_verifikator');
@@ -128,7 +129,7 @@ class Home_verifikator extends CI_Controller {
 				
 					//Load Library Pagination
 					$this->load->library('pagination');
-					$data['offset']=($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+					$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 					//Config Pagination
 					$config['total_rows'] = $this->form_model->hitungBanyakRowRegister_verifikator($data_cari,$kib,$form)->num_rows();
 					$config['per_page'] = $limit;
@@ -176,7 +177,7 @@ class Home_verifikator extends CI_Controller {
 			$this->load->view('verifikator/f_verif_page');	
     }
 
-	public function tolak_page()
+	public function tolak_page($id)
 	{
 		$this->cek_sess();	
 		$data['page']="Halaman List Register Ditolak";
@@ -185,7 +186,20 @@ class Home_verifikator extends CI_Controller {
 			'status' => 3
         );
 
-		$kib="1.3.2";
+		if($id=='1') {
+			$kib = '1.3.1';
+		} 
+		elseif ($id=='2') {
+			$kib = '1.3.2';
+		} elseif ($id=='3') {
+			$kib = '1.3.3';
+		} elseif ($id=='4') {
+			$kib = '1.3.4';
+		} elseif ($id=='5') {
+			$kib = '1.3.5';
+		} else { 
+			$kib = '1.5.3';
+		} 
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib);
@@ -216,12 +230,13 @@ class Home_verifikator extends CI_Controller {
 		$this->load->view('verifikator/f_verif_page');
 	}
 
-	public function verif_register()
+	public function verif_register_1()
 	{	
 		$this->cek_sess();	
 		$data['page']="Halaman Verifikasi Detail Register";
 
 		$register = $_POST['register'];
+		$data['kib_apa']='1';
 		
 		// echo $register;
 		
@@ -233,7 +248,51 @@ class Home_verifikator extends CI_Controller {
 		// var_dump($data['data_register']);
 
 		$this->load->view('verifikator/h_verifikator',$data);		
-		$this->load->view('verifikator/detail_form_verif',$data);
+		$this->load->view('verifikator/detail_form_verif_tanah',$data);
+		$this->load->view('verifikator/f_verifikator');	
+	}
+
+	public function verif_register_2()
+	{	
+		$this->cek_sess();	
+		$data['page']="Halaman Verifikasi Detail Register";
+
+		$register = $_POST['register'];
+		$data['kib_apa']='2';
+		
+		// echo $register;
+		
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+
+		// echo $register;
+		// var_dump($data['data_register']);
+
+		$this->load->view('verifikator/h_verifikator',$data);		
+		$this->load->view('verifikator/detail_form_verif_pm',$data);
+		$this->load->view('verifikator/f_verifikator');	
+	}
+
+	public function verif_register_3()
+	{	
+		$this->cek_sess();	
+		$data['page']="Halaman Verifikasi Detail Register";
+
+		$register = $_POST['register'];
+		$data['kib_apa']='3';
+		
+		// echo $register;
+		
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+
+		// echo $register;
+		// var_dump($data['data_register']);
+
+		$this->load->view('verifikator/h_verifikator',$data);		
+		$this->load->view('verifikator/detail_form_verif_gdb',$data);
 		$this->load->view('verifikator/f_verifikator');	
 	}
 
@@ -244,6 +303,7 @@ class Home_verifikator extends CI_Controller {
 		
 		if($tanda == 1) {
 			$penolakan=$_POST['penolakan'];
+			$kib=$_POST['kib'];
 			date_default_timezone_set("Asia/Jakarta");	
 			$updated_date=date("Y-m-d");
 			$updated_time=date("H:i:s");
@@ -260,12 +320,12 @@ class Home_verifikator extends CI_Controller {
 			ini_set('memory_limit', '2048M');
 			$this->form_model->tandai_status_register($register,$tanda);
 			$this->form_model->buat_jurnal_tolak($data);
-			redirect('home_verifikator/verif_page/');
+			redirect('home_verifikator/verif_page/'.$kib);
 			
 		} else {
 			ini_set('memory_limit', '2048M');
 			$this->form_model->tandai_status_register($register,$tanda); 
-			redirect('home_verifikator/verif_page/');
+			redirect('home_verifikator/verif_page/'.$kib);
 		}
 
 		
