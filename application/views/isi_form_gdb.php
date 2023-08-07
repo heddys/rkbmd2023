@@ -429,7 +429,8 @@
                             </div>
 
                             <?php } else {?>
-                            
+                                <input type="hidden" name="kelurahan" value="<?php echo $data_register->kelurahan;?>">
+                                <input type="hidden" name="kecamatan" value="<?php echo $data_register->kecamatan;?>">
                                 <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
