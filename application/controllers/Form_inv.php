@@ -661,6 +661,7 @@ class Form_inv extends CI_Controller {
 		$radio_merk=$_POST['radio_merk'];
 
 		$rtrw=$_POST['rtrw'];
+		$radio_rt=$_POST['radio_rt'];
 
 		$jumlah_bar=1;
 		$radio_jum_bar=0;
@@ -812,6 +813,8 @@ class Form_inv extends CI_Controller {
 			'is_lokasi' => $radio_alamat,
 			'is_satuan' => $radio_satuan,
 			'is_jumlah' => 0,
+			'is_luas' => $radio_luas,
+			'is_kelurahan' => $radio_kms_kel,
 			'is_keberadaan_barang' => $radio_keberadaan,
 			'is_nilai_perolehan' => $radio_nilai,
 			'is_aset_atrib' =>$radio_kap_atrib,
@@ -876,6 +879,7 @@ class Form_inv extends CI_Controller {
 		$radio_jum_bar=0;
 
 		$rtrw=$_POST['rtrw'];
+		$radio_rt=$_POST['radio_rt'];
 
 		$satuan=$_POST['satuan'];
 		$radio_satuan=$_POST['radio_satuan'];
@@ -905,8 +909,9 @@ class Form_inv extends CI_Controller {
 		$radio_tipe=$_POST['radio_tipe'];
 
 		$luas_bangunan=$_POST['luas_bangunan'];
-		$radio_luas=$_POST['radio_luas'];
 
+		$radio_luas=$_POST['radio_luas'];
+		$radio_luas=$_POST['radio_luas'];
 		
 		$kms_kel=$_POST['kamus_kelurahan'];
 		$radio_kms_kel=$_POST['radio_kelurahan'];
@@ -921,8 +926,9 @@ class Form_inv extends CI_Controller {
 		$radio_ganda=$_POST['radio_ganda'];
 		
 		$register_tanah=$_POST['register_tanah'];
-		$status_tanah=$_POST['status_tanah'];
 		$radio_reg_tanah=$_POST['radio_reg_tanah'];
+
+		$status_tanah=$_POST['status_tanah'];
 		
 		$pemanfaatan = $_POST['pemanfaatan'];
 
@@ -1028,6 +1034,8 @@ class Form_inv extends CI_Controller {
 			'is_lokasi' => $radio_alamat,
 			'is_satuan' => $radio_satuan,
 			'is_jumlah' => 0,
+			'is_luas' => $radio_luas,
+			'is_kelurahan' => $radio_kms_kel,
 			'is_keberadaan_barang' => $radio_keberadaan,
 			'is_nilai_perolehan' => $radio_nilai,
 			'is_aset_atrib' =>$radio_kap_atrib,
