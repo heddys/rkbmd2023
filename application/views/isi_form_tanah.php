@@ -454,12 +454,13 @@
                                         </div>
                                             <input type="text" class="form-control" name="show_kelurahan" readonly="true" id="show_kelurahan" value="<?php echo "Kel. ".$data_register->kelurahan." - Kec. ".$data_register->kecamatan." - Kota ".$data_register->kota;?>">
                                             <input type="hidden" name="kamus_kelurahan" id="hidden_kelurahan">
+                                            
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
 
                             <?php if ($data_register->kota == '') {?>
-
+                            <input type="hidden" name="cek_kec" id="cek_kec" value="0">
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
@@ -475,7 +476,9 @@
                             </div>
 
                             <?php } else {?>
-                            
+                                <input type="hidden" name="cek_kec" id="cek_kec" value="1">
+                                <input type="hidden" name="kelurahan" value="<?php echo $data_register->kelurahan;?>">
+                                <input type="hidden" name="kecamatan" value="<?php echo $data_register->kecamatan;?>">
                                 <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
@@ -958,7 +961,7 @@
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Pilih Lokasi Aset :</h4></center>
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Pilih Kelurahan :</h4></center>
                                     </div>
                                     <div class="modal-body">
                                     <div class="form-group col-lg-4">

@@ -771,11 +771,20 @@ class Form_inv extends CI_Controller {
                     echo "Sorry, there was an error uploading your file.".$errorUploadType; 
                 } 
             }else{ 
-                $statusMsg = 'Please select image files to upload.'; 
+            	  $statusMsg = 'Please select image files to upload.'; 
             } 
 		
-
-		$kelurahan = $this->form_model->get_kamus_kelurahan($kms_kel)->row();
+		
+		if($kms_kel == NULL ) {
+			$kota = "Surabaya";
+			$kelurahan = $_POST['kelurahan'];
+			$kecamata = $_POST['kecamatan'];
+		} else {
+			$get_kelurahan = $this->form_model->get_kamus_kelurahan($kms_kel)->row();
+			$kota = $get_kelurahan->kab_kota;
+			$kelurahan = $get_kelurahan->des_kel;
+			$kecamatan = $get_kelurahan->kec;
+		}
 
 		$data_form_isian = array(
 		'register' => $register,
@@ -793,9 +802,9 @@ class Form_inv extends CI_Controller {
 		'kondisi_barang' => $kondisi_bar,
 		'luas' => $luas_tanah,
 		'no_sertifikat' => $no_sertif,
-		'kota' => $kelurahan->kab_kota,
-		'kelurahan' => $kelurahan->des_kel,
-		'kecamatan' => $kelurahan->kec,
+		'kota' => $kota,
+		'kelurahan' => $kelurahan,
+		'kecamatan' => $kecamata,
 		'penggunaan_barang' => $penggunaan,
 		'pemanfaatan_aset' => $pemanfaatan,
 		'register_ganda' => $ganda,
