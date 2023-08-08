@@ -319,10 +319,17 @@ class Form_inv extends CI_Controller {
 		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
 		$data['image'] = $this->form_model->ambil_file($register)->result();
 		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
+		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+
+		if($sk_penggunaan->num_rows() > 0) {
+			$data['sk_penggunaan']=$sk_penggunaan->row();
+		} else {
+			$data['sk_penggunaan']="NULL";
+		}	
 
         $this->load->view('header',$data);		
-		$this->load->view('edit_form',$data);
-		$this->load->view('footer_isi_form_pm');
+		$this->load->view('edit_form_tanah',$data);
+		$this->load->view('footer_isi_form_tanah');
     }
 
 	public function isi_formulir_edit_2()
@@ -342,8 +349,8 @@ class Form_inv extends CI_Controller {
 		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
 
         $this->load->view('header',$data);		
-		$this->load->view('edit_form',$data);
-		$this->load->view('footer_isi_form_pm');
+		$this->load->view('edit_form_pm',$data);
+		$this->load->view('footer_isi_form_tanah');
     }
 
 	public function isi_formulir_edit_3()
@@ -363,7 +370,7 @@ class Form_inv extends CI_Controller {
 		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
 
         $this->load->view('header',$data);		
-		$this->load->view('edit_form',$data);
+		$this->load->view('edit_form_gdb',$data);
 		$this->load->view('footer_isi_form_pm');
     }
 	
@@ -390,7 +397,7 @@ class Form_inv extends CI_Controller {
 
         $this->load->view('header',$data);		
 		$this->load->view('edit_form_verif',$data);
-		$this->load->view('footer_isi_form_pm');
+		$this->load->view('footer_isi_form_gdb');
 	}
 
     private function cek_sess() 
