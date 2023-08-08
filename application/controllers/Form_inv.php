@@ -311,6 +311,7 @@ class Form_inv extends CI_Controller {
 		$data['kode_barang']=$this->form_model->data_kode_barang();
 		$data['satuan']=$this->form_model->data_satuan();
 		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
 
 		
 		$register = $_POST['register'];
@@ -350,7 +351,7 @@ class Form_inv extends CI_Controller {
 
         $this->load->view('header',$data);		
 		$this->load->view('edit_form_pm',$data);
-		$this->load->view('footer_isi_form_tanah');
+		$this->load->view('footer_isi_form_pm');
     }
 
 	public function isi_formulir_edit_3()

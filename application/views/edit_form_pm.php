@@ -50,17 +50,16 @@
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
+                                <!-- <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary1" name="radio_kode_reg" value="0" checked="checked" required="required"/>
                                         <label for="primary1">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary2" name="radio_kode_reg" disabled="disabled" value="1" readonly="true"/>
+                                        <input type="radio" id="primary2" name="radio_kode_reg" value="1" disabled/>
                                         <label for="primary2">Tidak Sesuai</label>
                                     </div>
-                                </div>
-                                <!-- /input-group -->
+                                </div> -->
                             </div>
 
                             <!-- Batas Per Form -->
