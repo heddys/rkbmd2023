@@ -6,7 +6,6 @@
       <font size="2"><b>Version</b> RKBMD.Beta-01</font>
     </div>
   </footer>
-</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -52,7 +51,6 @@
 
     $(document).ready(function(){
       $("#tabel-home").DataTable();
-      
     });
 
     $('#select_lokasi').select2({
@@ -89,7 +87,7 @@
     }
     setInterval(showTime, 50);
 
-    $(document).ready(function () {;
+    $(document).ready(function () {
 
       var proses = document.getElementById('proses').value;
       var tolak = document.getElementById('tolak').value;
@@ -124,8 +122,13 @@
         type: 'pie',
         data: pieData,
         options: pieOptions      
-        });
+      });
+    });
 
+    $(document).ready(function () {
+      $('#expand_hasil').click(function () {
+          $('#modal-hasil').modal({backdrop: 'static', keyboard: false});
+    });
     
     
     

@@ -6,7 +6,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                      <center>STATUS REGISTER PROSES VERIFIKASI <button type='button' class='btn btn-sm btn-warning' title='Register Masih Dalam Proses Verifikasi'><i class='fa fa-exclamation-triangle'></i></button> / REGISTER DI TOLAK <button type="button" class="btn btn-sm btn-info" title="Edit Form Inventarisasi"><i class="far fa-edit"></i></button></center><?php echo $kib_apa; ?></h3>
+                      <center>STATUS REGISTER PROSES VERIFIKASI <button type='button' class='btn btn-sm btn-warning' title='Register Masih Dalam Proses Verifikasi'><i class='fa fa-exclamation-triangle'></i></button> / REGISTER DI TOLAK <button type="button" class="btn btn-sm btn-info" title="Edit Form Inventarisasi"><i class="far fa-edit"></i></h3>
                       
 	            </div>
 	            <!-- /.card-header -->

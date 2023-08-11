@@ -417,40 +417,40 @@
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" id="basic-addon3">Tipe :</label>
-                                            </div>
-                                                <input type="text" class="form-control" name="tipe_barang" id="tipe_barang" readonly="true" value="<?php echo $data_register->tipe;?>">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Tipe :</label>
                                         </div>
-                                </div>
-                                <!-- /.col-lg-6 -->
-                                <div class=" mt-2 mb-6 col-lg-4">
-                                    <div class="form-group clearfix">
-                                        <div class="radio icheck-primary d-inline">
-                                            <input type="radio" id="primary23" name="radio_tipe" value="0" <?php 
+                                            <input type="text" class="form-control" name="tipe_barang" id="tipe_barang" readonly="true" value="<?php echo $data_register->tipe;?>">
+                                    </div>
+                            </div>
+                            <!-- /.col-lg-6 -->
+                            <div class=" mt-2 mb-6 col-lg-4">
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary23" name="radio_tipe" value="0" <?php 
                                                 if ($data_is_register->is_tipe == 0) { echo "checked='checked'";}
                                             ?> required="required"/>
-                                            <label for="primary23">Sesuai</label>
-                                        </div>
-                                        <div class="radio icheck-primary d-inline">
-                                            <input type="radio" id="primary24" name="radio_tipe" value="1" <?php 
+                                        <label for="primary23">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary24" name="radio_tipe" value="1" <?php 
                                                 if ($data_is_register->is_tipe == 1) { echo "checked='checked'";}
                                             ?>/>
-                                            <label for="primary24">Tidak Sesuai</label>
-                                        </div>
+                                        <label for="primary24">Tidak Sesuai</label>
                                     </div>
-                                    <!-- /input-group -->
                                 </div>
+                                <!-- /input-group -->
+                            </div>
 
-                                <!-- Batas Per Form -->                         
+                            <!-- Batas Per Form -->                        
 
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Luas Bangunan (m2) :</label>
+                                            <label class="input-group-text" id="basic-addon3">Luas Tanah (m2) :</label>
                                         </div>
                                             <input type="text" class="form-control" name="luas_tanah" id="luas_tanah" readonly="true" value="<?php echo number_format($data_register->luas,2,',','.');?>">
                                     </div>
@@ -488,48 +488,6 @@
 
                             <!-- Batas Per Form -->
 
-
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Nomor Sertifikat :</label>
-                                        </div>
-                                            <input type="text" class="form-control" name="no_sertif" id="no_sertif" readonly="true" value="<?php echo $data_register->no_sertifikat;?>">
-                                    </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary27" name="radio_no_sertif" value="0" <?php 
-                                                if ($data_is_register->is_no_sertif == 0) { echo "checked='checked'";}
-                                            ?> required="required"/>
-                                        <label for="primary27">Sesuai</label>
-                                    </div>
-
-                                    <?php if (strpos($data_register->no_sertifikat, 'Hak Pengelolaan') !== FALSE || strpos($data_register->no_sertifikat, 'Hak Pakai') !== FALSE) { ?>
-                                    
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary28" name="radio_no_sertif" value="1" disabled/>
-                                        <label for="primary28">Tidak Sesuai</label>
-                                    </div>
-                                    
-                                    <?php } else { ?>
-
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary28" name="radio_no_sertif" value="1" <?php 
-                                                if ($data_is_register->is_no_sertif == 1) { echo "checked='checked'";}
-                                            ?>/>
-                                        <label for="primary28">Tidak Sesuai</label>
-                                    </div>
-
-                                    <?php } ?>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-
-                            <!-- Batas Per Form -->
 
 
                             <!-- Mulai Form -->  
@@ -663,6 +621,8 @@
                                 <!-- /input-group -->
                             </div>
 
+                            <!-- Mulai Form -->
+
                             <div class="form-group col-md-5">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -676,7 +636,7 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary37" name="radio_reg_tanah" value="0"  <?php 
+                                        <input type="radio" id="primary37" name="radio_reg_tanah" value="0" <?php 
                                                 if ($data_is_register->is_register_tanah == 0) { echo "checked='checked'";}
                                             ?> required="required"/>
                                         <label for="primary37">Sesuai</label>
@@ -693,12 +653,14 @@
 
                             <!-- Batas Per Form -->
 
+
+
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Pemanfaatan Aset : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="pemanfaatan" id="kode_register" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->penggunaan;?>" required="required">
+                                            <input type="text" class="form-control" name="pemanfaatan" id="kode_register" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->pemanfaatan_aset;?>" required="required">
                                     </div>
                             </div>
                             

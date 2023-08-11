@@ -30,7 +30,6 @@
         </div>
             <!-- /.card -->
         <div class="card card-info">
-          <div class="card">
               <div class="card-header no-border ">
                 <h3 class="card-title">Rekapan Per OPD</h3>
                 <div class="card-tools">
@@ -68,8 +67,8 @@
                         <td><center><?php echo round((float)$row->persentase,3) . '%';?></center></td>
                         <td>
                           <center>
-                            <a href="<?php echo site_url('home_penyelia/show_list_status_per_opd/2?lokasi='.$row->unit_baru)?>" class="text-muted">
-                              <i class="fas fa-search"></i>
+                            <a href="javascript:;" id="expand_hasil" class="text-muted">
+                              <i class="fas fa-eye"></i>
                             </a>
                           </center>
                         </td>
@@ -80,7 +79,7 @@
                 </div>
               </div>
           </div>
-        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <!-- Widget: user widget style 2 -->
@@ -207,3 +206,34 @@
     </section>
     <!-- /.content -->
   </div>
+
+
+  <!-- Modal Lihat Hasil Inventarisasi -->
+  <div class="modal fade" id="modal-hasil">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Hasil Inventarisasi</h4></center>
+                </div>
+                <div class="modal-body">
+                    <style type="text/css"> </style>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">Nilai Perolehan (Rp.)</label>
+                        </div>  
+                        <input type="text" class="form-control" name="input_nilai" id="input_nilai" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="Rp1,000,000">
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success" data-dismiss="modal">Simpan Data</button>
+                </div>
+            </div>
+            <!-- modal-content --> 
+        </div>
+        <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->

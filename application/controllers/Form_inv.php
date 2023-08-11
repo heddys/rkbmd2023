@@ -361,6 +361,7 @@ class Form_inv extends CI_Controller {
 		$data['kode_barang']=$this->form_model->data_kode_barang();
 		$data['satuan']=$this->form_model->data_satuan();
 		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
 
 		
 		$register = $_POST['register'];
@@ -370,9 +371,17 @@ class Form_inv extends CI_Controller {
 		$data['image'] = $this->form_model->ambil_file($register)->result();
 		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
 
+		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+
+		if($sk_penggunaan->num_rows() > 0) {
+			$data['sk_penggunaan']=$sk_penggunaan->row();
+		} else {
+			$data['sk_penggunaan']="NULL";
+		}	
+
         $this->load->view('header',$data);		
 		$this->load->view('edit_form_gdb',$data);
-		$this->load->view('footer_isi_form_pm');
+		$this->load->view('footer_isi_form_gdb');
     }
 	
 
