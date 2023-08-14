@@ -67,7 +67,7 @@
                         <td><center><?php echo round((float)$row->persentase,3) . '%';?></center></td>
                         <td>
                           <center>
-                            <a href="javascript:;" id="expand_hasil" class="text-muted">
+                            <a href="#" id="expand_hasil" class="text-muted" data-id="<?php echo $row->nomor_unit;?>" onclick="detail_hasil(this.getAttribute('data-id'));">
                               <i class="fas fa-eye"></i>
                             </a>
                           </center>
@@ -210,26 +210,455 @@
 
   <!-- Modal Lihat Hasil Inventarisasi -->
   <div class="modal fade" id="modal-hasil">
-        <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Hasil Inventarisasi</h4></center>
                 </div>
                 <div class="modal-body">
-                    <style type="text/css"> </style>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">Nilai Perolehan (Rp.)</label>
-                        </div>  
-                        <input type="text" class="form-control" name="input_nilai" id="input_nilai" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="Rp1,000,000">
-                        <div class="input-group-append">
-                            <span class="input-group-text">.00</span>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header bg-danger">
+                          <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Tanah</strong></center></h5>
                         </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                            <div class="progress" style="height:25px">
+                              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>
+                              </div>
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- ./card-body -->
+                        <div class="card-footer">
+                          <div class="row">
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">11</h5>
+                                <span class="description-text">TOTAL REGISTER</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">22</h5>
+                                <span class="description-text">PROSES VERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">33</h5>
+                                <span class="description-text">REGISTER DI TOLAK</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">44</h5>
+                                <span class="description-text">REGISTER TERVERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <div class="col-sm col-6">
+                              <div class="description-block">
+                                <h5 class="description-header">55</h5>
+                                <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- /.card-footer -->
+                      </div>
+                      <!-- /.card -->
                     </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <hr>
+                  <!-- Batas Per Presentase -->
+
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header bg-warning">
+                          <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Peralatan dan Mesin</strong></center></h5>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                            <div class="progress" style="height:25px">
+                              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>
+                              </div>
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- ./card-body -->
+                        <div class="card-footer">
+                          <div class="row">
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">11</h5>
+                                <span class="description-text">TOTAL REGISTER</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">22</h5>
+                                <span class="description-text">PROSES VERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">33</h5>
+                                <span class="description-text">REGISTER DI TOLAK</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">44</h5>
+                                <span class="description-text">REGISTER TERVERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <div class="col-sm col-6">
+                              <div class="description-block">
+                                <h5 class="description-header">55</h5>
+                                <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- /.card-footer -->
+                      </div>
+                      <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <hr>
+                  <!-- Batas Per Presentase -->
+
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header bg-info">
+                          <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Gedung dan Bangunan</strong></center></h5>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                            <div class="progress" style="height:25px">
+                              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>
+                              </div>
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- ./card-body -->
+                        <div class="card-footer">
+                          <div class="row">
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">11</h5>
+                                <span class="description-text">TOTAL REGISTER</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">22</h5>
+                                <span class="description-text">PROSES VERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">33</h5>
+                                <span class="description-text">REGISTER DI TOLAK</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">44</h5>
+                                <span class="description-text">REGISTER TERVERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <div class="col-sm col-6">
+                              <div class="description-block">
+                                <h5 class="description-header">55</h5>
+                                <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- /.card-footer -->
+                      </div>
+                      <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <hr>
+                  <!-- Batas Per Presentase -->
+
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header bg-primary">
+                          <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Jalan, Irigasi dan Jaringan</strong></center></h5>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                            <div class="progress" style="height:25px">
+                              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>
+                              </div>
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- ./card-body -->
+                        <div class="card-footer">
+                          <div class="row">
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">11</h5>
+                                <span class="description-text">TOTAL REGISTER</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">22</h5>
+                                <span class="description-text">PROSES VERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">33</h5>
+                                <span class="description-text">REGISTER DI TOLAK</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">44</h5>
+                                <span class="description-text">REGISTER TERVERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <div class="col-sm col-6">
+                              <div class="description-block">
+                                <h5 class="description-header">55</h5>
+                                <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- /.card-footer -->
+                      </div>
+                      <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <hr>
+                  <!-- Batas Per Presentase -->
+
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header bg-success">
+                          <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Lainnya</strong></center></h5>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                            <div class="progress" style="height:25px">
+                              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>
+                              </div>
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- ./card-body -->
+                        <div class="card-footer">
+                          <div class="row">
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">11</h5>
+                                <span class="description-text">TOTAL REGISTER</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">22</h5>
+                                <span class="description-text">PROSES VERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">33</h5>
+                                <span class="description-text">REGISTER DI TOLAK</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">44</h5>
+                                <span class="description-text">REGISTER TERVERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <div class="col-sm col-6">
+                              <div class="description-block">
+                                <h5 class="description-header">55</h5>
+                                <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- /.card-footer -->
+                      </div>
+                      <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <hr>
+                  <!-- Batas Per Presentase -->
+
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header bg-grey">
+                          <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tak Berwujud</strong></center></h5>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                            <div class="progress" style="height:25px">
+                              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>
+                              </div>
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- ./card-body -->
+                        <div class="card-footer">
+                          <div class="row">
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">11</h5>
+                                <span class="description-text">TOTAL REGISTER</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">22</h5>
+                                <span class="description-text">PROSES VERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">33</h5>
+                                <span class="description-text">REGISTER DI TOLAK</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm col-6">
+                              <div class="description-block border-right">
+                                <h5 class="description-header">44</h5>
+                                <span class="description-text">REGISTER TERVERIFIKASI</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <div class="col-sm col-6">
+                              <div class="description-block">
+                                <h5 class="description-header">55</h5>
+                                <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- /.card-footer -->
+                      </div>
+                      <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success" data-dismiss="modal">Simpan Data</button>
                 </div>
             </div>
             <!-- modal-content --> 
@@ -237,3 +666,4 @@
         <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
+</div>

@@ -125,15 +125,16 @@
       });
     });
 
-    $(document).ready(function () {
-      $('#expand_hasil').click(function () {
-          $('#modal-hasil').modal({backdrop: 'static', keyboard: false});
-    });
-    
-    
-    
-    
-    });
+    // $(document).ready(function () {
+    // //   $('#expand_hasil').click(function () {
+    // //       $('#modal-hasil').modal({backdrop: 'static', keyboard: false});
+      
+    // });
+
+    function detail_hasil(no_unit) {
+        $('#modal-hasil').modal();
+    }
+
     
 
 </script>
