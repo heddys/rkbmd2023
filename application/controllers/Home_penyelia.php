@@ -45,6 +45,29 @@ class Home_penyelia extends CI_Controller {
         $nip=$this->session->userdata('nip');
         return $this->admin_model->get_pangkuan($nip)->result();
     }
+	
+	public function get_rekapan_aset() {
+		$this->cek_sess();
+        $nomor_unit=$this->input->post('unit');
+
+		$rekap_tanah=$this->admin_model-->data_progres_opd_tanah($nomor_unit)->row();
+		$rekap_pm=$this->admin_model-->data_progres_opd_pm($nomor_unit)->row();
+		$rekap_gdb=$this->admin_model-->data_progres_opd_gdb($nomor_unit)->row();
+		$rekap_jij=$this->admin_model-->data_progres_opd_jij($nomor_unit)->row();
+		$rekap_atl=$this->admin_model-->data_progres_opd_atl($nomor_unit)->row();
+		$rekap_atb=$this->admin_model-->data_progres_opd_atb($nomor_unit)->row();
+
+		$data_rekap = array (
+			'presentase_tanah' => $rekap_tanah->presentase,
+			'presentase_pm' => $rekap_pm->presentase,
+			'presentase_gdb' => $rekap_gdb->presentase,
+			'presentase_jij' => $rekap_jij->presentase,
+			'presentase_atl' => $rekap_atl->presentase,
+			'presentase_atb' => $rekap_atb->presentase,
+		);
+
+		echo json_encode($data_rekap);
+	}
 
     public function get_data_petugas()
     {
