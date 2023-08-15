@@ -149,7 +149,7 @@
                               '<div class="row">'+
                                 '<div class="col-md-12">'+
                                 '<div class="progress" style="height:25px">'+
-                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$data->presentase_tanah,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$data->presentase_tanah,3) . '%';?></strong></div>'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:'+data['persentase_tanah']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_tanah']+'%</strong></div>'+
                                   '</div>'+
                                 '</div>'+  
                               '</div>'+
@@ -199,13 +199,13 @@
                         '<div class="col-12">'+
                           '<div class="card">'+
                             '<div class="card-header bg-primary">'+
-                              '<h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Peralatan dan Mesin}</strong></center></h5>'+
+                              '<h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Peralatan dan Mesin</strong></center></h5>'+
                             '</div>'+
                             '<div class="card-body">'+
                               '<div class="row">'+
                                 '<div class="col-md-12">'+
                                 '<div class="progress" style="height:25px">'+
-                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_pm']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_pm']+'%</strong></div>'+
                                   '</div>'+
                                 '</div>'+  
                               '</div>'+
@@ -261,7 +261,7 @@
                               '<div class="row">'+
                                 '<div class="col-md-12">'+
                                 '<div class="progress" style="height:25px">'+
-                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_gdb']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_gdb']+'%</strong></div>'+
                                   '</div>'+
                                 '</div>'+  
                               '</div>'+
