@@ -158,31 +158,31 @@
                               '<div class="row">'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">11</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tot_tanah']+'</h5>'+
                                     '<span class="description-text">TOTAL REGISTER</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">22</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_pros_tanah']+'</h5>'+
                                     '<span class="description-text">PROSES VERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">33</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_tanah']+'</h5>'+
                                     '<span class="description-text">REGISTER DI TOLAK</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">44</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_verif_tanah']+'</h5>'+
                                     '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block">'+
-                                    '<h5 class="description-header">55</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_tanah']+'</h5>'+
                                     '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
                                   '</div>'+
                                 '</div>'+
@@ -214,31 +214,31 @@
                               '<div class="row">'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">11</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tot_pm']+'</h5>'+
                                     '<span class="description-text">TOTAL REGISTER</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">22</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_pros_pm']+'</h5>'+
                                     '<span class="description-text">PROSES VERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">33</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_pm']+'</h5>'+
                                     '<span class="description-text">REGISTER DI TOLAK</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">44</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_verif_pm']+'</h5>'+
                                     '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block">'+
-                                    '<h5 class="description-header">55</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_pm']+'</h5>'+
                                     '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
                                   '</div>'+
                                 '</div>'+
@@ -270,31 +270,31 @@
                               '<div class="row">'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">11</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tot_gdb']+'</h5>'+
                                     '<span class="description-text">TOTAL REGISTER</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">22</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_pros_gdb']+'</h5>'+
                                     '<span class="description-text">PROSES VERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">33</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_gdb']+'</h5>'+
                                     '<span class="description-text">REGISTER DI TOLAK</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">44</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_verif_gdb']+'</h5>'+
                                     '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block">'+
-                                    '<h5 class="description-header">55</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_gdb']+'</h5>'+
                                     '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
                                   '</div>'+
                                 '</div>'+
@@ -317,7 +317,7 @@
                               '<div class="row">'+
                                 '<div class="col-md-12">'+
                                 '<div class="progress" style="height:25px">'+
-                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_jij']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_jij']+'%</strong></div>'+
                                   '</div>'+
                                 '</div>'+  
                               '</div>'+
@@ -326,31 +326,31 @@
                               '<div class="row">'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">11</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tot_jij']+'</h5>'+
                                     '<span class="description-text">TOTAL REGISTER</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">22</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_pros_jij']+'</h5>'+
                                     '<span class="description-text">PROSES VERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">33</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_jij']+'</h5>'+
                                     '<span class="description-text">REGISTER DI TOLAK</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">44</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_verif_jij']+'</h5>'+
                                     '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block">'+
-                                    '<h5 class="description-header">55</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_jij']+'</h5>'+
                                     '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
                                   '</div>'+
                                 '</div>'+
@@ -373,7 +373,7 @@
                               '<div class="row">'+
                                 '<div class="col-md-12">'+
                                 '<div class="progress" style="height:25px">'+
-                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_atl']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_atl']+'%</strong></div>'+
                                   '</div>'+
                                 '</div>'+  
                               '</div>'+
@@ -382,31 +382,31 @@
                               '<div class="row">'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">11</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tot_atl']+'</h5>'+
                                     '<span class="description-text">TOTAL REGISTER</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">22</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_pros_atl']+'</h5>'+
                                     '<span class="description-text">PROSES VERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">33</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_atl']+'</h5>'+
                                     '<span class="description-text">REGISTER DI TOLAK</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">44</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_verif_atl']+'</h5>'+
                                     '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block">'+
-                                    '<h5 class="description-header">55</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_atl']+'</h5>'+
                                     '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
                                   '</div>'+
                                 '</div>'+
@@ -429,7 +429,7 @@
                               '<div class="row">'+
                                 '<div class="col-md-12">'+
                                 '<div class="progress" style="height:25px">'+
-                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 67%"><strong style="font-size: 20px;color: black;">67</strong></div>'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_atb']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_atb']+'%</strong></div>'+
                                   '</div>'+
                                 '</div>'+  
                               '</div>'+
@@ -438,31 +438,31 @@
                               '<div class="row">'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">11</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tot_atb']+'</h5>'+
                                     '<span class="description-text">TOTAL REGISTER</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">22</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_pros_atb']+'</h5>'+
                                     '<span class="description-text">PROSES VERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">33</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_atb']+'</h5>'+
                                     '<span class="description-text">REGISTER DI TOLAK</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block border-right">'+
-                                    '<h5 class="description-header">44</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_verif_atb']+'</h5>'+
                                     '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="col-sm col-6">'+
                                   '<div class="description-block">'+
-                                    '<h5 class="description-header">55</h5>'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_atb']+'</h5>'+
                                     '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
                                   '</div>'+
                                 '</div>'+
