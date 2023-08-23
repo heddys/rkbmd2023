@@ -50,7 +50,7 @@
                   <tbody>
                     <tr>
                       <td width="70%">
-                        <form role="form" action="<?php echo base_url();?>index.php/home_penyelia/list_status_register/2" method="post">
+                        <form role="form" action="<?php echo base_url();?>index.php/home_penyelia/list_status_register/<?php echo $kib_apa;?>" method="post">
                           <div class="col-md-7">
                             <select class="form-control select2" id="select_lokasi" name="select_lokasi" style="width: 100%">
                               <option selected disable="disabled">Cari Berdasarkan Lokasi</option>
@@ -68,7 +68,7 @@
                       <td>
                       </td>
                       <td width="50%">
-                      <form role="form" action="<?php echo base_url();?>index.php/home_penyelia/list_status_register/2" method="post">
+                      <form role="form" action="<?php echo base_url();?>index.php/home_penyelia/list_status_register/<?php echo $kib_apa;?>" method="post">
                           <div class="input-group">
                             <input type="text"  class="form-control" name="cariregname" placeholder="Cari Berdasarkan Register atau Nama Barang" >
                             <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
@@ -133,4 +133,4 @@
 	      <!-- /.row -->
 	    </section>
 	    <!-- /.content -->
-    </div>S
+    </div>
