@@ -33,7 +33,7 @@
                 </center>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form role="form" action="update_isi_form_peralatan_mesin" method="post" enctype="multipart/form-data">
+                    <form role="form" action="update_isi_form_pm" method="post" enctype="multipart/form-data">
                         <!-- select -->
                         <h4><?php echo $data_register->register." - ".$data_register->nama_barang;?></h4>
                         <hr style="padding: 2px">

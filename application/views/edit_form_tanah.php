@@ -33,7 +33,7 @@
                 </center>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form role="form" action="save_isi_form_tanah" method="post" enctype="multipart/form-data">
+                    <form role="form" action="update_isi_form_tanah" method="post" enctype="multipart/form-data">
                         <!-- select -->
                        
                         <h4><?php echo $data_register->register." - ".$data_register->nama_barang;?></h4>
@@ -450,7 +450,7 @@
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Luas Bangunan (m2) :</label>
+                                            <label class="input-group-text" id="basic-addon3">Luas Tanah (m2) :</label>
                                         </div>
                                             <input type="text" class="form-control" name="luas_tanah" id="luas_tanah" readonly="true" value="<?php echo number_format($data_register->luas,2,',','.');?>">
                                     </div>
@@ -663,42 +663,12 @@
                                 <!-- /input-group -->
                             </div>
 
-                            <div class="form-group col-md-5">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" id="basic-addon3">Data Register Tanah :</label>
-                                    </div>
-                                        <input type="text" class="form-control" name="register_tanah" id="register_tanah" readonly="true" placeholder="-" value="<?php echo $data_register->register_tanah?>">
-                                        <input type="hidden" name="status_tanah" id="status_tanah" value="Pemerintah Daerah">
-                                </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary37" name="radio_reg_tanah" value="0"  <?php 
-                                                if ($data_is_register->is_register_tanah == 0) { echo "checked='checked'";}
-                                            ?> required="required"/>
-                                        <label for="primary37">Sesuai</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary38" name="radio_reg_tanah" value="1" <?php 
-                                                if ($data_is_register->is_register_tanah == 1) { echo "checked='checked'";}
-                                            ?>/>
-                                        <label for="primary38">Tidak</label>
-                                    </div>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-
-                            <!-- Batas Per Form -->
-
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Pemanfaatan Aset : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="pemanfaatan" id="kode_register" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->penggunaan;?>" required="required">
+                                            <input type="text" class="form-control" name="pemanfaatan" id="kode_register" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->pemanfaatan_aset;?>" required="required">
                                     </div>
                             </div>
                             
@@ -767,6 +737,8 @@
                                         <center><strong><p>Apakah Anda Yakin Ingin Menyimpan Data Tersebut ?</p></strong></center>
                                     </div>
                                     <div class="modal-footer justify-content-between">
+                                        <input type="hidden" value="<?php echo $data_register->id;?>" name="id_isi_register">
+                                        <input type="hidden" value="<?php echo $data_is_register->id;?>" name="id_status_register">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
                                         <button type="submit" class="btn btn-success">Simpan Data</button>
                                     </div>

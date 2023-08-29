@@ -945,7 +945,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
-                                        <input type="number" class="form-control" id="edit_luas" pattern="(/[^0-9 \,]/, '')" placeholder="Isi Luas Tanah (m2)">
+                                        <input type="number" class="form-control" id="edit_luas" pattern="(/[^0-9 \,]/, '')" placeholder="Isi Luas Bangunan (m2)">
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-danger" onclick="klik_luas(false)" data-dismiss="modal">Batal</button>

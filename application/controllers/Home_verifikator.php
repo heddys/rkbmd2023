@@ -300,10 +300,10 @@ class Home_verifikator extends CI_Controller {
 		
 		$register=$_POST['register'];
 		$tanda=$_POST['tanda'];
+		$kib=$_POST['kib'];
 		
 		if($tanda == 1) {
 			$penolakan=$_POST['penolakan'];
-			$kib=$_POST['kib'];
 			date_default_timezone_set("Asia/Jakarta");	
 			$updated_date=date("Y-m-d");
 			$updated_time=date("H:i:s");

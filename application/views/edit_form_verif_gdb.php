@@ -17,13 +17,6 @@
     }
 </style>
 <section class="content">
-<div class="container-fluid">
-                <div class="callout callout-danger">
-                    <h5><center>Form Inventarisasi anda dengan register <?php echo $data_register->register?> telah ditolak oleh verifikator, dengan alasan : </center></h5>
-                    <hr style="padding-top:0px; margin-top:2px;">
-                    <h4><?php echo $penolakan->dasar_penolakan;?></h4>
-                </div>
-            </div>
             <!-- general form elements disabled -->
               <div class="card card-dark">
                 <center>
@@ -452,7 +445,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Luas Bangunan (m2) :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="luas_tanah" id="luas_tanah" readonly="true" value="<?php echo number_format($data_register->luas,2,',','.');?>">
+                                            <input type="text" class="form-control" name="luas_bangunan" id="luas_bangunan" readonly="true" value="<?php echo number_format($data_register->luas,2,',','.');?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -465,15 +458,6 @@
                                         <label for="primary25">Sesuai</label>
                                     </div>
 
-                                    <?php if (strpos($data_register->no_sertifikat, 'Hak Pengelolaan') !== FALSE || strpos($data_register->no_sertifikat, 'Hak Pakai') !== FALSE) { ?>
-
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary26" name="radio_luas" value="1" disabled/>
-                                        <label for="primary26">Tidak Sesuai</label>
-                                    </div>
-
-                                    <?php } else { ?>
-
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary26" name="radio_luas" value="1" <?php 
                                                 if ($data_is_register->is_luas == 1) { echo "checked='checked'";}
@@ -481,7 +465,6 @@
                                         <label for="primary26">Tidak Sesuai</label>
                                     </div>
                                     
-                                    <?php } ?>
                                 </div>
                                 <!-- /input-group -->
                             </div>
@@ -1031,10 +1014,30 @@
                     </div>
                     <!-- /.modal -->
 
-                    
+                    <!-- Modal Untuk Input Tipe Barang -->
+                    <div class="modal fade" id="modal-tipe-barang">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <input type="text" class="form-control" id="input_tipe" placeholder="Diisi Tipe Barang....">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_tipe_barang(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success" onclick="klik_tipe_barang(true)" data-dismiss="modal">Simpan Data</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
 
                     <!-- Modal Untuk Input Luas -->
-                    <div class="modal fade" id="modal-luas-tanah">
+                    <div class="modal fade" id="modal-luas-bangunan">
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -1042,7 +1045,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
-                                        <input type="number" class="form-control" id="edit_luas" pattern="(/[^0-9 \,]/, '')" placeholder="Isi Luas Tanah (m2)">
+                                        <input type="number" class="form-control" id="edit_luas" pattern="(/[^0-9 \,]/, '')" placeholder="Isi Luas Bangunan (m2)">
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-danger" onclick="klik_luas(false)" data-dismiss="modal">Batal</button>

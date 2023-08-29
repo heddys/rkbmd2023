@@ -159,7 +159,7 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form role="form" action="<?php echo site_url();?>/form_inv/edit_form_verif" method="post">
+                                        <form role="form" action="<?php echo site_url();?>/form_inv/edit_form_verif_<?php echo $kib_apa; ?>" method="post">
                                         <center>
                                         <button type="submit" class="btn btn-sm btn-primary" title="Edit Form Inventarisasi"><i class="fa fa-align-left"></i>
                                             <input type="hidden" name="register" value="<?php echo $row->register?>">
