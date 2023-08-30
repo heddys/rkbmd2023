@@ -502,11 +502,11 @@
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary33" name="radio_reg_tanah" value="0" disabled="disabled"/>
+                                        <input type="radio" id="primary33" name="radio_reg_tanah" <?php if ($data_is_register->is_register_tanah == 0) {  echo "checked='checked'";} else { echo "disabled='disabled'";} ?> value="0" />
                                         <label for="primary33">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary34" name="radio_reg_tanah" value="1" checked="checked"/>
+                                        <input type="radio" id="primary34" name="radio_reg_tanah" <?php if ($data_is_register->is_register_tanah == 1) {  echo "checked='checked'";} else { echo "disabled='disabled'";} ?> value="1" />
                                         <label for="primary34">Tidak Sesuai</label>
                                     </div>
                                 </div>
