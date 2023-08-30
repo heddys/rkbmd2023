@@ -415,38 +415,7 @@
 
                             <!-- Batas Per Form -->
 
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" id="basic-addon3">Tipe :</label>
-                                            </div>
-                                                <input type="text" class="form-control" name="tipe_barang" id="tipe_barang" readonly="true" value="<?php echo $data_register->tipe;?>">
-                                        </div>
-                                </div>
-                                <!-- /.col-lg-6 -->
-                                <div class=" mt-2 mb-6 col-lg-4">
-                                    <div class="form-group clearfix">
-                                        <div class="radio icheck-primary d-inline">
-                                            <input type="radio" id="primary23" name="radio_tipe" value="0" <?php 
-                                                if ($data_is_register->is_tipe == 0) { echo "checked='checked'";}
-                                            ?> required="required"/>
-                                            <label for="primary23">Sesuai</label>
-                                        </div>
-                                        <div class="radio icheck-primary d-inline">
-                                            <input type="radio" id="primary24" name="radio_tipe" value="1" <?php 
-                                                if ($data_is_register->is_tipe == 1) { echo "checked='checked'";}
-                                            ?>/>
-                                            <label for="primary24">Tidak Sesuai</label>
-                                        </div>
-                                    </div>
-                                    <!-- /input-group -->
-                                </div>
-
-                                <!-- Batas Per Form -->                         
-
-
-                            <!-- Mulai Form -->
+                                                       <!-- Mulai Form -->
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">

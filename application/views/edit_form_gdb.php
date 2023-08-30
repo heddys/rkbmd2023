@@ -452,7 +452,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Luas Bangunan (m2) :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="luas_tanah" id="luas_tanah" readonly="true" value="<?php echo number_format($data_register->luas,2,',','.');?>">
+                                            <input type="text" class="form-control" name="luas_bangunan" id="luas_bangunan" readonly="true" value="<?php echo number_format($data_register->luas,2,',','.');?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -1005,6 +1005,49 @@
                         </div>
                     <!-- /.modal -->
 
+                    <!-- Modal Untuk Input Luas -->
+                    <div class="modal fade" id="modal-luas-bangunan">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Input Luas : (Gunakan tanda " , " untuk memberi koma pada luas)</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <input type="number" class="form-control" id="edit_luas" pattern="(/[^0-9 \,]/, '')" placeholder="Isi Luas Bangunan (m2)">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_luas(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success" onclick="klik_luas(true)" data-dismiss="modal">Simpan Data</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
+                    <!-- Modal Untuk Input Tipe Barang -->
+                    <div class="modal fade" id="modal-tipe-barang">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <input type="text" class="form-control" id="input_tipe" placeholder="Diisi Tipe Barang....">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_tipe_barang(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success" onclick="klik_tipe_barang(true)" data-dismiss="modal">Simpan Data</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+
                     <!-- Modal Untuk Input Kondisi Barang -->
                     <div class="modal fade" id="modal-kondisi-barang">
                             <div class="modal-dialog modal-dialog modal-dialog-centered modal-sm">
@@ -1096,6 +1139,55 @@
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-danger" onclick="klik_lokasi(false)" data-dismiss="modal">Batal</button>
                                         <button type="submit" class="btn btn-success" onclick="klik_lokasi(true)" data-dismiss="modal">Simpan Data</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
+                    <!-- Modal Untuk Cari Register Tanah -->
+                    <div class="modal fade" id="modal-register-tanah">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Pilih Status Tanah </h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <select class="custom-select" id="status_tanah">
+                                            <option selected value="1">Pemerintah Kota</option>
+                                            <option value="2">Pemerintah Pusat</option>
+                                            <option value="3">Pemerintah Daerah Lainnya</option>
+                                            <option value="4">Pihak Lainnya</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_reg_tanah(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-info" onclick="klik_reg_tanah(true)" data-dismiss="modal">Proses</button>
+                                    </div>
+                            </div>
+                                <!-- modal-content --> 
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+
+                    <!-- Modal Untuk Isi Status Tanah -->
+                    <div class="modal fade" id="modal-isi_status_tanah">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center><h4 class="modal-title"></i><div id="title_status"></div></h4></center>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css"> </style>
+                                        <input type="text" class="form-control" id="isi_status_tanah" placeholder="">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger" onclick="klik_status_tanah(false)" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-info" onclick="klik_status_tanah(true)" data-dismiss="modal">Cari Data</button>
                                     </div>
                             </div>
                                 <!-- modal-content --> 
@@ -1326,6 +1418,42 @@
                                 <!-- /.modal-dialog --> 
                             </div>
                         
+                            <!-- Menampilkan Hasil Pencarian Register                                                 -->
+                            <div class="modal fade" id="modal-list-register3">
+                                <div class="modal-dialog modal-dialog-centered modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
+                                        </div>
+                                        <div class="modal-body" style="overflow-x:auto;">
+                                            <style type="text/css"> </style>
+                                                <table id="tblregister3" class="table table-striped table-hover responsive">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th><center>No.</center></th>
+                                                            <th><center>Kode Barang</center></th>
+                                                            <th><center>Register</center></th>
+                                                            <th><center>Nama Barang</center></th>
+                                                            <th><center>Tipe</center></th>
+                                                            <th><center>Alamat</center></th>
+                                                            <th><center>Tahun Perolehan</center></th>
+                                                            <th><center>Nilai</center></th>
+                                                            <th><center>Aksi</center></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tampil_data3">
+                                                    </tbody>
+                                                </table>  
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-danger batal" onclick="klik_destroy3()">Batal</button>
+                                                <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
+                                        </div>
+                                    </div>
+                                        <!-- modal-content -->
+                                </div>
+                                    <!-- /.modal-dialog --> 
+                            </div>
 
                     
 

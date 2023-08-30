@@ -1277,42 +1277,42 @@
                     <!-- /.modal -->
 
 
-                        <!-- Menampilkan Hasil Pencarian Register                                                 -->
-                        <div class="modal fade" id="modal-list-register3">
-                            <div class="modal-dialog modal-dialog-centered modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
-                                    </div>
-                                    <div class="modal-body" style="overflow-x:auto;">
-                                        <style type="text/css"> </style>
-                                            <table id="tblregister3" class="table table-striped table-hover responsive">
-                                                <thead class="thead-dark">
-                                                    <tr>
-                                                        <th><center>No.</center></th>
-                                                        <th><center>Kode Barang</center></th>
-                                                        <th><center>Register</center></th>
-                                                        <th><center>Nama Barang</center></th>
-                                                        <th><center>Tipe</center></th>
-                                                        <th><center>Alamat</center></th>
-                                                        <th><center>Tahun Perolehan</center></th>
-                                                        <th><center>Nilai</center></th>
-                                                        <th><center>Aksi</center></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="tampil_data3">
-                                                </tbody>
-                                            </table>  
-                                    </div>
-                                    <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-danger batal" onclick="klik_destroy3()">Batal</button>
-                                            <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
-                                    </div>
+                    <!-- Menampilkan Hasil Pencarian Register                                                 -->
+                    <div class="modal fade" id="modal-list-register3">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
                                 </div>
-                                    <!-- modal-content -->
+                                <div class="modal-body" style="overflow-x:auto;">
+                                    <style type="text/css"> </style>
+                                        <table id="tblregister3" class="table table-striped table-hover responsive">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th><center>No.</center></th>
+                                                    <th><center>Kode Barang</center></th>
+                                                    <th><center>Register</center></th>
+                                                    <th><center>Nama Barang</center></th>
+                                                    <th><center>Tipe</center></th>
+                                                    <th><center>Alamat</center></th>
+                                                    <th><center>Tahun Perolehan</center></th>
+                                                    <th><center>Nilai</center></th>
+                                                    <th><center>Aksi</center></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tampil_data3">
+                                            </tbody>
+                                        </table>  
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger batal" onclick="klik_destroy3()">Batal</button>
+                                        <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
+                                </div>
                             </div>
-                                <!-- /.modal-dialog --> 
+                                <!-- modal-content -->
                         </div>
+                            <!-- /.modal-dialog --> 
+                    </div>
                         
 
                     
