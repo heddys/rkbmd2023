@@ -132,6 +132,7 @@
                             <th><center>Kode Neraca</center></th>
                             <th><center>Nama Barang</center></th>
                             <th><center>Merk / Tipe Barang</center></th>
+                            <th><center>Kondisi Aset</center></th>
                             <th><center>Nilai Perolehan </center></th>
                             <th><center>Tahun</center></th>
                             <th><center>Cetak</center></th>
@@ -145,11 +146,12 @@
                                     <td><center><?php echo $row->register;?></center></td>
                                     <td><center><?php echo $row->lokasi_awal;?></center></td>
                                     <td><center><?php echo $row->lokasi_baru;?></center></td>
-                                    <td><center><?php echo $row->kode64_baru;?></center></td>
+                                    <td><center><?php echo $row->kode64_baru;?><?php if (substr($row->kode64_baru,0,9) == "1.3.02.10") { ?> <span class="right badge badge-danger"> SPBE </span> <?php } ?></center></td>
                                     <td><center><?php echo $row->nama_barang;?></center></td>
                                     <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
-                                    <td><center><?php echo $row->tahun_pengadaan;?></center></td>
+                                    <td><center><?php echo ($row->kondisi_barang == "B") ? "Baik" : "Kurang Baik";?></center></td>
                                     <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
+                                    <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                                     <td>  
                                         <form role="form" action="<?php echo site_url();?>/status_form/cetak_form" method="post" target="_blank" >
                                             <center>
