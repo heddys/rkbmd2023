@@ -59,7 +59,7 @@
 
             public function get_register_lokasi_baru($lokasi,$kib)
             {
-                $query=$this->db->query("SELECT a.*,b.unit as opd_lama,b.lokasi as lokasi_lama,c.register,c.lokasi,d.unit as opd_baru,d.lokasi as lokasi_baru,c.kode_barang,c.nama_barang as nama_baru, c.spesifikasi_barang_merk from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi INNER JOIN register_isi c on a.register=c.register inner join kamus_lokasi d on c.lokasi=d.nomor_lokasi where a.unit_baru like '%".$lokasi."%' and a.kode108_baru like '%".$kib."%' and a.status = '2' and a.nomor_lokasi <> c.lokasi");
+                $query=$this->db->query("SELECT a.*,b.unit as opd_lama,b.lokasi as lokasi_lama,c.register,c.lokasi,d.unit as opd_baru,d.lokasi as lokasi_baru,c.kode_barang,c.nama_barang as nama_baru, c.spesifikasi_barang_merk from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi INNER JOIN register_isi c on a.register=c.register inner join kamus_lokasi d on c.lokasi=d.nomor_lokasi where a.nomor_lokasi_baru like '%".$lokasi."%' and a.kode108_baru like '%".$kib."%' and a.status = '2' and a.nomor_lokasi <> c.lokasi");
 
                 return $query;
             }

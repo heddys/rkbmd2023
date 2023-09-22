@@ -694,7 +694,7 @@
                                 <div class="mb-3">
                                 <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg , Ukuran File Max : 5MB dan Foto Disertai Geotag)
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]" <?php if ($image == NULL ) { echo "required='required'";}?> accept="image/jpeg">
+                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]" <?php if ($image == NULL ) { echo "required='required'";}?> accept="image/jpeg,image/jpg,image/png">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                     <p>

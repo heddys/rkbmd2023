@@ -358,14 +358,13 @@
           </li> -->
           <li class="nav-header"><strong>MENU LAPORAN</strong></li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-bookmark"></i>
+            <a href="<?php echo site_url('status_form/halaman_buku_bantu')?>" class="nav-link">
+              <i class="nav-icon fa fa-book"></i>
               <p>
                 Buku Bantu
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/export_excel_all_kibpm_user');?>" class="nav-link">
                   <i class="nav-icon fa fa-file"></i>
@@ -398,7 +397,7 @@
                   </p>
                 </a>
               </li>
-            </ul>
+            </ul> -->
           </li>
           <li class="nav-item has-treeview">
             <a href="<?php echo site_url('status_form/halaman_cetak_laporan')?>" class="nav-link">

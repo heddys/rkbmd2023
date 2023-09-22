@@ -602,7 +602,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|pdf'; 
+                    $config['allowed_types'] = 'jpg|jpeg|png'; 
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -813,7 +813,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|pdf'; 
+                    $config['allowed_types'] = 'jpg|jpeg|png';
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -1042,7 +1042,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|pdf'; 
+                    $config['allowed_types'] = 'jpg|jpeg|png'; 
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -1268,7 +1268,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|pdf'; 
+                    $config['allowed_types'] = 'jpg|jpeg|png'; 
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -1517,7 +1517,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|pdf'; 
+                    $config['allowed_types'] = 'jpg|jpeg|png';
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -1731,7 +1731,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|pdf'; 
+                    $config['allowed_types'] = 'jpg|jpeg|png';
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -2012,7 +2012,7 @@ class Form_inv extends CI_Controller {
 		}
 	}
 
-	public function export_excel_all_kibpm_user() {
+	public function export_excel_all_kibpm_user($kib) {
 
 		$this->cek_sess();
 		// // Read an Excel File
@@ -2049,7 +2049,7 @@ class Form_inv extends CI_Controller {
         $objPHPExcel->getActiveSheet()->setCellValue('H3', "Tahun Pengadaan");
         $objPHPExcel->getActiveSheet()->setCellValue('I3', "Nilai");
         $objPHPExcel->getActiveSheet()->setCellValue('J3', "Status");
-        $objPHPExcel->getActiveSheet()->setCellValue('K3', "Status");
+        $objPHPExcel->getActiveSheet()->setCellValue('K3', "Tanggal Inventarisasi");
 		
 		$objPHPExcel->getActiveSheet()->getStyle('A3:K3')->getFont()->setBold( true );
 		
@@ -2073,7 +2073,7 @@ class Form_inv extends CI_Controller {
         // Add data
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data_kib=$this->form_model->get_kib_for_excel($nomor_lokasi,'1.3.2');
+		$data_kib=$this->form_model->get_kib_for_excel($nomor_lokasi,$kib);
 		$i=4;
 		$no=1;
 
@@ -2142,7 +2142,7 @@ class Form_inv extends CI_Controller {
         $objWriter->save('php://output');    
 	}
 
-	public function export_excel_kondisi_kibpm_user() {
+	public function export_excel_kondisi_kibpm_user($kib) {
 
 		$this->cek_sess();
 		// // Read an Excel File
@@ -2209,7 +2209,7 @@ class Form_inv extends CI_Controller {
         // Add data
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,'1.3.2')->result();
+		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,$kib)->result();
 		$data_register=array();
 		$data_register_updated=array();
 		foreach ($get_data_register as $key) {
@@ -2319,7 +2319,7 @@ class Form_inv extends CI_Controller {
         $objWriter->save('php://output');    
 	}
 
-	public function export_excel_lokasi_kibpm_user() {
+	public function export_excel_lokasi_kibpm_user($kib) {
 
 		$this->cek_sess();
 		// // Read an Excel File
@@ -2422,7 +2422,7 @@ class Form_inv extends CI_Controller {
 
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$get_data_register=$this->form_model->get_register_lokasi_baru($nomor_lokasi,'1.3.2')->result();
+		$get_data_register=$this->form_model->get_register_lokasi_baru($nomor_lokasi,$kib)->result();
 
 		$i=5;
 		$no=1;
@@ -2472,7 +2472,7 @@ class Form_inv extends CI_Controller {
 
 	
 
-	public function export_excel_reg_sudah_dikerjakan() {
+	public function export_excel_reg_sudah_dikerjakan($kib) {
 
 		function to_rp_verif($val)
 		{
@@ -2542,7 +2542,7 @@ class Form_inv extends CI_Controller {
         // Add data
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data_kib=$this->form_model->get_kib_dikerjakan_excel($nomor_lokasi,'1.3.2');
+		$data_kib=$this->form_model->get_kib_dikerjakan_excel($nomor_lokasi,$kib);
 		$i=4;
 		$no=1;
 

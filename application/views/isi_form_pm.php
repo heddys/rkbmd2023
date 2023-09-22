@@ -531,9 +531,9 @@
 
                             <div class="form-group col-md-8 file_upload">
                                 <div class="mb-3">
-                                <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg | .pdf , Ukuran File Max : 5MB dan Foto Disertai Geotag)
+                                <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg | .png , Ukuran File Max : 5MB dan Foto Disertai Geotag)
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]" required="required" accept="image/jpeg,application/pdf">
+                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]" required="required" accept="image/jpeg,image/jpg,image/png">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                     <p>

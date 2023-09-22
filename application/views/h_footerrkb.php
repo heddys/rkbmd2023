@@ -134,10 +134,10 @@
 
     //this.files[0].size gets the size of your file.
     var pdf = document.getElementById('customFile');
-      if(this.files[0].size > 7000000) {
+    if(image.files.item(i).size > 8000000 || (image.files.item(i).type != "image/jpeg" && image.files.item(i).type != "image/jpg" && image.files.item(i).type != "image/png" )) {
         var html = "<div class='alert alert-danger alert-dismissible'>"+
                       "<h5><i class='icon fas fa-ban'></i> Oops!</h5>"+
-                      "Mohon Maaf Ukuran File Lebih Dari 8 Mb, Silahkan Periksa Kembali Ukuran File Yang Anda Upload"+
+                      "Mohon Maaf Salah Satu Tipe atau Ukuran File Lebih Dari 7 Mb, Silahkan Periksa Kembali Ukuran File Yang Anda Upload"+
                   "</div>";
                   
         $('#alert').html(html);

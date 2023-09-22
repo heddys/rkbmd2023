@@ -413,6 +413,16 @@ class Status_form extends CI_Controller {
 		$this->load->view('footer');	
 	}
 
+	public function halaman_buku_bantu()
+	{
+		$this->cek_sess();
+		$data['page']="List Buku Bantu";
+
+		$this->load->view('header',$data);		
+		$this->load->view('halaman_cetak_buku_bantu');
+		$this->load->view('footer');
+	}
+
     public function cetak_form()
 	{   
         

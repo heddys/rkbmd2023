@@ -621,7 +621,7 @@
                                 <div class="mb-5 mt-5">
                                     <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg , Ukuran File Max : 5MB, dan Rotasi Foto : Portrait, dan Foto Disertai Geotag)
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]"  accept="image/jpeg,application/pdf">
+                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]"  accept="image/jpeg,image/jpg,image/png">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                 </div>                      
