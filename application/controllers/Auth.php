@@ -60,7 +60,10 @@ class Auth extends CI_Controller {
 				redirect('home_penyelia');
 			} elseif ($this->session->userdata('role')=='Admin') {
 				redirect('home_admin');
-			} else {
+			} elseif ($this->session->userdata('role')=='Guest') {
+				redirect('home_guest');
+			}
+			else {
 				redirect('home');
 			}
 		}
