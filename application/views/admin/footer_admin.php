@@ -477,6 +477,364 @@
 
       });
 
+      function detail_hasil(no_unit) {
+            $('#modal-hasil').modal();
+
+            var html = '';
+
+            $.ajax({
+                  type: 'ajax',
+                  method: 'post',
+                  url: '<?php echo site_url();?>/Home_admin/get_rekapan_aset',
+                  data:{unit:no_unit},
+                  async: false,
+                  dataType: 'json',
+                  success: function(data){
+
+                        html += '<div class="row">'+
+                        '<div class="col-12">'+
+                          '<div class="card">'+
+                            '<div class="card-header bg-danger">'+
+                              '<h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Tanah</strong></center></h5>'+
+                            '</div>'+
+                            '<div class="card-body">'+
+                              '<div class="row">'+
+                                '<div class="col-md-12">'+
+                                '<div class="progress" style="height:25px">'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:'+data['persentase_tanah']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_tanah']+'%</strong></div>'+
+                                  '</div>'+
+                                '</div>'+  
+                              '</div>'+
+                            '</div>'+
+                            '<div class="card-footer">'+
+                              '<div class="row">'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tot_tanah']+'</h5>'+
+                                    '<span class="description-text">TOTAL REGISTER</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_pros_tanah']+'</h5>'+
+                                    '<span class="description-text">PROSES VERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_tanah']+'</h5>'+
+                                    '<span class="description-text">REGISTER DI TOLAK</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_verif_tanah']+'</h5>'+
+                                    '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block">'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_tanah']+'</h5>'+
+                                    '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
+                                  '</div>'+
+                                '</div>'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>'+
+                        '</div>'+
+                      '</div>'+
+                      '<hr>'+
+
+                      // Batas Per Presentase
+
+                      '<div class="row">'+
+                        '<div class="col-12">'+
+                          '<div class="card">'+
+                            '<div class="card-header bg-primary">'+
+                              '<h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Peralatan dan Mesin</strong></center></h5>'+
+                            '</div>'+
+                            '<div class="card-body">'+
+                              '<div class="row">'+
+                                '<div class="col-md-12">'+
+                                '<div class="progress" style="height:25px">'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_pm']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_pm']+'%</strong></div>'+
+                                  '</div>'+
+                                '</div>'+  
+                              '</div>'+
+                            '</div>'+
+                            '<div class="card-footer">'+
+                              '<div class="row">'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tot_pm']+'</h5>'+
+                                    '<span class="description-text">TOTAL REGISTER</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_pros_pm']+'</h5>'+
+                                    '<span class="description-text">PROSES VERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_pm']+'</h5>'+
+                                    '<span class="description-text">REGISTER DI TOLAK</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_verif_pm']+'</h5>'+
+                                    '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block">'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_pm']+'</h5>'+
+                                    '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
+                                  '</div>'+
+                                '</div>'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>'+
+                        '</div>'+
+                      '</div>'+
+                      '<hr>'+
+
+                      // Batas Per Presentase
+
+                      '<div class="row">'+
+                        '<div class="col-12">'+
+                          '<div class="card">'+
+                            '<div class="card-header bg-success">'+
+                              '<h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Gedung dan Bangunan</strong></center></h5>'+
+                            '</div>'+
+                            '<div class="card-body">'+
+                              '<div class="row">'+
+                                '<div class="col-md-12">'+
+                                '<div class="progress" style="height:25px">'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_gdb']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_gdb']+'%</strong></div>'+
+                                  '</div>'+
+                                '</div>'+  
+                              '</div>'+
+                            '</div>'+
+                            '<div class="card-footer">'+
+                              '<div class="row">'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tot_gdb']+'</h5>'+
+                                    '<span class="description-text">TOTAL REGISTER</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_pros_gdb']+'</h5>'+
+                                    '<span class="description-text">PROSES VERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_gdb']+'</h5>'+
+                                    '<span class="description-text">REGISTER DI TOLAK</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_verif_gdb']+'</h5>'+
+                                    '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block">'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_gdb']+'</h5>'+
+                                    '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
+                                  '</div>'+
+                                '</div>'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>'+
+                        '</div>'+
+                      '</div>'+
+                      '<hr>'+
+
+                      // Batas Per Presentase
+
+                      '<div class="row">'+
+                        '<div class="col-12">'+
+                          '<div class="card">'+
+                            '<div class="card-header bg-info">'+
+                              '<h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Jalan,Irigasi dan Jaringan</strong></center></h5>'+
+                            '</div>'+
+                            '<div class="card-body">'+
+                              '<div class="row">'+
+                                '<div class="col-md-12">'+
+                                '<div class="progress" style="height:25px">'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_jij']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_jij']+'%</strong></div>'+
+                                  '</div>'+
+                                '</div>'+  
+                              '</div>'+
+                            '</div>'+
+                            '<div class="card-footer">'+
+                              '<div class="row">'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tot_jij']+'</h5>'+
+                                    '<span class="description-text">TOTAL REGISTER</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_pros_jij']+'</h5>'+
+                                    '<span class="description-text">PROSES VERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_jij']+'</h5>'+
+                                    '<span class="description-text">REGISTER DI TOLAK</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_verif_jij']+'</h5>'+
+                                    '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block">'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_jij']+'</h5>'+
+                                    '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
+                                  '</div>'+
+                                '</div>'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>'+
+                        '</div>'+
+                      '</div>'+
+                      '<hr>'+
+
+                      // Batas Per Presentase
+
+                      '<div class="row">'+
+                        '<div class="col-12">'+
+                          '<div class="card">'+
+                            '<div class="card-header bg-warning">'+
+                              '<h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tetap Lainnya</strong></center></h5>'+
+                            '</div>'+
+                            '<div class="card-body">'+
+                              '<div class="row">'+
+                                '<div class="col-md-12">'+
+                                '<div class="progress" style="height:25px">'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_atl']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_atl']+'%</strong></div>'+
+                                  '</div>'+
+                                '</div>'+  
+                              '</div>'+
+                            '</div>'+
+                            '<div class="card-footer">'+
+                              '<div class="row">'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tot_atl']+'</h5>'+
+                                    '<span class="description-text">TOTAL REGISTER</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_pros_atl']+'</h5>'+
+                                    '<span class="description-text">PROSES VERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_atl']+'</h5>'+
+                                    '<span class="description-text">REGISTER DI TOLAK</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_verif_atl']+'</h5>'+
+                                    '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block">'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_atl']+'</h5>'+
+                                    '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
+                                  '</div>'+
+                                '</div>'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>'+
+                        '</div>'+
+                      '</div>'+
+                      '<hr>'+
+
+                      // Batas Per Presentase
+
+                      '<div class="row">'+
+                        '<div class="col-12">'+
+                          '<div class="card">'+
+                            '<div class="card-header bg-grey">'+
+                              '<h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Aset Tak Berwujud</strong></center></h5>'+
+                            '</div>'+
+                            '<div class="card-body">'+
+                              '<div class="row">'+
+                                '<div class="col-md-12">'+
+                                '<div class="progress" style="height:25px">'+
+                                  '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+data['persentase_atb']+'%"><strong style="font-size: 20px;color: black;">'+data['persentase_atb']+'%</strong></div>'+
+                                  '</div>'+
+                                '</div>'+  
+                              '</div>'+
+                            '</div>'+
+                            '<div class="card-footer">'+
+                              '<div class="row">'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tot_atb']+'</h5>'+
+                                    '<span class="description-text">TOTAL REGISTER</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_pros_atb']+'</h5>'+
+                                    '<span class="description-text">PROSES VERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_tolak_atb']+'</h5>'+
+                                    '<span class="description-text">REGISTER DI TOLAK</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block border-right">'+
+                                    '<h5 class="description-header">'+data['rekap_verif_atb']+'</h5>'+
+                                    '<span class="description-text">REGISTER TERVERIFIKASI</span>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="col-sm col-6">'+
+                                  '<div class="description-block">'+
+                                    '<h5 class="description-header">'+data['rekap_sisa_atb']+'</h5>'+
+                                    '<span class="description-text">REGISTER BELUM DI KERJAKAN</span>'+
+                                  '</div>'+
+                                '</div>'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>'+
+                        '</div>'+
+                      '</div>'+
+                      '<hr>';
+
+
+                      $('#modal-hasil').find('#isi_body').html(html);                    
+                    },
+                    error: function() {
+                      alert('Koneksi Gagal');
+                    }
+                });
+                 
+        }
+
 
 
 

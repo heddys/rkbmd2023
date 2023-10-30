@@ -391,7 +391,7 @@ class Admin_model extends CI_Model{
    {
        $query=$this->db->query(
             "SELECT
-                b.unit,
+                b.unit,b.nomor_unit,
                 count( a.register ) as total,
                 COUNT(
                 IF

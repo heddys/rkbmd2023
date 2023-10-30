@@ -436,7 +436,7 @@ class Form_inv extends CI_Controller {
 		// echo $register;
 
         $this->load->view('header',$data);		
-		$this->load->view('edit_form_verif',$data);
+		$this->load->view('edit_form_verif_pm',$data);
 		$this->load->view('footer_isi_form_pm');
 	}
 

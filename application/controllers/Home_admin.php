@@ -10,8 +10,8 @@ class Home_admin extends CI_Controller {
         $data['page']="Dashboard Admin";
 
 		$data['get_data_chart']=$this->admin_model->get_data_chart(1);
-		$data['get_proses_reg']=$this->admin_model->get_proses_reg(1);
-        $data['get_tolak_reg']=$this->admin_model->get_tolak_reg(1);
+		// $data['get_proses_reg']=$this->admin_model->get_proses_reg(1);
+        // $data['get_tolak_reg']=$this->admin_model->get_tolak_reg(1);
 		$data['rekap_opd']=$this->admin_model->get_rekap_opd_admin();
 
         $this->load->view('admin/header_admin',$data);		
@@ -29,6 +29,60 @@ class Home_admin extends CI_Controller {
 				$par=2;
 				redirect('auth/index/'.$par);
 			}
+	}
+
+	public function get_rekapan_aset() {
+		$this->cek_sess();
+
+        $nomor_unit=$this->input->post('unit');
+
+		$rekap_tanah=$this->admin_model->data_progres_opd_tanah($nomor_unit)->row();
+		$rekap_pm=$this->admin_model->data_progres_opd_pm($nomor_unit)->row();
+		$rekap_gdb=$this->admin_model->data_progres_opd_gdb($nomor_unit)->row();
+		$rekap_jij=$this->admin_model->data_progres_opd_jij($nomor_unit)->row();
+		$rekap_atl=$this->admin_model->data_progres_opd_atl($nomor_unit)->row();
+		$rekap_atb=$this->admin_model->data_progres_opd_atb($nomor_unit)->row();
+
+		$data_rekap = array (
+			'persentase_tanah' => round((float)$rekap_tanah->persentase,3),
+			'persentase_pm' => round((float)$rekap_pm->persentase,3),
+			'persentase_gdb' => round((float)$rekap_gdb->persentase,3),
+			'persentase_jij' => round((float)$rekap_jij->persentase,3),
+			'persentase_atl' => round((float)$rekap_atl->persentase,3),
+			'persentase_atb' => round((float)$rekap_atb->persentase,3),
+			'rekap_tot_tanah' => number_format($rekap_tanah->total),
+			'rekap_tot_pm' => number_format($rekap_pm->total),
+			'rekap_tot_gdb' => number_format($rekap_gdb->total),
+			'rekap_tot_jij' => number_format($rekap_jij->total),
+			'rekap_tot_atl' => number_format($rekap_atl->total),
+			'rekap_tot_atb' => number_format($rekap_atb->total),
+			'rekap_pros_tanah' => number_format($rekap_tanah->proses),
+			'rekap_pros_pm' => number_format($rekap_pm->proses),
+			'rekap_pros_gdb' => number_format($rekap_gdb->proses),
+			'rekap_pros_jij' => number_format($rekap_jij->proses),
+			'rekap_pros_atl' => number_format($rekap_atl->proses),
+			'rekap_pros_atb' => number_format($rekap_atb->proses),
+			'rekap_tolak_tanah' => number_format($rekap_tanah->tolak),
+			'rekap_tolak_pm' => number_format($rekap_pm->tolak),
+			'rekap_tolak_gdb' => number_format($rekap_gdb->tolak),
+			'rekap_tolak_jij' => number_format($rekap_jij->tolak),
+			'rekap_tolak_atl' => number_format($rekap_atl->tolak),
+			'rekap_tolak_atb' => number_format($rekap_atb->tolak),
+			'rekap_verif_tanah' => number_format($rekap_tanah->verif),
+			'rekap_verif_pm' => number_format($rekap_pm->verif),
+			'rekap_verif_gdb' => number_format($rekap_gdb->verif),
+			'rekap_verif_jij' => number_format($rekap_jij->verif),
+			'rekap_verif_atl' => number_format($rekap_atl->verif),
+			'rekap_verif_atb' => number_format($rekap_atb->verif),
+			'rekap_sisa_tanah' => number_format($rekap_tanah->sisa),
+			'rekap_sisa_pm' => number_format($rekap_pm->sisa),
+			'rekap_sisa_gdb' => number_format($rekap_gdb->sisa),
+			'rekap_sisa_jij' => number_format($rekap_jij->sisa),
+			'rekap_sisa_atl' => number_format($rekap_atl->sisa),
+			'rekap_sisa_atb' => number_format($rekap_atb->sisa)
+		);
+
+		echo json_encode($data_rekap);
 	}
 
 	public function update_data_pengadaan()

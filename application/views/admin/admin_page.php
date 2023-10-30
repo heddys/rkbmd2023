@@ -94,8 +94,8 @@
                         <td><center><?php echo round((float)$row->persentase,3) . '%';?></center></td>
                         <td>
                           <center>
-                            <a href="#" class="text-muted">
-                              <i class="fas fa-search"></i>
+                            <a href="#" id="expand_hasil" class="text-muted" data-id="<?php echo $row->nomor_unit;?>" onclick="detail_hasil(this.getAttribute('data-id'));">
+                              <i class="fas fa-eye"></i>
                             </a>
                           </center>
                         </td>
@@ -107,13 +107,10 @@
               </div>
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-6">
-                <!-- Widget: user widget style 2 -->
                 <div class="card card-widget widget-user-2">
-                <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-success">
-                    <!-- /.widget-user-image -->
                     <h3 class="widget-user-username">Dalam Proses Verifikasi</h3>
                     <h5 class="widget-user-desc">Rekap Register Per OPD</h5>
                 </div>
@@ -128,33 +125,26 @@
                     </ul>
                 </div>
                 </div>
-                <!-- /.widget-user -->
             </div>
-            <!-- /.col -->
             <div class="col-md-6">
-                <!-- Widget: user widget style 2 -->
                 <div class="card card-widget widget-user-2">
-                <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header bg-danger">
-                    <!-- /.widget-user-image -->
-                    <h3 class="widget-user-username">Register Di Tolak</h3>
-                    <h5 class="widget-user-desc">Rekap Register Per OPD</h5>
+                  <div class="widget-user-header bg-danger">
+                      <h3 class="widget-user-username">Register Di Tolak</h3>
+                      <h5 class="widget-user-desc">Rekap Register Per OPD</h5>
+                  </div>
+                  <div class="card-footer p-0">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <?php foreach ($get_tolak_reg as $row) {
+                              echo "<li class='nav-item'><a href='#' class='nav-link'>";
+                              echo strtoupper($row->unit)."<span class='float-right badge bg-primary'>".$row->jumlah."</span></a></li>";
+                          }?>
+                        </li>
+                      </ul>
+                  </div>  
                 </div>
-                <div class="card-footer p-0">
-                    <ul class="nav flex-column">
-                      <li class="nav-item">
-                        <?php foreach ($get_tolak_reg as $row) {
-                            echo "<li class='nav-item'><a href='#' class='nav-link'>";
-                            echo strtoupper($row->unit)."<span class='float-right badge bg-primary'>".$row->jumlah."</span></a></li>";
-                        }?>
-                      </li>
-                    </ul>
-                </div>  
-                </div>
-                <!-- /.widget-user -->
             </div>
-            <!-- /.col -->
-        </div>
+        </div> -->
         <center>
       
         <!-- /.row -->
@@ -163,3 +153,22 @@
     </section>
     <!-- /.content -->
   </div>
+
+  <div class="modal fade" id="modal-hasil">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Hasil Inventarisasi</h4></center>
+                </div>
+                <div class="modal-body" id="isi_body">
+                  
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+            <!-- modal-content --> 
+        </div>
+        <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
