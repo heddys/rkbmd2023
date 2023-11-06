@@ -224,11 +224,11 @@ class Home_admin extends CI_Controller {
 		date_default_timezone_set("Asia/Jakarta");	
 		$date=date("Y-m-d");
 		$time=date("H:i:s");
-		$get_simbada = $this->admin_model->update_sawal_simbada()->result();
+		$get_sawal = $this->admin_model->update_sawal_simbada()->result();
 
 		echo "<h2>Proses Updating Data Saldo Awal </h2>";
 
-		foreach ($get_simbada as $row) {
+		foreach ($get_sawal as $row) {
 			$get_154=substr($row->kode108_baru, 0, 5);
 			$exist = $this->admin_model->cek_register($row->register,'data_kib');
 			$get_status=$exist->row();
@@ -279,6 +279,8 @@ class Home_admin extends CI_Controller {
 					$this->admin_model->insert_register($data_reg);
 			} else {
 
+				$register = $row->register;
+				
 				if($get_status->status == NULL) {
 					$data_for_kib=array (
 					'kode_108' => $row->kode_108,
@@ -319,8 +321,6 @@ class Home_admin extends CI_Controller {
 					);
 					$this->admin_model->update_data($register,$data_for_kib,'data_kib');
 				} else {
-
-					$register = $row->register;
 
 					$data_for_kib=array (
 						'nomor_lokasi_baru' => $row->nomor_lokasi_baru,
