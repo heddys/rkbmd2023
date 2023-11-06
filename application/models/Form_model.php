@@ -391,6 +391,7 @@
 
             public function tandai_kib($register)
             {
+                
                 $this->db->where('register', $register);
                 $this->db->update('data_kib', array('status' => 1));
                 $this->db->error();

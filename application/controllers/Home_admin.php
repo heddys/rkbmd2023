@@ -225,12 +225,15 @@ class Home_admin extends CI_Controller {
 		$date=date("Y-m-d");
 		$time=date("H:i:s");
 		$get_simbada = $this->admin_model->update_sawal_simbada()->result();
-		foreach ($get_simbada as $row) {
 
+		echo "<h2>Proses Updating Data Saldo Awal </h2>";
+
+		foreach ($get_simbada as $row) {
+			$get_154=substr($row->kode108_baru, 0, 5);
 			$exist = $this->admin_model->cek_register($row->register,'data_kib');
 			$get_status=$exist->row();
 			
-			if($exist->num_rows() < 1 ) {
+			if($exist->num_rows() < 1 && $get_154 != '1.5.4') {
 
 				$data_reg= array (
 
@@ -335,13 +338,8 @@ class Home_admin extends CI_Controller {
 					$this->admin_model->update_data($register,$data_for_kib,'data_kib');
 
 				}
-
-				
 			}
 		}
-
-		echo "<h2>DONE Proses Penyamaan DATA KIB Dengan AUDITED, Lanjut Proses Pengeditan Register Yang Telah Di Kerjakan !!!! </h2>";
-
 
 		$get_simbada2 = $this->admin_model->get_kib_simbada()->result();
 

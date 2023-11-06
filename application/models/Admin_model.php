@@ -280,11 +280,19 @@ class Admin_model extends CI_Model{
     return $this->db->get_where('data_kib',array('status !=' => NULL));
    }
 
+//    public function update_sawal_simbada()
+//    {
+//     $db_simbada = $this->load->database('simbada',TRUE);
+
+//     $query=$db_simbada->query("SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri,no_mesin,no_bpkb,register_tanah,penggunaan, keterangan, penghapusan,koreksi_hapus, hibah_keluar,extrakomtabel_baru,hapus FROM kib_awal where left(kode64_baru,6) in ('1.3.01','1.3.02','1.3.03','1.3.04','1.3.05','1.5.03'.'1.5.04') and tgl_update BETWEEN '2023-01-01' and '2023-11-06' union SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri, no_mesin, no_bpkb, register_tanah, penggunaan, keterangan, penghapusan, NULL, hibah_keluar, extrakomtabel_baru,hapus FROM kib where left(kode64_baru,6) in ('1.3.01','1.3.02','1.3.03','1.3.04','1.3.05','1.5.03'.'1.5.04') and tgl_update BETWEEN '2023-01-01' and '2023-11-06'");
+//     return $query;
+//    }
+
    public function update_sawal_simbada()
    {
     $db_simbada = $this->load->database('simbada',TRUE);
 
-    $query=$db_simbada->query("SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri,no_mesin,no_bpkb,register_tanah,penggunaan, keterangan, penghapusan,koreksi_hapus, hibah_keluar,extrakomtabel_baru,hapus FROM kib_awal where left(kode64_baru,6) in ('1.3.01','1.3.02','1.3.03','1.3.04','1.3.05','1.5.03') union SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri, no_mesin, no_bpkb, register_tanah, penggunaan, keterangan, penghapusan, NULL, hibah_keluar, extrakomtabel_baru,hapus FROM kib where left(kode64_baru,6) in ('1.3.01','1.3.02','1.3.03','1.3.04','1.3.05','1.5.03')");
+    $query=$db_simbada->query("SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_perolehan,harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri,no_mesin,no_bpkb,register_tanah,penggunaan, keterangan, penghapusan,koreksi_hapus, hibah_keluar,extrakomtabel_baru,hapus FROM kib_awal where left(kode_108,5) <> '1.5.2' and (nomor_lokasi <> nomor_lokasi_baru or kode_108 <> kode108_baru or harga_perolehan <> harga_baru or penghapusan <> '' or koreksi_hapus <> '' or hibah_keluar <> '' or catat_intraextra <> '' or catat_extraintra <> '' or atribusi <> '' or kapitalisasi <> '')");
     return $query;
    }
 
