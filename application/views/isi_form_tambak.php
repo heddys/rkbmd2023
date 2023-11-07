@@ -550,12 +550,31 @@
                                             <input type="text" class="form-control" id="koordinat" name="koordinat" placeholder="Input Titik Koordinat">
                                     </div>
                             </div> -->
+
+                            
+                            
+                            
+                            <div class="form-group col-md-5">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" id="basic-addon3">Jenis Tanah : </label>
+                                    </div>
+                                        <select class="custom-select" id="jenis_tanah" name="jenis_tanah" required>
+                                            <option value="">Pilih Salah Satu</option>
+                                            <option value="Hilang">Tanah Tambak</option>
+                                            <option value="Tidak Diketemukan">Tanah Non Tambak</option>
+                                        </select>
+                                </div>
+                            </div>
+                            
+
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Penggunaan Aset : </label>
                                         </div>
                                             <input type="text" class="form-control" name="pemanfaatan" id="kode_register" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->penggunaan;?>" required="required">
+                                            <input type="hidden" name="kamus_kelurahan" id="hidden_kelurahan">
                                     </div>
                             </div>
                             

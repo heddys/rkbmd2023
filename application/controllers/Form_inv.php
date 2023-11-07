@@ -172,7 +172,7 @@ class Form_inv extends CI_Controller {
 	public function list_tambak($id) {
 
 		$this->cek_sess();
-		$data['page']="Form Pengisian Informasi Aset Tanah Tambak";
+		$data['page']="List Aset Tanah Tambak";
      	$data['exist']=$this->cek_jumlah_exist();
 		$data_cari=$this->session->userdata('data');
 		
@@ -294,6 +294,32 @@ class Form_inv extends CI_Controller {
 		$this->load->view('h_footerrkb');
 	}
 
+	public function isi_formulir_tambak()
+    {
+        $this->cek_sess();
+		$data['page']="Form Pengisian Informasi Aset Tanah Tambak";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register($register);
+		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+
+		if($sk_penggunaan->num_rows() > 0) {
+			$data['sk_penggunaan']=$sk_penggunaan->row();
+		} else {
+			$data['sk_penggunaan']="NULL";
+		}
+		
+		$this->load->view('header',$data);		
+		$this->load->view('isi_form_tambak',$data);
+		$this->load->view('footer_isi_form_tanah');
+
+	}
 	public function isi_formulir_1()
     {
         $this->cek_sess();
