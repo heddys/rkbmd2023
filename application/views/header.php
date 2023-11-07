@@ -244,6 +244,14 @@
               </li> -->
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('form_inv/list_tambak/1');?>" class="nav-link">
+              <i class="nav-icon fas fa-leaf"></i>
+              <p>
+                List Tanah Tambak
+              </p>
+            </a>
+          </li>
           <li class="nav-header"><strong>STATUS REGISTER</strong></li>
           <li class="nav-item has-treeview">
             <a href="<?php echo site_url('status_form/cari_status_reg')?>" class="nav-link">

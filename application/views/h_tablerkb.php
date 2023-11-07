@@ -214,6 +214,14 @@
               </li> -->
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('form_inv/list_tambak/1');?>" class="nav-link">
+              <i class="nav-icon fas fa-leaf"></i>
+              <p>
+                List Tanah Tambak
+              </p>
+            </a>
+          </li>
           <!-- <li class="nav-item has-treeview">
             <a href="<?php echo site_url('home/desk_komponen');?>" class="nav-link">
               <i class="nav-icon fab fa-buffer"></i>
