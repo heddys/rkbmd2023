@@ -566,8 +566,52 @@
                                         </select>
                                 </div>
                             </div>
-                            
 
+                                    
+                            <div class="form-group col-md-12 mb-4">
+                                <hr color="#337AB7" size="12" width="100%" style="border: 2px dashed;">
+                                    <h5 class="justify-content-left"><b>Data Petani Tambak</b></h5>
+                            </div>
+                            
+                            <div class="form-group col-md-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Nama Petani : </label>
+                                        </div>
+                                            <input type="text" class="form-control" name="nama_petani" id="nama_petani" placeholder="Isikan Nama Petani">
+                                    </div>
+                            </div>
+                            <div class="form-group col-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Alamat Petani : </label>
+                                        </div>
+                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" value="" placeholder="Isikan Alamat Rumah Petani">
+                                    </div>
+                            </div>
+
+                            <div class="form-group col-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">No. Tlp Petani : </label>
+                                        </div>
+                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" value="" placeholder="Isikan Alamat Rumah Petani">
+                                    </div>
+                            </div>
+
+                            <div class="form-group col-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Jenis Budidaya : </label>
+                                        </div>
+                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" value="" placeholder="Isikan Alamat Rumah Petani">
+                                    </div>
+                            </div>
+
+                            <div class="form-group col-md-12 mb-4">
+                                <hr color="#337AB7" size="12" width="100%" style="border: 2px dashed;">
+                            </div>
+                                
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -577,7 +621,7 @@
                                             <input type="hidden" name="kamus_kelurahan" id="hidden_kelurahan">
                                     </div>
                             </div>
-                            
+
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>
@@ -597,9 +641,7 @@
                                     </div>
                                 </div>
                             </div>
-                        
                         </div>
-                        </center>
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-4">
