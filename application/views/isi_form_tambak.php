@@ -30,16 +30,6 @@
                             </div>
                             <!-- /.col-lg-6 -->
                             <div class=" mt-2 mb-6 col-lg-4">
-                                <!-- <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary1" name="radio_kode_reg" value="0" checked="checked" required="required"/>
-                                        <label for="primary1">Sesuai</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary2" name="radio_kode_reg" value="1" disabled/>
-                                        <label for="primary2">Tidak Sesuai</label>
-                                    </div>
-                                </div> -->
                             </div>
 
                             <!-- Batas Per Form -->
@@ -561,16 +551,25 @@
                                     </div>
                                         <select class="custom-select" id="jenis_tanah" name="jenis_tanah" required>
                                             <option value="">Pilih Salah Satu</option>
-                                            <option value="Hilang">Tanah Tambak</option>
-                                            <option value="Tidak Diketemukan">Tanah Non Tambak</option>
+                                            <option value="Tanah Tambak">Tanah Tambak</option>
+                                            <option value="Tanah Non Tambak">Tanah Non Tambak</option>
                                         </select>
                                 </div>
                             </div>
 
                                     
                             <div class="form-group col-md-12 mb-4">
-                                <hr color="#337AB7" size="12" width="100%" style="border: 2px dashed;">
-                                    <h5 class="justify-content-left"><b>Data Petani Tambak</b></h5>
+                                <hr style="padding: 2px">
+                                    <label><h5><b>Data Petani Tambak</b></h5></label>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">NIK Petani (Opsional) : </label>
+                                        </div>
+                                            <input type="number" class="form-control" name="nik_petani" id="nik_petani" placeholder="Isikan Nomor Induk Kependudukan (No. KTP Jika Ada)" disabled>
+                                    </div>
                             </div>
                             
                             <div class="form-group col-md-6">
@@ -578,7 +577,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nama Petani : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="nama_petani" id="nama_petani" placeholder="Isikan Nama Petani">
+                                            <input type="text" class="form-control" name="nama_petani" id="nama_petani" placeholder="Isikan Nama Petani" disabled>
                                     </div>
                             </div>
                             <div class="form-group col-6">
@@ -586,7 +585,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Alamat Petani : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" value="" placeholder="Isikan Alamat Rumah Petani">
+                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" value="" placeholder="Isikan Alamat Rumah Petani" disabled>
                                     </div>
                             </div>
 
@@ -596,7 +595,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" id="basic-addon3">No. Tlp Petani :</label>
                                     </div>
-                                    <input type="text" class="form-control" data-inputmask="'mask': ['(999)-999999999', '(9999)999999999']" data-mask>
+                                    <input type="number" class="form-control" name="no_tlp_petani" id="no_tlp_petani" disabled>
                                 </div>
                             </div>
 
@@ -605,12 +604,18 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Jenis Budidaya : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" value="" placeholder="Isikan Budidaya Tambak">
+                                            <input type="text" class="form-control" name="jenis_budidaya" id="jenis_budidaya" value="" placeholder="Isikan Budidaya Tambak" disabled>
+                                    </div>
+                            </div>
+
+                            <div class="form-group col-12">
+                                    <div class="input-group">
+                                        <a href="https://sigis.surabaya.go.id/popup/simbada/show-reg/<?php echo $data_register->register;?>" target="_blank" class="btn btn-primary btn-block btn-lg">Lihat Peta Sigis</a>        
                                     </div>
                             </div>
 
                             <div class="form-group col-md-12 mb-4">
-                                <hr color="#337AB7" size="12" width="100%" style="border: 2px dashed;">
+                                <hr style="padding: 2px">
                             </div>
                                 
                             <div class="form-group col-md-8">
@@ -618,19 +623,19 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Penggunaan Aset : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="pemanfaatan" id="kode_register" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->penggunaan;?>" required="required">
+                                            <input type="text" class="form-control" name="pemanfaatan" id="pemanfaatan" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->penggunaan;?>" required="required">
                                             <input type="hidden" name="kamus_kelurahan" id="hidden_kelurahan">
                                     </div>
                             </div>
 
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-12">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>
                                         <textarea class="form-control" name="keterangan" rows="4" ><?php echo $data_register->keterangan;?></textarea>
                                     </div>
                             </div>
 
-                            <div class="form-group col-md-8 file_upload">
+                            <div class="form-group col-md-12 file_upload">
                                 <div class="mb-3">
                                 <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg , Ukuran File Max : 5MB dan Foto Disertai Geotag)
                                     <div class="custom-file">
@@ -652,6 +657,7 @@
                                     <button type="button" class="btn btn-success btn-block btn-lg" id="save_form" data-toggle="modal" data-target="#modal-sm">Save Data</button>
                                 </div>
                             </div>
+                            <input type="hidden" name="tanda_tambak" value="1">
                         </div>
                         
 

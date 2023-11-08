@@ -7,8 +7,8 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                <?php echo $dummy['data']." - ".$dummy['lokasi_asli']." - ".$dummy['status']?>
-                      <center>KARTU INVENTARIS BARANG  - <b>LIST TANAH TAMBAK</b></h3>
+                <!-- <?php echo $dummy['data']." - ".$dummy['lokasi_asli']." - ".$dummy['status']?> -->
+                      <center>KARTU INVENTARIS BARANG  - <b>LIST TANAH TAMBAK</b></h3></center>
 	            </div>
 	            <!-- /.card-header -->
 	          <div class="card-body" style="overflow-x:auto;">
@@ -78,22 +78,32 @@
 	                </thead>
                   <tbody>
                     <?php $x=$offset+1; foreach ($register as $row) {?>
-	                	<tr>
+	                	<tr <?php if ($row->status_isian == 1) {echo "class='table-success'";}?> >
 	                  		<td><center><?php echo $x++;?></center></td>
 	                  		<td><center><?php echo $row->register;?></center></td>
-                            <td><center><?php echo $row->lokasi;?></center></td>
+                        <td><center><?php echo $row->lokasi;?></center></td>
 	                  		<td><center><?php echo $row->kode64_baru;?></center></td>
-                            <td><center><?php echo $row->nama_barang;?></center></td>
-                            <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
-                            <td><center><?php echo $row->tahun_pengadaan;?></center></td>
-                            <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
+                        <td><center><?php echo $row->nama_barang;?></center></td>
+                        <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
+                        <td><center><?php echo $row->tahun_pengadaan;?></center></td>
+                        <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>  
-                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir_tambak" method="post">
-                                <center>
-                                  <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
+                          <?php if ($row->status_isian == 0) {?>
+                            <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir_tambak" method="post">
+                                  <center> 
+                                    <button type="submit" class="btn btn-sm btn-warning" title="Isi Form Inventarisasi"><i class="fas fa-paper-plane"></i></a>
+                                      <input type="hidden" name="register" value="<?php echo $row->register?>">
+                                  </center>
+                            </form>
+                            <?php } else {  ?>
+                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir_tambak_current" method="post">
+                                <center> 
+                                  <button type="submit" class="btn btn-sm btn-success" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
                                     <input type="hidden" name="register" value="<?php echo $row->register?>">
-                                </center></td>
+                                </center>
                               </form>
+                            <?php } ?>
+                        </td>
 	                  	</tr>
 	                  <?php }?>
 	                </tbody>

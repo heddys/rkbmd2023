@@ -590,6 +590,7 @@
                                     <button type="button" class="btn btn-success btn-block btn-lg" id="save_form" data-toggle="modal" data-target="#modal-sm">Save Data</button>
                                 </div>
                             </div>
+                            <input type="hidden" name="tanda_tambak" value="2">
                         </div>
                         
 

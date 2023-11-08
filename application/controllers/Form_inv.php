@@ -1063,6 +1063,23 @@ class Form_inv extends CI_Controller {
 			'created_time' => $updated_time
 		);
 
+		if ($_POST['tanda_tambak'] == 1) {
+
+			$data_tambak = array (
+
+				'nama_petani' => $_POST['nama_petani'],
+				'nik_petani' => $_POST['nik_petani'],
+				'alamat_petani' => $_POST['alamat_petani'],
+				'no_telp_petani' => $_POST['no_tlp_petani'],
+				'jenis_budidaya' => $_POST['jenis_budidaya'],
+				'jenis_tanah' => $_POST['jenis_tanah'],
+				'status_isian' => 1
+			);
+
+			$proses_saving_db = $this->form_model->update_data_tambak($data_tambak,$register);
+
+		}
+
 		// var_dump($data_form_isian);
 		// echo "<p>";
 		// var_dump($data_is_form);
@@ -1095,7 +1112,12 @@ class Form_inv extends CI_Controller {
 		//Membuat tanda di data kib
 		$this->form_model->tandai_kib($register);
 
-		redirect('/form_inv/index/1');
+
+		if ($_POST['tanda_tambak'] == 1) {
+			redirect('/form_inv/list_tambak/1');
+		} else {
+			redirect('/form_inv/index/1');
+		}
 
 	}
 
