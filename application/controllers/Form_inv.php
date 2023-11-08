@@ -937,7 +937,6 @@ class Form_inv extends CI_Controller {
 		$ganda=$_POST['catat_ganda'];
 		$radio_ganda=$_POST['radio_ganda'];
 
-		
 		$pemanfaatan = $_POST['pemanfaatan'];
 
 		if (isset($_POST['keterangan'])){
@@ -986,7 +985,7 @@ class Form_inv extends CI_Controller {
                         $errorUploadType .= $_FILES['file']['name'].' | ';  
                     }
 
-                } 
+                }
                  
                 $errorUploadType = !empty($errorUploadType)?'<br/>File Type Error: '.trim($errorUploadType, ' | '):''; 
                 if(!empty($uploadData)){ 
@@ -998,9 +997,10 @@ class Form_inv extends CI_Controller {
                 }else{ 
                     echo "Sorry, there was an error uploading your file.".$errorUploadType; 
                 } 
-            }else{ 
+            } else { 
+
             	  $statusMsg = 'Please select image files to upload.'; 
-            } 
+            }
 		
 		
 		if($kms_kel == NULL ) {
