@@ -42,6 +42,9 @@
 <!-- DataTables -->
 <script src="<?php echo base_url();?>ini_assets/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
+<!-- InputMask -->
+<script src="<?php echo base_url();?>ini_assets/plugins/inputmask/jquery.inputmask.bundle.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/moment/moment.min.js"></script>
 <script>
 
 
@@ -52,6 +55,9 @@
        ribuan = ribuan.join('.').split('').reverse().join('');
        return ribuan;
     }
+
+    //Money Euro
+    $('[data-mask]').inputmask()
     $("#tblkodebar").DataTable();
     $("#tblalamatbarang").DataTable();
     $('#lokasi_select').select2();

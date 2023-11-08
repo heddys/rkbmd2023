@@ -590,13 +590,14 @@
                                     </div>
                             </div>
 
+                             <!-- phone mask -->
                             <div class="form-group col-6">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">No. Tlp Petani : </label>
-                                        </div>
-                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" value="" placeholder="Isikan Alamat Rumah Petani">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" id="basic-addon3">No. Tlp Petani :</label>
                                     </div>
+                                    <input type="text" class="form-control" data-inputmask="'mask': ['(999)-999999999', '(9999)999999999']" data-mask>
+                                </div>
                             </div>
 
                             <div class="form-group col-6">
@@ -604,7 +605,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Jenis Budidaya : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" value="" placeholder="Isikan Alamat Rumah Petani">
+                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" value="" placeholder="Isikan Budidaya Tambak">
                                     </div>
                             </div>
 
