@@ -609,7 +609,7 @@
                         FROM
                             data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
                         WHERE
-                            a.ekstrakomtabel is null and a.status_simbada is null and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
+                            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru not like '1.5.4%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -633,7 +633,7 @@
                     FROM
                         data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
                     WHERE
-                    a.ekstrakomtabel is null and a.status_simbada is null and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
+                    a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru not like '1.5.4%' and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
                 }
                 return $query;
             }
