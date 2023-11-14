@@ -96,7 +96,7 @@
                                   </center>
                             </form>
                             <?php } else {  ?>
-                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir_tambak_current" method="post">
+                              <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir_tambak_edit" method="post">
                                 <center> 
                                   <button type="submit" class="btn btn-sm btn-success" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
                                     <input type="hidden" name="register" value="<?php echo $row->register?>">

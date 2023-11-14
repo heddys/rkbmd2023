@@ -9,12 +9,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Codedthemes">
         <!-- Favicon -->
-        <link rel="shortcut icon" href="<?php echo base_url();?>assets_login\img\favicon.ico">
-        <link rel="stylesheet" href="<?php echo base_url();?>assets_login\css\style-minimal-flat.css">
-    <script src="<?php echo base_url();?>assets_login\js\modernizr.custom.js"></script>
+        <link rel="shortcut icon" href="<?php echo base_url();?>assets_login/img/favicon.ico">
+        <link rel="stylesheet" href="<?php echo base_url();?>assets_login/css/style-minimal-flat.css">
+    <script src="<?php echo base_url();?>assets_login/js/modernizr.custom.js"></script>
   </head>
 
-  <style type="text/css">
+  <style type="text/css" media="screen">
     input[type=text] {
       width: 34%;
       box-sizing: border-box;
@@ -23,6 +23,37 @@
       width: 34%;
       box-sizing: border-box;
     }
+    #u17 .modal-content{
+      background:none!important;
+      border:0px;
+      box-shadow: none; 
+      
+    }
+
+    #u17 .modal-header{
+        border:0px!important;
+    }
+
+    #u17 .modal-header .close{
+        color: #fc0000;
+        opacity: 1;
+    }
+
+    #u17 .modal-header .close::before{
+        font-size: 2.5rem;
+    }
+
+    #u17 .modal-body img{
+        width: 80%;
+        background:none!important;
+    }
+
+    #u17 .modal-footer{
+        justify-content: center;
+        border:0px!important;
+    }
+</style>
+    
   </style>
 
     <body>
@@ -35,6 +66,25 @@
 
     <!-- Canvas for particles animation -->
     <div id="particles-js"></div>
+
+  <div class="modal fade" id="u17" tabindex="-1"  aria-labelledby="modal-dialog-centered" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body text-center">
+          <a target="_blank" href="https://pestaboladunia.surabaya.go.id"><img src="https://esurat.surabaya.go.id/assets/2023/images/u17-popup.png" width="60%" ></a>
+        </div>
+        <div class="modal-footer">
+            <a href="https://pestaboladunia.surabaya.go.id" target="_blank" type="button" class="btn btn-info btn-lg">Selengkapnya...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
       <!-- Informations bar on top of the screen -->
       <!-- <div class="info-bar bar-intro opacity-0">
@@ -74,7 +124,8 @@
       
         <!-- SLIDE 1 / Home -->
         
-          
+          <!-- let's call the following div as the POPUP FRAME -->
+
 
             <div class="content-slide">
 
@@ -119,6 +170,7 @@
 
       <!-- </div> -->
       <!-- END - sl-slider -->
+      
 
 
     <!-- //////////////////////\\\\\\\\\\\\\\\\\\\\\\ -->
@@ -126,29 +178,29 @@
       <!-- \\\\\\\\\\\\\\\\\\\\\\////////////////////// -->
     
     <!-- * Libraries jQuery, Easing and Bootstrap - Be careful to not remove them * -->
-    <script src="<?php echo base_url();?>assets_login\js\jquery.min.js"></script>
-    <script src="<?php echo base_url();?>assets_login\js\jquery.easings.min.js"></script>
-    <script src="<?php echo base_url();?>assets_login\js\bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/jquery.easings.min.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/bootstrap.min.js"></script>
 
     <!-- SlitSlider plugin -->
-    <script src="<?php echo base_url();?>assets_login\js\jquery.ba-cond.min.js"></script>
-    <script src="<?php echo base_url();?>assets_login\js\jquery.slitslider.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/jquery.ba-cond.min.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/jquery.slitslider.js"></script>
 
     <!-- Newsletter plugin -->
-    <script src="<?php echo base_url();?>assets_login\js\notifyMe.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/notifyMe.js"></script>
 
     <!-- Popup Newsletter Form -->
-    <script src="<?php echo base_url();?>assets_login\js\classie.js"></script>
-    <script src="<?php echo base_url();?>assets_login\js\dialogFx.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/classie.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/dialogFx.js"></script>
 
     <!-- Particles effect plugin on the right -->
-    <script src="<?php echo base_url();?>assets_login\js\particles.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/particles.js"></script>
 
     <!-- Custom Scrollbar plugin -->
-    <script src="<?php echo base_url();?>assets_login\js\jquery.mCustomScrollbar.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/jquery.mCustomScrollbar.js"></script>
 
     <!-- Countdown plugin -->
-    <script src="<?php echo base_url();?>assets_login\js\jquery.countdown.js"></script>
+    <script src="<?php echo base_url();?>assets_login/js/jquery.countdown.js"></script>
 
     <script>
     $("#countdown")
@@ -162,6 +214,11 @@
 
     <!-- Main application scripts -->
     <script src="<?php echo base_url();?>assets_login\js\main-flat.js"></script>
+    <script>
+        $(window).on('load', function() {
+            $('#u17').modal('show');
+        });
+    </script>
 
   </body>
 

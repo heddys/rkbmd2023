@@ -1234,7 +1234,7 @@
                                         <center><h4 class="modal-title"><i class="fas fa-cloud"></i> Informasi Status Penggunaan</h4></center>
                                     </div>
                                         <div class="modal-body">
-                                            <object width="100%" height="1100" type="application/pdf" data="<?php echo base_url();?>/ini_assets/sk_penggunaan/<?php echo $sk_penggunaan->file?>">
+                                            <object width="100%" height="1100" type="application/pdf" data="https://simbada.surabaya.go.id/Dokumen/sk_pengguna/sk_asli/<?php echo $sk_penggunaan->file?>">
                                                 <p>PDF Tidak Bisa Dibuka...</p>
                                             </object>
                                         </div>

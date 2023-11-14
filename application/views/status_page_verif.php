@@ -91,7 +91,7 @@
                         <tbody>
                             <tr>
                             <td width="70%">
-                                <form role="form" action="<?php echo base_url();?>index.php/status_form/verif_page/2" method="post">
+                                <form role="form" action="<?php echo base_url();?>index.php/status_form/verif_page/<?php echo $kib_apa ?>" method="post">
                                 <div class="col-md-5">
                                     <select class="form-control select2" id="select_lokasi" name="select_lokasi" required="required">
                                     <option selected value="">Cari Berdasarkan Lokasi</option>
@@ -109,7 +109,7 @@
                             <td>
                             </td>
                             <td width="50%">
-                            <form role="form" action="<?php echo base_url();?>index.php/status_form/verif_page/2" method="post">
+                            <form role="form" action="<?php echo base_url();?>index.php/status_form/verif_page/<?php echo $kib_apa ?>" method="post">
                                 <div class="input-group">
                                     <input type="text"  class="form-control" name="cariregname" placeholder="Cari Berdasarkan Register atau Nama Barang" required="required">
                                     <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
@@ -174,7 +174,7 @@
                         </table>
                         <br>
                         <b><u>Silahkan Pilih Banyak Data Per Halaman : </b></u>
-                        <form role="form" action="<?php echo site_url();?>/status_form/verif_page/2" method="post">
+                        <form role="form" action="<?php echo site_url();?>/status_form/verif_page/<?php echo $kib_apa ?>" method="post">
                         <select class="form-control select_limit" name="limit" id="limit">
                             <option value="10">10</option>
                             <option value="20">20</option>

@@ -168,39 +168,42 @@
           });
     }
 
-    $('#jenis_tanah').on('change', function () {
-      var selectVal = $("#jenis_tanah option:selected").val();
+    $(document).ready(function () {
+      $('#jenis_tanah').on('change', function () {
+        var selectVal = $("#jenis_tanah option:selected").val();
 
-      if (selectVal == "Tanah Tambak") {
+        if (selectVal == "Tanah Tambak") {
 
-        document.getElementById("nik_petani").disabled = false;
-        document.getElementById("nama_petani").disabled = false;
-        document.getElementById("nama_petani").required = true;
-        document.getElementById("alamat_petani").disabled = false;
-        document.getElementById("alamat_petani").required = true;
-        document.getElementById("no_tlp_petani").disabled = false;
-        document.getElementById("no_tlp_petani").required = true;
-        document.getElementById("jenis_budidaya").disabled = false;
-        document.getElementById("jenis_budidaya").required = true;
+          document.getElementById("nik_petani").disabled = false;
+          document.getElementById("nama_petani").disabled = false;
+          document.getElementById("nama_petani").required = true;
+          document.getElementById("alamat_petani").disabled = false;
+          document.getElementById("alamat_petani").required = true;
+          document.getElementById("no_tlp_petani").disabled = false;
+          document.getElementById("no_tlp_petani").required = true;
+          document.getElementById("jenis_budidaya").disabled = false;
+          document.getElementById("jenis_budidaya").required = true;
 
-        document.getElementById("pemanfaatan").value = "Tanah Tambak";
+          document.getElementById("pemanfaatan").value = "Tanah Tambak";
 
 
-      } else {
-        document.getElementById("nik_petani").disabled = true;
-        document.getElementById("nama_petani").disabled = true;
-        document.getElementById("nama_petani").required = false;
-        document.getElementById("alamat_petani").disabled = true;
-        document.getElementById("alamat_petani").required = false;
-        document.getElementById("no_tlp_petani").disabled = true;
-        document.getElementById("no_tlp_petani").required = false;
-        document.getElementById("jenis_budidaya").disabled = true;
-        document.getElementById("jenis_budidaya").required = false;
+        } else {
+          document.getElementById("nik_petani").disabled = true;
+          document.getElementById("nama_petani").disabled = true;
+          document.getElementById("nama_petani").required = false;
+          document.getElementById("alamat_petani").disabled = true;
+          document.getElementById("alamat_petani").required = false;
+          document.getElementById("no_tlp_petani").disabled = true;
+          document.getElementById("no_tlp_petani").required = false;
+          document.getElementById("jenis_budidaya").disabled = true;
+          document.getElementById("jenis_budidaya").required = false;
 
-        document.getElementById("pemanfaatan").value = "";
-      }
-      
+          document.getElementById("pemanfaatan").value = "";
+        }
+      });
+      $("#jenis_tanah").trigger('change');
     });
+        
 
     $('#customFile').bind('change', function() {
 

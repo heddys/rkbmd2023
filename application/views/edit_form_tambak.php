@@ -16,14 +16,14 @@
     display: initial;
     }
 </style>
+<?php if ($penolakan != NULL) {?>
+    <div class="callout callout-danger">
+            <h5><center>Form Inventarisasi anda dengan register <?php echo $data_register->register?> telah ditolak oleh verifikator, dengan alasan : </center></h5>
+            <hr style="padding-top:0px; margin-top:2px;">
+            <h4><?php echo $penolakan->dasar_penolakan;?></h4>
+    </div>
+<?php } ?>
 <section class="content">
-<div class="container-fluid">
-                <div class="callout callout-danger">
-                    <h5><center>Form Inventarisasi anda dengan register <?php echo $data_register->register?> telah ditolak oleh verifikator, dengan alasan : </center></h5>
-                    <hr style="padding-top:0px; margin-top:2px;">
-                    <h4><?php echo $penolakan->dasar_penolakan;?></h4>
-                </div>
-            </div>
             <!-- general form elements disabled -->
               <div class="card card-dark">
                 <center>
@@ -415,7 +415,8 @@
 
                             <!-- Batas Per Form -->
 
-                                                       <!-- Mulai Form -->
+
+                            <!-- Mulai Form -->
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -632,12 +633,87 @@
                                 <!-- /input-group -->
                             </div>
 
+                            <div class="form-group col-md-5">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" id="basic-addon3">Jenis Tanah : </label>
+                                    </div>
+                                        <select class="custom-select" id="jenis_tanah" name="jenis_tanah" required>
+                                            <option value="<?php echo $data_tambak->jenis_tanah?>"><?php echo $data_tambak->jenis_tanah?></option>
+                                            <option value="Tanah Tambak">Tanah Tambak</option>
+                                            <option value="Tanah Non Tambak">Tanah Non Tambak</option>
+                                        </select>
+                                </div>
+                            </div>
+
+                                    
+                            <div class="form-group col-md-12 mb-4">
+                                <hr style="padding: 2px">
+                                    <label><h5><b>Data Petani Tambak</b></h5></label>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">NIK Petani (Opsional) : </label>
+                                        </div>
+                                            <input type="number" class="form-control" name="nik_petani" id="nik_petani" placeholder="Isikan Nomor Induk Kependudukan (No. KTP Jika Ada)" value="<?php echo $data_tambak->nik_petani;?>" disabled>
+                                    </div>
+                            </div>
+                            
+                            <div class="form-group col-md-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Nama Petani : </label>
+                                        </div>
+                                            <input type="text" class="form-control" name="nama_petani" id="nama_petani" placeholder="Isikan Nama Petani" value="<?php echo $data_tambak->nama_petani;?>" disabled>
+                                    </div>
+                            </div>
+                            <div class="form-group col-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Alamat Petani : </label>
+                                        </div>
+                                            <input type="text" class="form-control" name="alamat_petani" id="alamat_petani" placeholder="Isikan Alamat Rumah Petani" value="<?php echo $data_tambak->alamat_petani;?>" disabled>
+                                    </div>
+                            </div>
+
+                             <!-- phone mask -->
+                            <div class="form-group col-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" id="basic-addon3">No. Tlp Petani :</label>
+                                    </div>
+                                    <input type="number" class="form-control" name="no_tlp_petani" id="no_tlp_petani" value="<?php echo $data_tambak->no_telp_petani;?>" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Jenis Budidaya : </label>
+                                        </div>
+                                            <input type="text" class="form-control" name="jenis_budidaya" id="jenis_budidaya" placeholder="Isikan Budidaya Tambak" value="<?php echo $data_tambak->jenis_budidaya;?>" disabled>
+                                    </div>
+                            </div>
+
+                            <div class="form-group col-12">
+                                    <div class="input-group">
+                                        <a href="https://sigis.surabaya.go.id/popup/simbada/show-reg/<?php echo $data_register->register;?>" target="_blank" class="btn btn-primary btn-block btn-lg">Lihat Peta Sigis</a>        
+                                    </div>
+                            </div>
+
+                            <div class="form-group col-md-12 mb-4">
+                                <hr style="padding: 2px">
+                            </div>
+                                
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Pemanfaatan Aset : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="pemanfaatan" id="kode_register" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->pemanfaatan_aset;?>" required="required">
+                                            <input type="text" class="form-control" name="pemanfaatan" id="pemanfaatan" placeholder="Tulis Penggunaan Aset Tanah Saat Ini Digunakan Untuk Apa" value="<?php echo $data_register->pemanfaatan_aset;?>" required="required">
+                                            <input type="hidden" name="kamus_kelurahan" id="hidden_kelurahan">
                                     </div>
                             </div>
                             
