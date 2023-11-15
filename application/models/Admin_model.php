@@ -296,6 +296,14 @@ class Admin_model extends CI_Model{
     return $query;
    }
 
+   public function update_pengadaan_simbada()
+   {
+    $db_simbada = $this->load->database('simbada',TRUE);
+
+    $query=$db_simbada->query("SELECT register, nomor_lokasi, nomor_lokasi_baru, kode_64,kode_108,kode64_baru, kode108_baru, nama_barang_baru, merk_alamat_baru, tipe_baru, satuan, harga_perolehan,harga_baru, tahun_pengadaan, kondisi, luas_tanah, luas_bangunan, no_sertifikat, kelurahan, kecamatan, kota, nopol, no_rangka_seri,no_mesin,no_bpkb,register_tanah,penggunaan, keterangan, penghapusan, hibah_keluar,extrakomtabel_baru,hapus FROM kib");
+    return $query;
+   }
+
    public function insert_register($data)
    {
     return $this->db->insert('data_kib',$data);

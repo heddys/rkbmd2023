@@ -335,7 +335,16 @@ class Home_admin extends CI_Controller {
 						'update_at_date' => $date,
 						'update_at_time' => $time
 					);
+
 					$this->admin_model->update_data($register,$data_for_kib,'data_kib');
+
+					$data_for_reg_isi=array (
+						'lokasi' => $row->nomor_lokasi_baru,
+						'kode_barang' => $row->kode108_baru,
+						'harga_baru' => $row->harga_baru,
+						'update_at_date' => $date,
+						'update_at_time' => $time
+					);
 
 				}
 			}
@@ -423,6 +432,16 @@ class Home_admin extends CI_Controller {
 		}
 
 		echo "<h2>DONE !!! Pengeditan Register Yang Telah Di Kerjakan Telah Selesai Di Edit !! </h2>";
+
+		echo "<h2>Penyesuaian Saldo Pengadaan Baru</h2>";
+
+		$get_pengadaan = $this->admin_model->update_pengadaan_simbada()->result();
+
+		foreach ($get_pengadaan as $key => $value) {
+			# code...
+		}
+
+
 
 	}
 
