@@ -437,8 +437,59 @@ class Home_admin extends CI_Controller {
 
 		$get_pengadaan = $this->admin_model->update_pengadaan_simbada()->result();
 
-		foreach ($get_pengadaan as $key => $value) {
-			# code...
+		foreach ($get_pengadaan as $row_peng) {
+			
+			$exist_peng = $this->admin_model->cek_register($row_peng->register,'data_kib');
+			$get_data=$exist_peng->row();
+
+			if ($exist_peng->num_rows() < 1 && $row_peng->hapus != 1) {
+				
+				$data_peng= array (
+
+					'register' => $row_peng->register,
+ 					'kode_108' => $row_peng->kode_108,
+					'kode_64' => $row_peng->kode_64,
+					'nomor_lokasi' => $row_peng->nomor_lokasi,
+					'nama_barang' => $row_peng->nama_barang_baru,
+					'merk_alamat' => $row_peng->merk_alamat_baru,
+					'tipe' => $row_peng->tipe_baru,
+					'satuan' => $row_peng->satuan,
+					'harga_baru' => $row_peng->harga_baru,
+					'tahun_pengadaan' => $row_peng->tahun_pengadaan,
+					'no_bpkb' => $row_peng->no_bpkb,
+					'no_rangka_seri' => $row_peng->no_rangka_seri,
+					'nopol' => $row_peng->nopol,
+					'no_mesin' => $row_peng->no_mesin,
+					'kondisi' => $row_peng->kondisi,
+					'nomor_lokasi_baru' => $row_peng->nomor_lokasi_baru,
+					'kode108_baru' => $row_peng->kode108_baru,
+					'kode64_baru' => $row_peng->kode64_baru,
+					'harga_baru' => $row_peng->harga_baru,
+					'keterangan' => $row_peng->keterangan,
+					'status_simbada' => $row_peng->hapus,
+					'penghapusan' => $row_peng->penghapusan,
+					'koreksi_hapus' => $row_peng->koreksi_hapus,
+					'hibah_keluar' => $row_peng->hibah_keluar,
+					'luas_tanah' => $row_peng->luas_tanah,
+					'luas_bangunan' => $row_peng->luas_bangunan,
+					'no_sertifikat' => $row_peng->no_sertifikat,
+					'register_tanah' => $row_peng->register_tanah,
+					'penggunaan' => $row_peng->penggunaan,
+					'kota' => $row_peng->kota,
+					'kecamatan' => $row_peng->kecamatan,
+					'kelurahan' => $row_peng->kelurahan,
+					'ekstrakomtabel' => $row_peng->extrakomtabel_baru,
+					'status_register' => 'PENGADAAN',
+					'created_at_date' => $date,
+					'created_at_time' => $time,
+					'update_at_date' => $date,
+					'update_at_time' => $time
+				);	
+
+				
+
+			}
+
 		}
 
 
