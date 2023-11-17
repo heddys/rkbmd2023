@@ -275,8 +275,10 @@ class Home_admin extends CI_Controller {
 					'created_at_time' => $time,
 					'update_at_date' => $date,
 					'update_at_time' => $time
-				);				
+				);	
+
 					$this->admin_model->insert_register($data_reg);
+
 			} else {
 
 				$register = $row->register;
@@ -345,10 +347,13 @@ class Home_admin extends CI_Controller {
 					$data_for_reg_isi=array (
 						'lokasi' => $row->nomor_lokasi_baru,
 						'kode_barang' => $row->kode108_baru,
+						'kondisi_barang' => $row->kondisi,
 						'harga_baru' => $row->harga_baru,
 						'update_at_date' => $date,
 						'update_at_time' => $time
 					);
+
+					$this->admin_model->update_data($data->register,$data_for_reg_isi,'register_isi');
 
 				}
 			}
@@ -472,7 +477,6 @@ class Home_admin extends CI_Controller {
 					'keterangan' => $row_peng->keterangan,
 					'status_simbada' => $row_peng->hapus,
 					'penghapusan' => $row_peng->penghapusan,
-					'koreksi_hapus' => $row_peng->koreksi_hapus,
 					'hibah_keluar' => $row_peng->hibah_keluar,
 					'luas_tanah' => $row_peng->luas_tanah,
 					'luas_bangunan' => $row_peng->luas_bangunan,
@@ -490,7 +494,67 @@ class Home_admin extends CI_Controller {
 					'update_at_time' => $time
 				);	
 
+				$this->admin_model->insert_register($data_reg);
 				
+			} else {
+
+				if($get_data->status == NULL) {
+					$datapeng_for_kib=array (
+						'kode_108' => $row_peng->kode_108,
+						'kode_64' => $row_peng->kode_64,
+						'nomor_lokasi' => $row_peng->nomor_lokasi,
+						'nama_barang' => $row_peng->nama_barang_baru,
+						'merk_alamat' => $row_peng->merk_alamat_baru,
+						'tipe' => $row_peng->tipe_baru,
+						'satuan' => $row_peng->satuan,
+						'harga_baru' => $row_peng->harga_baru,
+						'tahun_pengadaan' => $row_peng->tahun_pengadaan,
+						'no_bpkb' => $row_peng->no_bpkb,
+						'no_rangka_seri' => $row_peng->no_rangka_seri,
+						'nopol' => $row_peng->nopol,
+						'no_mesin' => $row_peng->no_mesin,
+						'kondisi' => $row_peng->kondisi,
+						'nomor_lokasi_baru' => $row_peng->nomor_lokasi_baru,
+						'kode108_baru' => $row_peng->kode108_baru,
+						'kode64_baru' => $row_peng->kode64_baru,
+						'harga_baru' => $row_peng->harga_baru,
+						'keterangan' => $row_peng->keterangan,
+						'status_simbada' => $row_peng->hapus,
+						'penghapusan' => $row_peng->penghapusan,
+						'hibah_keluar' => $row_peng->hibah_keluar,
+						'luas_tanah' => $row_peng->luas_tanah,
+						'luas_bangunan' => $row_peng->luas_bangunan,
+						'no_sertifikat' => $row_peng->no_sertifikat,
+						'register_tanah' => $row_peng->register_tanah,
+						'penggunaan' => $row_peng->penggunaan,
+						'kota' => $row_peng->kota,
+						'kecamatan' => $row_peng->kecamatan,
+						'kelurahan' => $row_peng->kelurahan,
+						'ekstrakomtabel' => $row_peng->extrakomtabel_baru,
+						'status_register' => 'PENGADAAN',
+						'update_at_date' => $date,
+						'update_at_time' => $time
+						);
+
+						$this->admin_model->update_data($get_data->register,$datapeng_for_kib,'data_kib');
+
+				} else {
+
+					$datapeng_for_kib=array (
+						'nomor_lokasi_baru' => $row->nomor_lokasi_baru,
+						'kode64_baru'	=> $row->kode64_baru,
+						'kode108_baru' => $row->kode108_baru,
+						'harga_baru' => $row->harga_baru,
+						'status_simbada' => $row->hapus,
+						'penghapusan' => $row->penghapusan,
+						'hibah_keluar' => $row->hibah_keluar,
+						'ekstrakomtabel' => $row->extrakomtabel_baru,
+						'update_at_date' => $date,
+						'update_at_time' => $time
+					);
+
+					$this->admin_model->update_data($register,$datapeng_for_kib,'data_kib');
+				}
 
 			}
 
