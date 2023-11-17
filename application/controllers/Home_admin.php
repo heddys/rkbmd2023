@@ -338,6 +338,10 @@ class Home_admin extends CI_Controller {
 
 					$this->admin_model->update_data($register,$data_for_kib,'data_kib');
 
+					$aset_rb=substr($row->kode108_baru, 0, 5);
+					
+					if($aset_rb == '')
+
 					$data_for_reg_isi=array (
 						'lokasi' => $row->nomor_lokasi_baru,
 						'kode_barang' => $row->kode108_baru,
