@@ -357,7 +357,7 @@ class Home_admin extends CI_Controller {
 						'update_at_time' => $time
 					);
 
-					$this->admin_model->update_data($data->register,$data_for_reg_isi,'register_isi');
+					$this->admin_model->update_data($row->register,$data_for_reg_isi,'register_isi');
 
 					$get_data_register_isi=$this->admin_model->get_data_reg_isi($register)->row();
 
