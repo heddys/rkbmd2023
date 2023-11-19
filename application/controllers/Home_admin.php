@@ -340,10 +340,16 @@ class Home_admin extends CI_Controller {
 
 					$this->admin_model->update_data($register,$data_for_kib,'data_kib');
 
+					$subs=substr($row->kode108_baru, 0, 5);
+
+					if($subs == '1.5.4') {
+						$kondisi = 'RB';
+					} else { $kondisi = $row->kondisi; }
+
 					$data_for_reg_isi=array (
 						'lokasi' => $row->nomor_lokasi_baru,
 						'kode_barang' => $row->kode108_baru,
-						'kondisi_barang' => $row->kondisi,
+						'kondisi_barang' => $kondisi,
 						'harga_baru' => $row->harga_baru,
 						'update_at_date' => $date,
 						'update_at_time' => $time
@@ -351,88 +357,51 @@ class Home_admin extends CI_Controller {
 
 					$this->admin_model->update_data($data->register,$data_for_reg_isi,'register_isi');
 
+					$get_data_register_isi=$this->admin_model->get_data_reg_isi($register)->row();
+
+					$data_for_isi_history=array(
+						'register' => $data->register,
+						'nomor_lokasi_awal' => $get_data_register_isi->nomor_lokasi_awal,
+						'kode_barang' => $get_data_register_isi->kode_barang,
+						'nama_barang' => $get_data_register_isi->nama_barang,
+						'spesifikasi_barang_merk' => $get_data_register_isi->spesifikasi_barang_merk,
+						'satuan' => $get_data_register_isi->satuan,
+						'keberadaan_barang' => $get_data_register_isi->keberadaan_barang,
+						'nilai_perolehan' => $get_data_register_isi->nilai_perolehan,
+						'merupakan_anak' => $get_data_register_isi->merupakan_anak,
+						'lokasi' => $get_data_register_isi->lokasi,
+						'jumlah' => $get_data_register_isi->jumlah,
+						'kondisi_barang' => $get_data_register_isi->kondisi_barang,
+						'penggunaan_barang' => $get_data_register_isi->penggunaan_barang,
+						'register_ganda' => $get_data_register_isi->register_ganda,
+						'status_kepemilikan_tanah' => $get_data_register_isi->status_kepemilikan_tanah,
+						'tipe' => $get_data_register_isi->tipe,
+						'nopol' => $get_data_register_isi->nopol,
+						'no_rangka_seri' => $get_data_register_isi->no_rangka_seri,
+						'no_mesin'=> $get_data_register_isi->no_mesin,
+						'no_bpkb'=> $get_data_register_isi->no_bpkb,
+						'jenis_perkerasan_jalan'=> $get_data_register_isi->jenis_perkerasan_jalan,
+						'jenis_bahan_jembatan'=> $get_data_register_isi->jenis_bahan_jembatan,
+						'no_ruas'=> $get_data_register_isi->no_ruas,
+						'no_jaringan_irigasi'=> $get_data_register_isi->no_jaringan_irigasi,
+						'no_sertifikat' => $get_data_register_isi->no_sertifikat,
+						'register_tanah' => $get_data_register_isi->register_tanah,
+						'kota' => $get_data_register_isi->kota,
+						'kelurahan' => $get_data_register_isi->kelurahan,
+						'kecamatan' => $get_data_register_isi->kecamatan,
+						'pemanfaatan_aset' => $get_data_register_isi->pemanfaatan_aset,
+						'created_date'=> $date,
+						'created_time'=> $time,
+						'lainnya'=> $get_data_register_isi->lainnya,
+						'koordinat'=> $get_data_register_isi->koordinat,
+						'keterangan'=> $get_data_register_isi->keterangan,
+						'update_at_date'=> $date,
+						'update_at_time'=> $time
+					);
+
+					$this->admin_model->insert_data_history($data_for_isi_history,'register_isi_history');
+
 				}
-			}
-		}
-
-		$get_simbada2 = $this->admin_model->get_kib_simbada()->result();
-
-		
-		foreach ($get_simbada2 as $data) {
-			
-			$exist2 = $this->admin_model->cek_register($data->register,'register_isi');
-
-			if ($exist2->num_rows() > 0) {
-
-				$subs=substr($data->kode108_baru, 0, 5);
-
-				if ($subs == '1.5.4') {
-
-					$data_for_kib=array (
-						'lokasi' => $data->nomor_lokasi_baru,
-						'kode_barang'	=> $data->kode108_baru,
-						'nilai_perolehan' => $data->harga_baru,
-						'kondisi_barang' => 'RB',
-						'update_at_date' => $date,
-						'update_at_time' => $time
-					); 
-				} else {
-
-					$data_for_kib=array (
-						'lokasi' => $data->nomor_lokasi_baru,
-						'kode_barang'	=> $data->kode108_baru,
-						'nilai_perolehan' => $data->harga_baru,
-						'update_at_date' => $date,
-						'update_at_time' => $time
-					); 
-				}
-
-				$this->admin_model->update_data($data->register,$data_for_kib,'register_isi');
-				
-				$get_data_register_isi=$this->admin_model->get_data_reg_isi($data->register)->row();
-
-				$data_for_isi_history=array(
-								'register' => $data->register,
-								'nomor_lokasi_awal' => $get_data_register_isi->nomor_lokasi_awal,
-								'kode_barang' => $get_data_register_isi->kode_barang,
-								'nama_barang' => $get_data_register_isi->nama_barang,
-								'spesifikasi_barang_merk' => $get_data_register_isi->spesifikasi_barang_merk,
-								'satuan' => $get_data_register_isi->satuan,
-								'keberadaan_barang' => $get_data_register_isi->keberadaan_barang,
-								'nilai_perolehan' => $get_data_register_isi->nilai_perolehan,
-								'merupakan_anak' => $get_data_register_isi->merupakan_anak,
-								'lokasi' => $get_data_register_isi->lokasi,
-								'jumlah' => $get_data_register_isi->jumlah,
-								'kondisi_barang' => $get_data_register_isi->kondisi_barang,
-								'penggunaan_barang' => $get_data_register_isi->penggunaan_barang,
-								'register_ganda' => $get_data_register_isi->register_ganda,
-								'status_kepemilikan_tanah' => $get_data_register_isi->status_kepemilikan_tanah,
-								'tipe' => $get_data_register_isi->tipe,
-								'nopol' => $get_data_register_isi->nopol,
-								'no_rangka_seri' => $get_data_register_isi->no_rangka_seri,
-								'no_mesin'=> $get_data_register_isi->no_mesin,
-								'no_bpkb'=> $get_data_register_isi->no_bpkb,
-								'jenis_perkerasan_jalan'=> $get_data_register_isi->jenis_perkerasan_jalan,
-								'jenis_bahan_jembatan'=> $get_data_register_isi->jenis_bahan_jembatan,
-								'no_ruas'=> $get_data_register_isi->no_ruas,
-								'no_jaringan_irigasi'=> $get_data_register_isi->no_jaringan_irigasi,
-								'no_sertifikat' => $get_data_register_isi->no_sertifikat,
-								'register_tanah' => $get_data_register_isi->register_tanah,
-								'kota' => $get_data_register_isi->kota,
-								'kelurahan' => $get_data_register_isi->kelurahan,
-								'kecamatan' => $get_data_register_isi->kecamatan,
-								'pemanfaatan_aset' => $get_data_register_isi->pemanfaatan_aset,
-								'created_date'=> $date,
-								'created_time'=> $time,
-								'lainnya'=> $get_data_register_isi->lainnya,
-								'koordinat'=> $get_data_register_isi->koordinat,
-								'keterangan'=> $get_data_register_isi->keterangan,
-								'update_at_date'=> $date,
-								'update_at_time'=> $time
-				);
-
-				$this->admin_model->insert_data_history($data_for_isi_history,'register_isi_history');
-
 			}
 		}
 
@@ -532,31 +501,87 @@ class Home_admin extends CI_Controller {
 						'update_at_time' => $time
 						);
 
-						$this->admin_model->update_data($get_data->register,$datapeng_for_kib,'data_kib');
+						$this->admin_model->update_data($row_peng->register,$datapeng_for_kib,'data_kib');
 
 				} else {
 
 					$datapeng_for_kib=array (
-						'nomor_lokasi_baru' => $row->nomor_lokasi_baru,
-						'kode64_baru'	=> $row->kode64_baru,
-						'kode108_baru' => $row->kode108_baru,
-						'harga_baru' => $row->harga_baru,
-						'status_simbada' => $row->hapus,
-						'penghapusan' => $row->penghapusan,
-						'hibah_keluar' => $row->hibah_keluar,
-						'ekstrakomtabel' => $row->extrakomtabel_baru,
+						'nomor_lokasi_baru' => $row_peng->nomor_lokasi_baru,
+						'kode64_baru'	=> $row_peng->kode64_baru,
+						'kode108_baru' => $row_peng->kode108_baru,
+						'harga_baru' => $row_peng->harga_baru,
+						'status_simbada' => $row_peng->hapus,
+						'penghapusan' => $row_peng->penghapusan,
+						'hibah_keluar' => $row_peng->hibah_keluar,
+						'ekstrakomtabel' => $row_peng->extrakomtabel_baru,
 						'update_at_date' => $date,
 						'update_at_time' => $time
 					);
 
-					$this->admin_model->update_data($register,$datapeng_for_kib,'data_kib');
+					$this->admin_model->update_data($row_peng->register,$datapeng_for_kib,'data_kib');
+
+					$data_for_reg_isi2=array (
+						'lokasi' => $row_peng->nomor_lokasi_baru,
+						'kode_barang' => $row_peng->kode108_baru,
+						'kondisi_barang' => $kondisi,
+						'harga_baru' => $row_peng->harga_baru,
+						'update_at_date' => $date,
+						'update_at_time' => $time
+					);
+
+					$this->admin_model->update_data($row_peng->register,$data_for_reg_isi2,'register_isi');
+
+					$get_data_register_isi2=$this->admin_model->get_data_reg_isi($row_peng->register)->row();
+
+					$data_for_isi_history2=array(
+						'register' => $data->register,
+						'nomor_lokasi_awal' => $get_data_register_isi2->nomor_lokasi_awal,
+						'kode_barang' => $get_data_register_isi2->kode_barang,
+						'nama_barang' => $get_data_register_isi2->nama_barang,
+						'spesifikasi_barang_merk' => $get_data_register_isi2->spesifikasi_barang_merk,
+						'satuan' => $get_data_register_isi2->satuan,
+						'keberadaan_barang' => $get_data_register_isi2->keberadaan_barang,
+						'nilai_perolehan' => $get_data_register_isi2->nilai_perolehan,
+						'merupakan_anak' => $get_data_register_isi2->merupakan_anak,
+						'lokasi' => $get_data_register_isi2->lokasi,
+						'jumlah' => $get_data_register_isi2->jumlah,
+						'kondisi_barang' => $get_data_register_isi2->kondisi_barang,
+						'penggunaan_barang' => $get_data_register_isi2->penggunaan_barang,
+						'register_ganda' => $get_data_register_isi2->register_ganda,
+						'status_kepemilikan_tanah' => $get_data_register_isi2->status_kepemilikan_tanah,
+						'tipe' => $get_data_register_isi2->tipe,
+						'nopol' => $get_data_register_isi2->nopol,
+						'no_rangka_seri' => $get_data_register_isi2->no_rangka_seri,
+						'no_mesin'=> $get_data_register_isi2->no_mesin,
+						'no_bpkb'=> $get_data_register_isi2->no_bpkb,
+						'jenis_perkerasan_jalan'=> $get_data_register_isi2->jenis_perkerasan_jalan,
+						'jenis_bahan_jembatan'=> $get_data_register_isi2->jenis_bahan_jembatan,
+						'no_ruas'=> $get_data_register_isi2->no_ruas,
+						'no_jaringan_irigasi'=> $get_data_register_isi2->no_jaringan_irigasi,
+						'no_sertifikat' => $get_data_register_isi2->no_sertifikat,
+						'register_tanah' => $get_data_register_isi2->register_tanah,
+						'kota' => $get_data_register_isi2->kota,
+						'kelurahan' => $get_data_register_isi2->kelurahan,
+						'kecamatan' => $get_data_register_isi2->kecamatan,
+						'pemanfaatan_aset' => $get_data_register_isi2->pemanfaatan_aset,
+						'created_date'=> $date,
+						'created_time'=> $time,
+						'lainnya'=> $get_data_register_isi2->lainnya,
+						'koordinat'=> $get_data_register_isi2->koordinat,
+						'keterangan'=> $get_data_register_isi2->keterangan,
+						'update_at_date'=> $date,
+						'update_at_time'=> $time
+					);
+
+					$this->admin_model->insert_data_history($data_for_isi_history2,'register_isi_history');
+
 				}
 
 			}
 
 		}
 
-
+		echo "<h2> Penyesuaian Dengan Pengadaan Baru, Berhasil !!</h2>";
 
 	}
 
