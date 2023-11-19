@@ -352,7 +352,7 @@ class Home_admin extends CI_Controller {
 						'lokasi' => $row->nomor_lokasi_baru,
 						'kode_barang' => $row->kode108_baru,
 						'kondisi_barang' => $kondisi,
-						'harga_baru' => $row->harga_baru,
+						'nilai_perolehan' => $row->harga_baru,
 						'update_at_date' => $date,
 						'update_at_time' => $time
 					);
@@ -526,7 +526,7 @@ class Home_admin extends CI_Controller {
 						'lokasi' => $row_peng->nomor_lokasi_baru,
 						'kode_barang' => $row_peng->kode108_baru,
 						'kondisi_barang' => $kondisi,
-						'harga_baru' => $row_peng->harga_baru,
+						'nilai_perolehan' => $row_peng->harga_baru,
 						'update_at_date' => $date,
 						'update_at_time' => $time
 					);
