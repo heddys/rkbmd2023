@@ -217,7 +217,7 @@ class Home_admin extends CI_Controller {
 	}
 
 
-	public function update_sawal_ver2()
+	public function update_data_fix()
 	{
 		ini_set('memory_limit', '-1');
 		ini_set('max_execution_time', '0');

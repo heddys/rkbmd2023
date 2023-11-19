@@ -350,7 +350,7 @@
       $.ajax({
               type: 'ajax',
               method: 'get',
-              url: '<?php echo site_url();?>/home_admin/update_data_pengadaan',
+              url: '<?php echo site_url();?>/home_admin/update_data_fix',
               async: false,
               dataType: 'json',
               success: function(data){
