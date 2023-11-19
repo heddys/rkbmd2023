@@ -362,7 +362,7 @@ class Home_admin extends CI_Controller {
 					$get_data_register_isi=$this->admin_model->get_data_reg_isi($register)->row();
 
 					$data_for_isi_history=array(
-						'register' => $data->register,
+						'register' => $row->register,
 						'nomor_lokasi_awal' => $get_data_register_isi->nomor_lokasi_awal,
 						'kode_barang' => $get_data_register_isi->kode_barang,
 						'nama_barang' => $get_data_register_isi->nama_barang,
@@ -536,7 +536,7 @@ class Home_admin extends CI_Controller {
 					$get_data_register_isi2=$this->admin_model->get_data_reg_isi($row_peng->register)->row();
 
 					$data_for_isi_history2=array(
-						'register' => $data->register,
+						'register' => $row_peng->register,
 						'nomor_lokasi_awal' => $get_data_register_isi2->nomor_lokasi_awal,
 						'kode_barang' => $get_data_register_isi2->kode_barang,
 						'nama_barang' => $get_data_register_isi2->nama_barang,
