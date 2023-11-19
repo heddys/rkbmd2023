@@ -219,6 +219,8 @@ class Home_admin extends CI_Controller {
 
 	public function update_data_fix()
 	{
+		$this->cek_sess();
+
 		ini_set('memory_limit', '-1');
 		ini_set('max_execution_time', '0');
 		date_default_timezone_set("Asia/Jakarta");	
