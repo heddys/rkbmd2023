@@ -26,6 +26,8 @@ class Home_verifikator extends CI_Controller {
 			'status' => 3
         );
 
+		$kib = '';
+
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['jumlah_proses']=$this->form_model->get_all_register($where_proses,$nomor_lokasi)->num_rows();
 		$data['jumlah_tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi)->num_rows();
@@ -199,7 +201,9 @@ class Home_verifikator extends CI_Controller {
 			$kib = '1.3.5';
 		} else { 
 			$kib = '1.5.3';
-		} 
+		}
+
+		$data['kib_apa']= $id;
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib);

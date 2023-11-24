@@ -81,7 +81,7 @@
                 return $query;
             }
 
-            public function get_all_register($where,$lokasi){
+            public function get_all_register($where,$lokasi,$kib=''){
                 if ($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
                     $query=$this->db->query("SELECT
                         a.*,
@@ -106,7 +106,7 @@
                         a.status_simbada is NULL
                         AND a.ekstrakomtabel is NULL
                         AND a.STATUS = ".$where['status']."
-                        AND left(a.kode108_baru,5) in ('1.3.1','1.3.2','1.3.3','1.3.4','1.3.5','1.5.3')
+                        AND a.kode108_baru like '%".$kib."%'
                         AND left(a.`nomor_lokasi`,12) LIKE '".$lokasi."%'"
                     );
 
@@ -124,7 +124,7 @@
                         $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.status_simbada is null and a.`status` is null and a.`nomor_lokasi_baru` like '%".$no_lokasi."%' and a.kode108_baru like '%".$kib."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') and not EXISTS (select x.register from register_tambak x where x.register=a.register) ");
 
                     } else {
-                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.status_simbada is null and a.`status` is null and a.`nomor_lokasi_baru` like '%".$data."%' and a.kode108_baru like '%".$kib."%' and not EXISTS (select x.register from register_tambak x where x.register=a.register)");
+                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.status_simbada is null and a.`status` is null and a.`nomor_lokasi_baru` like '%".$data."%' and a.kode108_baru like '%".$kib."%' and not EXISTS (select x.register from register_tambak x where x.register=a.register)");
 
                        
                     }
