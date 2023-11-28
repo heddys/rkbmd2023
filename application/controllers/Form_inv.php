@@ -1030,14 +1030,14 @@ class Form_inv extends CI_Controller {
                 } 
             } else { 
 
-            	  $statusMsg = 'Please select image files to upload.'; 
+            	$statusMsg = 'Please select image files to upload.'; 
             }
 		
 		
 		if($kms_kel == NULL ) {
 			$kota = "Surabaya";
 			$kelurahan = $_POST['kelurahan'];
-			$kecamata = $_POST['kecamatan'];
+			$kecamatan = $_POST['kecamatan'];
 		} else {
 			$get_kelurahan = $this->form_model->get_kamus_kelurahan($kms_kel)->row();
 			$kota = $get_kelurahan->kab_kota;
@@ -1063,7 +1063,7 @@ class Form_inv extends CI_Controller {
 		'no_sertifikat' => $no_sertif,
 		'kota' => $kota,
 		'kelurahan' => $kelurahan,
-		'kecamatan' => $kecamata,
+		'kecamatan' => $kecamatan,
 		'penggunaan_barang' => $penggunaan,
 		'pemanfaatan_aset' => $pemanfaatan,
 		'register_ganda' => $ganda,
@@ -1288,7 +1288,7 @@ class Form_inv extends CI_Controller {
 		if($kms_kel == NULL ) {
 			$kota = "Surabaya";
 			$kelurahan = $_POST['kelurahan'];
-			$kecamata = $_POST['kecamatan'];
+			$kecamatan = $_POST['kecamatan'];
 		} else {
 			$get_kelurahan = $this->form_model->get_kamus_kelurahan($kms_kel)->row();
 			$kota = $get_kelurahan->kab_kota;
@@ -1314,7 +1314,7 @@ class Form_inv extends CI_Controller {
 		'luas' => $luas_bangunan,
 		'kota' => $kota,
 		'kelurahan' => $kelurahan,
-		'kecamatan' => $kecamata,
+		'kecamatan' => $kecamatan,
 		'penggunaan_barang' => $penggunaan,
 		'pemanfaatan_aset' => $pemanfaatan,
 		'register_ganda' => $ganda,
@@ -1514,7 +1514,7 @@ class Form_inv extends CI_Controller {
 		if($kms_kel == NULL ) {
 			$kota = "Surabaya";
 			$kelurahan = $_POST['kelurahan'];
-			$kecamata = $_POST['kecamatan'];
+			$kecamatan = $_POST['kecamatan'];
 		} else {
 			$get_kelurahan = $this->form_model->get_kamus_kelurahan($kms_kel)->row();
 			$kota = $get_kelurahan->kab_kota;
@@ -1540,7 +1540,7 @@ class Form_inv extends CI_Controller {
 		'no_sertifikat' => $no_sertif,
 		'kota' => $kota,
 		'kelurahan' => $kelurahan,
-		'kecamatan' => $kecamata,
+		'kecamatan' => $kecamatan,
 		'penggunaan_barang' => $penggunaan,
 		'pemanfaatan_aset' => $pemanfaatan,
 		'register_ganda' => $ganda,
@@ -1977,7 +1977,7 @@ class Form_inv extends CI_Controller {
 		if($kms_kel == NULL ) {
 			$kota = "Surabaya";
 			$kelurahan = $_POST['kelurahan'];
-			$kecamata = $_POST['kecamatan'];
+			$kecamatan = $_POST['kecamatan'];
 		} else {
 			$get_kelurahan = $this->form_model->get_kamus_kelurahan($kms_kel)->row();
 			$kota = $get_kelurahan->kab_kota;
@@ -2003,7 +2003,7 @@ class Form_inv extends CI_Controller {
 		'luas' => $luas_bangunan,
 		'kota' => $kota,
 		'kelurahan' => $kelurahan,
-		'kecamatan' => $kecamata,
+		'kecamatan' => $kecamatan,
 		'penggunaan_barang' => $penggunaan,
 		'pemanfaatan_aset' => $pemanfaatan,
 		'register_ganda' => $ganda,

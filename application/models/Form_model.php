@@ -24,7 +24,7 @@
 
             public function get_kib_for_excel($lokasi,$kib)
             {
-                $query = $this->db->query("SELECT a.*,b.lokasi,DATE_FORMAT(c.created_date, '%m/%e/%Y') as tanggal FROM data_kib a left join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi left join register_isi c on a.register=c.register where a.ekstrakomtabel IS NULL and left(a.`nomor_lokasi`,12) like '".$lokasi."%' and a.kode108_baru like '%".$kib."%' order by a.status DESC");
+                $query = $this->db->query("SELECT a.*,b.lokasi,DATE_FORMAT(c.created_date, '%m/%e/%Y') as tanggal FROM data_kib a left join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi_baru left join register_isi c on a.register=c.register where a.ekstrakomtabel IS NULL and a.status_simbada is NULL and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%' and a.kode108_baru like '%".$kib."%' group by a.register order by a.status DESC");
 
                 return $query;
             }
