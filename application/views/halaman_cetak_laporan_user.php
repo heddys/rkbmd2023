@@ -23,7 +23,29 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui perubahan setiap atribut barang yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <!-- <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a> -->
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang/1.3.1');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang/1.3.2');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang/1.3.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-info">Gedung dan Bangunan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang/1.3.4');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-danger">jalan, Irigasi dan Jaringan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang/1.3.5');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-warning">Aset Tetap Lainnya</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang/1.5.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-secondary">Aset Tidak Berwujud</a>
+                                    </th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </div>

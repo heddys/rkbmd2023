@@ -453,12 +453,12 @@ class Status_form extends CI_Controller {
 		
 	}
 
-    public function cetak_form_kondisi_barang()
+    public function cetak_form_kondisi_barang($kib)
     {
         $this->cek_sess();
         $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
         $get_data_pb=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
-		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,'1.3.2')->result();
+		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,$kib)->result();
 		ini_set('memory_limit', '2048M');
 		$data_register=array();
 		$data_register_updated=array();
@@ -509,6 +509,9 @@ class Status_form extends CI_Controller {
 		// $this->pdf->render();
         // ob_end_clean();
 		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
+
+
+		$data['kib_apa'] = $kib;
 		$this->load->view('laporan/cetak_form_kondisi_barang',$data);		
     }
 
@@ -571,13 +574,13 @@ class Status_form extends CI_Controller {
     }
 
 
-	public function cetak_perubahan_data_barang()
+	public function cetak_perubahan_data_barang($kib)
     {
         $this->cek_sess();
         $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
         $get_data_pb=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
 		
-		$data['data_register']=$this->form_model->get_perubahan_data_verif($nomor_lokasi,'1.3.2')->result();
+		$data['data_register']=$this->form_model->get_perubahan_data_verif($nomor_lokasi,$kib)->result();
 		
 
 		// 
@@ -587,54 +590,60 @@ class Status_form extends CI_Controller {
         // ob_end_clean();
 		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
 		$data['data_pb']=$get_data_pb;
+		$data['kib_apa'] = $kib;
 		$this->load->view('laporan/cetak_perubahan_data_barang',$data);		
     }
 
-	public function laporan_barang_hilang()
+	public function laporan_barang_hilang($kib)
 	{
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
-		$data['data_barang']=$this->form_model->get_data_hilang('1.3.2',$nomor_lokasi)->result();
+		$data['data_barang']=$this->form_model->get_data_hilang($kib,$nomor_lokasi)->result();
+		$data['kib_apa'] = $kib;
 
 		$this->load->view('laporan/cetak_barang_hilang',$data);
 	}
 
-	public function laporan_belum_dikapt_diketahui_induk()
+	public function laporan_belum_dikapt_diketahui_induk($kib)
 	{
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
-		$data['data_barang']=$this->form_model->get_belum_kapt_ada_induk('1.3.2',$nomor_lokasi)->result();
+		$data['data_barang']=$this->form_model->get_belum_kapt_ada_induk($kib,$nomor_lokasi)->result();
+		$data['kib_apa'] = $kib;
 
 		$this->load->view('laporan/cetak_belum_kapt_diketahui',$data);
 	}
 
-	public function laporan_belum_dikapt_tidak_diketahui_induk()
+	public function laporan_belum_dikapt_tidak_diketahui_induk($kib)
 	{
 		$this->cek_sess();
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
 		// ini_set('memory_limit', '2048M');
+		$data['kib_apa'] = $kib;
 		// $data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk('1.3.2')->result();
 
 		$this->load->view('laporan/cetak_belum_kapt_tidak_diketahui_induk',$data);
 	}
 
-	public function laporan_data_tercatat_ganda()
+	public function laporan_data_tercatat_ganda($kib)
 	{
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
-		$data['data_barang']=$this->form_model->get_data_ganda('1.3.2',$nomor_lokasi)->result();
+		$data['data_barang']=$this->form_model->get_data_ganda($kib,$nomor_lokasi)->result();
+
+		$data['kib_apa'] = $kib;
 
 		$this->load->view('laporan/cetak_barang_ganda',$data);
 	}
 
-	public function laporan_data_digunakan_pihak_lain()
+	public function laporan_data_digunakan_pihak_lain($kib)
 	{
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
@@ -645,14 +654,15 @@ class Status_form extends CI_Controller {
 		$this->load->view('laporan/cetak_barang_digunakan_instansi_lain',$data);
 	}
 
-	public function laporan_data_digunakan_pegawai_pemda()
+	public function laporan_data_digunakan_pegawai_pemda($kib)
 	{
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
-		$data['data_barang']=$this->form_model->get_data_dipakai_pegawai('1.3.2',$nomor_lokasi)->result();
+		$data['data_barang']=$this->form_model->get_data_dipakai_pegawai($kib,$nomor_lokasi)->result();
 
+		$data['kib_apa'] = $kib;
 		$this->load->view('laporan/cetak_barang_digunakan_pegawai',$data);
 	}
 
