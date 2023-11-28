@@ -8,7 +8,25 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                      <center>LIST REGISTER YANG TELAH DI TOLAK - PERALATAN DAN MESIN</center></h3>
+				  <center>LIST REGISTER YANG DI TOLAK - <?php if ($kib_apa == 1) { 
+                                    echo "ASET TETAP TANAH";
+                                } 
+                                elseif ($kib_apa == 2) {
+                                        echo "ASET TETAP PERALATAN DAN MESIN";
+                                } 
+                                elseif ($kib_apa == 3) {
+                                        echo "ASET TETAP GEDUNG DAN BANGUNAN";
+                                } 
+                                elseif ($kib_apa == 4) {
+                                        echo "ASET TETAP JALAN, IRIGASI DAN JARINGAN";
+                                }
+                                elseif ($kib_apa == 5) {
+                                    echo "ASET TETAP LAINNYA";
+                                }
+                                elseif ($kib_apa == 6) {
+                                    echo "ASET TIDAK BERWUJUD";
+                                } 
+                                ?></center></h3>
 	            </div>
 	            <!-- /.card-header -->
 	            <div class="card-body" style="overflow-x:auto;">

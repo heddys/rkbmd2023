@@ -12,7 +12,7 @@ class Home_admin extends CI_Controller {
 		$data['get_data_chart']=$this->admin_model->get_data_chart(1);
 		// $data['get_proses_reg']=$this->admin_model->get_proses_reg(1);
         // $data['get_tolak_reg']=$this->admin_model->get_tolak_reg(1);
-		$data['rekap_opd']=$this->admin_model->get_rekap_opd_admin();
+		$data['rekap_opd']=$this->admin_model->get_rekap_opd_admin_dashboard();
 
         $this->load->view('admin/header_admin',$data);		
 		$this->load->view('admin/admin_page');
@@ -215,7 +215,6 @@ class Home_admin extends CI_Controller {
 
 
 	}
-
 
 	public function update_data_fix()
 	{
@@ -1003,12 +1002,13 @@ class Home_admin extends CI_Controller {
         $objPHPExcel->setActiveSheetIndex(0);
         $objPHPExcel->getActiveSheet()->setCellValue('A3', "No.");
         $objPHPExcel->getActiveSheet()->setCellValue('B3', "OPD");
-        $objPHPExcel->getActiveSheet()->setCellValue('C3', "Total Register");
-        $objPHPExcel->getActiveSheet()->setCellValue('D3', "Register Telah Di Verif");
-        $objPHPExcel->getActiveSheet()->setCellValue('E3', "Register Masih Proses Verif");
-        $objPHPExcel->getActiveSheet()->setCellValue('F3', "Register Di Tolak");
-        $objPHPExcel->getActiveSheet()->setCellValue('G3', "Register Belum Di Kerjakan");
-        $objPHPExcel->getActiveSheet()->setCellValue('H3', "Persentase");
+        $objPHPExcel->getActiveSheet()->setCellValue('C3', "Jenis Aset");
+        $objPHPExcel->getActiveSheet()->setCellValue('D3', "Total Register");
+        $objPHPExcel->getActiveSheet()->setCellValue('E3', "Register Telah Di Verif");
+        $objPHPExcel->getActiveSheet()->setCellValue('F3', "Register Masih Proses Verif");
+        $objPHPExcel->getActiveSheet()->setCellValue('G3', "Register Di Tolak");
+        $objPHPExcel->getActiveSheet()->setCellValue('H3', "Register Belum Di Kerjakan");
+        // $objPHPExcel->getActiveSheet()->setCellValue('I3', "Persentase");
 		
 		$objPHPExcel->getActiveSheet()->getStyle('A3:H3')->getFont()->setBold( true );
 		
@@ -1024,7 +1024,8 @@ class Home_admin extends CI_Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
+        // $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
 		
         // Add data
 		$i=4;
@@ -1033,14 +1034,24 @@ class Home_admin extends CI_Controller {
 		
         foreach ($rekap_opd as $row) 
         {
+
+			if($row->kode_barang == '1.3.1') {
+				$kode_barang = 'Tanah';
+			} elseif ($row->kode_barang == '1.3.2') {
+				$kode_barang = 'Peralatan dan Mesin';
+			} else {
+				$kode_barang = 'Gedung dan Bangunan';
+			}
+
 			$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, strtoupper($row->unit));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, number_format($row->total));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, number_format($row->verif));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, number_format($row->proses));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, number_format($row->tolak));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, number_format($row->sisa));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, round((float)$row->persentase,3).'%');
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, strtoupper($kode_barang));;
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, number_format($row->total));
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, number_format($row->verif));
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, number_format($row->proses));
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, number_format($row->tolak));
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, number_format($row->sisa));
+            // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, round((float)$row->persentase,3).'%');
 
 			$i++;
 			$no++;
@@ -1068,7 +1079,7 @@ class Home_admin extends CI_Controller {
         
         
         // Save Excel xls File
-        $filename="Rekap Persentase Register Inventarisasi - ".date('Ymd').".xls";
+        $filename="Rekap Persentase Register Inventarisasi All OPD - ".date('Ymd').".xls";
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
         ob_end_clean();
 		header('Last-Modified:'. gmdate("D, d M Y H:i:s").'GMT');

@@ -32,6 +32,7 @@ class Home extends CI_Controller {
 			$data['rekap_upt'] = $this->form_model->get_rekap_per_uptd($nomor_lokasi);
 			// $data['only_opd'] = $this->form_model->get_data_dinkes_only()->row();
 		}
+		$data['lok'] = $nomor_lokasi;
 		$data['rekap']=$this->form_model->data_progres_opd($nomor_lokasi)->row();
 		$data['rekap_tanah']=$this->form_model->data_progres_opd_tanah($nomor_lokasi)->row();
 		$data['rekap_pm']=$this->form_model->data_progres_opd_pm($nomor_lokasi)->row();
