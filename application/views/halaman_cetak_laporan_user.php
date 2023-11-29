@@ -61,7 +61,29 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui perubahan kondisi barang (Baik/Kurang Baik/Rusak Berat) barang yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <!-- <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a> -->
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang/1.3.1');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang/1.3.2');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang/1.3.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-info">Gedung dan Bangunan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang/1.3.4');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-danger">jalan, Irigasi dan Jaringan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang/1.3.5');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-warning">Aset Tetap Lainnya</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang/1.5.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-secondary">Aset Tidak Berwujud</a>
+                                    </th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </div>
@@ -77,7 +99,29 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui status keberadaan barang yang tidak diketemukan dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <!-- <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a> -->
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan/1.3.1');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan/1.3.2');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan/1.3.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-info">Gedung dan Bangunan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan/1.3.4');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-danger">jalan, Irigasi dan Jaringan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan/1.3.5');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-warning">Aset Tetap Lainnya</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan/1.5.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-secondary">Aset Tidak Berwujud</a>
+                                    </th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </div>
@@ -94,7 +138,29 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui status keberadaan barang yang hilang dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('status_form/laporan_barang_hilang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <!-- <a href="<?php echo site_url('status_form/laporan_barang_hilang');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a> -->
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_barang_hilang/1.3.1');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_barang_hilang/1.3.2');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_barang_hilang/1.3.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-info">Gedung dan Bangunan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_barang_hilang/1.3.4');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-danger">jalan, Irigasi dan Jaringan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_barang_hilang/1.3.5');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-warning">Aset Tetap Lainnya</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_barang_hilang/1.5.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-secondary">Aset Tidak Berwujud</a>
+                                    </th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </div>
@@ -111,7 +177,29 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui barang harusnya dikapitalisasi dengan barang lain yang diketahui induknya dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('status_form/laporan_belum_dikapt_diketahui_induk');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <!-- <a href="<?php echo site_url('status_form/laporan_belum_dikapt_diketahui_induk');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a> -->
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_diketahui_induk/1.3.1');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_diketahui_induk/1.3.2');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_diketahui_induk/1.3.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-info">Gedung dan Bangunan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_diketahui_induk/1.3.4');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-danger">jalan, Irigasi dan Jaringan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_diketahui_induk/1.3.5');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-warning">Aset Tetap Lainnya</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_diketahui_induk/1.5.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-secondary">Aset Tidak Berwujud</a>
+                                    </th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </div>
@@ -128,7 +216,29 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui barang harusnya dikapitalisasi dengan barang lain yang tida diketahui induknya dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('status_form/laporan_belum_dikapt_tidak_diketahui_induk');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <!-- <a href="<?php echo site_url('status_form/laporan_belum_dikapt_tidak_diketahui_induk');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a> -->
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_tidak_diketahui_induk/1.3.1');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_tidak_diketahui_induk/1.3.2');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_tidak_diketahui_induk/1.3.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-info">Gedung dan Bangunan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_tidak_diketahui_induk/1.3.4');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-danger">jalan, Irigasi dan Jaringan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_tidak_diketahui_induk/1.3.5');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-warning">Aset Tetap Lainnya</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_belum_dikapt_tidak_diketahui_induk/1.5.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-secondary">Aset Tidak Berwujud</a>
+                                    </th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </div>
@@ -146,6 +256,28 @@
                             Cetak Laporan untuk mengetahui barang tercatat ganda dan yang telah diverifikasi.
                             <hr>
                             <a href="<?php echo site_url('status_form/laporan_data_tercatat_ganda');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_tercatat_ganda/1.3.1');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_tercatat_ganda/1.3.2');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_tercatat_ganda/1.3.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-info">Gedung dan Bangunan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_tercatat_ganda/1.3.4');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-danger">jalan, Irigasi dan Jaringan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_tercatat_ganda/1.3.5');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-warning">Aset Tetap Lainnya</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_tercatat_ganda/1.5.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-secondary">Aset Tidak Berwujud</a>
+                                    </th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </div>
@@ -162,7 +294,29 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui informasi barang/aset yang digunakan oleh pihak lain dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('status_form/laporan_data_digunakan_pihak_lain');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <!-- <a href="<?php echo site_url('status_form/laporan_data_digunakan_pihak_lain');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a> -->
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pihak_lain/1.3.1');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pihak_lain/1.3.2');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pihak_lain/1.3.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-info">Gedung dan Bangunan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pihak_lain/1.3.4');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-danger">jalan, Irigasi dan Jaringan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pihak_lain/1.3.5');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-warning">Aset Tetap Lainnya</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pihak_lain/1.5.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-secondary">Aset Tidak Berwujud</a>
+                                    </th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </div>
@@ -179,7 +333,29 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui informasi barang/aset digunakan oleh pegawai pemerintah kota dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('status_form/laporan_data_digunakan_pegawai_pemda');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <!-- <a href="<?php echo site_url('status_form/laporan_data_digunakan_pegawai_pemda');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a> -->
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pegawai_pemda/1.3.1');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pegawai_pemda/1.3.2');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pegawai_pemda/1.3.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-info">Gedung dan Bangunan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pegawai_pemda/1.3.4');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-danger">jalan, Irigasi dan Jaringan</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pegawai_pemda/1.3.5');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-warning">Aset Tetap Lainnya</a>
+                                    </th>
+                                    <th>
+                                        <a href="<?php echo site_url('status_form/laporan_data_digunakan_pegawai_pemda/1.5.3');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-secondary">Aset Tidak Berwujud</a>
+                                    </th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </div>

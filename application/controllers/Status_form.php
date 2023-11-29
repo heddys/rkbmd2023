@@ -515,12 +515,12 @@ class Status_form extends CI_Controller {
 		$this->load->view('laporan/cetak_form_kondisi_barang',$data);		
     }
 
-	public function cetak_barang_tidak_ditemukan()
+	public function cetak_barang_tidak_ditemukan($kib)
     {
         $this->cek_sess();
         $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
         $get_data_pb=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
-		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,'1.3.2')->result();
+		$get_data_register=$this->form_model->get_register_sudah_verf($nomor_lokasi,$kib)->result();
 		ini_set('memory_limit', '2048M');
 		$data_register=array();
 		$data_register_updated=array();
