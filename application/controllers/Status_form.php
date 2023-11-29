@@ -665,12 +665,5 @@ class Status_form extends CI_Controller {
 		$data['kib_apa'] = $kib;
 		$this->load->view('laporan/cetak_barang_digunakan_pegawai',$data);
 	}
-
-
-
-
-
-
-
 }
 ?>
