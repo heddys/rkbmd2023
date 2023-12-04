@@ -96,23 +96,23 @@ class Form_inv extends CI_Controller {
 			$data['kib_apa']=$id;
 
 			if($id=='1') {
-				$this->session->set_userdata('kib','1.3.1');
+				$this->session->set_userdata('kib','1.3.01');
 				$kib = $this->session->userdata('kib');
 			} 
 			elseif ($id=='2') {
-				$this->session->set_userdata('kib','1.3.2');
+				$this->session->set_userdata('kib','1.3.02');
 				$kib = $this->session->userdata('kib');
 			} elseif ($id=='3') {
-				$this->session->set_userdata('kib','1.3.3');
+				$this->session->set_userdata('kib','1.3.03');
 				$kib = $this->session->userdata('kib');
 			} elseif ($id=='4') {
-				$this->session->set_userdata('kib','1.3.4');
+				$this->session->set_userdata('kib','1.3.04');
 				$kib = $this->session->userdata('kib');
 			} elseif ($id=='5') {
-				$this->session->set_userdata('kib','1.3.5');
+				$this->session->set_userdata('kib','1.3.05');
 				$kib = $this->session->userdata('kib');
 			} else { 
-				$this->session->set_userdata('kib','1.5.3');
+				$this->session->set_userdata('kib','1.5.03');
 				$kib = $this->session->userdata('kib');
 			}
 			
@@ -157,7 +157,7 @@ class Form_inv extends CI_Controller {
 				$this->pagination->initialize($config);
 				
 			$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
-			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form, 'data' => $data_cari, 'lokasi_asli' => $this->session->userdata('no_lokasi_asli'), 'status' => $this->session->userdata('status'));
+			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form, 'data' => $data_cari, 'lokasi_asli' => $this->session->userdata('no_lokasi_asli'), 'status' => $this->session->userdata('status'), 'kib' => $kib);
 			$data['register']=$this->form_model->get_all_register_pagination($data_cari,$kib,$config['per_page'],$data['offset'],$form);
         
 		}

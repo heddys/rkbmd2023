@@ -7,7 +7,7 @@
         	<div class="card">
 	            <div class="card-header">
 	              <h3 class="card-title">
-                <!-- <?php echo $dummy['data']." - ".$dummy['lokasi_asli']." - ".$dummy['status']?> -->
+                <!-- <?php echo $dummy['data']." - ".$dummy['lokasi_asli']." - ".$dummy['status']." - ".$dummy['kib']?> -->
                       <center>KARTU INVENTARIS BARANG  - 
                           <?php if ($kib_apa == 1) { 
                                     echo "ASET TETAP TANAH";
