@@ -82,14 +82,19 @@ class Api_auth extends REST_Controller {
     */
     public function index_post()
     {
+        //Data HEADERS
         $data = $this->input->request_headers();
         // $this->db->insert('items',$input);
 
         // $data = array ('user' => $usr, 'psswd' => $psswd);
 
+        //Data BODY
+        $username =  $this->input->post('username');
+
         $cekuser= array(
-            'username' => $data['username'],
+            'username' => $username,
         );
+        
         $this->load->model('auth_model');
         $ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
         $get=$this->auth_model->ceklogin("pengguna",$cekuser)->row();
@@ -119,23 +124,23 @@ class Api_auth extends REST_Controller {
             // echo $this->session->userdata('no_lokasi_asli');
             // var_dump($data_session);
             if ($this->session->userdata('role')=='Verifikator'){
-                redirect('home_verifikator');
+                $this->response("Sukses", REST_Controller::HTTP_OK);
             } elseif ($this->session->userdata('role')=='Penyelia') {
-                redirect('home_penyelia');
+                $this->response("Sukses", REST_Controller::HTTP_OK);
             } elseif ($this->session->userdata('role')=='Admin') {
-                redirect('home_admin');
+                $this->response("Sukses", REST_Controller::HTTP_OK);
             } elseif ($this->session->userdata('role')=='Guest') {
-                redirect('home_guest');
+                $this->response("Sukses", REST_Controller::HTTP_OK);
             }
             else {
-                redirect('home');
+                $this->response("Sukses", REST_Controller::HTTP_OK);
             }
         }
         else {
             $this->index($error=1);
         }
      
-        $this->response($data, REST_Controller::HTTP_OK);
+        
     } 
      
     // /**
