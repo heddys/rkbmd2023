@@ -2,7 +2,7 @@
    
 require APPPATH . 'libraries/REST_Controller.php';
      
-class Api_rkp_aset extends REST_Controller {
+class Api_auth extends REST_Controller {
     
 	  /**
      * Get All Data from this method.
@@ -11,7 +11,7 @@ class Api_rkp_aset extends REST_Controller {
     */
     public function __construct() {
        parent::__construct();
-       $this->load->model('Api_model');
+    //    $this->load->model('Api_model');
     }
        
     /**
@@ -80,13 +80,63 @@ class Api_rkp_aset extends REST_Controller {
      *
      * @return Response
     */
-    // public function index_post()
-    // {
-    //     $input = $this->input->post();
-    //     $this->db->insert('items',$input);
+    public function index_post()
+    {
+        $data = $this->input->request_headers();
+        // $this->db->insert('items',$input);
+
+        // $data = array ('user' => $usr, 'psswd' => $psswd);
+
+        $cekuser= array(
+            'username' => $data['username'],
+        );
+        $this->load->model('auth_model');
+        $ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
+        $get=$this->auth_model->ceklogin("pengguna",$cekuser)->row();
+        // var_dump($get);
+        
+        
+        if($ceklog > 0) {
+            if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
+                $ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
+                $role=$ambil_lokasi_pbp->nama_lokasi;
+            } else {$role=$get->fungsi;}
+                    $data_session = array(	
+                            'id' => $get->id,
+                            'skpd' => $get->nama_opd,
+                            'kode_opd' =>$get->opd,
+                            'nama_login' =>$get->nama,
+                            'data' =>$get->nomor_lokasi,
+                            'role' => $get->fungsi,
+                            'jabatan' => $get->fungsi." (".$role.")",
+                            'kepala_opd' => $get->nama_kepala,
+                            'no_lokasi_asli' => $get->nomor_lokasi,
+                            'status' => 0,
+                            'nip' => $get->nip
+                        );
+            
+            $this->session->set_userdata($data_session);
+            // echo $this->session->userdata('no_lokasi_asli');
+            // var_dump($data_session);
+            if ($this->session->userdata('role')=='Verifikator'){
+                redirect('home_verifikator');
+            } elseif ($this->session->userdata('role')=='Penyelia') {
+                redirect('home_penyelia');
+            } elseif ($this->session->userdata('role')=='Admin') {
+                redirect('home_admin');
+            } elseif ($this->session->userdata('role')=='Guest') {
+                redirect('home_guest');
+            }
+            else {
+                redirect('home');
+            }
+        }
+        else {
+            $this->index($error=1);
+        }
      
-    //     $this->response(['Item created successfully.'], REST_Controller::HTTP_OK);
-    // } 
+        $this->response($data, REST_Controller::HTTP_OK);
+    } 
      
     // /**
     //  * Get All Data from this method.

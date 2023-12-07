@@ -14,6 +14,7 @@ class Auth extends CI_Controller {
 			} else {redirect('home_survey');}
 		} else 
 			{
+				// redirect('/Api_auth');
 				$this->load->view('login',$data);
 			}
 		
@@ -73,7 +74,7 @@ class Auth extends CI_Controller {
 		  }
 	}
 
-	public function logged_in($nip)
+	public function logged_in()
 	{
 		// $user=$this->input->post('usr');
 		// $pass=$this->input->post('psswd');
