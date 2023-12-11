@@ -138,7 +138,9 @@ class Api_auth extends REST_Controller {
                     // redirect('home_guest');
                 }
                 else {
-                    $this->response($this->session->session_id, REST_Controller::HTTP_OK);
+                    return redirect()->to('home', 301);
+                    $this->response("Suksess", REST_Controller::HTTP_OK);
+                    // $this->response(redirect('home'), REST_Controller::HTTP_OK);
                     // redirect('home');
                 }
             }

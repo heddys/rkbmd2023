@@ -4,20 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Auth extends CI_Controller {
 	public function index($error=NULL)
 	{	
-		$data['error']=$error;
-		if($this->session->userdata('kode_opd') !=NULL)
-		{
-			$skpdget = $this->session->userdata('kode_opd');
-			if ($skpdget!='SUR01'){
-				echo $skpdget;
-				redirect('home');				
-			} else {redirect('home_survey');}
-		} else 
-			{	
-				// redirect('https://bpkad.surabaya.go.id/sso-bpkad');
-				echo "Session Adalah : ".$this->session->userdata('kode_opd');
-				// $this->load->view('login',$data);
-			}
+		// $data['error']=$error;
+		// if($this->session->userdata('kode_opd') !=NULL)
+		// {
+		// 	$skpdget = $this->session->userdata('kode_opd');
+		// 	if ($skpdget!='SUR01'){
+		// 		echo $skpdget;
+		// 		redirect('home');				
+		// 	} else {redirect('home_survey');}
+		// } else 
+		// 	{	
+		// 		redirect('https://bpkad.surabaya.go.id/sso-bpkad');
+		// 		// echo "Session Adalah : ".$this->session->userdata('kode_opd');
+		// 		// $this->load->view('login',$data);
+		// 	}
+
+		redirect('home');
 		
 	}
 
@@ -25,10 +27,10 @@ class Auth extends CI_Controller {
 	{
 		$user=$this->input->post('usr');
 		$pass=$this->input->post('psswd');
-			$cekuser= array(
-				'username' => $user, 
-				'password' => $pass
-			);
+		$cekuser= array(
+			'username' => $user, 
+			'password' => $pass
+		);
 		$this->load->model('auth_model');
 		$ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
 		$get=$this->auth_model->ceklogin("pengguna",$cekuser)->row();
