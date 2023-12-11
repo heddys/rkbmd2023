@@ -82,65 +82,72 @@ class Api_auth extends REST_Controller {
     */
     public function index_post()
     {
-        //Data HEADERS
-        $data = $this->input->request_headers();
-        // $this->db->insert('items',$input);
+          
+            $data = $this->input->request_headers();
+            // $this->db->insert('items',$input);
 
-        // $data = array ('user' => $usr, 'psswd' => $psswd);
+            // $data = array ('user' => $usr, 'psswd' => $psswd);
 
-        //Data BODY
-        $username =  $this->input->post('username');
+            //Data BODY
+            $username =  $this->input->post('username');
+            // $password =  $this->input->post('password');
 
-        $cekuser= array(
-            'username' => $username,
-        );
-        
-        $this->load->model('auth_model');
-        $ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
-        $get=$this->auth_model->ceklogin("pengguna",$cekuser)->row();
-        // var_dump($get);
-        
-        
-        if($ceklog > 0) {
-            if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
-                $ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
-                $role=$ambil_lokasi_pbp->nama_lokasi;
-            } else {$role=$get->fungsi;}
-                    $data_session = array(	
-                            'id' => $get->id,
-                            'skpd' => $get->nama_opd,
-                            'kode_opd' =>$get->opd,
-                            'nama_login' =>$get->nama,
-                            'data' =>$get->nomor_lokasi,
-                            'role' => $get->fungsi,
-                            'jabatan' => $get->fungsi." (".$role.")",
-                            'kepala_opd' => $get->nama_kepala,
-                            'no_lokasi_asli' => $get->nomor_lokasi,
-                            'status' => 0,
-                            'nip' => $get->nip
-                        );
+            $cekuser= array(
+                'username' => $username
+                // 'password' => $password
+            );
             
-            $this->session->set_userdata($data_session);
-            // echo $this->session->userdata('no_lokasi_asli');
-            // var_dump($data_session);
-            if ($this->session->userdata('role')=='Verifikator'){
-                $this->response("Sukses", REST_Controller::HTTP_OK);
-            } elseif ($this->session->userdata('role')=='Penyelia') {
-                $this->response("Sukses", REST_Controller::HTTP_OK);
-            } elseif ($this->session->userdata('role')=='Admin') {
-                $this->response("Sukses", REST_Controller::HTTP_OK);
-            } elseif ($this->session->userdata('role')=='Guest') {
-                $this->response("Sukses", REST_Controller::HTTP_OK);
+            $this->load->model('auth_model');
+            $ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
+            $get=$this->auth_model->ceklogin("pengguna",$cekuser)->row();
+                     
+            
+            if($ceklog > 0) {
+                if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
+                    $ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
+                    $role=$ambil_lokasi_pbp->nama_lokasi;
+                } else {$role=$get->fungsi;}
+                        $data_session = array(	
+                                'id' => $get->id,
+                                'skpd' => $get->nama_opd,
+                                'kode_opd' =>$get->opd,
+                                'nama_login' =>$get->nama,
+                                'data' =>$get->nomor_lokasi,
+                                'role' => $get->fungsi,
+                                'jabatan' => $get->fungsi." (".$role.")",
+                                'kepala_opd' => $get->nama_kepala,
+                                'no_lokasi_asli' => $get->nomor_lokasi,
+                                'status' => 0,
+                                'nip' => $get->nip
+                            );
+                
+                $this->session->set_userdata($data_session);
+                // echo $this->session->userdata('no_lokasi_asli');
+                // var_dump($data_session);
+                if ($this->session->userdata('role')=='Verifikator'){
+                    $this->response(redirect('home_verifikator'), REST_Controller::HTTP_OK);
+                    // redirect('home_verifikator');
+                } elseif ($this->session->userdata('role')=='Penyelia') {
+                    $this->response(redirect('home_penyelia'), REST_Controller::HTTP_OK);
+                    // redirect('home_penyelia');
+                } elseif ($this->session->userdata('role')=='Admin') {
+                    $this->response(redirect('home_admin'), REST_Controller::HTTP_OK);
+                    // redirect('home_admin');
+                } elseif ($this->session->userdata('role')=='Guest') {
+                    $this->response(redirect('home_guest'), REST_Controller::HTTP_OK);
+                    // redirect('home_guest');
+                }
+                else {
+                    $this->response($this->session->session_id, REST_Controller::HTTP_OK);
+                    // redirect('home');
+                }
             }
             else {
-                $this->response("Sukses", REST_Controller::HTTP_OK);
+                // redirect('https://bpkad.surabaya.go.id/sso-bpkad');
+                echo "Session Adalah : ".$this->session->userdata('kode_opd');
+                // $this->response("Fail To Login", REST_Controller::HTTP_OK);
             }
-        }
-        else {
-            $this->index($error=1);
-        }
      
-        
     } 
      
     // /**
