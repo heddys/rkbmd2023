@@ -6,12 +6,11 @@ class home_guest extends CI_Controller {
     private function cek_sess() 
 	{
 		if($this->session->userdata('role') =="Guest" ){
-			$opd=$this->session->userdata('skpd');
+			// $opd=$this->session->userdata('skpd');
 			$this->load->model('guest_model');
 			return;
 			} else { 
-				$par=2;
-				redirect('auth/index/'.$par);
+				redirect('auth');
 			}
 	}
     

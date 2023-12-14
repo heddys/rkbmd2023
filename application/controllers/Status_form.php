@@ -397,9 +397,8 @@ class Status_form extends CI_Controller {
 			$opd=$this->session->userdata('skpd');
 			$this->load->model('auth_model');
 			return;
-			} else { 
-				$par=2;
-				redirect('auth/index/'.$par);
+			} else {
+				redirect('auth/index/');
 			}
 	}
 

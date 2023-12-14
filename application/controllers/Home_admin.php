@@ -22,12 +22,10 @@ class Home_admin extends CI_Controller {
     private function cek_sess() 
 	{
 		if($this->session->userdata('role') =="Admin" ){
-			$opd=$this->session->userdata('skpd');
 			$this->load->model('admin_model');
 			return;
 			} else { 
-				$par=2;
-				redirect('auth/index/'.$par);
+				redirect('auth');
 			}
 	}
 

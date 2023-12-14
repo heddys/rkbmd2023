@@ -19,7 +19,7 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap->persentase,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_tanah->sisa+$rekap_pm->sisa+$rekap_gdb->sisa)/($rekap_tanah->total+$rekap_pm->total+$rekap_gdb->total)*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_tanah->sisa+$rekap_pm->sisa+$rekap_gdb->sisa)/($rekap_tanah->total+$rekap_pm->total+$rekap_gdb->total)*100,3) . '%';?></strong></div>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -31,7 +31,7 @@
                   <div class="row">
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap->total);?></h5>
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->total+$rekap_pm->total+$rekap_gdb->total+$rekap_jij->total+$rekap_atl->total+$rekap_atb->total);?></h5>
                         <span class="description-text">TOTAL REGISTER</span>
                       </div>
                       <!-- /.description-block -->
@@ -39,7 +39,7 @@
                     <!-- /.col -->
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap->proses);?></h5>
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->proses+$rekap_pm->proses+$rekap_gdb->proses+$rekap_jij->proses+$rekap_atl->proses+$rekap_atb->proses);?></h5>
                         <span class="description-text">PROSES VERIFIKASI</span>
                       </div>
                       <!-- /.description-block -->
@@ -47,7 +47,7 @@
                     <!-- /.col -->
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap->tolak);?></h5>
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->tolak+$rekap_pm->tolak+$rekap_gdb->tolak+$rekap_jij->tolak+$rekap_atl->tolak+$rekap_atb->tolak);?></h5>
                         <span class="description-text">REGISTER DI TOLAK</span>
                       </div>
                       <!-- /.description-block -->
@@ -55,14 +55,14 @@
                     <!-- /.col -->
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap->verif);?></h5>
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->verif+$rekap_pm->verif+$rekap_gdb->verif+$rekap_jij->verif+$rekap_atl->verif+$rekap_atb->verif);?></h5>
                         <span class="description-text">REGISTER TERVERIFIKASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
                     <div class="col-sm col-6">
                       <div class="description-block">
-                        <h5 class="description-header"><?php echo number_format($rekap->sisa);?></h5>
+                        <h5 class="description-header"><?php echo number_format($rekap_tanah->sisa+$rekap_pm->sisa+$rekap_gdb->sisa+$rekap_jij->sisa+$rekap_atl->sisa+$rekap_atb->sisa);?></h5>
                         <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
                       </div>
                       <!-- /.description-block -->

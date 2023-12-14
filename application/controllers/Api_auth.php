@@ -90,6 +90,7 @@ class Api_auth extends REST_Controller {
 
             //Data BODY
             $username =  $this->input->post('username');
+            $token =  $this->input->post('remember_token');
             // $password =  $this->input->post('password');
 
             $cekuser= array(
@@ -98,59 +99,16 @@ class Api_auth extends REST_Controller {
             );
             
             $this->load->model('auth_model');
-            $ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
-            $get=$this->auth_model->ceklogin("pengguna",$cekuser)->row();
+            $ceklog=$this->auth_model->ceklogin("pengguna",$cekuser);
                      
             
-            if($ceklog > 0) {
-                if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
-                    $ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
-                    $role=$ambil_lokasi_pbp->nama_lokasi;
-                } else {$role=$get->fungsi;}
-                        $data_session = array(	
-                                'id' => $get->id,
-                                'skpd' => $get->nama_opd,
-                                'kode_opd' =>$get->opd,
-                                'nama_login' =>$get->nama,
-                                'data' =>$get->nomor_lokasi,
-                                'role' => $get->fungsi,
-                                'jabatan' => $get->fungsi." (".$role.")",
-                                'kepala_opd' => $get->nama_kepala,
-                                'no_lokasi_asli' => $get->nomor_lokasi,
-                                'status' => 0,
-                                'nip' => $get->nip
-                            );
-                
-                $this->session->set_userdata($data_session);
-                // echo $this->session->userdata('no_lokasi_asli');
-                // var_dump($data_session);
-                if ($this->session->userdata('role')=='Verifikator'){
-                    $this->response(redirect('home_verifikator'), REST_Controller::HTTP_OK);
-                    // redirect('home_verifikator');
-                } elseif ($this->session->userdata('role')=='Penyelia') {
-                    $this->response(redirect('home_penyelia'), REST_Controller::HTTP_OK);
-                    // redirect('home_penyelia');
-                } elseif ($this->session->userdata('role')=='Admin') {
-                    $this->response(redirect('home_admin'), REST_Controller::HTTP_OK);
-                    // redirect('home_admin');
-                } elseif ($this->session->userdata('role')=='Guest') {
-                    $this->response(redirect('home_guest'), REST_Controller::HTTP_OK);
-                    // redirect('home_guest');
-                }
-                else {
-                    return redirect()->to('home', 301);
-                    $this->response("Suksess", REST_Controller::HTTP_OK);
-                    // $this->response(redirect('home'), REST_Controller::HTTP_OK);
-                    // redirect('home');
-                }
+            if($ceklog->num_rows() > 0) {
+                $this->auth_model->mark_for_loggin($username,$token);
+                $this->response([TRUE], REST_Controller::HTTP_OK);
+            } else {
+                $this->response([FALSE], REST_Controller::HTTP_OK);
             }
-            else {
-                // redirect('https://bpkad.surabaya.go.id/sso-bpkad');
-                echo "Session Adalah : ".$this->session->userdata('kode_opd');
-                // $this->response("Fail To Login", REST_Controller::HTTP_OK);
-            }
-     
-    } 
+    }
      
     // /**
     //  * Get All Data from this method.
