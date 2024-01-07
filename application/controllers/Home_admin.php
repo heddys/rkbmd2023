@@ -12,7 +12,7 @@ class Home_admin extends CI_Controller {
 		$data['get_data_chart']=$this->admin_model->get_data_chart(1);
 		// $data['get_proses_reg']=$this->admin_model->get_proses_reg(1);
         // $data['get_tolak_reg']=$this->admin_model->get_tolak_reg(1);
-		$data['rekap_opd']=$this->admin_model->get_rekap_opd_admin_dashboard();
+		// $data['rekap_opd']=$this->admin_model->get_rekap_opd_admin_dashboard();
 
         $this->load->view('admin/header_admin',$data);		
 		$this->load->view('admin/admin_page');
@@ -587,6 +587,21 @@ class Home_admin extends CI_Controller {
 	public function run_map()
 	{
 		$this->load->view('admin/jalan_map');
+	}
+
+	public function list_kendaraan() {
+		
+		$this->cek_sess();
+
+		
+
+
+
+		$this->load->view('admin/header_admin',$data);		
+		$this->load->view('admin/list_reg_admin',$data);
+		$this->load->view('admin/footer_admin');
+		
+
 	}
 
 	public function trynerror()

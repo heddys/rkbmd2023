@@ -245,7 +245,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?php echo site_url('form_inv/list_tambak/1');?>" class="nav-link">
+            <a href="<?php echo site_url('form_inv/list_tambak');?>" class="nav-link">
               <i class="nav-icon fas fa-leaf"></i>
               <p>
                 List Tanah Tambak

@@ -67,7 +67,7 @@
     <!-- Canvas for particles animation -->
     <div id="particles-js"></div>
 
-  <div class="modal fade" id="u17" tabindex="-1"  aria-labelledby="modal-dialog-centered" aria-hidden="true" role="dialog">
+  <!-- <div class="modal fade" id="u17" tabindex="-1"  aria-labelledby="modal-dialog-centered" aria-hidden="true" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -83,7 +83,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
       <!-- Informations bar on top of the screen -->

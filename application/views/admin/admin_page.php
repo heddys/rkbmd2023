@@ -40,11 +40,6 @@
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title"><center>Total Register Keseluruhan - <?php $all_reg=$get_data_chart->jumlah_proses+$get_data_chart->jumlah_tolak+$get_data_chart->jumlah_terverif+$get_data_chart->jumlah_reg_belum_diisi; echo number_format($all_reg)?> Register</center></h3>
-                <!-- <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fas fa-minus"></i> 
-                  </button>
-                  <button type="button" class="btn btn-tool" data-widget="remove"><i class="fas fa-times"></i></button>
-                </div> -->
                 <input type="hidden" id="proses" value="<?php echo $get_data_chart->jumlah_proses;?>"></input>
                 <input type="hidden" id="tolak" value="<?php echo $get_data_chart->jumlah_tolak;?>"></input>
                 <input type="hidden" id="verif" value="<?php echo $get_data_chart->jumlah_terverif;?>"></input>
@@ -52,10 +47,10 @@
             <div class="card-body">
                 <canvas id="pieChart" style="height:230px"></canvas>
             </div>
-              <!-- /.card-body -->
         </div>
-            <!-- /.card -->
-        <div class="card card-info">
+        <!-- /.card -->
+
+        <!-- <div class="card card-info">
           <div class="card">
               <div class="card-header no-border ">
                 <h3 class="card-title">Rekapan Per OPD</h3>
@@ -106,7 +101,7 @@
                 </div>
               </div>
           </div>
-        </div>
+        </div> -->
         <!-- <div class="row">
             <div class="col-md-6">
                 <div class="card card-widget widget-user-2">

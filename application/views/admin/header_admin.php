@@ -207,6 +207,34 @@
               </li> -->
             </ul>
           </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon 	fa fa-server"></i>
+              <p>
+              Form Khusus
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/list_tambak');?>" class="nav-link">
+                  <i class="nav-icon fas fa-leaf"></i>
+                  <p>
+                    List Tanah Tambak
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/list_kendaraan')?>" class="nav-link">
+                  <i class="nav-icon fas fa-car"></i>
+                  <p>List Kendaraan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="fa fa-cogs" aria-hidden="true"></i>

@@ -169,7 +169,7 @@ class Form_inv extends CI_Controller {
 	}
 
 
-	public function list_tambak($id) {
+	public function list_tambak() {
 
 		$this->cek_sess();
 		$data['page']="List Aset Tanah Tambak";
