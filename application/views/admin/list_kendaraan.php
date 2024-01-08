@@ -43,7 +43,7 @@
                             <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>  
-                              <form role="form" action="<?php echo site_url();?>/home_admin/cari_register" method="post">
+                              <form role="form" action="<?php echo site_url();?>/home_admin/isi_form_kendaraan" method="post">
                                 <center>
                                   <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
                                   <input type="hidden" name="register" value="<?php echo $row->register?>">

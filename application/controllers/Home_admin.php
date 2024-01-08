@@ -604,6 +604,66 @@ class Home_admin extends CI_Controller {
 
 	}
 
+	public function isi_form_kendaraan() {
+
+		$this->cek_sess();
+		$data['page']="Isi Form Kendaraan";
+		$data['kode_barang']=$this->admin_model->data_kode_barang();
+		$data['satuan']=$this->admin_model->data_satuan();
+		$data['kamus_lokasi']=$this->admin_model->data_kamus_lokasi();
+		
+		$register = $_POST['register'];
+
+		$cek_register = $this->admin_model->ambil_register_form($register)->num_rows();
+
+		if($cek_register > 0) {
+
+			$data['data_register'] = $this->admin_model->ambil_register_form($register)->row();
+			$data['data_is_register'] = $this->admin_model->ambil_status_register_form($register)->row();
+			$data['image'] = $this->admin_model->ambil_file($register)->result();
+
+			echo '<pre>' , var_dump($this->admin_model->ambil_register_form($register)->row()) , '</pre>';
+			die();
+
+		} else {
+
+			// $data['data_register'] = array (
+
+			// 	"register"=> ,
+			// 	"nomor_lokasi_awal"=> ,
+			// 	"kode_barang"=> ,
+			// 	"nama_barang"=> ,
+			// 	"spesifikasi_barang_merk"=> ,
+			// 	"satuan"=> ,
+			// 	"keberadaan_barang"=> "Ada",
+			// 	"nilai_perolehan"=> ,
+			// 	"merupakan_anak"=> "-",
+			// 	"lokasi"=> ,
+			// 	"jumlah"=> ,
+			// 	"kondisi_barang"=> ,
+			// 	"penggunaan_barang"=> "Pemerintah Kota",
+			// 	"pemanfaatan_aset"=> NULL,
+			// 	"register_ganda"=> "-",
+			// 	"tipe"=> ,
+			// 	"nopol"=> ,
+			// 	"no_rangka_seri"=> ,
+			// 	"no_mesin"=> ,
+			// 	"no_bpkb"=> ,
+			// 	"lainnya"=> "",
+			// 	"keterangan"=> "",
+			// 	"nama_lokasi"=> ,
+			// 	"nomor_lokasi"=> 
+			
+			// );
+
+		} ;
+		
+
+        $this->load->view('admin/header_admin',$data);		
+		$this->load->view('admin/isi_list_kendaraan',$data);
+		$this->load->view('admin/footer_admin');
+	}
+
 	public function trynerror()
 	{
 		$this->cek_sess();

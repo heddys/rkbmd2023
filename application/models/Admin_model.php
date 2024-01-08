@@ -629,6 +629,26 @@ class Admin_model extends CI_Model{
                 return $query->row();
     }
 
+    public function data_kode_barang()
+    {
+        return $this->db->get('kamus_barang');
+    }
+
+    public function kamus_kelurahan()
+    {
+        return $this->db->get('kamus_kelurahan');
+    }
+
+    public function data_satuan()
+    {
+        return $this->db->get('satuan');
+    }
+
+    public function data_kamus_lokasi()
+    {
+        return $this->db->get_where('kamus_lokasi',array('kode_binprog !=' => ''));
+    }
+
     public function pb_verif($nomor_lokasi)
     {   
 
