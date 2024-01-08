@@ -592,13 +592,13 @@ class Home_admin extends CI_Controller {
 	public function list_kendaraan() {
 		
 		$this->cek_sess();
-
-		
+		$data['page']="List Kendaraan";
+		$data['data_kendaraan'] = $this->admin_model->get_db_kendaraan()->result();
 
 
 
 		$this->load->view('admin/header_admin',$data);		
-		$this->load->view('admin/list_reg_admin',$data);
+		$this->load->view('admin/list_kendaraan',$data);
 		$this->load->view('admin/footer_admin');
 		
 

@@ -53,6 +53,7 @@
         });
         $("#tabel_kodebar").DataTable();
         $("#tabel_user").DataTable();
+        $("#tabel_kendaraan").DataTable();
         $('.select_limit').select2({
           width: '5%',
           minimumResultsForSearch: Infinity

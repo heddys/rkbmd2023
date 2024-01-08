@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/summernote/summernote-bs4.css">
    <!-- Select2 -->
