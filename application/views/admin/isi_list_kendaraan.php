@@ -28,7 +28,7 @@
                 <div class="card-body">
                     <form role="form" action="update_isi_form_pm" method="post" enctype="multipart/form-data">
                         <!-- select -->
-                        <h4><?php echo $data_register->register." - ".$data_register->nama_barang;?></h4>
+                        <h4><?php echo $data_register['register']." - ".$data_register['nama_barang'];?></h4>
                         <hr style="padding: 2px">
                         <center>
                         <div class="row">
@@ -38,7 +38,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Kode Register :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="register" id="kode_register" readonly="true" value="<?php echo $data_register->register;?>">
+                                            <input type="text" class="form-control" name="register" id="kode_register" readonly="true" value="<?php echo $data_register['register'];?>">
                                         </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -62,7 +62,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Kode Barang :</label>
                                         </div>
-                                        <input type="text" class="form-control" name="kode_barang" id="kode_barang" readonly="true" value="<?php echo $data_register->kode_barang;?>">
+                                        <input type="text" class="form-control" name="kode_barang" id="kode_barang" readonly="true" value="<?php echo $data_register['kode_barang'];?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -70,14 +70,14 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary3" name="radio_kode_bar" value="0" <?php 
-                                                if ($data_is_register->is_kode_barang == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_kode_barang'] == 0) { echo "checked='checked'";}
                                             ?>
                                         required="required"/>
                                         <label for="primary3">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary4" name="radio_kode_bar" <?php 
-                                                if ($data_is_register->is_kode_barang == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_kode_barang'] == 1) { echo "checked='checked'";}
                                             ?>
                                             value="1"/>
                                         <label for="primary4">Tidak Sesuai</label>
@@ -92,7 +92,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nama Barang :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="nama_barang" id="input_nama_barang" readonly="true" value="<?php echo $data_register->nama_barang;?>">
+                                            <input type="text" class="form-control" name="nama_barang" id="input_nama_barang" readonly="true" value="<?php echo $data_register['nama_barang'];?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -100,13 +100,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary5" name="radio_nama_bar" value="0" <?php 
-                                                if ($data_is_register->is_nama_barang == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_nama_barang'] == 0) { echo "checked='checked'";}
                                             ?> required="required"/>
                                         <label for="primary5">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary6" name="radio_nama_bar" <?php 
-                                                if ($data_is_register->is_nama_barang == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_nama_barang'] == 1) { echo "checked='checked'";}
                                             ?> value="1"/>
                                         <label for="primary6">Tidak Sesuai</label>
                                     </div>
@@ -122,10 +122,10 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Lokasi : </label>
                                         </div>
-                                            <input type="text" class="form-control" id="input_alamat" name="lokasi" value="<?php echo $data_register->nomor_lokasi?>" readonly="true" placeholder="">
-                                            <input type="hidden" name="no_lokasi_awal" value="<?php echo $data_register->nomor_lokasi;?>">
+                                            <input type="text" class="form-control" id="input_alamat" name="lokasi" value="<?php echo $data_register['nomor_lokasi']?>" readonly="true" placeholder="">
+                                            <input type="hidden" name="no_lokasi_awal" value="<?php echo $data_register['nomor_lokasi'];?>">
                                             <div class="input-group-append">
-                                                <label class="input-group-text" id="label_lokasi"><?php echo $data_register->nama_lokasi?></label>
+                                                <label class="input-group-text" id="label_lokasi"><?php echo $data_register['lokasi']?></label>
                                             </div>    
                                     </div>
                             </div>
@@ -134,13 +134,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary7" name="radio_alamat" value="0" <?php 
-                                                if ($data_is_register->is_lokasi == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_lokasi'] == 0) { echo "checked='checked'";}
                                             ?> require="required"/>
                                         <label for="primary7">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary8" name="radio_alamat" value="1" <?php 
-                                                if ($data_is_register->is_lokasi == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_lokasi'] == 1) { echo "checked='checked'";}
                                             ?>/>
                                         <label for="primary8">Tidak Sesuai</label>
                                     </div>
@@ -186,7 +186,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Satuan  :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="satuan" id="satuan_barang" readonly="true" value="<?php echo $data_register->satuan;?>">
+                                            <input type="text" class="form-control" name="satuan" id="satuan_barang" readonly="true" value="<?php echo $data_register['satuan'];?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -194,13 +194,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary11" name="radio_satuan" <?php 
-                                                if ($data_is_register->is_satuan == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_satuan'] == 0) { echo "checked='checked'";}
                                             ?> value="0" required="required"/>
                                         <label for="primary11">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary12" name="radio_satuan" <?php 
-                                                if ($data_is_register->is_satuan == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_satuan'] == 1) { echo "checked='checked'";}
                                             ?>  value="1"/>
                                         <label for="primary12">Tidak Sesuai</label>
                                     </div>
@@ -217,7 +217,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="inputGroupSelect01">Keberadaan Barang : </label>
                                     </div>
-                                    <input type="text" class="form-control" name="keberadaan" id="keberadaan_bar" readonly="true" placeholder="Ada" value="<?php echo $data_register->keberadaan_barang?>">
+                                    <input type="text" class="form-control" name="keberadaan" id="keberadaan_bar" readonly="true" placeholder="Ada" value="<?php echo $data_register['keberadaan_barang']?>">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -225,13 +225,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary13" name="radio_keberadaan" <?php 
-                                                if ($data_is_register->is_keberadaan_barang == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_keberadaan_barang'] == 0) { echo "checked='checked'";}
                                             ?> value="0" required="required"/>
                                         <label for="primary13">Ada</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary14" name="radio_keberadaan" <?php 
-                                                if ($data_is_register->is_keberadaan_barang == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_keberadaan_barang'] == 1) { echo "checked='checked'";}
                                             ?> value="1"/>
                                         <label for="primary14">Tidak Ada</label>
                                     </div>
@@ -248,7 +248,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">Nilai Perolehan (Rp.)</label>
                                     </div>
-                                    <input type="text" class="form-control" name="nilai" id="nilai_perolehan" readonly="true" value="<?php echo number_format($data_register->nilai_perolehan,2,',','.');?>">
+                                    <input type="text" class="form-control" name="nilai" id="nilai_perolehan" readonly="true" value="<?php echo number_format($data_register['nilai_perolehan'],2,',','.');?>">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -256,13 +256,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary15" name="radio_nilai" <?php 
-                                                if ($data_is_register->is_nilai_perolehan == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_nilai_perolehan'] == 0) { echo "checked='checked'";}
                                             ?> value="0"/>
                                         <label for="primary15">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary16" name="radio_nilai" <?php 
-                                                if ($data_is_register->is_nilai_perolehan == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_nilai_perolehan'] == 1) { echo "checked='checked'";}
                                             ?> value="1" disabled/>
                                         <label for="primary16">Tidak Sesuai</label>
                                     </div>
@@ -272,46 +272,13 @@
 
                             <!-- Batas Per Form -->
 
-
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text">Apakah Aset Atribusi / Kapitalisasi</label>
-                                    </div>
-                                    <input type="text" class="form-control" name="aset_atrib" id="aset_atrib" readonly="true" placeholder="-" value="<?php echo $data_register->merupakan_anak?>">
-                                    
-                                </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary17" name="radio_kap_atrib" <?php 
-                                                if ($data_is_register->is_aset_atrib == 0) { echo "checked='checked'";}
-                                            ?> value="0" required="required"/>
-                                        <label for="primary17">Ya</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary18" name="radio_kap_atrib" <?php 
-                                                if ($data_is_register->is_aset_atrib == 1) { echo "checked='checked'";}
-                                            ?> value="1"/>
-                                        <label for="primary18">Bukan</label>
-                                    </div>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-
-                            <!-- Batas Per Form -->
-
-
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Merk : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="merk" id="merk_barang" readonly="true" value="<?php echo $data_register->spesifikasi_barang_merk;?>">
+                                            <input type="text" class="form-control" name="merk" id="merk_barang" readonly="true" value="<?php echo $data_register['spesifikasi_barang_merk'];?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -319,13 +286,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary19" name="radio_merk" <?php 
-                                                if ($data_is_register->is_spesifikasi_barang_merk == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_spesifikasi_barang_merk'] == 0) { echo "checked='checked'";}
                                             ?> value="0" required="required"/>
                                         <label for="primary19">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary20" name="radio_merk" <?php 
-                                                if ($data_is_register->is_spesifikasi_barang_merk == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_spesifikasi_barang_merk'] == 1) { echo "checked='checked'";}
                                             ?>value="1"/>
                                         <label for="primary20">Tidak Sesuai</label>
                                     </div>
@@ -342,7 +309,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Kondisi Barang : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="kondisi_bar" id="kondisi_barang" readonly="true" value="<?php if($data_register->kondisi_barang == "B"){echo "Baik";} elseif ($data_register->kondisi_barang == "KB"){echo "Kurang Baik";} else {echo "Rusak Berat";}?>">
+                                            <input type="text" class="form-control" name="kondisi_bar" id="kondisi_barang" readonly="true" value="<?php if($data_register['kondisi_barang'] == "B"){echo "Baik";} elseif ($data_register['kondisi_barang'] == "KB"){echo "Kurang Baik";} else {echo "Rusak Berat";}?>">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -350,13 +317,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary21" name="radio_kondisi" <?php 
-                                                if ($data_is_register->is_kondisi_barang == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_kondisi_barang'] == 0) { echo "checked='checked'";}
                                             ?>value="0" required="required"/>
                                         <label for="primary21">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary22" name="radio_kondisi" <?php 
-                                                if ($data_is_register->is_kondisi_barang == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_kondisi_barang'] == 1) { echo "checked='checked'";}
                                             ?> value="1"/>
                                         <label for="primary22">Tidak Sesuai</label>
                                     </div>
@@ -373,7 +340,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Tipe :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="tipe_barang" id="tipe_barang" readonly="true" value="<?php echo $data_register->tipe;?>">
+                                            <input type="text" class="form-control" name="tipe_barang" id="tipe_barang" readonly="true" value="<?php echo $data_register['tipe'];?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -381,13 +348,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary23" name="radio_tipe" <?php 
-                                                if ($data_is_register->is_tipe == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_tipe'] == 0) { echo "checked='checked'";}
                                             ?> value="0" required="required"/>
                                         <label for="primary23">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary24" name="radio_tipe" <?php 
-                                                if ($data_is_register->is_tipe == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_tipe'] == 1) { echo "checked='checked'";}
                                             ?>value="1"/>
                                         <label for="primary24">Tidak Sesuai</label>
                                     </div>
@@ -404,7 +371,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nomor Polisi :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="nopol" id="nopol" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register->nopol;?>">
+                                            <input type="text" class="form-control" name="nopol" id="nopol" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register['nopol'];?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -412,13 +379,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary25" name="radio_nopol" <?php 
-                                                if ($data_is_register->is_nopol == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_nopol'] == 0) { echo "checked='checked'";}
                                             ?> value="0" required="required"/>
                                         <label for="primary25">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary26" name="radio_nopol" <?php 
-                                                if ($data_is_register->is_nopol == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_nopol'] == 1) { echo "checked='checked'";}
                                             ?> value="1"/>
                                         <label for="primary26">Tidak Sesuai</label>
                                     </div>
@@ -435,7 +402,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nomor Rangka Seri :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="noka" id="noka" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register->no_rangka_seri;?>">
+                                            <input type="text" class="form-control" name="noka" id="noka" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register['no_rangka_seri'];?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -443,13 +410,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary27" name="radio_no_rangka" <?php 
-                                                if ($data_is_register->is_no_rangka == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_no_rangka'] == 0) { echo "checked='checked'";}
                                             ?> value="0" required="required"/>
                                         <label for="primary27">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary28" name="radio_no_rangka" <?php 
-                                                if ($data_is_register->is_no_rangka == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_no_rangka'] == 1) { echo "checked='checked'";}
                                             ?> value="1"/>
                                         <label for="primary28">Tidak Sesuai</label>
                                     </div>
@@ -466,7 +433,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nomor Mesin :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="no_mesin" id="no_mesin" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register->no_mesin;?>">
+                                            <input type="text" class="form-control" name="no_mesin" id="no_mesin" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register['no_mesin'];?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -474,13 +441,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary29" name="radio_mesin" <?php 
-                                                if ($data_is_register->is_no_mesin == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_no_mesin'] == 0) { echo "checked='checked'";}
                                             ?> value="0" required="required"/>
                                         <label for="primary29">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary30" name="radio_mesin" <?php 
-                                                if ($data_is_register->is_no_mesin == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_no_mesin'] == 1) { echo "checked='checked'";}
                                             ?> value="1"/>
                                         <label for="primary30">Tidak Sesuai</label>
                                     </div>
@@ -496,7 +463,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nomor BPKB :</label>
                                         </div>
-                                            <input type="text" class="form-control" style="text-transform:uppercase" name="no_bpkb" id="no_bpkb" readonly="true" value="<?php echo $data_register->no_bpkb?>">
+                                            <input type="text" class="form-control" style="text-transform:uppercase" name="no_bpkb" id="no_bpkb" readonly="true" value="<?php echo $data_register['no_bpkb']?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -504,13 +471,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary31" name="radio_bpkb" <?php 
-                                                if ($data_is_register->is_no_bpkb == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_no_bpkb'] == 0) { echo "checked='checked'";}
                                             ?>value="0" required="required"/>
                                         <label for="primary31">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary32" name="radio_bpkb" <?php 
-                                                if ($data_is_register->is_no_bpkb == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_no_bpkb'] == 1) { echo "checked='checked'";}
                                             ?>value="1"/>
                                         <label for="primary32">Tidak Sesuai</label>
                                     </div>
@@ -526,7 +493,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="inputGroupSelect01">Penggunaan Barang : </label>
                                     </div>
-                                    <input type="text" class="form-control" name="penggunaan" id="penggunaan" readonly="true" value="<?php echo $data_register->penggunaan_barang;?>">
+                                    <input type="text" class="form-control" name="penggunaan" id="penggunaan" readonly="true" value="<?php echo $data_register['penggunaan_barang'];?>">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -534,13 +501,13 @@
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary33" name="radio_pengguna" <?php 
-                                                if ($data_is_register->is_penggunaan_barang == 0) { echo "checked='checked'";}
+                                                if ($data_is_register['is_penggunaan_barang'] == 0) { echo "checked='checked'";}
                                             ?>value="0" required="required"/>
                                         <label for="primary33">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
                                         <input type="radio" id="primary34" name="radio_pengguna" <?php 
-                                                if ($data_is_register->is_penggunaan_barang == 1) { echo "checked='checked'";}
+                                                if ($data_is_register['is_penggunaan_barang'] == 1) { echo "checked='checked'";}
                                             ?>value="1"/>
                                         <label for="primary34">Tidak Sesuai</label>
                                     </div>
@@ -550,54 +517,18 @@
 
                             <!-- Batas Per Form -->
 
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Data Tercatat Ganda :</label>
-                                        </div>
-                                            <input type="text" class="form-control" name="catat_ganda" id="catat_ganda" readonly="true" placeholder="-" value="<?php echo $data_register->register_ganda?>">
-                                    </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary35" name="radio_ganda" <?php 
-                                                if ($data_is_register->is_catat_ganda == 0) { echo "checked='checked'";}
-                                            ?>value="0" required="required"/>
-                                        <label for="primary35">Ya</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primary36" name="radio_ganda" <?php 
-                                                if ($data_is_register->is_catat_ganda == 1) { echo "checked='checked'";}
-                                            ?> value="1"/>
-                                        <label for="primary36">Tidak</label>
-                                    </div>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-
-                            <!-- <div class="form-group col-md-8">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Titik Koordinat :</label>
-                                        </div>
-                                            <input type="text" class="form-control" id="koordinat" name="koordinat" value="<?php echo $data_register->koordinat?>" >
-                                    </div>
-                            </div> -->
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Lainnya</label>
                                         </div>
-                                            <input type="text" class="form-control" name="lainnya" id="kode_register" value="<?php echo $data_register->lainnya?>" >
+                                            <input type="text" class="form-control" name="lainnya" id="kode_register" value="<?php echo $data_register['lainnya']?>" >
                                     </div>
                             </div>
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>
-                                        <textarea class="form-control" name="keterangan" rows="3" ><?php echo $data_register->keterangan?></textarea>
+                                        <textarea class="form-control" name="keterangan" rows="3" ><?php echo $data_register['keterangan']?></textarea>
                                     </div>
                             </div>
 

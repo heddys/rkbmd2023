@@ -277,6 +277,17 @@ class Admin_model extends CI_Model{
 
    }
 
+   public function get_data_per_kendaraan($register){
+    
+    $db_simbada=$this->load->database('simbada',TRUE);
+       
+    $query = $db_simbada->query("SELECT a.register,a.nomor_lokasi_baru,b.lokasi,a.kode108_baru,a.kode64_baru,a.nama_barang_baru,a.merk_alamat_baru,a.tipe_baru,a.tahun_pengadaan,a.nopol,a.no_rangka_seri,a.no_mesin,a.harga_baru,a.kondisi,a.no_bpkb FROM `kib` a INNER JOIN kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi WHERE a.hapus <> 1 and a.register = '".$register."' union SELECT c.register,c.nomor_lokasi_baru,d.lokasi,c.kode108_baru,c.kode64_baru,c.tahun_pengadaan,c.nama_barang_baru,c.merk_alamat_baru,c.tipe_baru,c.nopol,c.no_rangka_seri,c.no_mesin,c.harga_baru,c.kondisi,c.no_bpkb FROM `kib_awal` c INNER JOIN kamus_lokasi d on c.nomor_lokasi_baru=d.nomor_lokasi WHERE c.hapus <> 1 and c.register = '".$register."'");
+
+    return $query;
+
+
+   }
+
    public function get_register_simbada()
    {
     $db_simbada = $this->load->database('simbada',TRUE);

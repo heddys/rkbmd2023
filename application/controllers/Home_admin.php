@@ -618,47 +618,116 @@ class Home_admin extends CI_Controller {
 
 		if($cek_register > 0) {
 
-			$data['data_register'] = $this->admin_model->ambil_register_form($register)->row();
-			$data['data_is_register'] = $this->admin_model->ambil_status_register_form($register)->row();
+			$get_register_isi = $this->admin_model->ambil_register_form($register)->row();
+			$data_checkbox = $this->admin_model->ambil_status_register_form($register)->row();
 			$data['image'] = $this->admin_model->ambil_file($register)->result();
 
-			echo '<pre>' , var_dump($this->admin_model->ambil_register_form($register)->row()) , '</pre>';
-			die();
+			// echo '<pre>' , var_dump($this->admin_model->ambil_status_register_form($register)->row()) , '</pre>';
+			// die();
+
+			$data['data_register'] = array (
+
+				"register"=> $get_register_isi->register,
+				"nomor_lokasi"=> $get_register_isi->nomor_lokasi,
+				"kode_barang"=> $get_register_isi->kode_barang,
+				"nama_barang"=> $get_register_isi->nama_barang,
+				"spesifikasi_barang_merk"=> $get_register_isi->spesifikasi_barang_merk,
+				"satuan"=> $get_register_isi->satuan,
+				"keberadaan_barang"=> $get_register_isi->spesifikasi_barang_merk,
+				"nilai_perolehan"=> $get_register_isi->nilai_perolehan,
+				"lokasi"=> $get_register_isi->lokasi,
+				"jumlah"=> "1",
+				"kondisi_barang"=> $get_register_isi->kondisi_barang,
+				"penggunaan_barang"=> $get_register_isi->penggunaan_barang,
+				"pemanfaatan_aset"=> $get_register_isi->pemanfaatan_aset,
+				"tipe"=> $get_register_isi->tipe,
+				"nopol"=> $get_register_isi->nopol,
+				"no_rangka_seri"=> $get_register_isi->no_rangka_seri,
+				"no_mesin"=> $get_register_isi->no_mesin,
+				"no_bpkb"=> $get_register_isi->no_bpkb,
+				"lainnya"=> $get_register_isi->lainnya,
+				"keterangan"=> $get_register_isi->keterangan
+			
+			);
+
+			$data['data_is_register'] = array (
+
+				"is_register"=> $data_checkbox->is_register,
+				"is_kode_barang"=> $data_checkbox->is_kode_barang,
+				"is_nama_barang"=> $data_checkbox->is_nama_barang,
+				"is_spesifikasi_barang_merk"=> $data_checkbox->is_spesifikasi_barang_merk,
+				"is_satuan"=> $data_checkbox->is_satuan,
+				"is_keberadaan_barang"=> $data_checkbox->is_keberadaan_barang,
+				"is_nilai_perolehan"=> $data_checkbox->is_nilai_perolehan,
+				"is_aset_atrib"=> $data_checkbox->is_aset_atrib,
+				"is_tipe"=> $data_checkbox->is_tipe,
+				"is_kondisi_barang"=> $data_checkbox->is_kondisi_barang,
+				"is_penggunaan_barang"=> $data_checkbox->is_penggunaan_barang,
+				"is_catat_ganda"=> $data_checkbox->is_catat_ganda,
+				"is_jumlah"=> $data_checkbox->is_jumlah,
+				"is_nopol"=> $data_checkbox->is_nopol,
+				"is_no_rangka"=> $data_checkbox->is_no_rangka,
+				"is_no_mesin"=> $data_checkbox->is_no_mesin,
+				"is_no_bpkb"=> $data_checkbox->is_no_bpkb,
+				"is_lokasi"=> $data_checkbox->is_lokasi
+			);
 
 		} else {
 
-			// $data['data_register'] = array (
 
-			// 	"register"=> ,
-			// 	"nomor_lokasi_awal"=> ,
-			// 	"kode_barang"=> ,
-			// 	"nama_barang"=> ,
-			// 	"spesifikasi_barang_merk"=> ,
-			// 	"satuan"=> ,
-			// 	"keberadaan_barang"=> "Ada",
-			// 	"nilai_perolehan"=> ,
-			// 	"merupakan_anak"=> "-",
-			// 	"lokasi"=> ,
-			// 	"jumlah"=> ,
-			// 	"kondisi_barang"=> ,
-			// 	"penggunaan_barang"=> "Pemerintah Kota",
-			// 	"pemanfaatan_aset"=> NULL,
-			// 	"register_ganda"=> "-",
-			// 	"tipe"=> ,
-			// 	"nopol"=> ,
-			// 	"no_rangka_seri"=> ,
-			// 	"no_mesin"=> ,
-			// 	"no_bpkb"=> ,
-			// 	"lainnya"=> "",
-			// 	"keterangan"=> "",
-			// 	"nama_lokasi"=> ,
-			// 	"nomor_lokasi"=> 
+			$get_kib_simbada = $this->admin_model->get_data_per_kendaraan($register)->row();
+			// echo '<pre>' , var_dump($this->admin_model->get_data_per_kendaraan($register)->row()) , '</pre>';
+			// die();
+			$data['data_register'] = array (
+
+				"register"=> $get_kib_simbada->register,
+				"nomor_lokasi"=> $get_kib_simbada->nomor_lokasi_baru,
+				"kode_barang"=> $get_kib_simbada->kode108_baru,
+				"nama_barang"=> $get_kib_simbada->nama_barang_baru,
+				"spesifikasi_barang_merk"=> $get_kib_simbada->merk_alamat_baru,
+				"satuan"=> "Unit",
+				"keberadaan_barang"=> "Ada",
+				"nilai_perolehan"=> $get_kib_simbada->harga_baru,
+				"lokasi"=> $get_kib_simbada->lokasi,
+				"jumlah"=> "1",
+				"kondisi_barang"=> $get_kib_simbada->kondisi,
+				"penggunaan_barang"=> "Pemerintah Kota",
+				"pemanfaatan_aset"=> NULL,
+				"tipe"=> $get_kib_simbada->tipe_baru,
+				"nopol"=> $get_kib_simbada->nopol,
+				"no_rangka_seri"=> $get_kib_simbada->no_rangka_seri,
+				"no_mesin"=> $get_kib_simbada->no_mesin,
+				"no_bpkb"=> $get_kib_simbada->no_bpkb,
+				"lainnya"=> "",
+				"keterangan"=> ""
 			
-			// );
+			);
 
-		} ;
+			$data['data_is_register'] = array (
+
+				"is_register"=> 0,
+				"is_kode_barang"=> 0,
+				"is_nama_barang"=> 0,
+				"is_spesifikasi_barang_merk"=> 0,
+				"is_satuan"=> 0,
+				"is_keberadaan_barang"=> 0,
+				"is_nilai_perolehan"=> 0,
+				"is_aset_atrib"=> 0,
+				"is_tipe"=> 0,
+				"is_kondisi_barang"=> 0,
+				"is_penggunaan_barang"=> 0,
+				"is_catat_ganda"=> 0,
+				"is_jumlah"=> 0,
+				"is_nopol"=> 0,
+				"is_no_rangka"=> 0,
+				"is_no_mesin"=> 0,
+				"is_no_bpkb"=> 0,
+				"is_lokasi"=> 0
+			);
+
+		} 		
+
 		
-
         $this->load->view('admin/header_admin',$data);		
 		$this->load->view('admin/isi_list_kendaraan',$data);
 		$this->load->view('admin/footer_admin');
