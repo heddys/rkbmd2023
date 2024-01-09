@@ -674,7 +674,7 @@ class Home_admin extends CI_Controller {
 
 		} else {
 
-
+			$data['image'] = NULL;
 			$get_kib_simbada = $this->admin_model->get_data_per_kendaraan($register)->row();
 			// echo '<pre>' , var_dump($this->admin_model->get_data_per_kendaraan($register)->row()) , '</pre>';
 			// die();
@@ -730,7 +730,7 @@ class Home_admin extends CI_Controller {
 		
         $this->load->view('admin/header_admin',$data);		
 		$this->load->view('admin/isi_list_kendaraan',$data);
-		$this->load->view('admin/footer_admin');
+		$this->load->view('admin/footer_isi_kendaraan_admin');
 	}
 
 	public function trynerror()

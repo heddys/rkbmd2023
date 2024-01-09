@@ -532,6 +532,8 @@
                                     </div>
                             </div>
 
+                            <?php if ($image != NULL) {?>
+
                             <div class="form-group col-md-8 image" id="image">
                                 <div class="mb-3">
                                 <label><h5><b>Foto atau Denah Aset : </b></h5></label>
@@ -549,6 +551,9 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <?php }?>
+
                             <div class="form-group col-md-8 file_upload">
                                 <div class="mb-5 mt-5">
                                     <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg , Ukuran File Max : 5MB, dan Rotasi Foto : Portrait, dan Foto Disertai Geotag)
