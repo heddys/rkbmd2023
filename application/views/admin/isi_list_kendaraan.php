@@ -643,9 +643,9 @@
                                         </div>
                                         <select name="jenis_penggunaan" class="custom-select" id="penggunaan" onchange='pilih_penggunaan(this.value)' required>
                                             <?php if (isset($data_register['jenis_penggunaan'])) {?>
-                                                <option value="<?php $data_register['jenis_penggunaan']?>" selected>Pilih Kondisi Penggunaan Kendaraan Saat Ini</option>
+                                                <option value="<?php $data_register['jenis_penggunaan']?>" selected><?php $data_register['jenis_penggunaan']?></option>
                                             <?php } else { ?>
-                                            <option value="">Pilih Kondisi Penggunaan Kendaraan Saat Ini</option>
+                                            <option value="">Pilih Jenis Penggunaan Kendaraan Saat Ini</option>
                                             <?php } ?>
                                             <option value="Tidak Digunakan">Tidak Digunakan</option>
                                             <option value="Kendaraan Dinas Pejabat">Kendaraan Dinas Pejabat</option>
@@ -1037,14 +1037,24 @@
 
                     <!-- Modal Untuk Input Nopol -->
                     <div class="modal fade" id="modal-nopol">
-                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-dialog modal-dialog modal-dialog-centered modal-md">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                                        <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Isikan Nomor Polisi Kendaraan :</h4></center>
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
-                                        <input type="text" class="form-control" id="input_nopol" style="text-transform:uppercase" placeholder="Jika Kendaraan, Diisi Nopol Kendaraan">
+                                        <div class="row" style="justify-content: center;"> 
+                                            <div class=" mt-2 mb-6 col-lg-2">
+                                                <input type="text" class="form-control" id="l" style="text-transform:uppercase" placeholder="L" maxlength="1" onkeydown="return /[a-z]/i.test(event.key)">
+                                            </div>
+                                            <div class=" mt-2 mb-6 col-lg-3">
+                                                <input type="text" class="form-control" id="angka_nopol" style="text-transform:uppercase" placeholder="1111" maxlength="4" pattern="[0-9.]+">
+                                            </div>
+                                            <div class=" mt-2 mb-6 col-lg-2">
+                                                <input type="text" class="form-control" id="blkg_nopol" style="text-transform:uppercase" placeholder="NP" maxlength="3" onkeydown="return /[a-z]/i.test(event.key)">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-danger" onclick="klik_nopol(false)" data-dismiss="modal">Batal</button>
