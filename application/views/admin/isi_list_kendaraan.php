@@ -374,7 +374,28 @@
                                             <input type="text" class="form-control" name="nopol" id="nopol" style="text-transform:uppercase" readonly="true" value="<?php echo $data_register['nopol'];?>">
                                     </div>
                             </div>
-                            <!-- /.col-lg-6 -->
+
+                            <?php 
+
+                                if (strlen($data_register['nopol']) <= 2) {
+                            
+                            ?>
+
+                            <div class=" mt-2 mb-6 col-lg-4">
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary25" name="radio_nopol" value="0" required="required" disabled/>
+                                        <label for="primary25">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary26" name="radio_nopol" value="1"/>
+                                        <label for="primary26">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                            
+                            <?php  } else { ?>
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
@@ -392,6 +413,10 @@
                                 </div>
                                 <!-- /input-group -->
                             </div>
+                            <?php } ?>
+
+                            <!-- /.col-lg-6 -->
+                            
 
                             <!-- Batas Per Form -->
 
@@ -406,6 +431,31 @@
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
+
+                            <?php 
+
+                                if (strlen($data_register['no_rangka_seri']) <= 2) {
+                            
+                            ?>
+
+                            <div class=" mt-2 mb-6 col-lg-4">   
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary27" name="radio_no_rangka" value="0" required="required" disabled/>
+                                        <label for="primary27">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary28" name="radio_no_rangka" value="1"/>
+                                        <label for="primary28">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+
+
+                            <?php } else {?>
+
+
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
@@ -425,7 +475,8 @@
                             </div>
 
                             <!-- Batas Per Form -->
-
+                            
+                            <?php } ?>
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
@@ -437,6 +488,31 @@
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
+
+
+                            <?php 
+
+                                if (strlen($data_register['no_mesin']) <= 2) {
+                            
+                            ?>
+                            <div class=" mt-2 mb-6 col-lg-4">
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary29" name="radio_mesin" value="0" required="required" disabled/>
+                                        <label for="primary29">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary30" name="radio_mesin" value="1"/>
+                                        <label for="primary30">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+
+                            <!-- Batas Per Form -->
+                            <?php } else { ?>
+
+
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
@@ -456,6 +532,9 @@
                             </div>
 
                             <!-- Batas Per Form -->
+                            
+                            <?php }?>
+
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
@@ -467,6 +546,31 @@
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
+
+                            <?php 
+
+                                if (strlen($data_register['no_bpkb']) <= 2) {
+                            
+                            ?>
+
+                            <div class=" mt-2 mb-6 col-lg-4">
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary31" name="radio_bpkb" value="0" required="required" disabled/>
+                                        <label for="primary31">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary32" name="radio_bpkb" value="1"/>
+                                        <label for="primary32">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+
+                            <!-- Batas Per Form -->
+
+                            <?php } else { ?>
+
                             <div class=" mt-2 mb-6 col-lg-4">
                                 <div class="form-group clearfix">
                                     <div class="radio icheck-primary d-inline">
@@ -486,7 +590,7 @@
                             </div>
 
                             <!-- Batas Per Form -->
-
+                            <?php } ?>
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5 ">
                                 <div class="input-group mb-3">
@@ -516,21 +620,55 @@
                             </div>
 
                             <!-- Batas Per Form -->
+                            
+
+                            <div class="form-group col-md-12 mb-4">
+                                <hr style="padding: 2px">
+                                    <label><h5><b>Data Tambahan Kendaraan</b></h5></label>
+                            </div>
 
                             <div class="form-group col-md-8">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Lainnya</label>
+                                            <label class="input-group-text" id="basic-addon3">Alamat Lokasi Kendaraan</label>
                                         </div>
-                                            <input type="text" class="form-control" name="lainnya" id="kode_register" value="<?php echo $data_register['lainnya']?>" >
+                                            <input type="text" class="form-control" name="lainnya" id="lokasi_kendaraan" value="<?php echo $data_register['lainnya']?>" required>
                                     </div>
                             </div>
+                            
+                           <div class="form-group col-md-8">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Jenis Penggunaan Kendaraan</label>
+                                        </div>
+                                        <select name="jenis_penggunaan" class="custom-select" id="penggunaan" required>
+                                            <option value="">Pilih Kondisi Penggunaan Kendaraan Saat Ini</option>
+                                            <option value="Tidak Digunakan">Tidak Digunakan</option>
+                                            <option value="Kendaraan Dinas Pejabat">Kendaraan Dinas Pejabat</option>
+                                            <option value="Kendaraan Operasional">Kendaraan Dinas Operasional</option>
+                                            <option value="Alat Berat">Alat Berat Operasional</option>
+                                        </select>
+                                    </div>
+                            </div>
+                            
+                            <div class="form-group col-md-8" id="group_penggunaan">
+                                    <div class="input-group mb-3" id="form_penggunaan">
+                                        
+                                    </div>
+                            </div>
+
+
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
                                         <label><h5><b>Keterangan</b></h5></label>
                                         <textarea class="form-control" name="keterangan" rows="3" ><?php echo $data_register['keterangan']?></textarea>
                                     </div>
                             </div>
+                            
+                            <div class="form-group col-md-12 mb-4">
+                                <hr style="padding: 2px">
+                            </div>
+
 
                             <?php if ($image != NULL) {?>
 
@@ -606,11 +744,10 @@
                                         <center><strong><p>Apakah Anda Yakin Ingin Menyimpan Data Tersebut ?</p></strong></center>
                                     </div>
                                     <div class="modal-footer justify-content-between">
-                                        <input type="hidden" value="<?php echo $data_register->id;?>" name="id_isi_register">
-                                        <input type="hidden" value="<?php echo $data_is_register->id;?>" name="id_status_register">
+                                        <input type="hidden" value="<?php echo $data_register['id'];?>" name="id_isi_register">
+                                        <input type="hidden" value="<?php echo $data_is_register['id'];?>" name="id_status_register">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
                                         <button type="submit" class="btn btn-success">Simpan Data</button>
-                                        <input type="hidden" name="id_jurnal_penolakan" value="<?php echo $penolakan->id?>">
                                     </div>
                             </div>
                                 <!-- modal-content --> 

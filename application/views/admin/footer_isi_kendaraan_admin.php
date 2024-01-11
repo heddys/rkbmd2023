@@ -44,8 +44,6 @@
 <script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
 
-
-
   function rupiah (angka){
        var reverse = angka.toString().split('').reverse().join(''),
        ribuan = reverse.match(/\d{1,3}/g);
@@ -84,6 +82,10 @@
           return i;
     }
     setInterval(showTime, 50);
+
+
+    
+    
 
     function klik_cari_atrib(id){
       var isi_text = document.querySelector("#modal-search-register-atrib [id=search_register_atrib]").value;
@@ -611,8 +613,17 @@ function formatCurrency(input, blur) {
           }  
       });
 
+     
+
 
       
+    });
+
+    $(document).ready(function () {
+      $('#penggunaan').on('change', function () {
+        alert('ddd');
+      });
+        
     });
 
 

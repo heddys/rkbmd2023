@@ -627,13 +627,14 @@ class Home_admin extends CI_Controller {
 
 			$data['data_register'] = array (
 
+				"id"=> $get_register_isi->id,
 				"register"=> $get_register_isi->register,
 				"nomor_lokasi"=> $get_register_isi->nomor_lokasi,
 				"kode_barang"=> $get_register_isi->kode_barang,
 				"nama_barang"=> $get_register_isi->nama_barang,
 				"spesifikasi_barang_merk"=> $get_register_isi->spesifikasi_barang_merk,
 				"satuan"=> $get_register_isi->satuan,
-				"keberadaan_barang"=> $get_register_isi->spesifikasi_barang_merk,
+				"keberadaan_barang"=> $get_register_isi->keberadaan_barang,
 				"nilai_perolehan"=> $get_register_isi->nilai_perolehan,
 				"lokasi"=> $get_register_isi->lokasi,
 				"jumlah"=> "1",
@@ -652,6 +653,7 @@ class Home_admin extends CI_Controller {
 
 			$data['data_is_register'] = array (
 
+				"id"=> $data_checkbox->id,
 				"is_register"=> $data_checkbox->is_register,
 				"is_kode_barang"=> $data_checkbox->is_kode_barang,
 				"is_nama_barang"=> $data_checkbox->is_nama_barang,
@@ -680,6 +682,7 @@ class Home_admin extends CI_Controller {
 			// die();
 			$data['data_register'] = array (
 
+				"id"=> $get_kib_simbada->register,
 				"register"=> $get_kib_simbada->register,
 				"nomor_lokasi"=> $get_kib_simbada->nomor_lokasi_baru,
 				"kode_barang"=> $get_kib_simbada->kode108_baru,
@@ -705,6 +708,7 @@ class Home_admin extends CI_Controller {
 
 			$data['data_is_register'] = array (
 
+				"id"=> $get_kib_simbada->register,
 				"is_register"=> 0,
 				"is_kode_barang"=> 0,
 				"is_nama_barang"=> 0,
