@@ -772,6 +772,69 @@ class Admin_model extends CI_Model{
         return $this->db->get_where('kamus_lokasi');
     }
 
+
+    public function save_isi_form($data)
+    {
+        $this->db->insert('register_isi', $data);
+        return $this->db->insert_id();
+    }
+
+
+    public function save_isi_form_history($data)
+    {
+        $this->db->insert('register_isi_history', $data);
+    }
+
+
+    public function save_status_register($data)
+    {
+        $this->db->insert('register_status',$data);
+        return $this->db->insert_id();
+    }
+
+
+    public function update_register_isi($data,$register) {
+        $this->db->where('register', $register);
+        $this->db->update('register_isi', $data);
+    }
+
+    public function update_status_register ($data,$id){
+
+        $this->db->where('id', $id);
+        $this->db->update('register_status', $data);
+        $this->db->error();
+    }
+
+    public function save_status_register_history($data)
+    {
+        $this->db->insert('register_status_history',$data);
+        $this->db->error();
+    }
+
+    public function tandai_kib($register)
+    {
+        
+        $this->db->where('id', $register);
+        $this->db->update('register_isi', array('status' => 1));
+        $this->db->error();
+    }
+
+    public function save_image($data = array())
+    {
+        return $this->db->insert_batch('jurnal_upload',$data);
+    }
+
+    public function get_path($id)
+    {
+        return $this->db->get_where('jurnal_upload',array('id' => $id));
+    }
+
+    public function hapus_image_record($id)
+    {
+        return $this->db->delete('jurnal_upload',array('id' => $id));
+    }
+
+
     public function get_pangkat()
     {
         $this->db->select('*');

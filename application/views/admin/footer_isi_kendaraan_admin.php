@@ -151,7 +151,7 @@
             $.ajax({
             type: 'ajax',
             method: 'post',
-            url: '<?php echo site_url();?>/form_inv/hapus_image',
+            url: '<?php echo site_url();?>/home_admin/hapus_image',
             data:{id:id},
             async: false,
             dataType: 'json',
@@ -250,6 +250,16 @@
       $('#tblregister').DataTable().destroy();
       $('#modal-list-register').modal('hide');
       $("input:radio[id=primary18]:checked")[0].checked = false;
+    }
+
+    function pilih_penggunaan(isi) {
+      if (isi == 'Kendaraan Operasional' || isi == 'Alat Berat') {
+      document.getElementById("isi_penanggung_jawab").disabled = false;
+      document.getElementById("isi_penanggung_jawab").required = true;
+      } else {
+        document.getElementById("isi_penanggung_jawab").disabled = true;
+        document.getElementById("isi_penanggung_jawab").required = false;
+      }
     }
 
     function klik_destroy2() {
@@ -618,14 +628,6 @@ function formatCurrency(input, blur) {
 
       
     });
-
-    $(document).ready(function () {
-      $('#penggunaan').on('change', function () {
-        alert('ddd');
-      });
-        
-    });
-
 
 </script>
 </body>

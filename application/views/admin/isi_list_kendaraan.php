@@ -26,7 +26,7 @@
                 </center>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form role="form" action="update_isi_form_pm" method="post" enctype="multipart/form-data">
+                    <form role="form" action="simpan_isi_kendaraan" method="post" enctype="multipart/form-data">
                         <!-- select -->
                         <h4><?php echo $data_register['register']." - ".$data_register['nama_barang'];?></h4>
                         <hr style="padding: 2px">
@@ -632,7 +632,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Alamat Lokasi Kendaraan</label>
                                         </div>
-                                            <input type="text" class="form-control" name="lainnya" id="lokasi_kendaraan" value="<?php echo $data_register['lainnya']?>" required>
+                                            <input type="text" class="form-control" name="lokasi_kendaraan" id="lokasi_kendaraan" value="<?php $data_register['lainnya']?>" placeholder="Isikan Lokasi Kendaraan Berada (Parkiran Kantor Dinas/Kecamatan/Kelurahan..." required>
                                     </div>
                             </div>
                             
@@ -641,8 +641,12 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Jenis Penggunaan Kendaraan</label>
                                         </div>
-                                        <select name="jenis_penggunaan" class="custom-select" id="penggunaan" required>
+                                        <select name="jenis_penggunaan" class="custom-select" id="penggunaan" onchange='pilih_penggunaan(this.value)' required>
+                                            <?php if (isset($data_register['jenis_penggunaan'])) {?>
+                                                <option value="<?php $data_register['jenis_penggunaan']?>" selected>Pilih Kondisi Penggunaan Kendaraan Saat Ini</option>
+                                            <?php } else { ?>
                                             <option value="">Pilih Kondisi Penggunaan Kendaraan Saat Ini</option>
+                                            <?php } ?>
                                             <option value="Tidak Digunakan">Tidak Digunakan</option>
                                             <option value="Kendaraan Dinas Pejabat">Kendaraan Dinas Pejabat</option>
                                             <option value="Kendaraan Operasional">Kendaraan Dinas Operasional</option>
@@ -652,15 +656,18 @@
                             </div>
                             
                             <div class="form-group col-md-8" id="group_penggunaan">
-                                    <div class="input-group mb-3" id="form_penggunaan">
-                                        
+                                <div class="input-group mb-3" id="form_penggunaan">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" id="basic-addon3">Nama Pemakai Kendaraan / Penanggung Jawab</label>
                                     </div>
+                                    <input type="text" class="form-control" name="isi_penanggung_jawab" id="isi_penanggung_jawab" placeholder="" disabled>
+                                </div>
                             </div>
 
 
                             <div class="form-group col-md-8">
                                     <div class="mb-3">
-                                        <label><h5><b>Keterangan</b></h5></label>
+                                        <label><h5><b>Keterangan Tambahan</b></h5></label>
                                         <textarea class="form-control" name="keterangan" rows="3" ><?php echo $data_register['keterangan']?></textarea>
                                     </div>
                             </div>
@@ -690,8 +697,6 @@
                                 </div>
                             </div>
                             
-                            <?php }?>
-
                             <div class="form-group col-md-8 file_upload">
                                 <div class="mb-5 mt-5">
                                     <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg , Ukuran File Max : 5MB, dan Rotasi Foto : Portrait, dan Foto Disertai Geotag)
@@ -704,8 +709,25 @@
                                     </div>
                                 </div>                      
 
+                            </div>                
+
+                            <?php } else { ?>
+
+                            <div class="form-group col-md-8 file_upload">
+                                <div class="mb-5 mt-5">
+                                    <label><h5><b>Upload Foto atau Denah Aset</b></h5></label> (Tipe Gambar : .jpeg |.jpg , Ukuran File Max : 5MB, dan Rotasi Foto : Portrait, dan Foto Disertai Geotag)
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile" multiple="" name="files[]" accept="image/jpeg,image/jpg,image/png" required>
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                    <p>
+                                    <div id="alert">
+                                    </div>
+                                </div>                      
+
                             </div>
                             <!-- Batas Per Form -->
+                            <?php } ?>
                             
 
 
@@ -720,10 +742,10 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-4">
-                                    <a href="javascript:history.back()" class="btn btn-danger btn-block btn-lg">Kembali</a>
+                                    <a href="<?php echo site_url();?>/home_admin/list_kendaraan" class="btn btn-danger btn-block btn-lg">Kembali</a>
                                 </div>
                                 <div class="col-6">
-                                    <button type="button" class="btn btn-success btn-block btn-lg" id="save_form" data-toggle="modal" data-target="#modal-sm">Update Data</button>
+                                    <button type="button" class="btn btn-success btn-block btn-lg" id="save_form" data-toggle="modal" data-target="#modal-sm"><?php if ($data_register['flag'] == 0) { echo "Update Data"; } else { echo "Simpan Data"; }?></button>
                                 </div>
                             </div>
                         </div>
@@ -746,6 +768,7 @@
                                     <div class="modal-footer justify-content-between">
                                         <input type="hidden" value="<?php echo $data_register['id'];?>" name="id_isi_register">
                                         <input type="hidden" value="<?php echo $data_is_register['id'];?>" name="id_status_register">
+                                        <input type="hidden" value="<?php echo $data_register['flag'];?>" name="flag">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
                                         <button type="submit" class="btn btn-success">Simpan Data</button>
                                     </div>
