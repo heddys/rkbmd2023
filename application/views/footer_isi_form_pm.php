@@ -250,6 +250,16 @@
       $("input:radio[id=primary18]:checked")[0].checked = false;
     }
 
+    function pilih_penggunaan(isi) {
+      if (isi == 'Kendaraan Operasional' || isi == 'Alat Berat') {
+      document.getElementById("isi_penanggung_jawab").disabled = false;
+      document.getElementById("isi_penanggung_jawab").required = true;
+      } else {
+        document.getElementById("isi_penanggung_jawab").disabled = true;
+        document.getElementById("isi_penanggung_jawab").required = false;
+      }
+    }
+
     function klik_destroy2() {
       $('#tblregister2').DataTable().destroy();
       $('#modal-list-register2').modal('hide');

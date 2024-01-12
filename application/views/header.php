@@ -143,52 +143,6 @@
             </a>
           </li>
           <li class="nav-header"><strong>MENU UTAMA</strong></li>
-          <li class="nav-item has-treeview">
-            <!-- <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Rencana Kebutuhan
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a> -->
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo site_url('home/rkbform');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Entry Belanja Aset</p>
-                </a>
-              </li>
-              <!-- <li class="nav-item">
-                <a href="<?php echo site_url('home/rkpform');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Entry Belanja Persediaan</p>
-                </a>
-              </li> -->
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <!-- <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                List Data
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a> -->
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo site_url('home/tabel_rkb');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Tabel RK Belanja Aset</p>
-                </a>
-              </li>
-              <!-- <li class="nav-item">
-                <a href="<?php echo site_url('home/tabel_rkp');?>" class="nav-link">
-                  <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                  <p>Tabel RK Belanja Persediaan</p>
-                </a>
-              </li> -->
-            </ul>
-          </li>
           <li class="nav-item">
             <a href="<?php echo site_url('form_inv/input_petugas');?>" class="nav-link">
               <i class="nav-icon fa fa-address-book"></i>
@@ -244,12 +198,19 @@
               </li> -->
             </ul>
           </li>
+          <li class="nav-header"><strong>MENU TAMBAHAN</strong></li>
           <li class="nav-item">
             <a href="<?php echo site_url('form_inv/list_tambak');?>" class="nav-link">
               <i class="nav-icon fas fa-leaf"></i>
               <p>
                 List Tanah Tambak
               </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('form_inv/list_kendaraan')?>" class="nav-link">
+              <i class="nav-icon fas fa-car"></i>
+              <p>List Kendaraan</p>
             </a>
           </li>
           <li class="nav-header"><strong>STATUS REGISTER</strong></li>

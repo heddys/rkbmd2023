@@ -42,6 +42,7 @@
     ]
    });
    $('.select2').select2();
+   $("#tabel_kendaraan").DataTable();
    $('.select_lokasi').select2({
     width: 'resolve'
    });

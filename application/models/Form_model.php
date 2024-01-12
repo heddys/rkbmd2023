@@ -115,6 +115,17 @@
                 return $query;
             }
 
+            public function get_db_kendaraan($lokasi){
+    
+                $db_simbada=$this->load->database('simbada',TRUE);
+                   
+                $query = $db_simbada->query("SELECT a.register,a.nomor_lokasi_baru,b.lokasi,a.kode108_baru,a.kode64_baru,a.nama_barang_baru,a.merk_alamat_baru,a.tipe_baru,a.tahun_pengadaan,a.nopol,a.no_rangka_seri,a.no_mesin,a.harga_baru FROM `kib` a INNER JOIN kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi WHERE left(a.kode108_baru,11) in ('1.3.2.01.01','1.3.2.02.01') and a.kode108_baru not like '1.5.4%' and a.hapus <> 1 and a.nomor_lokasi_baru like '%".$lokasi."%' union SELECT c.register,c.nomor_lokasi_baru,d.lokasi,c.kode108_baru,c.kode64_baru,c.nama_barang_baru,c.merk_alamat_baru,c.tipe_baru,c.tahun_pengadaan,c.nopol,c.no_rangka_seri,c.no_mesin,c.harga_baru FROM `kib_awal` c INNER JOIN kamus_lokasi d on c.nomor_lokasi_baru=d.nomor_lokasi WHERE left(c.kode108_baru,11) in ('1.3.2.01.01','1.3.2.02.01') and c.kode108_baru not like '1.5.4%' and c.hapus <> 1 and c.nomor_lokasi_baru like '%".$lokasi."%'");
+            
+                return $query;
+            
+            
+            }
+
             public function hitungBanyakRowRegister($data,$kib,$form)
             {
                 

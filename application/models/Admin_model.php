@@ -815,7 +815,7 @@ class Admin_model extends CI_Model{
     {
         
         $this->db->where('id', $register);
-        $this->db->update('register_isi', array('status' => 12));
+        $this->db->update('register_isi', array('status' => 1));
         $this->db->error();
     }
 
