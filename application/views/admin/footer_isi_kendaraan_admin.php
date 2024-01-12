@@ -459,8 +459,9 @@ function formatCurrency(input, blur) {
 
     function klik_nopol(id){
       if(id == true){
-        var isi_text = document.querySelector("#modal-nopol [id=input_nopol]").value;
-        document.getElementById('nopol').value=isi_text;
+        var isi_text = document.querySelector("#modal-nopol [id=l]").value+' '+document.querySelector("#modal-nopol [id=angka_nopol]").value+' '+document.querySelector("#modal-nopol [id=blkg_noo]").value+;
+        // document.getElementById('nopol').value=isi_text;
+        alert(isi_text);
       } else {
         $("input:radio[id=primary26]:checked")[0].checked = false;
       }
@@ -618,11 +619,6 @@ function formatCurrency(input, blur) {
               $('#modal-search-register-ganda').modal({backdrop: 'static', keyboard: false});
           }  
       });
-
-     
-
-
-      
     });
 
 </script>
