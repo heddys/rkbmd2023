@@ -266,28 +266,6 @@ class Admin_model extends CI_Model{
        return $query->row();
    }
 
-   public function get_db_kendaraan($lokasi='13.30'){
-    
-    $db_simbada=$this->load->database('simbada',TRUE);
-       
-    $query = $db_simbada->query("SELECT a.register,a.nomor_lokasi_baru,b.lokasi,a.kode108_baru,a.kode64_baru,a.nama_barang_baru,a.merk_alamat_baru,a.tipe_baru,a.tahun_pengadaan,a.nopol,a.no_rangka_seri,a.no_mesin,a.harga_baru FROM `kib` a INNER JOIN kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi WHERE left(a.kode108_baru,11) in ('1.3.2.01.01','1.3.2.02.01') and a.kode108_baru not like '1.5.4%' and a.hapus <> 1 and a.nomor_lokasi_baru like '%".$lokasi."%' union SELECT c.register,c.nomor_lokasi_baru,d.lokasi,c.kode108_baru,c.kode64_baru,c.nama_barang_baru,c.merk_alamat_baru,c.tipe_baru,c.tahun_pengadaan,c.nopol,c.no_rangka_seri,c.no_mesin,c.harga_baru FROM `kib_awal` c INNER JOIN kamus_lokasi d on c.nomor_lokasi_baru=d.nomor_lokasi WHERE left(c.kode108_baru,11) in ('1.3.2.01.01','1.3.2.02.01') and c.kode108_baru not like '1.5.4%' and c.hapus <> 1 and c.nomor_lokasi_baru like '%".$lokasi."%'");
-
-    return $query;
-
-
-   }
-
-   public function get_data_per_kendaraan($register){
-    
-    $db_simbada=$this->load->database('simbada',TRUE);
-       
-    $query = $db_simbada->query("SELECT a.register,a.nomor_lokasi_baru,b.lokasi,a.kode108_baru,a.kode64_baru,a.nama_barang_baru,a.merk_alamat_baru,a.tipe_baru,a.tahun_pengadaan,a.nopol,a.no_rangka_seri,a.no_mesin,a.harga_baru,a.kondisi,a.no_bpkb FROM `kib` a INNER JOIN kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi WHERE a.hapus <> 1 and a.register = '".$register."' union SELECT c.register,c.nomor_lokasi_baru,d.lokasi,c.kode108_baru,c.kode64_baru,c.tahun_pengadaan,c.nama_barang_baru,c.merk_alamat_baru,c.tipe_baru,c.nopol,c.no_rangka_seri,c.no_mesin,c.harga_baru,c.kondisi,c.no_bpkb FROM `kib_awal` c INNER JOIN kamus_lokasi d on c.nomor_lokasi_baru=d.nomor_lokasi WHERE c.hapus <> 1 and c.register = '".$register."'");
-
-    return $query;
-
-
-   }
-
    public function get_register_simbada()
    {
     $db_simbada = $this->load->database('simbada',TRUE);
@@ -640,26 +618,6 @@ class Admin_model extends CI_Model{
                 return $query->row();
     }
 
-    public function data_kode_barang()
-    {
-        return $this->db->get('kamus_barang');
-    }
-
-    public function kamus_kelurahan()
-    {
-        return $this->db->get('kamus_kelurahan');
-    }
-
-    public function data_satuan()
-    {
-        return $this->db->get('satuan');
-    }
-
-    public function data_kamus_lokasi()
-    {
-        return $this->db->get_where('kamus_lokasi',array('kode_binprog !=' => ''));
-    }
-
     public function pb_verif($nomor_lokasi)
     {   
 
@@ -771,69 +729,6 @@ class Admin_model extends CI_Model{
     {
         return $this->db->get_where('kamus_lokasi');
     }
-
-
-    public function save_isi_form($data)
-    {
-        $this->db->insert('register_isi', $data);
-        return $this->db->insert_id();
-    }
-
-
-    public function save_isi_form_history($data)
-    {
-        $this->db->insert('register_isi_history', $data);
-    }
-
-
-    public function save_status_register($data)
-    {
-        $this->db->insert('register_status',$data);
-        return $this->db->insert_id();
-    }
-
-
-    public function update_register_isi($data,$register) {
-        $this->db->where('register', $register);
-        $this->db->update('register_isi', $data);
-    }
-
-    public function update_status_register ($data,$id){
-
-        $this->db->where('id', $id);
-        $this->db->update('register_status', $data);
-        $this->db->error();
-    }
-
-    public function save_status_register_history($data)
-    {
-        $this->db->insert('register_status_history',$data);
-        $this->db->error();
-    }
-
-    public function tandai_kib($register)
-    {
-        
-        $this->db->where('id', $register);
-        $this->db->update('register_isi', array('status' => 1));
-        $this->db->error();
-    }
-
-    public function save_image($data = array())
-    {
-        return $this->db->insert_batch('jurnal_upload',$data);
-    }
-
-    public function get_path($id)
-    {
-        return $this->db->get_where('jurnal_upload',array('id' => $id));
-    }
-
-    public function hapus_image_record($id)
-    {
-        return $this->db->delete('jurnal_upload',array('id' => $id));
-    }
-
 
     public function get_pangkat()
     {

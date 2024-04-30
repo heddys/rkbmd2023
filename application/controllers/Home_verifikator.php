@@ -42,10 +42,12 @@ class Home_verifikator extends CI_Controller {
     private function cek_sess() 
 	{
 		if($this->session->userdata('id') !=NULL){
+			$opd=$this->session->userdata('skpd');
 			$this->load->model('survey_model');
 			return;
 			} else { 
-				redirect('auth');
+				$par=2;
+				redirect('auth/index/'.$par);
 			}
 	}
 
