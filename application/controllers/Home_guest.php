@@ -6,12 +6,11 @@ class home_guest extends CI_Controller {
     private function cek_sess() 
 	{
 		if($this->session->userdata('role') =="Guest" ){
-			$opd=$this->session->userdata('skpd');
+			// $opd=$this->session->userdata('skpd');
 			$this->load->model('guest_model');
 			return;
 			} else { 
-				$par=2;
-				redirect('auth/index/'.$par);
+				redirect('auth');
 			}
 	}
     
@@ -194,7 +193,7 @@ class home_guest extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '4056M');
         $data['kib']= $kib;
-		$data['data_kondisi']=$this->guest_model->get_perubahan_fisik_barang($kib)->result();
+		$data['data_kondisi']=$this->admin_model->get_perubahan_fisik_barang($kib)->result();
 
 		$this->load->view('guest/laporan_guest/cetak_form_kondisi_barang',$data);	
 	}
@@ -204,7 +203,7 @@ class home_guest extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
         $data['kib']= $kib;
-		$data['data_barang']=$this->guest_model->get_data_tidak_ditemukan($kib)->result();
+		$data['data_barang']=$this->admin_model->get_data_tidak_ditemukan($kib)->result();
 
 		$this->load->view('guest/laporan_guest/cetak_barang_tidak_ditemukan',$data);
 	}
@@ -214,7 +213,7 @@ class home_guest extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
         $data['kib']= $kib;
-		$data['data_barang']=$this->guest_model->get_data_hilang($kib)->result();
+		$data['data_barang']=$this->admin_model->get_data_hilang($kib)->result();
 
 		$this->load->view('guest/laporan_guest/cetak_barang_hilang',$data);
 	}
@@ -224,7 +223,7 @@ class home_guest extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
         $data['kib']= $kib;
-		$data['data_barang']=$this->guest_model->get_perubahan_data_barang($kib)->result();
+		$data['data_barang']=$this->admin_model->get_perubahan_data_barang($kib)->result();
 
 		$this->load->view('guest/laporan_guest/cetak_perubahan_data_barang',$data);
 	}
@@ -234,7 +233,7 @@ class home_guest extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
         $data['kib']= $kib;
-		$data['data_barang']=$this->guest_model->get_belum_kapt_ada_induk($kib)->result();
+		$data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk($kib)->result();
 
 		$this->load->view('guest/laporan_guest/cetak_belum_kapt_diketahui',$data);
 	}
@@ -244,7 +243,7 @@ class home_guest extends CI_Controller {
 		$this->cek_sess();
 		// ini_set('memory_limit', '2048M');
         $data['kib']= $kib;
-		// $data['data_barang']=$this->guest_model->get_belum_kapt_ada_induk($kib)->result();
+		// $data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk($kib)->result();
 
 		$this->load->view('guest/laporan_guest/cetak_belum_kapt_tidak_diketahui_induk',$data);
 	}
@@ -254,7 +253,7 @@ class home_guest extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
         $data['kib']= $kib;
-		$data['data_barang']=$this->guest_model->get_data_ganda($kib)->result();
+		$data['data_barang']=$this->admin_model->get_data_ganda($kib)->result();
 
 		$this->load->view('guest/laporan_guest/cetak_barang_ganda',$data);
 	}
@@ -264,7 +263,7 @@ class home_guest extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
         $data['kib']= $kib;
-		// $data['data_barang']=$this->guest_model->get_data_ganda($kib)->result();
+		// $data['data_barang']=$this->admin_model->get_data_ganda($kib)->result();
 
 		$this->load->view('guest/laporan_guest/cetak_barang_digunakan_instansi_lain',$data);
 	}
@@ -274,7 +273,7 @@ class home_guest extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
         $data['kib']= $kib;
-		$data['data_barang']=$this->guest_model->get_data_dipakai_pegawai($kib)->result();
+		$data['data_barang']=$this->admin_model->get_data_dipakai_pegawai($kib)->result();
 
 		$this->load->view('guest/laporan_guest/cetak_barang_digunakan_pegawai',$data);
 	}

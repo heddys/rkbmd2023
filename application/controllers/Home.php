@@ -33,7 +33,7 @@ class Home extends CI_Controller {
 			// $data['only_opd'] = $this->form_model->get_data_dinkes_only()->row();
 		}
 		$data['lok'] = $nomor_lokasi;
-		$data['rekap']=$this->form_model->data_progres_opd($nomor_lokasi)->row();
+		// $data['rekap']=$this->form_model->data_progres_opd($nomor_lokasi)->row();
 		$data['rekap_tanah']=$this->form_model->data_progres_opd_tanah($nomor_lokasi)->row();
 		$data['rekap_pm']=$this->form_model->data_progres_opd_pm($nomor_lokasi)->row();
 		$data['rekap_gdb']=$this->form_model->data_progres_opd_gdb($nomor_lokasi)->row();
@@ -46,23 +46,31 @@ class Home extends CI_Controller {
 		
 	}
 
-	private function cek_sess() 
+	public function cek_sess() 
 	{
-		if($this->session->userdata('id') !=NULL){
-				if ($this->session->userdata('role')=='Verifikator'){
-					redirect('home_verifikator');
-				} elseif ($this->session->userdata('role')=='Penyelia') {
-					redirect('home_penyelia');
-				} elseif ($this->session->userdata('role')=='Admin') {
-					redirect('home_admin');
-				} else {
-					$opd=$this->session->userdata('skpd');
-					$this->load->model('auth_model');
-					return;
+		// var_dump($this->session->userdata());
+		if($this->session->userdata('role') != NULL){
+			if ($this->session->userdata('role')=='Verifikator'){
+				redirect('home_verifikator');
+				// echo "Verif";
+			} elseif ($this->session->userdata('role')=='Penyelia') {
+				redirect('home_penyelia');
+				// echo "Penyelia";
+			} elseif ($this->session->userdata('role')=='Admin') {
+				redirect('home_admin');
+				// echo "Admin";
+			} elseif ($this->session->userdata('role')=='Guest') {
+				redirect('home_guest');
+				// echo "Guest";
+			} else {
+				$this->load->model('form_model');
+				return;
+				// $this->session->userdata('role');
+				// echo "Pengurus Barang";
 				}
 		} else { 
-			$par=2;
-			redirect('auth/index/'.$par);
+			// $this->session->userdata('role');
+			redirect('auth');
 		}
 	}
 

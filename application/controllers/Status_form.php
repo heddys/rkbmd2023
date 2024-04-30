@@ -397,9 +397,8 @@ class Status_form extends CI_Controller {
 			$opd=$this->session->userdata('skpd');
 			$this->load->model('auth_model');
 			return;
-			} else { 
-				$par=2;
-				redirect('auth/index/'.$par);
+			} else {
+				redirect('auth/index/');
 			}
 	}
 
@@ -665,12 +664,5 @@ class Status_form extends CI_Controller {
 		$data['kib_apa'] = $kib;
 		$this->load->view('laporan/cetak_barang_digunakan_pegawai',$data);
 	}
-
-
-
-
-
-
-
 }
 ?>

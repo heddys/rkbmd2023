@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
  
 class Auth_model extends CI_Model{	
-	function ceklogin($table,$where){		
+	function ceklogin($table,$where){
 		return $this->db->get_where($table,$where);
 	}
 
@@ -43,6 +43,12 @@ class Auth_model extends CI_Model{
 	function entry_data_budgeting($entrydata){
 		return $this->db->insert('ebudgeting2021',$entrydata);
 
+	}
+
+	function mark_for_loggin($where,$token){
+
+		$this->db->where('username', $where);
+        $this->db->update('pengguna', array('token_login' => $token));
 	}
 	
 	function entry_data_komponen($entrydata){

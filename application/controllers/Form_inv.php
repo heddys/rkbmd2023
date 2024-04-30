@@ -96,23 +96,23 @@ class Form_inv extends CI_Controller {
 			$data['kib_apa']=$id;
 
 			if($id=='1') {
-				$this->session->set_userdata('kib','1.3.1');
+				$this->session->set_userdata('kib','1.3.01');
 				$kib = $this->session->userdata('kib');
 			} 
 			elseif ($id=='2') {
-				$this->session->set_userdata('kib','1.3.2');
+				$this->session->set_userdata('kib','1.3.02');
 				$kib = $this->session->userdata('kib');
 			} elseif ($id=='3') {
-				$this->session->set_userdata('kib','1.3.3');
+				$this->session->set_userdata('kib','1.3.03');
 				$kib = $this->session->userdata('kib');
 			} elseif ($id=='4') {
-				$this->session->set_userdata('kib','1.3.4');
+				$this->session->set_userdata('kib','1.3.04');
 				$kib = $this->session->userdata('kib');
 			} elseif ($id=='5') {
-				$this->session->set_userdata('kib','1.3.5');
+				$this->session->set_userdata('kib','1.3.05');
 				$kib = $this->session->userdata('kib');
 			} else { 
-				$this->session->set_userdata('kib','1.5.3');
+				$this->session->set_userdata('kib','1.5.03');
 				$kib = $this->session->userdata('kib');
 			}
 			
@@ -157,7 +157,7 @@ class Form_inv extends CI_Controller {
 				$this->pagination->initialize($config);
 				
 			$data['lokasi']=$this->form_model->get_lokasi_per_opd($this->session->userdata('no_lokasi_asli'));
-			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form, 'data' => $data_cari, 'lokasi_asli' => $this->session->userdata('no_lokasi_asli'), 'status' => $this->session->userdata('status'));
+			$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form, 'data' => $data_cari, 'lokasi_asli' => $this->session->userdata('no_lokasi_asli'), 'status' => $this->session->userdata('status'), 'kib' => $kib);
 			$data['register']=$this->form_model->get_all_register_pagination($data_cari,$kib,$config['per_page'],$data['offset'],$form);
         
 		}
@@ -169,7 +169,7 @@ class Form_inv extends CI_Controller {
 	}
 
 
-	public function list_tambak($id) {
+	public function list_tambak() {
 
 		$this->cek_sess();
 		$data['page']="List Aset Tanah Tambak";
@@ -222,36 +222,39 @@ class Form_inv extends CI_Controller {
 				'ekstrakomtabel' =>  NULL
 			);
 
-			$data['kib_apa']=$id;
+			$this->session->set_userdata('kib','1.3.1');
+			$kib = $this->session->userdata('kib');
 
-			if($id=='1') {
-				$this->session->set_userdata('kib','1.3.1');
-				$kib = $this->session->userdata('kib');
-			} 
-			elseif ($id=='2') {
-				$this->session->set_userdata('kib','1.3.2');
-				$kib = $this->session->userdata('kib');
-			} elseif ($id=='3') {
-				$this->session->set_userdata('kib','1.3.3');
-				$kib = $this->session->userdata('kib');
-			} elseif ($id=='4') {
-				$this->session->set_userdata('kib','1.3.4');
-				$kib = $this->session->userdata('kib');
-			} elseif ($id=='5') {
-				$this->session->set_userdata('kib','1.3.5');
-				$kib = $this->session->userdata('kib');
-			} else { 
-				$this->session->set_userdata('kib','1.5.3');
-				$kib = $this->session->userdata('kib');
-			}
+			// $data['kib_apa']=$id;
+
+			// if($id=='1') {
+			// 	$this->session->set_userdata('kib','1.3.1');
+			// 	$kib = $this->session->userdata('kib');
+			// } 
+			// elseif ($id=='2') {
+			// 	$this->session->set_userdata('kib','1.3.2');
+			// 	$kib = $this->session->userdata('kib');
+			// } elseif ($id=='3') {
+			// 	$this->session->set_userdata('kib','1.3.3');
+			// 	$kib = $this->session->userdata('kib');
+			// } elseif ($id=='4') {
+			// 	$this->session->set_userdata('kib','1.3.4');
+			// 	$kib = $this->session->userdata('kib');
+			// } elseif ($id=='5') {
+			// 	$this->session->set_userdata('kib','1.3.5');
+			// 	$kib = $this->session->userdata('kib');
+			// } else { 
+			// 	$this->session->set_userdata('kib','1.5.3');
+			// 	$kib = $this->session->userdata('kib');
+			// }
 			
 				//Load Library Pagination
 				$this->load->library('pagination');
-				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+				$data['offset']=($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 				//Config Pagination
 				$config['total_rows'] = $this->form_model->RowRegisterTambak($data_cari,$kib,$form)->num_rows();
 				$config['per_page'] = $limit;
-				$config['base_url'] = site_url('/form_inv/list_tambak/'.$id.'/');
+				$config['base_url'] = site_url('/form_inv/list_tambak');
 				$config['num_links'] = 3;
 
 				//Pagination Bootstrap Theme
@@ -292,6 +295,143 @@ class Form_inv extends CI_Controller {
 		$this->load->view('h_tablerkb',$data);		
 		$this->load->view('list_tambak',$data);
 		$this->load->view('h_footerrkb');
+	}
+
+	public function isi_form_kendaraan() {
+
+		$this->cek_sess();
+		$data['page']="Isi Form Kendaraan";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+		
+		$register = $_POST['register'];
+
+		$cek_register = $this->form_model->ambil_register_form($register)->num_rows();
+
+		if($cek_register > 0) {
+
+			$get_register_isi = $this->form_model->ambil_register_form($register)->row();
+			$data_checkbox = $this->form_model->ambil_status_register_form($register)->row();
+			$data['image'] = $this->form_model->ambil_file($register)->result();
+
+			// echo '<pre>' , var_dump($this->form_model->ambil_status_register_form($register)->row()) , '</pre>';
+			// die();
+
+			$data['data_register'] = array (
+
+				"id"=> $get_register_isi->id,
+				"register"=> $get_register_isi->register,
+				"nomor_lokasi"=> $get_register_isi->nomor_lokasi,
+				"kode_barang"=> $get_register_isi->kode_barang,
+				"nama_barang"=> $get_register_isi->nama_barang,
+				"spesifikasi_barang_merk"=> $get_register_isi->spesifikasi_barang_merk,
+				"satuan"=> $get_register_isi->satuan,
+				"keberadaan_barang"=> $get_register_isi->keberadaan_barang,
+				"nilai_perolehan"=> $get_register_isi->nilai_perolehan,
+				"lokasi"=> $get_register_isi->lokasi,
+				"jumlah"=> "1",
+				"kondisi_barang"=> $get_register_isi->kondisi_barang,
+				"penggunaan_barang"=> $get_register_isi->penggunaan_barang,
+				"pemanfaatan_aset"=> $get_register_isi->pemanfaatan_aset,
+				"tipe"=> $get_register_isi->tipe,
+				"nopol"=> $get_register_isi->nopol,
+				"no_rangka_seri"=> $get_register_isi->no_rangka_seri,
+				"no_mesin"=> $get_register_isi->no_mesin,
+				"no_bpkb"=> $get_register_isi->no_bpkb,
+				"lainnya"=> $get_register_isi->lainnya,
+				"keterangan"=> $get_register_isi->keterangan,
+				"nama_pj"=> $get_register_isi->nama_pj,
+				"jenis_penggunaan"=> $get_register_isi->jenis_penggunaan,
+				'flag' => 0
+			
+			);
+
+			$data['data_is_register'] = array (
+
+				"id"=> $data_checkbox->id,
+				"is_register"=> $data_checkbox->is_register,
+				"is_kode_barang"=> $data_checkbox->is_kode_barang,
+				"is_nama_barang"=> $data_checkbox->is_nama_barang,
+				"is_spesifikasi_barang_merk"=> $data_checkbox->is_spesifikasi_barang_merk,
+				"is_satuan"=> $data_checkbox->is_satuan,
+				"is_keberadaan_barang"=> $data_checkbox->is_keberadaan_barang,
+				"is_nilai_perolehan"=> $data_checkbox->is_nilai_perolehan,
+				"is_aset_atrib"=> $data_checkbox->is_aset_atrib,
+				"is_tipe"=> $data_checkbox->is_tipe,
+				"is_kondisi_barang"=> $data_checkbox->is_kondisi_barang,
+				"is_penggunaan_barang"=> $data_checkbox->is_penggunaan_barang,
+				"is_catat_ganda"=> $data_checkbox->is_catat_ganda,
+				"is_jumlah"=> $data_checkbox->is_jumlah,
+				"is_nopol"=> $data_checkbox->is_nopol,
+				"is_no_rangka"=> $data_checkbox->is_no_rangka,
+				"is_no_mesin"=> $data_checkbox->is_no_mesin,
+				"is_no_bpkb"=> $data_checkbox->is_no_bpkb,
+				"is_lokasi"=> $data_checkbox->is_lokasi
+			);
+
+		} else {
+
+			$data['image'] = NULL;
+			$get_kib_simbada = $this->form_model->get_data_per_kendaraan($register)->row();
+			// echo '<pre>' , var_dump($this->form_model->get_data_per_kendaraan($register)->row()) , '</pre>';
+			// die();
+			$data['data_register'] = array (
+
+				"id"=> $get_kib_simbada->register,
+				"register"=> $get_kib_simbada->register,
+				"nomor_lokasi"=> $get_kib_simbada->nomor_lokasi_baru,
+				"kode_barang"=> $get_kib_simbada->kode108_baru,
+				"nama_barang"=> $get_kib_simbada->nama_barang_baru,
+				"spesifikasi_barang_merk"=> $get_kib_simbada->merk_alamat_baru,
+				"satuan"=> "Unit",
+				"keberadaan_barang"=> "Ada",
+				"nilai_perolehan"=> $get_kib_simbada->harga_baru,
+				"lokasi"=> $get_kib_simbada->lokasi,
+				"jumlah"=> "1",
+				"kondisi_barang"=> $get_kib_simbada->kondisi,
+				"penggunaan_barang"=> "Pemerintah Kota",
+				"pemanfaatan_aset"=> NULL,
+				"tipe"=> $get_kib_simbada->tipe_baru,
+				"nopol"=> $get_kib_simbada->nopol,
+				"no_rangka_seri"=> $get_kib_simbada->no_rangka_seri,
+				"no_mesin"=> $get_kib_simbada->no_mesin,
+				"no_bpkb"=> $get_kib_simbada->no_bpkb,
+				"lainnya"=> "",
+				"keterangan"=> "",
+				'flag' => 1
+			
+			);
+
+			$data['data_is_register'] = array (
+
+				"id"=> $get_kib_simbada->register,
+				"is_register"=> 0,
+				"is_kode_barang"=> 0,
+				"is_nama_barang"=> 0,
+				"is_spesifikasi_barang_merk"=> 0,
+				"is_satuan"=> 0,
+				"is_keberadaan_barang"=> 0,
+				"is_nilai_perolehan"=> 0,
+				"is_aset_atrib"=> 0,
+				"is_tipe"=> 0,
+				"is_kondisi_barang"=> 0,
+				"is_penggunaan_barang"=> 0,
+				"is_catat_ganda"=> 0,
+				"is_jumlah"=> 0,
+				"is_nopol"=> 0,
+				"is_no_rangka"=> 0,
+				"is_no_mesin"=> 0,
+				"is_no_bpkb"=> 0,
+				"is_lokasi"=> 0
+			);
+
+		} 		
+
+		
+        $this->load->view('header',$data);		
+		$this->load->view('isi_list_kendaraan_user',$data);
+		$this->load->view('footer_isi_form_pm');
 	}
 
 	public function isi_formulir_tambak()
@@ -1030,7 +1170,7 @@ class Form_inv extends CI_Controller {
                 } 
             } else { 
 
-            	  $statusMsg = 'Please select image files to upload.'; 
+            	$statusMsg = 'Please select image files to upload.'; 
             }
 		
 		
@@ -2064,6 +2204,21 @@ class Form_inv extends CI_Controller {
 		$this->form_model->tandai_kib($register);
 
 		redirect('/status_form/index/3');
+
+	}
+
+	public function list_kendaraan() {
+		
+		$this->cek_sess();
+		$data['page']="List Kendaraan";
+		$data['data_kendaraan'] = $this->form_model->get_db_kendaraan($this->session->userdata('no_lokasi_asli'))->result();
+
+
+
+		$this->load->view('h_tablerkb',$data);		
+		$this->load->view('list_kendaraan_user',$data);
+		$this->load->view('h_footerrkb');
+		
 
 	}
 

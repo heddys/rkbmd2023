@@ -30,12 +30,10 @@ class Home_penyelia extends CI_Controller {
     private function cek_sess() 
 	{
 		if($this->session->userdata('id') !=NULL){
-			$opd=$this->session->userdata('skpd');
 			$this->load->model('admin_model');
 			return;
-			} else { 
-				$par=2;
-				redirect('auth/index/'.$par);
+			} else {
+				redirect('auth');
 			}
 	}
 
