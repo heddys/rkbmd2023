@@ -149,7 +149,7 @@
                                     <td><center><?php echo $row->kode64_baru;?><?php if (substr($row->kode64_baru,0,9) == "1.3.02.10") { ?> <span class="right badge badge-danger"> SPBE </span> <?php } ?></center></td>
                                     <td><center><?php echo $row->nama_barang;?></center></td>
                                     <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
-                                    <td><center><?php echo ($row->kondisi_barang == "B") ? "Baik" : "Kurang Baik";?></center></td>
+                                    <td><center><?php if($row->kondisi_barang == "B") { echo "Baik"; } elseif ($row->kondisi_barang == "KB") { echo "Kurang Baik"; } else { echo "Rusak Berat"; } ;?></center></td>
                                     <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
                                     <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                                     <td>  

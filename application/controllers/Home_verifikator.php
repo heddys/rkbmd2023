@@ -303,12 +303,12 @@ class Home_verifikator extends CI_Controller {
 		$register=$_POST['register'];
 		$tanda=$_POST['tanda'];
 		$kib=$_POST['kib'];
+		date_default_timezone_set("Asia/Jakarta");	
+		$updated_date=date("Y-m-d");
+		$updated_time=date("H:i:s");
 		
 		if($tanda == 1) {
 			$penolakan=$_POST['penolakan'];
-			date_default_timezone_set("Asia/Jakarta");	
-			$updated_date=date("Y-m-d");
-			$updated_time=date("H:i:s");
 
 			$data = array (
 
@@ -319,14 +319,29 @@ class Home_verifikator extends CI_Controller {
 				'status_register' => 1
 			);
 
+			$data_update = array (
+
+				'update_at_date' => $updated_date,
+				'update_at_time' => $updated_time,
+				'status' => 3
+			);
+
 			ini_set('memory_limit', '2048M');
-			$this->form_model->tandai_status_register($register,$tanda);
+			$this->form_model->tandai_status_register($register,$data_update);
 			$this->form_model->buat_jurnal_tolak($data);
 			redirect('home_verifikator/verif_page/'.$kib);
 			
 		} else {
+
+			$data = array (
+
+				'update_at_date' => $updated_date,
+				'update_at_time' => $updated_time,
+				'status' => 2
+			);
+
 			ini_set('memory_limit', '2048M');
-			$this->form_model->tandai_status_register($register,$tanda); 
+			$this->form_model->tandai_status_register($register,$data); 
 			redirect('home_verifikator/verif_page/'.$kib);
 		}
 

@@ -405,18 +405,12 @@
                 return $this->db->get('kamus_kelurahan');
             }
             
-            public function tandai_status_register($where,$tanda)
+            public function tandai_status_register($where,$update)
             {
-                if($tanda == 1) {
-                    $this->db->where('register', $where);
-                    $this->db->update('data_kib', array('status' => 3));
-
-                }
-                else {
-                    $this->db->where('register', $where);
-                    $this->db->update('data_kib', array('status' => 2));
-                }
-
+                
+                $this->db->where('register', $where);
+                $this->db->update('data_kib', $update);
+                
             }
 
             public function update_data_tambak($data,$register) {
