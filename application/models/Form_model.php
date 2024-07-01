@@ -366,8 +366,62 @@
 
             public function ambil_register($register)
             {   
+                $simbadadb = $this->load->database('simbada',TRUE);
 
-                $query = $this->db->query("SELECT a.*,b.nomor_unit,b.unit,b.nomor_lokasi,b.lokasi FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.register = '".$register."'");
+                // $query = $this->db->query("SELECT a.*,b.nomor_unit,b.unit,b.nomor_lokasi,b.lokasi FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.register = '".$register."'");
+                $query = $simbadadb->query(
+                        "SELECT
+                            a.nomor_lokasi_baru,
+                            a.register,
+                            a.nama_barang_baru,
+                            a.merk_alamat_baru,
+                            a.tipe_baru,
+                            a.satuan,
+                            a.kode108_baru,
+                            a.harga_baru,
+                            a.kondisi,
+                            a.luas_bangunan,
+                            a.kelurahan,
+                            a.kecamatan,
+                            a.kota,
+                            a.register_tanah,
+                            a.keterangan,
+                            a.penggunaan,
+                            b.nomor_unit,
+                            b.unit,
+                            b.nomor_lokasi,
+                            b.lokasi 
+                        FROM
+                            `kib_awal` a
+                            INNER JOIN kamus_lokasi b ON a.nomor_lokasi_baru = b.nomor_lokasi 
+                        WHERE
+                            a.register = '".$register."' and a.hapus <> 1 UNION
+                        SELECT
+                            c.nomor_lokasi_baru,
+                            c.register,
+                            c.nama_barang_baru,
+                            c.merk_alamat_baru,
+                            c.tipe_baru,
+                            c.satuan,
+                            c.kode108_baru,
+                            c.harga_baru,
+                            c.kondisi,
+                            c.luas_bangunan,
+                            c.kelurahan,
+                            c.kecamatan,
+                            c.kota,
+                            c.register_tanah,
+                            c.keterangan,
+                            c.penggunaan,
+                            d.nomor_unit,
+                            d.unit,
+                            d.nomor_lokasi,
+                            d.lokasi 
+                        FROM
+                            `kib` c
+                            INNER JOIN kamus_lokasi d ON c.nomor_lokasi_baru = d.nomor_lokasi 
+                        WHERE
+                            c.register = '".$register."' and c.hapus <> 1");
 
                 // return $query->result();
                 // $query = $this->db->get_where('data_kib', $where);
