@@ -178,7 +178,7 @@
                   <p>Gedung dan Bangunan</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+               <li class="nav-item">
                 <a href="<?php echo site_url('form_inv/index/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Jalan, Irigasi dan Jaringan</p>
@@ -195,7 +195,7 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tak Berwujud</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
           <li class="nav-header"><strong>MENU TAMBAHAN</strong></li>
@@ -249,7 +249,7 @@
                   <p>Gedung dan Bangunan</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a href="<?php echo site_url('status_form/verif_page/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Jalan, Irigasi dan Jaringan</p>
@@ -266,7 +266,7 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tak Berwujud</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
@@ -296,7 +296,7 @@
                   <p>Gedung dan Bangunan</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a href="<?php echo site_url('status_form/index/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Jalan, Irigasi dan Jaringan</p>
@@ -313,7 +313,7 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tak Berwujud</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
          <!-- <li class="nav-item has-treeview">
