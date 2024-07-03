@@ -97,7 +97,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="200px">Kode Lokasi</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_kib->nomor_lokasi." - ".$data_kib->lokasi;?></th>
+                <th width="150px"><?php echo $data_kib->nomor_lokasi_baru." - ".$data_kib->lokasi;?></th>
             </tr>
             <tr>
                 <th width="200px">Kuasa Pengguna Barang</th>
@@ -183,7 +183,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px">C. Nama Barang</th>
                 <th width="25px">:</th>
-                <th width="200px"><?php echo $data_kib->nama_barang; ?></th>
+                <th width="200px"><?php echo $data_kib->nama_barang_baru; ?></th>
                 <td width="20px"><?php if($data_is_register->is_nama_barang == 0) {?>
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
@@ -212,7 +212,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px">D. Nama Spesifikasi Barang</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_kib->merk_alamat; ?></th>
+                <th width="150px"><?php echo $data_kib->merk_alamat_baru; ?></th>
                 <td width="20px">
                 <?php if($data_is_register->is_spesifikasi_barang_merk == 0) {?>
                         <center>
@@ -421,7 +421,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px">J. Lokasi</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_kib->nomor_lokasi." - ".$data_kib->lokasi; ?></th>
+                <th width="150px"><?php echo $data_kib->nomor_lokasi_baru." - ".$data_kib->lokasi; ?></th>
                 <td width="20px"><?php if($data_is_register->is_lokasi == 0) {?>
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">
@@ -511,7 +511,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="120px">L. Tipe</th>
                 <th width="25px">:</th>
-                <th width="150px"><?php echo $data_kib->tipe; ?></th>
+                <th width="150px"><?php echo $data_kib->tipe_baru; ?></th>
                 <th width="20px"><?php if($data_is_register->is_tipe == 0) {?>
                         <center>
                             <img src="./ini_assets/dist/img/checkbox_checked.jpg" alt="checkbox" width="12" height="12">

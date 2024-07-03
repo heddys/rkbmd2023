@@ -153,7 +153,7 @@
                                     <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
                                     <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                                     <td>  
-                                        <form role="form" action="<?php echo site_url();?>/status_form/cetak_form" method="post" target="_blank" >
+                                        <form role="form" action="<?php echo site_url();?>/status_form/cetak_form_<?php echo $kib_apa; ?>" method="post" target="_blank" >
                                             <center>
                                             <button type="submit" class="btn btn-sm btn-success" title="Isi Form Inventarisasi"><i class="fa fa-print"></i>
                                                 <input type="hidden" name="register" value="<?php echo $row->register?>">

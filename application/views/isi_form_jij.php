@@ -11,9 +11,10 @@
                 </center>
                 <!-- /.card-header -->
                 <div class="card-body">
+                    <?php $left_108 = substr($data_register->kode108_baru,0,11);?>
                     <form role="form" action="save_isi_form_jij" method="post" enctype="multipart/form-data">
                         <!-- select -->
-                       
+
                         <h4><?php echo $data_register->register." - ".$data_register->nama_barang_baru;?></h4>
                         <hr style="padding: 2px">
                         <center>
@@ -284,33 +285,62 @@
 
                             <!-- Batas Per Form -->
 
-
-                            <!-- Mulai Form -->
-                            <div class="form-group col-md-5 ">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Jenis Perkerasan Jalan : </label>
-                                    </div>
-                                    <input type="text" class="form-control" name="perkerasan" id="perkerasan" readonly="true">
-                                </div>
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class=" mt-2 mb-6 col-lg-4">
-                                <div class="form-group clearfix">
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primaryperkerasan1" name="radio_perkerasan" value="0" required="required" disabled/>
-                                        <label for="primaryperkerasan1">Sesuai</label>
-                                    </div>
-                                    <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="primaryperkerasan2" name="radio_perkerasan" value="1"/>
-                                        <label for="primaryperkerasan2">Tidak Sesuai</label>
+                            <?php if ($left_108 == '1.3.4.01.01') { ?>
+                                <!-- Mulai Form -->
+                                <div class="form-group col-md-5 ">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Jenis Perkerasan Jalan : </label>
+                                        </div>
+                                        <input type="text" class="form-control" name="perkerasan" id="perkerasan" readonly="true">
                                     </div>
                                 </div>
-                                <!-- /input-group -->
-                            </div>
+                                <!-- /.col-lg-6 -->
+                                <div class=" mt-2 mb-6 col-lg-4">
+                                    <div class="form-group clearfix">
+                                        <div class="radio icheck-primary d-inline">
+                                            <input type="radio" id="primaryperkerasan1" name="radio_perkerasan" value="0" required="required" disabled/>
+                                            <label for="primaryperkerasan1">Sesuai</label>
+                                        </div>
+                                        <div class="radio icheck-primary d-inline">
+                                            <input type="radio" id="primaryperkerasan2" name="radio_perkerasan" value="1"/>
+                                            <label for="primaryperkerasan2">Tidak Sesuai</label>
+                                        </div>
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
 
-                            <!-- Batas Per Form -->
+                                <!-- Batas Per Form -->
+                            <?php } else {?>
 
+                                <!-- Mulai Form -->
+                                <div class="form-group col-md-5 ">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Jenis Perkerasan Jalan : </label>
+                                        </div>
+                                        <input type="text" class="form-control" name="perkerasan" id="perkerasan" value="-" readonly="true">
+                                    </div>
+                                </div>
+                                <!-- /.col-lg-6 -->
+                                <div class=" mt-2 mb-6 col-lg-4">
+                                    <div class="form-group clearfix">
+                                        <div class="radio icheck-primary d-inline">
+                                            <input type="radio" id="primaryperkerasan1" name="radio_perkerasan" value="0" required="required" checked="checked" disabled/>
+                                            <label for="primaryperkerasan1">Sesuai</label>
+                                        </div>
+                                        <div class="radio icheck-primary d-inline">
+                                            <input type="radio" id="primaryperkerasan2" name="radio_perkerasan" value="1" disabled/>
+                                            <label for="primaryperkerasan2">Tidak Sesuai</label>
+                                        </div>
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+
+                                <!-- Batas Per Form -->
+                            <?php } ?>
+                            
+                            <?php if ($left_108 == '1.3.4.01.02') { ?>
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5 ">
                                 <div class="input-group mb-3">
@@ -336,8 +366,36 @@
                             </div>
 
                             <!-- Batas Per Form -->
+                             <?php } else {?>
 
                             <!-- Mulai Form -->
+                            <div class="form-group col-md-5 ">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Jenis Bahan Struktur Jembatan : </label>
+                                    </div>
+                                    <input type="text" class="form-control" name="struktur_jembatan" id="struktur_jembatan" value="-" readonly="true">
+                                </div>
+                            </div>
+                            <!-- /.col-lg-6 -->
+                            <div class=" mt-2 mb-6 col-lg-4">
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="jenis_jembatan1" name="radio_jembatan" value="0" checked="checked" required="required" disabled/>
+                                        <label for="jenis_jembatan1">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="jenis_jembatan2" name="radio_jembatan" value="1" disabled/>
+                                        <label for="jenis_jembatan2">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+
+                            <!-- Batas Per Form -->
+                             <?php } ?>
+                            <!-- Mulai Form -->
+                            <?php if ($left_108 == '1.3.4.01.01' || $left_108 == '1.3.4.01.02') { ?>
                             <div class="form-group col-md-6 ">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -372,6 +430,42 @@
                             </div>
 
                             <!-- Batas Per Form -->
+                             <?php } else { ?>
+                                <div class="form-group col-md-6 ">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Nomor / Nama Ruas Jalan : </label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <input type="text" class="form-control" name="nama_ruas" id="nama_ruas" placeholder="Nama / Nomor Ruas" value="-" readonly="true">
+                                        </div>
+                                        <div class="col-4">
+                                            <input type="text" class="form-control" name="ujung_ruas" id="ujung_ruas" placeholder="Nama Ujung Ruas" value="-" readonly="true">
+                                        </div>
+                                        <div class="col-4">
+                                            <input type="text" class="form-control" name="pangkal_ruas" id="pangkal_ruas" placeholder="Nama Pangkal Ruas" value="-" readonly="true">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-lg-6 -->
+                            <div class=" mt-2 mb-6 col-md-2">
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="radio_ruas_jalan1" name="radio_ruas_jalan" value="0" checked="checked" required="required" disabled/>
+                                        <label for="radio_ruas_jalan1">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="radio_ruas_jalan2" name="radio_ruas_jalan" value="1"/>
+                                        <label for="radio_ruas_jalan2">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+
+                            <!-- Batas Per Form -->
+                             <?php } ?>
 
 
                             <!-- Mulai Form -->
@@ -459,7 +553,8 @@
                                 </div>
                                 <!-- /input-group -->
                             </div>
-
+                            
+                            <?php if ($left_108 == '1.3.4.02.01' || $left_108 == '1.3.4.02.02' || $left_108 == '1.3.4.02.03' || $left_108 == '1.3.4.02.04' || $left_108 == '1.3.4.02.05' || $left_108 == '1.3.4.02.06' || $left_108 == '1.3.4.02.07' ) { ?>
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
@@ -485,6 +580,35 @@
                             </div>
 
                             <!-- Batas Per Form -->
+                             
+                            <?php } else { ?>
+                            
+                            <!-- Mulai Form -->
+                            <div class="form-group col-md-5">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" id="basic-addon3">Nomor Jaringan Irigasi :</label>
+                                        </div>
+                                            <input type="text" class="form-control" name="nomor_irigasi" id="nomor_irigasi" value="-" readonly="true" placeholder="Input Nomor Jaringan Irigasi..">
+                                    </div>
+                            </div>
+                            <!-- /.col-lg-6 -->
+                            <div class=" mt-2 mb-6 col-lg-4">
+                                <div class="form-group clearfix">
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary_nomor_irigasi1" name="radio_nomor_irigasi" value="0" checked="checked" required="required" disabled/>
+                                        <label for="primary_nomor_irigasi1">Sesuai</label>
+                                    </div>
+                                    <div class="radio icheck-primary d-inline">
+                                        <input type="radio" id="primary_nomor_irigasi2" name="radio_nomor_irigasi" value="1" disabled/>
+                                        <label for="primary_nomor_irigasi2">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+
+                            <!-- Batas Per Form -->
+                            <?php } ?>
 
                             <!-- Mulai Form -->
                             <div class="form-group col-md-5">
@@ -575,6 +699,7 @@
                             </div>
                             <div class=" mt-0 mb-3 col-lg-1">
                                 <button type="button" class="btn btn-success btn-block btn-md" id="show_sk_pengguna" <?php echo ($sk_penggunaan == "NULL") ? "disabled" : ""?>><i class="fas fa-eye"> Lihat Dokumen</i></button>
+                                <!-- <a class="btn btn-success btn-block btn-md" href="172.18.1.59/Dokumen/sk_pengguna/sk_asli/<?php echo $sk_penggunaan->file?>" target="_blank" rel="noopener noreferrer" <?php echo ($sk_penggunaan == "NULL") ? "disabled" : ""?>><i class="fas fa-eye">Lihat Dokumen</a> -->
                             </div> 
                             <div class=" mt-0 mb-3 col-lg-3">
                                 
@@ -1243,7 +1368,7 @@
                                         <center><h4 class="modal-title"><i class="fas fa-cloud"></i> Informasi Status Penggunaan</h4></center>
                                     </div>
                                         <div class="modal-body">
-                                            <object width="100%" height="1100" type="application/pdf" data="https://simbada.surabaya.go.id/Dokumen/sk_pengguna/sk_asli/<?php echo $sk_penggunaan->file?>">
+                                            <object width="100%" height="1100" type="application/pdf" data="172.18.1.59/Dokumen/sk_pengguna/sk_asli/<?php echo $sk_penggunaan->file?>">
                                                 <p>PDF Tidak Bisa Dibuka...</p>
                                             </object>
                                         </div>
@@ -1371,6 +1496,7 @@
                                             <option value="Beton">Beton</option>
                                             <option value="Paving">Paving</option>
                                             <option value="Kayu">Kayu</option>
+                                            <option value="Baja">Baja</option>
                                         </select>
                                     </div>
                                     <div class="modal-footer justify-content-between">

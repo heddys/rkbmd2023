@@ -422,7 +422,37 @@ class Status_form extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-    public function cetak_form()
+    public function cetak_form_1()
+	{   
+        
+        $this->cek_sess();
+        ini_set('max_execution_time', 2000);
+        $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+        $register=$_POST['register'];
+
+        $data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+        $data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+        $data['image']=$this->form_model->ambil_file($register)->result();
+        $data['data_kib'] = $this->form_model->ambil_register_cetak($register);
+
+        $nomor_lokasi_petugas=$data['data_kib']->nomor_lokasi;
+        
+
+        $data['pb_verif']=$this->form_model->pb_verif($nomor_lokasi)->result();
+        $data['petugas']=$this->form_model->get_petugas($nomor_lokasi_petugas);
+
+        // // var_dump($data['pengguna']);
+        // // echo $nomor_lokasi;
+
+       	$this->pdf->load_view('laporan/cetak_form_inv_tanah',$data);
+		$this->pdf->set_paper("legal", "potrait");
+		$this->pdf->render();
+        ob_end_clean();
+		$this->pdf->stream("Cetak Form Inventarisasi.pdf", array("Attachment" => false));
+		
+	}
+
+	public function cetak_form_2()
 	{   
         
         $this->cek_sess();
@@ -444,7 +474,7 @@ class Status_form extends CI_Controller {
         // // var_dump($data['pengguna']);
         // // echo $nomor_lokasi;
 
-       	$this->pdf->load_view('laporan/cetak_form_inv',$data);
+       	$this->pdf->load_view('laporan/cetak_form_inv_pm',$data);
 		$this->pdf->set_paper("legal", "potrait");
 		$this->pdf->render();
         ob_end_clean();

@@ -14,7 +14,7 @@
                     <form role="form" action="save_isi_form_peralatan_mesin" method="post" enctype="multipart/form-data">
                         <!-- select -->
                        
-                        <h4><?php echo $data_register->register." - ".$data_register->nama_barang;?></h4>
+                        <h4><?php echo $data_register->register." - ".$data_register->nama_barang_baru;?></h4>
                         <hr style="padding: 2px">
                         <center>
                         <div class="row">
@@ -73,7 +73,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Nama Barang :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="nama_barang" id="input_nama_barang" readonly="true" value="<?php echo $data_register->nama_barang;?>">
+                                            <input type="text" class="form-control" name="nama_barang" id="input_nama_barang" readonly="true" value="<?php echo $data_register->nama_barang_baru;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -100,7 +100,7 @@
                                             <label class="input-group-text" id="basic-addon3">Lokasi : </label>
                                         </div>
                                             <input type="text" class="form-control" id="input_alamat" name="lokasi" value="<?php echo $data_register->nomor_lokasi?>" readonly="true" style="width:100px;" placeholder="">
-                                            <input type="hidden" name="no_lokasi_awal" value="<?php echo $data_register->nomor_lokasi;?>">
+                                            <input type="hidden" name="no_lokasi_awal" value="<?php echo $data_register->nomor_lokasi_baru;?>">
                                             <div class="input-group-append">
                                                 <label class="input-group-text" id="label_lokasi"><?php echo $data_register->lokasi?></label>
                                             </div>   
@@ -264,8 +264,8 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Merk : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="merk" id="merk_barang" readonly="true" value="<?php echo  str_replace('"', '', $data_register->merk_alamat);?>">
-                                            <!-- <textarea class="form-control" name="merk" rows="3" id="merk_barang" value="<?php echo str_replace('"', '', $data_register->merk_alamat);?>"></textarea> -->
+                                            <input type="text" class="form-control" name="merk" id="merk_barang" readonly="true" value="<?php echo  str_replace('"', '', $data_register->merk_alamat_baru);?>">
+                                            <!-- <textarea class="form-control" name="merk" rows="3" id="merk_barang" value="<?php echo str_replace('"', '', $data_register->merk_alamat_baru);?>"></textarea> -->
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -327,7 +327,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Tipe :</label>
                                         </div>
-                                            <input type="text" class="form-control" name="tipe_barang" id="tipe_barang" readonly="true" value="<?php echo $data_register->tipe;?>">
+                                            <input type="text" class="form-control" name="tipe_barang" id="tipe_barang" readonly="true" value="<?php echo $data_register->tipe_baru;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
@@ -685,7 +685,7 @@
                                                         <td><?php echo $data_row->lokasi;?></td>
                                                         <td>
                                                             <center>
-                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi;?>" data_id2="<?php echo $data_row->lokasi?>" onclick="klik_spek_barang('<?php echo $data_row->nomor_lokasi;?>','<?php echo $data_row->lokasi?>');" data-dismiss="modal"><i class="fa fa-plus"></i></a>
+                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi_baru;?>" data_id2="<?php echo $data_row->lokasi?>" onclick="klik_spek_barang('<?php echo $data_row->nomor_lokasi_baru;?>','<?php echo $data_row->lokasi?>');" data-dismiss="modal"><i class="fa fa-plus"></i></a>
                                                             </center>
                                                         </td>
                                                     </tr>
