@@ -48,30 +48,14 @@ class Home extends CI_Controller {
 
 	public function cek_sess() 
 	{
-		// var_dump($this->session->userdata());
-		if($this->session->userdata('role') != NULL){
-			if ($this->session->userdata('role')=='Verifikator'){
-				redirect('home_verifikator');
-				// echo "Verif";
-			} elseif ($this->session->userdata('role')=='Penyelia') {
-				redirect('home_penyelia');
-				// echo "Penyelia";
-			} elseif ($this->session->userdata('role')=='Admin') {
-				redirect('home_admin');
-				// echo "Admin";
-			} elseif ($this->session->userdata('role')=='Guest') {
-				redirect('home_guest');
-				// echo "Guest";
-			} else {
-				$this->load->model('form_model');
-				return;
-				// $this->session->userdata('role');
-				// echo "Pengurus Barang";
-				}
-		} else { 
-			// $this->session->userdata('role');
-			redirect('auth');
-		}
+		if($this->session->userdata('role') =="Pengurus Barang" ){
+			$opd=$this->session->userdata('skpd');
+			$this->load->model('form_model');
+			return;
+			} else { 
+				$par=2;
+				redirect('auth/index/'.$par);
+			}
 	}
 
 	public function jsonjson(){

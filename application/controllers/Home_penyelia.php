@@ -29,11 +29,13 @@ class Home_penyelia extends CI_Controller {
 
     private function cek_sess() 
 	{
-		if($this->session->userdata('id') !=NULL){
+		if($this->session->userdata('role') =="Penyelia" ){
+			$opd=$this->session->userdata('skpd');
 			$this->load->model('admin_model');
 			return;
-			} else {
-				redirect('auth');
+			} else { 
+				$par=2;
+				redirect('auth/index/'.$par);
 			}
 	}
 

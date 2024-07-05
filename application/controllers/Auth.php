@@ -2,16 +2,53 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
+	// public function index($error=NULL)
+	// {	
+	// 	$data['error']=$error;
+	// 	if($this->session->userdata('kode_opd') !=NULL)
+	// 	{
+	// 		$skpdget = $this->session->userdata('kode_opd');
+	// 		if ($skpdget!='SUR01'){
+	// 			echo $skpdget;
+	// 			redirect('home');				
+	// 		} else {redirect('home_survey');}
+	// 	} else 
+	// 		{	
+	// 			// redirect('https://bpkad.surabaya.go.id/sso-bpkad');
+	// 			// echo "Session Adalah : ".$this->session->userdata('kode_opd');
+	// 			$this->load->view('login',$data);
+	// 		}
+
+	// 	// redirect('home');
+		
+	// }
+
 	public function index($error=NULL)
 	{	
 		$data['error']=$error;
-		if($this->session->userdata('kode_opd') !=NULL)
+		if($this->session->userdata('role') !=NULL)
 		{
-			$skpdget = $this->session->userdata('kode_opd');
-			if ($skpdget!='SUR01'){
-				echo $skpdget;
-				redirect('home');				
-			} else {redirect('home_survey');}
+			if ($this->session->userdata('role')=='Verifikator'){
+					redirect('home_verifikator');
+					echo "Verif";
+				} elseif ($this->session->userdata('role')=='Penyelia') {
+					redirect('home_penyelia');
+					// echo "Penyelia";
+				} elseif ($this->session->userdata('role')=='Admin') {
+					redirect('home_admin');
+					// var_dump ($this->session->userdata());
+					// echo " Token = ".$token;
+					// echo "Admin";
+				} elseif ($this->session->userdata('role')=='Guest') {
+					redirect('home_guest');
+					// echo "Guest";
+				}
+				elseif ($this->session->userdata('role')=='Pengurus Barang') {
+					redirect('home');
+	
+				} else {
+					$this->logout();
+				}
 		} else 
 			{	
 				// redirect('https://bpkad.surabaya.go.id/sso-bpkad');
