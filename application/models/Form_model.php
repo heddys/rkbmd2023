@@ -82,35 +82,19 @@
             }
 
             public function get_all_register($where,$lokasi,$kib=''){
-                if ($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
-                    $query=$this->db->query("SELECT
-                        a.*,
-                        b.lokasi
-                    FROM
-                        `data_kib` a
-                        INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi
-                    WHERE
-                        a.ekstrakomtabel IS NULL
-                        AND a.STATUS = ".$where['status']."
-                        AND a.nomor_lokasi IN ( '".implode("','",$lokasi)."' )");
-                    
-                } else {
+                
 
                     $query=$this->db->query("SELECT
                         a.*,
                         b.lokasi
                     FROM
-                        `data_kib` a
-                        INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi
-                    WHERE
-                        a.status_simbada is NULL
-                        AND a.ekstrakomtabel is NULL
-                        AND a.STATUS = ".$where['status']."
-                        AND a.kode108_baru like '%".$kib."%'
-                        AND left(a.`nomor_lokasi`,12) LIKE '".$lokasi."%'"
+                        `register_isi` a
+                        INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi_awal
+                    WHERE 
+                        a.status = ".$where['status']."
+                        AND a.kode_barang_lama like '%".$kib."%'
+                        AND left(a.`nomor_lokasi_awal`,12) LIKE '".$lokasi."%'"
                     );
-
-                }
 
                 return $query;
             }

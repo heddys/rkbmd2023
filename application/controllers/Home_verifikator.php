@@ -49,7 +49,7 @@ class Home_verifikator extends CI_Controller {
 			}
 	}
 
-    public function verif_page($id)
+    public function verif_page($id=0)
     {
 			$this->cek_sess();	
 			$data['page']="Halaman List Register Proses Verifikasi";
