@@ -81,7 +81,7 @@
                 return $query;
             }
 
-            public function get_all_register($where,$lokasi,$kib=''){
+            public function get_all_register($status,$lokasi,$kib=''){
                 
 
                     $query=$this->db->query("SELECT
@@ -91,8 +91,7 @@
                         `register_isi` a
                         INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi_awal
                     WHERE 
-                        a.status = ".$where['status']."
-                        AND a.kode_barang_lama like '%".$kib."%'
+                        a.status = '".$status."'
                         AND left(a.`nomor_lokasi_awal`,12) LIKE '".$lokasi."%'"
                     );
 

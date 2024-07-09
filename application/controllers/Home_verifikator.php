@@ -10,28 +10,28 @@ class Home_verifikator extends CI_Controller {
 		// $data['bmaset']=$this->cek_jumlah_bmaset();
 		// $data['bmpersediaan']=$this->cek_jumlah_persediaan();
 
-		$where_proses = array (
-            'ekstrakomtabel' => NULL,
-			'status_simbada' => NULL,
-			'status' => 1
-        );
-		$where_terverifikasi = array (
-            'ekstrakomtabel' => NULL,
-			'status_simbada' => NULL,
-			'status' => 2
-        );
-		$where_tolak = array (
-            'ekstrakomtabel' => NULL,
-			'status_simbada' => NULL,
-			'status' => 3
-        );
+		// $where_proses = array (
+        //     'ekstrakomtabel' => NULL,
+		// 	'status_simbada' => NULL,
+		// 	'status' => 1
+        // );
+		// $where_terverifikasi = array (
+        //     'ekstrakomtabel' => NULL,
+		// 	'status_simbada' => NULL,
+		// 	'status' => 2
+        // );
+		// $where_tolak = array (
+        //     'ekstrakomtabel' => NULL,
+		// 	'status_simbada' => NULL,
+		// 	'status' => 3
+        // );
 
 		$kib = '';
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data['jumlah_proses']=$this->form_model->get_all_register($where_proses,$nomor_lokasi)->num_rows();
-		$data['jumlah_tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi)->num_rows();
-		$data['jumlah_terverifikasi']=$this->form_model->get_all_register($where_terverifikasi,$nomor_lokasi)->num_rows();
+		$data['jumlah_proses']=$this->form_model->get_all_register(1,$nomor_lokasi)->num_rows();
+		$data['jumlah_tolak']=$this->form_model->get_all_register(3,$nomor_lokasi)->num_rows();
+		$data['jumlah_terverifikasi']=$this->form_model->get_all_register(2,$nomor_lokasi)->num_rows();
 
 		$this->load->view('verifikator/h_verifikator',$data);		
 		$this->load->view('verifikator/home_verifikator');
