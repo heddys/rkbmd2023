@@ -826,6 +826,7 @@ class Form_inv extends CI_Controller {
 		//$radio_register=$_POST['radio_kode_reg'];
 
 		$kode_barang=$_POST['kode_barang'];
+		$kode_barang_lama=$_POST['kode_barang_lama'];
 		$radio_kode_bar=$_POST['radio_kode_bar'];
 
 		$nama_barang=$_POST['nama_barang'];
@@ -975,6 +976,7 @@ class Form_inv extends CI_Controller {
 		$data_form_isian = array(
 		'register' => $register,
 		'kode_barang' => $kode_barang,
+		'kode_barang_lama' => $kode_barang_lama,
 		'nama_barang' => $nama_barang,
 		'spesifikasi_barang_merk' => $merk,
 		'satuan' => $satuan,
@@ -1061,6 +1063,7 @@ class Form_inv extends CI_Controller {
 		$register=$_POST['register'];
 		
 		$kode_barang=$_POST['kode_barang'];
+		$kode_barang_lama=$_POST['kode_barang_lama'];
 		$radio_kode_bar=$_POST['radio_kode_bar'];
 
 		$nama_barang=$_POST['nama_barang'];
@@ -1198,6 +1201,7 @@ class Form_inv extends CI_Controller {
 		$data_form_isian = array(
 		'register' => $register,
 		'kode_barang' => $kode_barang,
+		'kode_barang_lama' => $kode_barang_lama,
 		'nama_barang' => $nama_barang,
 		'spesifikasi_barang_merk' => $merk,
 		'satuan' => $satuan,
@@ -1307,6 +1311,7 @@ class Form_inv extends CI_Controller {
 		$register=$_POST['register'];
 		
 		$kode_barang=$_POST['kode_barang'];
+		$kode_barang_lama=$_POST['kode_barang_lama'];
 		$radio_kode_bar=$_POST['radio_kode_bar'];
 
 		$nama_barang=$_POST['nama_barang'];
@@ -1449,6 +1454,7 @@ class Form_inv extends CI_Controller {
 		$data_form_isian = array(
 		'register' => $register,
 		'kode_barang' => $kode_barang,
+		'kode_barang_lama' => $kode_barang_lama,
 		'nama_barang' => $nama_barang,
 		'spesifikasi_barang_merk' => $merk,
 		'satuan' => $satuan,
@@ -1536,6 +1542,7 @@ class Form_inv extends CI_Controller {
 		$register=$_POST['register'];
 		
 		$kode_barang=$_POST['kode_barang'];
+		$kode_barang_lama=$_POST['kode_barang_lama'];
 		$radio_kode_bar=$_POST['radio_kode_bar'];
 
 		$nama_barang=$_POST['nama_barang'];
@@ -1689,6 +1696,7 @@ class Form_inv extends CI_Controller {
 		$data_form_isian = array(
 		'register' => $register,
 		'kode_barang' => $kode_barang,
+		'kode_barang_lama' => $kode_barang_lama,
 		'nama_barang' => $nama_barang,
 		'spesifikasi_barang_merk' => $merk,
 		'satuan' => $satuan,

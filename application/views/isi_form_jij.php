@@ -50,6 +50,7 @@
                                             <label class="input-group-text" id="basic-addon3">Kode Barang :</label>
                                         </div>
                                         <input type="text" class="form-control" name="kode_barang" id="kode_barang" readonly="true" value="<?php echo $data_register->kode108_baru;?>">
+                                        <input type="hidden" name="kode_barang_lama" value="<?php echo $data_register->kode108_baru;?>">
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->
