@@ -81,36 +81,19 @@
                 return $query;
             }
 
-            public function get_all_register($where,$lokasi,$kib=''){
-                if ($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
-                    $query=$this->db->query("SELECT
-                        a.*,
-                        b.lokasi
-                    FROM
-                        `data_kib` a
-                        INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi
-                    WHERE
-                        a.ekstrakomtabel IS NULL
-                        AND a.STATUS = ".$where['status']."
-                        AND a.nomor_lokasi IN ( '".implode("','",$lokasi)."' )");
-                    
-                } else {
+            public function get_all_register($status,$lokasi,$kib=''){
+                
 
                     $query=$this->db->query("SELECT
                         a.*,
                         b.lokasi
                     FROM
-                        `data_kib` a
-                        INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi
-                    WHERE
-                        a.status_simbada is NULL
-                        AND a.ekstrakomtabel is NULL
-                        AND a.STATUS = ".$where['status']."
-                        AND a.kode108_baru like '%".$kib."%'
-                        AND left(a.`nomor_lokasi`,12) LIKE '".$lokasi."%'"
+                        `register_isi` a
+                        INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi_awal
+                    WHERE 
+                        a.status = '".$status."'
+                        AND left(a.`nomor_lokasi_awal`,12) LIKE '".$lokasi."%'"
                     );
-
-                }
 
                 return $query;
             }
@@ -381,11 +364,17 @@
                             a.harga_baru,
                             a.kondisi,
                             a.luas_bangunan,
+                            a.luas_tanah,
                             a.kelurahan,
                             a.kecamatan,
                             a.kota,
+                            a.no_sertifikat,
                             a.register_tanah,
                             a.keterangan,
+                            a.nopol,
+                            a.no_rangka_seri,
+                            a.no_mesin,
+                            a.no_bpkb,
                             a.penggunaan,
                             b.nomor_unit,
                             b.unit,
@@ -407,11 +396,17 @@
                             c.harga_baru,
                             c.kondisi,
                             c.luas_bangunan,
+                            c.luas_tanah,
                             c.kelurahan,
                             c.kecamatan,
                             c.kota,
+                            c.no_sertifikat,
                             c.register_tanah,
                             c.keterangan,
+                            c.nopol,
+                            c.no_rangka_seri,
+                            c.no_mesin,
+                            c.no_bpkb,
                             c.penggunaan,
                             d.nomor_unit,
                             d.unit,

@@ -184,7 +184,7 @@
                   <p>Gedung dan Bangunan</p>
                 </a>
               </li>
-              <!--<li class="nav-item">
+              <li class="nav-item">
                 <a href="<?php echo site_url('home_verifikator/verif_page/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Jalan, Irigasi dan Jaringan</p>
@@ -201,7 +201,7 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tak Berwujud</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
@@ -231,7 +231,7 @@
                   <p>Gedung dan Bangunan</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a href="<?php echo site_url('home_verifikator/tolak_page/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Jalan, Irigasi dan Jaringan</p>
@@ -248,7 +248,7 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tak Berwujud</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li> 
           <!-- <li class="nav-item has-treeview">

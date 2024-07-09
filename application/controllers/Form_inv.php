@@ -1635,7 +1635,7 @@ class Form_inv extends CI_Controller {
                 $filesCount = count($_FILES['files']['name']); 
                 for($i = 0; $i < $filesCount; $i++){
 
-                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."-gdb-".$_FILES['files']['name'][$i]); 
+                    $_FILES['file']['name']     = preg_replace('/[^A-Za-z0-9\-.]/', '', $register."-jij-".$_FILES['files']['name'][$i]); 
                     $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
                     $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
                     $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
@@ -1644,7 +1644,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|png'; 
+                    $config['allowed_types'] = 'jpg|jpeg|png';
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
