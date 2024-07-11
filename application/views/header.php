@@ -66,6 +66,11 @@
             transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
           }
         </style>
+        <style>
+        .modal-xxl {
+            max-width: 70%;
+        }
+        </style>
         <!--UNTUK NAMA DINASNYA-->
         <strong class="nav-link fontku"><font color="white"><?php echo $this->session->userdata('skpd');?> KOTA SURABAYA - (<?php echo strtoupper($this->session->userdata('nama_login'));?>) </font></strong>
       </li>

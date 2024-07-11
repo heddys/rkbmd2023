@@ -1,3 +1,4 @@
+
 <section class="content">
             <!-- <div class="container-fluid">
                 -----
@@ -1565,17 +1566,18 @@
 
                         <!-- Menampilkan Hasil Pencarian Register -->
                         <div class="modal fade" id="modal-list-register3">
-                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-dialog modal-dialog-centered modal-xxl">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Cari Data</h4></center>
+                                        <center><h4 class="modal-title"><i class="fas fa-anchor"></i> Cari Data</h4></center>
                                     </div>
                                     <div class="modal-body" style="overflow-x:auto;">
-                                        <style type="text/css"> </style>
                                             <table id="tblregister3" class="table table-striped table-hover responsive">
                                                 <thead class="thead-dark">
                                                     <tr>
                                                         <th><center>No.</center></th>
+                                                        <th><center>Nama PD</center></th>
+                                                        <th><center>Lokasi</center></th>
                                                         <th><center>Kode Barang</center></th>
                                                         <th><center>Register</center></th>
                                                         <th><center>Nama Barang</center></th>
@@ -1583,6 +1585,7 @@
                                                         <th><center>Alamat</center></th>
                                                         <th><center>Tahun Perolehan</center></th>
                                                         <th><center>Nilai</center></th>
+                                                        <th><center>Peta</center></th>
                                                         <th><center>Aksi</center></th>
                                                     </tr>
                                                 </thead>

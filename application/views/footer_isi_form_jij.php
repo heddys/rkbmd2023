@@ -273,16 +273,19 @@
                     for (i=0; i < data.length; i++) {
                         html += 
                               '<tr>'+
-                                '<td><center>'+x+'</center></td>'+
-                                '<td><center>'+data[i].kode108_baru+'</center></td>'+
-                                '<td><center>'+data[i].register+'</center></td>'+
-                                '<td>'+data[i].nama_barang+'</td>'+
-                                '<td>'+data[i].tipe+'</td>'+    
-                                '<td>'+data[i].merk_alamat+'</td>'+
-                                '<td><center>'+data[i].tahun_pengadaan+'</center></td>'+
-                                '<td class="text-left">Rp.'+rupiah(data[i].harga_baru)+',00</td>'+
-                                '<td><center> <a href="#" class="btn btn-sm btn-success ambil_register3" data-id="'+data[i].register+'"><i class="fa fa-plus"></i></a>'+
-                                '</td></tr>';
+                                '<td style="vertical-align:middle;"><center>'+x+'</center></td>'+
+                                '<td style="vertical-align:middle;"><center>'+data[i].unit+'</center></td>'+
+                                '<td style="vertical-align:middle;"><center>'+data[i].lokasi+'</center></td>'+
+                                '<td style="vertical-align:middle;"><center>'+data[i].kode108_baru+'</center></td>'+
+                                '<td style="vertical-align:middle;"><center>'+data[i].register+'</center></td>'+
+                                '<td style="vertical-align:middle;"><center>'+data[i].nama_barang+'</td>'+
+                                '<td style="vertical-align:middle;"><center>'+data[i].tipe+'</td>'+    
+                                '<td style="vertical-align:middle;"><center>'+data[i].merk_alamat+'</td>'+
+                                '<td style="vertical-align:middle;"><center>'+data[i].tahun_pengadaan+'</center></td>'+
+                                '<td style="vertical-align:middle;"><center>Rp.'+rupiah(data[i].harga_baru)+',00</td>'+
+                                '<td style="vertical-align:middle;"><center> <a href="https://sigis.surabaya.go.id/popup/simbada/show-reg/'+data[i].register+'" class="btn btn-sm btn-warning data-skip="" target="_blank"><i class="fa fa-map"></i></a></td>'+
+                                '<td style="vertical-align:middle;"><center> <a href="#" class="btn btn-sm btn-success ambil_register3" data-id="'+data[i].register+'"><i class="fa fa-plus"></i></a></td>'+
+                                '</tr>';
                               x++;
                     }
                     $('#modal-list-register3').find('#tampil_data3').html(html);

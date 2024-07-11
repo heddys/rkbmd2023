@@ -298,6 +298,28 @@ class Home_verifikator extends CI_Controller {
 		$this->load->view('verifikator/f_verifikator');	
 	}
 
+	public function verif_register_4()
+	{	
+		$this->cek_sess();	
+		$data['page']="Halaman Verifikasi Detail Register Jalan, Irigasi dan Jaringan";
+
+		$register = $_POST['register'];
+		$data['kib_apa']='4';
+		
+		// echo $register;
+		
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+
+		// echo $register;
+		// var_dump($data['data_register']);
+
+		$this->load->view('verifikator/h_verifikator',$data);		
+		$this->load->view('verifikator/detail_form_verif_jij',$data);
+		$this->load->view('verifikator/f_verifikator');	
+	}
+
 	public function tandai_status_register(){
 		
 		$register=$_POST['register'];
@@ -321,8 +343,8 @@ class Home_verifikator extends CI_Controller {
 
 			$data_update = array (
 
-				'update_at_date' => $updated_date,
-				'update_at_time' => $updated_time,
+				'update_at_date_verif' => $updated_date,
+				'update_at_time_verif' => $updated_time,
 				'status' => 3
 			);
 
@@ -335,8 +357,8 @@ class Home_verifikator extends CI_Controller {
 
 			$data = array (
 
-				'update_at_date' => $updated_date,
-				'update_at_time' => $updated_time,
+				'update_at_date_verif' => $updated_date,
+				'update_at_time_verif' => $updated_time,
 				'status' => 2
 			);
 
