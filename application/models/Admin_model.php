@@ -492,7 +492,7 @@ class Admin_model extends CI_Model{
             data_kib a
             INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON LEFT ( a.nomor_lokasi, 12 )= b.nomor_unit 
         WHERE
-            LEFT ( a.kode_108, 5 ) IN ( '1.3.1', '1.3.2', '1.3.3' ) 
+            LEFT ( a.kode_108, 5 ) IN ( '1.3.1', '1.3.2', '1.3.3') 
             AND a.status_simbada IS NULL 
             AND a.ekstrakomtabel IS NULL 
         GROUP BY
