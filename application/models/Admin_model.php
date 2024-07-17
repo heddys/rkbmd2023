@@ -504,6 +504,45 @@ class Admin_model extends CI_Model{
         return $query->result();
    }
 
+   public function get_kib($unit) {
+    
+    $db_simbada=$this->load->database('simbada',TRUE);
+
+    $query = $db_simbada->query(
+        "SELECT
+            (
+            SELECT
+                COUNT( register ) 
+            FROM
+                kib_awal 
+            WHERE
+                hapus = '' 
+                AND extrakomtabel_baru = '' 
+            AND LEFT ( kode64_baru, 6 ) IN ('1.3.01','1.3.02','1.3.03','1.3.04') AND nomor_lokasi_baru LIKE '%".$unit."%' ) +
+            (
+            SELECT
+                COUNT( register ) 
+            FROM
+                kib
+            WHERE
+                hapus = '' 
+                AND extrakomtabel_baru = '' 
+            AND LEFT ( kode64_baru, 6 ) IN ('1.3.01','1.3.02','1.3.03','1.3.04') AND nomor_lokasi_baru LIKE '%".$unit."%' ) AS jum_kib"
+    );
+
+    return $query->result();
+   }
+
+   public function get_opd() {
+    $db_simbada=$this->load->database('simbada',TRUE);
+
+        $db_simbada->select('nomor_unit,unit');
+        $db_simbada->from('kamus_lokasi');
+        $db_simbada->where('kode_binprog <>','');
+        $db_simbada->group_by('kode_binprog');
+        return $db_simbada->get()->result();
+   }
+
 
 
    public function get_per_opd_penyelia($list_unit)

@@ -9,10 +9,29 @@ class Home_admin extends CI_Controller {
 
         $data['page']="Dashboard Admin";
 
-		$data['get_data_chart']=$this->admin_model->get_data_chart(1);
+		// $data['get_data_chart']=$this->admin_model->get_data_chart(1);
 		// $data['get_proses_reg']=$this->admin_model->get_proses_reg(1);
         // $data['get_tolak_reg']=$this->admin_model->get_tolak_reg(1);
-		$data['rekap_opd']=$this->admin_model->get_rekap_opd_admin_dashboard();
+		// $data['rekap_opd']=$this->admin_model->get_rekap_opd_admin_dashboard();
+
+		$data_rekap = array();
+
+		$get_opd = $this->admin_model->get_opd();
+
+		foreach ($get_opd as $row) {
+			$get_total_kib = $this->admin_model->get_kib($row->nomor_unit)->row();
+
+			// $data_rekap[] = array(
+			// 		'unit' => $row->unit,
+			// 		'total_reg' => $get_total_kib->jum_kib
+			// );
+			
+			echo $row->unit." = ".$get_total_kib->jum_kib."<p>";
+		}
+
+		// var_dump($get_total_kib);
+		die();
+
 
         $this->load->view('admin/header_admin',$data);		
 		$this->load->view('admin/admin_page');

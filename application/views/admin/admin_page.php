@@ -37,7 +37,7 @@
 
 
         <!-- PIE CHART -->
-        <div class="card card-primary">
+        <!-- <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title"><center>Total Register Keseluruhan - <?php $all_reg=$get_data_chart->jumlah_proses+$get_data_chart->jumlah_tolak+$get_data_chart->jumlah_terverif+$get_data_chart->jumlah_reg_belum_diisi; echo number_format($all_reg)?> Register</center></h3>
                 <input type="hidden" id="proses" value="<?php echo $get_data_chart->jumlah_proses;?>"></input>
@@ -47,7 +47,7 @@
             <div class="card-body">
                 <canvas id="pieChart" style="height:230px"></canvas>
             </div>
-        </div>
+        </div> -->
         <!-- /.card -->
 
         <!-- <div class="card card-info">
