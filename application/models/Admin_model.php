@@ -468,38 +468,39 @@ class Admin_model extends CI_Model{
 
    public function get_rekap_opd_admin_dashboard()
    {
-       $query=$this->db->query(
-        "SELECT
-            b.unit,
-            b.nomor_unit,
-            count( a.register ) AS total,
-            COUNT(
-            IF
-            ( a.STATUS = 1, 1, NULL )) AS proses,
-            COUNT(
-            IF
-            ( a.STATUS = 2, 1, NULL )) AS verif,
-            COUNT(
-            IF
-            ( a.STATUS = 3, 1, NULL )) AS tolak,
-            COUNT(
-            IF
-                ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                count( a.register )- COUNT(
-                IF
-                ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
-        FROM
-            data_kib a
-            INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON LEFT ( a.nomor_lokasi, 12 )= b.nomor_unit 
-        WHERE
-            LEFT ( a.kode_108, 5 ) IN ( '1.3.1', '1.3.2', '1.3.3') 
-            AND a.status_simbada IS NULL 
-            AND a.ekstrakomtabel IS NULL 
-        GROUP BY
-            b.unit
-        ORDER BY
-            persentase DESC");
-        
+    //    $query=$this->db->query(
+    //     "SELECT
+    //         b.unit,
+    //         b.nomor_unit,
+    //         count( a.register ) AS total,
+    //         COUNT(
+    //         IF
+    //         ( a.STATUS = 1, 1, NULL )) AS proses,
+    //         COUNT(
+    //         IF
+    //         ( a.STATUS = 2, 1, NULL )) AS verif,
+    //         COUNT(
+    //         IF
+    //         ( a.STATUS = 3, 1, NULL )) AS tolak,
+    //         COUNT(
+    //         IF
+    //             ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+    //             count( a.register )- COUNT(
+    //             IF
+    //             ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
+    //     FROM
+    //         data_kib a
+    //         INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON LEFT ( a.nomor_lokasi, 12 )= b.nomor_unit 
+    //     WHERE
+    //         LEFT ( a.kode_108, 5 ) IN ( '1.3.1', '1.3.2', '1.3.3') 
+    //         AND a.status_simbada IS NULL 
+    //         AND a.ekstrakomtabel IS NULL 
+    //     GROUP BY
+    //         b.unit
+    //     ORDER BY
+    //         persentase DESC");
+        $query=$this->db->query();
+
         return $query->result();
    }
 
