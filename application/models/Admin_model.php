@@ -466,42 +466,20 @@ class Admin_model extends CI_Model{
         return $query->result();
    }
 
-   public function get_rekap_opd_admin_dashboard()
+   public function get_rekap_opd_admin_dashboard($nomor_unit)
    {
-    //    $query=$this->db->query(
-    //     "SELECT
-    //         b.unit,
-    //         b.nomor_unit,
-    //         count( a.register ) AS total,
-    //         COUNT(
-    //         IF
-    //         ( a.STATUS = 1, 1, NULL )) AS proses,
-    //         COUNT(
-    //         IF
-    //         ( a.STATUS = 2, 1, NULL )) AS verif,
-    //         COUNT(
-    //         IF
-    //         ( a.STATUS = 3, 1, NULL )) AS tolak,
-    //         COUNT(
-    //         IF
-    //             ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-    //             count( a.register )- COUNT(
-    //             IF
-    //             ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
-    //     FROM
-    //         data_kib a
-    //         INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON LEFT ( a.nomor_lokasi, 12 )= b.nomor_unit 
-    //     WHERE
-    //         LEFT ( a.kode_108, 5 ) IN ( '1.3.1', '1.3.2', '1.3.3') 
-    //         AND a.status_simbada IS NULL 
-    //         AND a.ekstrakomtabel IS NULL 
-    //     GROUP BY
-    //         b.unit
-    //     ORDER BY
-    //         persentase DESC");
-        $query=$this->db->query();
+       $query=$this->db->query(
+            "SELECT
+            COUNT(IF ( a.STATUS = 1, 1, NULL )) AS proses,
+            COUNT(IF( a.STATUS = 2, 1, NULL )) AS verif,
+            COUNT(IF( a.STATUS = 3, 1, NULL )) AS tolak 
+            FROM
+                register_isi a
+                INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON LEFT ( a.nomor_lokasi_awal, 12 )= '$nomor_unit'
+            WHERE
+                LEFT ( a.kode_barang_lama, 5 ) IN ('1.3.1','1.3.2','1.3.3','1.3.4')");
 
-        return $query->result();
+        return $query;
    }
 
    public function get_kib($unit) {
@@ -510,27 +488,32 @@ class Admin_model extends CI_Model{
 
     $query = $db_simbada->query(
         "SELECT
+            sum(
+            COALESCE ( sawal.x, 0 )+ COALESCE ( tambah.y, 0 )) as jum_kib
+         FROM
             (
             SELECT
-                COUNT( register ) 
+                sum( saldo_barang ) x 
             FROM
                 kib_awal 
             WHERE
                 hapus = '' 
-                AND extrakomtabel_baru = '' 
-            AND LEFT ( kode64_baru, 6 ) IN ('1.3.01','1.3.02','1.3.03','1.3.04') AND nomor_lokasi_baru LIKE '%".$unit."%' ) +
+                AND LEFT ( kode64_baru, 6 ) IN ( '1.3.01', '1.3.02', '1.3.03', '1.3.04' ) 
+                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '%".$unit."%'
+            ) sawal,
             (
             SELECT
-                COUNT( register ) 
+                sum( saldo_barang ) y 
             FROM
-                kib
+                kib 
             WHERE
                 hapus = '' 
-                AND extrakomtabel_baru = '' 
-            AND LEFT ( kode64_baru, 6 ) IN ('1.3.01','1.3.02','1.3.03','1.3.04') AND nomor_lokasi_baru LIKE '%".$unit."%' ) AS jum_kib"
+                AND LEFT ( kode64_baru, 6 ) IN ( '1.3.01', '1.3.02', '1.3.03', '1.3.04' ) 
+            AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '%".$unit."%'
+            ) tambah"
     );
 
-    return $query->result();
+    return $query;
    }
 
    public function get_opd() {

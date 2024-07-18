@@ -20,16 +20,23 @@ class Home_admin extends CI_Controller {
 
 		foreach ($get_opd as $row) {
 			$get_total_kib = $this->admin_model->get_kib($row->nomor_unit)->row();
+			$get_proses = $this->admin_model->get_rekap_opd_admin_dashboard($row->nomor_unit)->row();
 
-			// $data_rekap[] = array(
-			// 		'unit' => $row->unit,
-			// 		'total_reg' => $get_total_kib->jum_kib
-			// );
+			$sisa_inv = $get_total_kib->jum_kib-($get_proses->proses+$get_proses->verif+$get_proses->tolak);
+
+
+			$data_rekap[] = array(
+					'unit' => $row->unit,
+					'total_reg' => $get_total_kib->jum_kib,
+					'proses' => $get_proses->proses,
+					'verif' => $get_proses->verif,
+					'tolak' => $get_proses->tolak,
+					'sisa' => $sisa_inv
+			);
 			
-			echo $row->unit." = ".$get_total_kib->jum_kib."<p>";
 		}
 
-		// var_dump($get_total_kib);
+		echo '<pre>' , var_dump($data_rekap) , '</pre>';
 		die();
 
 
