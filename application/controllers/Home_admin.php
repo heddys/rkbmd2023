@@ -27,7 +27,8 @@ class Home_admin extends CI_Controller {
 
 			$data_rekap[] = array(
 					'unit' => $row->unit,
-					'total_reg' => $get_total_kib->jum_kib,
+					'nomor_unit' => $row->nomor_unit,
+					'total' => $get_total_kib->jum_kib,
 					'proses' => $get_proses->proses,
 					'verif' => $get_proses->verif,
 					'tolak' => $get_proses->tolak,

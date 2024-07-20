@@ -50,7 +50,7 @@
         </div> -->
         <!-- /.card -->
 
-        <!-- <div class="card card-info">
+        <div class="card card-info">
           <div class="card">
               <div class="card-header no-border ">
                 <h3 class="card-title">Rekapan Per OPD</h3>
@@ -101,7 +101,7 @@
                 </div>
               </div>
           </div>
-        </div> -->
+        </div>
         <!-- <div class="row">
             <div class="col-md-6">
                 <div class="card card-widget widget-user-2">

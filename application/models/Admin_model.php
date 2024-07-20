@@ -470,14 +470,19 @@ class Admin_model extends CI_Model{
    {
        $query=$this->db->query(
             "SELECT
-            COUNT(IF ( a.STATUS = 1, 1, NULL )) AS proses,
-            COUNT(IF( a.STATUS = 2, 1, NULL )) AS verif,
-            COUNT(IF( a.STATUS = 3, 1, NULL )) AS tolak 
-            FROM
-                register_isi a
-                INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON LEFT ( a.nomor_lokasi_awal, 12 )= '$nomor_unit'
-            WHERE
-                LEFT ( a.kode_barang_lama, 5 ) IN ('1.3.1','1.3.2','1.3.3','1.3.4')");
+                COUNT(
+                IF
+                ( STATUS = 1, 1, NULL )) AS proses,
+                COUNT(
+                IF
+                ( STATUS = 2, 1, NULL )) AS verif,
+                COUNT(
+                IF
+                ( STATUS = 3, 1, NULL )) AS tolak 
+             FROM
+                register_isi
+             WHERE
+                LEFT ( kode_barang_lama, 5 ) IN ('1.3.1','1.3.2','1.3.3','1.3.4') and lokasi like '%".$nomor_unit."%' and hapus <> 1 and extrakomtabel <> 1");
 
         return $query;
    }
