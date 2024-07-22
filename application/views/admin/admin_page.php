@@ -70,7 +70,7 @@
                       <th>Register Telah Di Verif</th>
                       <th>Register Masih Proses Verif</th>
                       <th>Register Di Tolak</th>
-                      <th>Register Belum Terjamah</th>
+                      <th>Register Belum Di Inventarisasi</th>
                       <th>Persentase</th>
                       <th>Detail</th>
                     </tr>
@@ -79,17 +79,17 @@
                       <?php foreach ($rekap_opd as $row) { ?>
                       <tr>
                         <td>
-                          <?php echo strtoupper($row->unit);?>
+                          <?php echo strtoupper($row['unit']);?>
                         </td>
-                        <td><center><?php echo number_format($row->total);?></center></td>
-                        <td><center><?php echo number_format($row->verif);?></center></td>
-                        <td><center><?php echo number_format($row->proses);?></center></td>
-                        <td><center><?php echo number_format($row->tolak);?></center></td>
-                        <td><center><?php echo number_format($row->sisa);?></center></td>
-                        <td><center><?php echo round((float)$row->persentase,3) . '%';?></center></td>
+                        <td><center><?php echo number_format($row['total']);?></center></td>
+                        <td><center><?php echo number_format($row['verif']);?></center></td>
+                        <td><center><?php echo number_format($row['proses']);?></center></td>
+                        <td><center><?php echo number_format($row['tolak']);?></center></td>
+                        <td><center><?php echo number_format($row['sisa']);?></center></td>
+                        <td><center><?php echo round((float)$row['persentase'],3) . '%';?></center></td>
                         <td>
                           <center>
-                            <a href="#" id="expand_hasil" class="text-muted" data-id="<?php echo $row->nomor_unit;?>" onclick="detail_hasil(this.getAttribute('data-id'));">
+                            <a href="#" id="expand_hasil" class="text-muted" data-id="<?php echo $row['nomor_unit'];?>" onclick="detail_hasil(this.getAttribute('data-id'));">
                               <i class="fas fa-eye"></i>
                             </a>
                           </center>

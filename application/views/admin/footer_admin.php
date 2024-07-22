@@ -52,6 +52,7 @@
             }
         });
         $("#tabel_kodebar").DataTable();
+        $("#tabel-home").DataTable();
         $("#tabel_user").DataTable();
         $("#tabel_kendaraan").DataTable();
         $('.select_limit').select2({
