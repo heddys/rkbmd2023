@@ -31,7 +31,7 @@
                   <div class="row">
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap_tanah->total+$rekap_pm->total+$rekap_gdb->total+$rekap_jij->total+$rekap_atl->total+$rekap_atb->total);?></h5>
+                        <h5 class="description-header"><?php echo number_format($total_tanah->jum_kib+$total_pm->jum_kib+$total_gdb->jum_kib+$total_jij->jum_kib+$total_atl->jum_kib+$total_atb->jum_kib);?></h5>
                         <span class="description-text">TOTAL REGISTER</span>
                       </div>
                       <!-- /.description-block -->

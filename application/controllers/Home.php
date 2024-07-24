@@ -34,6 +34,13 @@ class Home extends CI_Controller {
 		}
 		$data['lok'] = $nomor_lokasi;
 		// $data['rekap']=$this->form_model->data_progres_opd($nomor_lokasi)->row();
+
+		$data['total_tanah']=$this->form_model->get_kib_per_aset('1.3.01',$nomor_lokasi)->row();
+		$data['total_pm']=$this->form_model->get_kib_per_aset('1.3.02',$nomor_lokasi)->row();
+		$data['total_gdb']=$this->form_model->get_kib_per_aset('1.3.03',$nomor_lokasi)->row();
+		$data['total_jij']=$this->form_model->get_kib_per_aset('1.3.04',$nomor_lokasi)->row();
+		$data['total_atl']=$this->form_model->get_kib_per_aset('1.3.05',$nomor_lokasi)->row();
+		$data['total_atb']=$this->form_model->get_kib_per_aset('1.5.03',$nomor_lokasi)->row();
 		$data['rekap_tanah']=$this->form_model->data_progres_opd_tanah($nomor_lokasi)->row();
 		$data['rekap_pm']=$this->form_model->data_progres_opd_pm($nomor_lokasi)->row();
 		$data['rekap_gdb']=$this->form_model->data_progres_opd_gdb($nomor_lokasi)->row();

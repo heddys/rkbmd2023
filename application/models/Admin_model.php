@@ -89,27 +89,19 @@ class Admin_model extends CI_Model{
         // return $query;
         $query=$this->db->query(
             "SELECT
-                b.unit,
-                count( a.register ) as total,
                 COUNT(
                 IF
-                ( a.STATUS = 1, 1, NULL )) AS proses,
+                ( status = 1, 1, NULL )) AS proses,
                 COUNT(
                 IF
-                ( a.STATUS = 2, 1, NULL )) AS verif,
+                ( status = 2, 1, NULL )) AS verif,
                 COUNT(
                 IF
-                ( a.STATUS = 3, 1, NULL )) AS tolak,
-                COUNT(
-                IF
-                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                    count( a.register )- COUNT(
-                    IF
-                    ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                ( status = 3, 1, NULL )) AS tolak
             FROM
-                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                register_isi a 
             WHERE
-            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.1%' and left(a.nomor_lokasi_baru,12) like '%".$unit."%'");
+            hapus <> 1 and extrakomtabel <> 1 and kode_barang_lama like '1.3.1%' and left(a.nomor_lokasi_awal,12) like '%".$unit."%'");
         
         return $query;
     }
@@ -118,27 +110,20 @@ class Admin_model extends CI_Model{
         // return $query;
         $query=$this->db->query(
             "SELECT
-                b.unit,
-                count( a.register ) as total,
                 COUNT(
                 IF
-                ( a.STATUS = 1, 1, NULL )) AS proses,
+                ( status = 1, 1, NULL )) AS proses,
                 COUNT(
                 IF
-                ( a.STATUS = 2, 1, NULL )) AS verif,
+                ( status = 2, 1, NULL )) AS verif,
                 COUNT(
                 IF
-                ( a.STATUS = 3, 1, NULL )) AS tolak,
-                COUNT(
-                IF
-                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                    count( a.register )- COUNT(
-                    IF
-                    ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                ( status = 3, 1, NULL )) AS tolak
             FROM
-                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                register_isi a 
             WHERE
-            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.2%' and left(a.nomor_lokasi_baru,12) like '%".$unit."%'");
+            hapus <> 1 and extrakomtabel <> 1 and kode_barang_lama like '1.3.2%' and left(a.nomor_lokasi_awal,12) like '%".$unit."%'");
+
         return $query;
     }
 
@@ -146,27 +131,20 @@ class Admin_model extends CI_Model{
         // return $query;
         $query=$this->db->query(
             "SELECT
-                b.unit,
-                count( a.register ) as total,
                 COUNT(
                 IF
-                ( a.STATUS = 1, 1, NULL )) AS proses,
+                ( status = 1, 1, NULL )) AS proses,
                 COUNT(
                 IF
-                ( a.STATUS = 2, 1, NULL )) AS verif,
+                ( status = 2, 1, NULL )) AS verif,
                 COUNT(
                 IF
-                ( a.STATUS = 3, 1, NULL )) AS tolak,
-                COUNT(
-                IF
-                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                    count( a.register )- COUNT(
-                    IF
-                    ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                ( status = 3, 1, NULL )) AS tolak
             FROM
-                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                register_isi a 
             WHERE
-            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.3%' and left(a.nomor_lokasi_baru,12) like '%".$unit."%'");
+            hapus <> 1 and extrakomtabel <> 1 and kode_barang_lama like '1.3.3%' and left(a.nomor_lokasi_awal,12) like '%".$unit."%'");
+        
         return $query;
     }
 
@@ -174,27 +152,20 @@ class Admin_model extends CI_Model{
         // return $query;
         $query=$this->db->query(
             "SELECT
-                b.unit,
-                count( a.register ) as total,
                 COUNT(
                 IF
-                ( a.STATUS = 1, 1, NULL )) AS proses,
+                ( status = 1, 1, NULL )) AS proses,
                 COUNT(
                 IF
-                ( a.STATUS = 2, 1, NULL )) AS verif,
+                ( status = 2, 1, NULL )) AS verif,
                 COUNT(
                 IF
-                ( a.STATUS = 3, 1, NULL )) AS tolak,
-                COUNT(
-                IF
-                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                    count( a.register )- COUNT(
-                    IF
-                    ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                ( status = 3, 1, NULL )) AS tolak
             FROM
-                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                register_isi a 
             WHERE
-            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.4%' and left(a.nomor_lokasi_baru,12) like '%".$unit."%'");
+            hapus <> 1 and extrakomtabel <> 1 and kode_barang_lama like '1.3.4%' and left(a.nomor_lokasi_awal,12) like '%".$unit."%'");
+
         return $query;
     }
 
@@ -202,27 +173,20 @@ class Admin_model extends CI_Model{
         // return $query;
         $query=$this->db->query(
             "SELECT
-                b.unit,
-                count( a.register ) as total,
                 COUNT(
                 IF
-                ( a.STATUS = 1, 1, NULL )) AS proses,
+                ( status = 1, 1, NULL )) AS proses,
                 COUNT(
                 IF
-                ( a.STATUS = 2, 1, NULL )) AS verif,
+                ( status = 2, 1, NULL )) AS verif,
                 COUNT(
                 IF
-                ( a.STATUS = 3, 1, NULL )) AS tolak,
-                COUNT(
-                IF
-                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                    count( a.register )- COUNT(
-                    IF
-                    ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                ( status = 3, 1, NULL )) AS tolak
             FROM
-                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                register_isi a 
             WHERE
-            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.3.5%' and left(a.nomor_lokasi_baru,12) like '%".$unit."%'");
+            hapus <> 1 and extrakomtabel <> 1 and kode_barang_lama like '1.3.5%' and left(a.nomor_lokasi_awal,12) like '%".$unit."%'");
+
         return $query;
     }
 
@@ -230,27 +194,20 @@ class Admin_model extends CI_Model{
         // return $query;
         $query=$this->db->query(
             "SELECT
-                b.unit,
-                count( a.register ) as total,
                 COUNT(
                 IF
-                ( a.STATUS = 1, 1, NULL )) AS proses,
+                ( status = 1, 1, NULL )) AS proses,
                 COUNT(
                 IF
-                ( a.STATUS = 2, 1, NULL )) AS verif,
+                ( status = 2, 1, NULL )) AS verif,
                 COUNT(
                 IF
-                ( a.STATUS = 3, 1, NULL )) AS tolak,
-                COUNT(
-                IF
-                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                    count( a.register )- COUNT(
-                    IF
-                    ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+                ( status = 3, 1, NULL )) AS tolak
             FROM
-                data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
+                register_isi a 
             WHERE
-            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru like '1.5.3%' and left(a.nomor_lokasi_baru,12) like '%".$unit."%'");
+            hapus <> 1 and extrakomtabel <> 1 and kode_barang_lama like '1.5.3%' and left(a.nomor_lokasi_awal,12) like '%".$unit."%'");
+
         return $query;
     }
 
@@ -515,6 +472,40 @@ class Admin_model extends CI_Model{
                 hapus = '' 
                 AND LEFT ( kode64_baru, 6 ) IN ( '1.3.01', '1.3.02', '1.3.03', '1.3.04' ) 
             AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '%".$unit."%'
+            ) tambah"
+    );
+
+    return $query;
+   }
+
+   public function get_kib_per_aset($aset,$unit) {
+    
+    $db_simbada=$this->load->database('simbada',TRUE);
+
+    $query = $db_simbada->query(
+        "SELECT
+            sum(
+            COALESCE ( sawal.x, 0 )+ COALESCE ( tambah.y, 0 )) as jum_kib
+         FROM
+            (
+            SELECT
+                sum( saldo_barang ) x 
+            FROM
+                kib_awal 
+            WHERE
+                hapus = '' 
+                AND LEFT ( kode64_baru, 6 ) = '".$aset."' 
+                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '%".$unit."%'
+            ) sawal,
+            (
+            SELECT
+                sum( saldo_barang ) y 
+            FROM
+                kib 
+            WHERE
+                hapus = '' 
+                AND LEFT ( kode64_baru, 6 ) = '".$aset."'
+                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '%".$unit."%'
             ) tambah"
     );
 
