@@ -15,11 +15,22 @@
                   <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Semua Aset Tetap Untuk Pengisian Form Inventarisasi</strong></center></h5>
                 </div>
                 <!-- /.card-header -->
+                <?php 
+
+                  $sisa_tanah = $total_tanah->jum_kib-($rekap_tanah->proses+$rekap_tanah->verif+$rekap_tanah->tolak);
+                  $sisa_pm = $total_pm->jum_kib-($rekap_pm->proses+$rekap_pm->verif+$rekap_pm->tolak);
+                  $sisa_gdb = $total_gdb->jum_kib-($rekap_gdb->proses+$rekap_gdb->verif+$rekap_gdb->tolak);
+                  $sisa_jij = $total_jij->jum_kib-($rekap_jij->proses+$rekap_jij->verif+$rekap_jij->tolak);
+                  $sisa_atl = $total_atl->jum_kib-($rekap_atl->proses+$rekap_atl->verif+$rekap_atl->tolak);
+                  $sisa_atb = $total_atb->jum_kib-($rekap_atb->proses+$rekap_atb->verif+$rekap_atb->tolak);
+
+                
+                ?>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_tanah->sisa+$rekap_pm->sisa+$rekap_gdb->sisa)/($rekap_tanah->total+$rekap_pm->total+$rekap_gdb->total)*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_tanah->sisa+$rekap_pm->sisa+$rekap_gdb->sisa)/($rekap_tanah->total+$rekap_pm->total+$rekap_gdb->total)*100,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)(($rekap_tanah->proses+$rekap_pm->proses+$rekap_gdb->proses+$rekap_jij->proses+$rekap_atl->proses+$rekap_atb->proses)+($rekap_tanah->tolak+$rekap_pm->tolak+$rekap_gdb->tolak+$rekap_jij->tolak+$rekap_atl->tolak+$rekap_atb->tolak)+($rekap_tanah->verif+$rekap_pm->verif+$rekap_gdb->verif+$rekap_jij->verif+$rekap_atl->verif+$rekap_atb->verif))/($total_tanah->jum_kib+$total_pm->jum_kib+$total_gdb->jum_kib+$total_jij->jum_kib+$total_atl->jum_kib+$total_atb->jum_kib)*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)(($rekap_tanah->proses+$rekap_pm->proses+$rekap_gdb->proses+$rekap_jij->proses+$rekap_atl->proses+$rekap_atb->proses)+($rekap_tanah->tolak+$rekap_pm->tolak+$rekap_gdb->tolak+$rekap_jij->tolak+$rekap_atl->tolak+$rekap_atb->tolak)+($rekap_tanah->verif+$rekap_pm->verif+$rekap_gdb->verif+$rekap_jij->verif+$rekap_atl->verif+$rekap_atb->verif))/($total_tanah->jum_kib+$total_pm->jum_kib+$total_gdb->jum_kib+$total_jij->jum_kib+$total_atl->jum_kib+$total_atb->jum_kib)*100,3) . '%';?></strong></div>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -62,7 +73,7 @@
                     </div>
                     <div class="col-sm col-6">
                       <div class="description-block">
-                        <h5 class="description-header"><?php echo number_format($rekap_tanah->sisa+$rekap_pm->sisa+$rekap_gdb->sisa+$rekap_jij->sisa+$rekap_atl->sisa+$rekap_atb->sisa);?></h5>
+                        <h5 class="description-header"><?php echo number_format($sisa_tanah+$sisa_pm+$sisa_gdb+$sisa_jij+$sisa_atl+$sisa_atb);?></h5>
                         <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
                       </div>
                       <!-- /.description-block -->
@@ -90,7 +101,7 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_tanah->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_tanah->persentase,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_tanah->proses+$rekap_tanah->verif+$rekap_tanah->tolak)/$total_tanah->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_tanah->proses+$rekap_tanah->verif+$rekap_tanah->tolak)/$total_tanah->jum_kib*100,3) . '%';?></strong></div>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -102,7 +113,7 @@
                   <div class="row">
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap_tanah->total);?></h5>
+                        <h5 class="description-header"><?php echo number_format($total_tanah->jum_kib);?></h5>
                         <span class="description-text">TOTAL REGISTER</span>
                       </div>
                       <!-- /.description-block -->
@@ -133,7 +144,7 @@
                     </div>
                     <div class="col-sm col-6">
                       <div class="description-block">
-                        <h5 class="description-header"><?php echo number_format($rekap_tanah->sisa);?></h5>
+                        <h5 class="description-header"><?php echo number_format($sisa_tanah);?></h5>
                         <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
                       </div>
                       <!-- /.description-block -->
@@ -158,7 +169,7 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_pm->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_pm->persentase,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_pm->proses+$rekap_pm->verif+$rekap_pm->tolak)/$total_pm->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_pm->proses+$rekap_pm->verif+$rekap_pm->tolak)/$total_pm->jum_kib*100,3) . '%';?></strong></div>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -170,7 +181,7 @@
                   <div class="row">
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap_pm->total);?></h5>
+                        <h5 class="description-header"><?php echo number_format($total_pm->jum_kib);?></h5>
                         <span class="description-text">TOTAL REGISTER</span>
                       </div>
                       <!-- /.description-block -->
@@ -201,7 +212,7 @@
                     </div>
                     <div class="col-sm col-6">
                       <div class="description-block">
-                        <h5 class="description-header"><?php echo number_format($rekap_pm->sisa);?></h5>
+                        <h5 class="description-header"><?php echo number_format($sisa_pm);?></h5>
                         <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
                       </div>
                       <!-- /.description-block -->
@@ -228,7 +239,7 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_gdb->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_gdb->persentase,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_gdb->proses+$rekap_gdb->verif+$rekap_gdb->tolak)/$total_gdb->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_gdb->proses+$rekap_gdb->verif+$rekap_gdb->tolak)/$total_gdb->jum_kib*100,3) . '%';?></strong></div>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -240,7 +251,7 @@
                   <div class="row">
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap_gdb->total);?></h5>
+                        <h5 class="description-header"><?php echo number_format($total_gdb->jum_kib);?></h5>
                         <span class="description-text">TOTAL REGISTER</span>
                       </div>
                       <!-- /.description-block -->
@@ -271,7 +282,7 @@
                     </div>
                     <div class="col-sm col-6">
                       <div class="description-block">
-                        <h5 class="description-header"><?php echo number_format($rekap_gdb->sisa);?></h5>
+                        <h5 class="description-header"><?php echo number_format($sisa_gdb);?></h5>
                         <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
                       </div>
                       <!-- /.description-block -->
@@ -297,7 +308,7 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_jij->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_jij->persentase,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_jij->proses+$rekap_jij->verif+$rekap_jij->tolak)/$total_jij->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_jij->proses+$rekap_jij->verif+$rekap_jij->tolak)/$total_jij->jum_kib*100,3) . '%';?></strong></div>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -309,7 +320,7 @@
                   <div class="row">
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap_jij->total);?></h5>
+                        <h5 class="description-header"><?php echo number_format($total_jij->jum_kib);?></h5>
                         <span class="description-text">TOTAL REGISTER</span>
                       </div>
                       <!-- /.description-block -->
@@ -340,7 +351,7 @@
                     </div>
                     <div class="col-sm col-6">
                       <div class="description-block">
-                        <h5 class="description-header"><?php echo number_format($rekap_jij->sisa);?></h5>
+                        <h5 class="description-header"><?php echo number_format($sisa_jij);?></h5>
                         <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
                       </div>
                       <!-- /.description-block -->
@@ -368,7 +379,7 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_atl->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_atl->persentase,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_atl->proses+$rekap_atl->verif+$rekap_atl->tolak)/$total_atl->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_atl->proses+$rekap_atl->verif+$rekap_atl->tolak)/$total_atl->jum_kib*100,3) . '%';?></strong></div>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -380,7 +391,7 @@
                   <div class="row">
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap_atl->total);?></h5>
+                        <h5 class="description-header"><?php echo number_format($total_atl->jum_kib);?></h5>
                         <span class="description-text">TOTAL REGISTER</span>
                       </div>
                       <!-- /.description-block -->
@@ -411,7 +422,7 @@
                     </div>
                     <div class="col-sm col-6">
                       <div class="description-block">
-                        <h5 class="description-header"><?php echo number_format($rekap_atl->sisa);?></h5>
+                        <h5 class="description-header"><?php echo number_format($sisa_atl);?></h5>
                         <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
                       </div>
                       <!-- /.description-block -->
@@ -437,7 +448,7 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)$rekap_atb->persentase,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)$rekap_atb->persentase,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_atb->proses+$rekap_atb->verif+$rekap_atb->tolak)/$total_atb->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_atb->proses+$rekap_atb->verif+$rekap_atb->tolak)/$total_atb->jum_kib*100,3) . '%';?></strong></div>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -449,7 +460,7 @@
                   <div class="row">
                     <div class="col-sm col-6">
                       <div class="description-block border-right">
-                        <h5 class="description-header"><?php echo number_format($rekap_atb->total);?></h5>
+                        <h5 class="description-header"><?php echo number_format($total_atb->jum_kib);?></h5>
                         <span class="description-text">TOTAL REGISTER</span>
                       </div>
                       <!-- /.description-block -->
@@ -480,7 +491,7 @@
                     </div>
                     <div class="col-sm col-6">
                       <div class="description-block">
-                        <h5 class="description-header"><?php echo number_format($rekap_atb->sisa);?></h5>
+                        <h5 class="description-header"><?php echo number_format($sisa_atb);?></h5>
                         <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
                       </div>
                       <!-- /.description-block -->

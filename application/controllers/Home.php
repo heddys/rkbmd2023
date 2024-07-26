@@ -47,6 +47,7 @@ class Home extends CI_Controller {
 		$data['rekap_jij']=$this->form_model->data_progres_opd_jij($nomor_lokasi)->row();
 		$data['rekap_atl']=$this->form_model->data_progres_opd_atl($nomor_lokasi)->row();
 		$data['rekap_atb']=$this->form_model->data_progres_opd_atb($nomor_lokasi)->row();
+
 		$this->load->view('header',$data);		
 		$this->load->view('home');
 		$this->load->view('footer');
@@ -65,86 +66,86 @@ class Home extends CI_Controller {
 			}
 	}
 
-	public function jsonjson(){
-		$this->cek_sess();
+	// public function jsonjson(){
+	// 	$this->cek_sess();
 
-        $url = 'https://ebudgeting.surabaya.go.id/2022/index.php/view_rka/apiKomponen.html';  
-   		 // set HTTP header for json 
-		$headers = array('Content-Type: application/json');
+    //     $url = 'https://ebudgeting.surabaya.go.id/2022/index.php/view_rka/apiKomponen.html';  
+   	// 	 // set HTTP header for json 
+	// 	$headers = array('Content-Type: application/json');
 
-		// set the url for the service you are contacting 
-		// example has an id that is passed 
+	// 	// set the url for the service you are contacting 
+	// 	// example has an id that is passed 
 
-		// Open connection
-		$ch = curl_init($url);
+	// 	// Open connection
+	// 	$ch = curl_init($url);
 
-		// Set the url, number of GET vars, GET data
-		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-		curl_setopt($ch, CURLOPT_HTTPGET, 1);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
+	// 	// Set the url, number of GET vars, GET data
+	// 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+	// 	curl_setopt($ch, CURLOPT_HTTPGET, 1);
+	// 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
 
-		// this is controversial 
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	// 	// this is controversial 
+	// 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-		// Execute request
-		$result = curl_exec($ch);
+	// 	// Execute request
+	// 	$result = curl_exec($ch);
 
-		// get the result and parse to JSON
-		$kegiatan = json_decode($result, true);
+	// 	// get the result and parse to JSON
+	// 	$kegiatan = json_decode($result, true);
 
-		// Close connection
-		curl_close($ch);
-		foreach ($kegiatan['komponen'] as $key1 => $valkomp) {
-			$rekening=array();
-			$nama_rek=array();
-			$komponen_id=$valkomp['komponen_id'];
-			$komponen_name=$valkomp['komponen_name'];
-			$satuan=$valkomp['satuan'];
-			$harga=$valkomp['komponen_harga'];
-			$pajak=$valkomp['pajak'];
-			$rek=$valkomp['rekening'];
-			$name_rek=$valkomp['rekening_name'];
+	// 	// Close connection
+	// 	curl_close($ch);
+	// 	foreach ($kegiatan['komponen'] as $key1 => $valkomp) {
+	// 		$rekening=array();
+	// 		$nama_rek=array();
+	// 		$komponen_id=$valkomp['komponen_id'];
+	// 		$komponen_name=$valkomp['komponen_name'];
+	// 		$satuan=$valkomp['satuan'];
+	// 		$harga=$valkomp['komponen_harga'];
+	// 		$pajak=$valkomp['pajak'];
+	// 		$rek=$valkomp['rekening'];
+	// 		$name_rek=$valkomp['rekening_name'];
 
 
-			// echo "Komponen ID : ".$komponen_id."<p>";		  
-			// echo "Nama Komponen : ".$komponen_name."<p>";
-			// echo "Satuan : ".$satuan."<p>";
-			// echo "Harga Komponen : ".$harga."<p>";
-			// echo "Pajak : ".$pajak."<p>";
-			// $rek=$kegiatan['komponen'][1]['rekening'];
-			// $name_rek=$kegiatan['komponen'][1]['rekening_name'];
+	// 		// echo "Komponen ID : ".$komponen_id."<p>";		  
+	// 		// echo "Nama Komponen : ".$komponen_name."<p>";
+	// 		// echo "Satuan : ".$satuan."<p>";
+	// 		// echo "Harga Komponen : ".$harga."<p>";
+	// 		// echo "Pajak : ".$pajak."<p>";
+	// 		// $rek=$kegiatan['komponen'][1]['rekening'];
+	// 		// $name_rek=$kegiatan['komponen'][1]['rekening_name'];
 			
-			foreach ($rek as $key2 => $val1){
-				$rekening[]=$val1;
-			}
-			foreach ($name_rek as $key3 => $val2) {
-				$nama_rek[]=$val2;
-			}
-			$jumlah_array=count($rekening);
-			for ($i=0; $i < $jumlah_array; $i++) { 
-				//disini untuk insert into database
-				$entrydata=array(
-					'id' => '',
-					'komponen_id' => $komponen_id,
-					'nama_komponen' => $komponen_name,
-					'satuan' => $satuan,
-					'harga_komponen' => $harga,
-					'pajak' => $pajak,
-					'kode_rekening' => $rekening[$i],
-					'nama_rekening' => $nama_rek[$i]
-				);
-				$this->auth_model->entry_data_komponen($entrydata);
-				// echo "Komponen ID : ".$komponen_id."<p>";		  
-				// echo "Nama Komponen : ".$komponen_name."<p>";
-				// echo "Satuan : ".$satuan."<p>";
-				// echo "Harga Komponen : ".$harga."<p>";
-				// echo "Pajak : ".$pajak."<p>";
-				// echo "Kode Rekening : ".$rekening[$i]."<p>";
-				// echo "Nama Rekening : ".$nama_rek[$i]."<p><hr>";
-			}
-		}
-	}
+	// 		foreach ($rek as $key2 => $val1){
+	// 			$rekening[]=$val1;
+	// 		}
+	// 		foreach ($name_rek as $key3 => $val2) {
+	// 			$nama_rek[]=$val2;
+	// 		}
+	// 		$jumlah_array=count($rekening);
+	// 		for ($i=0; $i < $jumlah_array; $i++) { 
+	// 			//disini untuk insert into database
+	// 			$entrydata=array(
+	// 				'id' => '',
+	// 				'komponen_id' => $komponen_id,
+	// 				'nama_komponen' => $komponen_name,
+	// 				'satuan' => $satuan,
+	// 				'harga_komponen' => $harga,
+	// 				'pajak' => $pajak,
+	// 				'kode_rekening' => $rekening[$i],
+	// 				'nama_rekening' => $nama_rek[$i]
+	// 			);
+	// 			$this->auth_model->entry_data_komponen($entrydata);
+	// 			// echo "Komponen ID : ".$komponen_id."<p>";		  
+	// 			// echo "Nama Komponen : ".$komponen_name."<p>";
+	// 			// echo "Satuan : ".$satuan."<p>";
+	// 			// echo "Harga Komponen : ".$harga."<p>";
+	// 			// echo "Pajak : ".$pajak."<p>";
+	// 			// echo "Kode Rekening : ".$rekening[$i]."<p>";
+	// 			// echo "Nama Rekening : ".$nama_rek[$i]."<p><hr>";
+	// 		}
+	// 	}
+	// }
 
 	public function cek_jumlah_exist(){
 		$kode_opd=$this->session->userdata('kode_opd');
