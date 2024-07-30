@@ -433,7 +433,7 @@ class Status_form extends CI_Controller {
         $data['data_register'] = $this->form_model->ambil_register_form($register)->row();
         $data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
         $data['image']=$this->form_model->ambil_file($register)->result();
-        $data['data_kib'] = $this->form_model->ambil_register_cetak($register);
+        $data['data_kib'] = $this->form_model->ambil_register($register);
 
         $nomor_lokasi_petugas=$data['data_kib']->nomor_lokasi;
         
