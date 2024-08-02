@@ -30,7 +30,7 @@
 								<?php if ($row->status == 3) {echo "<tr class='table-danger'>";} else {echo "<tr>";}?>
 									<td><center><?php echo $x?></center></td>
 									<td><center><?php echo $row->register?></center></td>
-									<td><center><?php echo $row->lokasi?></center></td>  
+									<td><center><?php echo $row->lokasi_pd?></center></td>  
 									<td><center><?php echo $row->kode64_baru?></center></td>
 									<td><center><?php echo $row->nama_barang?></center></td>
 									<td><center><?php echo $row->merk_alamat." - ".$row->tipe?></center></td>
@@ -110,10 +110,10 @@
                                 <?php if ($row->status == 3) {echo "<tr class='table-danger'>";} else {echo "<tr>";}?>
                                     <td><center><?php echo $x++;?></center></td>
                                     <td><center><?php echo $row->register;?></center></td>
-                                    <td><center><?php echo $row->lokasi;?></center></td>
+                                    <td><center><?php echo $row->lokasi_pd;?></center></td>
                                     <td><center><?php echo $row->kode64_baru;?></center></td>
                                     <td><center><?php echo $row->nama_barang;?></center></td>
-                                    <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
+                                    <td><center><?php echo $row->status." - ".$row->tipe;?></center></td>
                                     <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                                     <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
                                     <td> 
