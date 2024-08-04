@@ -113,7 +113,7 @@
                                     <td><center><?php echo $row->lokasi_pd;?></center></td>
                                     <td><center><?php echo $row->kode64_baru;?></center></td>
                                     <td><center><?php echo $row->nama_barang;?></center></td>
-                                    <td><center><?php echo $row->status." - ".$row->tipe;?></center></td>
+                                    <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
                                     <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                                     <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
                                     <td> 
