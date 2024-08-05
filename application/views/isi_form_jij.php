@@ -459,7 +459,7 @@
                                         <label for="radio_ruas_jalan1">Sesuai</label>
                                     </div>
                                     <div class="radio icheck-primary d-inline">
-                                        <input type="radio" id="radio_ruas_jalan2" name="radio_ruas_jalan" value="1"/>
+                                        <input type="radio" id="radio_ruas_jalan2" name="radio_ruas_jalan" value="1" disableds/>
                                         <label for="radio_ruas_jalan2">Tidak Sesuai</label>
                                     </div>
                                 </div>
