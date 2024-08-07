@@ -69,6 +69,14 @@
                 return $this->db->get_where('kamus_kelurahan', array ('id' => $kms_kel));
             }
 
+            public function get_sisa_per_aset($kib,$lokasi) {
+
+                $query = $this->db->query("SELECT a.register FROM `2023_v1`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."4%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%' and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register and y.hapus <> 1 and y.extrakomtabel <> 1) union SELECT a.register FROM `2023_v1`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%'  and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register and y.hapus <> 1 and y.extrakomtabel <> 1)");
+
+                return $query;
+
+            }
+
             public function get_kondisi_update($register)
             {
                 $query = $this->db->query("SELECT * FROM register_isi where register = '".$register."' ORDER BY created_date desc, created_time desc limit 1");
@@ -848,7 +856,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.1%' and a.lokasi IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.1%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -864,7 +872,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.1%' and a.lokasi like '%".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.1%' and a.nomor_lokasi_awal like '%".$lokasi."%'");
                 }
                 return $query;
             }
@@ -886,7 +894,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.2%' and a.lokasi IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.2%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -902,7 +910,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.2%' and a.lokasi like '%".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.2%' and a.nomor_lokasi_awal like '%".$lokasi."%'");
                 }
                 return $query;
             }
@@ -924,7 +932,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.3%' and a.lokasi IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.3%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -940,7 +948,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.3%' and a.lokasi like '%".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.3%' and a.nomor_lokasi_awal like '%".$lokasi."%'");
                 }
                 return $query;
             }
@@ -962,7 +970,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.4%' and a.lokasi IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.4%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -978,7 +986,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.4%' and a.lokasi like '%".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.4%' and a.nomor_lokasi_awal like '%".$lokasi."%'");
                 }
                 return $query;
             }
@@ -1000,7 +1008,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.5%' and a.lokasi IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.5%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -1016,7 +1024,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.5%' and a.lokasi like '%".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.5%' and a.nomor_lokasi_awal like '%".$lokasi."%'");
                 }
                 return $query;
             }
@@ -1038,7 +1046,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.5.3%' and a.lokasi IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.5.3%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -1054,7 +1062,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.5.3%' and a.lokasi like '%".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.5.3%' and a.nomor_lokasi_awal like '%".$lokasi."%'");
                 }
                 return $query;
             }

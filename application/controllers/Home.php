@@ -47,6 +47,12 @@ class Home extends CI_Controller {
 		$data['rekap_jij']=$this->form_model->data_progres_opd_jij($nomor_lokasi)->row();
 		$data['rekap_atl']=$this->form_model->data_progres_opd_atl($nomor_lokasi)->row();
 		$data['rekap_atb']=$this->form_model->data_progres_opd_atb($nomor_lokasi)->row();
+		$data['sisa_tanah']=$this->form_model->get_sisa_per_aset('1.3.01',$nomor_lokasi)->num_rows();
+		$data['sisa_pm']=$this->form_model->get_sisa_per_aset('1.3.02',$nomor_lokasi)->num_rows();
+		$data['sisa_gdb']=$this->form_model->get_sisa_per_aset('1.3.03',$nomor_lokasi)->num_rows();
+		$data['sisa_jij']=$this->form_model->get_sisa_per_aset('1.3.04',$nomor_lokasi)->num_rows();
+		$data['sisa_atl']=$this->form_model->get_sisa_per_aset('1.3.05',$nomor_lokasi)->num_rows();
+		$data['sisa_atb']=$this->form_model->get_sisa_per_aset('1.5.03',$nomor_lokasi)->num_rows();
 
 		$this->load->view('header',$data);		
 		$this->load->view('home');

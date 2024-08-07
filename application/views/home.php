@@ -15,17 +15,6 @@
                   <h5 class="card-title"><center><strong style="font-size: 20px;color: black;">Total Progres Semua Aset Tetap Untuk Pengisian Form Inventarisasi</strong></center></h5>
                 </div>
                 <!-- /.card-header -->
-                <?php 
-
-                  $sisa_tanah = $total_tanah->jum_kib-($rekap_tanah->proses+$rekap_tanah->verif+$rekap_tanah->tolak);
-                  $sisa_pm = $total_pm->jum_kib-($rekap_pm->proses+$rekap_pm->verif+$rekap_pm->tolak);
-                  $sisa_gdb = $total_gdb->jum_kib-($rekap_gdb->proses+$rekap_gdb->verif+$rekap_gdb->tolak);
-                  $sisa_jij = $total_jij->jum_kib-($rekap_jij->proses+$rekap_jij->verif+$rekap_jij->tolak);
-                  $sisa_atl = $total_atl->jum_kib-($rekap_atl->proses+$rekap_atl->verif+$rekap_atl->tolak);
-                  $sisa_atb = $total_atb->jum_kib-($rekap_atb->proses+$rekap_atb->verif+$rekap_atb->tolak);
-
-                
-                ?>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-12">
@@ -101,7 +90,11 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
+                      <?php if ($sisa_tanah == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                      <?php } else {?>
                       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_tanah->proses+$rekap_tanah->verif+$rekap_tanah->tolak)/$total_tanah->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_tanah->proses+$rekap_tanah->verif+$rekap_tanah->tolak)/$total_tanah->jum_kib*100,3) . '%';?></strong></div>
+                      <?php } ?>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -169,7 +162,11 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
+                    <?php if ($sisa_tanah == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                      <?php } else {?>
                       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_pm->proses+$rekap_pm->verif+$rekap_pm->tolak)/$total_pm->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_pm->proses+$rekap_pm->verif+$rekap_pm->tolak)/$total_pm->jum_kib*100,3) . '%';?></strong></div>
+                      <?php } ?>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -239,7 +236,11 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
+                    <?php if ($sisa_tanah == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                      <?php } else {?>
                       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_gdb->proses+$rekap_gdb->verif+$rekap_gdb->tolak)/$total_gdb->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_gdb->proses+$rekap_gdb->verif+$rekap_gdb->tolak)/$total_gdb->jum_kib*100,3) . '%';?></strong></div>
+                      <?php } ?>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -308,7 +309,11 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
+                    <?php if ($sisa_tanah == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                      <?php } else {?>
                       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_jij->proses+$rekap_jij->verif+$rekap_jij->tolak)/$total_jij->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_jij->proses+$rekap_jij->verif+$rekap_jij->tolak)/$total_jij->jum_kib*100,3) . '%';?></strong></div>
+                      <?php } ?>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -379,7 +384,11 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
+                    <?php if ($sisa_tanah == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                      <?php } else {?>
                       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_atl->proses+$rekap_atl->verif+$rekap_atl->tolak)/$total_atl->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_atl->proses+$rekap_atl->verif+$rekap_atl->tolak)/$total_atl->jum_kib*100,3) . '%';?></strong></div>
+                      <?php } ?>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -448,7 +457,11 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
+                    <?php if ($sisa_tanah == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                      <?php } else {?>
                       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_atb->proses+$rekap_atb->verif+$rekap_atb->tolak)/$total_atb->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_atb->proses+$rekap_atb->verif+$rekap_atb->tolak)/$total_atb->jum_kib*100,3) . '%';?></strong></div>
+                      <?php } ?>
                       </div>
                     </div>
                     <!-- /.col -->
