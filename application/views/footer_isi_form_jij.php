@@ -167,7 +167,7 @@
       //this.files[0].size gets the size of your file.
       var image = document.getElementById('customFile');
       for (i =0; i < image.files.length; i++) {
-        if(image.files.item(i).size > 8000000 || (image.files.item(i).type != "image/jpeg" && image.files.item(i).type != "image/jpg" && image.files.item(i).type != "image/png" )) {
+        if(image.files.item(i).size > 8000000 || (image.files.item(i).type != "image/jpeg" && image.files.item(i).type != "image/jpg" && image.files.item(i).type != "image/png" && image.file.item(i).type != "image/jfif" )) {
           var html = "<div class='alert alert-danger alert-dismissible'>"+
           "<h5><i class='icon fas fa-ban'></i> Oops!</h5>"+
           "Mohon Maaf Salah Satu Tipe atau Ukuran File Lebih Dari 7 Mb, Silahkan Periksa Kembali Ukuran File Yang Anda Upload"+

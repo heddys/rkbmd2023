@@ -213,6 +213,7 @@
                                         <label class="input-group-text">Nilai Perolehan (Rp.)</label>
                                     </div>
                                     <input type="text" class="form-control" name="nilai" id="nilai_perolehan" readonly="true" value="<?php echo number_format($data_register->harga_baru,2,',','.');?>">
+                                    <input type="hidden" name="tahun_pengadaan" value="<?php echo $data_register->tahun_pengadaan;?>">
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->

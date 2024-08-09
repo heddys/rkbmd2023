@@ -71,7 +71,7 @@
 
             public function get_sisa_per_aset($kib,$lokasi) {
 
-                $query = $this->db->query("SELECT a.register FROM `2023_v1`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."4%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%' and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register and y.hapus <> 1 and y.extrakomtabel <> 1) union SELECT a.register FROM `2023_v1`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%'  and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register and y.hapus <> 1 and y.extrakomtabel <> 1)");
+                $query = $this->db->query("SELECT a.register FROM `2023_v1`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%' and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register) union SELECT a.register FROM `2023_v1`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%'  and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register)");
 
                 return $query;
 
@@ -240,7 +240,7 @@
 
                     if($form == 2) {
                         $no_lokasi=$this->session->userdata('no_lokasi_asli');
-                        $query = $this->db->query("SELECT a.register,a.lokasi,a.kode_neraca as kode64_baru,a.nama_barang,a.spesifikasi_barang_merk as merk_alamat,a.tipe,a.tahun as tahun_pengadaan,a.nilai_perolehan as harga_baru,a.status,b.lokasi as lokasi_pd FROM `rkbmd_2023`.register_isi a inner join `2023_v1`.kamus_lokasi b on a.lokasi = b.nomor_lokasi WHERE a.status <> '2' and a.hapus <> 1 and extrakomtabel <> 1 and a.lokasi like '%".$no_lokasi."%' and a.kode_barang like '%".$kib."%' and (a.register like '%".$data."%' or a.nama_barang like '%".$data."%' or a.spesifikasi_barang_merk like '%".$data."%')");
+                        $query = $this->db->query("SELECT a.register,a.lokasi,a.kode_neraca as kode64_baru,a.nama_barang,a.spesifikasi_barang_merk as merk_alamat,a.tipe,a.tahun as tahun_pengadaan,a.nilai_perolehan as harga_baru,a.status,b.lokasi as lokasi_pd FROM `rkbmd2023`.register_isi a inner join `2023_v1`.kamus_lokasi b on a.lokasi = b.nomor_lokasi WHERE a.status <> '2' and a.hapus <> 1 and extrakomtabel <> 1 and a.lokasi like '%".$no_lokasi."%' and a.kode_barang like '%".$kib."%' and (a.register like '%".$data."%' or a.nama_barang like '%".$data."%' or a.spesifikasi_barang_merk like '%".$data."%')");
                     } else {
                         $query = $this->db->query("SELECT a.register,a.lokasi,a.kode_neraca as kode64_baru,a.nama_barang,a.spesifikasi_barang_merk as merk_alamat,a.tipe,a.tahun as tahun_pengadaan,a.nilai_perolehan as harga_baru,a.status,b.lokasi as lokasi_pd FROM `rkbmd2023`.register_isi a inner join `2023_v1`.kamus_lokasi b on a.lokasi = b.nomor_lokasi WHERE a.status <> '2' and a.hapus <> 1 and extrakomtabel <> 1 and a.lokasi like '%".$data."%' and a.kode_barang like '%".$kib."%'");
                     }
@@ -426,6 +426,7 @@
                             a.no_rangka_seri,
                             a.no_mesin,
                             a.no_bpkb,
+                            a.tahun_pengadaan,
                             a.penggunaan,
                             b.nomor_unit,
                             b.unit,
@@ -458,6 +459,7 @@
                             c.no_rangka_seri,
                             c.no_mesin,
                             c.no_bpkb,
+                            c.tahun_pengadaan,
                             c.penggunaan,
                             d.nomor_unit,
                             d.unit,

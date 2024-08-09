@@ -19,7 +19,7 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)(($rekap_tanah->proses+$rekap_pm->proses+$rekap_gdb->proses+$rekap_jij->proses+$rekap_atl->proses+$rekap_atb->proses)+($rekap_tanah->tolak+$rekap_pm->tolak+$rekap_gdb->tolak+$rekap_jij->tolak+$rekap_atl->tolak+$rekap_atb->tolak)+($rekap_tanah->verif+$rekap_pm->verif+$rekap_gdb->verif+$rekap_jij->verif+$rekap_atl->verif+$rekap_atb->verif))/($total_tanah->jum_kib+$total_pm->jum_kib+$total_gdb->jum_kib+$total_jij->jum_kib+$total_atl->jum_kib+$total_atb->jum_kib)*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)(($rekap_tanah->proses+$rekap_pm->proses+$rekap_gdb->proses+$rekap_jij->proses+$rekap_atl->proses+$rekap_atb->proses)+($rekap_tanah->tolak+$rekap_pm->tolak+$rekap_gdb->tolak+$rekap_jij->tolak+$rekap_atl->tolak+$rekap_atb->tolak)+($rekap_tanah->verif+$rekap_pm->verif+$rekap_gdb->verif+$rekap_jij->verif+$rekap_atl->verif+$rekap_atb->verif))/($total_tanah->jum_kib+$total_pm->jum_kib+$total_gdb->jum_kib+$total_jij->jum_kib+$total_atl->jum_kib+$total_atb->jum_kib)*100,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)(($total_tanah->jum_kib+$total_pm->jum_kib+$total_gdb->jum_kib+$total_jij->jum_kib+$total_atl->jum_kib+$total_atb->jum_kib)-($sisa_tanah+$sisa_pm+$sisa_gdb+$sisa_jij+$sisa_atl+$sisa_atb))/($total_tanah->jum_kib+$total_pm->jum_kib+$total_gdb->jum_kib+$total_jij->jum_kib+$total_atl->jum_kib+$total_atb->jum_kib)*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)(($total_tanah->jum_kib+$total_pm->jum_kib+$total_gdb->jum_kib+$total_jij->jum_kib+$total_atl->jum_kib+$total_atb->jum_kib)-($sisa_tanah+$sisa_pm+$sisa_gdb+$sisa_jij+$sisa_atl+$sisa_atb))/($total_tanah->jum_kib+$total_pm->jum_kib+$total_gdb->jum_kib+$total_jij->jum_kib+$total_atl->jum_kib+$total_atb->jum_kib)*100,3) . '%';?></strong></div>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -63,7 +63,7 @@
                     <div class="col-sm col-6">
                       <div class="description-block">
                         <h5 class="description-header"><?php echo number_format($sisa_tanah+$sisa_pm+$sisa_gdb+$sisa_jij+$sisa_atl+$sisa_atb);?></h5>
-                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                        <span class="description-text">REGISTER BELUM DI INVENTARISASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -91,9 +91,9 @@
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
                       <?php if ($sisa_tanah == 0) { ?>
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong style="font-size: 20px;color: black;">100%</strong></div>
                       <?php } else {?>
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_tanah->proses+$rekap_tanah->verif+$rekap_tanah->tolak)/$total_tanah->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_tanah->proses+$rekap_tanah->verif+$rekap_tanah->tolak)/$total_tanah->jum_kib*100,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($total_tanah->jum_kib-$sisa_tanah)/$total_tanah->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($total_tanah->jum_kib-$sisa_tanah)/$total_tanah->jum_kib*100,3) . '%';?></strong></div>
                       <?php } ?>
                       </div>
                     </div>
@@ -138,7 +138,7 @@
                     <div class="col-sm col-6">
                       <div class="description-block">
                         <h5 class="description-header"><?php echo number_format($sisa_tanah);?></h5>
-                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                        <span class="description-text">REGISTER BELUM DI INVENTARISASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -162,10 +162,10 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                    <?php if ($sisa_tanah == 0) { ?>
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                    <?php if ($sisa_pm == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong style="font-size: 20px;color: black;">100%</strong></div>
                       <?php } else {?>
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_pm->proses+$rekap_pm->verif+$rekap_pm->tolak)/$total_pm->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_pm->proses+$rekap_pm->verif+$rekap_pm->tolak)/$total_pm->jum_kib*100,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($total_pm->jum_kib-$sisa_pm)/$total_pm->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($total_pm->jum_kib-$sisa_pm)/$total_pm->jum_kib*100,3) . '%';?></strong></div>
                       <?php } ?>
                       </div>
                     </div>
@@ -210,7 +210,7 @@
                     <div class="col-sm col-6">
                       <div class="description-block">
                         <h5 class="description-header"><?php echo number_format($sisa_pm);?></h5>
-                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                        <span class="description-text">REGISTER BELUM DI INVENTARISASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -236,10 +236,10 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                    <?php if ($sisa_tanah == 0) { ?>
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                    <?php if ($sisa_gdb == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong style="font-size: 20px;color: black;">100%</strong></div>
                       <?php } else {?>
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_gdb->proses+$rekap_gdb->verif+$rekap_gdb->tolak)/$total_gdb->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_gdb->proses+$rekap_gdb->verif+$rekap_gdb->tolak)/$total_gdb->jum_kib*100,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($total_gdb->jum_kib-$sisa_gdb)/$total_gdb->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($total_gdb->jum_kib-$sisa_gdb)/$total_gdb->jum_kib*100,3) . '%';?></strong></div>
                       <?php } ?>
                       </div>
                     </div>
@@ -284,7 +284,7 @@
                     <div class="col-sm col-6">
                       <div class="description-block">
                         <h5 class="description-header"><?php echo number_format($sisa_gdb);?></h5>
-                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                        <span class="description-text">REGISTER BELUM DI INVENTARISASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -309,10 +309,10 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                    <?php if ($sisa_tanah == 0) { ?>
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                    <?php if ($sisa_jij == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong style="font-size: 20px;color: black;">100%</strong></div>
                       <?php } else {?>
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_jij->proses+$rekap_jij->verif+$rekap_jij->tolak)/$total_jij->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_jij->proses+$rekap_jij->verif+$rekap_jij->tolak)/$total_jij->jum_kib*100,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($total_jij->jum_kib-$sisa_jij)/$total_jij->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($total_jij->jum_kib-$sisa_jij)/$total_jij->jum_kib*100,3) . '%';?></strong></div>
                       <?php } ?>
                       </div>
                     </div>
@@ -357,7 +357,7 @@
                     <div class="col-sm col-6">
                       <div class="description-block">
                         <h5 class="description-header"><?php echo number_format($sisa_jij);?></h5>
-                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                        <span class="description-text">REGISTER BELUM DI INVENTARISASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -384,10 +384,10 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                    <?php if ($sisa_tanah == 0) { ?>
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                    <?php if ($sisa_atl == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong style="font-size: 20px;color: black;">100%</strong></div>
                       <?php } else {?>
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_atl->proses+$rekap_atl->verif+$rekap_atl->tolak)/$total_atl->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_atl->proses+$rekap_atl->verif+$rekap_atl->tolak)/$total_atl->jum_kib*100,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($total_atl->jum_kib-$sisa_atl)/$total_atl->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($total_atl->jum_kib-$sisa_atl)/$total_atl->jum_kib*100,3) . '%';?></strong></div>
                       <?php } ?>
                       </div>
                     </div>
@@ -432,7 +432,7 @@
                     <div class="col-sm col-6">
                       <div class="description-block">
                         <h5 class="description-header"><?php echo number_format($sisa_atl);?></h5>
-                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                        <span class="description-text">REGISTER BELUM DI INVENTARISASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -457,10 +457,10 @@
                   <div class="row">
                     <div class="col-md-12">
                     <div class="progress" style="height:25px">
-                    <?php if ($sisa_tanah == 0) { ?>
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100"><strong style="font-size: 20px;color: black;">100%<</strong></div>
+                    <?php if ($sisa_atb == 0) { ?>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong style="font-size: 20px;color: black;">100%</strong></div>
                       <?php } else {?>
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($rekap_atb->proses+$rekap_atb->verif+$rekap_atb->tolak)/$total_atb->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($rekap_atb->proses+$rekap_atb->verif+$rekap_atb->tolak)/$total_atb->jum_kib*100,3) . '%';?></strong></div>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round((float)($total_atb->jum_kib-$sisa_atb)/$total_atb->jum_kib*100,3) . '%';?>"><strong style="font-size: 20px;color: black;"><?php echo round((float)($total_atb->jum_kib-$sisa_atb)/$total_atb->jum_kib*100,3) . '%';?></strong></div>
                       <?php } ?>
                       </div>
                     </div>
@@ -505,7 +505,7 @@
                     <div class="col-sm col-6">
                       <div class="description-block">
                         <h5 class="description-header"><?php echo number_format($sisa_atb);?></h5>
-                        <span class="description-text">REGISTER BELUM DI KERJAKAN</span>
+                        <span class="description-text">REGISTER BELUM DI INVENTARISASI</span>
                       </div>
                       <!-- /.description-block -->
                     </div>

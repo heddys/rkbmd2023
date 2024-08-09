@@ -895,6 +895,7 @@ class Form_inv extends CI_Controller {
 
 		$jumlah_bar=1;
 		$radio_jum_bar=0;
+		$tahun=$_POST['tahun_pengadaan'];
 
 		$satuan=$_POST['satuan'];
 		$radio_satuan=$_POST['radio_satuan'];
@@ -994,7 +995,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|png'; 
+                    $config['allowed_types'] = 'gif|jpg|png|JPG|GIF|PNG|jpeg|JPEG|jfif|JFIF'; 
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -1056,7 +1057,9 @@ class Form_inv extends CI_Controller {
 		// 'koordinat' => $koordinat,
 		'keterangan' => $keterangan,
 		'created_date' => $updated_date,
-		'created_time' => $updated_time
+		'created_time' => $updated_time,
+		'status' => 1,
+		'tahun' => $tahun
 		);
 
 		$data_is_form = array(
@@ -1135,6 +1138,7 @@ class Form_inv extends CI_Controller {
 
 		$jumlah_bar=1;
 		$radio_jum_bar=0;
+		$tahun=$_POST['tahun_pengadaan'];
 
 		$satuan=$_POST['satuan'];
 		$radio_satuan=$_POST['radio_satuan'];
@@ -1206,7 +1210,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|png';
+                    $config['allowed_types'] = 'gif|jpg|png|JPG|GIF|PNG|jpeg|JPEG|jfif|JFIF';
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -1234,9 +1238,11 @@ class Form_inv extends CI_Controller {
                     // Insert files data into the database 
                     $insert = $this->form_model->save_image($uploadData); 
                     //  var_dump($insert);
-                    // Upload status message 
+                    // Upload status message
+					$akses = 1;
                    echo $insert?'Files uploaded successfully!'.$errorUploadType:'Some problem occurred, please try again.'; 
                 }else{ 
+					$akses = 0;
                     echo "Sorry, there was an error uploading your file.".$errorUploadType; 
                 } 
             } else { 
@@ -1282,7 +1288,9 @@ class Form_inv extends CI_Controller {
 		// 'koordinat' => $koordinat,
 		'keterangan' => $keterangan,
 		'created_date' => $updated_date,
-		'created_time' => $updated_time
+		'created_time' => $updated_time,
+		'status' => 1,
+		'tahun' => $tahun
 		);
 
 		$data_is_form = array(
@@ -1380,6 +1388,7 @@ class Form_inv extends CI_Controller {
 
 		$jumlah_bar=1;
 		$radio_jum_bar=0;
+		$tahun=$_POST['tahun_pengadaan'];
 
 		$rtrw=$_POST['rtrw'];
 		$radio_rt=$_POST['radio_rt'];
@@ -1460,7 +1469,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|png'; 
+                    $config['allowed_types'] = 'gif|jpg|png|JPG|GIF|PNG|jpeg|JPEG|jfif|JFIF'; 
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -1536,7 +1545,9 @@ class Form_inv extends CI_Controller {
 		'status_kepemilikan_tanah' => $status_tanah,
 		'keterangan' => $keterangan,
 		'created_date' => $updated_date,
-		'created_time' => $updated_time
+		'created_time' => $updated_time,
+		'status' => 1,
+		'tahun' => $tahun
 		);
 
 		$data_is_form = array(
@@ -1611,6 +1622,7 @@ class Form_inv extends CI_Controller {
 
 		$jumlah_bar=1;
 		$radio_jum_bar=0;
+		$tahun=$_POST['tahun_pengadaan'];
 
 		$perkerasan=$_POST['perkerasan'];
 		$radio_perkerasan=$_POST['radio_perkerasan'];
@@ -1702,7 +1714,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|png';
+                    $config['allowed_types'] = 'gif|jpg|png|JPG|GIF|PNG|jpeg|JPEG|jfif|JFIF';
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -1734,6 +1746,7 @@ class Form_inv extends CI_Controller {
                    echo $insert?'Files uploaded successfully!'.$errorUploadType:'Some problem occurred, please try again.'; 
                 }else{ 
                     echo "Sorry, there was an error uploading your file.".$errorUploadType; 
+					die();
                 } 
             }else{ 
                 $statusMsg = 'Please select image files to upload.'; 
@@ -1784,7 +1797,8 @@ class Form_inv extends CI_Controller {
 		'keterangan' => $keterangan,
 		'created_date' => $updated_date,
 		'created_time' => $updated_time,
-		'status' => 1
+		'status' => 1,
+		'tahun' => $tahun
 		);
 
 		$data_is_form = array(
@@ -1939,7 +1953,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|png'; 
+                    $config['allowed_types'] = 'gif|jpg|png|JPG|GIF|PNG|jpeg|JPEG|jfif|JFIF'; 
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -2013,7 +2027,8 @@ class Form_inv extends CI_Controller {
 		// 'koordinat' => $koordinat,
 		'keterangan' => $keterangan,
 		'update_at_date' => $updated_date,
-		'update_at_time' => $updated_time
+		'update_at_time' => $updated_time,
+		'status' => 1
 		);
 
 		$data_is_form = array(
@@ -2188,7 +2203,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|png';
+                    $config['allowed_types'] = 'gif|jpg|png|JPG|GIF|PNG|jpeg|JPEG|jfif|JFIF';
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -2250,6 +2265,7 @@ class Form_inv extends CI_Controller {
 			'keterangan' => $keterangan,
 			'update_at_date' => $updated_date,
 			'update_at_time' => $updated_time,
+			'status' => 1
 		);
 	
 			$data_is_form = array(
@@ -2402,7 +2418,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|png';
+                    $config['allowed_types'] = 'gif|jpg|png|JPG|GIF|PNG|jpeg|JPEG|jfif|JFIF';
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
@@ -2478,6 +2494,7 @@ class Form_inv extends CI_Controller {
 		'keterangan' => $keterangan,
 		'update_at_date' => $updated_date,
 		'update_at_time' => $updated_time,
+		'status' => 1
 		);
 
 		$data_is_form = array(
@@ -2642,7 +2659,7 @@ class Form_inv extends CI_Controller {
                     // File upload configuration 
                     $uploadPath = 'ini_assets/upload/'; 
                     $config['upload_path'] = $uploadPath; 
-                    $config['allowed_types'] = 'jpg|jpeg|png';
+                    $config['allowed_types'] = 'gif|jpg|png|JPG|GIF|PNG|jpeg|JPEG|jfif|JFIF';
                     $config['max_size']    = '7000'; 
                     //$config['max_width'] = '1024'; 
                     //$config['max_height'] = '768'; 
