@@ -49,10 +49,10 @@
 	                  		<td><center><?php echo $x?></center></td>
 	                  		<td><center><?php echo $t->register?></center></td>
 	                  		<td><center><?php echo $t->lokasi?></center></td>
-	                  		<td><center><?php echo $t->kode64_baru?></center></td>
+	                  		<td><center><?php echo $t->kode_neraca?></center></td>
                             <td><center><?php echo $t->nama_barang?></center></td>
-                            <td><center><?php echo $t->merk_alamat." - ".$t->tipe?></center></td>
-                            <td><center><?php echo number_format($t->harga_baru,2,',','.');?></center></td>
+                            <td><center><?php echo $t->spesifikasi_barang_merk." - ".$t->tipe?></center></td>
+                            <td><center><?php echo number_format($t->nilai_perolehan,2,',','.');?></center></td>
 	                  		<td>  
 							  <center><button type='button' class='btn btn-sm btn-warning' title='Register Masih Dalam Proses Pembenaran'><i class='fa fa-exclamation-triangle'></i></center>
                             </td>

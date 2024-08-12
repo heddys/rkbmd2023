@@ -30,6 +30,12 @@ class Home_verifikator extends CI_Controller {
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['jumlah_proses']=$this->form_model->get_all_register(1,$nomor_lokasi)->num_rows();
+		$data['jumlah_proses_tanah']=$this->form_model->get_all_register(1,$nomor_lokasi,'1.3.1')->num_rows();
+		$data['jumlah_proses_pm']=$this->form_model->get_all_register(1,$nomor_lokasi,'1.3.2')->num_rows();
+		$data['jumlah_proses_gdb']=$this->form_model->get_all_register(1,$nomor_lokasi,'1.3.3')->num_rows();
+		$data['jumlah_proses_jij']=$this->form_model->get_all_register(1,$nomor_lokasi,'1.3.4')->num_rows();
+		$data['jumlah_proses_atl']=$this->form_model->get_all_register(1,$nomor_lokasi,'1.3.5')->num_rows();
+		$data['jumlah_proses_atb']=$this->form_model->get_all_register(1,$nomor_lokasi,'1.5.3')->num_rows();
 		$data['jumlah_tolak']=$this->form_model->get_all_register(3,$nomor_lokasi)->num_rows();
 		$data['jumlah_terverifikasi']=$this->form_model->get_all_register(2,$nomor_lokasi)->num_rows();
 
@@ -181,10 +187,7 @@ class Home_verifikator extends CI_Controller {
 	{
 		$this->cek_sess();	
 		$data['page']="Halaman List Register Ditolak";
-		$where_tolak = array (
-            'ekstrakomtabel' =>  NULL,
-			'status' => 3
-        );
+		
 
 		if($id=='1') {
 			$kib = '1.3.1';
@@ -204,7 +207,7 @@ class Home_verifikator extends CI_Controller {
 		$data['kib_apa']= $id;
 
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data['tolak']=$this->form_model->get_all_register($where_tolak,$nomor_lokasi,$kib);
+		$data['tolak']=$this->form_model->get_all_register(3,$nomor_lokasi,$kib);
 
         $this->load->view('verifikator/h_verif_page',$data);		
 		$this->load->view('verifikator/tolak_page');

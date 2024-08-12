@@ -92,16 +92,38 @@
             public function get_all_register($status,$lokasi,$kib=''){
                 
 
+                    if ($kib == '' ) {
+
                     $query=$this->db->query("SELECT
                         a.*,
-                        b.lokasi
+                        b.lokasi 
                     FROM
-                        `register_isi` a
-                        INNER JOIN kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi_awal
-                    WHERE 
+                        `rkbmd2023`.`register_isi` a
+                        INNER JOIN `2023_v1`.kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi_awal 
+                    WHERE
                         a.status = '".$status."'
-                        AND left(a.`nomor_lokasi_awal`,12) LIKE '".$lokasi."%'"
+                        AND a.kode_barang not like '1.5.4%'
+                        AND left(a.`nomor_lokasi_awal`,12) LIKE '".$lokasi."%'
+                        AND a.extrakomtabel <> 1
+                        AND a.hapus <> 1"
                     );
+
+
+                    } else {  
+                        $query=$this->db->query("SELECT
+                            a.*,
+                            b.lokasi 
+                        FROM
+                            `rkbmd2023`.`register_isi` a
+                            INNER JOIN `2023_v1`.kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi_awal 
+                        WHERE
+                            a.status = '".$status."'
+                            AND a.kode_barang like '%".$kib."%'
+                            AND left(a.`nomor_lokasi_awal`,12) LIKE '".$lokasi."%'
+                            AND a.extrakomtabel <> 1
+                            AND a.hapus <> 1"
+                        );
+                    }
 
                 return $query;
             }
@@ -369,9 +391,9 @@
 
                 if($form == 2){
                     $no_lokasi=$this->session->userdata('no_lokasi_asli');
-                    $query = $this->db->query("SELECT a.register,a.kode_barang_lama as kode64_baru,a.nomor_lokasi_awal as nomor_lokasi,a.nama_barang,a.spesifikasi_barang_merk as merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun as tahun_pengadaan,a.nilai_perolehan as harga_baru FROM `register_isi` a inner join kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi where a.`status` = 1 and a.hapus <> 1 and extrakomtabel <> 1 and a.kode_barang_lama like '%".$kib."%' and left(a.`nomor_lokasi_awal`,12) like '%".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
+                    $query = $this->db->query("SELECT a.register,a.kode_barang_lama as kode64_baru,a.nomor_lokasi_awal as nomor_lokasi,a.nama_barang,a.spesifikasi_barang_merk as merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun as tahun_pengadaan,a.nilai_perolehan as harga_baru FROM `rkbmd2023`.`register_isi` a inner join `2023_v1`.kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi where a.`status` = 1 and a.hapus <> 1 and a.extrakomtabel <> 1 and a.kode_barang_lama like '%".$kib."%' and left(a.`nomor_lokasi_awal`,12) like '%".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
                 } else {
-                    $query = $this->db->query("SELECT a.register,a.kode_barang_lama as kode64_baru,a.nomor_lokasi_awal as nomor_lokasi,a.nama_barang,a.spesifikasi_barang_merk as merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun as tahun_pengadaan,a.nilai_perolehan as harga_baru FROM `register_isi` a inner join kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi where a.`status` = 1 and a.hapus <> 1 and extrakomtabel <> 1 and a.kode_barang_lama like '%".$kib."%' and left(a.`nomor_lokasi_awal`,12) like '%".$data."%' limit ".$limit." offset ".$offset."");
+                    $query = $this->db->query("SELECT a.register,a.kode_barang_lama as kode64_baru,a.nomor_lokasi_awal as nomor_lokasi,a.nama_barang,a.spesifikasi_barang_merk as merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun as tahun_pengadaan,a.nilai_perolehan as harga_baru FROM `rkbmd2023`.`register_isi` a inner join `2023_v1`.kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi where a.`status` = 1 and a.hapus <> 1 and a.extrakomtabel <> 1 and a.kode_barang_lama like '%".$kib."%' and left(a.`nomor_lokasi_awal`,12) like '%".$data."%' limit ".$limit." offset ".$offset."");
                 } 
 
                 return $query->result();

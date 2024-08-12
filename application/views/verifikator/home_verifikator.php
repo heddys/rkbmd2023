@@ -34,7 +34,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
             <div class="col-lg-6 col-6">
@@ -47,6 +47,86 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
+                    <!-- <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a> -->
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-1 col-1">
+              <!-- small box -->
+                <div class="small-box bg-primary">
+                  <div class="inner">
+                    <center><h3><?php echo $jumlah_proses_tanah;?></h3></center>
+                    <center><p>Register Aset Tanah Yang Harus Di Verifikasi <p></p></p></center>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-1 col-1">
+              <!-- small box -->
+                <div class="small-box bg-primary">
+                  <div class="inner">
+                    <center><h3><?php echo $jumlah_proses_pm;?></h3></center>
+                    <center><p>Register Peralatan Mesin Yang Harus Di Verifikasi</p></center>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-1 col-1">
+              <!-- small box -->
+                <div class="small-box bg-primary">
+                  <div class="inner">
+                    <center><h3><?php echo $jumlah_proses_gdb;?></h3></center>
+                    <center><p>Register Bangunan Yang Harus Di Verifikasi</p></center>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-1 col-1">
+              <!-- small box -->
+                <div class="small-box bg-primary">
+                  <div class="inner">
+                    <center><h3><?php echo $jumlah_proses_jij;?></h3></center>
+                    <center><p>Register Jalan Irigasi Yang Harus Di Verifikasi</p></center>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-1 col-1">
+              <!-- small box -->
+                <div class="small-box bg-primary">
+                  <div class="inner">
+                    <center><h3><?php echo $jumlah_proses_atl;?></h3></center>
+                    <center><p>Register Aset Tetap Lainnya Yang Harus Di Verifikasi</p></center>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-1 col-1">
+              <!-- small box -->
+                <div class="small-box bg-primary">
+                  <div class="inner">
+                    <center><h3><?php echo $jumlah_proses_atb;?></h3></center>
+                    <center><p>Register Aset Tak Berwujud Yang Harus Di Verifikasi</p></center>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
                     <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -55,7 +135,7 @@
           <div class="row">
             <!-- <div class="col-lg-4 col-6">
               <?php if($exist >= 1) {?>
-              <div class="small-box bg-danger">
+              <div class="small-box bg-primary">
                 <div class="inner">
                   <h3><?php echo $exist?></h3>
                   <p>Eksisting Barang Belum Disertai Keterangan</p>
