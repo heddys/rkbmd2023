@@ -3042,6 +3042,7 @@ class Form_inv extends CI_Controller {
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $kib->tahun_pengadaan);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, to_rp($kib->harga_baru));
 
+			
 				if($kib->status == 1) {
                       $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $i, "Register Dalam Proses Verifikasi");
 				} elseif ($kib->status == 2) {

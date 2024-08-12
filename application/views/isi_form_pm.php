@@ -98,7 +98,7 @@
                             <div class="form-group col-md-5">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" id="basic-addon3">Lokasi : </label>
+                                            <label class="input-group-text" id="basic-addon3">Lokasi Pencatatan : </label>
                                         </div>
                                             <input type="text" class="form-control" id="input_alamat" name="lokasi" value="<?php echo $data_register->nomor_lokasi?>" readonly="true" style="width:100px;" placeholder="">
                                             <input type="hidden" name="no_lokasi_awal" value="<?php echo $data_register->nomor_lokasi_baru;?>">
@@ -687,7 +687,7 @@
                                                         <td><?php echo $data_row->lokasi;?></td>
                                                         <td>
                                                             <center>
-                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi_baru;?>" data_id2="<?php echo $data_row->lokasi?>" onclick="klik_spek_barang('<?php echo $data_row->nomor_lokasi_baru;?>','<?php echo $data_row->lokasi?>');" data-dismiss="modal"><i class="fa fa-plus"></i></a>
+                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi;?>" data_id2="<?php echo $data_row->lokasi?>" onclick="klik_spek_barang('<?php echo $data_row->nomor_lokasi;?>','<?php echo $data_row->lokasi?>');" data-dismiss="modal"><i class="fa fa-plus"></i></a>
                                                             </center>
                                                         </td>
                                                     </tr>

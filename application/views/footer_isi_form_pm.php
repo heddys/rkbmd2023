@@ -394,7 +394,7 @@ function formatCurrency(input, blur) {
     }
 
     function klik_spek_barang(id,id2){
-      if(id == false) {
+      if(id == true) {
         $("input:radio[id=primary8]:checked")[0].checked = false;
       } else {
         document.getElementById('input_alamat').value=id;

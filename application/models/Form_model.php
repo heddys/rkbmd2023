@@ -24,7 +24,53 @@
 
             public function get_kib_for_excel($lokasi,$kib)
             {
-                $query = $this->db->query("SELECT a.*,b.lokasi,DATE_FORMAT(c.created_date, '%m/%e/%Y') as tanggal FROM data_kib a left join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi_baru left join register_isi c on a.register=c.register where a.ekstrakomtabel IS NULL and a.status_simbada is NULL and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%' and a.kode108_baru like '%".$kib."%' group by a.register order by a.status DESC");
+                // $query = $this->db->query("SELECT a.*,b.lokasi,DATE_FORMAT(c.created_date, '%m/%e/%Y') as tanggal FROM data_kib a left join kamus_lokasi b on b.nomor_lokasi=a.nomor_lokasi_baru left join register_isi c on a.register=c.register where a.ekstrakomtabel IS NULL and a.status_simbada is NULL and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%' and a.kode108_baru like '%".$kib."%' group by a.register order by a.status DESC");
+
+                // $query = $this->db->query("SELECT a.register,b.lokasi,a.status,a.kode_barang,a.nama_barang,a.spesifikasi_barang_merk,a.nilai_perolehan,a.tipe,a.tahun,DATE_FORMAT(a.created_date, '%m/%e/%Y') as tanggal FROM `rkbmd2023`.register_isi a inner join `2023_v1`.kamus_lokasi b on a.nomor_lokasi_awal = b.nomor_lokasi WHERE a.hapus <> 1 and a.extrakomtabel <> 1 and left(a.nomor_lokasi_awal,12) like '".$lokasi."%' and kode_barang like '".$kib."%' group by a.register order by a.status DESC");
+
+                $query = $this->db->query(
+                    "SELECT
+                        a.register,
+                        b.lokasi,
+                        DATE_FORMAT( c.created_date, '%m/%e/%Y' ) AS tanggal,
+                        a.kode108_baru,
+                        a.nama_barang,
+                        a.merk_alamat,
+                        a.tipe,
+                        a.tahun_pengadaan,
+                        a.harga_baru,
+                        c.status 
+                    FROM
+                        `2023_v1`.`kib_awal` a
+                        LEFT JOIN `rkbmd2023`.register_isi c ON a.register = c.register
+                        JOIN `2023_v1`.kamus_lokasi b on a.nomor_lokasi_baru = b.nomor_lokasi
+                    WHERE
+                        a.hapus <> 1 
+                        AND a.extrakomtabel_baru <> 1 
+                        AND a.kode108_baru LIKE '".$kib."%' 
+                        AND a.nomor_lokasi_baru LIKE '".$lokasi."%'
+                    UNION
+                    SELECT
+                        x.register,
+                        d.lokasi,
+                        DATE_FORMAT( e.created_date, '%m/%e/%Y' ) AS tanggal,
+                        x.kode108_baru,
+                        x.nama_barang,
+                        x.merk_alamat,
+                        x.tipe,
+                        x.tahun_pengadaan,
+                        x.harga_baru,
+                        e.status 
+                    FROM
+                        `2023_v1`.`kib` x
+                        LEFT JOIN `rkbmd2023`.register_isi e ON x.register = e.register
+                        JOIN `2023_v1`.kamus_lokasi d on x.nomor_lokasi_baru = d.nomor_lokasi
+                    WHERE
+                        x.hapus <> 1 
+                        AND x.extrakomtabel_baru <> 1 
+                        AND x.kode108_baru LIKE '".$kib."%' 
+                        AND x.nomor_lokasi_baru LIKE '".$lokasi."%'
+                        ORDER BY status DESC");
 
                 return $query;
             }
@@ -321,13 +367,15 @@
 
             public function get_status_register($data, $limit, $offset,$form){
 
-                    if($form == 2){
-                        $no_lokasi=$this->session->userdata('no_lokasi_asli');
-                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register,a.status,a.status_simbada FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`nomor_lokasi_baru` like '%".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) limit ".$limit." offset ".$offset."");
+                    // if($form == 2){
+                    //     $no_lokasi=$this->session->userdata('no_lokasi_asli');
+                    //     $query = $this->db->query("SELECT a.register,a.kode_barang,a.nomor_lokasi_awal,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register,a.status,a.status_simbada FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`nomor_lokasi_baru` like '%".$no_lokasi."%' and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') limit ".$limit." offset ".$offset."");
         
-                    } else {
-                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register,a.status,a.status_simbada FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`nomor_lokasi_baru` like '%".$data."%' and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) order by a.kode108_baru ASC limit ".$limit." offset ".$offset."");
-                    }
+                    // } else {
+                    //     $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register,a.status,a.status_simbada FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`nomor_lokasi_baru` like '%".$data."%' order by a.kode108_baru ASC limit ".$limit." offset ".$offset."");
+                    // }
+
+                    
                 
 
                 return $query->result();
