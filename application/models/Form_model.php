@@ -476,6 +476,7 @@
                             a.tipe,
                             a.tahun_pengadaan,
                             a.harga_baru,
+                            a.hapus,
                             c.status 
                         FROM
                             `2023_v1`.`kib_awal` a
@@ -498,6 +499,7 @@
                             x.tipe,
                             x.tahun_pengadaan,
                             x.harga_baru,
+                            x.hapus,
                             e.status 
                         FROM
                             `2023_v1`.`kib` x
@@ -521,6 +523,7 @@
                             a.tipe,
                             a.tahun_pengadaan,
                             a.harga_baru,
+                            a.hapus,
                             c.status 
                         FROM
                             `2023_v1`.`kib_awal` a
@@ -542,6 +545,7 @@
                             x.tipe,
                             x.tahun_pengadaan,
                             x.harga_baru,
+                            x.hapus,
                             e.status 
                         FROM
                             `2023_v1`.`kib` x
