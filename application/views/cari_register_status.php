@@ -86,14 +86,15 @@
                             <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
                             <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
 	                  		<td>
-                                <?php if ($row->status==1 && $row->status_simbada == NULL) {?>
+                                <?php if ($row->status==1) {?>
                                     <center><a href="<?php echo site_url('status_form/show_form_inv_user?status=1&amp;register='.$row->register)?>" class="btn btn-sm btn-warning" title="Dalam Proses Verifikasi Pejabat Penatausahaan Aset" target="_blank"><i class="fa fa-spinner"></i></a></center>
-                                <?php } elseif ($row->status==2 && $row->status_simbada == NULL) { ?>
+                                <?php } elseif ($row->status==2) { ?>
                                     <center><a href="<?php echo site_url('status_form/show_form_inv_user?status=2&amp;register='.$row->register)?>" class="btn btn-sm btn-success" title="Register Telah Di Verifikasi" target="_blank"><i class="fas fa-eye"></i></a></center>
-                                <?php } elseif ($row->status==3 && $row->status_simbada == NULL) { ?>
+                                <?php } elseif ($row->status==3) { ?>
                                     <center><a href="<?php echo site_url('status_form/show_form_inv_user?status=3&amp;register='.$row->register)?>" class="btn btn-sm btn-danger" title="Register Di Tolak Verifikator" target="_blank"><i class="fa fa-ban"></i></a></center>
-                                <?php } elseif ($row->status==NULL && $row->status_simbada == NULL) { ?> <center><h5><span class="badge badge-warning"> Belum Di Lakukan Invetarisasi </span></h5></center> 
-                                <?php } else { ?> <center><h5><span class="badge badge-danger"> Register Terhapus Pada SIMBADA </span></h5></center> <?php } ?>
+                                <?php } elseif ($row->status==NULL) { ?> <center><h5><span class="badge badge-warning"> Belum Di Lakukan Invetarisasi </span></h5></center> 
+                                <?php } elseif ($row->hapus == 1) { ?> <center><h5><span class="badge badge-danger"> Register Terhapus Pada SIMBADA </span></h5></center> 
+                                <?php } ?>
                             </td>
 	                  	</tr>
 	                  <?php }?>

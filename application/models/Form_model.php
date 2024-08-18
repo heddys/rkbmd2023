@@ -47,7 +47,8 @@
                     WHERE
                         a.hapus <> 1 
                         AND a.extrakomtabel_baru <> 1 
-                        AND a.kode108_baru LIKE '".$kib."%' 
+                        AND a.kode108_baru LIKE '".$kib."%'
+                        AND a.kode64_baru not like '1.2.02%'
                         AND a.nomor_lokasi_baru LIKE '".$lokasi."%'
                     UNION
                     SELECT
@@ -68,7 +69,8 @@
                     WHERE
                         x.hapus <> 1 
                         AND x.extrakomtabel_baru <> 1 
-                        AND x.kode108_baru LIKE '".$kib."%' 
+                        AND x.kode108_baru LIKE '".$kib."%'
+                        AND x.kode64_baru not like '1.2.02%'
                         AND x.nomor_lokasi_baru LIKE '".$lokasi."%'
                         ORDER BY status DESC");
 
@@ -233,15 +235,103 @@
             {
                 
 
-                    if ($form == 2){
+                    // if ($form == 2){
+                    //     $no_lokasi=$this->session->userdata('no_lokasi_asli');
+                    //     $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.`nomor_lokasi_baru` like '%".$no_lokasi."%' and a.hapus <> 1 and extrakomtabel <> 1 and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1)");
+
+                    // } else {
+                    //     $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.`nomor_lokasi_baru` like '%".$data."%' and a.hapus <> 1 and extrakomtabel <> 1 and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) order by a.kode108_baru ASC");                      
+                    // }
+
+                    if($form == 2) {
                         $no_lokasi=$this->session->userdata('no_lokasi_asli');
-                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.`nomor_lokasi_baru` like '%".$no_lokasi."%' and a.hapus <> 1 and extrakomtabel <> 1 and (a.`register` like '%".$data."%' or a.nama_barang like '%".$data."%') and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1)");
-
+                        $query = $this->db->query("SELECT
+                            a.register,
+                            b.lokasi,
+                            a.kode108_baru,
+                            a.kode64_baru,
+                            a.nama_barang,
+                            a.merk_alamat,
+                            a.tipe,
+                            a.tahun_pengadaan,
+                            a.harga_baru,
+                            c.status 
+                        FROM
+                            `2023_v1`.`kib_awal` a
+                            LEFT JOIN `rkbmd2023`.register_isi c ON a.register = c.register
+                            JOIN `2023_v1`.kamus_lokasi b on a.nomor_lokasi_baru = b.nomor_lokasi
+                        WHERE
+                            a.hapus <> 1 
+                            AND a.extrakomtabel_baru <> 1 
+                            AND a.kode64_baru NOT LIKE '1.2.02%'
+                            AND a.nomor_lokasi_baru LIKE '".$no_lokasi."%'
+                            AND (a.register like '%".$data."%' or a.nama_barang_baru like '%".$data."%' or a.merk_alamat like '%".$data."%')
+                        UNION
+                        SELECT
+                            x.register,
+                            d.lokasi,
+                            x.kode108_baru,
+                            x.kode64_baru,
+                            x.nama_barang,
+                            x.merk_alamat,
+                            x.tipe,
+                            x.tahun_pengadaan,
+                            x.harga_baru,
+                            e.status 
+                        FROM
+                            `2023_v1`.`kib` x
+                            LEFT JOIN `rkbmd2023`.register_isi e ON x.register = e.register
+                            JOIN `2023_v1`.kamus_lokasi d on x.nomor_lokasi_baru = d.nomor_lokasi
+                            AND (x.register like '%".$data."%' or x.nama_barang_baru like '%".$data."%' or x.merk_alamat like '%".$data."%')
+                        WHERE
+                            x.hapus <> 1 
+                            AND x.extrakomtabel_baru <> 1 
+                            AND x.kode64_baru NOT LIKE '1.2.02%'
+                            AND x.nomor_lokasi_baru LIKE '".$no_lokasi."%'");
                     } else {
-                        $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.`nomor_lokasi_baru` like '%".$data."%' and a.hapus <> 1 and extrakomtabel <> 1 and not EXISTS (select x.kode_sub_kelompok from kamus_barang x where x.kode_sub_kelompok=left(a.kode108_baru,14) and x.kunci = 1) order by a.kode108_baru ASC");
-
-                       
+                        $query = $this->db->query("SELECT
+                            a.register,
+                            b.lokasi,
+                            a.kode108_baru,
+                            a.kode64_baru,
+                            a.nama_barang,
+                            a.merk_alamat,
+                            a.tipe,
+                            a.tahun_pengadaan,
+                            a.harga_baru,
+                            c.status 
+                        FROM
+                            `2023_v1`.`kib_awal` a
+                            LEFT JOIN `rkbmd2023`.register_isi c ON a.register = c.register
+                            JOIN `2023_v1`.kamus_lokasi b on a.nomor_lokasi_baru = b.nomor_lokasi
+                        WHERE
+                            a.hapus <> 1 
+                            AND a.extrakomtabel_baru <> 1 
+                            AND a.kode64_baru NOT LIKE '1.2.02%'
+                            AND a.nomor_lokasi_baru LIKE '".$data."%'
+                        UNION
+                        SELECT
+                            x.register,
+                            d.lokasi,
+                            x.kode108_baru,
+                            x.kode64_baru,
+                            x.nama_barang,
+                            x.merk_alamat,
+                            x.tipe,
+                            x.tahun_pengadaan,
+                            x.harga_baru,
+                            e.status 
+                        FROM
+                            `2023_v1`.`kib` x
+                            LEFT JOIN `rkbmd2023`.register_isi e ON x.register = e.register
+                            JOIN `2023_v1`.kamus_lokasi d on x.nomor_lokasi_baru = d.nomor_lokasi
+                        WHERE
+                            x.hapus <> 1 
+                            AND x.extrakomtabel_baru <> 1 
+                            AND x.kode64_baru NOT LIKE '1.2.02%'
+                            AND x.nomor_lokasi_baru LIKE '".$data."%'");
                     }
+
 
                 return $query;
             }
@@ -374,9 +464,96 @@
                     // } else {
                     //     $query = $this->db->query("SELECT a.register,a.kode64_baru,a.kode108_baru,a.nomor_lokasi_baru,a.nama_barang,a.merk_alamat,a.tipe,b.lokasi,a.satuan,a.tahun_pengadaan,a.harga_baru,a.status_register,a.status,a.status_simbada FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi_baru=b.nomor_lokasi where a.ekstrakomtabel is NULL and a.`nomor_lokasi_baru` like '%".$data."%' order by a.kode108_baru ASC limit ".$limit." offset ".$offset."");
                     // }
-
-                    
-                
+                    if($form == 2) {
+                        $no_lokasi=$this->session->userdata('no_lokasi_asli');
+                        $query = $this->db->query("SELECT
+                            a.register,
+                            b.lokasi,
+                            a.kode108_baru,
+                            a.kode64_baru,
+                            a.nama_barang,
+                            a.merk_alamat,
+                            a.tipe,
+                            a.tahun_pengadaan,
+                            a.harga_baru,
+                            c.status 
+                        FROM
+                            `2023_v1`.`kib_awal` a
+                            LEFT JOIN `rkbmd2023`.register_isi c ON a.register = c.register
+                            JOIN `2023_v1`.kamus_lokasi b on a.nomor_lokasi_baru = b.nomor_lokasi
+                        WHERE
+                            a.hapus <> 1 
+                            AND a.extrakomtabel_baru <> 1 
+                            AND a.kode64_baru NOT LIKE '1.2.02%'
+                            AND a.nomor_lokasi_baru LIKE '".$no_lokasi."%'
+                            AND (a.register like '%".$data."%' or a.nama_barang_baru like '%".$data."%' or a.merk_alamat like '%".$data."%')
+                        UNION
+                        SELECT
+                            x.register,
+                            d.lokasi,
+                            x.kode108_baru,
+                            x.kode64_baru,
+                            x.nama_barang,
+                            x.merk_alamat,
+                            x.tipe,
+                            x.tahun_pengadaan,
+                            x.harga_baru,
+                            e.status 
+                        FROM
+                            `2023_v1`.`kib` x
+                            LEFT JOIN `rkbmd2023`.register_isi e ON x.register = e.register
+                            JOIN `2023_v1`.kamus_lokasi d on x.nomor_lokasi_baru = d.nomor_lokasi
+                            AND (x.register like '%".$data."%' or x.nama_barang_baru like '%".$data."%' or x.merk_alamat like '%".$data."%')
+                        WHERE
+                            x.hapus <> 1 
+                            AND x.extrakomtabel_baru <> 1 
+                            AND x.kode64_baru NOT LIKE '1.2.02%'
+                            AND x.nomor_lokasi_baru LIKE '".$no_lokasi."%'
+                            ORDER BY kode64_baru DESC limit ".$limit." offset ".$offset."");
+                    } else {
+                        $query = $this->db->query("SELECT
+                            a.register,
+                            b.lokasi,
+                            a.kode108_baru,
+                            a.kode64_baru,
+                            a.nama_barang,
+                            a.merk_alamat,
+                            a.tipe,
+                            a.tahun_pengadaan,
+                            a.harga_baru,
+                            c.status 
+                        FROM
+                            `2023_v1`.`kib_awal` a
+                            LEFT JOIN `rkbmd2023`.register_isi c ON a.register = c.register
+                            JOIN `2023_v1`.kamus_lokasi b on a.nomor_lokasi_baru = b.nomor_lokasi
+                        WHERE
+                            a.hapus <> 1 
+                            AND a.extrakomtabel_baru <> 1 
+                            AND a.kode64_baru NOT LIKE '1.2.02%'
+                            AND a.nomor_lokasi_baru LIKE '".$data."%'
+                        UNION
+                        SELECT
+                            x.register,
+                            d.lokasi,
+                            x.kode108_baru,
+                            x.kode64_baru,
+                            x.nama_barang,
+                            x.merk_alamat,
+                            x.tipe,
+                            x.tahun_pengadaan,
+                            x.harga_baru,
+                            e.status 
+                        FROM
+                            `2023_v1`.`kib` x
+                            LEFT JOIN `rkbmd2023`.register_isi e ON x.register = e.register
+                            JOIN `2023_v1`.kamus_lokasi d on x.nomor_lokasi_baru = d.nomor_lokasi
+                        WHERE
+                            x.hapus <> 1 
+                            AND x.extrakomtabel_baru <> 1 
+                            AND x.kode64_baru NOT LIKE '1.2.02%'
+                            AND x.nomor_lokasi_baru LIKE '".$data."%'
+                            ORDER BY kode64_baru DESC limit ".$limit." offset ".$offset."");
+                    }
 
                 return $query->result();
             }
@@ -882,7 +1059,8 @@
                         FROM
                             data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
                         WHERE
-                            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru not like '1.5.4%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )");
+                            a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru not like '1.5.4%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' )
+                            GROUP BY a.register");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -906,7 +1084,8 @@
                     FROM
                         data_kib a inner join (SELECT nomor_unit,unit from kamus_lokasi GROUP BY nomor_unit) b on left(a.nomor_lokasi_baru,12)=b.nomor_unit 
                     WHERE
-                    a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru not like '1.5.4%' and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'");
+                    a.ekstrakomtabel is null and a.status_simbada is null and kode108_baru not like '1.5.4%' and left(a.nomor_lokasi_baru,12) like '%".$lokasi."%'
+                    GROUP BY a.register");
                 }
                 return $query;
             }

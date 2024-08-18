@@ -1569,6 +1569,9 @@
                                             <option selected value="Aspal">Aspal</option>
                                             <option value="Beton">Beton</option>
                                             <option value="Paving">Paving</option>
+                                            <option value="Kayu">Kayu</option>
+                                            <option value="Pasangan Batu">Pasangan Batu</option>
+                                            <option value="PJU">PJU</option>
                                         </select>
                                     </div>
                                     <div class="modal-footer justify-content-between">
