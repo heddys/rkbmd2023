@@ -18,30 +18,30 @@ class Home_admin extends CI_Controller {
 
 		$get_opd = $this->admin_model->get_opd();
 
-		foreach ($get_opd as $row) {
-			$get_total_kib = $this->admin_model->get_kib($row->nomor_unit)->row();
-			$get_proses = $this->admin_model->get_rekap_opd_admin_dashboard($row->nomor_unit)->row();
+		// foreach ($get_opd as $row) {
+		// 	$get_total_kib = $this->admin_model->get_kib($row->nomor_unit)->row();
+		// 	$get_proses = $this->admin_model->get_rekap_opd_admin_dashboard($row->nomor_unit)->row();
 
-			$sisa_inv = $get_total_kib->jum_kib-($get_proses->proses+$get_proses->verif+$get_proses->tolak);
-			$persentase = ($get_proses->proses+$get_proses->verif+$get_proses->tolak)/$get_total_kib->jum_kib*100;
+		// 	$sisa_inv = $get_total_kib->jum_kib-($get_proses->proses+$get_proses->verif+$get_proses->tolak);
+		// 	$persentase = ($get_proses->proses+$get_proses->verif+$get_proses->tolak)/$get_total_kib->jum_kib*100;
 
-			$data_rekap[] = array(
-					'unit' => $row->unit,
-					'nomor_unit' => $row->nomor_unit,
-					'total' => $get_total_kib->jum_kib,
-					'proses' => $get_proses->proses,
-					'verif' => $get_proses->verif,
-					'tolak' => $get_proses->tolak,
-					'sisa' => $sisa_inv,
-					'persentase' => $persentase
-			);
+		// 	$data_rekap[] = array(
+		// 			'unit' => $row->unit,
+		// 			'nomor_unit' => $row->nomor_unit,
+		// 			'total' => $get_total_kib->jum_kib,
+		// 			'proses' => $get_proses->proses,
+		// 			'verif' => $get_proses->verif,
+		// 			'tolak' => $get_proses->tolak,
+		// 			'sisa' => $sisa_inv,
+		// 			'persentase' => $persentase
+		// 	);
 			
-		}
+		// }
 
-		// echo '<pre>' , var_dump($data_rekap) , '</pre>';
-		// die();
+		// // echo '<pre>' , var_dump($data_rekap) , '</pre>';
+		// // die();
 
-		$data['rekap_opd'] = $data_rekap;
+		// $data['rekap_opd'] = $data_rekap;
 
         $this->load->view('admin/header_admin',$data);		
 		$this->load->view('admin/admin_page');
@@ -689,6 +689,11 @@ class Home_admin extends CI_Controller {
 		$this->load->view('admin/footer_admin');
 		
 
+	}
+
+	public function list_survey() {
+		$this->cek_sess();
+		
 	}
 
 	public function isi_form_kendaraan() {

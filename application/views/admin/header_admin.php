@@ -189,7 +189,7 @@
                   <p>Aset Tetap 1.3.03</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a href="<?php echo site_url('status_form/index/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap 1.3.04</p>
@@ -206,7 +206,7 @@
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Lain-Lain 1.5.03</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
 
@@ -231,6 +231,12 @@
                 <a href="<?php echo site_url('home_admin/list_kendaraan')?>" class="nav-link">
                   <i class="nav-icon fas fa-car"></i>
                   <p>List Kendaraan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('home_admin/list_survey')?>" class="nav-link">
+                  <i class="nav-icon fas fa-atom"></i>
+                  <p>Survey Pemanfaatan</p>
                 </a>
               </li>
             </ul>

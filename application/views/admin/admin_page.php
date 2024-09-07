@@ -75,7 +75,7 @@
                       <th>Detail</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <!-- <tbody>
                       <?php foreach ($rekap_opd as $row) { ?>
                       <tr>
                         <td>
@@ -96,7 +96,7 @@
                         </td>
                       </tr>
                       <?php } ?>
-                    </tbody>
+                    </tbody> -->
                   </table>
                 </div>
               </div>
