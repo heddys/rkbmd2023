@@ -109,7 +109,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" id="basic-addon3">Lokasi : </label>
                                         </div>
-                                            <input type="text" class="form-control" name="alamat" disabled="disabled" value="<?php echo $data_register->nomor_lokasi." - ".$data_register->lokasi;?>" >
+                                            <input type="text" class="form-control" name="alamat" disabled="disabled" value="<?php echo $data_register->nomor_lokasi." - ".$data_register->nama_lokasi;?>" >
                                     </div>
                             </div>
                             <!-- /.col-lg-6 -->

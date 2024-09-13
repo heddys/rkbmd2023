@@ -739,7 +739,7 @@
                 // $this->db->order_by('created_time', 'DESC');
                 // return $this->db->get();
 
-                $query = $this->db->query("SELECT a.*,b.kode_binprog,b.nomor_lokasi,b.unit,b.lokasi as nama_lokasi,c.lokasi as nama_lokasi_awal FROM `rkbmd2023`.`register_isi` a join `2023_v1`.kamus_lokasi b on a.lokasi=b.nomor_lokasi inner join kamus_lokasi c on a.nomor_lokasi_awal = c.nomor_lokasi where a.register = '".$register."' order by created_date DESC, created_time DESC");
+                $query = $this->db->query("SELECT a.*,b.kode_binprog,b.nomor_lokasi,b.unit,b.lokasi as nama_lokasi,c.lokasi as nama_lokasi_awal FROM `rkbmd2023`.`register_isi` a left join `2023_v1`.kamus_lokasi b on a.lokasi=b.nomor_lokasi left join kamus_lokasi c on a.nomor_lokasi_awal = c.nomor_lokasi where a.register = '".$register."' order by created_date DESC, created_time DESC");
                 return $query;
             }
 

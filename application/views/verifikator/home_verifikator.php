@@ -62,7 +62,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('home_verifikator/verif_page/1');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-1 col-1">
@@ -75,7 +75,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('home_verifikator/verif_page/2');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-1 col-1">
@@ -88,7 +88,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('home_verifikator/verif_page/3');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-1 col-1">
@@ -101,7 +101,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('home_verifikator/verif_page/4');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-1 col-1">
@@ -114,7 +114,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('home_verifikator/verif_page/5');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-1 col-1">
@@ -127,7 +127,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                    <a href="<?php echo site_url('home_verifikator/verif_page');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('home_verifikator/verif_page/6');?>" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
           </div>
