@@ -1552,8 +1552,10 @@ class Home_admin extends CI_Controller {
 				$kode_barang = 'Tanah';
 			} elseif ($row->kode_barang == '1.3.2') {
 				$kode_barang = 'Peralatan dan Mesin';
-			} else {
+			} elseif ($row->kode_barang == '1.3.3') {
 				$kode_barang = 'Gedung dan Bangunan';
+			} else {
+				$kode_barang = 'Jalan, Irigasi dan Jaringan';
 			}
 
 			$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
