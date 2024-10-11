@@ -85,6 +85,40 @@ class Admin_model extends CI_Model{
         return $query->result();
    }
 
+    function get_kerjaan_pb($unit,$kode) {
+        
+        $query=$this->db->query(
+            "SELECT
+                b.unit,
+                b.nomor_unit,
+                LEFT ( a.kode_barang, 5 ) AS kode_barang,
+                COUNT(
+                IF
+                ( a.STATUS = 1, 1, NULL )) AS proses,
+                COUNT(
+                IF
+                ( a.STATUS = 2, 1, NULL )) AS verif,
+                COUNT(
+                IF
+                ( a.STATUS = 3, 1, NULL )) AS tolak
+            FROM
+                register_isi a
+                INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON left(a.nomor_lokasi_awal,12)= b.nomor_unit 
+            WHERE
+                LEFT ( a.kode_barang, 5 ) = '".$kode."'
+                AND left(a.nomor_lokasi_awal,12) = '".$unit."'
+                AND a.hapus <> 1 
+                AND a.extrakomtabel <> 1
+            GROUP BY
+                b.unit,
+                LEFT ( a.kode_barang, 5 ) 
+            ORDER BY
+                b.nomor_unit DESC,
+                LEFT ( a.kode_barang, 5 ) ASC");
+
+        return $query;
+    }
+
     function data_progres_opd_tanah($unit){
         // return $query;
         $query=$this->db->query(
@@ -419,42 +453,48 @@ class Admin_model extends CI_Model{
     //         b.nomor_unit DESC,
     //         LEFT ( a.kode_108, 5 ) ASC,
     //         persentase DESC");
-
-        $query=$this->db->query(
-            "SELECT
+        $db_simbada = $this->load->database('simbada',TRUE);
+        $query=$db_simbada->query(
+            "SELECT 
                 b.unit,
                 b.nomor_unit,
-                LEFT ( a.kode_108, 5 ) AS kode_barang,
-                count( a.register ) AS total,
-                COUNT(
-                IF
-                ( a.STATUS = 1, 1, NULL )) AS proses,
-                COUNT(
-                IF
-                ( a.STATUS = 2, 1, NULL )) AS verif,
-                COUNT(
-                IF
-                ( a.STATUS = 3, 1, NULL )) AS tolak,
-                COUNT(
-                IF
-                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                    count( a.register )- COUNT(
-                    IF
-                    ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
-            FROM
-                register_isi a
-                INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON a.nomor_lokasi_awal, 12 )= b.nomor_unit 
-            WHERE
-                LEFT ( a.kode_108, 5 ) IN ( '1.3.1', '1.3.2', '1.3.3' ) 
-                AND a.status_simbada IS NULL 
-                AND a.ekstrakomtabel IS NULL 
-            GROUP BY
-                b.unit,
-                LEFT ( a.kode_108, 5 ) 
-            ORDER BY
-                b.nomor_unit DESC,
-                LEFT ( a.kode_108, 5 ) ASC,
-                persentase DESC");
+                LEFT(a.kode108_baru, 5) AS kode_barang,
+                COUNT(a.register) AS jumlah
+            FROM (
+                -- Mengambil data dari kib_awal
+                SELECT 
+                    nomor_lokasi_baru, 
+                    kode108_baru, 
+                    register, 
+                    hapus, 
+                    extrakomtabel_baru 
+                FROM kib_awal
+                UNION ALL
+                -- Mengambil data dari kib
+                SELECT 
+                    nomor_lokasi_baru, 
+                    kode108_baru, 
+                    register, 
+                    hapus, 
+                    extrakomtabel_baru 
+                FROM kib
+            ) a
+            INNER JOIN (
+                SELECT 
+                    x.nomor_unit, 
+                    x.unit 
+                FROM kamus_lokasi x 
+                WHERE x.kode_binprog <> '' 
+                GROUP BY x.nomor_unit
+            ) b ON LEFT(a.nomor_lokasi_baru, 12) = b.nomor_unit 
+            WHERE 
+                LEFT(a.kode108_baru, 5) IN ('1.3.1', '1.3.2', '1.3.3', '1.3.4') 
+                AND a.hapus <> 1 
+                AND a.extrakomtabel_baru <> 1 
+            GROUP BY 
+                b.unit, 
+                b.nomor_unit, 
+                LEFT(a.kode108_baru, 5);");
         
         return $query->result();
    }

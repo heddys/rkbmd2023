@@ -1491,7 +1491,10 @@ class Home_admin extends CI_Controller {
 	{
 		$this->cek_sess();
 
-		$rekap_opd=$this->admin_model->get_rekap_opd_admin();
+		
+		
+		// echo '<pre>' , var_dump($rekap_opd) , '</pre>';
+		// die()
 
 		$objPHPExcel = new PHPExcel();
         
@@ -1544,29 +1547,52 @@ class Home_admin extends CI_Controller {
 		$i=4;
 		$no=1;
 
+		$jumlah_register=$this->admin_model->get_rekap_opd_admin();
 		
-        foreach ($rekap_opd as $row) 
+        foreach ($jumlah_register as $row) 
         {
-
 			if($row->kode_barang == '1.3.1') {
 				$kode_barang = 'Tanah';
 			} elseif ($row->kode_barang == '1.3.2') {
 				$kode_barang = 'Peralatan dan Mesin';
 			} elseif ($row->kode_barang == '1.3.3') {
 				$kode_barang = 'Gedung dan Bangunan';
-			} else {
+			} elseif ($row->kode_barang == '1.3.4') {
 				$kode_barang = 'Jalan, Irigasi dan Jaringan';
+			} elseif ($row->kode_barang == '1.3.5') {
+				$kode_barang = 'Aset Tetap Lainnya';	
+			} else{
+				$kode_barang = 'Aset Tak Berwujud';
 			}
 
-			$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, strtoupper($row->unit));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, strtoupper($kode_barang));;
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, number_format($row->total));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, number_format($row->verif));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, number_format($row->proses));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, number_format($row->tolak));
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, number_format($row->sisa));
-            // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, round((float)$row->persentase,3).'%');
+			$proses_inv=$this->admin_model->get_kerjaan_pb($row->nomor_unit,$row->kode_barang);
+
+			// echo $proses_inv->num_rows()."<p>";
+			
+			if($proses_inv->num_rows() < 1) {
+
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, strtoupper($row->unit));
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, strtoupper($kode_barang));;
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, number_format($row->jumlah));
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, '0');
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, '0');
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, '0');
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, number_format($row->jumlah));
+			} else {
+				$get=$proses_inv->row();
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, strtoupper($row->unit));
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, strtoupper($kode_barang));;
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, number_format($row->jumlah));
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, number_format($get->verif));
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, number_format($get->proses));
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, number_format($get->tolak));
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, number_format($row->jumlah-($get->verif+$get->proses+$get->tolak)));
+				// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, round((float)$row->persentase,3).'%');
+			}
+
+			
 
 			$i++;
 			$no++;
