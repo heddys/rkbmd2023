@@ -1588,11 +1588,13 @@ class Home_admin extends CI_Controller {
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, number_format($get->verif));
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, number_format($get->proses));
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, number_format($get->tolak));
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, number_format($row->jumlah-($get->verif+$get->proses+$get->tolak)));
+				if($row->jumlah-($get->verif+$get->proses+$get->tolak) < 0) {
+					$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, '0');
+				} else {
+					$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, number_format($row->jumlah-($get->verif+$get->proses+$get->tolak)));
+				}
 				// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, round((float)$row->persentase,3).'%');
 			}
-
-			
 
 			$i++;
 			$no++;
