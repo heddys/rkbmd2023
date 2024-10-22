@@ -113,7 +113,7 @@ function tgl_indo($tanggal){
             <tr>
                 <th width="200px">Pengelola Barang</th>
                 <th width="25px">:</th>
-                <th width="150px">Ir. Erna Purnawati</th>
+                <th width="150px">Dr. IKHSAN, S.Psi. M.M</th>
             </tr>
         </tbody>
     </table>
