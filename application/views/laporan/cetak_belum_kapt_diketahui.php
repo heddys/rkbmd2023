@@ -54,7 +54,7 @@ function tgl_indo($tanggal){
         <b>
             <p class="ex2">LEMBAR HASIL INVENTARISASI (LHI)</p>
             <p class="ex2">REKAPITULASI BMD BELUM DIKAPITALISASI DAN DIKETAHUI DATA AWAL/DATA INDUKNYA</p>
-            <p class="ex2">BMD <?php if ($kib_apa == '1.3.1') { 
+            <p class="ex2">BMD BERUPA <?php if ($kib_apa == '1.3.1') { 
                                     echo "ASET TETAP TANAH";
                                 } 
                                 elseif ($kib_apa == '1.3.2') {

@@ -54,7 +54,25 @@ function tgl_indo($tanggal){
         <b>
             <p class="ex2">LEMBAR HASIL INVENTARISASI (LHI)</p>
             <p class="ex2">REKAPITULASI BMD DIGUNAKAN OLEH PEGEAWAI PEMERINTAH DAERAH YANG BERSANGKUTAN</p>
-            <p class="ex2">BMD BERUPA PERALATAN DAN MESIN</p>
+            <p class="ex2">BMD BERUPA <?php if ($kib_apa == '1.3.1') { 
+                                    echo "ASET TETAP TANAH";
+                                } 
+                                elseif ($kib_apa == '1.3.2') {
+                                        echo "ASET TETAP PERALATAN DAN MESIN";
+                                } 
+                                elseif ($kib_apa == '1.3.3') {
+                                        echo "ASET TETAP GEDUNG DAN BANGUNAN";
+                                } 
+                                elseif ($kib_apa == '1.3.4') {
+                                        echo "ASET TETAP JALAN, IRIGASI DAN JARINGAN";
+                                }
+                                elseif ($kib_apa == '1.3.5') {
+                                    echo "ASET TETAP LAINNYA";
+                                }
+                                elseif ($kib_apa == '1.5.3') {
+                                    echo "ASET TIDAK BERWUJUD";
+                                } 
+                                ?></p>
             <p class="ex2"><?php echo strtoupper($this->session->userdata('skpd'));?> KOTA SURABAYA</p>
         </b>
     </h5>
