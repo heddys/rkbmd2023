@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- icon tab -->
+  <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>ini_assets/image/surabaya1.png" />
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/ionicons/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/dist/css/adminlte.min.css">
     <style>
 
     p.ex2 {
@@ -14,7 +24,15 @@
         height: 230px;
         width: 340px;
         border: 2px solid black;
-        }
+    }
+
+    /* Atur orientasi default di sini */
+    @media print {
+            @page {
+                size: landscape;
+            }
+    }
+    
     </style>
 </head>
 <body class="sidebar-mini layout-fixed" style="height: auto;">
@@ -52,7 +70,7 @@ function tgl_indo($tanggal){
 <center>
     <h5>
         <b>
-            <p class="ex2">LEMBAR HASIL INVENTARISASI (LKI)</p>
+            <p class="ex2">LEMBAR HASIL INVENTARISASI (LHI)</p>
             <p class="ex2">REKAPITULASI BMD TERJADI PERUBAHAN KONDISI FISIK BARANG</p>
             <p class="ex2">BMD BERUPA <?php if ($kib_apa == '1.3.1') { 
                                     echo "ASET TETAP TANAH";
@@ -78,25 +96,25 @@ function tgl_indo($tanggal){
     </h5>
 </center>
 <p>
-<table class="table table-bordered" style="font-size : 12px;">
+<table style="font-size : 12px; width: 20%; border: none;">
         <thead>    
         </thead>
         <tbody>
             <tr>
-                <td width="200px">Kuasa Pengguna Barang</td>
-                <td width="25px">:</td>
-                <td width="150px">-</td>
+                <td style="border: none;">Kuasa Pengguna Barang</td>
+                <td style="border: none;">:</td>
+                <td style="border: none;">-</td>
             </tr>
             <tr>
-                <td width="200px">Pengguna Barang</td>
-                <td width="25px">:</td>
-                <td width="150px"><?php echo $this->session->userdata('kepala_opd');?></td>
+                <td style="border: none;">Pengguna Barang</td>
+                <td style="border: none;">:</td>
+                <td style="border: none;"><?php echo $this->session->userdata('kepala_opd');?></td>
                 
             </tr>
             <tr>
-                <td width="200px">Pengelola Barang</td>
-                <td width="25px">:</td>
-                <td width="150px">Dr. IKHSAN, S.Psi. M.M</td>
+                <td style="border: none;">Pengelola Barang</td>
+                <td style="border: none;">:</td>
+                <td style="border: none;">Dr. IKHSAN, S.Psi. M.M</td>
             </tr>
         </tbody>
 </table>
@@ -182,7 +200,7 @@ function tgl_indo($tanggal){
     </tr>
 </table>
 <p>
-<table style="font-size:12px; width:100%;">
+<table id="tabel_ttd" style="font-size:12px; width:100%;">
     <tr>
         <td></td>
         <td></td>
@@ -202,7 +220,7 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td width="20%" style="text-align: center; vertical-align: middle;"><?php echo "Surabaya, " . tgl_indo(date("Y-m-d"));?></td>
+        <td width="20%" style="text-align: center; vertical-align: middle;">Surabaya, <?php echo ($data_spesimen === 'Kosong') ? "" : $data_spesimen->created_date_lhi_perubahan_data; ?></td>
     </tr>
     <tr>
         <td colspan="13"></td>
@@ -212,14 +230,23 @@ function tgl_indo($tanggal){
         <td colspan="13"></td>
         <td><br><br></td>
     </tr>
-    <tr>
-        <td colspan="13"></td>
-        <td><br><br></td>
-    </tr>
-    <tr>
-        <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;">................................................</td>
-    </tr>
+    
+    <?php if ($data_spesimen === 'Kosong') { ?>
+            <tr>
+                <td colspan="13"></td>
+                <td style="text-align: center; vertical-align: middle;"><button id="button_verif" class="btn btn-md btn-danger" data-toggle="modal" data-target="#modal-verif">Verifikasi LHI</button></td>
+            </tr>
+    <?} else {?>
+        <tr>
+            <td colspan="13"></td>
+            <td><br><br></td>
+        </tr>
+    
+        <!-- <tr>
+            <td colspan="13"></td>
+            <td style="text-align: center; vertical-align: middle;"><?php echo $data_spesimen->spesimen_pengelola?></td>
+        </tr> -->
+    <?php } ?>
     <tr>
         <td colspan="13"></td>
         <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->nama_kepala?></b></td>
@@ -229,6 +256,81 @@ function tgl_indo($tanggal){
         <td style="text-align: center; vertical-align: middle;"><b>NIP. <?php echo $data_pb->nip_kepala?></b></td>
     </tr>
 </table>
-    
+
+
+<!-- Modal Untuk Cari Register Ganda -->
+<div class="modal fade" id="modal-verif">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                </div>
+                <form action="<?php echo site_url('/status_form/save_verif');?>" method="post">
+                    <div class="modal-body">
+                        <label for="tanggal">Pilih Tanggal : </label>
+                        <input type="date" id="tanggal" name="tanggal" required>
+                        <br>
+                        <br>
+                        <label for="agree">Centang Jika Data LHI Ini Sudah Benar : </label>
+                        <input type="checkbox" id="checkbox-verif"> Saya Telah Membaca LHI Ini
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <input type="hidden" name="nip" value="<?php echo $data_pb->nip_kepala; ?>">
+                        <input type="hidden" name="nama_tabel" value="lhi_perubahan_fisik">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-info" id="btn-submit" disabled>Saya Setuju</button>
+                    </div>
+                </form>
+            </div>
+            <!-- modal-content --> 
+        </div>
+        <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<script src="<?php echo base_url();?>ini_assets/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="<?php echo base_url();?>ini_assets/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="<?php echo base_url();?>ini_assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url();?>ini_assets/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url();?>ini_assets/dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?php echo base_url();?>ini_assets/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/select2/js/select2.full.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
+
+
+<script>
+    $('#button_verif').on('click', function(){
+        $('#modal-verif').modal('show');
+    });
+
+    $('#checkbox-verif').on('change', function() {
+        // alert('nanana');
+        $('#btn-submit').prop('disabled', !this.checked);
+    });
+</script>
+
 </body>
 </html>

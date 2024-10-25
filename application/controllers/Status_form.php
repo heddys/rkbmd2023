@@ -149,7 +149,7 @@ class Status_form extends CI_Controller {
 		if(isset($_POST['limit'])){
 			$this->session->set_userdata('limit',$_POST['limit']);
 			$limit=$_POST['limit'];
-		} 
+		} 	
 
 		if($this->session->userdata('limit')){	
 			$limit=$this->session->userdata('limit');
@@ -528,7 +528,17 @@ class Status_form extends CI_Controller {
 				);
 			}
 		}
+		
+		$cek_verif = $this->form_model->info_verif($get_data_pb->nip_kepala);
 
+		if ($cek_verif->num_rows() <= 0) {
+			$data['data_spesimen'] = 'Kosong';
+		} else {
+			$data_nip = $cek_verif->row();
+			$date['data_spesimen'] = $this->form_model->get_spesimen_simbada($data_nip->nip_kepala)->row();
+		}
+
+		
         $data['data_kondisi']=$data_register_updated;
         $data['data_pb']=$get_data_pb;
 
@@ -592,6 +602,7 @@ class Status_form extends CI_Controller {
 
         $data['data_kondisi']=$data_register_updated;
         $data['data_pb']=$get_data_pb;
+		$data['kib_apa'] = $kib;
 
 		// ini_set('memory_limit','0');
         // $this->pdf->load_view('laporan/cetak_form_kondisi_barang',$data);
@@ -679,6 +690,8 @@ class Status_form extends CI_Controller {
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		$data['data_pb']=$this->form_model->ambil_data_pb($nomor_lokasi)->row();
 		// $data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
+		$data['kib_apa'] = $kib;
+
 
 		$this->load->view('laporan/cetak_barang_digunakan_instansi_lain',$data);
 	}

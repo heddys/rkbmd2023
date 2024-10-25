@@ -1396,6 +1396,17 @@
                 return $query;
             }
 
+            public function info_verif($nip)
+            {
+                return $this->db->get_where('jurnal_verif_lhi', array('nip_kepala' => $nip));
+            }
+
+            public function get_spesimen_simbada($nip)
+            {
+                $db_simbada = $this->load->database('simbada',TRUE);
+                return $db_simbada->get_where('pengguna', array ('nip_pengelola' => $nip),1);
+            }
+
             public function get_belum_kapt_ada_induk($kib,$lokasi)
             {
                 $query = $this->db->query("SELECT b.unit,b.lokasi,a.register,a.kode_barang,a.nama_barang,a.spesifikasi_barang_merk,a.tipe,a.satuan,a.nilai_perolehan,a.merupakan_anak,c.kode108_baru,c.nomor_lokasi,c.nama_barang as name_anak,c.merk_alamat as merk_anak,c.tipe as tipe_anak,a.keterangan FROM `register_isi` a inner join kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi inner join data_kib c on a.merupakan_anak=c.register where a.nomor_lokasi_awal like '%".$lokasi."%' and a.kode_barang like '%".$kib."%' and c.status = '2' and a.register <> a.merupakan_anak");
