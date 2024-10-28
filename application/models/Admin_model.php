@@ -499,7 +499,7 @@ class Admin_model extends CI_Model{
         return $query->result();
    }
 
-   public function get_rekap_opd_admin_dashboard($nomor_unit)
+   public function get_rekap_opd_admin_dashboard()
    {
        $query=$this->db->query(
             "SELECT
@@ -515,12 +515,12 @@ class Admin_model extends CI_Model{
              FROM
                 register_isi
              WHERE
-                LEFT ( kode_barang_lama, 5 ) IN ('1.3.1','1.3.2','1.3.3','1.3.4') and lokasi like '%".$nomor_unit."%' and hapus <> 1 and extrakomtabel <> 1");
+                LEFT ( kode_barang_lama, 5 ) IN ('1.3.1','1.3.2','1.3.3','1.3.4') and  hapus <> 1 and extrakomtabel <> 1");
 
         return $query;
    }
 
-   public function get_kib($unit) {
+   public function get_kib() {
     
     $db_simbada=$this->load->database('simbada',TRUE);
 
@@ -537,7 +537,7 @@ class Admin_model extends CI_Model{
             WHERE
                 hapus = '' 
                 AND LEFT ( kode64_baru, 6 ) IN ( '1.3.01', '1.3.02', '1.3.03', '1.3.04' ) 
-                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '%".$unit."%'
+                AND extrakomtabel_baru = ''
             ) sawal,
             (
             SELECT
@@ -547,7 +547,7 @@ class Admin_model extends CI_Model{
             WHERE
                 hapus = '' 
                 AND LEFT ( kode64_baru, 6 ) IN ( '1.3.01', '1.3.02', '1.3.03', '1.3.04' ) 
-            AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '%".$unit."%'
+            AND extrakomtabel_baru = ''
             ) tambah"
     );
 
@@ -595,6 +595,40 @@ class Admin_model extends CI_Model{
         $db_simbada->from('kamus_lokasi');
         $db_simbada->where('kode_binprog <>','');
         $db_simbada->group_by('kode_binprog');
+        return $db_simbada->get()->result();
+   }
+
+   public function get_opd_data() {
+        $db_simbada = $this->load->database('simbada', TRUE);
+
+        // Combined query with fully qualified table names
+        $db_simbada->select('
+            kl.nomor_unit,
+            kl.unit,
+            (
+                SELECT SUM(COALESCE(sawal.x, 0) + COALESCE(tambah.y, 0)) 
+                FROM (
+                    SELECT SUM(saldo_barang) x FROM kib_awal 
+                    WHERE hapus = "" 
+                    AND LEFT(kode64_baru, 6) IN ("1.3.01", "1.3.02", "1.3.03", "1.3.04") 
+                    AND extrakomtabel_baru = ""
+                ) sawal,
+                (
+                    SELECT SUM(saldo_barang) y FROM kib 
+                    WHERE hapus = "" 
+                    AND LEFT(kode64_baru, 6) IN ("1.3.01", "1.3.02", "1.3.03", "1.3.04") 
+                    AND extrakomtabel_baru = ""
+                ) tambah
+            ) AS jum_kib,
+            COUNT(IF(rg.STATUS = 1, 1, NULL)) AS proses,
+            COUNT(IF(rg.STATUS = 2, 1, NULL)) AS verif,
+            COUNT(IF(rg.STATUS = 3, 1, NULL)) AS tolak
+        ');
+        $db_simbada->from('kamus_lokasi kl');
+        $db_simbada->join('rkbmd2023.register_isi rg', 'rg.nomor_lokasi_awal = kl.nomor_unit', 'left');
+        $db_simbada->where('kl.kode_binprog <>', '');
+        $db_simbada->group_by('kl.nomor_unit');
+
         return $db_simbada->get()->result();
    }
 

@@ -9,14 +9,14 @@ class Home_admin extends CI_Controller {
 
         $data['page']="Dashboard Admin";
 
-		// $data['get_data_chart']=$this->admin_model->get_data_chart(1);
-		// $data['get_proses_reg']=$this->admin_model->get_proses_reg(1);
-        // $data['get_tolak_reg']=$this->admin_model->get_tolak_reg(1);
+		$data['get_data_chart']=$this->admin_model->get_data_chart(1);
+		$data['get_proses_reg']=$this->admin_model->get_proses_reg(1);
+        $data['get_tolak_reg']=$this->admin_model->get_tolak_reg(1);
 		// $data['rekap_opd']=$this->admin_model->get_rekap_opd_admin_dashboard();
 
 		$data_rekap = array();
 
-		$get_opd = $this->admin_model->get_opd();
+		// $get_opd = $this->admin_model->get_opd();
 
 		// foreach ($get_opd as $row) {
 		// 	$get_total_kib = $this->admin_model->get_kib($row->nomor_unit)->row();
@@ -36,12 +36,31 @@ class Home_admin extends CI_Controller {
 		// 			'persentase' => $persentase
 		// 	);
 			
-		// }
+		// }	
 
-		// // echo '<pre>' , var_dump($data_rekap) , '</pre>';
-		// // die();
+		// Fetch all data in one go
+		$get_opd_data = $this->admin_model->get_opd_data();
 
-		// $data['rekap_opd'] = $data_rekap;
+		foreach ($get_opd_data as $row) {
+			$sisa_inv = $row->jum_kib - ($row->proses + $row->verif + $row->tolak);
+			$persentase = ($row->proses + $row->verif + $row->tolak) / $row->jum_kib * 100;
+
+			$data_rekap[] = array(
+				'unit' => $row->unit,
+				'nomor_unit' => $row->nomor_unit,
+				'total' => $row->jum_kib,
+				'proses' => $row->proses,
+				'verif' => $row->verif,
+				'tolak' => $row->tolak,
+				'sisa' => $sisa_inv,
+				'persentase' => $persentase
+			);
+		}
+
+		// echo '<pre>' , var_dump($data_rekap) , '</pre>';
+		// die();
+
+		$data['rekap_opd'] = $data_rekap;
 
         $this->load->view('admin/header_admin',$data);		
 		$this->load->view('admin/admin_page');
