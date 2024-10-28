@@ -1019,7 +1019,7 @@
                         WHERE
                             hapus = '' 
                             AND LEFT ( kode64_baru, 6 ) = '".$kode."' 
-                            AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '%".$unit."%'
+                            AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
                         ) sawal,
                         (
                         SELECT
@@ -1029,7 +1029,7 @@
                         WHERE
                             hapus = '' 
                             AND LEFT ( kode64_baru, 6 ) = '".$kode."'  
-                            AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '%".$unit."%'
+                            AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
                         ) tambah"
                 );
             
