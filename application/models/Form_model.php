@@ -119,7 +119,13 @@
 
             public function get_sisa_per_aset($kib,$lokasi) {
 
-                $query = $this->db->query("SELECT a.register FROM `2023_v1`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%' and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register) union SELECT a.register FROM `2023_v1`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%'  and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register)");
+                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ) {
+                    $query = $this->db->query("SELECT a.register FROM `2023_v1`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' ) and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register) union SELECT a.register FROM `2023_v1`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' ) and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register)");
+                } else {
+                    $query = $this->db->query("SELECT a.register FROM `2023_v1`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%' and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register) union SELECT a.register FROM `2023_v1`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '%".$kib."%' and left(a.`nomor_lokasi_baru`,12) like '%".$lokasi."%'  and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register)");
+                }
+
+                
 
                 return $query;
 
@@ -1020,7 +1026,7 @@
                             WHERE
                                 hapus = '' 
                                 AND LEFT ( kode64_baru, 6 ) = '".$kode."' 
-                                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
+                                AND extrakomtabel_baru = '' AND nomor_lokasi_baru in ( '".implode("','",$unit)."' )
                             ) sawal,
                             (
                             SELECT
@@ -1030,7 +1036,7 @@
                             WHERE
                                 hapus = '' 
                                 AND LEFT ( kode64_baru, 6 ) = '".$kode."'  
-                                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
+                                AND extrakomtabel_baru = '' AND nomor_lokasi_baru in ( '".implode("','",$unit)."' )
                             ) tambah"
                     );
                 } else { 

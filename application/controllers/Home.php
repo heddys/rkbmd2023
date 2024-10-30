@@ -23,6 +23,9 @@ class Home extends CI_Controller {
 			$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		}
 
+		// var_dump($nomor_lokasi);
+		// die();
+
 		if($this->session->userdata('nip') == "198210182010011002") {
 			$data['rekap_upt'] = $this->form_model->get_rekap_per_uptd($nomor_lokasi);
 			$data['only_opd'] = $this->form_model->get_data_dinkes_only()->row();
