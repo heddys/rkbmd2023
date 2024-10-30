@@ -62,7 +62,7 @@ class Home extends CI_Controller {
 
 	public function cek_sess() 
 	{
-		if($this->session->userdata('role') =="Pengurus Barang" ){
+		if($this->session->userdata('role') =="Pengurus Barang" || $this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD' ){
 			$opd=$this->session->userdata('skpd');
 			$this->load->model('form_model');
 			return;

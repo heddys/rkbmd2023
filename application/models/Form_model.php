@@ -1005,33 +1005,62 @@
             public function get_kib_per_aset($kode,$unit) {
     
                 $db_simbada=$this->load->database('simbada',TRUE);
-            
-                $query = $db_simbada->query(
-                    "SELECT
-                        sum(
-                        COALESCE ( sawal.x, 0 )+ COALESCE ( tambah.y, 0 )) as jum_kib
-                     FROM
-                        (
-                        SELECT
-                            sum( saldo_barang ) x 
-                        FROM
-                            kib_awal 
-                        WHERE
-                            hapus = '' 
-                            AND LEFT ( kode64_baru, 6 ) = '".$kode."' 
-                            AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
-                        ) sawal,
-                        (
-                        SELECT
-                            sum( saldo_barang ) y 
-                        FROM
-                            kib 
-                        WHERE
-                            hapus = '' 
-                            AND LEFT ( kode64_baru, 6 ) = '".$kode."'  
-                            AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
-                        ) tambah"
-                );
+                
+                if ($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD") {
+                    $query = $db_simbada->query(
+                        "SELECT
+                            sum(
+                            COALESCE ( sawal.x, 0 )+ COALESCE ( tambah.y, 0 )) as jum_kib
+                         FROM
+                            (
+                            SELECT
+                                sum( saldo_barang ) x 
+                            FROM
+                                kib_awal 
+                            WHERE
+                                hapus = '' 
+                                AND LEFT ( kode64_baru, 6 ) = '".$kode."' 
+                                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
+                            ) sawal,
+                            (
+                            SELECT
+                                sum( saldo_barang ) y 
+                            FROM
+                                kib 
+                            WHERE
+                                hapus = '' 
+                                AND LEFT ( kode64_baru, 6 ) = '".$kode."'  
+                                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
+                            ) tambah"
+                    );
+                } else { 
+                    $query = $db_simbada->query(
+                        "SELECT
+                            sum(
+                            COALESCE ( sawal.x, 0 )+ COALESCE ( tambah.y, 0 )) as jum_kib
+                         FROM
+                            (
+                            SELECT
+                                sum( saldo_barang ) x 
+                            FROM
+                                kib_awal 
+                            WHERE
+                                hapus = '' 
+                                AND LEFT ( kode64_baru, 6 ) = '".$kode."' 
+                                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
+                            ) sawal,
+                            (
+                            SELECT
+                                sum( saldo_barang ) y 
+                            FROM
+                                kib 
+                            WHERE
+                                hapus = '' 
+                                AND LEFT ( kode64_baru, 6 ) = '".$kode."'  
+                                AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
+                            ) tambah"
+                    );
+                }
             
                 return $query;
             }
@@ -1040,7 +1069,7 @@
             public function data_progres_opd($lokasi)
             {
                 // return $query;
-                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ){
+                if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD"){
                     $query=$this->db->query(
                         "SELECT
                             b.unit,

@@ -862,7 +862,7 @@ class Form_inv extends CI_Controller {
 
     private function cek_sess() 
 	{
-		if($this->session->userdata('role') =="Pengurus Barang" ){
+		if($this->session->userdata('role') =="Pengurus Barang" || $this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD' ){
 			$opd=$this->session->userdata('skpd');
 			$this->load->model('auth_model');
 			return;

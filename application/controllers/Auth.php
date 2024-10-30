@@ -46,6 +46,8 @@ class Auth extends CI_Controller {
 				elseif ($this->session->userdata('role')=='Pengurus Barang') {
 					redirect('home');
 	
+				} elseif ($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
+					redirect('home');
 				} else {
 					$this->logout();
 				}
