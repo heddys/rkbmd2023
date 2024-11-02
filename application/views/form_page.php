@@ -69,7 +69,7 @@
                         <td><center><?php echo $row->merk_alamat." - ".$row->tipe;?></center></td>
                         <td><center><?php echo $row->tahun_pengadaan;?></center></td>
                         <td><center><?php echo number_format($row->harga_baru,2,',','.');?></center></td>
-                        <td><center><?php echo $row->sttaus_register;?></center></td>
+                        <td><center><?php echo $row->status_register;?></center></td>
 	                  		<td>  
                               <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir_<?php echo $kib_apa; ?>" method="post">
                                 <center>

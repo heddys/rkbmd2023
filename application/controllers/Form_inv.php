@@ -36,26 +36,26 @@ class Form_inv extends CI_Controller {
 			$data['kib_apa']=$id;
 
 				if($id=='1') {
-					$this->session->set_userdata('kib','1.3.1');
+					$this->session->set_userdata('kib','1.3.01');
 					$kib = $this->session->userdata('kib');
 				} 
 				elseif ($id=='2') {
-					$this->session->set_userdata('kib','1.3.2');
+					$this->session->set_userdata('kib','1.3.02');
 					$kib = $this->session->userdata('kib');
 				} elseif ($id=='3') {
-					$this->session->set_userdata('kib','1.3.3');
+					$this->session->set_userdata('kib','1.3.03');
 					$kib = $this->session->userdata('kib');
 				} elseif ($id=='4') {
-					$this->session->set_userdata('kib','1.3.4');
+					$this->session->set_userdata('kib','1.3.04');
 					$kib = $this->session->userdata('kib');
 				} elseif ($id=='5') {
-					$this->session->set_userdata('kib','1.3.5');
+					$this->session->set_userdata('kib','1.3.05');
 					$kib = $this->session->userdata('kib');
 				} elseif($id=='6') { 
-					$this->session->set_userdata('kib','1.5.3');
+					$this->session->set_userdata('kib','1.5.03');
 					$kib = $this->session->userdata('kib');
 				} else {
-					$this->session->set_userdata('kib','1.3.1');
+					$this->session->set_userdata('kib','1.3.01');
 					$kib = $this->session->userdata('kib');
 				}
 				
