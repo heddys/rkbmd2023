@@ -166,6 +166,8 @@ class Auth extends CI_Controller {
 			// var_dump($data_session);
 			if ($this->session->userdata('role')=='Verifikator'){
 				redirect('home_verifikator');
+			} elseif ($this->session->userdata('role') == 'Kepala OPD') {
+				redirect('home_kadis');
 			} elseif ($this->session->userdata('role')=='Penyelia') {
 				redirect('home_penyelia');
 			} elseif ($this->session->userdata('role')=='Admin') {
