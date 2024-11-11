@@ -73,7 +73,7 @@
 	                  		<td>  
                               <form role="form" action="<?php echo site_url();?>/form_inv/isi_formulir_<?php echo $kib_apa; ?>" method="post">
                                 <center>
-                                  <button type="submit" class="btn btn-sm btn-info" title="Isi Form Inventarisasi"><i class="fas fa-edit"></i></a>
+                                  <button type="submit" class="btn btn-sm btn-success" title="Isi Form Inventarisasi"><i class="fas fa-eye"></i></a>
                                     <input type="hidden" name="register" value="<?php echo $row->register?>">
                                 </center></td>
                               </form>
