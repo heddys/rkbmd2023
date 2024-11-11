@@ -193,4 +193,159 @@ class Home_kadis extends CI_Controller {
 		return $result;
 	}
 
+	public function isi_formulir_1()
+    {
+        $this->cek_sess();
+		$data['page']="Isi Form Inventarisasi";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register($register);
+		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+
+		if($sk_penggunaan->num_rows() > 0) {
+			$data['sk_penggunaan']=$sk_penggunaan->row();
+		} else {
+			$data['sk_penggunaan']="NULL";
+		}
+		
+		$this->load->view('kadis/header_kds',$data);		
+		$this->load->view('kadis/isi_form_tanah',$data);
+		$this->load->view('kadis/footer_isi_form_tanah');
+
+	}
+
+	public function isi_formulir_2()
+    {
+        $this->cek_sess();
+		$data['page']="Isi Form Inventarisasi";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register($register);
+		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		
+		$this->load->view('kadis/header_kds',$data);	
+		$this->load->view('kadis/isi_form_pm',$data);
+		$this->load->view('kadis/footer_isi_form_pm');
+
+	}
+
+	public function isi_formulir_3()
+    {
+        $this->cek_sess();
+		$data['page']="Isi Form Inventarisasi";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register($register);
+		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+
+		if($sk_penggunaan->num_rows() > 0) {
+			$data['sk_penggunaan']=$sk_penggunaan->row();
+		} else {
+			$data['sk_penggunaan']="NULL";
+		}
+		
+		$this->load->view('kadis/header_kds',$data);	
+		$this->load->view('kadis/isi_form_gdb',$data);
+		$this->load->view('kadis/footer_isi_form_gdb');
+
+	}
+
+	public function isi_formulir_4()
+    {
+        $this->cek_sess();
+		$data['page']="Isi Form Inventarisasi";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register($register);
+		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+
+		if($sk_penggunaan->num_rows() > 0) {
+			$data['sk_penggunaan']=$sk_penggunaan->row();
+		} else {
+			$data['sk_penggunaan']="NULL";
+		}
+		
+		$this->load->view('kadis/header_kds',$data);	
+		$this->load->view('kadis/isi_form_jij',$data);
+		$this->load->view('kadis/footer_isi_form_jij');
+
+	}
+		
+	public function isi_formulir_5()
+    {
+        $this->cek_sess();
+		$data['page']="Isi Form Inventarisasi";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register($register);
+		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		
+		$this->load->view('kadis/header_kds',$data);	
+		$this->load->view('kadis/isi_form_atl',$data);
+		$this->load->view('kadis/footer_isi_form_atl');
+
+	}		
+
+		
+	public function isi_formulir_6()
+    {
+        $this->cek_sess();
+		$data['page']="Isi Form Inventarisasi";
+		$data['kode_barang']=$this->form_model->data_kode_barang();
+		$data['satuan']=$this->form_model->data_satuan();
+		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+
+		
+		$register = $_POST['register'];
+		
+		$data['data_register'] = $this->form_model->ambil_register($register);
+		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		
+
+		$this->load->view('kadis/header_kds',$data);	
+		$this->load->view('kadis/isi_form_atb',$data);
+		$this->load->view('kadis/footer_isi_form_atb');
+
+    }
+
+	public function halaman_cetak_laporan()
+	{
+		$this->cek_sess();
+		$data['page']="List Cetak Laporan";
+
+		$this->load->view('kadis/header_kds',$data);		
+		$this->load->view('kadis/laporan_kadis/halaman_cetak_laporan_kadis');
+		$this->load->view('kadis/footer_kds');	
+	}
+
+	
+
 }

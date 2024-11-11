@@ -3,28 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SI-IBMD APP KOTA SURABAYA</title>
+  <title>SI-IBMD KOTA SURABAYA</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/fontawesome-free/css/all.min.css">
-  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/ionicons/ionicons.min.css">
   <!-- icon tab -->
   <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>ini_assets/image/surabaya1.png" />
-  <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/ionicons/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/toastr/toastr.min.css">
-     <!-- Select2 -->
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/summernote/summernote-bs4.css">
+   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/select2/css/select2.min.css">
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.css">
 </head>
-<body class="sidebar-mini layout-fixed" style="height: auto;"> 
+<body class="sidebar-mini layout-fixed" style="height: auto;">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -49,10 +56,20 @@
             }
           }
           .modal { overflow: auto !important; }
+
           .modal-backdrop {
-              width: 100% !important;
-              height: 100% !important;
+            width: 100% !important;
+            height: 100% !important;
           }
+
+          .gambar:hover {
+            transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+          }
+        </style>
+        <style>
+        .modal-xxl {
+            max-width: 70%;
+        }
         </style>
         <!--UNTUK NAMA DINASNYA-->
         <strong class="nav-link fontku"><font color="white"><?php echo $this->session->userdata('skpd');?> KOTA SURABAYA - (<?php echo strtoupper($this->session->userdata('nama_login'));?>) </font></strong>
@@ -60,19 +77,36 @@
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto fontku">
-          <strong><u><?php echo $this->session->userdata('role');?></u></strong> 
+          <strong><u>PENGGUNA BARANG (Kepala PD)</u></strong> 
     </ul>
+    <!-- <ul class="navbar-nav ml-15">
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 Register Proses Verifikasi
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 Register Di Tolak
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 Register Terverifikasi
+          </a>
+        </div>
+      </li>
+    </ul> -->
     &nbsp; &nbsp; &nbsp;
     <ul class="navbar-nav ml-15 fontku">
-      <ul class="navbar-nav ml-auto fontku">
-      <div id="clock"></div> &nbsp | &nbsp<div id="date"></div>
+      <div id="clock"></div> &nbsp; | &nbsp;<div id="date"></div>
     </ul>
-      <!--<li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>-->
-    </ul>
+    
   </nav>
   <!-- /.navbar -->
 
@@ -86,6 +120,7 @@
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
       <hr>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -185,7 +220,7 @@
           </li>
           <li class="nav-header"><strong>STATUS REGISTER</strong></li>
           <li class="nav-item has-treeview">
-            <a href="<?php echo site_url('status_form/cari_status_reg')?>" class="nav-link">
+            <a href="<?php echo site_url('home_kadis/cari_status_reg')?>" class="nav-link">
               <i class="nav-icon 	fas fa-glasses"></i>
               <p>
                 Cari Status Register
@@ -202,37 +237,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/1');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Tanah</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/2');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/2');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Peralatan Mesin</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/3');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Gedung dan Bangunan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/4');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Jalan, Irigasi dan Jaringan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/5');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/5');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap Lainnya</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/6');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/6');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tak Berwujud</p>
                 </a>
@@ -249,37 +284,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/1');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Tanah</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/2');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/2');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Peralatan Mesin</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/3');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Gedung dan Bangunan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/4');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Jalan, Irigasi dan Jaringan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/5');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/5');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap Lainnya</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/6');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/6');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tak Berwujud</p>
                 </a>
@@ -297,7 +332,7 @@
           </li> -->
           <li class="nav-header"><strong>MENU LAPORAN</strong></li>
           <li class="nav-item has-treeview">
-            <a href="<?php echo site_url('status_form/halaman_buku_bantu')?>" class="nav-link">
+            <a href="<?php echo site_url('home_kadis/halaman_buku_bantu')?>" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Buku Bantu
@@ -339,7 +374,7 @@
             </ul> -->
           </li>
           <li class="nav-item has-treeview">
-            <a href="<?php echo site_url('status_form/halaman_cetak_laporan')?>" class="nav-link">
+            <a href="<?php echo site_url('home_kadis/halaman_cetak_laporan')?>" class="nav-link">
               <i class="nav-icon fa fa-bookmark"></i>
               <p>
                 Laporan Hasil Inventarisasi
@@ -347,7 +382,7 @@
             </a>
             <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang');?>" class="nav-link" target="_blank">
+                <a href="<?php echo site_url('home_kadis/cetak_form_kondisi_barang');?>" class="nav-link" target="_blank">
                   <i class="nav-icon fa fa-file"></i>
                   <p>
                       Perubahan Kondisi Barang
@@ -355,7 +390,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang');?>" class="nav-link" target="_blank">
+                <a href="<?php echo site_url('home_kadis/cetak_perubahan_data_barang');?>" class="nav-link" target="_blank">
                   <i class="nav-icon fa fa-file"></i>
                   <p>
                       Perubahan Data Barang
@@ -363,7 +398,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan');?>" class="nav-link" target="_blank">
+                <a href="<?php echo site_url('home_kadis/cetak_barang_tidak_ditemukan');?>" class="nav-link" target="_blank">
                   <i class="nav-icon fa fa-file"></i>
                   <p>
                       Barang Tidak Diketemukan
@@ -445,3 +480,9 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
+
+
+
+
+   

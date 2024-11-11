@@ -220,7 +220,7 @@
           </li>
           <li class="nav-header"><strong>STATUS REGISTER</strong></li>
           <li class="nav-item has-treeview">
-            <a href="<?php echo site_url('status_form/cari_status_reg')?>" class="nav-link">
+            <a href="<?php echo site_url('home_kadis/cari_status_reg')?>" class="nav-link">
               <i class="nav-icon 	fas fa-glasses"></i>
               <p>
                 Cari Status Register
@@ -237,37 +237,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/1');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Tanah</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/2');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/2');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Peralatan Mesin</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/3');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Gedung dan Bangunan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/4');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Jalan, Irigasi dan Jaringan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/5');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/5');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap Lainnya</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/verif_page/6');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/verif_page/6');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tak Berwujud</p>
                 </a>
@@ -284,37 +284,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/1');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/1');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Tanah</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/2');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/2');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Peralatan Mesin</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/3');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/3');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Gedung dan Bangunan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/4');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/4');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Jalan, Irigasi dan Jaringan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/5');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/5');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tetap Lainnya</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/index/6');?>" class="nav-link">
+                <a href="<?php echo site_url('home_kadis/index/6');?>" class="nav-link">
                   <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
                   <p>Aset Tak Berwujud</p>
                 </a>
@@ -332,7 +332,7 @@
           </li> -->
           <li class="nav-header"><strong>MENU LAPORAN</strong></li>
           <li class="nav-item has-treeview">
-            <a href="<?php echo site_url('status_form/halaman_buku_bantu')?>" class="nav-link">
+            <a href="<?php echo site_url('home_kadis/halaman_buku_bantu')?>" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Buku Bantu
@@ -374,7 +374,7 @@
             </ul> -->
           </li>
           <li class="nav-item has-treeview">
-            <a href="<?php echo site_url('status_form/halaman_cetak_laporan')?>" class="nav-link">
+            <a href="<?php echo site_url('home_kadis/halaman_cetak_laporan')?>" class="nav-link">
               <i class="nav-icon fa fa-bookmark"></i>
               <p>
                 Laporan Hasil Inventarisasi
@@ -382,7 +382,7 @@
             </a>
             <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/cetak_form_kondisi_barang');?>" class="nav-link" target="_blank">
+                <a href="<?php echo site_url('home_kadis/cetak_form_kondisi_barang');?>" class="nav-link" target="_blank">
                   <i class="nav-icon fa fa-file"></i>
                   <p>
                       Perubahan Kondisi Barang
@@ -390,7 +390,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/cetak_perubahan_data_barang');?>" class="nav-link" target="_blank">
+                <a href="<?php echo site_url('home_kadis/cetak_perubahan_data_barang');?>" class="nav-link" target="_blank">
                   <i class="nav-icon fa fa-file"></i>
                   <p>
                       Perubahan Data Barang
@@ -398,7 +398,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('status_form/cetak_barang_tidak_ditemukan');?>" class="nav-link" target="_blank">
+                <a href="<?php echo site_url('home_kadis/cetak_barang_tidak_ditemukan');?>" class="nav-link" target="_blank">
                   <i class="nav-icon fa fa-file"></i>
                   <p>
                       Barang Tidak Diketemukan
