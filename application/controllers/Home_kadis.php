@@ -187,6 +187,10 @@ class Home_kadis extends CI_Controller {
 			}
 	}
 
+	public function save_verif(){
+		
+	}
+
 	public function cek_jumlah_exist(){
 		$kode_opd=$this->session->userdata('kode_opd');
 		$result=$this->auth_model->cek_exist($kode_opd)->num_rows();
@@ -346,6 +350,239 @@ class Home_kadis extends CI_Controller {
 		$this->load->view('kadis/footer_kds');	
 	}
 
-	
+	public function cetak_form_kondisi_barang($kib)
+    {
+        $this->cek_sess();
+        $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+        $get_data_pb=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$get_data_register=$this->kadis_model->get_register_sudah_verf($nomor_lokasi,$kib)->result();
+		ini_set('memory_limit', '2048M');
+		$data_register=array();
+		$data_register_updated=array();
+		foreach ($get_data_register as $key) {
+			$data_register[]=array(
+				'no_lokasi' => $key->nomor_lokasi_baru,
+				'register' =>$key->register,
+				'opd' => $key->unit,
+				'lokasi' => $key->lokasi,
+				'kondisi_awal' => $key->kondisi,
+				'kode108' => $key->kode108_baru,
+				'nama_barang' => $key->nama_barang_baru,
+				'merk' => $key->merk_alamat_baru,
+				'tipe' => $key->tipe_baru,
+				'satuan' => $key->satuan,
+				'harga' => $key->harga_baru,
+			);
+		}
+		
+		foreach ($data_register as $row) {
+			// echo $row['register']."<br>";
+			$data_inv=$this->kadis_model->get_kondisi_update($row['register']);
+
+			if($data_inv->num_rows() > 0){
+				$data_updated = $data_inv->row();
+				if($row['kondisi_awal'] != $data_updated->kondisi_barang) {
+					$data_register_updated[]=array(
+						'no_lokasi' => $row['no_lokasi'],
+						'register' =>$row['register'],
+						'opd' => $row['opd'],
+						'lokasi' => $row['lokasi'],
+						'kondisi_awal' => $row['kondisi_awal'],
+						'kondisi_baru' => $data_updated['kondisi_barang'],
+						'kode108' => $row['kode108'],
+						'nama_barang' => $row['nama_barang'],
+						'merk' => $row['merk'],
+						'tipe' => $row['tipe'],
+						'satuan' => $row['satuan'],
+						'harga' => $row['harga'],
+						'keterangan' => $data_updated['keterangan']
+					);
+				}
+			}
+		
+		}
+		// echo '<pre style="background: #DEDEDE; color: #484848;">'; var_dump( $data_register_updated ); echo '</pre>';
+		// die();
+		
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala);
+
+		if ($cek_verif->num_rows() <= 0) {
+			$data['data_spesimen'] = 'Kosong';
+		} else {
+			$data_nip = $cek_verif->row();
+			$date['data_spesimen'] = $this->kadis_model->get_spesimen_simbada($data_nip->nip_kepala)->row();
+		}
+
+		
+        $data['data_kondisi']=$data_register_updated;
+        $data['data_pb']=$get_data_pb;
+
+		// ini_set('memory_limit','0');
+        // $this->pdf->load_view('laporan/cetak_form_kondisi_barang',$data);
+		// $this->pdf->set_paper("legal", "landscape");
+		// $this->pdf->render();
+        // ob_end_clean();
+		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
+
+
+		$data['kib_apa'] = $kib;
+		$this->load->view('kadis/laporan_kadis/cetak_form_kondisi_barang',$data);		
+    }
+
+	public function cetak_barang_tidak_ditemukan($kib)
+    {
+        $this->cek_sess();
+        $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+        $get_data_pb=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$get_data_register=$this->kadis_model->get_register_sudah_verf($nomor_lokasi,$kib)->result();
+		ini_set('memory_limit', '2048M');
+		$data_register=array();
+		$data_register_updated=array();
+		foreach ($get_data_register as $key) {
+			$data_register[]=array(
+				'no_lokasi' => $key->nomor_lokasi,
+				'register' =>$key->register,
+				'opd' => $key->unit,
+				'lokasi' => $key->lokasi,
+				'kondisi_awal' => $key->kondisi,
+				'kode108' => $key->kode108_baru,
+				'nama_barang' => $key->nama_barang,
+				'merk' => $key->merk_alamat,
+				'tipe' => $key->tipe,
+				'satuan' => $key->satuan,
+				'harga' => $key->harga_baru,
+			);
+		}
+
+		
+		foreach ($data_register as $row) {
+			$data_updated=$this->kadis_model->get_keberadaan_barang_update($row['register'])->row();
+			if($data_updated->keberadaan_barang == "Tidak Diketemukan"){
+				$data_register_updated[]=array(
+					'no_lokasi' => $row['no_lokasi'],
+					'register' =>$row['register'],
+					'opd' => $row['opd'],
+					'lokasi' => $row['lokasi'],
+					'kondisi_awal' => $row['kondisi_awal'],
+					'kode108' => $row['kode108'],
+					'nama_barang' => $row['nama_barang'],
+					'merk' => $row['merk'],
+					'tipe' => $row['tipe'],
+					'satuan' => $row['satuan'],
+					'harga' => $row['harga'],
+					'keterangan' => $data_updated->keterangan
+				);
+			}
+		}
+
+        $data['data_kondisi']=$data_register_updated;
+        $data['data_pb']=$get_data_pb;
+		$data['kib_apa'] = $kib;
+
+		// ini_set('memory_limit','0');
+        // $this->pdf->load_view('laporan_kadis/cetak_form_kondisi_barang',$data);
+		// $this->pdf->set_paper("legal", "landscape");
+		// $this->pdf->render();
+        // ob_end_clean();
+		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
+		$this->load->view('kadis/laporan_kadis/cetak_barang_tidak_diketemukan',$data);		
+    }
+
+
+	public function cetak_perubahan_data_barang($kib)
+    {
+        $this->cek_sess();
+        $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+        $get_data_pb=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		
+		$data['data_register']=$this->kadis_model->get_perubahan_data_verif($nomor_lokasi,$kib)->result();
+		
+
+		// 
+        // $this->pdf->load_view('kadis/laporan_kadis/cetak_form_kondisi_barang',$data);
+		// $this->pdf->set_paper("legal", "landscape");
+		// $this->pdf->render();
+        // ob_end_clean();
+		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
+		$data['data_pb']=$get_data_pb;
+		$data['kib_apa'] = $kib;
+		$this->load->view('kadis/laporan_kadis/cetak_perubahan_data_barang',$data);		
+    }
+
+	public function laporan_barang_hilang($kib)
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$data['data_barang']=$this->kadis_model->get_data_hilang($kib,$nomor_lokasi)->result();
+		$data['kib_apa'] = $kib;
+
+		$this->load->view('kadis/laporan_kadis/cetak_barang_hilang',$data);
+	}
+
+	public function laporan_belum_dikapt_diketahui_induk($kib)
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$data['data_barang']=$this->kadis_model->get_belum_kapt_ada_induk($kib,$nomor_lokasi)->result();
+		$data['kib_apa'] = $kib;
+
+		$this->load->view('kadis/laporan_kadis/cetak_belum_kapt_diketahui',$data);
+	}
+
+	public function laporan_belum_dikapt_tidak_diketahui_induk($kib)
+	{
+		$this->cek_sess();
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		// ini_set('memory_limit', '2048M');
+		$data['kib_apa'] = $kib;
+		// $data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk('1.3.2')->result();
+
+		$this->load->view('kadis/laporan_kadis/cetak_belum_kapt_tidak_diketahui_induk',$data);
+	}
+
+	public function laporan_data_tercatat_ganda($kib)
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$data['data_barang']=$this->kadis_model->get_data_ganda($kib,$nomor_lokasi)->result();
+
+		$data['kib_apa'] = $kib;
+
+		$this->load->view('kadis/laporan_kadis/cetak_barang_ganda',$data);
+	}
+
+	public function laporan_data_digunakan_pihak_lain($kib)
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		// $data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
+		$data['kib_apa'] = $kib;
+
+
+		$this->load->view('kadis/laporan_kadis/cetak_barang_digunakan_instansi_lain',$data);
+	}
+
+	public function laporan_data_digunakan_pegawai_pemda($kib)
+	{
+		$this->cek_sess();
+		ini_set('memory_limit', '2048M');
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$data['data_barang']=$this->kadis_model->get_data_dipakai_pegawai($kib,$nomor_lokasi)->result();
+
+		$data['kib_apa'] = $kib;
+		$this->load->view('kadis/laporan_kadis/cetak_barang_digunakan_pegawai',$data);
+	}
+
+
 
 }

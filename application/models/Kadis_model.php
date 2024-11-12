@@ -363,5 +363,79 @@ class Kadis_model extends CI_Model{
 
     //END OF Query Untuk Register Yang Belum Di Inventarisasi ==========================> 
 
+    //Query Untuk Cetak Laporan Hasil Inventarsisasi
+
+    public function ambil_data_pb($nomor_lokasi)
+    {
+        $this->db->select('*');
+        $this->db->from('pengguna');
+        $this->db->like('nomor_lokasi', $nomor_lokasi);
+        $this->db->where_in('fungsi', array('Pengurus Barang','Verifikator'));
+        return $this->db->get();
+    }
+
+    public function get_register_sudah_verf($lokasi,$kib)
+    {   
+
+        $simbadadb = $this->load->database('simbada',TRUE);
+
+        $query = $simbadadb->query(
+                    "SELECT
+                        a.nomor_lokasi_baru,
+                        a.register,
+                        b.unit,
+                        b.lokasi,
+                        a.kondisi,
+                        a.kode108_baru,
+                        a.nama_barang_baru,
+                        a.merk_alamat_baru,
+                        a.tipe_baru,
+                        a.satuan,
+                        a.harga_baru
+                    FROM
+                        kib_awal a
+                        INNER JOIN kamus_lokasi b ON a.nomor_lokasi_baru = b.nomor_lokasi 
+                    WHERE
+                        a.nomor_lokasi_baru LIKE '".$lokasi."%' 
+                        AND a.kode108_baru LIKE '".$kib."%'
+                        AND a.hapus <> 1
+                        AND a.extrakomtabel_baru <> 1
+                    UNION
+                    SELECT
+                        a.nomor_lokasi_baru,
+                        a.register,
+                        b.unit,
+                        b.lokasi,
+                        a.kondisi,
+                        a.kode108_baru,
+                        a.nama_barang_baru,
+                        a.merk_alamat_baru,
+                        a.tipe_baru,
+                        a.satuan,
+                        a.harga_baru
+                    FROM
+                        kib a
+                        INNER JOIN kamus_lokasi b ON a.nomor_lokasi_baru = b.nomor_lokasi 
+                    WHERE
+                        a.nomor_lokasi_baru LIKE '".$lokasi."%' 
+                        AND a.kode108_baru LIKE '".$kib."%'
+                        AND a.hapus <> 1
+                        AND a.extrakomtabel_baru <> 1"
+                );
+        
+        return $query;
+    }
+
+    public function get_kondisi_update($register)
+    {
+        $query = $this->db->query("SELECT * FROM register_isi where register = '".$register."' and status = 2 ORDER BY created_date desc, created_time desc limit 1");
+        return $query;
+    }
+
+    public function info_verif($nip)
+    {
+        return $this->db->get_where('jurnal_verif_lhi', array('nip_kepala' => $nip));
+    }
+
 }
     
