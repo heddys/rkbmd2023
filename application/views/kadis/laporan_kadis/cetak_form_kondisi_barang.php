@@ -268,7 +268,7 @@ function tgl_indo($tanggal){
                 <form action="<?php echo site_url('/home_kadis/save_verif');?>" method="post">
                     <div class="modal-body">
                         <label for="tanggal">Pilih Tanggal : </label>
-                        <input type="date" id="tanggal" name="tanggal" required>
+                        <input type="date" id="tanggal" name="tanggal" value="" required>
                         <br>
                         <br>
                         <label for="agree">Centang Jika Data LHI Ini Sudah Benar : </label>
@@ -277,7 +277,9 @@ function tgl_indo($tanggal){
                     </div>
                     <div class="modal-footer justify-content-between">
                         <input type="hidden" name="nip" value="<?php echo $data_pb->nip_kepala; ?>">
-                        <input type="hidden" name="nama_tabel" value="lhi_perubahan_fisik">
+                        <input type="hidden" name="nama" value="<?php echo $data_pb->nama_kepala; ?>">
+                        <input type="hidden" name="jenis_lhi" value="2">
+                        <input type="hidden" name="kib" value="<?php echo $kib_apa; ?>">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
                         <button type="submit" class="btn btn-info" id="btn-submit" disabled>Saya Setuju</button>
                     </div>

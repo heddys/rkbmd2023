@@ -188,7 +188,19 @@ class Home_kadis extends CI_Controller {
 	}
 
 	public function save_verif(){
+		$this->cek_sess();
 		
+		$nip = $_POST['nip'];
+		$nama = $_POST['nama'];
+		$kode_lhi = $_POST['jenis_lhi'];
+		$kib = $_POST['kib'];
+		$tanggal_verif = $_POST['tanggal'];
+
+		date_default_timezone_set("Asia/Jakarta");	
+		$updated_date=date("Y-m-d");
+
+		echo $this->session->userdate('')
+
 	}
 
 	public function cek_jumlah_exist(){
