@@ -236,15 +236,15 @@ function tgl_indo($tanggal){
                 <td colspan="13"></td>
                 <td style="text-align: center; vertical-align: middle;"><button id="button_verif" class="btn btn-md btn-danger" data-toggle="modal" data-target="#modal-verif">Verifikasi LHI</button></td>
             </tr>
-    <?} else {?>
+    <?php } else {?>
         <tr>
             <td colspan="13"></td>
-            <td><br><br></td>
+            <td></td>
         </tr>
     
         <tr>
             <td colspan="13"></td>
-            <td style="text-align: center; vertical-align: middle;">asdadwdawzdawd</td>
+            <td style="text-align: center; vertical-align: middle;"><?php echo $data_spesimen->nip_kepala;?></td>
         </tr>
     <?php } ?>
     <tr>
