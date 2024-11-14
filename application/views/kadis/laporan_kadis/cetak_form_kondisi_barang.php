@@ -220,7 +220,7 @@ function tgl_indo($tanggal){
     </tr>
     <tr>
         <td colspan="13"></td>
-        <td width="20%" style="text-align: center; vertical-align: middle;">Surabaya, <?php echo ($data_spesimen === 'Kosong') ? "" : $data_spesimen->created_date_lhi_perubahan_data; ?></td>
+        <td width="20%" style="text-align: center; vertical-align: middle;">Surabaya, <?php echo ($data_spesimen === 'Kosong') ? "" : $data_spesimen->tanggal_lhi; ?></td>
     </tr>
     <tr>
         <td colspan="13"></td>
@@ -242,10 +242,10 @@ function tgl_indo($tanggal){
             <td><br><br></td>
         </tr>
     
-        <!-- <tr>
+        <tr>
             <td colspan="13"></td>
-            <td style="text-align: center; vertical-align: middle;"><?php echo $data_spesimen->spesimen_pengelola?></td>
-        </tr> -->
+            <td style="text-align: center; vertical-align: middle;">asdadwdawzdawd</td>
+        </tr>
     <?php } ?>
     <tr>
         <td colspan="13"></td>

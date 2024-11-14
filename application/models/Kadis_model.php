@@ -432,9 +432,42 @@ class Kadis_model extends CI_Model{
         return $query;
     }
 
-    public function info_verif($nip)
+    public function info_verif($nip,$kib,$kode_lhi)
     {
-        return $this->db->get_where('jurnal_verif_lhi', array('nip_kepala' => $nip));
+        return $this->db->get_where('jurnal_verif_lhi', array('nip_kepala' => $nip, 'kode_aset' => $kib, 'kode_lhi' => $kode_lhi));
+    }
+
+    public function cek_data_lhi($nip,$kode_lhi,$kib) {
+        return $this->db->get_where('jurnal_verif_lhi',array('nip_kepala' => $nip, 'kode_lhi' => $kode_lhi, 'kode_aset' => $kib));
+    }
+
+    public function save_verif_lhi($data){
+        $this->db->insert('jurnal_verif_lhi', $data); // 'nama_tabel' adalah nama tabel di database
+
+        if ($this->db->affected_rows() > 0) {
+            return "TRUE";
+        } else {
+            return "FALSE";
+        }
+    }
+
+    public function update_verif_lhi($nip,$kode_lhi,$kib,$tanggal_verif){
+
+        $this->db->where('nip_kepala', $nip); // Ganti 'id' dan '1' dengan kolom dan nilai yang sesuai
+        $this->db->where('kode_lhi', $kode_lhi); // Ganti 'id' dan '1' dengan kolom dan nilai yang sesuai
+        $this->db->where('kode_aset', $kib); // Ganti 'id' dan '1' dengan kolom dan nilai yang sesuai
+        $this->db->update('jurnal_verif_lhi', array('tanggal_lhi' => $tanggal_verif));
+
+        if ($this->db->affected_rows() > 0) {
+            return "TRUE";
+        } else {
+            return "FALSE";
+        }
+
+    }
+
+    public function get_spesimen_simbada($nip) {
+        
     }
 
 }

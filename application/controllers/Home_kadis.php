@@ -199,7 +199,86 @@ class Home_kadis extends CI_Controller {
 		date_default_timezone_set("Asia/Jakarta");	
 		$updated_date=date("Y-m-d");
 
-		echo $this->session->userdate('')
+		$data = array(
+			'nip_kepala' => $nip,
+			'nama_kepala' => $nama,
+			'kode_aset' => $kib,
+			'kode_lhi' => $kode_lhi,
+			'tanggal_lhi' => $tanggal_verif,
+			'updated_at_date' => $updated_date
+		);
+
+		$cek_data = $this->kadis_model->cek_data_lhi($nip,$kode_lhi,$kib);
+
+		if($cek_data->num_rows() > 0) {
+			$save_verif = $this->kadis_model->update_verif_lhi($nip,$kode_lhi,$kib,$tanggal_verif);
+			switch ($kode_lhi) {
+				case '1':
+					$this->cetak_perubahan_data_barang($kib);
+					break;
+				case '2':
+					$this->cetak_form_kondisi_barang($kib);
+					break;
+				case '3':
+					$this->cetak_barang_tidak_ditemukan($kib);
+					break;
+				case '4':
+					$this->laporan_barang_hilang($kib);
+					break;
+				case '5':
+					$this->laporan_belum_dikapt_diketahui_induk($kib);
+					break;
+				case '6':
+					$this->laporan_belum_dikapt_tidak_diketahui_induk($kib);
+				case '7':
+					$this->laporan_data_tercatat_ganda($kib);
+					break;
+				case '8':
+					$this->laporan_data_digunakan_pihak_lain($kib);
+					break;
+				case '9':
+					$this->laporan_data_digunakan_pegawai_pemda($kib);
+					break;
+				default:
+					redirect('home_kadis/index');
+					break;
+			} 
+		} else {
+			$save_verif = $this->kadis_model->save_verif_lhi($data);
+
+			switch ($kode_lhi) {
+				case '1':
+					$this->cetak_perubahan_data_barang($kib);
+					break;
+				case '2':
+					$this->cetak_form_kondisi_barang($kib);
+					break;
+				case '3':
+					$this->cetak_barang_tidak_ditemukan($kib);
+					break;
+				case '4':
+					$this->laporan_barang_hilang($kib);
+					break;
+				case '5':
+					$this->laporan_belum_dikapt_diketahui_induk($kib);
+					break;
+				case '6':
+					$this->laporan_belum_dikapt_tidak_diketahui_induk($kib);
+				case '7':
+					$this->laporan_data_tercatat_ganda($kib);
+					break;
+				case '8':
+					$this->laporan_data_digunakan_pihak_lain($kib);
+					break;
+				case '9':
+					$this->laporan_data_digunakan_pegawai_pemda($kib);
+					break;
+				default:
+					redirect('home_kadis/index');
+					break;
+			}
+		}
+
 
 	}
 
@@ -416,18 +495,26 @@ class Home_kadis extends CI_Controller {
 		// echo '<pre style="background: #DEDEDE; color: #484848;">'; var_dump( $data_register_updated ); echo '</pre>';
 		// die();
 		
-		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala);
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,2);
 
 		if ($cek_verif->num_rows() <= 0) {
 			$data['data_spesimen'] = 'Kosong';
 		} else {
 			$data_nip = $cek_verif->row();
-			$date['data_spesimen'] = $this->kadis_model->get_spesimen_simbada($data_nip->nip_kepala)->row();
+			$data['data_spesimen'] = $data_nip;
+
+			
 		}
+		
+		
+		
 
 		
         $data['data_kondisi']=$data_register_updated;
         $data['data_pb']=$get_data_pb;
+
+		// echo '<pre style="background: #DEDEDE; color: #484848;">'; var_dump( $get_data_pb ); echo '</pre>';
+		// die();
 
 		// ini_set('memory_limit','0');
         // $this->pdf->load_view('laporan/cetak_form_kondisi_barang',$data);
