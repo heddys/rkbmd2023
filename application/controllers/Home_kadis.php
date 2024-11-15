@@ -190,6 +190,7 @@ class Home_kadis extends CI_Controller {
 	public function save_verif(){
 		$this->cek_sess();
 		
+		$nomor_lokasi = $this->session->userdata('no_lokasi_asli');
 		$nip = $_POST['nip'];
 		$nama = $_POST['nama'];
 		$kode_lhi = $_POST['jenis_lhi'];
@@ -202,6 +203,7 @@ class Home_kadis extends CI_Controller {
 		$data = array(
 			'nip_kepala' => $nip,
 			'nama_kepala' => $nama,
+			'nomor_lokasi' => $nomor_lokasi,
 			'kode_aset' => $kib,
 			'kode_lhi' => $kode_lhi,
 			'tanggal_lhi' => $tanggal_verif,
