@@ -25,7 +25,7 @@ class Kadis_model extends CI_Model{
                         kib_awal 
                     WHERE
                         hapus = '' 
-                        AND LEFT ( kode64_baru, 6 ) = '".$kode."' 
+                        AND kode64_baru like '".$kode."%'
                         AND extrakomtabel_baru = '' AND nomor_lokasi_baru in ( '".implode("','",$unit)."' )
                     ) sawal,
                     (
@@ -35,7 +35,7 @@ class Kadis_model extends CI_Model{
                         kib 
                     WHERE
                         hapus = '' 
-                        AND LEFT ( kode64_baru, 6 ) = '".$kode."'  
+                        AND kode64_baru like '".$kode."%'
                         AND extrakomtabel_baru = '' AND nomor_lokasi_baru in ( '".implode("','",$unit)."' )
                     ) tambah"
             );
@@ -52,7 +52,7 @@ class Kadis_model extends CI_Model{
                         kib_awal 
                     WHERE
                         hapus = '' 
-                        AND LEFT ( kode64_baru, 6 ) = '".$kode."' 
+                        AND kode64_baru like '".$kode."%' 
                         AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
                     ) sawal,
                     (
@@ -62,7 +62,7 @@ class Kadis_model extends CI_Model{
                         kib 
                     WHERE
                         hapus = '' 
-                        AND LEFT ( kode64_baru, 6 ) = '".$kode."'  
+                        AND kode64_baru like '".$kode."%'  
                         AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
                     ) tambah"
             );
@@ -71,6 +71,18 @@ class Kadis_model extends CI_Model{
         return $query;
     }
 
+
+    public function get_register_proses_inv($kib,$lokasi) {
+        $query=$this->db->query("SELECT count(register) as jum_reg FROM `register_isi` WHERE kode_neraca like '".$kib."%' and nomor_lokasi_awal like '".$lokasi."%' and status <> '2'");
+        
+        return $query; 
+    }
+
+    public function get_register_sudah_inv($kib,$lokasi) {
+        $query=$this->db->query("SELECT count(register) as jum_reg FROM `register_isi` WHERE kode_neraca like '".$kib."%' and nomor_lokasi_awal like '".$lokasi."%' and status = '2'");
+        
+        return $query; 
+    } 
 
     function data_progres_opd_tanah($lokasi){
         // return $query;
@@ -397,7 +409,7 @@ class Kadis_model extends CI_Model{
                         INNER JOIN kamus_lokasi b ON a.nomor_lokasi_baru = b.nomor_lokasi 
                     WHERE
                         a.nomor_lokasi_baru LIKE '".$lokasi."%' 
-                        AND a.kode108_baru LIKE '".$kib."%'
+                        AND a.kode64_baru LIKE '".$kib."%'
                         AND a.hapus <> 1
                         AND a.extrakomtabel_baru <> 1
                     UNION
@@ -418,7 +430,7 @@ class Kadis_model extends CI_Model{
                         INNER JOIN kamus_lokasi b ON a.nomor_lokasi_baru = b.nomor_lokasi 
                     WHERE
                         a.nomor_lokasi_baru LIKE '".$lokasi."%' 
-                        AND a.kode108_baru LIKE '".$kib."%'
+                        AND a.kode64_baru LIKE '".$kib."%'
                         AND a.hapus <> 1
                         AND a.extrakomtabel_baru <> 1"
                 );

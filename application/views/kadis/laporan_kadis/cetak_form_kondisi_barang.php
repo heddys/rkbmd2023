@@ -66,22 +66,22 @@ function tgl_indo($tanggal){
     return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
   }
 ?>
-<?php if ($kib_apa == '1.3.1') { 
+<?php if ($kib_apa == '1.3.01') { 
             $aset="ASET TETAP TANAH";
         } 
-        elseif ($kib_apa == '1.3.2') {
+        elseif ($kib_apa == '1.3.02') {
             $aset="ASET TETAP PERALATAN DAN MESIN";
         } 
-        elseif ($kib_apa == '1.3.3') {
+        elseif ($kib_apa == '1.3.03') {
             $aset="ASET TETAP GEDUNG DAN BANGUNAN";
         } 
-        elseif ($kib_apa == '1.3.4') {
+        elseif ($kib_apa == '1.3.04') {
             $aset="ASET TETAP JALAN, IRIGASI DAN JARINGAN";
         }
-        elseif ($kib_apa == '1.3.5') {
+        elseif ($kib_apa == '1.3.05') {
             $aset="ASET TETAP LAINNYA";
         }
-        elseif ($kib_apa == '1.5.3') {
+        elseif ($kib_apa == '1.5.03') {
             $aset="ASET TIDAK BERWUJUD";
         }
 ?>
@@ -201,34 +201,37 @@ function tgl_indo($tanggal){
     </tr>
 </table>
 <p>
-<table id="tabel_ttd" style="font-size:12px; width:100%;">
+<table id="tabel_ttd" border="1" style="font-size:12px; width:100%;">
     <tr>
         <td></td>
         <td><b>Catatan : </b></td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
         <td></td>
         <td width="18%">Total <?php echo ucwords(strtolower($aset));?></td>
-        <td colspan="13"><b> : 1122 Register</b></td>
+        <td colspan="13"><b> : <?php echo number_format($total_reg->jum_kib);?> Register</b></td>
         <td width="20%" style="text-align: center; vertical-align: middle;">Surabaya, <?php echo ($data_spesimen === 'Kosong') ? "" : $data_spesimen->tanggal_lhi; ?></td>
     </tr>
     <tr>
         <td></td>
-        <td>Jumlah Yang Belum Di Inventarisasi</td>
-        <td colspan="13"><b> : 500 Register</b></td>
+        <td>Jumlah Aset Masih Belum Di Inventarisasi</td>
+        <td colspan="13"><b> : <?php echo number_format($belum_inv);?> Register</b></td>
         <td style="text-align: center; vertical-align: middle;">Pengguna Barang</td>
     </tr>
     <tr>
         <td></td>
-        <td>
-            Jumlah Proses Verifikasi Pejabat Penatausahaan Aset <br>
-            <hr>
-            <b>Aset <?php echo ucwords(strtolower($aset))." Yang Sudah Di Inventarisasi </b>"?>
-        </td>
-        <td colspan="13"><b> : 1122 Register</b><br><hr width="15%" style="text-align: left;"><b> : 622 Register</b></td>
-        <td><br></td>
+        <td>Jumlah Aset Masih Proses Inventarisasi</td>
+        <td colspan="13"><b> : <?php echo number_format($proses_inv->jum_reg);?> Register</b></td>
     </tr>
+    <tr>
+        <td></td>
+        <td><b>Aset <?php echo ucwords(strtolower($aset))." Yang Sudah Di Inventarisasi </b>"?></td>
+        <td colspan="13"><b> : <?php echo number_format($sudah_inv->jum_reg);?> Register</b></td>
+        <td></td>
+    </tr>
+    
     
     <?php if ($data_spesimen === 'Kosong') { ?>
             <tr>
@@ -240,24 +243,15 @@ function tgl_indo($tanggal){
             <tr>
                 <td></td>
                 <td></td>
-                <td colspan="13"></td>
+                <td colspan="13"><br></td>
+                <td></td>
             </tr>
     <?php } else {?>
         <tr>
             <td></td>
             <td></td>
             <td colspan="13"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td colspan="13"></td>
-            <td style="text-align: center; vertical-align: middle;"><img src="<?php echo base_url()."ini_assets/spesimen/".$data_spesimen->nip_kepala.".png";?>" alt="Spesimen" srcset="" style="width: 50%; height: 50%; object-fit: cover;"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td colspan="13"></td>
+            <td rowspan="3" style="text-align: center; vertical-align: middle;"><img src="<?php echo base_url()."ini_assets/spesimen/".$data_spesimen->nip_kepala.".png";?>" alt="Spesimen" srcset="" style="width: 50%; height: 50%; object-fit: cover;"></td>
         </tr>
     <?php } ?>
     <tr>

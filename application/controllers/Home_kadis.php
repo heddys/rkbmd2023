@@ -481,14 +481,14 @@ class Home_kadis extends CI_Controller {
 						'opd' => $row['opd'],
 						'lokasi' => $row['lokasi'],
 						'kondisi_awal' => $row['kondisi_awal'],
-						'kondisi_baru' => $data_updated['kondisi_barang'],
+						'kondisi_baru' => $data_updated->kondisi_barang,
 						'kode108' => $row['kode108'],
 						'nama_barang' => $row['nama_barang'],
 						'merk' => $row['merk'],
 						'tipe' => $row['tipe'],
 						'satuan' => $row['satuan'],
 						'harga' => $row['harga'],
-						'keterangan' => $data_updated['keterangan']
+						'keterangan' => $data_updated->keterangan
 					);
 				}
 			}
@@ -509,9 +509,6 @@ class Home_kadis extends CI_Controller {
 		}
 		
 		
-		
-
-		
         $data['data_kondisi']=$data_register_updated;
         $data['data_pb']=$get_data_pb;
 
@@ -525,6 +522,15 @@ class Home_kadis extends CI_Controller {
         // ob_end_clean();
 		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
 
+		//Mengambil informasi Register
+		$data['total_reg']=$this->kadis_model->get_kib_per_aset($kib,$nomor_lokasi)->row();
+		$data['belum_inv']=$this->kadis_model->get_sisa_per_aset($kib,$nomor_lokasi)->num_rows();
+		$data['proses_inv']=$this->kadis_model->get_register_proses_inv($kib,$nomor_lokasi)->row();
+		$data['sudah_inv']=$this->kadis_model->get_register_sudah_inv($kib,$nomor_lokasi)->row();
+
+
+		// echo '<pre style="background: #DEDEDE; color: #484848;">'; var_dump( $kk ); echo '</pre>';
+		// die();
 
 		$data['kib_apa'] = $kib;
 		$this->load->view('kadis/laporan_kadis/cetak_form_kondisi_barang',$data);		
@@ -579,6 +585,9 @@ class Home_kadis extends CI_Controller {
         $data['data_kondisi']=$data_register_updated;
         $data['data_pb']=$get_data_pb;
 		$data['kib_apa'] = $kib;
+
+		
+
 
 		// ini_set('memory_limit','0');
         // $this->pdf->load_view('laporan_kadis/cetak_form_kondisi_barang',$data);
