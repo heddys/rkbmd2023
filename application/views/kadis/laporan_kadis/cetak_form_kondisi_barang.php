@@ -201,11 +201,11 @@ function tgl_indo($tanggal){
     </tr>
 </table>
 <p>
-<table id="tabel_ttd" border="1" style="font-size:12px; width:100%;">
+<table id="tabel_ttd" style="font-size:12px; width:100%;">
     <tr>
         <td></td>
         <td><b>Catatan : </b></td>
-        <td></td>
+        <td colspan="13"></td>
         <td></td>
     </tr>
     <tr>
@@ -224,6 +224,7 @@ function tgl_indo($tanggal){
         <td></td>
         <td>Jumlah Aset Masih Proses Inventarisasi</td>
         <td colspan="13"><b> : <?php echo number_format($proses_inv->jum_reg);?> Register</b></td>
+        <td></td>
     </tr>
     <tr>
         <td></td>
@@ -251,7 +252,7 @@ function tgl_indo($tanggal){
             <td></td>
             <td></td>
             <td colspan="13"></td>
-            <td rowspan="3" style="text-align: center; vertical-align: middle;"><img src="<?php echo base_url()."ini_assets/spesimen/".$data_spesimen->nip_kepala.".png";?>" alt="Spesimen" srcset="" style="width: 50%; height: 50%; object-fit: cover;"></td>
+            <td style="text-align: center; vertical-align: middle;"><img src="<?php echo base_url()."ini_assets/spesimen/".$data_spesimen->nip_kepala.".png";?>" alt="Spesimen" srcset="" style="width: 50%; height: 50%; object-fit: cover;"></td>
         </tr>
     <?php } ?>
     <tr>

@@ -65,7 +65,7 @@
                             <table class="table">
                                 <tr>
                                     <th>
-                                        <a href="<?php echo site_url('home_kadis/cetak_form_kondisi_barang/1.3.001');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                        <a href="<?php echo site_url('home_kadis/cetak_form_kondisi_barang/1.3.01');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
                                     </th>
                                     <th>
                                         <a href="<?php echo site_url('home_kadis/cetak_form_kondisi_barang/1.3.02');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
@@ -103,7 +103,7 @@
                             <table class="table">
                                 <tr>
                                     <th>
-                                        <a href="<?php echo site_url('home_kadis/cetak_barang_tidak_ditemukan/1.3.001');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                        <a href="<?php echo site_url('home_kadis/cetak_barang_tidak_ditemukan/1.3.01');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
                                     </th>
                                     <th>
                                         <a href="<?php echo site_url('home_kadis/cetak_barang_tidak_ditemukan/1.3.02');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
@@ -142,7 +142,7 @@
                             <table class="table">
                                 <tr>
                                     <th>
-                                        <a href="<?php echo site_url('home_kadis/laporan_barang_hilang/1.3.001');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                        <a href="<?php echo site_url('home_kadis/laporan_barang_hilang/1.3.01');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
                                     </th>
                                     <th>
                                         <a href="<?php echo site_url('home_kadis/laporan_barang_hilang/1.3.02');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
@@ -181,7 +181,7 @@
                             <table class="table">
                                 <tr>
                                     <th>
-                                        <a href="<?php echo site_url('home_kadis/laporan_belum_dikapt_diketahui_induk/1.3.001');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                        <a href="<?php echo site_url('home_kadis/laporan_belum_dikapt_diketahui_induk/1.3.01');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
                                     </th>
                                     <th>
                                         <a href="<?php echo site_url('home_kadis/laporan_belum_dikapt_diketahui_induk/1.3.02');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
@@ -220,7 +220,7 @@
                             <table class="table">
                                 <tr>
                                     <th>
-                                        <a href="<?php echo site_url('home_kadis/laporan_belum_dikapt_tidak_diketahui_induk/1.3.001');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                        <a href="<?php echo site_url('home_kadis/laporan_belum_dikapt_tidak_diketahui_induk/1.3.01');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
                                     </th>
                                     <th>
                                         <a href="<?php echo site_url('home_kadis/laporan_belum_dikapt_tidak_diketahui_induk/1.3.02');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
@@ -259,7 +259,7 @@
                             <table class="table">
                                 <tr>
                                     <th>
-                                        <a href="<?php echo site_url('home_kadis/laporan_data_tercatat_ganda/1.3.001');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                        <a href="<?php echo site_url('home_kadis/laporan_data_tercatat_ganda/1.3.01');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
                                     </th>
                                     <th>
                                         <a href="<?php echo site_url('home_kadis/laporan_data_tercatat_ganda/1.3.02');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
@@ -298,7 +298,7 @@
                             <table class="table">
                                 <tr>
                                     <th>
-                                        <a href="<?php echo site_url('home_kadis/laporan_data_digunakan_pihak_lain/1.3.001');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
+                                        <a href="<?php echo site_url('home_kadis/laporan_data_digunakan_pihak_lain/1.3.01');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-primary">Tanah</a>
                                     </th>
                                     <th>
                                         <a href="<?php echo site_url('home_kadis/laporan_data_digunakan_pihak_lain/1.3.02');?>" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-outline-success">Peralatan dan Mesin</a>
