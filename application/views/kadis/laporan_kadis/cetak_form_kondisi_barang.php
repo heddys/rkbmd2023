@@ -148,7 +148,18 @@ function tgl_indo($tanggal){
     </tr>
     </center>
     <!-- Isi Datanya -->
-    
+    <?php if(count($data_kondisi) == 0) { ?>
+        <center>
+            <tr>
+                <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="15"><h4>N I H I L</h4></td>
+            </tr>
+        </center>
+        <tr>
+        <td style="border:1px solid; text-align: center; vertical-align: middle;" colspan="7">Jumlah (Rp.)</td>
+        <td style="border:1px solid; text-align: right; vertical-align: middle;">0,00</td>
+        <td style="border:1px solid;" colspan="7"></td> 
+    </tr>
+        <?php } else { ?>
         <?php $x=1;$jumlah=0; foreach ($data_kondisi as $row) {?>
             <tr style="border:1px solid">
                 <td style="border:1px solid; text-align: center; vertical-align: middle;"><?php echo $x?></td>
@@ -199,6 +210,7 @@ function tgl_indo($tanggal){
         <td style="border:1px solid; text-align: right; vertical-align: middle;"><?php echo to_rp($jumlah)?></td>
         <td style="border:1px solid;" colspan="7"></td>
     </tr>
+    <?php } ?>
 </table>
 <p>
 <table id="tabel_ttd" style="font-size:12px; width:100%;">
@@ -252,7 +264,7 @@ function tgl_indo($tanggal){
             <td></td>
             <td></td>
             <td colspan="13"></td>
-            <td style="text-align: center; vertical-align: middle;"><img src="<?php echo base_url()."ini_assets/spesimen/".$data_spesimen->nip_kepala.".png";?>" alt="Spesimen" srcset="" style="width: 50%; height: 50%; object-fit: cover;"></td>
+            <td style="text-align: center; vertical-align: middle;"><img src="<?php echo base_url()."ini_assets/spesimen/".$data_spesimen->nip_kepala.".png";?>" alt="Spesimen" srcset="" style="width: 140px; height: 170px; object-fit: cover;"></td>
         </tr>
     <?php } ?>
     <tr>

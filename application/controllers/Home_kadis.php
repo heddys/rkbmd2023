@@ -504,8 +504,6 @@ class Home_kadis extends CI_Controller {
 		} else {
 			$data_nip = $cek_verif->row();
 			$data['data_spesimen'] = $data_nip;
-
-			
 		}
 		
 		
@@ -614,6 +612,21 @@ class Home_kadis extends CI_Controller {
 		// $this->pdf->render();
         // ob_end_clean();
 		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
+
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,2);
+
+		if ($cek_verif->num_rows() <= 0) {
+			$data['data_spesimen'] = 'Kosong';
+		} else {
+			$data_nip = $cek_verif->row();
+			$data['data_spesimen'] = $data_nip;
+		}
+
+		$data['total_reg']=$this->kadis_model->get_kib_per_aset($kib,$nomor_lokasi)->row();
+		$data['belum_inv']=$this->kadis_model->get_sisa_per_aset($kib,$nomor_lokasi)->num_rows();
+		$data['proses_inv']=$this->kadis_model->get_register_proses_inv($kib,$nomor_lokasi)->row();
+		$data['sudah_inv']=$this->kadis_model->get_register_sudah_inv($kib,$nomor_lokasi)->row();
+
 		$data['data_pb']=$get_data_pb;
 		$data['kib_apa'] = $kib;
 		$this->load->view('kadis/laporan_kadis/cetak_perubahan_data_barang',$data);		

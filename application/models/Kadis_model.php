@@ -478,8 +478,67 @@ class Kadis_model extends CI_Model{
 
     }
 
-    public function get_spesimen_simbada($nip) {
-        
+    public function get_perubahan_data_verif($nomor_lokasi,$kib)
+    {
+        $query = $this->db->query(
+        "SELECT
+            a.kode108_baru,
+            a.nama_barang AS name_awal,
+            a.register,
+            a.merk_alamat,
+            a.tipe AS tipe_awal,
+            a.satuan,
+            a.harga_baru,
+            b.kode_barang,
+            b.nama_barang AS name_baru,
+            b.spesifikasi_barang_merk,
+            b.register,
+            b.tipe AS tipe_baru,
+            b.keterangan,
+            b.lainnya,
+            c.unit,
+            c.lokasi 
+        FROM
+            `2023_v1`.kib_awal a
+            INNER JOIN `rkbmd2023`.register_isi b ON a.register = b.register
+            INNER JOIN kamus_lokasi c ON a.nomor_lokasi = c.nomor_lokasi
+            INNER JOIN `rkbmd2023`.register_status d ON a.register = d.is_register 
+        WHERE
+            a.nomor_lokasi LIKE '".$nomor_lokasi."%' 
+            AND a.kode108_baru LIKE '".$kib."%' 
+            AND b.STATUS = 2 
+            AND ( d.is_kode_barang = 1 OR d.is_nama_barang = 1 OR d.is_spesifikasi_barang_merk = 1 OR d.is_tipe = 1 ) UNION
+        SELECT
+            a.kode108_baru,
+            a.nama_barang AS name_awal,
+            a.register,
+            a.merk_alamat,
+            a.tipe AS tipe_awal,
+            a.satuan,
+            a.harga_baru,
+            b.kode_barang,
+            b.nama_barang AS name_baru,
+            b.spesifikasi_barang_merk,
+            b.register,
+            b.tipe AS tipe_baru,
+            b.keterangan,
+            b.lainnya,
+            c.unit,
+            c.lokasi 
+        FROM
+            `2023_v1`.kib a
+            INNER JOIN `rkbmd2023`.register_isi b ON a.register = b.register
+            INNER JOIN kamus_lokasi c ON a.nomor_lokasi = c.nomor_lokasi
+            INNER JOIN `rkbmd2023`.register_status d ON a.register = d.is_register 
+        WHERE
+            a.nomor_lokasi LIKE '".$nomor_lokasi."%' 
+            AND a.kode108_baru LIKE '".$kib."%' 
+            AND b.STATUS = 2 
+            AND ( d.is_kode_barang = 1 OR d.is_nama_barang = 1 OR d.is_spesifikasi_barang_merk = 1 OR d.is_tipe = 1 ) 
+        GROUP BY
+            b.register");
+
+        return $query;
     }
 
 }

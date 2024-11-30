@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- icon tab -->
+  <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>ini_assets/image/surabaya1.png" />
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/ionicons/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo base_url();?>ini_assets/dist/css/adminlte.min.css">
     <style>
 
     p.ex2 {
@@ -14,7 +23,15 @@
         height: 230px;
         width: 340px;
         border: 2px solid black;
-        }
+    }
+
+    /* Atur orientasi default di sini */
+    @media print {
+            @page {
+                size: landscape;
+            }
+    }
+    
     </style>
 </head>
 <body class="sidebar-mini layout-fixed" style="height: auto;">
@@ -49,30 +66,32 @@ function tgl_indo($tanggal){
   }
 ?>
 
+<?php if ($kib_apa == '1.3.01') { 
+            $aset="ASET TETAP TANAH";
+        } 
+        elseif ($kib_apa == '1.3.02') {
+            $aset="ASET TETAP PERALATAN DAN MESIN";
+        } 
+        elseif ($kib_apa == '1.3.03') {
+            $aset="ASET TETAP GEDUNG DAN BANGUNAN";
+        } 
+        elseif ($kib_apa == '1.3.04') {
+            $aset="ASET TETAP JALAN, IRIGASI DAN JARINGAN";
+        }
+        elseif ($kib_apa == '1.3.05') {
+            $aset="ASET TETAP LAINNYA";
+        }
+        elseif ($kib_apa == '1.5.03') {
+            $aset="ASET TIDAK BERWUJUD";
+        }
+?>
+
 <center>
     <h5>
         <b>
             <p class="ex2">LEMBAR HASIL INVENTARISASI (LHI)</p>
             <p class="ex2">REKAPITULASI BMD BELUM DIKAPITALISASI DAN TIDAK DIKETAHUI DATA AWAL/DATA INDUKNYA</p>
-            <p class="ex2">BMD BERUPA <?php if ($kib_apa == '1.3.1') { 
-                                    echo "ASET TETAP TANAH";
-                                } 
-                                elseif ($kib_apa == '1.3.2') {
-                                        echo "ASET TETAP PERALATAN DAN MESIN";
-                                } 
-                                elseif ($kib_apa == '1.3.3') {
-                                        echo "ASET TETAP GEDUNG DAN BANGUNAN";
-                                } 
-                                elseif ($kib_apa == '1.3.4') {
-                                        echo "ASET TETAP JALAN, IRIGASI DAN JARINGAN";
-                                }
-                                elseif ($kib_apa == '1.3.5') {
-                                    echo "ASET TETAP LAINNYA";
-                                }
-                                elseif ($kib_apa == '1.5.3') {
-                                    echo "ASET TIDAK BERWUJUD";
-                                } 
-                                ?></p>
+            <p class="ex2">BMD BERUPA <?php echo $aset;?></p>
             <p class="ex2"><?php echo strtoupper($this->session->userdata('skpd'));?> KOTA SURABAYA</p>
         </b>
     </h5>
