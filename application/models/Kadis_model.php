@@ -453,6 +453,13 @@ class Kadis_model extends CI_Model{
         return $this->db->get_where('jurnal_verif_lhi',array('nip_kepala' => $nip, 'kode_lhi' => $kode_lhi, 'kode_aset' => $kib));
     }
 
+    public function get_data_hilang($kib,$lokasi)
+    {
+        $query = $this->db->query("SELECT a.*,b.unit,b.lokasi,c.kondisi_barang,c.register,c.keterangan as ket_baru from data_kib a join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join register_isi c on a.register=c.register where a.nomor_lokasi like '".$lokasi."%' and a.kode108_baru like '".$kib."%' and a.status = '2' and c.keberadaan_barang = 'Hilang' group by c.register");
+
+        return $query;
+    }
+
     public function save_verif_lhi($data){
         $this->db->insert('jurnal_verif_lhi', $data); // 'nama_tabel' adalah nama tabel di database
 
@@ -477,6 +484,13 @@ class Kadis_model extends CI_Model{
         }
 
     }
+
+    public function get_keberadaan_barang_update($register)
+    {
+        $query = $this->db->query("SELECT * FROM register_isi where register = '".$register."' ORDER BY created_date desc, created_time desc limit 1");
+        return $query;
+    }
+
 
     public function get_perubahan_data_verif($nomor_lokasi,$kib)
     {

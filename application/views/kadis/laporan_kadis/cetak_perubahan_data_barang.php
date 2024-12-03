@@ -279,7 +279,7 @@ function tgl_indo($tanggal){
                     <div class="modal-footer justify-content-between">
                         <input type="hidden" name="nip" value="<?php echo $data_pb->nip_kepala; ?>">
                         <input type="hidden" name="nama" value="<?php echo $data_pb->nama_kepala; ?>">
-                        <input type="hidden" name="jenis_lhi" value="2">
+                        <input type="hidden" name="jenis_lhi" value="1">
                         <input type="hidden" name="kib" value="<?php echo $kib_apa; ?>">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
                         <button type="submit" class="btn btn-info" id="btn-submit" disabled>Saya Setuju</button>

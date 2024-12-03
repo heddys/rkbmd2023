@@ -545,46 +545,63 @@ class Home_kadis extends CI_Controller {
 		$data_register_updated=array();
 		foreach ($get_data_register as $key) {
 			$data_register[]=array(
-				'no_lokasi' => $key->nomor_lokasi,
+				'no_lokasi' => $key->nomor_lokasi_baru,
 				'register' =>$key->register,
 				'opd' => $key->unit,
 				'lokasi' => $key->lokasi,
 				'kondisi_awal' => $key->kondisi,
 				'kode108' => $key->kode108_baru,
-				'nama_barang' => $key->nama_barang,
-				'merk' => $key->merk_alamat,
-				'tipe' => $key->tipe,
+				'nama_barang' => $key->nama_barang_baru,
+				'merk' => $key->merk_alamat_baru,
+				'tipe' => $key->tipe_baru,
 				'satuan' => $key->satuan,
-				'harga' => $key->harga_baru,
+				'harga' => $key->harga_baru
 			);
 		}
 
 		
 		foreach ($data_register as $row) {
-			$data_updated=$this->kadis_model->get_keberadaan_barang_update($row['register'])->row();
-			if($data_updated->keberadaan_barang == "Tidak Diketemukan"){
-				$data_register_updated[]=array(
-					'no_lokasi' => $row['no_lokasi'],
-					'register' =>$row['register'],
-					'opd' => $row['opd'],
-					'lokasi' => $row['lokasi'],
-					'kondisi_awal' => $row['kondisi_awal'],
-					'kode108' => $row['kode108'],
-					'nama_barang' => $row['nama_barang'],
-					'merk' => $row['merk'],
-					'tipe' => $row['tipe'],
-					'satuan' => $row['satuan'],
-					'harga' => $row['harga'],
-					'keterangan' => $data_updated->keterangan
-				);
+			$data_inv=$this->kadis_model->get_keberadaan_barang_update($row['register']);
+			if($data_inv->num_rows() > 0) {
+				$data_updated=$data_inv->row();
+				if($data_updated->keberadaan_barang == "Tidak Diketemukan"){
+					$data_register_updated[]=array(
+						'no_lokasi' => $row['no_lokasi'],
+						'register' =>$row['register'],
+						'opd' => $row['opd'],
+						'lokasi' => $row['lokasi'],
+						'kondisi_awal' => $row['kondisi_awal'],
+						'kode108' => $row['kode108'],
+						'nama_barang' => $row['nama_barang'],
+						'merk' => $row['merk'],
+						'tipe' => $row['tipe'],
+						'satuan' => $row['satuan'],
+						'harga' => $row['harga'],
+						'keterangan' => $data_updated->keterangan
+					);
+				}
 			}
+			
 		}
 
         $data['data_kondisi']=$data_register_updated;
         $data['data_pb']=$get_data_pb;
 		$data['kib_apa'] = $kib;
 
-		
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,3);
+
+		if ($cek_verif->num_rows() <= 0) {
+			$data['data_spesimen'] = 'Kosong';
+		} else {
+			$data_nip = $cek_verif->row();
+			$data['data_spesimen'] = $data_nip;
+		}
+
+		//Mengambil informasi Register
+		$data['total_reg']=$this->kadis_model->get_kib_per_aset($kib,$nomor_lokasi)->row();
+		$data['belum_inv']=$this->kadis_model->get_sisa_per_aset($kib,$nomor_lokasi)->num_rows();
+		$data['proses_inv']=$this->kadis_model->get_register_proses_inv($kib,$nomor_lokasi)->row();
+		$data['sudah_inv']=$this->kadis_model->get_register_sudah_inv($kib,$nomor_lokasi)->row();
 
 
 		// ini_set('memory_limit','0');
@@ -613,7 +630,7 @@ class Home_kadis extends CI_Controller {
         // ob_end_clean();
 		// $this->pdf->stream("Cetak Form Kondisi Barang.pdf", array("Attachment" => false));
 
-		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,2);
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,1);
 
 		if ($cek_verif->num_rows() <= 0) {
 			$data['data_spesimen'] = 'Kosong';
@@ -640,6 +657,22 @@ class Home_kadis extends CI_Controller {
 		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
 		$data['data_barang']=$this->kadis_model->get_data_hilang($kib,$nomor_lokasi)->result();
 		$data['kib_apa'] = $kib;
+
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,4);
+
+		if ($cek_verif->num_rows() <= 0) {
+			$data['data_spesimen'] = 'Kosong';
+		} else {
+			$data_nip = $cek_verif->row();
+			$data['data_spesimen'] = $data_nip;
+		}
+
+		$data['total_reg']=$this->kadis_model->get_kib_per_aset($kib,$nomor_lokasi)->row();
+		$data['belum_inv']=$this->kadis_model->get_sisa_per_aset($kib,$nomor_lokasi)->num_rows();
+		$data['proses_inv']=$this->kadis_model->get_register_proses_inv($kib,$nomor_lokasi)->row();
+		$data['sudah_inv']=$this->kadis_model->get_register_sudah_inv($kib,$nomor_lokasi)->row();
+
+		$data['data_pb']=$get_data_pb;
 
 		$this->load->view('kadis/laporan_kadis/cetak_barang_hilang',$data);
 	}
