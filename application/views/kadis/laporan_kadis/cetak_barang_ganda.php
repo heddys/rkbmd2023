@@ -96,7 +96,7 @@ function tgl_indo($tanggal){
     </h5>
 </center>
 <p>
-<table class="table table-bordered" style="font-size : 12px;">
+<table style="font-size : 12px;">
         <thead>    
         </thead>
         <tbody>
@@ -108,7 +108,7 @@ function tgl_indo($tanggal){
             <tr>
                 <td width="200px">Pengguna Barang</td>
                 <td width="25px">:</td>
-                <td width="150px"><?php echo $this->session->userdata('kepala_opd');?></td>
+                <td width="60%"><?php echo $this->session->userdata('kepala_opd');?></td>
                 
             </tr>
             <tr>
@@ -191,53 +191,150 @@ function tgl_indo($tanggal){
     </tr>
 </table>
 <p>
-<table style="font-size:12px; width:100%;">
+<table id="tabel_ttd" style="font-size:12px; width:100%;">
     <tr>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><b>Catatan : </b></td>
+        <td colspan="13"></td>
         <td></td>
     </tr>
     <tr>
-        <td colspan="13"></td>
-        <td width="20%" style="text-align: center; vertical-align: middle;"><?php echo "Surabaya, " . tgl_indo(date("Y-m-d"));?></td>
+        <td></td>
+        <td width="18%">Total <?php echo ucwords(strtolower($aset));?></td>
+        <td colspan="13"><b> : <?php echo number_format($total_reg->jum_kib);?> Register</b></td>
+        <td width="20%" style="text-align: center; vertical-align: middle;">Surabaya, <?php echo ($data_spesimen === 'Kosong') ? "" : $data_spesimen->tanggal_lhi; ?></td>
     </tr>
     <tr>
-        <td colspan="13"></td>
+        <td></td>
+        <td>Jumlah Aset Masih Belum Di Inventarisasi</td>
+        <td colspan="13"><b> : <?php echo number_format($belum_inv);?> Register</b></td>
         <td style="text-align: center; vertical-align: middle;">Pengguna Barang</td>
     </tr>
     <tr>
-        <td colspan="13"></td>
-        <td><br><br></td>
+        <td></td>
+        <td>Jumlah Aset Masih Proses Inventarisasi</td>
+        <td colspan="13"><b> : <?php echo number_format($proses_inv->jum_reg);?> Register</b></td>
+        <td></td>
     </tr>
     <tr>
-        <td colspan="13"></td>
-        <td><br><br></td>
+        <td></td>
+        <td><b>Aset <?php echo ucwords(strtolower($aset))." Yang Sudah Di Inventarisasi </b>"?></td>
+        <td colspan="13"><b> : <?php echo number_format($sudah_inv->jum_reg);?> Register</b></td>
+        <td></td>
     </tr>
+    
+    
+    <?php if ($data_spesimen === 'Kosong') { ?>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="13"></td>
+                <td style="text-align: center; vertical-align: middle;"><button id="button_verif" class="btn btn-md btn-danger" data-toggle="modal" data-target="#modal-verif">Verifikasi LHI</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="13"><br></td>
+                <td></td>
+            </tr>
+    <?php } else {?>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="13"></td>
+            <td style="text-align: center; vertical-align: middle;"><img src="<?php echo base_url()."ini_assets/spesimen/".$data_spesimen->nip_kepala.".png";?>" alt="Spesimen" srcset="" style="width: 35%; height: 35%;"></td>
+        </tr>
+    <?php } ?>
     <tr>
-        <td colspan="13"></td>
-        <td style="text-align: center; vertical-align: middle;">................................................</td>
-    </tr>
-    <tr>
+        <td></td>
+        <td></td>
         <td colspan="13"></td>
         <td style="text-align: center; vertical-align: middle;"><b><?php echo $data_pb->nama_kepala?></b></td>
     </tr>
     <tr>
+        <td></td>
+        <td></td>
         <td colspan="13"></td>
         <td style="text-align: center; vertical-align: middle;"><b>NIP. <?php echo $data_pb->nip_kepala?></b></td>
     </tr>
 </table>
+
+
+<!-- Modal Untuk Cari Register Ganda -->
+<div class="modal fade" id="modal-verif">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center><h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Notice!!</h4></center>
+                </div>
+                <form action="<?php echo site_url('/home_kadis/save_verif');?>" method="post">
+                    <div class="modal-body">
+                        <label for="tanggal">Pilih Tanggal : </label>
+                        <input type="date" id="tanggal" name="tanggal" value="" required>
+                        <br>
+                        <br>
+                        <label for="agree">Centang Jika Data LHI Ini Sudah Benar : </label>
+                        <input type="checkbox" id="checkbox-verif"> Saya Telah Membaca LHI Ini
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <input type="hidden" name="nip" value="<?php echo $data_pb->nip_kepala; ?>">
+                        <input type="hidden" name="nama" value="<?php echo $data_pb->nama_kepala; ?>">
+                        <input type="hidden" name="jenis_lhi" value="7">
+                        <input type="hidden" name="kib" value="<?php echo $kib_apa; ?>">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-info" id="btn-submit" disabled>Saya Setuju</button>
+                    </div>
+                </form>
+            </div>
+            <!-- modal-content --> 
+        </div>
+        <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<script src="<?php echo base_url();?>ini_assets/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="<?php echo base_url();?>ini_assets/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="<?php echo base_url();?>ini_assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url();?>ini_assets/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url();?>ini_assets/dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?php echo base_url();?>ini_assets/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url();?>ini_assets/dist/js/demo.js"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/select2/js/select2.full.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="<?php echo base_url();?>ini_assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
+
+
+<script>
+    $('#button_verif').on('click', function(){
+        $('#modal-verif').modal('show');
+    });
+
+    $('#checkbox-verif').on('change', function() {
+        // alert('nanana');
+        $('#btn-submit').prop('disabled', !this.checked);
+    });
+</script>
     
 </body>
 </html>

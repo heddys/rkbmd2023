@@ -255,7 +255,7 @@
                           <div class="card-body">
                             Cetak Laporan untuk mengetahui barang tercatat ganda dan yang telah diverifikasi.
                             <hr>
-                            <a href="<?php echo site_url('home_kadis/laporan_data_tercatat_ganda');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a>
+                            <!-- <a href="<?php echo site_url('home_kadis/laporan_data_tercatat_ganda');?>" target="_blank" rel="noopener noreferrer" class="btn btn-default btn-block btn-flat">Cetak Laporan</a> -->
                             <table class="table">
                                 <tr>
                                     <th>

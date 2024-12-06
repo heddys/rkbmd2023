@@ -654,7 +654,7 @@ class Home_kadis extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$get_data_pb=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
 		$data['data_barang']=$this->kadis_model->get_data_hilang($kib,$nomor_lokasi)->result();
 		$data['kib_apa'] = $kib;
 
@@ -682,9 +682,25 @@ class Home_kadis extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$get_data_pb=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
 		$data['data_barang']=$this->kadis_model->get_belum_kapt_ada_induk($kib,$nomor_lokasi)->result();
 		$data['kib_apa'] = $kib;
+
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,5);
+
+		if ($cek_verif->num_rows() <= 0) {
+			$data['data_spesimen'] = 'Kosong';
+		} else {
+			$data_nip = $cek_verif->row();
+			$data['data_spesimen'] = $data_nip;
+		}
+
+		$data['total_reg']=$this->kadis_model->get_kib_per_aset($kib,$nomor_lokasi)->row();
+		$data['belum_inv']=$this->kadis_model->get_sisa_per_aset($kib,$nomor_lokasi)->num_rows();
+		$data['proses_inv']=$this->kadis_model->get_register_proses_inv($kib,$nomor_lokasi)->row();
+		$data['sudah_inv']=$this->kadis_model->get_register_sudah_inv($kib,$nomor_lokasi)->row();
+
+		$data['data_pb']=$get_data_pb;
 
 		$this->load->view('kadis/laporan_kadis/cetak_belum_kapt_diketahui',$data);
 	}
@@ -693,10 +709,27 @@ class Home_kadis extends CI_Controller {
 	{
 		$this->cek_sess();
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$get_data_pb=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
 		// ini_set('memory_limit', '2048M');
 		$data['kib_apa'] = $kib;
 		// $data['data_barang']=$this->admin_model->get_belum_kapt_ada_induk('1.3.2')->result();
+
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,6);
+
+		if ($cek_verif->num_rows() <= 0) {
+			$data['data_spesimen'] = 'Kosong';
+		} else {
+			$data_nip = $cek_verif->row();
+			$data['data_spesimen'] = $data_nip;
+		}
+
+		$data['total_reg']=$this->kadis_model->get_kib_per_aset($kib,$nomor_lokasi)->row();
+		$data['belum_inv']=$this->kadis_model->get_sisa_per_aset($kib,$nomor_lokasi)->num_rows();
+		$data['proses_inv']=$this->kadis_model->get_register_proses_inv($kib,$nomor_lokasi)->row();
+		$data['sudah_inv']=$this->kadis_model->get_register_sudah_inv($kib,$nomor_lokasi)->row();
+
+		$data['data_pb']=$get_data_pb;
+
 
 		$this->load->view('kadis/laporan_kadis/cetak_belum_kapt_tidak_diketahui_induk',$data);
 	}
@@ -706,8 +739,25 @@ class Home_kadis extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$get_data_pb=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
 		$data['data_barang']=$this->kadis_model->get_data_ganda($kib,$nomor_lokasi)->result();
+
+
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,7);
+
+		if ($cek_verif->num_rows() <= 0) {
+			$data['data_spesimen'] = 'Kosong';
+		} else {
+			$data_nip = $cek_verif->row();
+			$data['data_spesimen'] = $data_nip;
+		}
+
+		$data['total_reg']=$this->kadis_model->get_kib_per_aset($kib,$nomor_lokasi)->row();
+		$data['belum_inv']=$this->kadis_model->get_sisa_per_aset($kib,$nomor_lokasi)->num_rows();
+		$data['proses_inv']=$this->kadis_model->get_register_proses_inv($kib,$nomor_lokasi)->row();
+		$data['sudah_inv']=$this->kadis_model->get_register_sudah_inv($kib,$nomor_lokasi)->row();
+
+		$data['data_pb']=$get_data_pb;
 
 		$data['kib_apa'] = $kib;
 
@@ -719,9 +769,25 @@ class Home_kadis extends CI_Controller {
 		$this->cek_sess();
 		ini_set('memory_limit', '2048M');
 		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		$data['data_pb']=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
+		$get_data_pb=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
 		// $data['data_barang']=$this->admin_model->get_data_ganda('1.3.2')->result();
 		$data['kib_apa'] = $kib;
+
+		$cek_verif = $this->kadis_model->info_verif($get_data_pb->nip_kepala,$kib,7);
+
+		if ($cek_verif->num_rows() <= 0) {
+			$data['data_spesimen'] = 'Kosong';
+		} else {
+			$data_nip = $cek_verif->row();
+			$data['data_spesimen'] = $data_nip;
+		}
+
+		$data['total_reg']=$this->kadis_model->get_kib_per_aset($kib,$nomor_lokasi)->row();
+		$data['belum_inv']=$this->kadis_model->get_sisa_per_aset($kib,$nomor_lokasi)->num_rows();
+		$data['proses_inv']=$this->kadis_model->get_register_proses_inv($kib,$nomor_lokasi)->row();
+		$data['sudah_inv']=$this->kadis_model->get_register_sudah_inv($kib,$nomor_lokasi)->row();
+
+		$data['data_pb']=$get_data_pb;
 
 
 		$this->load->view('kadis/laporan_kadis/cetak_barang_digunakan_instansi_lain',$data);
