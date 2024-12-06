@@ -505,6 +505,13 @@ class Kadis_model extends CI_Model{
         return $query;
     }
 
+    public function get_data_dipakai_pegawai($kib,$lokasi)
+    {
+        $query = $this->db->query("SELECT b.unit,b.lokasi,a.register,a.nama_barang,a.kode108_baru,a.merk_alamat,a.tipe,a.satuan,a.harga_baru,c.nama_penanggung_jawab,d.keterangan FROM `data_kib` a inner join kamus_lokasi b on a.nomor_lokasi=b.nomor_lokasi inner join data_pemegang_kendaraan c on a.register=c.register inner join register_isi d on a.register=d.register where a.`status` = '2' and a.nomor_lokasi like '%".$lokasi."%' and a.kode108_baru like '%".$kib."%' and (c.nama_penanggung_jawab <> '' and c.nama_penanggung_jawab <> '-')");
+
+        return $query;
+    }
+
 
     public function get_perubahan_data_verif($nomor_lokasi,$kib)
     {

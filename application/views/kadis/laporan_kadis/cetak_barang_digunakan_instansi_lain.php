@@ -89,7 +89,7 @@ function tgl_indo($tanggal){
     </h5>
 </center>
 <p>
-<table class="table table-bordered" style="font-size : 12px;">
+<table style="font-size : 12px;">
         <thead>    
         </thead>
         <tbody>
@@ -101,7 +101,7 @@ function tgl_indo($tanggal){
             <tr>
                 <td width="200px">Pengguna Barang</td>
                 <td width="25px">:</td>
-                <td width="150px"><?php echo $this->session->userdata('kepala_opd');?></td>
+                <td width="60%"><?php echo $this->session->userdata('kepala_opd');?></td>
                 
             </tr>
             <tr>
