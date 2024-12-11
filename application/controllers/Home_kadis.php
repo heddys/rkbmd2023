@@ -12,15 +12,15 @@ class Home_kadis extends CI_Controller {
 		// var_dump($nomor_lokasi);
 		// die();
 
-		// if($this->session->userdata('no_lokasi_asli') == "13.30.000701") {
-		// 	$data['rekap_upt'] = $this->kadis_model->get_rekap_per_uptd($nomor_lokasi);
-		// 	$data['only_opd'] = $this->kadis_model->get_data_dinkes_only()->row();
-		// }
+		if($this->session->userdata('no_lokasi_asli') == "13.30.000701") {
+			$data['rekap_upt'] = $this->kadis_model->get_rekap_per_uptd($nomor_lokasi);
+			$data['only_opd'] = $this->kadis_model->get_data_dinkes_only()->row();
+		}
 
-		// if($this->session->userdata('no_lokasi_asli') == "13.30.000801"){
-		// 	$data['rekap_upt'] = $this->kadis_model->get_rekap_per_uptd($nomor_lokasi);
-		// 	// $data['only_opd'] = $this->kadis_model->get_data_dinkes_only()->row();
-		// }
+		if($this->session->userdata('no_lokasi_asli') == "13.30.000801"){
+			$data['rekap_upt'] = $this->kadis_model->get_rekap_per_uptd($nomor_lokasi);
+			// $data['only_opd'] = $this->kadis_model->get_data_dinkes_only()->row();
+		}
 		$data['lok'] = $nomor_lokasi;
 		// $data['rekap']=$this->kadis_model->data_progres_opd($nomor_lokasi)->row();
 
