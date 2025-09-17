@@ -137,12 +137,15 @@ class Auth extends CI_Controller {
 			'password' => $pass
 		);
 		$this->load->model('auth_model');
-		$ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
-		$get=$this->auth_model->ceklogin("pengguna",$cekuser)->row();
+		// $ceklog=$this->auth_model->ceklogin("pengguna",$cekuser)->num_rows();
+		// $get=$this->auth_model->ceklogin("pengguna",$cekuser)->row();
+
+		$ceklog = $this->auth_model->ceklogin("pengguna",$cekuser);
 		// var_dump($get);
 		
 		
-		if($ceklog > 0) {
+		if($ceklog->num_rows() > 0) {
+			$get = $ceklog->row();
 			if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
 				$ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
 				$role=$ambil_lokasi_pbp->nama_lokasi;
