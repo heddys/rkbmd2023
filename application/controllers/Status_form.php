@@ -26,7 +26,7 @@ class Status_form extends CI_Controller {
 			$this->session->set_userdata('kib','1.3.5');
 			$kib = $this->session->userdata('kib');
 		} else { 
-			$this->session->set_userdata('kib','1.3.6');
+			$this->session->set_userdata('kib','1.5.3');
 			$kib = $this->session->userdata('kib');
 		} 
         if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
@@ -288,7 +288,7 @@ class Status_form extends CI_Controller {
 			$this->session->set_userdata('kib','1.3.5');
 			$kib = $this->session->userdata('kib');
 		} else { 
-			$this->session->set_userdata('kib','1.3.6');
+			$this->session->set_userdata('kib','1.5.3');
 			$kib = $this->session->userdata('kib');
 		}
 
