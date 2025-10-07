@@ -323,6 +323,50 @@ class Home_verifikator extends CI_Controller {
 		$this->load->view('verifikator/f_verifikator');	
 	}
 
+	public function verif_register_5()
+	{	
+		$this->cek_sess();	
+		$data['page']="Halaman Verifikasi Detail Register";
+
+		$register = $_POST['register'];
+		$data['kib_apa']='5';
+		
+		// echo $register;
+		
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+
+		// echo $register;
+		// var_dump($data['data_register']);
+
+		$this->load->view('verifikator/h_verifikator',$data);		
+		$this->load->view('verifikator/detail_form_verif_atl',$data);
+		$this->load->view('verifikator/f_verifikator');	
+	}
+
+	public function verif_register_6()
+	{	
+		$this->cek_sess();	
+		$data['page']="Halaman Verifikasi Detail Register";
+
+		$register = $_POST['register'];
+		$data['kib_apa']='5';
+		
+		// echo $register;
+		
+		$data['data_register'] = $this->form_model->ambil_register_form($register)->row();
+		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
+		$data['image'] = $this->form_model->ambil_file($register)->result();
+
+		// echo $register;
+		// var_dump($data['data_register']);
+
+		$this->load->view('verifikator/h_verifikator',$data);		
+		$this->load->view('verifikator/detail_form_verif_atb',$data);
+		$this->load->view('verifikator/f_verifikator');	
+	}
+
 	public function tandai_status_register(){
 		
 		$register=$_POST['register'];
