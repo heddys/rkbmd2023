@@ -177,6 +177,8 @@ class Home_verifikator extends CI_Controller {
 				$data['dummy'] = array ('rows' => $config['total_rows'],'form' => $form,'data' => $data_cari);
 				$data['register']=$this->form_model->get_all_register_pagination_verifikator($data_cari,$kib,$config['per_page'],$data['offset'],$form);
 			
+				// var_dump($kib);
+
 
 			$this->load->view('verifikator/h_verif_page',$data);		
 			$this->load->view('verifikator/verif_page',$data);
