@@ -535,8 +535,10 @@ class Status_form extends CI_Controller {
 			$data['data_spesimen'] = 'Kosong';
 		} else {
 			$data_nip = $cek_verif->row();
-			$date['data_spesimen'] = $this->form_model->get_spesimen_simbada($data_nip->nip_kepala)->row();
+			$data['data_spesimen'] = $this->form_model->get_spesimen_simbada($data_nip->nip_kepala)->row();
 		}
+
+		// var_dump($get_data_pb->nip_kepala);
 
 		
         $data['data_kondisi']=$data_register_updated;

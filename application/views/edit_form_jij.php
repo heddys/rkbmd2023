@@ -766,7 +766,7 @@
                             
 
                             <!-- Mulai Form -->  
-                            <div class="form-group col-md-5 mb-4">
+                            <!-- <div class="form-group col-md-5 mb-4">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
@@ -777,12 +777,14 @@
                                 </div>
                             </div>
                             <div class=" mt-0 mb-3 col-lg-1">
-                                <button type="button" class="btn btn-success btn-block btn-md" id="show_sk_pengguna" <?php echo ($sk_penggunaan == "NULL") ? "disabled" : ""?>><i class="fas fa-eye"> Lihat Dokumen</i></button>
+                                <button type="button" class="btn btn-success btn-block btn-md" id="show_sk_pengguna" <?php echo ($sk_penggunaan == "NULL") ? "disabled" : ""?>><i class="fas fa-eye"> Lihat Dokumen</i></button> -->
+                                
                                 <!-- <a class="btn btn-success btn-block btn-md" href="172.18.1.59/Dokumen/sk_pengguna/sk_asli/<?php echo $sk_penggunaan->file?>" target="_blank" rel="noopener noreferrer" <?php echo ($sk_penggunaan == "NULL") ? "disabled" : ""?>><i class="fas fa-eye">Lihat Dokumen</a> -->
-                            </div> 
+                            
+                            <!-- </div> 
                             <div class=" mt-0 mb-3 col-lg-3">
                                 
-                            </div> 
+                            </div>  -->
                             <!-- Batas Per Form -->  
 
 

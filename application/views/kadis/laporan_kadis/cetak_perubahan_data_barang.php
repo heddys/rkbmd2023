@@ -273,6 +273,7 @@ function tgl_indo($tanggal){
                         <br>
                         <br>
                         <label for="agree">Centang Jika Data LHI Ini Sudah Benar : </label>
+                        <br>
                         <input type="checkbox" id="checkbox-verif"> Saya Telah Membaca LHI Ini
 
                     </div>

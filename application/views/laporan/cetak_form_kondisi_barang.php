@@ -230,11 +230,12 @@ function tgl_indo($tanggal){
         <td colspan="13"></td>
         <td><br><br></td>
     </tr>
+
     
     <?php if ($data_spesimen === 'Kosong') { ?>
             <tr>
                 <td colspan="13"></td>
-                <td style="text-align: center; vertical-align: middle;"><button id="button_verif" class="btn btn-md btn-danger" data-toggle="modal" data-target="#modal-verif">Verifikasi LHI</button></td>
+                <td style="text-align: center; vertical-align: middle;"><button id="button_verif" class="btn btn-md btn-danger" data-toggle="modal" data-target="#modal-verif" disabled>LHI Belum Di Verifikasi Kepala PD</button></td>
             </tr>
     <?} else {?>
         <tr>
@@ -242,10 +243,10 @@ function tgl_indo($tanggal){
             <td><br><br></td>
         </tr>
     
-        <!-- <tr>
+        <tr>
             <td colspan="13"></td>
-            <td style="text-align: center; vertical-align: middle;"><?php echo $data_spesimen->spesimen_pengelola?></td>
-        </tr> -->
+            <td style="text-align: center; vertical-align: middle;"><?php echo $data_spesimen->spesimen?></td>
+        </tr>
     <?php } ?>
     <tr>
         <td colspan="13"></td>
@@ -259,7 +260,7 @@ function tgl_indo($tanggal){
 
 
 <!-- Modal Untuk Cari Register Ganda -->
-<div class="modal fade" id="modal-verif">
+<!-- <div class="modal fade" id="modal-verif">
         <div class="modal-dialog modal-dialog modal-dialog-centered modal-md">
             <div class="modal-content">
                 <div class="modal-header">
@@ -272,22 +273,20 @@ function tgl_indo($tanggal){
                         <br>
                         <br>
                         <label for="agree">Centang Jika Data LHI Ini Sudah Benar : </label>
-                        <input type="checkbox" id="checkbox-verif"> Saya Telah Membaca LHI Ini
+                        <input type="checkbox" id="checkbox-verif"> Saya Telah Membaca LHI Ini, dan Yakin Data Suudah Benar.
 
                     </div>
                     <div class="modal-footer justify-content-between">
                         <input type="hidden" name="nip" value="<?php echo $data_pb->nip_kepala; ?>">
+                        <input type="hidden" name="kode_pd" value="<?php echo $data_pb->nip_kepala; ?>">
                         <input type="hidden" name="nama_tabel" value="lhi_perubahan_fisik">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn btn-info" id="btn-submit" disabled>Saya Setuju</button>
+                        <button type="submit" class="btn btn-info" id="btn-submit" disabled>Verifikasi</button>
                     </div>
                 </form>
             </div>
-            <!-- modal-content --> 
         </div>
-        <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
+</div> -->
 
 <script src="<?php echo base_url();?>ini_assets/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -321,7 +320,7 @@ function tgl_indo($tanggal){
 <script src="<?php echo base_url();?>ini_assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
 
-<script>
+<!-- <script>
     $('#button_verif').on('click', function(){
         $('#modal-verif').modal('show');
     });
@@ -330,7 +329,7 @@ function tgl_indo($tanggal){
         // alert('nanana');
         $('#btn-submit').prop('disabled', !this.checked);
     });
-</script>
+</script> -->
 
 </body>
 </html>

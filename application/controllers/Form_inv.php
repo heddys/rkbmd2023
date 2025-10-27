@@ -653,13 +653,13 @@ class Form_inv extends CI_Controller {
 		$data['data_is_register'] = $this->form_model->ambil_status_register_form($register)->row();
 		$data['image'] = $this->form_model->ambil_file($register)->result();
 		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
-		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+		// $sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
 
-		if($sk_penggunaan->num_rows() > 0) {
-			$data['sk_penggunaan']=$sk_penggunaan->row();
-		} else {
-			$data['sk_penggunaan']="NULL";
-		}	
+		// if($sk_penggunaan->num_rows() > 0) {
+		// 	$data['sk_penggunaan']=$sk_penggunaan->row();
+		// } else {
+		// 	$data['sk_penggunaan']="NULL";
+		// }	
 
         $this->load->view('header',$data);		
 		$this->load->view('edit_form_tanah',$data);
@@ -704,13 +704,13 @@ class Form_inv extends CI_Controller {
 		$data['image'] = $this->form_model->ambil_file($register)->result();
 		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
 
-		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+		// $sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
 
-		if($sk_penggunaan->num_rows() > 0) {
-			$data['sk_penggunaan']=$sk_penggunaan->row();
-		} else {
-			$data['sk_penggunaan']="NULL";
-		}	
+		// if($sk_penggunaan->num_rows() > 0) {
+		// 	$data['sk_penggunaan']=$sk_penggunaan->row();
+		// } else {
+		// 	$data['sk_penggunaan']="NULL";
+		// }	
 
         $this->load->view('header',$data);		
 		$this->load->view('edit_form_gdb',$data);
@@ -733,13 +733,13 @@ class Form_inv extends CI_Controller {
 		$data['image'] = $this->form_model->ambil_file($register)->result();
 		$data['penolakan'] =$this->form_model->ambil_jurnal_penolakan($data_penolakan=array('register' => $register,'status_register' => 1))->row();
 		
-		$sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
+		// $sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
 
-		if($sk_penggunaan->num_rows() > 0) {
-			$data['sk_penggunaan']=$sk_penggunaan->row();
-		} else {
-			$data['sk_penggunaan']="NULL";
-		}	
+		// if($sk_penggunaan->num_rows() > 0) {
+		// 	$data['sk_penggunaan']=$sk_penggunaan->row();
+		// } else {
+		// 	$data['sk_penggunaan']="NULL";
+		// }	
 
         $this->load->view('header',$data);		
 		$this->load->view('edit_form_jij',$data);

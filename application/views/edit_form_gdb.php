@@ -491,7 +491,7 @@
 
 
                             <!-- Mulai Form -->  
-                            <div class="form-group col-md-5 mb-4">
+                            <!-- <div class="form-group col-md-5 mb-4">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
@@ -506,7 +506,7 @@
                             </div> 
                             <div class=" mt-0 mb-3 col-lg-3">
                                 
-                            </div> 
+                            </div>  -->
                             <!-- Batas Per Form -->  
                            
 
