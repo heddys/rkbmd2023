@@ -5,7 +5,7 @@ class Form_inv extends CI_Controller {
 
     
    	public function index ($id=0)
-	{	
+	{
 		$this->cek_sess();
 		$data['page']="Form Inventarisasi";
      	$data['exist']=$this->cek_jumlah_exist();
