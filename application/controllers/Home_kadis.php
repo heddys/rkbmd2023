@@ -281,7 +281,6 @@ class Home_kadis extends CI_Controller {
 			}
 		}
 
-
 	}
 
 	public function cek_jumlah_exist(){

@@ -156,7 +156,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+          <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link"> 
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -202,8 +202,8 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-header"><strong>MENU TAMBAHAN</strong></li>
+          </li> -->
+          <!-- <li class="nav-header"><strong>MENU TAMBAHAN</strong></li>
           <li class="nav-item">
             <a href="<?php echo site_url('home_kadis/list_tambak');?>" class="nav-link">
               <i class="nav-icon fas fa-leaf"></i>
@@ -217,7 +217,7 @@
               <i class="nav-icon fas fa-car"></i>
               <p>List Kendaraan</p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-header"><strong>STATUS REGISTER</strong></li>
           <li class="nav-item has-treeview">
             <a href="<?php echo site_url('home_kadis/cari_status_reg')?>" class="nav-link">
@@ -338,7 +338,7 @@
                 Buku Bantu
               </p>
             </a>
-            <!-- <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('home_kadis/export_excel_all_kibpm_user');?>" class="nav-link">
                   <i class="nav-icon fa fa-file"></i>
@@ -371,7 +371,7 @@
                   </p>
                 </a>
               </li>
-            </ul> -->
+            </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="<?php echo site_url('home_kadis/halaman_cetak_laporan')?>" class="nav-link">

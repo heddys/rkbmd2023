@@ -91,30 +91,34 @@ class Admin_model extends CI_Model{
             "SELECT
                 b.unit,
                 b.nomor_unit,
-                LEFT ( a.kode_barang, 5 ) AS kode_barang,
-                COUNT(
-                IF
-                ( a.STATUS = 1, 1, NULL )) AS proses,
-                COUNT(
-                IF
-                ( a.STATUS = 2, 1, NULL )) AS verif,
-                COUNT(
-                IF
-                ( a.STATUS = 3, 1, NULL )) AS tolak
-            FROM
-                register_isi a
-                INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON left(a.nomor_lokasi_awal,12)= b.nomor_unit 
-            WHERE
-                LEFT ( a.kode_barang, 5 ) = '".$kode."'
-                AND left(a.nomor_lokasi_awal,12) = '".$unit."'
-                AND a.hapus <> 1 
-                AND a.extrakomtabel <> 1
-            GROUP BY
-                b.unit,
-                LEFT ( a.kode_barang, 5 ) 
-            ORDER BY
-                b.nomor_unit DESC,
-                LEFT ( a.kode_barang, 5 ) ASC");
+                sub.kode_barang_5 AS kode_barang,
+                SUM(CASE WHEN sub.status = 1 THEN sub.jumlah ELSE 0 END) AS proses,
+                SUM(CASE WHEN sub.status = 2 THEN sub.jumlah ELSE 0 END) AS verif,
+                SUM(CASE WHEN sub.status = 3 THEN sub.jumlah ELSE 0 END) AS tolak
+            FROM (
+                SELECT
+                    LEFT(nomor_lokasi_awal, 12) AS nomor_unit_12,
+                    LEFT(kode_barang, 5) AS kode_barang_5,
+                    status,
+                    COUNT(*) AS jumlah
+                FROM register_isi
+                WHERE hapus <> 1
+                AND extrakomtabel <> 1
+                -- optional: filter awal kalau hanya 1 kode/unit tertentu supaya lebih cepat
+                -- AND LEFT(kode_barang,5) = '1.3.1'
+                -- AND LEFT(nomor_lokasi_awal,12) = '....'
+                GROUP BY LEFT(nomor_lokasi_awal, 12), LEFT(kode_barang, 5), status
+            ) sub
+            JOIN (
+                SELECT nomor_unit, unit
+                FROM kamus_lokasi
+                WHERE kode_binprog <> ''
+                GROUP BY nomor_unit
+            ) b ON sub.nomor_unit_12 = b.nomor_unit
+            WHERE sub.kode_barang_5 = '".$kode."'
+            AND sub.nomor_unit_12 = '".$unit."'
+            GROUP BY b.unit, b.nomor_unit, sub.kode_barang_5
+            ORDER BY b.nomor_unit DESC, sub.kode_barang_5 ASC;");
 
         return $query;
     }
@@ -458,43 +462,42 @@ class Admin_model extends CI_Model{
             "SELECT 
                 b.unit,
                 b.nomor_unit,
-                LEFT(a.kode108_baru, 5) AS kode_barang,
-                COUNT(a.register) AS jumlah
+                sub.kode_barang,
+                SUM(sub.jumlah) AS jumlah
             FROM (
-                -- Mengambil data dari kib_awal
                 SELECT 
-                    nomor_lokasi_baru, 
-                    kode108_baru, 
-                    register, 
-                    hapus, 
-                    extrakomtabel_baru 
-                FROM kib_awal
+                    LEFT(a.kode108_baru, 5) AS kode_barang,
+                    LEFT(a.nomor_lokasi_baru, 12) AS nomor_unit,
+                    COUNT(a.register) AS jumlah
+                FROM kib_awal a
+                WHERE 
+                    a.hapus <> 1
+                    AND a.extrakomtabel_baru <> 1
+                    AND LEFT(a.kode108_baru, 5) IN ('1.3.1','1.3.2','1.3.3','1.3.4','1.3.5','1.5.3')
+                GROUP BY LEFT(a.nomor_lokasi_baru, 12), LEFT(a.kode108_baru, 5)
+
                 UNION ALL
-                -- Mengambil data dari kib
+
                 SELECT 
-                    nomor_lokasi_baru, 
-                    kode108_baru, 
-                    register, 
-                    hapus, 
-                    extrakomtabel_baru 
-                FROM kib
-            ) a
-            INNER JOIN (
+                    LEFT(a.kode108_baru, 5),
+                    LEFT(a.nomor_lokasi_baru, 12),
+                    COUNT(a.register)
+                FROM kib a
+                WHERE 
+                    a.hapus <> 1
+                    AND a.extrakomtabel_baru <> 1
+                    AND LEFT(a.kode108_baru, 5) IN ('1.3.1','1.3.2','1.3.3','1.3.4','1.3.5','1.5.3')
+                GROUP BY LEFT(a.nomor_lokasi_baru, 12), LEFT(a.kode108_baru, 5)
+            ) sub
+            LEFT JOIN (
                 SELECT 
-                    x.nomor_unit, 
-                    x.unit 
-                FROM kamus_lokasi x 
-                WHERE x.kode_binprog <> '' 
-                GROUP BY x.nomor_unit
-            ) b ON LEFT(a.nomor_lokasi_baru, 12) = b.nomor_unit 
-            WHERE 
-                LEFT(a.kode108_baru, 5) IN ('1.3.1', '1.3.2', '1.3.3', '1.3.4') 
-                AND a.hapus <> 1 
-                AND a.extrakomtabel_baru <> 1 
-            GROUP BY 
-                b.unit, 
-                b.nomor_unit, 
-                LEFT(a.kode108_baru, 5);");
+                    nomor_unit,
+                    MAX(unit) AS unit   -- pilih 1 unit saja jika dobel
+                FROM kamus_lokasi
+                WHERE kode_binprog <> ''
+                GROUP BY nomor_unit
+            ) b ON sub.nomor_unit = b.nomor_unit
+            GROUP BY b.unit, b.nomor_unit, sub.kode_barang;");
         
         return $query->result();
    }
@@ -515,7 +518,7 @@ class Admin_model extends CI_Model{
              FROM
                 register_isi
              WHERE
-                LEFT ( kode_barang_lama, 5 ) IN ('1.3.1','1.3.2','1.3.3','1.3.4') and  hapus <> 1 and extrakomtabel <> 1");
+                LEFT ( kode_barang_lama, 5 ) IN ('1.3.1', '1.3.2', '1.3.3', '1.3.4','1.3.5','1.5.3') and  hapus <> 1 and extrakomtabel <> 1");
 
         return $query;
    }
