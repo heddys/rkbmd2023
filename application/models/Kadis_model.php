@@ -25,7 +25,7 @@ class Kadis_model extends CI_Model{
                         kib_awal 
                     WHERE
                         hapus = '' 
-                        AND kode64_baru like '".$kode."%'
+                        AND kode108_baru like '".$kode."%'
                         AND extrakomtabel_baru = '' AND nomor_lokasi_baru in ( '".implode("','",$unit)."' )
                     ) sawal,
                     (
@@ -35,7 +35,7 @@ class Kadis_model extends CI_Model{
                         kib 
                     WHERE
                         hapus = '' 
-                        AND kode64_baru like '".$kode."%'
+                        AND kode108_baru like '".$kode."%'
                         AND extrakomtabel_baru = '' AND nomor_lokasi_baru in ( '".implode("','",$unit)."' )
                     ) tambah"
             );
@@ -52,7 +52,7 @@ class Kadis_model extends CI_Model{
                         kib_awal 
                     WHERE
                         hapus = '' 
-                        AND kode64_baru like '".$kode."%' 
+                        AND kode108_baru like '".$kode."%' 
                         AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
                     ) sawal,
                     (
@@ -62,7 +62,7 @@ class Kadis_model extends CI_Model{
                         kib 
                     WHERE
                         hapus = '' 
-                        AND kode64_baru like '".$kode."%'  
+                        AND kode108_baru like '".$kode."%'  
                         AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
                     ) tambah"
             );
@@ -541,7 +541,7 @@ class Kadis_model extends CI_Model{
         WHERE
             a.nomor_lokasi LIKE '".$nomor_lokasi."%' 
             AND a.kode108_baru LIKE '".$kib."%' 
-            AND b.STATUS = 2 
+            AND b.STATUS = 2
             AND ( d.is_kode_barang = 1 OR d.is_nama_barang = 1 OR d.is_spesifikasi_barang_merk = 1 OR d.is_tipe = 1 ) UNION
         SELECT
             a.kode108_baru,
@@ -568,7 +568,7 @@ class Kadis_model extends CI_Model{
         WHERE
             a.nomor_lokasi LIKE '".$nomor_lokasi."%' 
             AND a.kode108_baru LIKE '".$kib."%' 
-            AND b.STATUS = 2 
+            AND b.STATUS = 2
             AND ( d.is_kode_barang = 1 OR d.is_nama_barang = 1 OR d.is_spesifikasi_barang_merk = 1 OR d.is_tipe = 1 ) 
         GROUP BY
             b.register");

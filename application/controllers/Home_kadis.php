@@ -619,6 +619,9 @@ class Home_kadis extends CI_Controller {
         $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
         $get_data_pb=$this->kadis_model->ambil_data_pb($nomor_lokasi)->row();
 		
+		// echo '<pre style="background: #DEDEDE; color: #484848;">'; var_dump( $nomor_lokasi ); echo '</pre>';
+		// echo '<pre style="background: #DEDEDE; color: #484848;">'; var_dump( $kib ); echo '</pre>';
+		
 		$data['data_register']=$this->kadis_model->get_perubahan_data_verif($nomor_lokasi,$kib)->result();
 		
 
