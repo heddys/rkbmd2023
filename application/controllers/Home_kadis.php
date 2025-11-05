@@ -24,24 +24,24 @@ class Home_kadis extends CI_Controller {
 		$data['lok'] = $nomor_lokasi;
 		// $data['rekap']=$this->kadis_model->data_progres_opd($nomor_lokasi)->row();
 
-		$data['total_tanah']=$this->kadis_model->get_kib_per_aset('1.3.01',$nomor_lokasi)->row();
-		$data['total_pm']=$this->kadis_model->get_kib_per_aset('1.3.02',$nomor_lokasi)->row();
-		$data['total_gdb']=$this->kadis_model->get_kib_per_aset('1.3.03',$nomor_lokasi)->row();
-		$data['total_jij']=$this->kadis_model->get_kib_per_aset('1.3.04',$nomor_lokasi)->row();
-		$data['total_atl']=$this->kadis_model->get_kib_per_aset('1.3.05',$nomor_lokasi)->row();
-		$data['total_atb']=$this->kadis_model->get_kib_per_aset('1.5.03',$nomor_lokasi)->row();
+		$data['total_tanah']=$this->kadis_model->get_kib_per_aset('1.3.1',$nomor_lokasi)->row();
+		$data['total_pm']=$this->kadis_model->get_kib_per_aset('1.3.2',$nomor_lokasi)->row();
+		$data['total_gdb']=$this->kadis_model->get_kib_per_aset('1.3.3',$nomor_lokasi)->row();
+		$data['total_jij']=$this->kadis_model->get_kib_per_aset('1.3.4',$nomor_lokasi)->row();
+		$data['total_atl']=$this->kadis_model->get_kib_per_aset('1.3.5',$nomor_lokasi)->row();
+		$data['total_atb']=$this->kadis_model->get_kib_per_aset('1.5.3',$nomor_lokasi)->row();
 		$data['rekap_tanah']=$this->kadis_model->data_progres_opd_tanah($nomor_lokasi)->row();
 		$data['rekap_pm']=$this->kadis_model->data_progres_opd_pm($nomor_lokasi)->row();
 		$data['rekap_gdb']=$this->kadis_model->data_progres_opd_gdb($nomor_lokasi)->row();
 		$data['rekap_jij']=$this->kadis_model->data_progres_opd_jij($nomor_lokasi)->row();
 		$data['rekap_atl']=$this->kadis_model->data_progres_opd_atl($nomor_lokasi)->row();
 		$data['rekap_atb']=$this->kadis_model->data_progres_opd_atb($nomor_lokasi)->row();
-		$data['sisa_tanah']=$this->kadis_model->get_sisa_per_aset('1.3.01',$nomor_lokasi)->num_rows();
-		$data['sisa_pm']=$this->kadis_model->get_sisa_per_aset('1.3.02',$nomor_lokasi)->num_rows();
-		$data['sisa_gdb']=$this->kadis_model->get_sisa_per_aset('1.3.03',$nomor_lokasi)->num_rows();
-		$data['sisa_jij']=$this->kadis_model->get_sisa_per_aset('1.3.04',$nomor_lokasi)->num_rows();
-		$data['sisa_atl']=$this->kadis_model->get_sisa_per_aset('1.3.05',$nomor_lokasi)->num_rows();
-		$data['sisa_atb']=$this->kadis_model->get_sisa_per_aset('1.5.03',$nomor_lokasi)->num_rows();
+		$data['sisa_tanah']=$this->kadis_model->get_sisa_per_aset('1.3.1',$nomor_lokasi)->num_rows();
+		$data['sisa_pm']=$this->kadis_model->get_sisa_per_aset('1.3.2',$nomor_lokasi)->num_rows();
+		$data['sisa_gdb']=$this->kadis_model->get_sisa_per_aset('1.3.3',$nomor_lokasi)->num_rows();
+		$data['sisa_jij']=$this->kadis_model->get_sisa_per_aset('1.3.4',$nomor_lokasi)->num_rows();
+		$data['sisa_atl']=$this->kadis_model->get_sisa_per_aset('1.3.5',$nomor_lokasi)->num_rows();
+		$data['sisa_atb']=$this->kadis_model->get_sisa_per_aset('1.5.3',$nomor_lokasi)->num_rows();
 
 		$this->load->view('kadis/header_kds',$data);		
 		$this->load->view('kadis/home_kadis');

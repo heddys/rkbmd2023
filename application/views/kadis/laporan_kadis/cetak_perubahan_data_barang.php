@@ -66,22 +66,22 @@ function tgl_indo($tanggal){
   }
 ?>
 
-<?php if ($kib_apa == '1.3.01') { 
+<?php if ($kib_apa == '1.3.1') { 
             $aset="ASET TETAP TANAH";
         } 
-        elseif ($kib_apa == '1.3.02') {
+        elseif ($kib_apa == '1.3.2') {
             $aset="ASET TETAP PERALATAN DAN MESIN";
         } 
-        elseif ($kib_apa == '1.3.03') {
+        elseif ($kib_apa == '1.3.3') {
             $aset="ASET TETAP GEDUNG DAN BANGUNAN";
         } 
-        elseif ($kib_apa == '1.3.04') {
+        elseif ($kib_apa == '1.3.4') {
             $aset="ASET TETAP JALAN, IRIGASI DAN JARINGAN";
         }
-        elseif ($kib_apa == '1.3.05') {
+        elseif ($kib_apa == '1.3.5') {
             $aset="ASET TETAP LAINNYA";
         }
-        elseif ($kib_apa == '1.5.03') {
+        elseif ($kib_apa == '1.5.3') {
             $aset="ASET TIDAK BERWUJUD";
         }
 ?>
