@@ -504,9 +504,14 @@ class Form_inv extends CI_Controller {
 
 		
 		$register = $_POST['register'];
+
+		
 		
 		$data['data_register'] = $this->form_model->ambil_register($register);
+		
 		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
+		// var_dump($register);
+		// die();
 		// $sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
 
 		// if($sk_penggunaan->num_rows() > 0) {
@@ -515,9 +520,9 @@ class Form_inv extends CI_Controller {
 		// 	$data['sk_penggunaan']="NULL";
 		// }
 		
-		$this->load->view('header',$data);		
-		$this->load->view('isi_form_tanah',$data);
-		$this->load->view('footer_isi_form_tanah');
+		// $this->load->view('header',$data);		
+		// $this->load->view('isi_form_tanah',$data);
+		// $this->load->view('footer_isi_form_tanah');
 
 	}
 
