@@ -955,11 +955,11 @@ class Form_inv extends CI_Controller {
 		$this->load->view('footer_isi_form_pm');
 	}
 
-    private function cek_sess() 
+    public function cek_sess() 
 	{
 		if($this->session->userdata('role') =="Pengurus Barang" || $this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD' ){
 			$opd=$this->session->userdata('skpd');
-			$this->load->model('auth_model');
+			$this->load->model('form_model');
 			return;
 			} else { 
 				$par=2;

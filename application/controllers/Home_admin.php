@@ -1594,25 +1594,23 @@ class Home_admin extends CI_Controller {
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, strtoupper($row->unit));
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, strtoupper($kode_barang));;
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, $row->jumlah);
-				$objPHPExcel->setActiveSheetIndex(0)->getNumberFormat()->setFormatCode('#,##0.00')->setCellValue('E' . $i, '0');
-				$objPHPExcel->setActiveSheetIndex(0)->getNumberFormat()->setFormatCode('#,##0.00')->setCellValue('F' . $i, '0');
-				$objPHPExcel->setActiveSheetIndex(0)->getNumberFormat()->setFormatCode('#,##0.00')->setCellValue('G' . $i, '0');
-				$objPHPExcel->setActiveSheetIndex(0)->getNumberFormat()->setFormatCode('#,##0.00')->setCellValue('H' . $i, $row->jumlah);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, (int)$row->jumlah);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, '0');
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, '0');
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, '0');
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, (int)$row->jumlah);
 			} else {
 				$get=$proses_inv->row();
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, strtoupper($row->unit));
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, strtoupper($kode_barang));;
-				$objPHPExcel->setActiveSheetIndex(0)->getNumberFormat()->setFormatCode('#,##0.00')->setCellValue('D' . $i, $row->jumlah);
-				$objPHPExcel->setActiveSheetIndex(0)->getNumberFormat()->setFormatCode('#,##0.00')->setCellValue('E' . $i, $get->verif);
-				$objPHPExcel->setActiveSheetIndex(0)->getNumberFormat()->setFormatCode('#,##0.00')->setCellValue('F' . $i, $get->proses);
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, $get->tolak);
-				if($row->jumlah-($get->verif+$get->proses+$get->tolak) < 0) {
-					$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, '0');
-				} else {
-					$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $row->jumlah-($get->verif+$get->proses+$get->tolak));
-				}
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, (int)$row->jumlah);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, (int)$get->verif);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, (int)$get->proses);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, (int)$get->tolak);
+				
+				 $selisih = $row->jumlah - ($get->verif + $get->proses + $get->tolak);
+        		 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $selisih < 0 ? 0 : (int)$selisih);
 				// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, round((float)$row->persentase,3).'%');
 			}
 
