@@ -120,9 +120,9 @@
             public function get_sisa_per_aset($kib,$lokasi) {
 
                 if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ) {
-                    $query = $this->db->query("SELECT a.register FROM `2024_v8`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '".$kib."%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' ) and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register) union SELECT a.register FROM `2024_v8`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '".$kib."%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' ) and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register)");
+                    $query = $this->db->query("SELECT a.register FROM `2024_v8`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode108_baru like '".$kib."%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' ) and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register) union SELECT a.register FROM `2024_v8`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode108_baru like '".$kib."%' and a.nomor_lokasi_baru IN ( '".implode("','",$lokasi)."' ) and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register)");
                 } else {
-                    $query = $this->db->query("SELECT a.register FROM `2024_v8`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '".$kib."%' and a.`nomor_lokasi_baru` like '".$lokasi."%' and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register) union SELECT a.register FROM `2024_v8`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode64_baru like '".$kib."%' and a.`nomor_lokasi_baru` like '".$lokasi."%'  and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register)");
+                    $query = $this->db->query("SELECT a.register FROM `2024_v8`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode108_baru like '".$kib."%' and a.`nomor_lokasi_baru` like '".$lokasi."%' and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register) union SELECT a.register FROM `2024_v8`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode108_baru like '".$kib."%' and a.`nomor_lokasi_baru` like '".$lokasi."%'  and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register)");
                 }
 
                 
@@ -156,12 +156,11 @@
                         INNER JOIN `2024_v8`.kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi_awal 
                     WHERE
                         a.status = '".$status."'
-                        AND a.kode_barang not like '1.5.4%'
+                        AND a.kode_barang_lama not like '1.5.4%'
                         AND left(a.`nomor_lokasi_awal`,12) LIKE '".$lokasi."%'
                         AND a.extrakomtabel <> 1
                         AND a.hapus <> 1"
                     );
-
 
                     } else {  
                         $query=$this->db->query("SELECT
@@ -172,7 +171,7 @@
                             INNER JOIN `2024_v8`.kamus_lokasi b ON b.nomor_lokasi = a.nomor_lokasi_awal 
                         WHERE
                             a.status = '".$status."'
-                            AND a.kode_barang like '".$kib."%'
+                            AND a.kode_barang_lama like '".$kib."%'
                             AND left(a.`nomor_lokasi_awal`,12) LIKE '".$lokasi."%'
                             AND a.extrakomtabel <> 1
                             AND a.hapus <> 1"
@@ -1030,7 +1029,7 @@
                                 kib_awal 
                             WHERE
                                 hapus = '' 
-                                AND LEFT ( kode64_baru, 6 ) = '".$kode."' 
+                                AND LEFT ( kode108_baru, 5 ) = '".$kode."' 
                                 AND extrakomtabel_baru = '' AND nomor_lokasi_baru in ( '".implode("','",$unit)."' )
                             ) sawal,
                             (
@@ -1040,7 +1039,7 @@
                                 kib 
                             WHERE
                                 hapus = '' 
-                                AND LEFT ( kode64_baru, 6 ) = '".$kode."'  
+                                AND LEFT ( kode108_baru, 5 ) = '".$kode."'  
                                 AND extrakomtabel_baru = '' AND nomor_lokasi_baru in ( '".implode("','",$unit)."' )
                             ) tambah"
                     );
@@ -1057,7 +1056,7 @@
                                 kib_awal 
                             WHERE
                                 hapus = '' 
-                                AND LEFT ( kode64_baru, 6 ) = '".$kode."' 
+                                AND LEFT ( kode108_baru, 5 ) = '".$kode."' 
                                 AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
                             ) sawal,
                             (
@@ -1067,7 +1066,7 @@
                                 kib 
                             WHERE
                                 hapus = '' 
-                                AND LEFT ( kode64_baru, 6 ) = '".$kode."'  
+                                AND LEFT ( kode108_baru, 5 ) = '".$kode."'  
                                 AND extrakomtabel_baru = '' AND nomor_lokasi_baru like '".$unit."%'
                             ) tambah"
                     );
@@ -1151,7 +1150,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.1%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.1%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -1167,7 +1166,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.1%' and a.nomor_lokasi_awal like '".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.1%' and a.nomor_lokasi_awal like '".$lokasi."%'");
                 }
                 return $query;
             }
@@ -1189,7 +1188,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.2%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.2%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -1205,7 +1204,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.2%' and a.nomor_lokasi_awal like '".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.2%' and a.nomor_lokasi_awal like '".$lokasi."%'");
                 }
                 return $query;
             }
@@ -1227,7 +1226,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.3%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.3%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -1243,7 +1242,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.3%' and a.nomor_lokasi_awal like '".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.3%' and a.nomor_lokasi_awal like '".$lokasi."%'");
                 }
                 return $query;
             }
@@ -1265,7 +1264,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.4%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.4%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -1281,7 +1280,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.4%' and a.nomor_lokasi_awal like '".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.4%' and a.nomor_lokasi_awal like '".$lokasi."%'");
                 }
                 return $query;
             }
@@ -1303,7 +1302,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.5%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.5%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -1319,7 +1318,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.3.5%' and a.nomor_lokasi_awal like '".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.3.5%' and a.nomor_lokasi_awal like '".$lokasi."%'");
                 }
                 return $query;
             }
@@ -1341,7 +1340,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.5.3%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.5.3%' and a.nomor_lokasi_awal IN ( '".implode("','",$lokasi)."' )");
                 } else {
                 $query=$this->db->query(
                     "SELECT
@@ -1357,7 +1356,7 @@
                         FROM
                             register_isi a 
                         WHERE
-                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang like '1.5.3%' and a.nomor_lokasi_awal like '".$lokasi."%'");
+                            a.extrakomtabel <> 1 and a.hapus <> 1 and kode_barang_lama like '1.5.3%' and a.nomor_lokasi_awal like '".$lokasi."%'");
                 }
                 return $query;
             }
@@ -1372,31 +1371,17 @@
             {
                 $query=$this->db->query(
                         "SELECT
-                        b.nama_lokasi,
-                        count( a.register ) AS total,
-                        COUNT(
-                        IF
-                        ( a.STATUS = 1, 1, NULL )) AS proses,
-                        COUNT(
-                        IF
-                        ( a.STATUS = 2, 1, NULL )) AS verif,
-                        COUNT(
-                        IF
-                        ( a.STATUS = 3, 1, NULL )) AS tolak,
-                        COUNT(
-                        IF
-                            ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-                            count( a.register )- COUNT(
-                            IF
-                            ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
-                    FROM
-                        data_kib a
-                    INNER JOIN kamus_pengurus_barang_pembantu b ON a.nomor_lokasi = b.nomor_lokasi
-                    WHERE b.nomor_lokasi like '".$lokasi."%'
-                    GROUP BY
-                        b.nip_pbp
-                    ORDER BY
-                        persentase DESC");
+                            b.nama_lokasi,
+                            COUNT(*) AS total,
+                            SUM(a.status = 1) AS proses,
+                            SUM(a.status = 2) AS verif,
+                            SUM(a.status = 3) AS tolak
+                        FROM register_isi a
+                        JOIN kamus_pengurus_barang_pembantu b 
+                            ON a.nomor_lokasi_awal = b.nomor_lokasi
+                        WHERE a.nomor_lokasi_awal LIKE CONCAT('".$lokasi."', '%')
+                        AND a.kode_barang_lama LIKE '1.3.5%'
+                        GROUP BY b.nip_pbp");
                     
                     return $query->result();
             }
@@ -1479,5 +1464,57 @@
             function ambil_data_tambak($register) {
                 return $this->db->get_where('register_tambak',array('register' => $register));
             }
+
+
+    public function get_rekap_opd_admin()
+    {
+        $db_simbada = $this->load->database('simbada',TRUE);
+        $query=$db_simbada->query(
+            "SELECT 
+                b.unit,
+                b.nomor_unit,
+                sub.kode_barang,
+                SUM(sub.jumlah) AS jumlah
+            FROM (
+                SELECT 
+                    LEFT(a.kode108_baru, 5) AS kode_barang,
+                    LEFT(a.nomor_lokasi_baru, 12) AS nomor_unit,
+                    COUNT(a.register) AS jumlah
+                FROM kib_awal a
+                WHERE 
+                    a.hapus <> 1
+                    AND a.extrakomtabel_baru <> 1
+                    -- AND LEFT(a.kode108_baru, 5) IN ('1.3.1','1.3.2','1.3.3','1.3.4','1.3.5','1.5.3')
+                    AND LEFT (a.kode108_baru, 5) LIKE '1.3.5%'
+                    AND a.nomor_lokasi_baru like '%'
+                GROUP BY LEFT(a.nomor_lokasi_baru, 18), LEFT(a.kode108_baru, 5)
+
+                UNION ALL
+
+                SELECT 
+                    LEFT(a.kode108_baru, 5),
+                    LEFT(a.nomor_lokasi_baru, 12),
+                    COUNT(a.register)
+                FROM kib a
+                WHERE 
+                    a.hapus <> 1
+                    AND a.extrakomtabel_baru <> 1
+                    -- AND LEFT(a.kode108_baru, 5) IN ('1.3.1','1.3.2','1.3.3','1.3.4','1.3.5','1.5.3')
+                    AND LEFT (a.kode108_baru, 5) LIKE '1.3.5%'
+                    AND a.nomor_lokasi_baru like '%'
+                GROUP BY LEFT(a.nomor_lokasi_baru, 18), LEFT(a.kode108_baru, 5)
+            ) sub
+            LEFT JOIN (
+                SELECT 
+                    nomor_unit,
+                    MAX(unit) AS unit   -- pilih 1 unit saja jika dobel
+                FROM kamus_lokasi
+                WHERE kode_binprog <> ''
+                GROUP BY nomor_unit
+            ) b ON sub.nomor_unit = b.nomor_unit
+            GROUP BY b.unit, b.nomor_unit, sub.kode_barang;");
+        
+        return $query->result();
+    }
  }
  ?>

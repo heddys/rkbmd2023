@@ -121,6 +121,7 @@
 						<div class="form-group">
 						<label>Tugas : </label>
 						<select class="form-control tugas" id="tugas">
+							<option value="Kepala OPD">Kepala PD</option>
 							<option value="Pengurus Barang">Pengurus Barang</option>
 							<option value="Verifikator">Verifikator</option>
 							<option value="Penyelia">Penyelia</option>

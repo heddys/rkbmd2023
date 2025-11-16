@@ -147,7 +147,7 @@ class Home_verifikator extends CI_Controller {
 					$config['full_tag_close']='</ul></nav>';
 	
 					$config['first_link'] = 'First';
-					$config['first_tag_open'] = '<li class="page-item">';
+					$config['first_tag_open'] = '<li class="page-item">';	
 					$config['first_tag_close'] = '</li>';
 	
 					$config['last_link'] = 'Last';

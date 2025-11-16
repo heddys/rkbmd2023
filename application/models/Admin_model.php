@@ -98,7 +98,7 @@ class Admin_model extends CI_Model{
             FROM (
                 SELECT
                     LEFT(nomor_lokasi_awal, 12) AS nomor_unit_12,
-                    LEFT(kode_barang, 5) AS kode_barang_5,
+                    LEFT(kode_barang_lama, 5) AS kode_barang_5,
                     status,
                     COUNT(*) AS jumlah
                 FROM register_isi
@@ -107,7 +107,7 @@ class Admin_model extends CI_Model{
                 -- optional: filter awal kalau hanya 1 kode/unit tertentu supaya lebih cepat
                 -- AND LEFT(kode_barang,5) = '1.3.1'
                 -- AND LEFT(nomor_lokasi_awal,12) = '....'
-                GROUP BY LEFT(nomor_lokasi_awal, 12), LEFT(kode_barang, 5), status
+                GROUP BY LEFT(nomor_lokasi_awal, 12), LEFT(kode_barang_lama, 5), status
             ) sub
             JOIN (
                 SELECT nomor_unit, unit
@@ -834,14 +834,14 @@ class Admin_model extends CI_Model{
 
     public function get_belum_kapt_ada_induk($kib)
     {
-        $query = $this->db->query("SELECT b.unit,b.lokasi,a.register,a.kode_barang,a.nama_barang,a.spesifikasi_barang_merk,a.tipe,a.satuan,a.nilai_perolehan,a.merupakan_anak,c.kode108_baru,c.nomor_lokasi,c.nama_barang as name_anak,c.merk_alamat as merk_anak,c.tipe as tipe_anak,a.keterangan FROM `register_isi` a inner join kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi inner join data_kib c on a.merupakan_anak=c.register where a.kode_barang like '%".$kib."%' and c.status = '2' and a.register <> a.merupakan_anak");
+        $query = $this->db->query("SELECT b.unit,b.lokasi,a.register,a.kode_barang,a.nama_barang,a.spesifikasi_barang_merk,a.tipe,a.satuan,a.nilai_perolehan,a.merupakan_anak,c.kode108_baru,c.nomor_lokasi,c.nama_barang as name_anak,c.merk_alamat as merk_anak,c.tipe as tipe_anak,a.keterangan FROM `register_isi` a inner join kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi inner join data_kib c on a.merupakan_anak=c.register where a.kode_barang_lama like '%".$kib."%' and c.status = '2' and a.register <> a.merupakan_anak");
 
         return $query;
     }
 
     public function get_data_ganda($kib)
     {
-        $query = $this->db->query("SELECT b.unit,b.lokasi,a.register,a.kode_barang,a.nama_barang,a.spesifikasi_barang_merk,a.tipe,a.satuan,a.nilai_perolehan,a.register_ganda,c.kode108_baru,c.nomor_lokasi,c.nama_barang as name_anak,c.merk_alamat as merk_anak,c.tipe as tipe_anak,c.satuan as satuan_anak,c.harga_baru,c.tahun_pengadaan,d.nama_kepala,a.keterangan FROM `register_isi` a inner join kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi inner join data_kib c on a.register_ganda=c.register inner join pengguna d on left(c.nomor_lokasi,11) = d.nomor_lokasi where a.register <> a.register_ganda and c.`status` = '2' and a.kode_barang like '%".$kib."%' GROUP BY a.register");
+        $query = $this->db->query("SELECT b.unit,b.lokasi,a.register,a.kode_barang,a.nama_barang,a.spesifikasi_barang_merk,a.tipe,a.satuan,a.nilai_perolehan,a.register_ganda,c.kode108_baru,c.nomor_lokasi,c.nama_barang as name_anak,c.merk_alamat as merk_anak,c.tipe as tipe_anak,c.satuan as satuan_anak,c.harga_baru,c.tahun_pengadaan,d.nama_kepala,a.keterangan FROM `register_isi` a inner join kamus_lokasi b on a.nomor_lokasi_awal=b.nomor_lokasi inner join data_kib c on a.register_ganda=c.register inner join pengguna d on left(c.nomor_lokasi,11) = d.nomor_lokasi where a.register <> a.register_ganda and c.`status` = '2' and a.kode_barang_lama like '%".$kib."%' GROUP BY a.register");
 
         return $query;
     }

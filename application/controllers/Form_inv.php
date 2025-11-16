@@ -5,7 +5,7 @@ class Form_inv extends CI_Controller {
 
     
    	public function index ($id=0)
-	{
+	{	
 		$this->cek_sess();
 		$data['page']="Form Inventarisasi";
      	$data['exist']=$this->cek_jumlah_exist();
@@ -504,14 +504,9 @@ class Form_inv extends CI_Controller {
 
 		
 		$register = $_POST['register'];
-
-		
 		
 		$data['data_register'] = $this->form_model->ambil_register($register);
-		
 		$data['list_kelurahan']=$this->form_model->kamus_kelurahan();
-		// var_dump($register);
-		// die();
 		// $sk_penggunaan=$this->form_model->get_sk_penggunaan($register);
 
 		// if($sk_penggunaan->num_rows() > 0) {
@@ -520,9 +515,9 @@ class Form_inv extends CI_Controller {
 		// 	$data['sk_penggunaan']="NULL";
 		// }
 		
-		// $this->load->view('header',$data);		
-		// $this->load->view('isi_form_tanah',$data);
-		// $this->load->view('footer_isi_form_tanah');
+		$this->load->view('header',$data);		
+		$this->load->view('isi_form_tanah',$data);
+		$this->load->view('footer_isi_form_tanah');
 
 	}
 
@@ -955,11 +950,11 @@ class Form_inv extends CI_Controller {
 		$this->load->view('footer_isi_form_pm');
 	}
 
-    public function cek_sess() 
+    private function cek_sess() 
 	{
 		if($this->session->userdata('role') =="Pengurus Barang" || $this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD' ){
 			$opd=$this->session->userdata('skpd');
-			$this->load->model('form_model');
+			$this->load->model('auth_model');
 			return;
 			} else { 
 				$par=2;

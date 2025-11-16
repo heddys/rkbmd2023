@@ -236,6 +236,67 @@ class Kadis_model extends CI_Model{
         return $query;
     }
 
+    public function get_rekap_per_uptd($lokasi)
+    {
+        $query=$this->db->query(
+                "SELECT
+                b.nama_lokasi,
+                count( a.register ) AS total,
+                COUNT(
+                IF
+                ( a.STATUS = 1, 1, NULL )) AS proses,
+                COUNT(
+                IF
+                ( a.STATUS = 2, 1, NULL )) AS verif,
+                COUNT(
+                IF
+                ( a.STATUS = 3, 1, NULL )) AS tolak,
+                COUNT(
+                IF
+                    ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
+                    count( a.register )- COUNT(
+                    IF
+                    ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
+            FROM
+                data_kib a
+            INNER JOIN kamus_pengurus_barang_pembantu b ON a.nomor_lokasi = b.nomor_lokasi
+            WHERE b.nomor_lokasi like '".$lokasi."%'
+            GROUP BY
+                b.nip_pbp
+            ORDER BY
+                persentase DESC");
+            
+            return $query->result();
+    }
+
+    public function get_data_dinkes_only()
+    {
+        $query=$this->db->query(
+            "SELECT
+                count( register ) as total,
+                COUNT(
+                IF
+                ( STATUS = 1, 1, NULL )) AS proses,
+                COUNT(
+                IF
+                ( STATUS = 2, 1, NULL )) AS verif,
+                COUNT(
+                IF
+                ( STATUS = 3, 1, NULL )) AS tolak,
+                COUNT(
+                IF
+                    ( STATUS IS NULL, 1, NULL )) AS sisa,(
+                    count( register )- COUNT(
+                    IF
+                    ( STATUS IS NULL, 1, NULL )))/ count( register )*100 AS persentase 
+            FROM
+                data_kib
+            WHERE
+            ekstrakomtabel is null and nomor_lokasi in ('13.30.07.01.00.01','13.30.07.01.00.03','13.30.07.01.00.04','13.30.07.01.00.06')");
+
+            return $query;
+    }
+
     function data_progres_opd_atl($lokasi){
          // return $query;
          if($this->session->userdata('role') == "Pengurus Barang Pembantu UPTD" ){

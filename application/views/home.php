@@ -604,7 +604,7 @@
                           <th>Register Telah Di Verif</th>
                           <th>Register Masih Proses Verif</th>
                           <th>Register Di Tolak</th>
-                          <th>Register Belum Terjamah</th>
+                          <th>Register Belum Di Inventarisasi</th>
                           <th>Persentase</th>
                         </tr>
                         </thead>
@@ -618,8 +618,17 @@
                             <td><center><?php echo number_format($row->verif);?></center></td>
                             <td><center><?php echo number_format($row->proses);?></center></td>
                             <td><center><?php echo number_format($row->tolak);?></center></td>
-                            <td><center><?php echo number_format($row->sisa);?></center></td>
-                            <td><center><?php echo round((float)$row->persentase,3) . '%';?></center></td>
+                            <td><center>
+                            <?php
+                            $total  = isset($row->total)  ? $row->total  : 0;
+                            $verif  = isset($row->verif)  ? $row->verif  : 0;
+                            $proses = isset($row->proses) ? $row->proses : 0;
+                            $tolak  = isset($row->tolak)  ? $row->tolak  : 0;
+
+                            echo number_format($total - ($verif + $proses + $tolak));
+                            ?>
+                            </center></td>
+                            <td><center><?php echo round((float)$row->verif/$row->total*100,3) . '%';?></center></td>
                           </tr>
                           <?php } ?> 
                         </tbody>
