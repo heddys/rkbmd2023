@@ -1640,13 +1640,13 @@ class Home extends CI_Controller {
 		 // Merge Cells
 		$skpd=$this->session->userdata('skpd');
         $objPHPExcel->getActiveSheet()->mergeCells('A1:H1');
-        $objPHPExcel->getActiveSheet()->setCellValue('A1', "REKAP PRESENTASE REGISTER INVENTARISASI - SEMUA OPD");
+        $objPHPExcel->getActiveSheet()->setCellValue('A1', "REKAP PRESENTASE REGISTER INVENTARISASI - PERLOKASI OPD");
         
 
         // Create a first sheet
         $objPHPExcel->setActiveSheetIndex(0);
         $objPHPExcel->getActiveSheet()->setCellValue('A3', "No.");
-        $objPHPExcel->getActiveSheet()->setCellValue('B3', "OPD");
+        $objPHPExcel->getActiveSheet()->setCellValue('B3', "Lokasi OPD");
         $objPHPExcel->getActiveSheet()->setCellValue('C3', "Jenis Aset");
         $objPHPExcel->getActiveSheet()->setCellValue('D3', "Total Register");
         $objPHPExcel->getActiveSheet()->setCellValue('E3', "Register Telah Di Verif");
