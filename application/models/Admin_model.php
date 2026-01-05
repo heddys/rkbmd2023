@@ -97,7 +97,7 @@ class Admin_model extends CI_Model{
                 SUM(CASE WHEN sub.status = 3 THEN sub.jumlah ELSE 0 END) AS tolak
             FROM (
                 SELECT
-                    LEFT(nomor_lokasi_awal, 12) AS nomor_unit_12,
+                    LEFT(lokasi, 12) AS nomor_unit_12,
                     LEFT(kode_barang_lama, 5) AS kode_barang_5,
                     status,
                     COUNT(*) AS jumlah
@@ -107,7 +107,7 @@ class Admin_model extends CI_Model{
                 -- optional: filter awal kalau hanya 1 kode/unit tertentu supaya lebih cepat
                 -- AND LEFT(kode_barang,5) = '1.3.1'
                 -- AND LEFT(nomor_lokasi_awal,12) = '....'
-                GROUP BY LEFT(nomor_lokasi_awal, 12), LEFT(kode_barang_lama, 5), status
+                GROUP BY LEFT(lokasi, 12), LEFT(kode_barang_lama, 5), status
             ) sub
             JOIN (
                 SELECT nomor_unit, unit
