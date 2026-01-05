@@ -48,35 +48,49 @@
 
         public function api_image () {
 
-            $register = $this->input->get('register', TRUE);
-            if (!$register) {
-                show_error('Register wajib diisi', 400);
-            }
-
-            // API KEY (opsional)
             $apiKey = $this->input->get_request_header('X-API-KEY');
-
             $validKey = $this->config->item('api_keys')['SIMBADA'];
 
             if ($apiKey !== $validKey) {
-                show_error('Unauthorized', 401);
+                return $this->output
+                    ->set_status_header(401)
+                    ->set_content_type('application/json')
+                    ->set_output(json_encode([
+                        'status' => false,
+                        'message' => 'Unauthorized'
+                    ]));
+            }
+
+            $register = $this->input->get('register', TRUE);
+            if (!$register) {
+                return $this->output
+                    ->set_status_header(400)
+                    ->set_content_type('application/json')
+                    ->set_output(json_encode([
+                        'status' => false,
+                        'message' => 'Register wajib diisi'
+                    ]));
             }
 
             $images = $this->Api_model->get_list_by_register($register);
 
-            $result = [];
+            $data = [];
             foreach ($images as $img) {
-                $result[] = [
-                    'register'         => $img->register,
-                    'created_date' => $img->created_date,
-                    'created_time' => $img->created_time,
-                    'url'        => base_url('ini_assets/upload/'.$img->file_upload)
+                $data[] = [
+                    'register'      => $img->register,
+                    'created_date'  => $img->created_date,
+                    'created_time'  => $img->created_time,
+                    'url'           => site_url('api/image/'.$img->id) // endpoint API
                 ];
             }
-
-            $this->output
+            
+            return $this->output
+                ->set_status_header(200)
                 ->set_content_type('application/json')
-                ->set_output(json_encode($result));
+                ->set_output(json_encode([
+                    'status' => true,
+                    'data'   => $data
+                ]));
         }
             
     }
