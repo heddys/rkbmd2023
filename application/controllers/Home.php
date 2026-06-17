@@ -9,9 +9,7 @@ class Home extends CI_Controller {
 		$this->cek_sess();
 		$jabatan=$this->session->userdata('role');
 		$data['page']="Dashboard";
-		// $data['exist']=$this->cek_jumlah_exist();
-		// $data['bmaset']=$this->cek_jumlah_bmaset();
-		// $data['bmpersediaan']=$this->cek_jumlah_persediaan();
+
 		if($jabatan == "Pengurus Barang Pembantu UPTD"){
 			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
 			$nomor_lokasi=array();
@@ -23,9 +21,6 @@ class Home extends CI_Controller {
 			$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 		}
 
-		// var_dump($nomor_lokasi);
-		// die();
-
 		if($this->session->userdata('no_lokasi_asli') == "13.30.000701") {
 			$data['rekap_upt'] = $this->form_model->get_rekap_per_uptd($nomor_lokasi);
 			$data['only_opd'] = $this->form_model->get_data_dinkes_only()->row();
@@ -33,34 +28,90 @@ class Home extends CI_Controller {
 
 		if($this->session->userdata('no_lokasi_asli') == "13.30.000801"){
 			$data['rekap_upt'] = $this->form_model->get_rekap_per_uptd($nomor_lokasi);
-			// $data['only_opd'] = $this->form_model->get_data_dinkes_only()->row();
 		}
 		$data['lok'] = $nomor_lokasi;
-		// $data['rekap']=$this->form_model->data_progres_opd($nomor_lokasi)->row();
 
-		$data['total_tanah']=$this->form_model->get_kib_per_aset('1.3.1',$nomor_lokasi)->row();
-		$data['total_pm']=$this->form_model->get_kib_per_aset('1.3.2',$nomor_lokasi)->row();
-		$data['total_gdb']=$this->form_model->get_kib_per_aset('1.3.3',$nomor_lokasi)->row();
-		$data['total_jij']=$this->form_model->get_kib_per_aset('1.3.4',$nomor_lokasi)->row();
-		$data['total_atl']=$this->form_model->get_kib_per_aset('1.3.5',$nomor_lokasi)->row();
-		$data['total_atb']=$this->form_model->get_kib_per_aset('1.5.3',$nomor_lokasi)->row();
-		$data['rekap_tanah']=$this->form_model->data_progres_opd_tanah($nomor_lokasi)->row();
-		$data['rekap_pm']=$this->form_model->data_progres_opd_pm($nomor_lokasi)->row();
-		$data['rekap_gdb']=$this->form_model->data_progres_opd_gdb($nomor_lokasi)->row();
-		$data['rekap_jij']=$this->form_model->data_progres_opd_jij($nomor_lokasi)->row();
-		$data['rekap_atl']=$this->form_model->data_progres_opd_atl($nomor_lokasi)->row();
-		$data['rekap_atb']=$this->form_model->data_progres_opd_atb($nomor_lokasi)->row();
-		$data['sisa_tanah']=$this->form_model->get_sisa_per_aset('1.3.1',$nomor_lokasi)->num_rows();
-		$data['sisa_pm']=$this->form_model->get_sisa_per_aset('1.3.2',$nomor_lokasi)->num_rows();
-		$data['sisa_gdb']=$this->form_model->get_sisa_per_aset('1.3.3',$nomor_lokasi)->num_rows();
-		$data['sisa_jij']=$this->form_model->get_sisa_per_aset('1.3.4',$nomor_lokasi)->num_rows();
-		$data['sisa_atl']=$this->form_model->get_sisa_per_aset('1.3.5',$nomor_lokasi)->num_rows();
-		$data['sisa_atb']=$this->form_model->get_sisa_per_aset('1.5.3',$nomor_lokasi)->num_rows();
-
+		// Card data is now loaded via AJAX (get_card_data) for faster page load
 		$this->load->view('header',$data);		
 		$this->load->view('home');
 		$this->load->view('footer');
 		
+	}
+
+	/**
+	 * AJAX endpoint: returns JSON data for a single dashboard card.
+	 * Called client-side so each card loads independently.
+	 * @param string $type  One of: tanah, pm, gdb, jij, atl, atb
+	 */
+	public function get_card_data($type = NULL)
+	{
+		$this->cek_sess();
+
+		if ($type === NULL) {
+			echo json_encode(array('error' => 'type is required'));
+			return;
+		}
+
+		// Map type to kode aset
+		$map = array(
+			'tanah' => '1.3.1',
+			'pm'    => '1.3.2',
+			'gdb'   => '1.3.3',
+			'jij'   => '1.3.4',
+			'atl'   => '1.3.5',
+			'atb'   => '1.5.3'
+		);
+
+		if (!isset($map[$type])) {
+			echo json_encode(array('error' => 'invalid type'));
+			return;
+		}
+
+		$kode = $map[$type];
+
+		// Determine nomor_lokasi
+		$jabatan = $this->session->userdata('role');
+		if ($jabatan == "Pengurus Barang Pembantu UPTD") {
+			$get_lokasi_pbp = $this->form_model->ambil_data_pbp()->result();
+			$nomor_lokasi = array();
+			foreach ($get_lokasi_pbp as $key) {
+				$nomor_lokasi[] = $key->nomor_lokasi;
+			}
+		} else {
+			$nomor_lokasi = $this->session->userdata('no_lokasi_asli');
+		}
+
+		// Fetch data
+		$total_row = $this->form_model->get_kib_per_aset($kode, $nomor_lokasi)->row();
+		$jum_kib = isset($total_row->jum_kib) ? (int)$total_row->jum_kib : 0;
+
+		// Get rekap (proses/verif/tolak) using the appropriate method
+		$rekap_method = 'data_progres_opd_' . $type;
+		$rekap_row = $this->form_model->$rekap_method($nomor_lokasi)->row();
+		$proses = isset($rekap_row->proses) ? (int)$rekap_row->proses : 0;
+		$verif  = isset($rekap_row->verif)  ? (int)$rekap_row->verif  : 0;
+		$tolak  = isset($rekap_row->tolak)  ? (int)$rekap_row->tolak  : 0;
+
+		// Get sisa
+		$sisa = $this->form_model->get_sisa_per_aset($kode, $nomor_lokasi)->num_rows();
+
+		// Calculate percentage
+		$persen = 0;
+		if ($jum_kib > 0) {
+			$persen = round((float)($jum_kib - $sisa) / $jum_kib * 100, 3);
+		}
+
+		$result = array(
+			'jum_kib' => $jum_kib,
+			'proses'  => $proses,
+			'verif'   => $verif,
+			'tolak'   => $tolak,
+			'sisa'    => $sisa,
+			'persen'  => $persen
+		);
+
+		header('Content-Type: application/json');
+		echo json_encode($result);
 	}
 
 	public function cek_sess() 

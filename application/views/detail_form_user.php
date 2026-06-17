@@ -23,12 +23,13 @@
                 <?php } ?>
             </div>
             <div class="card card-dark">
-                <center>
+                <!-- /.card-header -->
                   <div class="card-header">
                     <h3 class="card-title">Hasil Pengisian Form Data Register - <?php echo $data_register->lokasi?></h3>
+                    <div class="card-tools">
+                        <h4 class="card-title">Entry Date : <?php echo date("d-m-Y", strtotime($data_register->created_date))." - ".$data_register->created_time?></h4>
+                    </div>
                   </div>
-                </center>
-                <!-- /.card-header -->
                 <div class="card-body">
                         <!-- select -->
                         <h4><?php echo $data_register->register." - ".$data_register->nama_barang;?></h4>
