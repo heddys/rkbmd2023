@@ -53,6 +53,7 @@ class Auth extends CI_Controller {
 				}
 		} else 
 			{	
+				$data['captcha']=$this->add_captcha();
 				// redirect('https://bpkad.surabaya.go.id/sso-bpkad');
 				// echo "Session Adalah : ".$this->session->userdata('kode_opd');
 				$this->load->view('login',$data);
@@ -128,10 +129,77 @@ class Auth extends CI_Controller {
 
 	// }
 
+	public function add_captcha() {
+		$options = array(
+			'img_path'=>'./ini_assets/captcha/', #folder captcha yg sudah dibuat tadi
+			'img_url'=>base_url().'ini_assets/captcha/', #ini arahnya juga ke folder captcha
+			'img_width'=>'100', #lebar image captcha
+			'img_height'=>'45', #tinggi image captcha
+			'expiration'=>7200, #waktu expired
+			'font_path' => FCPATH . 'assets/font/coolvetica.ttf', #load font jika mau ganti fontnya
+			'word_length' => '5',
+			'pool' => '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
+	 
+			# atur warna captcha-nya di sini ya.. gunakan kode RGB
+			'colors' => array(
+					'background' => array(242, 242, 242),
+					'border' => array(255, 255, 255),
+					'text' => array(0, 0, 0),
+					'grid' => array(255, 120, 40))
+			   );
+
+		$cap = create_captcha($options);
+		
+		
+		
+		// Save captcha word in session for validation
+		$this->session->set_userdata('captcha_word', $cap['word']);
+		// $data['captcha'] = $this->create_captcha();
+		return $cap['image'];
+	}
+
+	public function refresh_captcha() {
+		$options = array(
+			'img_path'=>'./ini_assets/captcha/', #folder captcha yg sudah dibuat tadi
+			'img_url'=>base_url().'ini_assets/captcha/', #ini arahnya juga ke folder captcha
+			'img_width'=>'90', #lebar image captcha
+			'img_height'=>'45', #tinggi image captcha
+			'expiration'=>7200, #waktu expired
+			'font_path' => FCPATH . 'assets/font/coolvetica.ttf', #load font jika mau ganti fontnya
+			'word_length' => '5',
+			'pool' => '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
+	 
+			# atur warna captcha-nya di sini ya.. gunakan kode RGB
+			'colors' => array(
+					'background' => array(242, 242, 242),
+					'border' => array(255, 255, 255),
+					'text' => array(0, 0, 0),
+					'grid' => array(255, 120, 40))
+			   );
+
+		$cap = create_captcha($options);
+		
+		
+		
+		// Save captcha word in session for validation
+		$this->session->set_userdata('captcha_word', $cap['word']);
+		// $data['captcha'] = $this->create_captcha();
+		echo $cap['image'];
+	}
+
 	public function do_login()
 	{
 		$user=$this->input->post('usr');
 		$pass=$this->input->post('psswd');
+		$captcha_input=$this->input->post('captcha');
+		$stored_captcha = $this->session->userdata('captcha_word');
+
+
+		if (!$stored_captcha || $captcha_input != $stored_captcha) {
+			$this->index($error=2); // Error 2 for CAPTCHA mismatch
+			return;
+		}
+
 		$cekuser= array(
 			'username' => $user, 
 			'password' => $pass
@@ -143,48 +211,51 @@ class Auth extends CI_Controller {
 		$ceklog = $this->auth_model->ceklogin("pengguna",$cekuser);
 		// var_dump($get);
 		
-		
-		if($ceklog->num_rows() > 0) {
-			$get = $ceklog->row();
-			if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
-				$ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
-				$role=$ambil_lokasi_pbp->nama_lokasi;
-			} else {$role=$get->fungsi;}
-					$data_session = array(	
-							'id' => $get->id,
-							'skpd' => $get->nama_opd,
-							'kode_opd' =>$get->opd,
-							'nama_login' =>$get->nama,
-							'data' =>$get->nomor_lokasi,
-							'role' => $get->fungsi,
-							'jabatan' => $get->fungsi." (".$role.")",
-							'kepala_opd' => $get->nama_kepala,
-							'no_lokasi_asli' => $get->nomor_lokasi,
-							'status' => 0,
-							'nip' => $get->nip
-						);
-			
-			$this->session->set_userdata($data_session);
-			// echo $this->session->userdata('no_lokasi_asli');
-			// var_dump($data_session);
-			if ($this->session->userdata('role')=='Verifikator'){
-				redirect('home_verifikator');
-			} elseif ($this->session->userdata('role') == 'Kepala OPD') {
-				redirect('home_kadis');
-			} elseif ($this->session->userdata('role')=='Penyelia') {
-				redirect('home_penyelia');
-			} elseif ($this->session->userdata('role')=='Admin') {
-				redirect('home_admin');
-			} elseif ($this->session->userdata('role')=='Guest') {
-				redirect('home_guest');
+		if($captcha_input === $stored_captcha) {
+			if($ceklog->num_rows() > 0) {
+				$get = $ceklog->row();
+				if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
+					$ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
+					$role=$ambil_lokasi_pbp->nama_lokasi;
+				} else {$role=$get->fungsi;}
+						$data_session = array(	
+								'id' => $get->id,
+								'skpd' => $get->nama_opd,
+								'kode_opd' =>$get->opd,
+								'nama_login' =>$get->nama,
+								'data' =>$get->nomor_lokasi,
+								'role' => $get->fungsi,
+								'jabatan' => $get->fungsi." (".$role.")",
+								'kepala_opd' => $get->nama_kepala,
+								'no_lokasi_asli' => $get->nomor_lokasi,
+								'status' => 0,
+								'nip' => $get->nip
+							);
+				
+				$this->session->set_userdata($data_session);
+				// echo $this->session->userdata('no_lokasi_asli');
+				// var_dump($data_session);
+				if ($this->session->userdata('role')=='Verifikator'){
+					redirect('home_verifikator');
+				} elseif ($this->session->userdata('role') == 'Kepala OPD') {
+					redirect('home_kadis');
+				} elseif ($this->session->userdata('role')=='Penyelia') {
+					redirect('home_penyelia');
+				} elseif ($this->session->userdata('role')=='Admin') {
+					redirect('home_admin');
+				} elseif ($this->session->userdata('role')=='Guest') {
+					redirect('home_guest');
+				}
+				else {
+					redirect('home');
+				}
 			}
 			else {
-				redirect('home');
+				$this->index($error=1); // Error 1 for Wrong Username/Password
 			}
+		} else {
+			$this->index($error=2);
 		}
-		  else {
-			$this->index($error=1);
-		  }
 	}
 
 
