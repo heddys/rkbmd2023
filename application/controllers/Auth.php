@@ -217,20 +217,23 @@ class Auth extends CI_Controller {
 				if($get->fungsi == "Pengurus Barang Pembantu UPTD") {
 					$ambil_lokasi_pbp=$this->auth_model->ambil_data_pbp($cekuser['username'])->row();
 					$role=$ambil_lokasi_pbp->nama_lokasi;
-				} else {$role=$get->fungsi;}
-						$data_session = array(	
-								'id' => $get->id,
-								'skpd' => $get->nama_opd,
-								'kode_opd' =>$get->opd,
-								'nama_login' =>$get->nama,
-								'data' =>$get->nomor_lokasi,
-								'role' => $get->fungsi,
-								'jabatan' => $get->fungsi." (".$role.")",
-								'kepala_opd' => $get->nama_kepala,
-								'no_lokasi_asli' => $get->nomor_lokasi,
-								'status' => 0,
-								'nip' => $get->nip
-							);
+				} else {
+					$role=$get->fungsi;
+				}
+
+				$data_session = array(	
+						'id' => $get->id,
+						'skpd' => $get->nama_opd,
+						'kode_opd' =>$get->opd,
+						'nama_login' =>$get->nama,
+						'data' =>$get->nomor_lokasi,
+						'role' => $get->fungsi,
+						'jabatan' => $get->fungsi." (".$role.")",
+						'kepala_opd' => $get->nama_kepala,
+						'no_lokasi_asli' => $get->nomor_lokasi,
+						'status' => 0,
+						'nip' => $get->nip
+					);
 				
 				$this->session->set_userdata($data_session);
 				// echo $this->session->userdata('no_lokasi_asli');
