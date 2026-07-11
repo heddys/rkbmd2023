@@ -235,6 +235,9 @@ class Auth extends CI_Controller {
 						'nip' => $get->nip
 					);
 				
+				// Tambahkan debug logging
+				file_put_contents('debug_login.txt', "Login Attempt:\nUser: $user\nSuccess: 1\nData Session: " . print_r($data_session, true) . "\n", FILE_APPEND);
+				
 				$this->session->set_userdata($data_session);
 				// echo $this->session->userdata('no_lokasi_asli');
 				// var_dump($data_session);

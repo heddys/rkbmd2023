@@ -1,0 +1,72 @@
+Login Attempt:
+User: 197804172014122004
+Success: 1
+Data Session: Array
+(
+    [id] => 204
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => Wahyu Umaroh, A.Md. Kep
+    [data] => 13.30.000701.00033
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD ()
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701.00033
+    [status] => 0
+    [nip] => 197804172014122004
+)
+
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 198210182010011002
+Success: 1
+Data Session: Array
+(
+    [id] => 30
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => Suhadi Nuryanto
+    [data] => 13.30.000701
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701
+    [status] => 0
+    [nip] => 198210182010011002
+)
+
+Login Attempt:
+User: 198503222008011003
+Success: 1
+Data Session: Array
+(
+    [id] => 185
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => SHOLEHUDIN AL AYUBI
+    [data] => 13.30.000701.00050
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD (Puskesmas Sidotopo)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701.00050
+    [status] => 0
+    [nip] => 198503222008011003
+)
+
