@@ -29,15 +29,15 @@ class Status_form extends CI_Controller {
 			$this->session->set_userdata('kib','1.5.3');
 			$kib = $this->session->userdata('kib');
 		} 
-        if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
-			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
-			$nomor_lokasi=array();
-			foreach ($get_lokasi_pbp as $key) {
-				$nomor_lokasi[]=$key->nomor_lokasi;
-			} 
-        }else {
-		    $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-        }
+        // if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
+		// 	$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
+		// 	$nomor_lokasi=array();
+		// 	foreach ($get_lokasi_pbp as $key) {
+		// 		$nomor_lokasi[]=$key->nomor_lokasi;
+		// 	} 
+        // }else {
+		//     $nomor_lokasi=$this->session->userdata('no_lokasi_asli');
+        // }
 
 		//Set Session untuk jumlah limit pagination
 		if(isset($_POST['limit'])){

@@ -70,3 +70,129 @@ Data Session: Array
     [nip] => 198503222008011003
 )
 
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 198210182010011002
+Success: 1
+Data Session: Array
+(
+    [id] => 30
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => Suhadi Nuryanto
+    [data] => 13.30.000701
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701
+    [status] => 0
+    [nip] => 198210182010011002
+)
+
+Login Attempt:
+User: 200106042025042005
+Success: 1
+Data Session: Array
+(
+    [id] => 203
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => Clarisa Eka Aninda, SKM
+    [data] => 13.30.000701.00037
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD ()
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701.00037
+    [status] => 0
+    [nip] => 200106042025042005
+)
+
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 197101142008012008
+Success: 1
+Data Session: Array
+(
+    [id] => 632
+    [skpd] => DINAS PENDIDIKAN
+    [kode_opd] => 2000
+    [nama_login] => NINIK HANDAYANI M.Pd
+    [data] => 13.30.000801
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD (SDN Kebraon II)
+    [kepala_opd] => Ir. YUSUF MASRUH, MM
+    [no_lokasi_asli] => 13.30.000801
+    [status] => 0
+    [nip] => 197101142008012008
+)
+
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 197304032010011009
+Success: 1
+Data Session: Array
+(
+    [id] => 152
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => ARIFIN
+    [data] => 13.30.000701.00004
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD (Puskesmas Bangkingan)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701.00004
+    [status] => 0
+    [nip] => 197304032010011009
+)
+

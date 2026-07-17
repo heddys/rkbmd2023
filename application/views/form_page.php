@@ -93,7 +93,7 @@
                   <tbody>
                     <tr>
                       <td width="70%">
-                        <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/<?php echo $kib_apa; ?>" method="post">
+                        <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/<?php echo $kib_apa; ?>" method="get">
                           <div class="col-md-5">
                           <select class="form-control select2" id="select_lokasi" name="select_lokasi" required="required">
                                     <option selected value="">Cari Berdasarkan Lokasi</option>
@@ -111,7 +111,7 @@
                       <td>
                       </td>
                       <td width="50%">
-                      <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/<?php echo $kib_apa; ?>" method="post">
+                      <form role="form" action="<?php echo base_url();?>index.php/form_inv/index/<?php echo $kib_apa; ?>" method="get">
                           <div class="input-group">
                             <input type="text"  class="form-control" name="cariregname" placeholder="Cari Berdasarkan Register atau Nama Barang" required>
                             <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>

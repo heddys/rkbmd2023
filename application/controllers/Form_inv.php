@@ -5,7 +5,7 @@ class Form_inv extends CI_Controller {
 
     
    	public function index ($id=0)
-	{	
+	{
 		$this->cek_sess();
 		$data['page']="Form Inventarisasi";
      	$data['exist']=$this->cek_jumlah_exist();
@@ -28,11 +28,8 @@ class Form_inv extends CI_Controller {
 
 		//Kondisi Untuk Fungsi User Pengurus Barang Pembantu
 		if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
-			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
-			$nomor_lokasi=array();
-			foreach ($get_lokasi_pbp as $key) {
-				$nomor_lokasi[]=$key->nomor_lokasi;
-			}
+			$get_lokasi_pbp=$this->session->userdata('no_lokasi_asli');
+
 			$data['kib_apa']=$id;
 
 				if($id=='1') {
@@ -59,34 +56,24 @@ class Form_inv extends CI_Controller {
 					$kib = $this->session->userdata('kib');
 				}
 				
-			$data['register']=$this->form_model->get_all_register_pagination_Pbp($kib,$nomor_lokasi);
+			$data['register']=$this->form_model->get_all_register_pagination_Pbp($kib,$get_lokasi_pbp);
 		
 			
 		// Kondisi Untuk Fungsi User Bukan Pengurus Barang Pembantu.	
 		} else {
-			if(isset($_POST['select_lokasi'])){
-				$data_cari = $_POST['select_lokasi'];
-				$form = 1;
-				$this->session->set_userdata('data',$data_cari);
-				$this->session->set_userdata('status',1);
-			} else {
-				if($this->session->userdata('status')==0) {
-					$form = 0;
-					$data_cari=$this->session->userdata('no_lokasi_asli');
-				} elseif($this->session->userdata('status')==1) {
-					$form = 1;
-					$data_cari=$this->session->userdata('data');
-				} else {
-					$data_cari=$this->session->userdata('data');
-					$form = 2;
-				}
-			}
+            // Hapus session pencarian agar fitur pencarian tidak selalu tersimpan
+            $this->session->unset_userdata('data');
+            $this->session->unset_userdata('status');
 
-			if(isset($_POST['cariregname'])){
-				$data_cari=$_POST['cariregname'];
-				$form=2;
-				$this->session->set_userdata('data',$data_cari);
-				$this->session->set_userdata('status',2);
+			if($this->input->get('select_lokasi') || isset($_POST['select_lokasi'])){
+				$data_cari = $this->input->get('select_lokasi') ? $this->input->get('select_lokasi') : $_POST['select_lokasi'];
+				$form = 1;
+			} elseif($this->input->get('cariregname') || isset($_POST['cariregname'])){
+				$data_cari = $this->input->get('cariregname') ? $this->input->get('cariregname') : $_POST['cariregname'];
+				$form = 2;
+			} else {
+				$data_cari = $this->session->userdata('no_lokasi_asli');
+				$form = 0;
 			}
 
 
@@ -123,9 +110,10 @@ class Form_inv extends CI_Controller {
 				$this->load->library('pagination');
 				$data['offset']=($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 				//Config Pagination
-				$config['total_rows'] = $this->form_model->hitungBanyakRowRegister($data_cari,$kib,$form)->num_rows();
+				$config['total_rows'] = $this->form_model->hitungBanyakRowRegisterCount($data_cari,$kib,$form,$this->session->userdata('no_lokasi_asli'));
 				$config['per_page'] = $limit;
 				$config['base_url'] = site_url('/form_inv/index/'.$id.'/');
+				$config['reuse_query_string'] = TRUE;
 				$config['num_links'] = 3;
 
 				//Pagination Bootstrap Theme

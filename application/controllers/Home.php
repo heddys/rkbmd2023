@@ -10,16 +10,7 @@ class Home extends CI_Controller {
 		$jabatan=$this->session->userdata('role');
 		$data['page']="Dashboard";
 
-		if($jabatan == "Pengurus Barang Pembantu UPTD"){
-			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
-			$nomor_lokasi=array();
-			foreach ($get_lokasi_pbp as $key) {
-				$nomor_lokasi[]=$key->nomor_lokasi;
-			} 
-		}
-		else {
-			$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
-		}
+		$nomor_lokasi=$this->session->userdata('no_lokasi_asli');
 
 		if($this->session->userdata('no_lokasi_asli') == "13.30.000701") {
 			$data['rekap_upt'] = $this->form_model->get_rekap_per_uptd($nomor_lokasi);
@@ -70,16 +61,7 @@ class Home extends CI_Controller {
 		$kode = $map[$type];
 
 		// Determine nomor_lokasi
-		$jabatan = $this->session->userdata('role');
-		if ($jabatan == "Pengurus Barang Pembantu UPTD") {
-			$get_lokasi_pbp = $this->form_model->ambil_data_pbp()->result();
-			$nomor_lokasi = array();
-			foreach ($get_lokasi_pbp as $key) {
-				$nomor_lokasi[] = $key->nomor_lokasi;
-			}
-		} else {
-			$nomor_lokasi = $this->session->userdata('no_lokasi_asli');
-		}
+		$nomor_lokasi = $this->session->userdata('no_lokasi_asli');
 
 		// Fetch data
 		$total_row = $this->form_model->get_kib_per_aset($kode, $nomor_lokasi)->row();
