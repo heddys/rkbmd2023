@@ -28,7 +28,11 @@ class Form_inv extends CI_Controller {
 
 		//Kondisi Untuk Fungsi User Pengurus Barang Pembantu
 		if($this->session->userdata('role') == 'Pengurus Barang Pembantu UPTD') {
-			$get_lokasi_pbp=$this->session->userdata('no_lokasi_asli');
+			$get_lokasi_pbp=$this->form_model->ambil_data_pbp()->result();
+			$nomor_lokasi=array();
+			foreach ($get_lokasi_pbp as $key) {
+				$nomor_lokasi[]=$key->nomor_lokasi;
+			}
 
 			$data['kib_apa']=$id;
 
@@ -56,7 +60,7 @@ class Form_inv extends CI_Controller {
 					$kib = $this->session->userdata('kib');
 				}
 				
-			$data['register']=$this->form_model->get_all_register_pagination_Pbp($kib,$get_lokasi_pbp);
+			$data['register']=$this->form_model->get_all_register_pagination_Pbp($kib,$nomor_lokasi);
 		
 			
 		// Kondisi Untuk Fungsi User Bukan Pengurus Barang Pembantu.	

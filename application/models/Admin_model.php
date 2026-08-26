@@ -97,17 +97,14 @@ class Admin_model extends CI_Model{
                 SUM(CASE WHEN sub.status = 3 THEN sub.jumlah ELSE 0 END) AS tolak
             FROM (
                 SELECT
-                    LEFT(lokasi, 12) AS nomor_unit_12,
+                    LEFT(nomor_lokasi_awal, 12) AS nomor_unit_12,
                     LEFT(kode_barang_lama, 5) AS kode_barang_5,
                     status,
                     COUNT(*) AS jumlah
                 FROM register_isi
                 WHERE hapus <> 1
                 AND extrakomtabel <> 1
-                -- optional: filter awal kalau hanya 1 kode/unit tertentu supaya lebih cepat
-                -- AND LEFT(kode_barang,5) = '1.3.1'
-                -- AND LEFT(nomor_lokasi_awal,12) = '....'
-                GROUP BY LEFT(lokasi, 12), LEFT(kode_barang_lama, 5), status
+                GROUP BY LEFT(nomor_lokasi_awal, 12), LEFT(kode_barang_lama, 5), status
             ) sub
             JOIN (
                 SELECT nomor_unit, unit
@@ -420,44 +417,14 @@ class Admin_model extends CI_Model{
         return $query->result();
    }
 
-   public function get_rekap_opd_admin()
+   public function get_rekap_opd_admin($kode_barang)
    {
-    //    $query=$this->db->query(
-    //     "SELECT
-    //         b.unit,
-    //         b.nomor_unit,
-    //         LEFT ( a.kode_108, 5 ) AS kode_barang,
-    //         count( a.register ) AS total,
-    //         COUNT(
-    //         IF
-    //         ( a.STATUS = 1, 1, NULL )) AS proses,
-    //         COUNT(
-    //         IF
-    //         ( a.STATUS = 2, 1, NULL )) AS verif,
-    //         COUNT(
-    //         IF
-    //         ( a.STATUS = 3, 1, NULL )) AS tolak,
-    //         COUNT(
-    //         IF
-    //             ( a.STATUS IS NULL, 1, NULL )) AS sisa,(
-    //             count( a.register )- COUNT(
-    //             IF
-    //             ( STATUS IS NULL, 1, NULL )))/ count( register )* 100 AS persentase 
-    //     FROM
-    //         data_kib a
-    //         INNER JOIN ( SELECT nomor_unit, unit FROM kamus_lokasi WHERE kode_binprog <> '' GROUP BY nomor_unit ) b ON LEFT ( a.nomor_lokasi, 12 )= b.nomor_unit 
-    //     WHERE
-    //         LEFT ( a.kode_108, 5 ) IN ( '1.3.1', '1.3.2', '1.3.3' ) 
-    //         AND a.status_simbada IS NULL 
-    //         AND a.ekstrakomtabel IS NULL 
-    //     GROUP BY
-    //         b.unit,
-    //         LEFT ( a.kode_108, 5 ) 
-    //     ORDER BY
-    //         b.nomor_unit DESC,
-    //         LEFT ( a.kode_108, 5 ) ASC,
-    //         persentase DESC");
         $db_simbada = $this->load->database('simbada',TRUE);
+        
+        if($kode_barang != null) {
+            $where_kode = "AND LEFT(a.kode108_baru, 5) = '".$db_simbada->escape_str($kode_barang)."'";
+        }
+
         $query=$db_simbada->query(
             "SELECT 
                 b.unit,
@@ -473,7 +440,7 @@ class Admin_model extends CI_Model{
                 WHERE 
                     a.hapus <> 1
                     AND a.extrakomtabel_baru <> 1
-                    AND LEFT(a.kode108_baru, 5) IN ('1.3.1','1.3.2','1.3.3','1.3.4','1.3.5','1.5.3')
+                    $where_kode
                 GROUP BY LEFT(a.nomor_lokasi_baru, 12), LEFT(a.kode108_baru, 5)
 
                 UNION ALL
@@ -486,7 +453,7 @@ class Admin_model extends CI_Model{
                 WHERE 
                     a.hapus <> 1
                     AND a.extrakomtabel_baru <> 1
-                    AND LEFT(a.kode108_baru, 5) IN ('1.3.1','1.3.2','1.3.3','1.3.4','1.3.5','1.5.3')
+                    $where_kode
                 GROUP BY LEFT(a.nomor_lokasi_baru, 12), LEFT(a.kode108_baru, 5)
             ) sub
             LEFT JOIN (
@@ -501,6 +468,14 @@ class Admin_model extends CI_Model{
         
         return $query->result();
    }
+
+   public function get_sisa_per_aset($kib,$lokasi) {
+
+        $query = $this->db->query("SELECT a.register FROM `2025_v1`.`kib_awal` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode108_baru like '".$kib."%' and a.`nomor_lokasi_baru` like '".$lokasi."%' and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register) union SELECT a.register FROM `2025_v1`.`kib` a where a.extrakomtabel_baru = '' and a.hapus = '' and a.kode108_baru like '".$kib."%' and a.`nomor_lokasi_baru` like '".$lokasi."%'  and NOT EXISTS (SELECT y.register from `rkbmd2023`.register_isi y where a.register=y.register)");                
+
+        return $query;
+
+    }
 
    public function get_rekap_opd_admin_dashboard()
    {
@@ -980,6 +955,12 @@ class Admin_model extends CI_Model{
         $this->db->where('id', $id);
         return $this->db->update('pengguna', $data);
 
+    }
+
+    public function update_ext_user($data,$kode_opd)
+    {
+        $this->db->where('opd', $kode_opd);
+        return $this->db->update('pengguna', $data);
     }
 
     public function get_all_register_pagination($data,$kib, $limit, $offset,$form)

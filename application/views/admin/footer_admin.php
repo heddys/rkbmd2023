@@ -404,8 +404,9 @@
 
     //Javasctipt Untuk Fitur Setting User//
 
-      function klik_edit_user(id) {
+      function klik_edit_user(id,opd) {
         var id=id;
+        var opd=opd;
         $.ajax({
               type: 'ajax',
               method: 'post',
@@ -418,7 +419,8 @@
                 document.getElementById("pd").value=data['nama_opd'];
                 document.getElementById("nip").value=data['nip'];
                 document.getElementById("nama").value=data['nama'];
-                document.getElementById("id").value=data['id'];
+                document.getElementById("id").value=id;
+                document.getElementById("opd").value=opd;
                 $("#pangkat").val(data['pangkat']).change();
                 $("#tugas").val(data['fungsi']).change();
                 // document.getElementById("tugas").value=data['fungsi'];
@@ -434,6 +436,7 @@
       $('#rincian_user').on('click','#simpan_edit', function () {
         
         var id=document.getElementById("id").value;
+        var opd=document.getElementById("opd").value;
         var nip=document.getElementById("nip").value;
         var nama=document.getElementById("nama").value;
         var pangkat=document.getElementById("pangkat").value;
@@ -444,7 +447,7 @@
           type: 'ajax',
           method: 'post',
           url: '<?php echo site_url();?>/home_admin/save_edit_user',
-          data:{id:id,nip:nip,nama:nama,pangkat:pangkat,tugas:tugas},
+          data:{id:id,opd:opd,nip:nip,nama:nama,pangkat:pangkat,tugas:tugas},
           async: false,
           dataType: 'json',
           success: function(data){

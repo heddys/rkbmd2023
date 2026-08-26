@@ -62,7 +62,7 @@
 							<td><center><?php echo $row->fungsi?><center></td>
 							<td>
 								<center>
-									<button class="btn btn-sm btn-info" title="Kunci Kode Sub Kelompok" onclick="klik_edit_user('<?php echo $row->id;?>')"><i class="fa fa-edit" aria-hidden="true"></i></a>
+									<button class="btn btn-sm btn-info" title="Kunci Kode Sub Kelompok" onclick="klik_edit_user('<?php echo $row->id;?>','<?php echo $row->opd?>')"><i class="fa fa-edit" aria-hidden="true"></i></button>
 								</center>
 							</td>
 							<td>
@@ -108,6 +108,7 @@
 							<input type="text" class="form-control" id="nama">
 						</div>
 						<input type="hidden" id="id">
+						<input type="hidden" id="opd">
 						<div class="form-group">
 						<label>Pangkat</label>
 						<select class="form-control select_pangkat" id="pangkat" style="width: 100%;">

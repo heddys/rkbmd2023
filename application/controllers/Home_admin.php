@@ -1268,8 +1268,10 @@ class Home_admin extends CI_Controller {
 		$this->cek_sess();
 		
 		$id = $this->input->post('id');
+		$kode_opd = $this->input->post('opd');
 		date_default_timezone_set("Asia/Jakarta");	
 		$tgl_update=date("Y-m-d H:i:s");
+		$role = $this->input->post('tugas');
 		$data = array(
 			'nama' => $this->input->post('nama'),
 			'nip' => $this->input->post('nip'),
@@ -1279,7 +1281,20 @@ class Home_admin extends CI_Controller {
 			'password' => $this->input->post('nip'),
 			'tgl_update' => $tgl_update
 
-		);
+		);		
+
+		if($role == "Kepala OPD"){
+			
+			$data_ext = array (
+				'nama_kepala' => $this->input->post('nama'),
+				'nip_kepala' => $this->input->post('nip'),
+				'pangkat_kepala' => $this->input->post('pangkat')
+			);
+
+			$this->admin_model->update_ext_user($data_ext,$kode_opd);
+			
+		}
+
 		
 		$result = $this->admin_model->update_row_user($id,$data);
 
@@ -1506,7 +1521,7 @@ class Home_admin extends CI_Controller {
 	}
 
 
-	public function export_excel_rekap_admin()
+	public function export_excel_rekap_admin($kode_barang_param)
 	{
 		$this->cek_sess();
 
@@ -1529,23 +1544,24 @@ class Home_admin extends CI_Controller {
 
 		 // Merge Cells
 		$skpd=$this->session->userdata('skpd');
-        $objPHPExcel->getActiveSheet()->mergeCells('A1:H1');
+        $objPHPExcel->getActiveSheet()->mergeCells('A1:J1');
         $objPHPExcel->getActiveSheet()->setCellValue('A1', "REKAP PRESENTASE REGISTER INVENTARISASI - SEMUA OPD");
         
 
         // Create a first sheet
         $objPHPExcel->setActiveSheetIndex(0);
         $objPHPExcel->getActiveSheet()->setCellValue('A3', "No.");
-        $objPHPExcel->getActiveSheet()->setCellValue('B3', "OPD");
-        $objPHPExcel->getActiveSheet()->setCellValue('C3', "Jenis Aset");
-        $objPHPExcel->getActiveSheet()->setCellValue('D3', "Total Register");
-        $objPHPExcel->getActiveSheet()->setCellValue('E3', "Register Telah Di Verif");
-        $objPHPExcel->getActiveSheet()->setCellValue('F3', "Register Masih Proses Verif");
-        $objPHPExcel->getActiveSheet()->setCellValue('G3', "Register Di Tolak");
-        $objPHPExcel->getActiveSheet()->setCellValue('H3', "Register Belum Di Kerjakan");
-        // $objPHPExcel->getActiveSheet()->setCellValue('I3', "Persentase");
+        $objPHPExcel->getActiveSheet()->setCellValue('B3', "Kode Unit");
+        $objPHPExcel->getActiveSheet()->setCellValue('C3', "OPD");
+        $objPHPExcel->getActiveSheet()->setCellValue('D3', "Jenis Aset");
+        $objPHPExcel->getActiveSheet()->setCellValue('E3', "Total Register");
+        $objPHPExcel->getActiveSheet()->setCellValue('F3', "Register Telah Di Verif");
+        $objPHPExcel->getActiveSheet()->setCellValue('G3', "Register Masih Proses Verif");
+        $objPHPExcel->getActiveSheet()->setCellValue('H3', "Register Di Tolak");
+        $objPHPExcel->getActiveSheet()->setCellValue('I3', "Register Belum Di Inventarisasi");
+        $objPHPExcel->getActiveSheet()->setCellValue('J3', "Persentase");
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A3:H3')->getFont()->setBold( true );
+		$objPHPExcel->getActiveSheet()->getStyle('A3:J3')->getFont()->setBold( true );
 		$objPHPExcel->getActiveSheet()->getStyle('A1')->getNumberFormat()->setFormatCode('#,##0.00');
 		
         // Hide F and G column
@@ -1561,13 +1577,14 @@ class Home_admin extends CI_Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
-        // $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
 		
         // Add data
 		$i=4;
 		$no=1;
 
-		$jumlah_register=$this->admin_model->get_rekap_opd_admin();
+		$jumlah_register=$this->admin_model->get_rekap_opd_admin($kode_barang_param);
+
 		
         foreach ($jumlah_register as $row) 
         {
@@ -1580,39 +1597,27 @@ class Home_admin extends CI_Controller {
 			} elseif ($row->kode_barang == '1.3.4') {
 				$kode_barang = 'Jalan, Irigasi dan Jaringan';
 			} elseif ($row->kode_barang == '1.3.5') {
-				$kode_barang = 'Aset Tetap Lainnya';	
+				$kode_barang = 'Aset Tetap Lainnya';
 			} else{
 				$kode_barang = 'Aset Tak Berwujud';
 			}
 
 			$proses_inv=$this->admin_model->get_kerjaan_pb($row->nomor_unit,$row->kode_barang);
 
-			// echo $proses_inv->num_rows()."<p>";
-			
-			if($proses_inv->num_rows() < 1) {
-
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, strtoupper($row->unit));
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, strtoupper($kode_barang));;
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, (int)$row->jumlah);
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, '0');
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, '0');
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, '0');
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, (int)$row->jumlah);
-			} else {
+			$sisa_per_aset = $this->admin_model->get_sisa_per_aset($row->kode_barang,$row->nomor_unit)->num_rows();
+		
 				$get=$proses_inv->row();
 				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A' . $i, $no);
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, strtoupper($row->unit));
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, strtoupper($kode_barang));;
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, (int)$row->jumlah);
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, (int)$get->verif);
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, (int)$get->proses);
-				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, (int)$get->tolak);
-				
-				 $selisih = $row->jumlah - ($get->verif + $get->proses + $get->tolak);
-        		 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, $selisih < 0 ? 0 : (int)$selisih);
-				// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, round((float)$row->persentase,3).'%');
-			}
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B' . $i, strtoupper($row->nomor_unit));
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C' . $i, strtoupper($row->unit));
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D' . $i, strtoupper($kode_barang));;
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E' . $i, (int)$row->jumlah);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F' . $i, (int)$get->verif);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G' . $i, (int)$get->proses);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H' . $i, (int)$get->tolak);
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('I' . $i, (int)$sisa_per_aset);
+				$persentase_kalkulasi = ($row->jumlah > 0) ? ((($row->jumlah - $sisa_per_aset) / $row->jumlah) * 100) : 0;
+				$objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $i, round((float)$persentase_kalkulasi,3).'%');
 
 			$i++;
 			$no++;
@@ -1631,16 +1636,16 @@ class Home_admin extends CI_Controller {
             )
         );
 		$i=$i-1;
-        $objPHPExcel->getActiveSheet()->getStyle('A3:H3')->applyFromArray($stil);
-		$objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($stil);
-		$objPHPExcel->getActiveSheet()->getStyle('A4:H'.$i)->applyFromArray($stil);
+        $objPHPExcel->getActiveSheet()->getStyle('A3:J3')->applyFromArray($stil);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:J1')->applyFromArray($stil);
+		$objPHPExcel->getActiveSheet()->getStyle('A4:J'.$i)->applyFromArray($stil);
 		
 		
 
         
         
         // Save Excel xls File
-        $filename="Rekap Persentase Register Inventarisasi All OPD - ".date('Ymd').".xls";
+        $filename="Rekap Persentase Register Inventarisasi ".strtoupper($kode_barang)." OPD - ".date('Ymd').".xls";
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
         ob_end_clean();
 		header('Last-Modified:'. gmdate("D, d M Y H:i:s").'GMT');

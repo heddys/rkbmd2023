@@ -55,9 +55,19 @@
               <div class="card-header no-border ">
                 <h3 class="card-title">Rekapan Per OPD</h3>
                 <div class="card-tools">
-                  <a href="<?php echo site_url('home_admin/export_excel_rekap_admin');?>" class="btn btn-tool btn-sm" title="Download Rekapan">
-                    <i class="fas fa-download"></i>
-                  </a>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" title="Download Rekapan">
+                      <i class="fas fa-download">&nbsp;Download Rekap Aset&nbsp;</i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                      <a href="<?php echo site_url('home_admin/export_excel_rekap_admin/1.3.1');?>" class="dropdown-item text-dark">Aset Tetap Tanah (1.3.1)</a>
+                      <a href="<?php echo site_url('home_admin/export_excel_rekap_admin/1.3.2');?>" class="dropdown-item text-dark">Peralatan dan Mesin (1.3.2)</a>
+                      <a href="<?php echo site_url('home_admin/export_excel_rekap_admin/1.3.3');?>" class="dropdown-item text-dark">Gedung dan Bangunan (1.3.3)</a>
+                      <a href="<?php echo site_url('home_admin/export_excel_rekap_admin/1.3.4');?>" class="dropdown-item text-dark">Jalan, Irigasi dan Jaringan (1.3.4)</a>
+                      <a href="<?php echo site_url('home_admin/export_excel_rekap_admin/1.3.5');?>" class="dropdown-item text-dark">Aset Tetap Lainnya (1.3.5)</a>
+                      <a href="<?php echo site_url('home_admin/export_excel_rekap_admin/1.5.3');?>" class="dropdown-item text-dark">Aset Tak Berwujud (1.5.3)</a>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="card-body p-3">

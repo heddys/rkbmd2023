@@ -196,3 +196,273 @@ Data Session: Array
     [nip] => 197304032010011009
 )
 
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 197304032010011009
+Success: 1
+Data Session: Array
+(
+    [id] => 152
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => ARIFIN
+    [data] => 13.30.000701.00004
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD (Puskesmas Bangkingan)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701.00004
+    [status] => 0
+    [nip] => 197304032010011009
+)
+
+Login Attempt:
+User: 198611242017042011
+Success: 1
+Data Session: Array
+(
+    [id] => 155
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => TRINOVITA PURNANINGTYAS, A.MD. KEB.
+    [data] => 13.30.000701.00009
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD (Puskesmas Dukuh Kupang)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701.00009
+    [status] => 0
+    [nip] => 198611242017042011
+)
+
+Login Attempt:
+User: 198611242017042011
+Success: 1
+Data Session: Array
+(
+    [id] => 155
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => TRINOVITA PURNANINGTYAS, A.MD. KEB.
+    [data] => 13.30.000701.00009
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD (PUSKESMAS)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701.00009
+    [status] => 0
+    [nip] => 198611242017042011
+)
+
+Login Attempt:
+User: 198210182010011002
+Success: 1
+Data Session: Array
+(
+    [id] => 30
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => Suhadi Nuryanto
+    [data] => 13.30.000701
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701
+    [status] => 0
+    [nip] => 198210182010011002
+)
+
+Login Attempt:
+User: 197809272006042019
+Success: 1
+Data Session: Array
+(
+    [id] => 153
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => AULIA SYAHFITRI, A.MD.KEB
+    [data] => 13.30.000701.00005
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD (PUSKESMAS)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701.00005
+    [status] => 0
+    [nip] => 197809272006042019
+)
+
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 199308272020122002
+Success: 1
+Data Session: Array
+(
+    [id] => 164
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => PUTRI CITRA R ,AMD KEP
+    [data] => 13.30.000701.00021
+    [role] => Pengurus Barang Pembantu UPTD
+    [jabatan] => Pengurus Barang Pembantu UPTD (PUSKESMAS)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701.00021
+    [status] => 0
+    [nip] => 199308272020122002
+)
+
+Login Attempt:
+User: 198210182010011002
+Success: 1
+Data Session: Array
+(
+    [id] => 30
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => Suhadi Nuryanto
+    [data] => 13.30.000701
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701
+    [status] => 0
+    [nip] => 198210182010011002
+)
+
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 198210182010011002
+Success: 1
+Data Session: Array
+(
+    [id] => 30
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => Suhadi Nuryanto
+    [data] => 13.30.000701
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => NANIK SUKRISTINA S.KM, M.Kes
+    [no_lokasi_asli] => 13.30.000701
+    [status] => 0
+    [nip] => 198210182010011002
+)
+
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 198210182010011002
+Success: 1
+Data Session: Array
+(
+    [id] => 30
+    [skpd] => DINAS KESEHATAN
+    [kode_opd] => 1700
+    [nama_login] => Suhadi Nuryanto
+    [data] => 13.30.000701
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => HEDDY SEBASTIAN EGANICA PUTRA
+    [no_lokasi_asli] => 13.30.000701
+    [status] => 0
+    [nip] => 198210182010011002
+)
+
+Login Attempt:
+User: 197212082009011001
+Success: 1
+Data Session: Array
+(
+    [id] => 14
+    [skpd] => BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA
+    [kode_opd] => 0800
+    [nama_login] => Slamet Kanang
+    [data] => 13.30.001901
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => IRA TURSILOWATI, SH, MH
+    [no_lokasi_asli] => 13.30.001901
+    [status] => 0
+    [nip] => 197212082009011001
+)
+
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
