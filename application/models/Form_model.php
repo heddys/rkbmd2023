@@ -41,9 +41,9 @@
                         a.harga_baru,
                         c.status 
                     FROM
-                        `2026`.`kib_awal` a
+                        `2025_v1`.`kib_awal` a
                         LEFT JOIN `rkbmd2023`.register_isi c ON a.register = c.register
-                        JOIN `2026`.kamus_lokasi b on a.nomor_lokasi_baru = b.nomor_lokasi
+                        JOIN `2025_v1`.kamus_lokasi b on a.nomor_lokasi_baru = b.nomor_lokasi
                     WHERE
                         a.hapus <> 1 
                         AND a.extrakomtabel_baru <> 1 
@@ -63,9 +63,9 @@
                         x.harga_baru,
                         e.status 
                     FROM
-                        `2026`.`kib` x
+                        `2025_v1`.`kib` x
                         LEFT JOIN `rkbmd2023`.register_isi e ON x.register = e.register
-                        JOIN `2026`.kamus_lokasi d on x.nomor_lokasi_baru = d.nomor_lokasi
+                        JOIN `2025_v1`.kamus_lokasi d on x.nomor_lokasi_baru = d.nomor_lokasi
                     WHERE
                         x.hapus <> 1 
                         AND x.extrakomtabel_baru <> 1 

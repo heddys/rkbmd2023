@@ -466,3 +466,21 @@ Data Session: Array
     [nip] => manager
 )
 
+Login Attempt:
+User: 197302272001121002
+Success: 1
+Data Session: Array
+(
+    [id] => 28
+    [skpd] => DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL
+    [kode_opd] => 3200
+    [nama_login] => Irawan Hendiyarto, S.Sos
+    [data] => 13.30.001001
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => Dr. EDDY CHRISTIJANTO Drs., M.Si
+    [no_lokasi_asli] => 13.30.001001
+    [status] => 0
+    [nip] => 197302272001121002
+)
+
