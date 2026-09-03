@@ -517,9 +517,9 @@ class Form_inv extends CI_Controller {
     {
         $this->cek_sess();
 		$data['page']="Isi Form Inventarisasi";
-		$data['kode_barang']=$this->form_model->data_kode_barang();
+		// $data['kode_barang']=$this->form_model->data_kode_barang();
 		$data['satuan']=$this->form_model->data_satuan();
-		$data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
+		// $data['kamus_lokasi']=$this->form_model->data_kamus_lokasi();
 
 		
 		$register = $_POST['register'];
@@ -532,6 +532,19 @@ class Form_inv extends CI_Controller {
 		$this->load->view('footer_isi_form_pm');
 
 	}
+
+	public function get_kamus_lokasi_ajax()
+	{
+		$kamus_lokasi = $this->form_model->data_kamus_lokasi()->result();
+		echo json_encode($kamus_lokasi);
+	}
+
+	public function get_kamus_nama_barang_ajax()
+	{
+		$kode_barang = $this->form_model->data_kode_barang()->result();
+		echo json_encode($kode_barang);
+	}
+
 
 	public function isi_formulir_3()
     {

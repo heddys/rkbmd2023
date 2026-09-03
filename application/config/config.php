@@ -370,7 +370,7 @@ $config['encryption_key'] = 'heddysebastian1993';
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'siibmd_loc_session';
-$config['sess_expiration'] = 86400;
+$config['sess_expiration'] = 10800;
 $config['sess_save_path'] = APPPATH . 'cache/sessions/';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;

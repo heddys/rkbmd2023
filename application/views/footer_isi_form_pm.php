@@ -52,9 +52,6 @@
        ribuan = ribuan.join('.').split('').reverse().join('');
        return ribuan;
     }
-    $("#tblkodebar").DataTable();
-    $("#tblalamatbarang").DataTable();
-    
 
     function showTime() {
         var a_p = "";
@@ -378,7 +375,7 @@ function formatCurrency(input, blur) {
 
     function klik_kode_bar(id){
       if(id == false) {
-        $("input:radio[id=primary4]:checked")[0].checked = false;
+        $('#primary3').prop('checked', true);
       } else {
         document.getElementById('kode_barang').value=id;
       }
@@ -394,11 +391,11 @@ function formatCurrency(input, blur) {
     }
 
     function klik_spek_barang(id,id2){
-      if(id == true) {
-        $("input:radio[id=primary8]:checked")[0].checked = false;
+      if (id == false) {
+        $('#primary7').prop('checked', true);
       } else {
-        document.getElementById('input_alamat').value=id;
-        document.getElementById('label_lokasi').innerHTML=id2;
+          $('#input_alamat').val(id);
+          $('#label_lokasi').html(id2);
       }
     }
 
@@ -525,16 +522,79 @@ function formatCurrency(input, blur) {
           }
       });
 
+      var table_kode_barang_loaded = false;
+
+      $('#modal-kode-bar').on('shown.bs.modal', function () {
+          if (!table_kode_barang_loaded) {
+              $('#tblkodebar').DataTable({
+                  "ajax": {
+                      "url": "<?php echo site_url('form_inv/get_kamus_nama_barang_ajax'); ?>",
+                      "dataSrc": ""
+                  },
+                  "autoWidth": false,
+                  "columns": [
+                      { "data": null, "render": function (data, type, row, meta) { return "<center>"+(meta.row + 1)+"</center>"; } },
+                      { "data": "kode_kelompok" },
+                      { "data": "kelompok" },
+                      { "data": "kode_sub_kelompok" },
+                      { "data": "sub_kelompok" },
+                      { "data": "kode_sub_sub_kelompok" },
+                      { "data": "sub_sub_kelompok" },
+                      { "data": null, "render": function(data, type, row) {
+                          return '<center><a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="'+row.kode_sub_sub_kelompok+'" onclick="klik_kode_bar(\''+row.kode_sub_sub_kelompok+'\');" data-dismiss="modal"><i class="fa fa-plus"></i></a></center>';
+                      }}
+                  ],
+                  "deferRender": true
+              });
+              table_kode_barang_loaded = true;
+          } else {
+              $('#tblkodebar').DataTable().columns.adjust().responsive.recalc();
+          }
+      });
+
       $('#primary6').click(function () {
           if ($(this).is(':checked')) {
               $('#modal-nama-barang').modal({backdrop: 'static', keyboard: false});
           }
       });
+
       $('#primary8').click(function () {
           if ($(this).is(':checked')) {
               $('#modal-spek-barang').modal({backdrop: 'static', keyboard: false});
           }  
       });
+
+      var table_lokasi_loaded = false;
+      
+      $('#modal-spek-barang').on('shown.bs.modal', function () {
+          if (!table_lokasi_loaded) {
+              $('#tblalamatbarang').DataTable({
+                  "ajax": {
+                      "url": "<?php echo site_url('form_inv/get_kamus_lokasi_ajax'); ?>",
+                      "dataSrc": ""
+                  },
+                  "autoWidth": false,
+                  "columns": [
+                      { "data": null, "render": function (data, type, row, meta) { return "<center>"+(meta.row + 1)+"</center>"; } },
+                      { "data": "nomor_unit" },
+                      { "data": "unit" },
+                      { "data": "nomor_sub_unit" },
+                      { "data": "sub_unit" },
+                      { "data": "nomor_lokasi" },
+                      { "data": "lokasi" },
+                      { "data": null, "render": function(data, type, row) {
+                          return '<center><a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="'+row.nomor_lokasi+'" data_id2="'+row.lokasi+'" onclick="klik_spek_barang(\''+row.nomor_lokasi+'\',\''+row.lokasi+'\');" data-dismiss="modal"><i class="fa fa-plus"></i></a></center>';
+                      }}
+                  ],
+                  "deferRender": true
+              });
+              table_lokasi_loaded = true;
+          } else {
+              $('#tblalamatbarang').DataTable().columns.adjust().responsive.recalc();
+          }
+      });
+
+      
       $('#primary12').click(function () {
           if ($(this).is(':checked')) {
               $('#modal-satuan-barang').modal({backdrop: 'static', keyboard: false});

@@ -484,3 +484,75 @@ Data Session: Array
     [nip] => 197302272001121002
 )
 
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 198010042014121001
+Success: 1
+Data Session: Array
+(
+    [id] => 22
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Sukedi, SH
+    [data] => 13.30.001301
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => 198010042014121001
+)
+
+Login Attempt:
+User: manager
+Success: 1
+Data Session: Array
+(
+    [id] => 1
+    [skpd] => BADAN PENGELOLAAN KEUANGAN DAN ASET DAERAH
+    [kode_opd] => 0900
+    [nama_login] => Manager
+    [data] => 13.30.001301
+    [role] => Admin
+    [jabatan] => Admin (Admin)
+    [kepala_opd] => Dra. WIWIEK WIDAYATI
+    [no_lokasi_asli] => 13.30.001301
+    [status] => 0
+    [nip] => manager
+)
+
+Login Attempt:
+User: 197511142010012003
+Success: 1
+Data Session: Array
+(
+    [id] => 16
+    [skpd] => BADAN KESATUAN BANGSA DAN POLITIK
+    [kode_opd] => 2100
+    [nama_login] => Purwanti
+    [data] => 13.30.001801
+    [role] => Pengurus Barang
+    [jabatan] => Pengurus Barang (Pengurus Barang)
+    [kepala_opd] => MARIA THERESIA EKAWATI RAHAYU SH, MH
+    [no_lokasi_asli] => 13.30.001801
+    [status] => 0
+    [nip] => 197511142010012003
+)
+

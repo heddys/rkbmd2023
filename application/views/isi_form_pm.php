@@ -600,15 +600,15 @@
 
                         <!-- Modal Untuk Pilih Kode Barang -->
                         <div class="modal fade" id="modal-kode-bar">
-                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-dialog modal-dialog-centered modal-xl" style="max-width: 80%;">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Sebutkan yang sebenarnya</h4></center>
+                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Pilih Kode Barang Yang Benar</h4></center>
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
                                         <div style="overflow-x:auto;">
-                                            <table id="tblkodebar" class="table table-striped table-hover responsive">
+                                            <table id="tblkodebar" class="table table-striped table-hover responsive" style="width:100%;">
                                                 <thead class="thead-dark">
                                                     <tr>
                                                         <th><center>No.</center></th>
@@ -622,22 +622,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php $x=1; foreach ($kode_barang->result() as $row) {?>
-                                                    <tr>
-                                                        <td><?php echo $x;?></td>
-                                                        <td><?php echo $row->kode_kelompok;?></td>
-                                                        <td><?php echo $row->kelompok;?></td>
-                                                        <td><?php echo $row->kode_sub_kelompok;?></td>
-                                                        <td><?php echo $row->sub_kelompok;?></td>
-                                                        <td><?php echo $row->kode_sub_sub_kelompok;?></td>
-                                                        <td><?php echo $row->sub_sub_kelompok;?></td>
-                                                        <td>
-                                                            <center>
-                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $row->kode_sub_sub_kelompok;?>" onclick="klik_kode_bar(this.getAttribute('data-id'));" data-dismiss="modal"><i class="fa fa-plus"></i></a>
-                                                            </center>
-                                                        </td>
-                                                    </tr>
-                                                    <?php $x++; }?>
                                                 </tbody>
                                             </table> 
                                         </div> 
@@ -654,15 +638,15 @@
                         <!-- /.modal -->
 
                         <div class="modal fade" id="modal-spek-barang">
-                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-dialog modal-dialog-centered modal-xl" style="max-width: 95%;">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <center><h4 class="modal-title"><i class="	fas fa-anchor"></i> Sebutkan yang sebenarnya</h4></center>
+                                        <center><h4 class="modal-title"><i class="fas fa-anchor"></i> Pilih Lokasi Pencatatan Yang Benar</h4></center>
                                     </div>
                                     <div class="modal-body">
                                         <style type="text/css"> </style>
                                         <div style="overflow-x:auto;">
-                                            <table id="tblalamatbarang" class="table table-striped table-hover responsive" style="overflow:auto;">
+                                            <table id="tblalamatbarang" class="table table-striped table-hover responsive" style="width:100%;">
                                                 <thead class="thead-dark">
                                                     <tr>
                                                         <th><center>No.</center></th>
@@ -676,22 +660,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php $x=1; foreach ($kamus_lokasi->result() as $data_row) {?>
-                                                    <tr>
-                                                        <td><?php echo $x;?></td>
-                                                        <td><?php echo $data_row->nomor_unit;?></td>
-                                                        <td><?php echo $data_row->unit;?></td>
-                                                        <td><?php echo $data_row->nomor_sub_unit;?></td>
-                                                        <td><?php echo $data_row->sub_unit;?></td>
-                                                        <td><?php echo $data_row->nomor_lokasi;?></td>
-                                                        <td><?php echo $data_row->lokasi;?></td>
-                                                        <td>
-                                                            <center>
-                                                                <a href="#" class="btn btn-sm btn-success ambil_kode_barang" data-id="<?php echo $data_row->nomor_lokasi;?>" data_id2="<?php echo $data_row->lokasi?>" onclick="klik_spek_barang('<?php echo $data_row->nomor_lokasi;?>','<?php echo $data_row->lokasi?>');" data-dismiss="modal"><i class="fa fa-plus"></i></a>
-                                                            </center>
-                                                        </td>
-                                                    </tr>
-                                                    <?php $x++; }?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -1095,11 +1063,9 @@
                                         <button type="button" class="btn btn-danger batal" onclick="klik_destroy()">Batal</button>
                                         <!-- <button type="submit" class="btn btn-success simpan" data-dismiss="modal">Simpan Data</button> -->
                                     </div>
+                                </div>  
                             </div>
-                               
-                            </div>
-                            
-                        </div>
+                    </div>
                       
 
                             <!-- Menampilkan Hasil Pencarian Register                                                 -->
